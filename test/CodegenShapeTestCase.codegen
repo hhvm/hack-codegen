@@ -1,0 +1,7 @@
+@generated
+!@#$%codegentest:testShape
+shape(
+  'x' => int,
+  'y' => int,
+  'url' => string,
+)

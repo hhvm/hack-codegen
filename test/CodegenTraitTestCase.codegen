@@ -1,0 +1,57 @@
+@generated
+!@#$%codegentest:testDemo
+/**
+ * doc-doc-doc!
+ */
+trait DemoInternal {
+
+  require extends EntSchema;
+  require implements IEntSchemaBase;
+
+  use EntProvisionalMode;
+  // Generated from Whatever::Method()
+  use WhateverTrait;
+  use Useless;
+
+  const MAX_SIZE = 256;
+
+  /**
+   * Default name of Ent.
+   */
+  const DEFAULT_NAME = 'MyEnt';
+  const PI = 3.1415;
+
+  protected string $text;
+  private ?int $id = 12345;
+
+  /* BEGIN MANUAL SECTION DemoInternal_header */
+  // Insert additional consts and vars here
+  /* END MANUAL SECTION */
+
+  /**
+   * This is a 76 characters  comment to test the splitting based on
+   * indentation.
+   */
+  protected function genX(): Awaitable<int> {
+    /* BEGIN MANUAL SECTION DemoInternal::genX */
+    // your code here
+    /* END MANUAL SECTION */
+  }
+
+  /* BEGIN MANUAL SECTION DemoInternal_footer */
+  // Insert additional methods here
+  /* END MANUAL SECTION */
+}
+
+!@#$%codegentest:testDocblock
+/**
+ * Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+ * tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+ * quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+ * consequat.
+ * Understood?
+ * Yes!
+ */
+trait TestDocblockInternal {
+}
+

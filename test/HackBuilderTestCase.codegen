@@ -1,0 +1,139 @@
+@generated
+!@#$%codegentest:docblock2
+/**
+ * Wow a really long comment that will span multiple
+ * lines and probably go over the limit so we gotta
+ * cut it up.
+ */
+
+!@#$%codegentest:testAddSmartMultilineCall
+$foobarbaz_alphabetagama =
+  $this->callSomeThingReallyLongNameReallyReallyLongName(
+  $someSmallParameter,
+  $foobarbaz_alphabetagama + $foobarbaz_alphabetagamaa +
+    $foobarbaz_alphabetagamatheta_foobarbaz,
+);
+
+!@#$%codegentest:testAddWithSuggestedLineBreaksNoBreakage
+final class ClassNameJustLongEnoughToAvoidEightyColumns extends SomeBaseClass
+!@#$%codegentest:testAddWithSuggestedLineBreaksWithBreakage
+final abstract class ImpossibleClassLongEnoughToCrossEightyColumns
+  extends SomeBaseClass
+!@#$%codegentest:testAnotherConfig
+// Here we wrap at 40 chars because we
+// use a different configuration.
+if ($do_that) {
+    return array(
+        1,
+        2,
+        3,
+    );
+}
+
+!@#$%codegentest:testDocBlock
+/**
+ * Wow a really long comment that will span multiple lines and probably go over
+ * the limit so we gotta cut it up.
+ */
+
+!@#$%codegentest:testForeachLoop
+foreach ($values as $value) {
+  something($value);
+}
+foreach ($values as $idx => $value) {
+  $values[$idx] = $value + 1;
+}
+
+!@#$%codegentest:testIfBlock
+if ($value <= 0) {
+  return 0;
+} else if ($value === 1) {
+  return 1;
+} else {
+  return 2;
+}
+
+!@#$%codegentest:testLiteralMap
+Map {
+  MY_ENUM::A => ANOTHER_ENUM::A,
+  MY_ENUM::B => ANOTHER_ENUM::B,
+}
+!@#$%codegentest:testSet
+Set {
+  'apple',
+  'oreos',
+  'banana',
+}
+!@#$%codegentest:testShape
+shape(
+  'x' => 3,
+  'y' => 5,
+  'url' => 'www.facebook.com',
+)
+!@#$%codegentest:testSwitchBodyWithBreaksInCaseAndDefault
+switch ($soccer_player) {
+  case 'Ronaldo':
+    $shot = new Shot('freeKick');
+    break;
+  case 'Messi':
+    $shot = new Shot('slideKick');
+    break;
+  case 'Maradona':
+    $shot = new Shot('handOfGod');
+    break;
+  default:
+    invariant_violation('ball deflated!');
+}
+
+!@#$%codegentest:testSwitchBodyWithMultipleCasesWithoutBreaks
+switch ($soccer_player) {
+  case 'Ronaldo':
+    $shot = new Shot('freeKick');
+  case 'Messi':
+    $shot = new Shot('slideKick');
+  case 'Maradona':
+    $shot = new Shot('handOfGod');
+  default:
+    invariant_violation('ball deflated!');
+}
+
+!@#$%codegentest:testSwitchBodyWithReturnsInCaseAndDefault
+switch ($soccer_player) {
+  case 'Ronaldo':
+    $shot = new Shot('freeKick');
+    return $shot->execute();
+  case 'Messi':
+    $shot = new Shot('slideKick');
+    return $shot->execute();
+  case 'Maradona':
+    $shot = new Shot('handOfGod');
+    return $shot->execute();
+  default:
+    invariant_violation('ball deflated!');
+}
+
+!@#$%codegentest:testTryBLock
+try {
+  my_func();
+} catch (SystemException $ex) {
+  return null;
+} finally {
+  bump_ods();
+}
+
+!@#$%codegentest:testWrappedStringDoNotIndent
+$this->callMethod(
+  'This string is quite long so will spread across three lines but the user '.
+  'wants it to look like just in this piece of code (second line indentation '.
+  'matches the first one)'
+);
+!@#$%codegentest:testWrappedStringDouble
+return 'This is a bit longer so we will hit our max length cap and then go ahead and '.
+  'finish the line.';
+!@#$%codegentest:testWrappedStringMulti
+return 'So here is a super long string that will wrap past the'.
+  'two line breaks. Also note that we include a newline and also do a concat '.
+  'operation to really mix it up. We need to'.
+  '      respect newlines with this code and also senseless indentation.';
+!@#$%codegentest:testWrappedStringSingle
+return 'This is short';

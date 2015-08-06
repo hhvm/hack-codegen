@@ -1,0 +1,27 @@
+@generated
+!@#$%codegentest:testArrayValues
+private static $languages = array (
+  'en' => 'English',
+  'es' => 'Spanish',
+  'fr' => 'French',
+);
+
+!@#$%codegentest:testDocBlock
+// a comment
+private $thingWithComment;
+
+!@#$%codegentest:testPublicStatic
+public static $foo;
+
+!@#$%codegentest:testSimple
+private $foo;
+
+!@#$%codegentest:testTyped
+protected string $name;
+
+!@#$%codegentest:testTypedWithFalsyValue
+private ?int $count = 0;
+
+!@#$%codegentest:testVector
+private Vector<string> $parameters = Vector {};
+

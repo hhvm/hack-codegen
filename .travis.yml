@@ -1,0 +1,8 @@
+language: php
+php:
+  - hhvm
+
+script:
+  - hh_client
+  - hhvm test/run_tests.php
+  - hhvm examples/dorm/codegen.php examples/dorm/demo/DormUserSchema.php

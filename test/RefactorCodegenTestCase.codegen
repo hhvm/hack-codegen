@@ -1,0 +1,41 @@
+@generated
+!@#$%codegentest:testClassRename
+<?hh
+// Codegen Tests
+/**
+ * This file is partially generated. Only make modifications between BEGIN
+ * MANUAL SECTION and END MANUAL SECTION designators.
+ *
+ * @-partially-generated SignedSource<<e771f47c7d37d21e6f2ec80ea8390b39>>
+ */
+
+class NewClass {
+
+  /* BEGIN MANUAL SECTION NewClass_header */
+  // Let's see if this shows up
+  /* END MANUAL SECTION */
+
+  /* BEGIN MANUAL SECTION NewClass_footer */
+  // Will this also show up?
+  /* END MANUAL SECTION */
+}
+
+!@#$%codegentest:testManualSectionMerge
+<?hh
+// Codegen Tests
+/**
+ * This file is partially generated. Only make modifications between BEGIN
+ * MANUAL SECTION and END MANUAL SECTION designators.
+ *
+ * @-partially-generated SignedSource<<84a4d507081f260cc6e696f581a7ab0d>>
+ */
+
+class NewClass {
+
+  /* BEGIN MANUAL SECTION NewClass_manual */
+  // Let's see if this shows up
+
+  // Will this also show up?
+  /* END MANUAL SECTION */
+}
+

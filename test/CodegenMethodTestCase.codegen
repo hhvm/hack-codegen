@@ -1,0 +1,41 @@
+@generated
+!@#$%codegentest:testAbstractProtectedAndParams
+abstract protected function getSchema(string $name);
+
+!@#$%codegentest:testAsync
+public async function genFoo() {
+}
+
+!@#$%codegentest:testConstructor
+public function __construct(string $name) {
+  $this->name = $name;
+}
+
+!@#$%codegentest:testDocBlockCommentsWrap
+/**
+ * xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ * (Generated from EntTestSchema::getFields()['name'])
+ */
+public function getName(): string {
+  return $this->name;
+}
+
+!@#$%codegentest:testManualSection
+public function genProprietorName(): string {
+  /* BEGIN MANUAL SECTION EntBlindPig::genProprietorName */
+  // insert your code here
+  /* END MANUAL SECTION */
+}
+
+!@#$%codegentest:testPrivateAndStaticWithEmptyBody
+private static function doNothing() {
+}
+
+!@#$%codegentest:testSimpleGetter
+/**
+ * Return the name of the user.
+ */
+public function getName(): string {
+  return $this->name;
+}
+

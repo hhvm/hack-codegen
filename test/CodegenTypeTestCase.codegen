@@ -1,0 +1,13 @@
+@generated
+!@#$%codegentest:testNewType
+newtype Point = (int, int);
+
+!@#$%codegentest:testShape
+type Point = shape(
+  'x' => int,
+  'y' => int,
+);
+
+!@#$%codegentest:testType
+type Point = (int, int);
+

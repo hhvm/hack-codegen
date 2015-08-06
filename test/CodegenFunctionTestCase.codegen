@@ -1,0 +1,79 @@
+@generated
+!@#$%codegentest:testAsync
+async function genFoo() {
+}
+
+!@#$%codegentest:testDocBlockCommentsWrap
+/**
+ * xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ * (Generated from EntTestSchema)
+ */
+function getName(): string {
+  return $name;
+}
+
+!@#$%codegentest:testManualSection
+function genProprietorName(): string {
+  /* BEGIN MANUAL SECTION genProprietorName */
+  // insert your code here
+  /* END MANUAL SECTION */
+}
+
+!@#$%codegentest:testMemoize
+<<__Memoize>>
+function getExpensive() {
+}
+
+!@#$%codegentest:testOverride
+<<__Override>>
+function getNotLikeParent() {
+}
+
+!@#$%codegentest:testOverrideAndMemoized
+<<__Override, __Memoize>>
+function getExpensiveNotLikeParent() {
+}
+
+!@#$%codegentest:testOverrideMemoizedAsync
+<<__Override, __Memoize>>
+async function genExpensiveNotLikeParent() {
+}
+
+!@#$%codegentest:testSingleUserAttributeWithoutArgument
+<<TestsBypassVisibility>>
+function getTestsBypassVisibility() {
+}
+
+!@#$%codegentest:testSingleUserAttributeWitArgument
+<<DataProvider('providerFunc')>>
+function getUseDataProvider() {
+}
+
+!@#$%codegentest:testMixedUserAttributes
+<<DataProvider('providerFunc'), TestsBypassVisibility>>
+function getBypassVisibilityAndUseDataProvider() {
+}
+
+!@#$%codegentest:testMixedBuiltInAndUserAttributes
+<<__Override, DataProvider('providerFunc'), TestsBypassVisibility>>
+function getOverridedBypassVisibilityAndUseDataProvider() {
+}
+
+!@#$%codegentest:testMixedBuiltInAndUserAttributesAsync
+<<__Override, DataProvider('providerFunc'), TestsBypassVisibility>>
+async function genOverridedBypassVisibilityAndUseDataProvider() {
+}
+
+!@#$%codegentest:testParams
+function getName(string $name) {
+  return $name . $name;
+}
+
+!@#$%codegentest:testSimpleGetter
+/**
+ * Return the name of the user.
+ */
+function getName(): string {
+  return $name;
+}
+

@@ -1,0 +1,33 @@
+@generated
+!@#$%codegentest:testDemo
+enum Demo : string {
+
+  A = 'a';
+
+  /**
+   * This is a different letter
+   */
+  B = 'b';
+}
+
+!@#$%codegentest:testDocblock
+/**
+ * Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+ * tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+ * quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+ * consequat.
+ * Understood?
+ * Yes!
+ */
+enum TestDocblock : int {
+}
+
+!@#$%codegentest:testIsAs
+enum NothingHere : int as int {
+}
+
+!@#$%codegentest:testLongEnumDeclaration
+enum EnumWithReallyLongName : string
+  as NowThisIsTheParentEnumWithALongNameItSelf {
+}
+

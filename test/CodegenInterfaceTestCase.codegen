@@ -1,0 +1,30 @@
+@generated
+!@#$%codegentest:testEmptyInterface
+interface IEmpty {
+}
+
+!@#$%codegentest:testExtendsInterfaceWithGeneratedFrom
+interface IExtenderOfOne
+  extends
+    // Generated from Foo::Bar()
+    IExtended {
+}
+
+!@#$%codegentest:testExtendsInterfaces
+interface IExtenderOfTwo
+  extends
+    IExtended,
+    IOtherExtended {
+}
+
+!@#$%codegentest:testInterfaceWithStuff
+interface IInterfaceWithStuff {
+
+  const A_CONST = 0;
+
+  /**
+   * Override this to have the stuff
+   */
+  public function genFoo(): Awaitable<mixed>;
+}
+

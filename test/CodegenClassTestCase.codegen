@@ -1,0 +1,152 @@
+@generated
+!@#$%codegentest:testClassDeclarationWithGenerics
+class ClassWithGenerics
+  <
+    Tent as IEnt,
+    T,
+    Tstory as EntCreationStory<Tent>
+  > {
+}
+
+!@#$%codegentest:testConstructorWrapperFunc
+function TestWrapperFunc(string $text, ?bool $hack): TestWrapperFunc {
+  return new TestWrapperFunc($text, $hack);
+}
+
+class TestWrapperFunc {
+
+  private string $text;
+  private ?bool $hack = false;
+
+  public function __construct(string $text, ?bool $hack) {
+    $this->text = $text;
+  }
+}
+
+!@#$%codegentest:testConstructorWrapperFuncDefault
+/**
+ * Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+ * tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+ * quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+ * consequat.
+ * Understood?
+ * Yes!
+ */
+function TestWrapperFunc(): TestWrapperFunc {
+  return new TestWrapperFunc();
+}
+
+class TestWrapperFunc {
+}
+
+!@#$%codegentest:testConstructorWrapperFuncWithExplicitParams
+function TestWrapperFunc(string $text): TestWrapperFunc {
+  return new TestWrapperFunc($text);
+}
+
+class TestWrapperFunc extends StrangeParent {
+}
+
+!@#$%codegentest:testDemo
+final class Demo {
+
+  use EntProvisionalMode;
+  // Generated from Whatever::Method()
+  use WhateverTrait;
+  use Useless;
+
+  const MAX_SIZE = 256;
+
+  /**
+   * Default name of Ent.
+   */
+  const DEFAULT_NAME = 'MyEnt';
+  const PI = 3.1415;
+
+  protected string $text;
+  private ?int $id = 12345;
+
+  /* BEGIN MANUAL SECTION Demo_header */
+  // Insert additional consts and vars here
+  /* END MANUAL SECTION */
+
+  public function __construct(string $text) {
+    $this->text = $text;
+  }
+
+  final public function getText(): string {
+    return $this->text;
+  }
+
+  /**
+   * This is a 76 characters  comment to test the splitting based on
+   * indentation.
+   */
+  protected function genX(): Awaitable<int> {
+    /* BEGIN MANUAL SECTION Demo::genX */
+    // your code here
+    /* END MANUAL SECTION */
+  }
+
+  /* BEGIN MANUAL SECTION Demo_footer */
+  // Insert additional methods here
+  /* END MANUAL SECTION */
+}
+
+!@#$%codegentest:testDocblock
+/**
+ * Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+ * tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+ * quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+ * consequat.
+ * Understood?
+ * Yes!
+ */
+class TestDocblock {
+}
+
+!@#$%codegentest:testExtendsAndFinal
+final class NothingHere extends NothingHereBase
+  implements
+    JustOneInterface {
+}
+
+!@#$%codegentest:testInterfacesAndAbstract
+abstract class NothingHere
+  implements
+    INothing,
+    // Generated from Foo::Bar()
+    IMeh {
+}
+
+!@#$%codegentest:testLongClassDeclaration
+class ClassWithReallyLongName
+  extends NowThisIsTheParentClassWithALongNameItSelf {
+}
+
+!@#$%codegentest:testLongClassDeclarationWithInterfaces
+class ClassWithReallyReallyLongName
+  extends NowThisIsTheParentClassWithALongNameItSelf
+  implements
+    InterfaceUno,
+    InterfaceDos,
+    InterfaceTres {
+}
+
+!@#$%codegentest:testLongGeneratedFrom
+class Demo {
+
+  // Generated from
+  // EntTestFieldGettersCodegenSchema::getFieldSpecification()['RawIntEnumCustomTest']
+  public function getRawIntEnumCustomTest() {
+  }
+}
+
+!@#$%codegentest:testMultipleInterfaces
+class JKRowling
+  implements
+    IHarryPotter,
+    IHermioneGranger,
+    IRonWeasley {
+}
+
