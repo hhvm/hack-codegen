@@ -30,8 +30,8 @@ final class CodegenClass
   private bool $isAbstract = false;
   private ?CodegenConstructor $constructor = null;
 
-  public function setIsFinal(): this {
-    $this->isFinal = true;
+  public function setIsFinal(bool $value = true): this {
+    $this->isFinal = $value;
     return $this;
   }
 
@@ -41,7 +41,6 @@ final class CodegenClass
   }
 
   public function setExtends(string $name): this {
-    invariant($this->extendsClass === null, 'extends has already been set');
     $this->extendsClass = $name;
     return $this;
   }
@@ -50,48 +49,34 @@ final class CodegenClass
     return $this->extendsClass;
   }
 
-  public function getInheritedMethods(): Set<string> {
-    $classname_to_methods = $classname ==> {
-      try {
-        return (new Vector((new ReflectionClass($classname))->getMethods()))
-          ->filter($m ==> !$m->isPrivate())
-          ->map($m ==> $m->getName());
-      } catch (ReflectionException $e) {
-        // The class doesn't exist (often seen in unit tests).
-        // Well, I guess it doesn't have any methods then.
-        return Set {};
-      }
-    };
-
-    $methods = Set {};
-
-    $methods->addAll($classname_to_methods($this->getExtends()));
-    foreach ($this->getImplements() as $interface) {
-      $methods->addAll($classname_to_methods($interface));
-    }
-    foreach ($this->getUses() as $trait) {
-      $methods->addAll($classname_to_methods($trait));
-    }
-
-    $dynamic_yield_methods = $methods->filter(
-      $method_name ==> Str::startsWith($method_name, 'gen')
-    )->map($gen_method_name ==>
-      'get' . Str::substr($gen_method_name, 3, Str::len($gen_method_name)-3)
-    );
-
-    return $methods->addAll($dynamic_yield_methods);
-  }
 
   public function setConstructor(CodegenConstructor $constructor): this {
     $this->constructor = $constructor;
     return $this;
   }
 
+  /**
+   * Add a comment before the class.  Notice that you need to pass the
+   * comment characters.  Use this just for HH_FIXME or other ad-hoc uses.
+   * For commenting the class, use method setDocBlock.
+   * Example (a fake space was included between / and * to avoid a hack error
+   * in this comment, but normally you won't have it):
+   *
+   * $class->addDeclComment('/ * HH_FIXME[4040] * /');
+   */
   final public function addDeclComment(string $comment): this {
     $this->declComment .= $comment."\n";
     return $this;
   }
 
+  /**
+   * Add a function to wrap calls to the class.  E.g., for MyClass accepting
+   * a string parameter it would generate:
+   *
+   * function MyClass(string $s): MyClass {
+   *   return new MyClass($s);
+   * }
+   */
   public function addConstructorWrapperFunc(
     ?Vector<string> $params = null,
   ): this {

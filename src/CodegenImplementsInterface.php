@@ -40,9 +40,7 @@ final class CodegenImplementsInterface
     return $this;
   }
 
-  public function setGeneratedFrom(
-    CodegenGeneratedFrom $from
-  ): this {
+  public function setGeneratedFrom(CodegenGeneratedFrom $from): this {
     $this->setComment($from->render());
     return $this;
   }

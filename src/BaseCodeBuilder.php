@@ -99,10 +99,11 @@ abstract class BaseCodeBuilder implements ICodeBuilder {
     return $this;
   }
 
-  final protected function addLineImpl(?string $code, array<mixed> $args): this {
-    return $this
-      ->addv($code, $args)
-      ->newLine();
+  final protected function addLineImpl(
+    ?string $code,
+    array<mixed> $args,
+  ): this {
+    return $this->addv($code, $args)->newLine();
   }
 
   /**
@@ -135,6 +136,10 @@ abstract class BaseCodeBuilder implements ICodeBuilder {
     return $this;
   }
 
+  /**
+   * Indicate that the code that will follow will be inside a function, so that
+   * the indentation is taken into account for the max line length.
+   */
   final public function setIsInsideFunction(): this {
     $this->isInsideFunction = true;
     return $this;
@@ -208,6 +213,10 @@ abstract class BaseCodeBuilder implements ICodeBuilder {
     return $this->add(implode("\n  ", $final_lines->toArray()));
   }
 
+  /**
+   * Similar to addWithSuggestedLineBreaks but allows to add more than one
+   * line at a time.  See that method for more information.
+   */
   final public function addLinesWithSuggestedLineBreaks(
     Vector<string> $lines,
   ): this {

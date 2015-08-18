@@ -511,7 +511,7 @@ final class HackBuilder extends BaseCodeBuilder {
    *
    * example:
    *
-   * php_builder()
+   * hack_builder()
    *   ->startSwitch('$soccer_player')
    *   ->addCaseBlocks(
    *     $players,
@@ -759,6 +759,6 @@ final class HackBuilder extends BaseCodeBuilder {
   }
 }
 
-function hack_builder() : HackBuilder {
+function hack_builder(): HackBuilder {
   return new HackBuilder(HackCodegenConfig::getInstance());
 }
