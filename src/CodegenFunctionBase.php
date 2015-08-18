@@ -11,7 +11,7 @@
 namespace Facebook\HackCodegen;
 
 /**
- * Base class to generate a function
+ * Base class to generate a function or a method.
  */
 abstract class CodegenFunctionBase
   implements ICodeBuilderRenderer {
@@ -106,9 +106,7 @@ abstract class CodegenFunctionBase
     return $this;
   }
 
-  public function setGeneratedFrom(
-    CodegenGeneratedFrom $from
-  ): this {
+  public function setGeneratedFrom(CodegenGeneratedFrom $from): this {
     $this->generatedFrom = $from;
     return $this;
   }

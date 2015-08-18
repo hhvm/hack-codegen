@@ -45,6 +45,13 @@ abstract class CodegenClassBase
     return $this->name;
   }
 
+  /**
+   * E.g.
+   * $class->setGenericsDecl(Map {'TRead' => null, 'TWrite' => 'T'})
+   *
+   * Will generate:
+   * class MyClass<TRead, TWrite as T> {
+   */
   public function setGenericsDecl(Map<string, ?string> $generics_decl): this {
     $this->genericsDecl = $generics_decl;
     return $this;
@@ -68,14 +75,12 @@ abstract class CodegenClassBase
     return $this;
   }
 
-  public function setGeneratedFrom(
-    CodegenGeneratedFrom $from
-  ): this {
+  public function setGeneratedFrom(CodegenGeneratedFrom $from): this {
     $this->generatedFrom = $from;
     return $this;
   }
 
-  public function getUses(): Vector<string> {
+  protected function getTraits(): Vector<string> {
     // Trait<T> becomes Trait
     return $this->traits
       ->map($trait ==> {
@@ -137,14 +142,24 @@ abstract class CodegenClassBase
   public function addClassNameConst(
     string $type,
     string $name,
-    string $value,
     ?string $comment = null,
   ): this {
     return $this->addConst(
-      'classname<'.$type.'> '.$name,
-      $value,
+      sprintf('classname<%s> %s', $type, $name),
+      sprintf('%s::class', $type),
       $comment,
       HackBuilderValues::LITERAL,
+    );
+  }
+
+  public function addAbstractClassNameConst(
+    string $type,
+    string $name,
+    ?string $comment = null,
+  ): this {
+    return $this->addAbstractConst(
+      sprintf('classname<%s> %s', $type, $name),
+      $comment,
     );
   }
 
@@ -174,6 +189,13 @@ abstract class CodegenClassBase
     return $this;
   }
 
+  /**
+   * If value is set to true, the class will have a section for manually adding
+   * methods.  You may specify a name for the section, which will appear in
+   * the comment and is used to merge the code when re-generating it.
+   * You may also specify a default content for the manual section, e.g.
+   * a comment indicating that additional methods should be placed there.
+   */
   public function setHasManualMethodSection(
     bool $value = true,
     ?string $name = null,
@@ -185,6 +207,13 @@ abstract class CodegenClassBase
     return $this;
   }
 
+  /**
+   * If value is set to true, the class will have a section for manually adding
+   * declarations.  You may specify a name for the section, which will appear in
+   * the comment and is used to merge the code when re-generating it.
+   * You may also specify a default content for the manual section, e.g.
+   * a comment indicating that additional declarations should be placed there.
+   */
   public function setHasManualDeclarations(
     bool $value = true,
     ?string $name = null,

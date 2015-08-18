@@ -36,7 +36,8 @@ final class CodegenTrait extends CodegenClassBase {
   }
 
   protected function buildDeclaration(HackBuilder $builder): void {
-    $builder->add('trait ' . $this->name);
+    $generics_dec = $this->buildGenericsDeclaration();
+    $builder->add('trait ' . $this->name.$generics_dec);
     $this->renderInterfaceList($builder, 'implements');
   }
 
