@@ -2,6 +2,10 @@ language: php
 php:
   - hhvm
 
+before_script:
+  - composer selfupdate
+  - composer update
+  
 script:
   - hh_client
   - hhvm test/run_tests.php
