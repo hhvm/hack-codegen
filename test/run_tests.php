@@ -11,6 +11,6 @@
 namespace Facebook\HackCodegen;
 
 require_once('vendor/autoload.php');
-require_once('test/CodegenSimpleTester.php');
+require_once('CodegenSimpleTester.php');
 $success = CodegenSimpleTester::run();
 exit($success ? 0 : 1);

@@ -30,7 +30,7 @@ final class CodegenSimpleTester {
    * Run all the tests.  Return true if they all succeeded.
    */
   public static function run(): bool {
-    $files = glob('test/*.php');
+    $files = glob(__DIR__.'/*.php');
     $fail_count = 0;
     foreach ($files as $file) {
       $classes = get_declared_classes();
