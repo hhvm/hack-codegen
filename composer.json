@@ -5,6 +5,24 @@
     "require": {
         "hhvm": "*"
     },
+    "authors": [
+        {
+            "name": "Drew Hoskins",
+            "role": "Developer"
+        },
+        {
+            "name": "Gaurav Kumar",
+            "role": "Developer"
+        },
+        {
+            "name": "Alejandro Marcu",
+            "role": "Developer"
+        },
+        {
+            "name": "Matthieu Martin",
+            "role": "Developer"
+        }
+    ],
     "type": "library",
     "autoload": {
         "files": [
