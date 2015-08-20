@@ -1,4 +1,4 @@
-# Hack Codegen
+# Hack Codegen [![Build Status](https://travis-ci.org/facebook/hack-codegen.svg?branch=master)](https://travis-ci.org/facebook/hack-codegen)
 Hack Codegen is a library for easily generating Hack code and writing it
 into signed files that prevent undesired modifications.
 The idea behind writing code that writes code is to raise the level of
