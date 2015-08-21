@@ -8,6 +8,8 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
+namespace Facebook/HackCodegen;
+
 /**
  * The main purposes of this class are to:
  * 1) Serialize a Map<string,string> into a file.

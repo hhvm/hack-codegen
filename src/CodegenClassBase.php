@@ -8,6 +8,8 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
+namespace Facebook/HackCodegen;
+
 /**
  * Abstract class to generate code for a class or trait.
  *

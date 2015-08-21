@@ -8,6 +8,8 @@ trait DemoInternal {
   require extends EntSchema;
   require implements IEntSchemaBase;
 
+namespace Facebook/HackCodegen;
+
   use EntProvisionalMode;
   // Generated from Whatever::Method()
   use WhateverTrait;

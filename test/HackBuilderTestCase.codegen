@@ -8,6 +8,8 @@
 
 !@#$%codegentest:testAddSmartMultilineCall
 $foobarbaz_alphabetagama =
+namespace Facebook/HackCodegen;
+
   $this->callSomeThingReallyLongNameReallyReallyLongName(
   $someSmallParameter,
   $foobarbaz_alphabetagama + $foobarbaz_alphabetagamaa +

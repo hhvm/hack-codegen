@@ -8,6 +8,8 @@ private static $languages = array (
 
 !@#$%codegentest:testDocBlock
 // a comment
+namespace Facebook/HackCodegen;
+
 private $thingWithComment;
 
 !@#$%codegentest:testPublicStatic

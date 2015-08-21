@@ -8,6 +8,8 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
+namespace Facebook/HackCodegen;
+
 /**
  * Manage partially generated code.  The main operation is to merge existing
  * code (that probably has some handwritten code) with generated code.

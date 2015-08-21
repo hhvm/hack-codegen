@@ -8,6 +8,8 @@ class ClassWithGenerics
   > {
 }
 
+namespace Facebook/HackCodegen;
+
 !@#$%codegentest:testConstructorWrapperFunc
 function TestWrapperFunc(string $text, ?bool $hack): TestWrapperFunc {
   return new TestWrapperFunc($text, $hack);

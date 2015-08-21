@@ -8,6 +8,8 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
+namespace Facebook/HackCodegen;
+
 abstract class BaseCodeBuilder implements ICodeBuilder {
 
   const string DELIMITER = "\t";
