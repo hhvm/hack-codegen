@@ -8,6 +8,8 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
+namespace Facebook/HackCodegen;
+
 /**
  * Class to facilitate building code. It has methods for some common patterns
  * used to generate code. It also deals with indentation and new lines.

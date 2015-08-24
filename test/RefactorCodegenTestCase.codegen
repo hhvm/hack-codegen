@@ -8,6 +8,8 @@
  *
  * @-partially-generated SignedSource<<e771f47c7d37d21e6f2ec80ea8390b39>>
  */
+namespace Facebook/HackCodegen;
+
 
 class NewClass {
 

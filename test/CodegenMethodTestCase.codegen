@@ -8,6 +8,8 @@ public async function genFoo() {
 
 !@#$%codegentest:testConstructor
 public function __construct(string $name) {
+namespace Facebook/HackCodegen;
+
   $this->name = $name;
 }
 

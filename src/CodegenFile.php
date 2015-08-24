@@ -8,6 +8,8 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
+namespace Facebook/HackCodegen;
+
 enum CodegenFileResult: int {
   NONE = 0;
   UPDATE = 1;

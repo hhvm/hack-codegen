@@ -8,6 +8,8 @@ interface IExtenderOfOne
   extends
     // Generated from Foo::Bar()
     IExtended {
+namespace Facebook/HackCodegen;
+
 }
 
 !@#$%codegentest:testExtendsInterfaces
