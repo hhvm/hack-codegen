@@ -8,6 +8,8 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
+namespace Facebook\HackCodegen;
+
 abstract class BaseCodeBuilder implements ICodeBuilder {
 
   const string DELIMITER = "\t";
@@ -129,7 +131,7 @@ abstract class BaseCodeBuilder implements ICodeBuilder {
   /**
    * Add each element of the vector as a new line
    */
-  final public function addLines(ConstVector<string> $lines): this {
+  final public function addLines(\ConstVector<string> $lines): this {
     foreach ($lines as $line) {
       $this->addLine($line);
     }

@@ -8,6 +8,8 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
+namespace Facebook\HackCodegen;
+
 require_once('vendor/autoload.php');
 require_once('CodegenSimpleTester.php');
 $success = CodegenSimpleTester::run();

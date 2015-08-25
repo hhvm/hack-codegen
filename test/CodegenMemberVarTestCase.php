@@ -8,6 +8,8 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
+namespace Facebook\HackCodegen;
+
 final class CodegenMemberVarTestCase extends CodegenBaseTest {
 
   public function testSimple() {

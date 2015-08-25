@@ -8,6 +8,8 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
+namespace Facebook\HackCodegen;
+
 /**
  * Manage partially generated code.  The main operation is to merge existing
  * code (that probably has some handwritten code) with generated code.
@@ -134,7 +136,7 @@ final class PartiallyGeneratedCode {
    */
   private function iterateCodeSections(
     string $code
-  ): Generator<int, (?string, string), void> {
+  ): \Generator<int, (?string, string), void> {
     // Regular expression to match the beginning of a manual section
     $quoted = preg_quote(self::$manualBegin, '/');
     $begin = self::getBeginManualSectionRegex('(.*)');
@@ -190,4 +192,4 @@ final class PartiallyGeneratedCode {
   }
 }
 
-final class PartiallyGeneratedCodeException extends Exception {};
+final class PartiallyGeneratedCodeException extends \Exception {};

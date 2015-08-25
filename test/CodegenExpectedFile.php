@@ -8,6 +8,8 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
+namespace Facebook\HackCodegen;
+
 /**
  * The main purposes of this class are to:
  * 1) Serialize a Map<string,string> into a file.
@@ -32,7 +34,10 @@ final class CodegenExpectedFile {
    * be written (the uri where the class is defined -php+codegen).
    */
   public static function getPath(string $class_name): string {
-    $source_file = (new ReflectionClass($class_name))->getFileName();
+    $ref = new \ReflectionClass($class_name);
+    $source_file = $ref->getFileName();
+    // Get classname without namespace
+    $class_name = $ref->getShortName(); 
     return dirname($source_file).'/'.$class_name.self::EXTENSION;
   }
 

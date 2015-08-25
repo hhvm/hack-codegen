@@ -8,6 +8,8 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
+namespace Facebook\HackCodegen;
+
 final class Filesystem {
   public static function createTemporaryFile(
     string $prefix = '',
@@ -25,14 +27,14 @@ final class Filesystem {
       return;
     }
     if (!unlink($path)) {
-      throw new Exception("Unable to remove `{$path}'.");
+      throw new \Exception("Unable to remove `{$path}'.");
     }
   }
 
   public static function readFile(string $path): string {
     $data = @file_get_contents($path);
     if ($data === false) {
-      throw new Exception("Failed to read file `{$path}'.");
+      throw new \Exception("Failed to read file `{$path}'.");
     }
 
     return $data;
@@ -42,7 +44,7 @@ final class Filesystem {
     $res = @file_put_contents($path, $data);
 
     if ($res === false) {
-      throw new Exception("Failed to write file `{$path}'.");
+      throw new \Exception("Failed to write file `{$path}'.");
     }
   }
 

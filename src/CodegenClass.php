@@ -8,6 +8,8 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
+namespace Facebook\HackCodegen;
+
 /**
  * Generate code for a class. Please don't use this class directly; instead use
  * the function codegen_class.  E.g.:
@@ -48,7 +50,6 @@ final class CodegenClass
   public function getExtends(): ?string {
     return $this->extendsClass;
   }
-
 
   public function setConstructor(CodegenConstructor $constructor): this {
     $this->constructor = $constructor;

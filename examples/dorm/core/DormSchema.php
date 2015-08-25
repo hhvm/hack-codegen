@@ -8,6 +8,8 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
+namespace Facebook\HackCodegen;
+
 interface DormSchema {
   public function getFields(): Map<string, DormField>;
   public function getDsn(): string;

@@ -8,6 +8,8 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
+namespace Facebook\HackCodegen;
+
 /**
  * Abstract class to generate code for a class or trait.
  *
@@ -55,7 +57,7 @@ abstract class CodegenClassBase
     return $this;
   }
 
-  public function addMethods(ConstVector<CodegenMethod> $methods): this {
+  public function addMethods(\ConstVector<CodegenMethod> $methods): this {
     foreach ($methods as $method) {
       $this->addMethod($method);
     }

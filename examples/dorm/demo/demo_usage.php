@@ -8,6 +8,8 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
+namespace Facebook\HackCodegen;
+
 require_once('DormUserMutator.php');
 require_once('DormUser.php');
 
@@ -33,7 +35,7 @@ require_once('DormUser.php');
 $id = DormUserMutator::create()
  ->setFirstName('John')
  ->setLastName('Smith')
- ->setBirthday(new DateTime('1978-03-26'))
+ ->setBirthday(new \DateTime('1978-03-26'))
  ->setCountryId(54)
  ->setIsActive(true)
  ->save();

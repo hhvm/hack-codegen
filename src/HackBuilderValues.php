@@ -8,6 +8,8 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
+namespace Facebook\HackCodegen;
+
 enum HackBuilderValues : int {
   // The value will be used literally, which is useful for example when
   // passing a constant such as MyEnum::Value

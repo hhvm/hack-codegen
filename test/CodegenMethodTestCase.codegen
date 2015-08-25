@@ -22,7 +22,7 @@ public function getName(): string {
 
 !@#$%codegentest:testManualSection
 public function genProprietorName(): string {
-  /* BEGIN MANUAL SECTION EntBlindPig::genProprietorName */
+  /* BEGIN MANUAL SECTION Facebook\HackCodegen\EntBlindPig::genProprietorName */
   // insert your code here
   /* END MANUAL SECTION */
 }

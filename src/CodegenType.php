@@ -8,6 +8,8 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
+namespace Facebook\HackCodegen;
+
 /**
  * Generate code for a type or newtype definition. Please don't use this class
  * directly; instead use the functions codegen_type or codegen_newtype. E.g.:

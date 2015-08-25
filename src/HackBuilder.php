@@ -8,6 +8,8 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
+namespace Facebook\HackCodegen;
+
 /**
  * Class to facilitate building code. It has methods for some common patterns
  * used to generate code. It also deals with indentation and new lines.
@@ -78,7 +80,7 @@ final class HackBuilder extends BaseCodeBuilder {
    *    the sorting in actual code.
    */
   public function addMap<Tk, Tv>(
-    ConstMap<Tk, Tv> $map,
+    \ConstMap<Tk, Tv> $map,
     HackBuilderKeys $keys_config = HackBuilderKeys::EXPORT,
     HackBuilderValues $values_config = HackBuilderValues::EXPORT,
   ): this {
@@ -99,7 +101,7 @@ final class HackBuilder extends BaseCodeBuilder {
    *    the sorting in actual code.
    */
   public function addImmMap<Tk, Tv>(
-    ConstMap<Tk, Tv> $map,
+    \ConstMap<Tk, Tv> $map,
     HackBuilderKeys $keys_config = HackBuilderKeys::EXPORT,
     HackBuilderValues $values_config = HackBuilderValues::EXPORT,
   ): this {
@@ -113,7 +115,7 @@ final class HackBuilder extends BaseCodeBuilder {
 
   private function addMapHelper<Tk, Tv>(
     string $type,
-    ConstMap<Tk, Tv> $map,
+    \ConstMap<Tk, Tv> $map,
     HackBuilderKeys $keys_config = HackBuilderKeys::EXPORT,
     HackBuilderValues $values_config = HackBuilderValues::EXPORT,
   ): this {
@@ -137,7 +139,7 @@ final class HackBuilder extends BaseCodeBuilder {
    * Add a Vector with the specified elements.
    */
   public function addVector<T>(
-    ConstVector<T> $vector,
+    \ConstVector<T> $vector,
     HackBuilderValues $values_config = HackBuilderValues::EXPORT,
   ): this {
     return $this
@@ -150,7 +152,7 @@ final class HackBuilder extends BaseCodeBuilder {
    * Add an ImmVector with the specified elements.
    */
   public function addImmVector<T>(
-    ConstVector<T> $vector,
+    \ConstVector<T> $vector,
     HackBuilderValues $values_config = HackBuilderValues::EXPORT,
   ): this {
     return $this
@@ -163,7 +165,7 @@ final class HackBuilder extends BaseCodeBuilder {
    * Add a Set with the specified elements.
    */
   public function addSet<T>(
-    ConstSet<T> $set,
+    \ConstSet<T> $set,
     HackBuilderValues $values_config = HackBuilderValues::EXPORT,
   ): this {
     return $this
@@ -176,7 +178,7 @@ final class HackBuilder extends BaseCodeBuilder {
    * Add an ImmSet with the specified elements.
    */
   public function addImmSet<T>(
-    ConstSet<T> $set,
+    \ConstSet<T> $set,
     HackBuilderValues $values_config = HackBuilderValues::EXPORT,
   ): this {
     return $this

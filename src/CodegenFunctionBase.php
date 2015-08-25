@@ -8,6 +8,8 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
+namespace Facebook\HackCodegen;
+
 /**
  * Base class to generate a function or a method.
  */
@@ -25,7 +27,7 @@ abstract class CodegenFunctionBase
   protected bool $isOverride = false;
   protected bool $isManualBody = false;
   protected bool $isMemoized = false;
-  protected Map<string, ImmVector<Stringish>> $userAttributes = Map {};
+  protected Map<string, ImmVector<\Stringish>> $userAttributes = Map {};
   protected Vector<string> $parameters = Vector {};
   protected ?CodegenGeneratedFrom $generatedFrom;
 

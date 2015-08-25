@@ -8,6 +8,8 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
+namespace Facebook\HackCodegen;
+
 require_once('vendor/autoload.php');
 require_once('core/DormSchema.php');
 require_once('core/DormField.php');
@@ -30,7 +32,7 @@ $new_classes = array_diff(get_declared_classes(), $classes);
 
 
 foreach($new_classes as $class_name) {
-  $ref = new ReflectionClass($class_name);
+  $ref = new \ReflectionClass($class_name);
   if ($ref->isAbstract()) {
     continue;
   }
