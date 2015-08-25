@@ -8,6 +8,8 @@
  *
  * @partially-generated SignedSource<<83bf890797c14d6a2809c949981e1f41>>
  */
+namespace Facebook\HackCodegen;
+
 
 final class DormUser {
 

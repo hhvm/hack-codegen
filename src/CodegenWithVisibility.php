@@ -8,6 +8,8 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
+namespace Facebook\HackCodegen;
+
 enum CodegenPHPMethodVisibility : string as string {
   V_PUBLIC = 'public';
   V_PRIVATE = 'private';

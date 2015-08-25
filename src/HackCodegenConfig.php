@@ -8,6 +8,8 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
+namespace Facebook\HackCodegen;
+
 /**
  * This class contains the default configuration for Hack code generation.
  * Please update it to your needs.

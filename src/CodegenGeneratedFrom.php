@@ -8,6 +8,8 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
+namespace Facebook\HackCodegen;
+
 /**
  * Describes how the code was generated in order to write a comment on
  * the generated file.

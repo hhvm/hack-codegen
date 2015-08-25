@@ -8,6 +8,8 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
+namespace Facebook\HackCodegen;
+
 /**
  * Generate code for a class. Please don't use this class directly; instead use
  * the function codegen_class.  E.g.:
@@ -53,10 +55,10 @@ final class CodegenClass
   public function getInheritedMethods(): Set<string> {
     $classname_to_methods = $classname ==> {
       try {
-        return (new Vector((new ReflectionClass($classname))->getMethods()))
+        return (new Vector((new \ReflectionClass($classname))->getMethods()))
           ->filter($m ==> !$m->isPrivate())
           ->map($m ==> $m->getName());
-      } catch (ReflectionException $e) {
+      } catch (\ReflectionException $e) {
         // The class doesn't exist (often seen in unit tests).
         // Well, I guess it doesn't have any methods then.
         return Set {};

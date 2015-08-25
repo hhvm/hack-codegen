@@ -8,6 +8,8 @@ type Point = shape(
   'y' => int,
 );
 
+namespace Facebook\HackCodegen;
+
 !@#$%codegentest:testType
 type Point = (int, int);
 

@@ -8,6 +8,8 @@ enum Demo : string {
    * This is a different letter
    */
   B = 'b';
+namespace Facebook\HackCodegen;
+
 }
 
 !@#$%codegentest:testDocblock

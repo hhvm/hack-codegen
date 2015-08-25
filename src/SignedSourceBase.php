@@ -8,6 +8,8 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
+namespace Facebook\HackCodegen;
+
 abstract class SignedSourceBase {
 
   const TOKEN   ='<<SignedSource::*O*zOeWoEQle#+L!plEphiEmie@I>>';
@@ -55,7 +57,7 @@ abstract class SignedSourceBase {
       $file_data,
     );
     if ($replaced_data == $file_data) {
-      throw new Exception(
+      throw new \Exception(
         'Before signing a file, you must embed a signing token within it.'
       );
     }
@@ -84,7 +86,7 @@ abstract class SignedSourceBase {
   public static function verifySignature(string $file_data): bool {
     $matches = array();
     if (!preg_match(static::getPattern(), $file_data, $matches)) {
-      throw new Exception('Can not verify the signature of an unsigned file.');
+      throw new \Exception('Can not verify the signature of an unsigned file.');
     }
     $replaced_data = str_replace(
       'SignedSource<<'.$matches[1].'>>',

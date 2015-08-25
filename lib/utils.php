@@ -8,6 +8,8 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
+namespace Facebook\HackCodegen;
+
 /**
  * Remove the 'HH\' prefix from typehint strings
  * and from strings produced by var_export().

@@ -8,17 +8,19 @@
  *
  * @partially-generated SignedSource<<7b060a2196463538ccc10378f0058076>>
  */
+namespace Facebook\HackCodegen;
+
 
 final class DormUserMutator {
 
   private Map<string, mixed> $data = Map {
   };
   private static Map<string, int> $pdoType = Map {
-    'birthday' => PDO::PARAM_STR,
-    'country_id' => PDO::PARAM_INT,
-    'first_name' => PDO::PARAM_STR,
-    'is_active' => PDO::PARAM_BOOL,
-    'last_name' => PDO::PARAM_STR,
+    'birthday' => \PDO::PARAM_STR,
+    'country_id' => \PDO::PARAM_INT,
+    'first_name' => \PDO::PARAM_STR,
+    'is_active' => \PDO::PARAM_BOOL,
+    'last_name' => \PDO::PARAM_STR,
   };
 
   private function __construct(private ?int $id = null) {
@@ -33,7 +35,7 @@ final class DormUserMutator {
   }
 
   public function save(): int {
-    $conn = new PDO('sqlite:/path/to/database.db');
+    $conn = new \PDO('sqlite:/path/to/database.db');
     $quoted = $this->data->mapWithKey(
       ($k, $v) ==> $conn->quote($v, self::$pdoType[$k]),
     );
@@ -76,7 +78,7 @@ final class DormUserMutator {
     return $this;
   }
 
-  public function setBirthday(DateTime $value): this {
+  public function setBirthday(\DateTime $value): this {
     $this->data["birthday"] = $value->format("Y-m-d");
     return $this;
   }
