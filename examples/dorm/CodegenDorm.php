@@ -8,6 +8,8 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
+namespace Facebook\HackCodegen;
+
 /**
  * For a given DormSchema, this class generates code for a class
  * that will allow to read the data from a database and store it
@@ -20,7 +22,8 @@ class CodegenDorm {
   ) {}
 
   private function getSchemaName(): string {
-    $name = get_class($this->schema);
+    $ref = new \ReflectionClass($this->schema);
+    $name = $ref->getShortName();
     return Str::endsWith($name, 'Schema')
       ? Str::substr($name, 0, -6)
       : $name;
@@ -38,7 +41,7 @@ class CodegenDorm {
       ->addMethod($this->getLoad())
       ->addMethods($this->getGetters());
 
-    $rc = new ReflectionClass(get_class($this->schema));
+    $rc = new \ReflectionClass(get_class($this->schema));
     $path = $rc->getFileName();
     $pos = strrpos($path, '/');
     $dir = substr($path, 0, $pos + 1);

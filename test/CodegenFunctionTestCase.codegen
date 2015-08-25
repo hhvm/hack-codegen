@@ -24,6 +24,21 @@ function genProprietorName(): string {
 function getExpensive() {
 }
 
+!@#$%codegentest:testMixedBuiltInAndUserAttributes
+<<__Override, Facebook\HackCodegen\DataProvider('providerFunc'), Facebook\HackCodegen\TestsBypassVisibility>>
+function getOverridedBypassVisibilityAndUseDataProvider() {
+}
+
+!@#$%codegentest:testMixedBuiltInAndUserAttributesAsync
+<<__Override, Facebook\HackCodegen\DataProvider('providerFunc'), Facebook\HackCodegen\TestsBypassVisibility>>
+async function genOverridedBypassVisibilityAndUseDataProvider() {
+}
+
+!@#$%codegentest:testMixedUserAttributes
+<<Facebook\HackCodegen\DataProvider('providerFunc'), Facebook\HackCodegen\TestsBypassVisibility>>
+function getBypassVisibilityAndUseDataProvider() {
+}
+
 !@#$%codegentest:testOverride
 <<__Override>>
 function getNotLikeParent() {
@@ -39,31 +54,6 @@ function getExpensiveNotLikeParent() {
 async function genExpensiveNotLikeParent() {
 }
 
-!@#$%codegentest:testSingleUserAttributeWithoutArgument
-<<TestsBypassVisibility>>
-function getTestsBypassVisibility() {
-}
-
-!@#$%codegentest:testSingleUserAttributeWitArgument
-<<DataProvider('providerFunc')>>
-function getUseDataProvider() {
-}
-
-!@#$%codegentest:testMixedUserAttributes
-<<DataProvider('providerFunc'), TestsBypassVisibility>>
-function getBypassVisibilityAndUseDataProvider() {
-}
-
-!@#$%codegentest:testMixedBuiltInAndUserAttributes
-<<__Override, DataProvider('providerFunc'), TestsBypassVisibility>>
-function getOverridedBypassVisibilityAndUseDataProvider() {
-}
-
-!@#$%codegentest:testMixedBuiltInAndUserAttributesAsync
-<<__Override, DataProvider('providerFunc'), TestsBypassVisibility>>
-async function genOverridedBypassVisibilityAndUseDataProvider() {
-}
-
 !@#$%codegentest:testParams
 function getName(string $name) {
   return $name . $name;
@@ -75,5 +65,15 @@ function getName(string $name) {
  */
 function getName(): string {
   return $name;
+}
+
+!@#$%codegentest:testSingleUserAttributeWitArgument
+<<Facebook\HackCodegen\DataProvider('providerFunc')>>
+function getUseDataProvider() {
+}
+
+!@#$%codegentest:testSingleUserAttributeWithoutArgument
+<<Facebook\HackCodegen\TestsBypassVisibility>>
+function getTestsBypassVisibility() {
 }
 

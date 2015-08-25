@@ -8,6 +8,8 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
+namespace Facebook\HackCodegen;
+
 /**
  *  Designate machine-generated code so tools can distinguish it from
  *  human-generated code, and prevent manual edits of machine-generated code by

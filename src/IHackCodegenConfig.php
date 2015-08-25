@@ -8,6 +8,8 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
+namespace Facebook\HackCodegen;
+
 /**
  * Implement this interface to define a configuration to generate code.
  * The config will need to be passed to some of the Codegen constructors,

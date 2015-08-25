@@ -5,8 +5,8 @@
  */
 trait DemoInternal {
 
-  require extends EntSchema;
-  require implements IEntSchemaBase;
+  require extends Facebook\HackCodegen\EntSchema;
+  require implements Facebook\HackCodegen\IEntSchemaBase;
 
   use EntProvisionalMode;
   // Generated from Whatever::Method()

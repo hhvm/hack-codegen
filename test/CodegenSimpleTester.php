@@ -8,6 +8,8 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
+namespace Facebook\HackCodegen;
+
 require_once('CodegenExpectedFile.php');
 require_once('CodegenBaseTest.php');
 require_once('TestCodegenConfig.php');
@@ -36,7 +38,7 @@ final class CodegenSimpleTester {
       $test_classes = array_diff(get_declared_classes(), $classes);
 
       foreach ($test_classes as $class) {
-        $ref = new ReflectionClass($class);
+        $ref = new \ReflectionClass($class);
         if ($ref->isAbstract()) {
           continue;
         }
@@ -81,7 +83,7 @@ final class CodegenSimpleTester {
    */
   private static function runTest(
     CodegenBaseTest $instance,
-    ReflectionMethod $method,
+    \ReflectionMethod $method,
   ): ?string {
     $doc_block = $method->getDocComment();
     $expected_exception = null;
@@ -99,13 +101,16 @@ final class CodegenSimpleTester {
       if ($expected_exception) {
         return "Expected exception $expected_exception, nothing was thrown";
       }
-    } catch (Exception $ex) {
+    } catch (\Exception $ex) {
       if ($expected_exception === null) {
         return $ex->getMessage();
-      } else if (get_class($ex) !== $expected_exception) {
+      } else {
+        $class_name = (new \ReflectionClass($ex))->getShortName();
+        if ($class_name !== $expected_exception) {
         return
           "Expected exception $expected_exception, ".get_class($ex).
           " was thrown instead";
+	}
       }
     }
     return null;

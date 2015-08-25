@@ -8,6 +8,8 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
+namespace Facebook\HackCodegen;
+
 enum CodegenFileResult: int {
   NONE = 0;
   UPDATE = 1;
@@ -66,7 +68,7 @@ final class CodegenFile {
     return $this;
   }
 
-  public function addClasses(ConstVector<CodegenClassBase> $classes): this {
+  public function addClasses(\ConstVector<CodegenClassBase> $classes): this {
     foreach ($classes as $class) {
       $this->addClass($class);
     }
@@ -87,7 +89,7 @@ final class CodegenFile {
     return $this;
   }
 
-  public function addFunctions(ConstVector<CodegenFunction> $functions): this {
+  public function addFunctions(\ConstVector<CodegenFunction> $functions): this {
     foreach ($functions as $function) {
       $this->addFunction($function);
     }
@@ -362,7 +364,7 @@ function codegen_file(string $file_name, ...$args): CodegenFile {
   return new CodegenFile(HackCodegenConfig::getInstance(), $file_name);
 }
 
-abstract class CodegenFileSignatureException extends Exception {
+abstract class CodegenFileSignatureException extends \Exception {
 
   public function __construct(
     string $message,

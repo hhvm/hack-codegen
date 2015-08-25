@@ -8,6 +8,8 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
+namespace Facebook\HackCodegen;
+
 interface ICodeBuilderRenderer {
   /**
    * Appends the code of this class to the builder
