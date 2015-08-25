@@ -3,7 +3,7 @@ php:
   - hhvm
 
 before_script:
-  - composer selfupdate
+  - composer self-update
   - composer update
   
 script:
