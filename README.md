@@ -20,14 +20,10 @@ Hack Codegen requires:
 * Composer
 
 ## Installing Hack Codegen
-To install this package via composer, just add the package to require and start using it.
+This package can be installed via composer:
 
-```json
-{
-    "require": {
-        "facebook/hack-codegen": "*"
-    }
-}
+```bash
+composer require facebook/hack-codegen
 ```
 
 ## Usage
@@ -38,11 +34,14 @@ For example:
 <?hh
 require 'vendor/autoload.php';
 
-echo codegen_file('HelloWorld.php')
+use Facebook\HackCodegen as codegen;
+
+echo codegen\codegen_file('HelloWorld.php')
   ->addClass(
-    codegen_class('HelloWorld')
+    codegen\codegen_class('HelloWorld')
       ->addMethod(
-        codegen_method('sayHi')
+        codegen\codegen_method('sayHi')
+          ->setReturnType('void')
           ->setBody('echo "hello world\n";')
       )
   )->save();
