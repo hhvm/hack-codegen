@@ -17,7 +17,7 @@ final class Filesystem {
   ): string {
     $fname = tempnam(sys_get_temp_dir(), $prefix);
     if ($cleanup) {
-      register_shutdown_function(array('Filesystem', 'remove'), $fname);
+      register_shutdown_function(array(Filesystem::class, 'remove'), $fname);
     }
     return $fname;
   }

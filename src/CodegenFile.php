@@ -228,9 +228,13 @@ final class CodegenFile {
 
     $old_content = $this->loadExistingFiles();
 
-    $doc_block = $this->docBlock;
-    if ($this->generatedFrom !== null) {
-      $doc_block = $doc_block. $this->generatedFrom->render() ."\n";
+    $doc_block = (string)$this->docBlock;
+    $gen_from = $this->generatedFrom;
+    if ($gen_from !== null) {
+      if ($doc_block && !Str::endsWith($doc_block, "\n")) {
+        $doc_block .= "\n";
+      }
+      $doc_block = $doc_block.$gen_from->render()."\n";
     }
 
     if (PartiallyGeneratedCode::containsManualSection($content)) {

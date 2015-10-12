@@ -34,10 +34,6 @@ function codegen_generated_from_class(string $class): CodegenGeneratedFrom {
   return new CodegenGeneratedFrom("Generated from $class");
 }
 
-function codegen_generated_from_string(string $string): CodegenGeneratedFrom {
-  return new CodegenGeneratedFrom("Generated from $string");
-}
-
 function codegen_generated_from_method(
   string $class,
   string $method

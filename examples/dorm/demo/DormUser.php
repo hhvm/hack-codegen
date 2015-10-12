@@ -3,11 +3,10 @@
  * This file is partially generated. Only make modifications between BEGIN
  * MANUAL SECTION and END MANUAL SECTION designators.
  *
- * To re-generate this file run
- * /home/ubuntu/hack-codegen/examples/dorm/codegen.php
+ * To re-generate this file run codegen.php DormUserSchema
  *
  *
- * @partially-generated SignedSource<<f9e8b0c880da41854d491905f3a7314e>>
+ * @partially-generated SignedSource<<609ad77761b889b1c3dd2a45c5aa296a>>
  */
 
 final class DormUser {

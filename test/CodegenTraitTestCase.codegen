@@ -5,10 +5,10 @@
  */
 trait DemoInternal {
 
-  require extends Facebook\HackCodegen\EntSchema;
-  require implements Facebook\HackCodegen\IEntSchemaBase;
+  require extends RequiredClass;
+  require implements RequiredInterface;
 
-  use EntProvisionalMode;
+  use DemoTrait;
   // Generated from Whatever::Method()
   use WhateverTrait;
   use Useless;

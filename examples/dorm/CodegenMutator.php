@@ -51,13 +51,14 @@ class CodegenMutator {
     $path = $rc->getFileName();
     $pos = strrpos($path, '/');
     $dir = substr($path, 0, $pos + 1);
+    $gen_from = 'codegen.php '.$rc->getShortName();
 
     // This generates a file (we pass the file name) that contains the
     // class defined above and saves it.
     codegen_file($dir.$name.'.php')
       ->addClass($class)
       ->setIsStrict(true)
-      ->setGeneratedFrom(codegen_generated_from_script())
+      ->setGeneratedFrom(codegen_generated_from_script($gen_from))
       ->save();
   }
 

@@ -29,9 +29,9 @@ final class CodegenTraitTestCase extends CodegenBaseTest {
 
   public function testDemo() {
     $code = codegen_trait('DemoInternal')
-      ->addRequireClass(EntSchema::class)
-      ->addRequireInterface(IEntSchemaBase::class)
-      ->addTrait(codegen_uses_trait('EntProvisionalMode'))
+      ->addRequireClass('RequiredClass')
+      ->addRequireInterface('RequiredInterface')
+      ->addTrait(codegen_uses_trait('DemoTrait'))
       ->addTrait(
         codegen_uses_trait('WhateverTrait')
         ->setGeneratedFrom(codegen_generated_from_method("Whatever", "Method"))

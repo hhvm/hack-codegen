@@ -89,7 +89,7 @@ final class CodegenClassTestCase extends CodegenBaseTest {
 
   public function testClassDeclarationWithGenerics() {
     $generics_decl = Map {
-      'Tent' => IEnt::class,
+      'Tent' => 'Ixyz',
       'T' => "",
       'Tstory' => "EntCreationStory<Tent>",
     };

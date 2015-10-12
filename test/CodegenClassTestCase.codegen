@@ -2,7 +2,7 @@
 !@#$%codegentest:testClassDeclarationWithGenerics
 class ClassWithGenerics
   <
-    Tent as Facebook\HackCodegen\IEnt,
+    Tent as Ixyz,
     T,
     Tstory as EntCreationStory<Tent>
   > {

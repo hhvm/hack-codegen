@@ -55,7 +55,7 @@ final class CodegenMethodTestCase extends CodegenBaseTest {
       ->setBody('// insert your code here')
       ->setManualBody();
 
-    codegen_class(EntBlindPig::class)->addMethod($method);
+    codegen_class('MyClass')->addMethod($method);
     $code = $method->render();
 
     self::assertUnchanged($code);

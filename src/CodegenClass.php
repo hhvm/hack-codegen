@@ -51,6 +51,7 @@ final class CodegenClass
     return $this->extendsClass;
   }
 
+
   public function setConstructor(CodegenConstructor $constructor): this {
     $this->constructor = $constructor;
     return $this;

@@ -45,6 +45,7 @@ class CodegenDorm {
     $path = $rc->getFileName();
     $pos = strrpos($path, '/');
     $dir = substr($path, 0, $pos + 1);
+    $gen_from = 'codegen.php '.$this->getSchemaName().'Schema';
 
     // This generates a file (we pass the file name) that contains the
     // class defined above and saves it.
@@ -54,7 +55,7 @@ class CodegenDorm {
     // of the existing file and merging it if it's partially generated.
     codegen_file($dir.$this->getSchemaName().'.php')
       ->addClass($class)
-      ->setGeneratedFrom(codegen_generated_from_script())
+      ->setGeneratedFrom(codegen_generated_from_script($gen_from))
       ->save();
   }
 

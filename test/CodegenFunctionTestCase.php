@@ -69,22 +69,22 @@ final class CodegenFunctionTestCase extends CodegenBaseTest {
 
   public function testSingleUserAttributeWithoutArgument() {
     $code = codegen_function('getTestsBypassVisibility')
-      ->setUserAttribute(TestsBypassVisibility::class)
+      ->setUserAttribute('TestsBypassVisibility')
       ->render();
     self::assertUnchanged($code);
   }
 
-  public function testSingleUserAttributeWitArgument() {
+  public function testSingleUserAttributeWithArgument() {
     $code = codegen_function('getUseDataProvider')
-      ->setUserAttribute(DataProvider::class, "'providerFunc'")
+      ->setUserAttribute('DataProvider', "'providerFunc'")
       ->render();
     self::assertUnchanged($code);
   }
 
   public function testMixedUserAttributes() {
     $code = codegen_function('getBypassVisibilityAndUseDataProvider')
-      ->setUserAttribute(DataProvider::class, "'providerFunc'")
-      ->setUserAttribute(TestsBypassVisibility::class)
+      ->setUserAttribute('DataProvider', "'providerFunc'")
+      ->setUserAttribute('TestsBypassVisibility')
       ->render();
     self::assertUnchanged($code);
   }
@@ -92,8 +92,8 @@ final class CodegenFunctionTestCase extends CodegenBaseTest {
   public function testMixedBuiltInAndUserAttributes() {
     $code = codegen_function('getOverridedBypassVisibilityAndUseDataProvider')
       ->setIsOverride(true)
-      ->setUserAttribute(DataProvider::class, "'providerFunc'")
-      ->setUserAttribute(TestsBypassVisibility::class)
+      ->setUserAttribute('DataProvider', "'providerFunc'")
+      ->setUserAttribute('TestsBypassVisibility')
       ->render();
     self::assertUnchanged($code);
   }
@@ -101,8 +101,8 @@ final class CodegenFunctionTestCase extends CodegenBaseTest {
   public function testMixedBuiltInAndUserAttributesAsync() {
     $code = codegen_function('genOverridedBypassVisibilityAndUseDataProvider')
       ->setIsOverride(true)
-      ->setUserAttribute(DataProvider::class, "'providerFunc'")
-      ->setUserAttribute(TestsBypassVisibility::class)
+      ->setUserAttribute('DataProvider', "'providerFunc'")
+      ->setUserAttribute('TestsBypassVisibility')
       ->setIsAsync()
       ->render();
     self::assertUnchanged($code);

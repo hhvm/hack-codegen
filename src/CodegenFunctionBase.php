@@ -38,6 +38,11 @@ abstract class CodegenFunctionBase
     $this->name = $name;
   }
 
+  public function setName(string $name): this {
+    $this->name = $name;
+    return $this;
+  }
+
   public function setIsAsync(bool $value = true): this {
     $this->isAsync = $value;
     return $this;

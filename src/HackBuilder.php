@@ -74,7 +74,7 @@ final class HackBuilder extends BaseCodeBuilder {
   /**
    * Add a Map with the specified pairs.
    *
-   * @param ConstMap<Tk, Tv> $map The Map or Map to output. Note that
+   * @param \ConstMap<Tk, Tv> $map The Map or Map to output. Note that
    *    regardless of which type is passed in, a Map will be output. This is
    *    useful for sorting the map for readability, as long as you don't need
    *    the sorting in actual code.
@@ -95,7 +95,7 @@ final class HackBuilder extends BaseCodeBuilder {
   /**
    * Add an ImmMap with the specified pairs.
    *
-   * @param ConstMap<Tk, Tv> $map The Map or Map to output. Note that
+   * @param \ConstMap<Tk, Tv> $map The Map or Map to output. Note that
    *    regardless of which type is passed in, an ImmMap will be output. This is
    *    useful for sorting the map for readability, as long as you don't need
    *    the sorting in actual code.

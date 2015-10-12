@@ -25,17 +25,17 @@ function getExpensive() {
 }
 
 !@#$%codegentest:testMixedBuiltInAndUserAttributes
-<<__Override, Facebook\HackCodegen\DataProvider('providerFunc'), Facebook\HackCodegen\TestsBypassVisibility>>
+<<__Override, DataProvider('providerFunc'), TestsBypassVisibility>>
 function getOverridedBypassVisibilityAndUseDataProvider() {
 }
 
 !@#$%codegentest:testMixedBuiltInAndUserAttributesAsync
-<<__Override, Facebook\HackCodegen\DataProvider('providerFunc'), Facebook\HackCodegen\TestsBypassVisibility>>
+<<__Override, DataProvider('providerFunc'), TestsBypassVisibility>>
 async function genOverridedBypassVisibilityAndUseDataProvider() {
 }
 
 !@#$%codegentest:testMixedUserAttributes
-<<Facebook\HackCodegen\DataProvider('providerFunc'), Facebook\HackCodegen\TestsBypassVisibility>>
+<<DataProvider('providerFunc'), TestsBypassVisibility>>
 function getBypassVisibilityAndUseDataProvider() {
 }
 
@@ -67,13 +67,13 @@ function getName(): string {
   return $name;
 }
 
-!@#$%codegentest:testSingleUserAttributeWitArgument
-<<Facebook\HackCodegen\DataProvider('providerFunc')>>
+!@#$%codegentest:testSingleUserAttributeWithArgument
+<<DataProvider('providerFunc')>>
 function getUseDataProvider() {
 }
 
 !@#$%codegentest:testSingleUserAttributeWithoutArgument
-<<Facebook\HackCodegen\TestsBypassVisibility>>
+<<TestsBypassVisibility>>
 function getTestsBypassVisibility() {
 }
 
