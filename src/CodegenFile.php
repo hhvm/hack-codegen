@@ -277,7 +277,6 @@ final class CodegenFile {
       'namespace %s;',
       $this->fileNamespace,
     );
-
     foreach ($this->useNamespaces as $ns => $as) {
       $builder->addLine($as === null ? "use $ns;" : "use $ns as $as;");
     }
