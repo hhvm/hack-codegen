@@ -230,4 +230,19 @@ final class CodegenFileTestCase extends CodegenBaseTest {
     self::assertUnchanged($code);
   }
 
+  public function testNamespace() {
+    $code = test_codegen_file('no_file')
+      ->setNamespace('MyNamespace')
+      ->useNamespace('Another\Space')
+      ->useClass('My\Space\Bar', 'bar')
+      ->useFunction('My\Space\my_function', 'f')
+      ->useConst('My\Space\MAX_RETRIES')
+      ->addClass(
+        codegen_class('Foo')
+      )
+      ->render();
+
+    self::assertUnchanged($code);
+  }
+
 }

@@ -39,6 +39,8 @@ final class CodegenFile {
   private ?Map<string, Vector<string>> $rekey = null;
   private bool $createOnly = false;
   private ?ICodegenFormatter $formatter;
+  private ?string $fileNamespace;
+  private Vector<string> $useNamespaces = Vector {};
 
   public function __construct(
     private IHackCodegenConfig $config,
@@ -270,6 +272,13 @@ final class CodegenFile {
 
   private function getContent(): string {
     $builder = hack_builder();
+    $builder->addLineIf(
+      $this->fileNamespace !== null,
+      'namespace %s;',
+      $this->fileNamespace,
+    );
+    $builder->addLines($this->useNamespaces);
+
     foreach ($this->beforeTypes as $type) {
       $builder->ensureNewLine()->newLine();
       $builder->add($type->render());
@@ -328,6 +337,30 @@ final class CodegenFile {
   ): this {
     $this->generatedFrom = $from;
     return $this;
+  }
+
+  public function setNamespace(string $file_namespace): this {
+    $this->fileNamespace = $file_namespace;
+    return $this;
+  }
+
+  public function useNamespace(string $ns, ?string $as = null): this {
+    $this->useNamespaces[] = $as === null
+      ? "use $ns;"
+      : "use $ns as $as;";
+    return $this;
+  }
+
+  public function useClass(string $ns, ?string $as = null): this {
+    return $this->useNamespace($ns, $as);
+  }
+
+  public function useFunction(string $ns, ?string $as = null): this {
+    return $this->useNamespace('function '.$ns, $as);
+  }
+
+  public function useConst(string $ns, ?string $as = null): this {
+    return $this->useNamespace('const '.$ns, $as);
   }
 
   /**
