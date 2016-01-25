@@ -245,4 +245,22 @@ final class CodegenFileTestCase extends CodegenBaseTest {
     self::assertUnchanged($code);
   }
 
+  public function testStrictFile() {
+    $code = test_codegen_file('no_file')
+      ->setIsStrict(true)
+      ->addClass(codegen_class('Foo'))
+      ->render();
+
+    self::assertUnchanged($code);
+  }
+
+  public function testPhpFile() {
+    $code = test_codegen_file('no_file')
+      ->setFileType(CodegenFileType::PHP)
+      ->addClass(codegen_class('Foo'))
+      ->render();
+
+    self::assertUnchanged($code);
+  }
+
 }
