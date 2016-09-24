@@ -11,4 +11,5 @@ php:
 install: composer install
 script:
  - hh_client
- - hhvm vendor/bin/phpunit
+ - hhvm test/run_tests.php
+ - hhvm examples/dorm/codegen.php examples/dorm/demo/DormUserSchema.php
