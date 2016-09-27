@@ -37,7 +37,14 @@ final class HackCodegenConfig implements IHackCodegenConfig {
     return 80;
   }
 
+  <<__Memoize>>
   public function getRootDir(): string {
-    return __DIR__;
+    $dir = __DIR__;
+    $root_pos = strpos($dir, '/vendor/facebook/hack-codegen/');
+    if ($root_pos === false) {
+      return $dir;
+    }
+    $root = Str::substr($dir, 0, $root_pos);
+    return $root;
   }
 }
