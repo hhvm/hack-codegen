@@ -1,13 +1,15 @@
 language: php
+sudo: required
+dist: trusty
+group: edge
 php:
-  - hhvm
-
-before_script:
-  - composer self-update
-  - composer update
-  
+ - hhvm
+ - hhvm-nightly
+ - hhvm-3.15
+ - hhvm-3.12
+ - hhvm-3.9
+install: composer install
 script:
-  - hh_client
-  - hhvm test/run_tests.php
-  - hhvm examples/dorm/codegen.php examples/dorm/demo/DormUserSchema.php
-
+ - hh_client
+ - hhvm test/run_tests.php
+ - hhvm examples/dorm/codegen.php examples/dorm/demo/DormUserSchema.php
