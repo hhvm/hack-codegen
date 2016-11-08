@@ -1,5 +1,5 @@
 {
-    "name": "facebook/hack-codegen",
+    "name": "fredemmott/hack-codegen",
     "description": "Hack Codegen is a library for programatically generating Hack code",
     "keywords": ["code generation", "Hack"],
     "require": {
