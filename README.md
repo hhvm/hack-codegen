@@ -7,12 +7,12 @@ a problem and generate the corresponding code.  E.g. see examples/dorm.
 In this example, we use a schema to describe the structure of the data,
 and we use Hack Codegen to write the matching code.
 
+fredemmott/hack-codegen is derived from [facebookarchive/hack-codegen](https://github.com/facebookarchive/hack-codegen), which is no-longer supported by Facebook.
 
 ## Examples
 The DORM example shows how to use the different aspects of the code
 generation in a simplified real-life example.
 The included tests also exemplify the usage of the different components.
-
 
 ## Requirements
 Hack Codegen requires:
