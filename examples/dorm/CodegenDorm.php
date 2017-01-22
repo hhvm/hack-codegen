@@ -16,6 +16,7 @@ use function Facebook\HackCodegen\LegacyHelpers\{
   codegen_file,
   codegen_generated_from_script,
   codegen_method,
+  codegen_shape,
   hack_builder
 };
 
@@ -48,7 +49,8 @@ class CodegenDorm {
       ->setIsFinal()
       ->setConstructor($this->getConstructor())
       ->addMethod($this->getLoad())
-      ->addMethods($this->getGetters());
+      ->addMethods($this->getGetters())
+      ->addTypeConst('TData', $this->getDatabaseRowShape()->render());
 
     $rc = new \ReflectionClass(get_class($this->schema));
     $path = $rc->getFileName();
@@ -63,6 +65,8 @@ class CodegenDorm {
     // Notice that saving the file includes also verifying the checksum
     // of the existing file and merging it if it's partially generated.
     codegen_file($dir.$this->getSchemaName().'.php')
+      ->setIsStrict(true)
+      ->useClass('Facebook\\TypeAssert\\TypeAssert')
       ->addClass($class)
       ->setGeneratedFrom(codegen_generated_from_script($gen_from))
       ->save();
@@ -74,7 +78,7 @@ class CodegenDorm {
     // doesn't require to set the name since it's always __constructor
     return codegen_constructor()
       ->setPrivate()
-      ->addParameter('private Map<string, mixed> $data');
+      ->addParameter('private self::TData $data');
   }
 
   private function getLoad(): CodegenMethod {
@@ -95,7 +99,15 @@ class CodegenDorm {
       ->startIfBlock('!$result')
       ->addReturn('null')
       ->endIfBlock()
-      ->addReturn('new %s(new Map($result))', $this->getSchemaName());
+      ->addAssignment(
+        '$ts',
+        "type_structure(self::class, 'TData')"
+      )
+      ->addAssignment(
+        '$data',
+        'TypeAssert::matchesTypeStructure($ts, $result)',
+      )
+      ->addReturn('new %s($data)', $this->getSchemaName());
 
     // Here's an example of how to generate a method.  It's common when
     // the code in the method is not trivial to build it using hack_builder.
@@ -112,11 +124,10 @@ class CodegenDorm {
     foreach ($this->schema->getFields() as $name => $field) {
       $return_type = $field->getType();
       $data = '$this->data[\''.$field->getDbColumn().'\']';
-      $return_data = $data;
-      if ($return_type == 'DateTime') {
-        $return_data = 'new DateTime('.$data.')';
+      if ($return_type === \DateTime::class) {
+        $return_data = 'new DateTime($value)';
       } else {
-        $return_data = "($return_type) $data";
+        $return_data = '$value';
       }
       if ($field->isOptional()) {
         $return_type = '?'.$return_type;
@@ -132,21 +143,42 @@ class CodegenDorm {
         }
         // using addWithSuggestedLineBreaks will allow the code
         // to break automatically on long lines on the specified places.
-        $builder->addWithSuggestedLineBreaks(
-          "return isset($data)\t? $return_data\t: null;",
-        );
+        $builder
+          ->addAssignment('$value', $data.' ?? null')
+          ->addWithSuggestedLineBreaks(
+            "return %s === null\t? null\t: %s;",
+            '$value',
+            $return_data,
+          );
         if ($field->isManual()) {
           // You always need to close a manual section
           $builder->endManualSection();
         }
         $body = $builder->getCode();
       } else {
-        $body = 'return '.$return_data.';';
+        $body =
+          hack_builder()
+            ->addAssignment('$value', $data)
+            ->addReturn($return_data)
+            ->getCode();
       }
       $methods[] = codegen_method('get'.$name)
         ->setReturnType($return_type)
         ->setBody($body);
     }
     return $methods;
+  }
+
+  private function getDatabaseRowShape(): CodegenShape {
+    $db_fields = array();
+    foreach ($this->schema->getFields() as $field) {
+      $type = $field->getType();
+      if ($type === \DateTime::class) {
+        $type = 'int';
+      }
+      $type = $field->isOptional() ? '?'.$type : $type;
+      $db_fields[$field->getDbColumn()] = $type;
+    }
+    return codegen_shape($db_fields);
   }
 }

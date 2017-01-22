@@ -1,4 +1,4 @@
-<?hh
+<?hh // strict
 /**
  * This file is partially generated. Only make modifications between BEGIN
  * MANUAL SECTION and END MANUAL SECTION designators.
@@ -6,12 +6,22 @@
  * To re-generate this file run codegen.php DormUserSchema
  *
  *
- * @partially-generated SignedSource<<609ad77761b889b1c3dd2a45c5aa296a>>
+ * @partially-generated SignedSource<<e9b63f28701eaf8fb07bfe820666b829>>
  */
+use Facebook\TypeAssert\TypeAssert;
 
 final class DormUser {
 
-  private function __construct(private Map<string, mixed> $data) {
+  const type TData =
+    shape(
+    'first_name' => string,
+    'last_name' => string,
+    'birthday' => ?int,
+    'country_id' => ?int,
+    'is_active' => bool,
+  );
+
+  private function __construct(private self::TData $data) {
   }
 
   public static function load(int $id): ?DormUser {
@@ -21,31 +31,36 @@ final class DormUser {
     if (!$result) {
       return null;
     }
-    return new DormUser(new Map($result));
+    $ts = type_structure(self::class, 'TData');
+    $data = TypeAssert::matchesTypeStructure($ts, $result);
+    return new DormUser($data);
   }
 
   public function getFirstName(): string {
-    return (string) $this->data['first_name'];
+    $value = $this->data['first_name'];
+    return $value;
   }
 
   public function getLastName(): string {
-    return (string) $this->data['last_name'];
+    $value = $this->data['last_name'];
+    return $value;
   }
 
   public function getBirthday(): ?DateTime {
-    return isset($this->data['birthday']) ? new DateTime($this->data['birthday'])
-      : null;
+    $value = $this->data['birthday'] ?? null;
+    return $value === null ? null : new DateTime($value);
   }
 
   public function getCountryId(): ?int {
     /* BEGIN MANUAL SECTION CountryId */
     // You may manually change this section of code
-    return isset($this->data['country_id']) ? (int) $this->data['country_id']
-      : null;
+    $value = $this->data['country_id'] ?? null;
+    return $value;
     /* END MANUAL SECTION */
   }
 
   public function getIsActive(): bool {
-    return (bool) $this->data['is_active'];
+    $value = $this->data['is_active'];
+    return $value;
   }
 }

@@ -48,6 +48,7 @@
     },
     "require-dev": {
         "phpunit/phpunit": "^5.7",
-        "91carriage/phpunit-hhi": "^5.6"
+        "91carriage/phpunit-hhi": "^5.6",
+        "fredemmott/type-assert": "^1.0"
     }
 }
