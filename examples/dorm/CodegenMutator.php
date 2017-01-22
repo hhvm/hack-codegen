@@ -18,7 +18,7 @@ use function Facebook\HackCodegen\LegacyHelpers\{
   codegen_method,
   codegen_member_var,
   hack_builder
-}
+};
 
 /**
  * For a given DormSchema, this class generates code for a class
