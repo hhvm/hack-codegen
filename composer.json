@@ -27,9 +27,6 @@
             "role": "Developer"
         }
     ],
-    "replace": {
-        "facebook/hack-codegen": "*"
-    },
     "type": "library",
     "autoload": {
         "files": [
