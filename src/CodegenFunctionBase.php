@@ -32,7 +32,7 @@ abstract class CodegenFunctionBase
   protected ?CodegenGeneratedFrom $generatedFrom;
 
   public function __construct(
-    protected IHackCodegenConfig $config,
+    protected HackCodegenConfig $config,
     string $name,
   ) {
     $this->name = $name;

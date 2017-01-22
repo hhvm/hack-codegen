@@ -263,12 +263,7 @@ two line breaks. Also note that we include a newline and also '.
   }
 }
 
-final class TestAnotherCodegenConfig implements IHackCodegenConfig {
-
-  public static function getInstance(): this {
-    return new static();
-  }
-
+final class TestAnotherCodegenConfig extends HackCodegenConfig {
   public function getFileHeader(): ?Vector<string> {
     return Vector {'Codegen Tests'};
   }

@@ -10,12 +10,7 @@
 
 namespace Facebook\HackCodegen;
 
-final class TestCodegenConfig implements IHackCodegenConfig {
-
-  <<__Memoize>>
-  public static function getInstance(): this {
-    return new TestCodegenConfig();
-  }
+final class TestCodegenConfig extends HackCodegenConfig {
 
   public function getFileHeader(): ?Vector<string> {
     return Vector {'Codegen Tests'};
@@ -36,9 +31,9 @@ final class TestCodegenConfig implements IHackCodegenConfig {
 }
 
 function test_code_builder(): HackBuilder {
-  return new HackBuilder(TestCodegenConfig::getInstance());
+  return new HackBuilder(new TestCodegenConfig());
 }
 
 function test_codegen_file(string $file_name): CodegenFile {
-  return new CodegenFile(TestCodegenConfig::getInstance(), $file_name);
+  return new CodegenFile(new TestCodegenConfig(), $file_name);
 }

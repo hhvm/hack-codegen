@@ -762,5 +762,5 @@ final class HackBuilder extends BaseCodeBuilder {
 }
 
 function hack_builder(): HackBuilder {
-  return new HackBuilder(HackCodegenConfig::getInstance());
+  return new HackBuilder(HackCodegenConfig::getDefaultInstance());
 }

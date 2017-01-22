@@ -18,11 +18,11 @@ namespace Facebook\HackCodegen;
  *  ->render();
  */
 final class CodegenConstructor extends CodegenMethodBase {
-  public function __construct(IHackCodegenConfig $config) {
+  public function __construct(HackCodegenConfig $config) {
     parent::__construct($config, '__construct');
   }
 }
 
 function codegen_constructor(): CodegenConstructor {
-  return new CodegenConstructor(HackCodegenConfig::getInstance());
+  return new CodegenConstructor(HackCodegenConfig::getDefaultInstance());
 }

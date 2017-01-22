@@ -28,7 +28,7 @@ final class CodegenMethod extends CodegenMethodBase {
 /* HH_FIXME[4033] variadic params with type constraints are not supported */
 function codegen_method(string $name, ...$args): CodegenMethod {
   return new CodegenMethod(
-    HackCodegenConfig::getInstance(),
+    HackCodegenConfig::getDefaultInstance(),
     vsprintf($name, $args),
   );
 }

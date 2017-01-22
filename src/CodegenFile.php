@@ -50,7 +50,7 @@ final class CodegenFile {
   private Map<string, ?string> $useNamespaces = Map {};
 
   public function __construct(
-    private IHackCodegenConfig $config,
+    private HackCodegenConfig $config,
     string $file_name,
   ) {
     $root = $config->getRootDir();
@@ -429,7 +429,7 @@ final class CodegenFile {
 /* HH_FIXME[4033] variadic params with type constraints are not supported */
 function codegen_file(string $file_name, ...$args): CodegenFile {
   $file_name = vsprintf($file_name, $args);
-  return new CodegenFile(HackCodegenConfig::getInstance(), $file_name);
+  return new CodegenFile(HackCodegenConfig::getDefaultInstance(), $file_name);
 }
 
 abstract class CodegenFileSignatureException extends \Exception {

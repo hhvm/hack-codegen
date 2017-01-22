@@ -12,16 +12,27 @@ namespace Facebook\HackCodegen;
 
 /**
  * This class contains the default configuration for Hack code generation.
- * Please update it to your needs.
- * Notice that if you need, you can have more than 1 configuration,
- * and you'll need to explicitly pass an instance to the constructor
- * of some of the classes, e.g. HackBuilder.
+ *
+ * You can call HackCodegenConfig::setDefaultInstance() to use a custom
+ * subclass with the convenience functions (codegen_builder() or and similar),
+ * or directly call the constructors passing in your configuration.
  */
-final class HackCodegenConfig implements IHackCodegenConfig {
+class HackCodegenConfig {
+  private static ?HackCodegenConfig $defaultInstance;
 
-  <<__Memoize>>
-  public static function getInstance(): this {
-    return new static();
+  final public static function getDefaultInstance(): HackCodegenConfig {
+    $instance = self::$defaultInstance;
+    if ($instance === null) {
+      $instance = new self();
+      self::$defaultInstance = $instance;
+    }
+    return $instance;
+  }
+
+  final public static function setDefaultInstance(
+    HackCodegenConfig $instance,
+  ): void {
+    self::$defaultInstance = $instance;
   }
 
   public function getFileHeader(): ?Vector<string> {
@@ -37,14 +48,7 @@ final class HackCodegenConfig implements IHackCodegenConfig {
     return 80;
   }
 
-  <<__Memoize>>
   public function getRootDir(): string {
-    $dir = __DIR__;
-    $root_pos = strpos($dir, '/vendor/facebook/hack-codegen/');
-    if ($root_pos === false) {
-      return $dir;
-    }
-    $root = Str::substr($dir, 0, $root_pos);
-    return $root;
+    return __DIR__;
   }
 }
