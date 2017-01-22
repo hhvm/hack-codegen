@@ -1,4 +1,4 @@
-<?hh
+<?hh // strict
 /**
  * Copyright (c) 2015-present, Facebook, Inc.
  * All rights reserved.
@@ -14,7 +14,7 @@ use function Facebook\HackCodegen\LegacyHelpers\codegen_enum;
 
 final class CodegenEnumTest extends CodegenBaseTest {
 
-  public function testDocblock() {
+  public function testDocblock(): void {
     $code = codegen_enum('TestDocblock', 'int')
       ->setDocBlock(
         "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ".
@@ -29,7 +29,7 @@ final class CodegenEnumTest extends CodegenBaseTest {
     $this->assertUnchanged($code);
   }
 
-  public function testIsAs() {
+  public function testIsAs(): void {
     $code = codegen_enum('NothingHere', 'int')
       ->setIsAs('int')
       ->render();
@@ -37,7 +37,7 @@ final class CodegenEnumTest extends CodegenBaseTest {
     $this->assertUnchanged($code);
   }
 
-  public function testLongEnumDeclaration() {
+  public function testLongEnumDeclaration(): void {
     $code = codegen_enum('EnumWithReallyLongName', 'string')
       ->setIsAs('NowThisIsTheParentEnumWithALongNameItSelf')
       ->render();
@@ -45,7 +45,7 @@ final class CodegenEnumTest extends CodegenBaseTest {
     $this->assertUnchanged($code);
   }
 
-  public function testDemo() {
+  public function testDemo(): void {
     $code = codegen_enum('Demo', 'string')
       ->addConst('A', 'a')
       ->addConst('B', 'b', 'This is a different letter')

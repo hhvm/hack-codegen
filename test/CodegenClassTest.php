@@ -1,4 +1,4 @@
-<?hh
+<?hh // strict
 /**
  * Copyright (c) 2015-present, Facebook, Inc.
  * All rights reserved.
@@ -24,7 +24,7 @@ use function Facebook\HackCodegen\LegacyHelpers\{
 
 final class CodegenClassTest extends CodegenBaseTest {
 
-  public function testDocblock() {
+  public function testDocblock(): void {
     $code = codegen_class('TestDocblock')
       ->setDocBlock(
         "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ".
@@ -39,7 +39,7 @@ final class CodegenClassTest extends CodegenBaseTest {
     $this->assertUnchanged($code);
   }
 
-  public function testExtendsAndFinal() {
+  public function testExtendsAndFinal(): void {
     $code = codegen_class('NothingHere')
       ->setExtends('NothingHereBase')
       ->addInterface(codegen_implements_interface('JustOneInterface'))
@@ -49,7 +49,7 @@ final class CodegenClassTest extends CodegenBaseTest {
     $this->assertUnchanged($code);
   }
 
-  public function testInterfacesAndAbstract() {
+  public function testInterfacesAndAbstract(): void {
     $code = codegen_class('NothingHere')
       ->addInterface(codegen_implements_interface('INothing'))
       ->addInterface(
@@ -62,7 +62,7 @@ final class CodegenClassTest extends CodegenBaseTest {
     $this->assertUnchanged($code);
   }
 
-  public function testMultipleInterfaces() {
+  public function testMultipleInterfaces(): void {
     $interfaces = Vector {
       'IHarryPotter',
       'IHermioneGranger',
@@ -76,7 +76,7 @@ final class CodegenClassTest extends CodegenBaseTest {
     $this->assertUnchanged($code);
   }
 
-  public function testLongClassDeclaration() {
+  public function testLongClassDeclaration(): void {
     // The class declaration is just long enough (82 chars) to make it wrap
     $code = codegen_class('ClassWithReallyLongName')
       ->setExtends('NowThisIsTheParentClassWithALongNameItSelf')
@@ -85,7 +85,7 @@ final class CodegenClassTest extends CodegenBaseTest {
     $this->assertUnchanged($code);
   }
 
-  public function testLongClassDeclarationWithInterfaces() {
+  public function testLongClassDeclarationWithInterfaces(): void {
     $interfaces = Vector {
       'InterfaceUno',
       'InterfaceDos',
@@ -99,7 +99,7 @@ final class CodegenClassTest extends CodegenBaseTest {
     $this->assertUnchanged($code);
   }
 
-  public function testClassDeclarationWithGenerics() {
+  public function testClassDeclarationWithGenerics(): void {
     $generics_decl = Map {
       'Tent' => 'Ixyz',
       'T' => "",
@@ -113,7 +113,7 @@ final class CodegenClassTest extends CodegenBaseTest {
     $this->assertUnchanged($code);
   }
 
-  public function testDemo() {
+  public function testDemo(): void {
     $code = codegen_class('Demo')
       ->addTrait(codegen_uses_trait('EntProvisionalMode'))
       ->addTrait(
@@ -160,7 +160,7 @@ final class CodegenClassTest extends CodegenBaseTest {
     $this->assertUnchanged($code);
   }
 
-  public function testLongGeneratedFrom() {
+  public function testLongGeneratedFrom(): void {
     $code = codegen_class('Demo')
       ->addMethod(
         codegen_method('getRawIntEnumCustomTest')
@@ -176,7 +176,7 @@ final class CodegenClassTest extends CodegenBaseTest {
     $this->assertUnchanged($code);
   }
 
-  public function testConstructorWrapperFuncDefault() {
+  public function testConstructorWrapperFuncDefault(): void {
     $code = codegen_class('TestWrapperFunc')
       ->setDocBlock(
         "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ".
@@ -192,7 +192,7 @@ final class CodegenClassTest extends CodegenBaseTest {
     $this->assertUnchanged($code);
   }
 
-  public function testConstructorWrapperFunc() {
+  public function testConstructorWrapperFunc(): void {
     $code = codegen_class('TestWrapperFunc')
       ->addVar(
         codegen_member_var('text')->setPrivate()->setType('string')
@@ -219,7 +219,7 @@ final class CodegenClassTest extends CodegenBaseTest {
    *          // whatever
    *        }
    */
-  public function testConstructorWrapperFuncWithExplicitParams() {
+  public function testConstructorWrapperFuncWithExplicitParams(): void {
     $code = codegen_class('TestWrapperFunc')
       ->setExtends('StrangeParent')
       ->addConstructorWrapperFunc(Vector {'string $text'})

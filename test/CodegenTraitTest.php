@@ -1,4 +1,4 @@
-<?hh
+<?hh // strict
 /**
  * Copyright (c) 2015-present, Facebook, Inc.
  * All rights reserved.
@@ -20,7 +20,7 @@ use function Facebook\HackCodegen\LegacyHelpers\{
 
 final class CodegenTraitTest extends CodegenBaseTest {
 
-  public function testDocblock() {
+  public function testDocblock(): void {
     $code = codegen_trait('TestDocblockInternal')
       ->setDocBlock(
         "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ".
@@ -35,7 +35,7 @@ final class CodegenTraitTest extends CodegenBaseTest {
     $this->assertUnchanged($code);
   }
 
-  public function testDemo() {
+  public function testDemo(): void {
     $code = codegen_trait('DemoInternal')
       ->addRequireClass('RequiredClass')
       ->addRequireInterface('RequiredInterface')

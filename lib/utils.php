@@ -1,4 +1,4 @@
-<?hh
+<?hh // strict
 /**
  * Copyright (c) 2015-present, Facebook, Inc.
  * All rights reserved.
@@ -79,7 +79,7 @@ function strip_hh_prefix(
   return $out;
 }
 
-function difference_render_fast($old, $new) {
+function difference_render_fast(string $old, string $new): string {
   // UNSAFE_BLOCK
   // split the source text into arrays of lines
   $t1 = explode("\n", $old);
@@ -257,11 +257,25 @@ function difference_render_fast($old, $new) {
  *  Returns the first argument which is not strictly null, or `null' if there
  *  are no such arguments.
  */
-function coalesce(...$args) {
+function coalesce<T>(?T ...$args): ?T {
   foreach ($args as $arg) {
     if ($arg !== null) {
       return $arg;
     }
   }
   return null;
+}
+
+
+/**
+ *  Returns the first argument which is not strictly null, or throws an
+ *  exception if there are are no such arguments.
+ */
+function coalescex<T>(?T ...$args): T {
+  $result = coalesce(...$args);
+  invariant(
+    $result !== null,
+    'All arguments were null',
+  );
+  return $result;
 }

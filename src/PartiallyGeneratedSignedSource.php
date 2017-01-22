@@ -1,4 +1,4 @@
-<?hh
+<?hh // strict
 /**
  * Copyright (c) 2015-present, Facebook, Inc.
  * All rights reserved.
@@ -17,11 +17,11 @@ namespace Facebook\HackCodegen;
  */
 final class PartiallyGeneratedSignedSource extends SignedSourceBase {
 
-  protected static function preprocess(string $file_data) {
+  protected static function preprocess(string $file_data): string {
     return (new PartiallyGeneratedCode($file_data))->extractGeneratedCode();
   }
 
-  protected static function getTokenName() {
+  protected static function getTokenName(): string {
     return 'partially-generated';
   }
 
@@ -30,8 +30,8 @@ final class PartiallyGeneratedSignedSource extends SignedSourceBase {
    * generated file.
    * If a comment is set, it will be included in the doc block.
    */
-  public static function getDocBlock(?string $comment = null) {
-    $comment = $comment ?  $comment . "\n\n" : null;
+  public static function getDocBlock(?string $comment = null): string {
+    $comment = Str::isEmpty($comment) ? null : $comment . "\n\n";
     return
       "This file is partially generated. ".
       "Only make modifications between BEGIN MANUAL SECTION ".
@@ -40,5 +40,3 @@ final class PartiallyGeneratedSignedSource extends SignedSourceBase {
       self::getSigningToken();
   }
 }
-
-

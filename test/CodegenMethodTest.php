@@ -1,4 +1,4 @@
-<?hh
+<?hh // strict
 /**
  * Copyright (c) 2015-present, Facebook, Inc.
  * All rights reserved.
@@ -19,7 +19,7 @@ use function Facebook\HackCodegen\LegacyHelpers\{
 
 final class CodegenMethodTest extends CodegenBaseTest {
 
-  public function testSimpleGetter() {
+  public function testSimpleGetter(): void {
     $code = codegen_method('getName')
       ->setReturnType('string')
       ->setBody('return $this->name;')
@@ -29,7 +29,7 @@ final class CodegenMethodTest extends CodegenBaseTest {
     $this->assertUnchanged($code);
   }
 
-  public function testAbstractProtectedAndParams() {
+  public function testAbstractProtectedAndParams(): void {
     $code = codegen_method('getSchema')
       ->addParameter('string $name')
       ->setIsAbstract()
@@ -39,7 +39,7 @@ final class CodegenMethodTest extends CodegenBaseTest {
     $this->assertUnchanged($code);
  }
 
-  public function testAsync() {
+  public function testAsync(): void {
     $code = codegen_method('genFoo')
       ->setIsAsync()
       ->render();
@@ -47,7 +47,7 @@ final class CodegenMethodTest extends CodegenBaseTest {
     $this->assertUnchanged($code);
   }
 
-  public function testPrivateAndStaticWithEmptyBody() {
+  public function testPrivateAndStaticWithEmptyBody(): void {
     $code = codegen_method('doNothing')
       ->setIsStatic()
       ->setPrivate()
@@ -56,7 +56,7 @@ final class CodegenMethodTest extends CodegenBaseTest {
     $this->assertUnchanged($code);
   }
 
-  public function testManualSection() {
+  public function testManualSection(): void {
     $method = codegen_method('genProprietorName')
       ->setReturnType('string')
       ->setBody('// insert your code here')
@@ -68,7 +68,7 @@ final class CodegenMethodTest extends CodegenBaseTest {
     $this->assertUnchanged($code);
   }
 
-  public function testConstructor() {
+  public function testConstructor(): void {
     $code = codegen_constructor()
       ->addParameter('string $name')
       ->setBody('$this->name = $name;')
@@ -77,7 +77,7 @@ final class CodegenMethodTest extends CodegenBaseTest {
     $this->assertUnchanged($code);
   }
 
-  public function testDocBlockCommentsWrap() {
+  public function testDocBlockCommentsWrap(): void {
     // 1-3 characters in doc block account for ' * ' in this test.
     $code = codegen_method('getName')
       ->setReturnType('string')

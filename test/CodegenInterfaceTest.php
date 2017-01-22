@@ -1,4 +1,4 @@
-<?hh
+<?hh // strict
 /**
  * Copyright (c) 2015-present, Facebook, Inc.
  * All rights reserved.
@@ -19,13 +19,13 @@ use function Facebook\HackCodegen\LegacyHelpers\{
 
 final class CodegenInterfaceTest extends CodegenBaseTest {
 
-  public function testEmptyInterface() {
+  public function testEmptyInterface(): void {
     $code = codegen_interface('IEmpty')->render();
 
     $this->assertUnchanged($code);
   }
 
-  public function testExtendsInterfaces() {
+  public function testExtendsInterfaces(): void {
     $code = codegen_interface('IExtenderOfTwo')
       ->addInterface(codegen_implements_interface('IExtended'))
       ->addInterface(codegen_implements_interface('IOtherExtended'))
@@ -34,7 +34,7 @@ final class CodegenInterfaceTest extends CodegenBaseTest {
     $this->assertUnchanged($code);
   }
 
-  public function testExtendsInterfaceWithGeneratedFrom() {
+  public function testExtendsInterfaceWithGeneratedFrom(): void {
     $code = codegen_interface('IExtenderOfOne')
       ->addInterface(
         codegen_implements_interface('IExtended')
@@ -45,7 +45,7 @@ final class CodegenInterfaceTest extends CodegenBaseTest {
     $this->assertUnchanged($code);
   }
 
-  public function testInterfaceWithStuff() {
+  public function testInterfaceWithStuff(): void {
     $code = codegen_interface('IInterfaceWithStuff')
       ->addMethod(
         codegen_method('genFoo')

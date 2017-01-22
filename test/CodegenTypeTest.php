@@ -1,4 +1,4 @@
-<?hh
+<?hh // strict
 /**
  * Copyright (c) 2015-present, Facebook, Inc.
  * All rights reserved.
@@ -18,17 +18,17 @@ use function Facebook\HackCodegen\LegacyHelpers\{
 
 final class CodegenTypeTest extends CodegenBaseTest {
 
-  public function testType() {
+  public function testType(): void {
     $type = codegen_type('Point')->setType('(int, int)');
     $this->assertUnchanged($type->render());
   }
 
-  public function testNewType() {
+  public function testNewType(): void {
     $type = codegen_newtype('Point')->setType('(int, int)');
     $this->assertUnchanged($type->render());
   }
 
-  public function testShape() {
+  public function testShape(): void {
     $type = codegen_type('Point')
       ->setShape(codegen_shape(array('x' => 'int', 'y' => 'int')));
 

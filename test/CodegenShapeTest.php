@@ -1,4 +1,4 @@
-<?hh
+<?hh // strict
 /**
  * Copyright (c) 2015-present, Facebook, Inc.
  * All rights reserved.
@@ -14,7 +14,7 @@ use function Facebook\HackCodegen\LegacyHelpers\codegen_shape;
 
 final class CodegenShapeTest extends CodegenBaseTest {
 
-  public function testShape() {
+  public function testShape(): void {
     $shape = codegen_shape(
       array(
         'x' => 'int',

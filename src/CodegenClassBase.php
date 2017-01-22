@@ -321,8 +321,8 @@ abstract class CodegenClassBase
 
   protected function buildManualDeclarations(HackBuilder $builder): void {
     if ($this->hasManualHeader) {
-      $manual_section = coalesce($this->headerName, $this->name . '_header');
-      $content = coalesce(
+      $manual_section = coalescex($this->headerName, $this->name . '_header');
+      $content = coalescex(
         $this->headerContents,
         '// Insert additional consts and vars here',
       );

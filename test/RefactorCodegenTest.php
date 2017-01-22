@@ -1,4 +1,4 @@
-<?hh
+<?hh // strict
 /**
  * Copyright (c) 2015-present, Facebook, Inc.
  * All rights reserved.
@@ -19,7 +19,7 @@ final class RefactorCodegenTest extends CodegenBaseTest {
    * OldClass had some partially generated code that's going to get
    * transported into the like sections of NewClass.
    */
-  public function testClassRename() {
+  public function testClassRename(): void {
     $old_file_name = Filesystem::createTemporaryFile('codegen', true);
     $old_class = codegen_class('OldClass')
       ->setHasManualDeclarations(true, null, "// Let's see if this shows up")
@@ -47,7 +47,7 @@ final class RefactorCodegenTest extends CodegenBaseTest {
    * Same as testClassRename, but we're going to combine the contents
    * of the manual sections into one section instead of two.
    */
-  public function testManualSectionMerge() {
+  public function testManualSectionMerge(): void {
     $old_file_name = Filesystem::createTemporaryFile('codegen', true);
     $old_class = codegen_class('OldClass')
       ->setHasManualDeclarations(true, null, "// Let's see if this shows up")

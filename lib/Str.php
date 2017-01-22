@@ -11,6 +11,16 @@
 namespace Facebook\HackCodegen;
 
 final class Str {
+  public static function isEmpty(?string $str): bool {
+    if ($str === null) {
+      return true;
+    }
+    if ($str === '') {
+      return true;
+    }
+    return false;
+  }
+
   public static function explode(
     string $delimiter,
     string $str,

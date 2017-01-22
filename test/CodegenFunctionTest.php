@@ -1,4 +1,4 @@
-<?hh
+<?hh // strict
 /**
  * Copyright (c) 2015-present, Facebook, Inc.
  * All rights reserved.
@@ -17,7 +17,7 @@ use function Facebook\HackCodegen\LegacyHelpers\{
 
 final class CodegenFunctionTest extends CodegenBaseTest {
 
-  public function testSimpleGetter() {
+  public function testSimpleGetter(): void {
     $code = codegen_function('getName')
       ->setReturnType('string')
       ->setBody('return $name;')
@@ -26,7 +26,7 @@ final class CodegenFunctionTest extends CodegenBaseTest {
     $this->assertUnchanged($code);
   }
 
-  public function testParams() {
+  public function testParams(): void {
     $code = codegen_function('getName')
       ->addParameter('string $name')
       ->setBody('return $name . $name;')
@@ -34,28 +34,28 @@ final class CodegenFunctionTest extends CodegenBaseTest {
     $this->assertUnchanged($code);
   }
 
-  public function testAsync() {
+  public function testAsync(): void {
     $code = codegen_function('genFoo')
       ->setIsAsync()
       ->render();
     $this->assertUnchanged($code);
   }
 
-  public function testMemoize() {
+  public function testMemoize(): void {
     $code = codegen_function('getExpensive')
       ->setIsMemoized(true)
       ->render();
     $this->assertUnchanged($code);
   }
 
-  public function testOverride() {
+  public function testOverride(): void {
     $code = codegen_function('getNotLikeParent')
       ->setIsOverride(true)
       ->render();
     $this->assertUnchanged($code);
   }
 
-  public function testOverrideAndMemoized() {
+  public function testOverrideAndMemoized(): void {
     $code = codegen_function('getExpensiveNotLikeParent')
       ->setIsOverride(true)
       ->setIsMemoized(true)
@@ -63,7 +63,7 @@ final class CodegenFunctionTest extends CodegenBaseTest {
     $this->assertUnchanged($code);
   }
 
-  public function testOverrideMemoizedAsync() {
+  public function testOverrideMemoizedAsync(): void {
     $code = codegen_function('genExpensiveNotLikeParent')
       ->setIsOverride(true)
       ->setIsMemoized(true)
@@ -72,21 +72,21 @@ final class CodegenFunctionTest extends CodegenBaseTest {
     $this->assertUnchanged($code);
   }
 
-  public function testSingleUserAttributeWithoutArgument() {
+  public function testSingleUserAttributeWithoutArgument(): void {
     $code = codegen_function('getTestsBypassVisibility')
       ->setUserAttribute('TestsBypassVisibility')
       ->render();
     $this->assertUnchanged($code);
   }
 
-  public function testSingleUserAttributeWithArgument() {
+  public function testSingleUserAttributeWithArgument(): void {
     $code = codegen_function('getUseDataProvider')
       ->setUserAttribute('DataProvider', "'providerFunc'")
       ->render();
     $this->assertUnchanged($code);
   }
 
-  public function testMixedUserAttributes() {
+  public function testMixedUserAttributes(): void {
     $code = codegen_function('getBypassVisibilityAndUseDataProvider')
       ->setUserAttribute('DataProvider', "'providerFunc'")
       ->setUserAttribute('TestsBypassVisibility')
@@ -94,7 +94,7 @@ final class CodegenFunctionTest extends CodegenBaseTest {
     $this->assertUnchanged($code);
   }
 
-  public function testMixedBuiltInAndUserAttributes() {
+  public function testMixedBuiltInAndUserAttributes(): void {
     $code = codegen_function('getOverridedBypassVisibilityAndUseDataProvider')
       ->setIsOverride(true)
       ->setUserAttribute('DataProvider', "'providerFunc'")
@@ -103,7 +103,7 @@ final class CodegenFunctionTest extends CodegenBaseTest {
     $this->assertUnchanged($code);
   }
 
-  public function testMixedBuiltInAndUserAttributesAsync() {
+  public function testMixedBuiltInAndUserAttributesAsync(): void {
     $code = codegen_function('genOverridedBypassVisibilityAndUseDataProvider')
       ->setIsOverride(true)
       ->setUserAttribute('DataProvider', "'providerFunc'")
@@ -113,7 +113,7 @@ final class CodegenFunctionTest extends CodegenBaseTest {
     $this->assertUnchanged($code);
   }
 
-  public function testManualSection() {
+  public function testManualSection(): void {
     $code = codegen_function('genProprietorName')
       ->setReturnType('string')
       ->setBody('// insert your code here')
@@ -122,7 +122,7 @@ final class CodegenFunctionTest extends CodegenBaseTest {
     $this->assertUnchanged($code);
   }
 
-  public function testDocBlockCommentsWrap() {
+  public function testDocBlockCommentsWrap(): void {
     // 1-3 characters in doc block account for ' * ' in this test.
     $code = codegen_function('getName')
       ->setReturnType('string')

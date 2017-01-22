@@ -1,4 +1,4 @@
-<?hh
+<?hh // strict
 /**
  * Copyright (c) 2015-present, Facebook, Inc.
  * All rights reserved.
@@ -14,7 +14,7 @@ use function Facebook\HackCodegen\LegacyHelpers\hack_builder;
 
 final class HackBuilderTest extends CodegenBaseTest {
 
-  public function testIfBlock() {
+  public function testIfBlock(): void {
     $body = test_code_builder()
       ->startIfBlock('$value <= %d', 0)
       ->addLine('return 0;')
@@ -26,7 +26,7 @@ final class HackBuilderTest extends CodegenBaseTest {
     $this->assertUnchanged($body->getCode());
   }
 
-  public function testForeachLoop() {
+  public function testForeachLoop(): void {
     $body = test_code_builder()
       ->startForeachLoop('$values', null, '$value')
       ->addLine('something($value);')
@@ -37,7 +37,7 @@ final class HackBuilderTest extends CodegenBaseTest {
     $this->assertUnchanged($body->getCode());
   }
 
-  public function testTryBLock() {
+  public function testTryBLock(): void {
     $body = test_code_builder()
       ->startTryBlock()
       ->addLine('my_func();')
@@ -62,14 +62,14 @@ final class HackBuilderTest extends CodegenBaseTest {
     $this->assertUnchanged($body->getCode(), 'docblock2');
   }
 
-  public function testShape() {
+  public function testShape(): void {
     $shape = test_code_builder()
       ->addShape(array('x' => 3, 'y' => 5, 'url' => 'www.facebook.com'));
 
     $this->assertUnchanged($shape->getCode());
   }
 
-  public function testWrappedStringSingle() {
+  public function testWrappedStringSingle(): void {
     $this->assertUnchanged(
       test_code_builder()
         ->add('return ')
@@ -79,7 +79,7 @@ final class HackBuilderTest extends CodegenBaseTest {
     );
   }
 
-  public function testWrappedStringDouble() {
+  public function testWrappedStringDouble(): void {
     $this->assertUnchanged(
       test_code_builder()
         ->add('return ')
@@ -90,7 +90,7 @@ final class HackBuilderTest extends CodegenBaseTest {
     );
   }
 
-  public function testWrappedStringMulti() {
+  public function testWrappedStringMulti(): void {
     $lorem_ipsum = 'So here is a super long string that will wrap past the
 two line breaks. Also note that we include a newline and also '.
       'do a concat operation to really mix it up. We need to
@@ -104,7 +104,7 @@ two line breaks. Also note that we include a newline and also '.
     );
   }
 
-  public function testWrappedStringDoNotIndent() {
+  public function testWrappedStringDoNotIndent(): void {
     $this->assertUnchanged(
       test_code_builder()
         ->add('$this->callMethod(')
@@ -123,14 +123,14 @@ two line breaks. Also note that we include a newline and also '.
     );
   }
 
-  public function testSet() {
+  public function testSet(): void {
     $set = test_code_builder()
       ->addSet(Set {'apple', 'oreos', 'banana'});
 
     $this->assertUnchanged($set->getCode());
   }
 
-  public function testAddWithSuggestedLineBreaksNoBreakage() {
+  public function testAddWithSuggestedLineBreaksNoBreakage(): void {
     $del = HackBuilder::DELIMITER;
     $body = test_code_builder()->addWithSuggestedLineBreaks(
       "final class{$del}ClassNameJustLongEnoughToAvoidEightyColumns{$del}".
@@ -139,7 +139,7 @@ two line breaks. Also note that we include a newline and also '.
     $this->assertUnchanged($body->getCode());
   }
 
-  public function testAddWithSuggestedLineBreaksWithBreakage() {
+  public function testAddWithSuggestedLineBreaksWithBreakage(): void {
     $del = HackBuilder::DELIMITER;
     $body = test_code_builder()->addWithSuggestedLineBreaks(
       "final abstract class{$del}ImpossibleClassLongEnoughToCrossEightyColumns".
@@ -148,7 +148,7 @@ two line breaks. Also note that we include a newline and also '.
     $this->assertUnchanged($body->getCode());
   }
 
-  public function testAddSmartMultilineCall() {
+  public function testAddSmartMultilineCall(): void {
     $del = HackBuilder::DELIMITER;
     $body = test_code_builder()->addMultilineCall(
       "\$foobarbaz_alphabetagama ={$del}\$this->callSomeThingReallyLongName".
@@ -162,7 +162,7 @@ two line breaks. Also note that we include a newline and also '.
     $this->assertUnchanged($body->getCode());
   }
 
-  public function testLiteralMap() {
+  public function testLiteralMap(): void {
     $body = test_code_builder()
       ->addMap(
         Map {
@@ -175,7 +175,7 @@ two line breaks. Also note that we include a newline and also '.
     $this->assertUnchanged($body->getCode());
   }
 
-  public function testAnotherConfig() {
+  public function testAnotherConfig(): void {
     $body = (new HackBuilder(new TestAnotherCodegenConfig()))
       ->addInlineComment(
         "Here we wrap at 40 chars because we use a different configuration."
@@ -189,7 +189,7 @@ two line breaks. Also note that we include a newline and also '.
     $this->assertUnchanged($body->getCode());
   }
 
-  public function testSwitchBodyWithReturnsInCaseAndDefault() {
+  public function testSwitchBodyWithReturnsInCaseAndDefault(): void {
     // Gosh, I have no idea what names of football shots are!
     $players = Vector {
       array('name' => 'Ronaldo', 'favorite_shot' => 'freeKick'),
@@ -214,7 +214,7 @@ two line breaks. Also note that we include a newline and also '.
     $this->assertUnchanged($body->getCode());
   }
 
-  public function testSwitchBodyWithBreaksInCaseAndDefault() {
+  public function testSwitchBodyWithBreaksInCaseAndDefault(): void {
     // Gosh, I have no idea what names of football shots are!
     $players = Vector {
       array('name' => 'Ronaldo', 'favorite_shot' => 'freeKick'),
@@ -239,7 +239,7 @@ two line breaks. Also note that we include a newline and also '.
     $this->assertUnchanged($body->getCode());
   }
 
-  public function testSwitchBodyWithMultipleCasesWithoutBreaks() {
+  public function testSwitchBodyWithMultipleCasesWithoutBreaks(): void {
     // Gosh, I have no idea what names of football shots are!
     $players = Vector {
       array('name' => 'Ronaldo', 'favorite_shot' => 'freeKick'),
