@@ -58,7 +58,7 @@ abstract class CodegenMethodBase extends CodegenFunctionBase
   private function getFunctionDeclaration(): string {
 
     // $keywords is shared by both single and multi line declaration
-    $keywords = hack_builder()
+    $keywords = (new HackBuilder($this->config))
       ->addIf($this->isFinal && !$this->isAbstract, 'final ')
       ->addIf(
         $this->isAbstract &&

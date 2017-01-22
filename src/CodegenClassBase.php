@@ -20,7 +20,6 @@ abstract class CodegenClassBase
   use CodegenWithVisibility;
   use HackBuilderRenderer;
 
-  protected string $name;
   protected Map<string, ?string> $genericsDecl = Map {};
   protected ?string $docBlock;
   protected ?CodegenGeneratedFrom $generatedFrom;
@@ -37,8 +36,10 @@ abstract class CodegenClassBase
   private ?string $footerName;
   private ?string $footerContents;
 
-  public function __construct(string $name) {
-    $this->name = $name;
+  public function __construct(
+    protected HackCodegenConfig $config,
+    protected string $name,
+  ) {
   }
 
   public function getName(): string {

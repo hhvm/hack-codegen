@@ -10,6 +10,16 @@
 
 namespace Facebook\HackCodegen;
 
+use function Facebook\HackCodegen\LegacyHelpers\{
+  codegen_class,
+  codegen_constructor,
+  codegen_file,
+  codegen_generated_from_script,
+  codegen_method,
+  codegen_member_var,
+  hack_builder
+}
+
 /**
  * For a given DormSchema, this class generates code for a class
  * that will allow to insert rows in a database.

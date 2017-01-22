@@ -25,7 +25,10 @@ final class CodegenType implements ICodeBuilderRenderer {
   private ?CodegenShape $codegenShape;
   private string $keyword = 'type';
 
-  public function __construct(private string $name) {
+  public function __construct(
+    protected HackCodegenConfig $config,
+    private string $name,
+  ) {
   }
 
   public function setType(string $type): this {
@@ -73,12 +76,4 @@ final class CodegenType implements ICodeBuilderRenderer {
       ->addRenderer($this->codegenShape)
       ->closeStatement();
   }
-}
-
-function codegen_type(string $name): CodegenType {
-  return new CodegenType($name);
-}
-
-function codegen_newtype(string $name): CodegenType {
-  return (new CodegenType($name))->newType();
 }

@@ -10,6 +10,11 @@
 
 namespace Facebook\HackCodegen;
 
+use function Facebook\HackCodegen\LegacyHelpers\{
+  codegen_function,
+  codegen_generated_from_class
+};
+
 final class CodegenFunctionTest extends CodegenBaseTest {
 
   public function testSimpleGetter() {

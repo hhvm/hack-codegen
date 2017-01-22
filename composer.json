@@ -29,42 +29,13 @@
     ],
     "type": "library",
     "autoload": {
+        "classmap": [
+            "lib/",
+            "src/"
+        ],
         "files": [
             "lib/utils.php",
-            "lib/Str.php",
-            "lib/StrBuffer.php",
-            "lib/Filesystem.php",
-            "src/SignedSourceBase.php",
-            "src/SignedSource.php",
-            "src/PartiallyGeneratedSignedSource.php",
-            "src/PartiallyGeneratedCode.php",
-            "src/HackBuilderKeys.php",
-            "src/HackBuilderValues.php",
-            "src/HackCodegenConfig.php",
-            "src/CodegenWithVisibility.php",
-            "src/ICodeBuilderRenderer.php",
-            "src/ICodeBuilder.php",
-            "src/HackBuilderRenderer.php",
-            "src/BaseCodeBuilder.php",
-            "src/HackBuilder.php",
-            "src/ICodegenFormatter.php",
-            "src/CodegenClassBase.php",
-            "src/CodegenClass.php",
-            "src/CodegenFunctionBase.php",
-            "src/CodegenMethodBase.php",
-            "src/CodegenConstructor.php",
-            "src/CodegenEnum.php",
-            "src/CodegenFile.php",
-            "src/CodegenFunction.php",
-            "src/CodegenGeneratedFrom.php",
-            "src/CodegenImplementsInterface.php",
-            "src/CodegenInterface.php",
-            "src/CodegenMemberVar.php",
-            "src/CodegenMethod.php",
-            "src/CodegenShape.php",
-            "src/CodegenTrait.php",
-            "src/CodegenType.php",
-            "src/CodegenUsesTrait.php"
+            "src/LegacyHelpers.php"
         ]
     },
     "autoload-dev": {

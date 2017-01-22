@@ -30,7 +30,10 @@ final class CodegenImplementsInterface
 
   private ?string $comment;
 
-  public function __construct(private string $name) {}
+  public function __construct(
+    protected HackCodegenConfig $config,
+    private string $name,
+  ) {}
 
   public function getName(): string {
     return $this->name;
@@ -54,20 +57,4 @@ final class CodegenImplementsInterface
       ->add($this->name)
       ->unindent();
   }
-}
-
-function codegen_implements_interface(
-  string $name,
-): CodegenImplementsInterface {
-  return new CodegenImplementsInterface($name);
-}
-
-function codegen_implements_interfaces(
-  Vector<string> $names,
-): Vector<CodegenImplementsInterface> {
-  $interfaces = Vector {};
-  foreach ($names as $name) {
-    $interfaces->add(new CodegenImplementsInterface($name));
-  }
-  return $interfaces;
 }

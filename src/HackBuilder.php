@@ -718,11 +718,12 @@ final class HackBuilder extends BaseCodeBuilder {
   }
 
   public static function multilineCall(
+    HackCodegenConfig $config,
     string $name,
     Vector<string> $params,
     bool $close_statement = false
   ): string {
-    return hack_builder()
+    return (new HackBuilder($config))
       ->addSimpleMultilineCall($name, $params)
       ->addIf($close_statement, ';')
       ->getCode();
@@ -759,8 +760,4 @@ final class HackBuilder extends BaseCodeBuilder {
       $name,
     );
   }
-}
-
-function hack_builder(): HackBuilder {
-  return new HackBuilder(HackCodegenConfig::getDefaultInstance());
 }

@@ -10,8 +10,9 @@
 
 namespace Facebook\HackCodegen;
 
-final class CodegenShapeTest extends CodegenBaseTest {
+use function Facebook\HackCodegen\LegacyHelpers\codegen_shape;
 
+final class CodegenShapeTest extends CodegenBaseTest {
 
   public function testShape() {
     $shape = codegen_shape(

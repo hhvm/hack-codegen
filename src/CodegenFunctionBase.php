@@ -143,7 +143,7 @@ abstract class CodegenFunctionBase
     string $keywords,
     bool $is_abstract = false,
   ): string {
-    $builder = hack_builder()
+    $builder = (new HackBuilder($this->config))
       ->add($keywords)
       ->add(
         '%s(%s)',
@@ -161,14 +161,14 @@ abstract class CodegenFunctionBase
     if (Str::len($code) <=
         $this->config->getMaxLineLength() - 4 + (int)$is_abstract ||
         $this->fixme !== null) {
-      return hack_builder()
+      return (new HackBuilder($this->config))
         ->add($code)
         ->getCode();
     } else {
       $parameter_lines = $this->parameters
         ->map(function(string $line) { return $line.","; });
 
-      $multi_line_builder = hack_builder()
+      $multi_line_builder = (new HackBuilder($this->config))
         ->add($keywords)
         ->addLine("$this->name(")
         ->indent()
@@ -276,7 +276,7 @@ abstract class CodegenFunctionBase
 
   private function getFunctionDeclaration(): string {
     // $keywords is shared by both single and multi line declaration
-    $keywords = hack_builder()
+    $keywords = (new HackBuilder($this->config))
       ->addIf($this->isAsync, 'async ')
       ->add('function ')
       ->getCode();

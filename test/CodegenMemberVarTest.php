@@ -10,6 +10,8 @@
 
 namespace Facebook\HackCodegen;
 
+use function Facebook\HackCodegen\LegacyHelpers\codegen_member_var;
+
 final class CodegenMemberVarTest extends CodegenBaseTest {
 
   public function testSimple() {

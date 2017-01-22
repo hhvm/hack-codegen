@@ -10,6 +10,14 @@
 
 namespace Facebook\HackCodegen;
 
+use function Facebook\HackCodegen\LegacyHelpers\{
+  codegen_generated_from_method,
+  codegen_member_var,
+  codegen_method,
+  codegen_trait,
+  codegen_uses_trait
+};
+
 final class CodegenTraitTest extends CodegenBaseTest {
 
   public function testDocblock() {

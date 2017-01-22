@@ -10,6 +10,8 @@
 
 namespace Facebook\HackCodegen;
 
+use function Facebook\HackCodegen\LegacyHelpers\codegen_enum;
+
 final class CodegenEnumTest extends CodegenBaseTest {
 
   public function testDocblock() {

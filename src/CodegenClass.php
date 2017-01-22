@@ -104,13 +104,13 @@ final class CodegenClass
       $body = 'return new '. $this->getName(). '('. $params_str . ');';
 
       $this->wrapperFunc =
-        codegen_function($this->getName())
+        (new CodegenFunction($this->config, $this->getName()))
           ->setParameters($param_full)
           ->setReturnType($this->getName())
           ->setBody($body);
     } else {
       $this->wrapperFunc =
-        codegen_function($this->getName())
+        (new CodegenFunction($this->config, $this->getName()))
           ->setReturnType($this->getName())
           ->setBody('return new '. $this->getName(). '();');
     }
@@ -150,14 +150,4 @@ final class CodegenClass
     $this->buildConstructor($builder);
     $this->buildMethods($builder);
   }
-}
-
-/* HH_FIXME[4033] variadic params with type constraints are not supported */
-function codegen_class(string $name, ...$args): CodegenClass {
-  return new CodegenClass(vsprintf($name, $args));
-}
-
-/* HH_FIXME[4033] variadic params with type constraints are not supported */
-function codegen_class_name_with_typeargs(string $class, ...$args): string {
-  return $class."<\n  ".implode(",\n  ", $args)."\n>";
 }

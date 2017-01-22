@@ -10,8 +10,13 @@
 
 namespace Facebook\HackCodegen;
 
-final class CodegenTypeTest extends CodegenBaseTest {
+use function Facebook\HackCodegen\LegacyHelpers\{
+  codegen_newtype,
+  codegen_shape,
+  codegen_type
+};
 
+final class CodegenTypeTest extends CodegenBaseTest {
 
   public function testType() {
     $type = codegen_type('Point')->setType('(int, int)');

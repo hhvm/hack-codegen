@@ -16,11 +16,12 @@ namespace Facebook\HackCodegen;
 trait HackBuilderRenderer {
   require implements ICodeBuilderRenderer;
 
+  protected HackCodegenConfig $config;
+
   final public function render(?HackBuilder $builder = null): string {
-    if ($builder !== null) {
-      return $this->appendToBuilder($builder)->getCode();
-    } else {
-      return $this->appendToBuilder(hack_builder())->getCode();
+    if ($builder === null) {
+      $builder = new HackBuilder($this->config);
     }
+    return $this->appendToBuilder($builder)->getCode();
   }
 }

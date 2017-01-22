@@ -10,8 +10,14 @@
 
 namespace Facebook\HackCodegen;
 
-final class CodegenInterfaceTest extends CodegenBaseTest {
+use function Facebook\HackCodegen\LegacyHelpers\{
+  codegen_generated_from_method,
+  codegen_interface,
+  codegen_implements_interface,
+  codegen_method
+};
 
+final class CodegenInterfaceTest extends CodegenBaseTest {
 
   public function testEmptyInterface() {
     $code = codegen_interface('IEmpty')->render();

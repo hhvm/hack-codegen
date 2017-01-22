@@ -10,6 +10,8 @@
 
 namespace Facebook\HackCodegen;
 
+use function Facebook\HackCodegen\LegacyHelpers\hack_builder;
+
 final class HackBuilderTest extends CodegenBaseTest {
 
   public function testIfBlock() {

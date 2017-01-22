@@ -28,14 +28,15 @@ final class CodegenMemberVar
   use CodegenWithVisibility;
   use HackBuilderRenderer;
 
-  private string $name;
   private ?string $comment;
   private ?string $type;
   private string $value = self::UNSET_VALUE;
   private bool $isStatic = false;
 
-  public function __construct(string $name) {
-    $this->name = $name;
+  public function __construct(
+    protected HackCodegenConfig $config,
+    private string $name,
+  ) {
     // Private by default
     $this->setPrivate();
   }
@@ -103,9 +104,4 @@ final class CodegenMemberVar
       ->addLine(';');
   }
 
-}
-
-/* HH_FIXME[4033] variadic params with type constraints are not supported */
-function codegen_member_var(string $name, ...$args): CodegenMemberVar {
-  return new CodegenMemberVar(vsprintf($name, $args));
 }

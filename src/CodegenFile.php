@@ -14,7 +14,7 @@ enum CodegenFileResult: int {
   NONE = 0;
   UPDATE = 1;
   CREATE = 2;
-}
+};
 
 enum CodegenFileType: int {
   PHP = 0;
@@ -233,7 +233,7 @@ final class CodegenFile {
   }
 
   public function render(): string {
-    $builder = hack_builder();
+    $builder = new HackBuilder($this->config);
 
     $builder->addLine($this->getFileTypeDeclaration());
     $header = $this->config->getFileHeader();
@@ -297,7 +297,7 @@ final class CodegenFile {
   }
 
   private function getContent(): string {
-    $builder = hack_builder();
+    $builder = (new HackBuilder($this->config));
     $builder->addLineIf(
       $this->fileNamespace !== null,
       'namespace %s;',
@@ -424,12 +424,6 @@ final class CodegenFile {
       ? CodegenFileResult::CREATE
       : ($changed ? CodegenFileResult::UPDATE : CodegenFileResult::NONE);
   }
-}
-
-/* HH_FIXME[4033] variadic params with type constraints are not supported */
-function codegen_file(string $file_name, ...$args): CodegenFile {
-  $file_name = vsprintf($file_name, $args);
-  return new CodegenFile(HackCodegenConfig::getDefaultInstance(), $file_name);
 }
 
 abstract class CodegenFileSignatureException extends \Exception {

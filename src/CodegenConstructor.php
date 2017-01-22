@@ -22,7 +22,3 @@ final class CodegenConstructor extends CodegenMethodBase {
     parent::__construct($config, '__construct');
   }
 }
-
-function codegen_constructor(): CodegenConstructor {
-  return new CodegenConstructor(HackCodegenConfig::getDefaultInstance());
-}

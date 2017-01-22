@@ -27,7 +27,10 @@ final class CodegenUsesTrait {
 
   private ?string $comment;
 
-  public function __construct(private string $name) {}
+  public function __construct(
+    private HackCodegenConfig $config,
+    private string $name,
+  ) {}
 
   public function getName(): string {
     return $this->name;
@@ -47,19 +50,9 @@ final class CodegenUsesTrait {
   }
 
   public function render(): string {
-    return hack_builder()
+    return (new HackBuilder($this->config))
       ->addInlineComment($this->comment)
       ->addLine("use %s;", $this->name)
       ->getCode();
   }
-}
-
-function codegen_uses_trait(string $name): CodegenUsesTrait {
-  return new CodegenUsesTrait($name);
-}
-
-function codegen_uses_traits(
-  Vector<string> $names,
-): Vector<CodegenUsesTrait> {
-  return $names->map($x ==> codegen_uses_trait($x));
 }

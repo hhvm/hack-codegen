@@ -24,6 +24,7 @@ final class CodegenShape
   private ?string $manualAttrsID = null;
 
   public function __construct(
+    protected HackCodegenConfig $config,
     private array<string, string> $attrs = array(),
   ) {}
 
@@ -54,8 +55,4 @@ final class CodegenShape
       ->unindent()
       ->add(')');
   }
-}
-
-function codegen_shape(array<string, string> $attrs = array()): CodegenShape {
-  return new CodegenShape($attrs);
 }

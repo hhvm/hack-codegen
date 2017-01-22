@@ -63,7 +63,3 @@ final class CodegenTrait extends CodegenClassBase {
     $this->buildMethods($builder);
   }
 }
-
-function codegen_trait(string $name): CodegenTrait {
-  return new CodegenTrait($name);
-}

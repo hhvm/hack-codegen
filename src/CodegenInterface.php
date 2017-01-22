@@ -37,7 +37,3 @@ final class CodegenInterface extends CodegenClassBase {
     $this->buildMethods($builder);
   }
 }
-
-function codegen_interface(string $name): CodegenInterface {
-  return new CodegenInterface($name);
-}

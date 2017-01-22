@@ -26,8 +26,12 @@ final class CodegenEnum extends CodegenClassBase {
   private string $enumType;
   private ?string $isAs = null;
 
-  public function __construct(string $name, string $enum_type) {
-    parent::__construct($name);
+  public function __construct(
+    HackCodegenConfig $config,
+    string $name,
+    string $enum_type,
+  ) {
+    parent::__construct($config, $name);
     $this->enumType = $enum_type;
   }
 
@@ -81,8 +85,4 @@ final class CodegenEnum extends CodegenClassBase {
     $this->buildConsts($builder);
     $this->buildManualDeclarations($builder);
   }
-}
-
-function codegen_enum(string $name, string $enum_type): CodegenEnum {
-  return new CodegenEnum($name, $enum_type);
 }
