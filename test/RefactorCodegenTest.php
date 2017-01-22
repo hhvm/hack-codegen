@@ -10,7 +10,7 @@
 
 namespace Facebook\HackCodegen;
 
-final class RefactorCodegenTestCase extends CodegenBaseTest {
+final class RefactorCodegenTest extends CodegenBaseTest {
 
   /**
    * In this example, the contents of OldClass get put into NewClass.
@@ -38,7 +38,7 @@ final class RefactorCodegenTestCase extends CodegenBaseTest {
       ->rekeyManualSection('OldClass_header', 'NewClass_header')
       ->rekeyManualSection('OldClass_footer', 'NewClass_footer');
 
-    self::assertUnchanged($codegen_new_file->render());
+    $this->assertUnchanged($codegen_new_file->render());
   }
 
   /**
@@ -65,6 +65,6 @@ final class RefactorCodegenTestCase extends CodegenBaseTest {
       ->rekeyManualSection('OldClass_header', 'NewClass_manual')
       ->rekeyManualSection('OldClass_footer', 'NewClass_manual');
 
-    self::assertUnchanged($codegen_new_file->render());
+    $this->assertUnchanged($codegen_new_file->render());
   }
 }

@@ -10,7 +10,7 @@
 
 namespace Facebook\HackCodegen;
 
-final class CodegenClassTestCase extends CodegenBaseTest {
+final class CodegenClassTest extends CodegenBaseTest {
 
   public function testDocblock() {
     $code = codegen_class('TestDocblock')
@@ -24,7 +24,7 @@ final class CodegenClassTestCase extends CodegenBaseTest {
       )
       ->render();
 
-    self::assertUnchanged($code);
+    $this->assertUnchanged($code);
   }
 
   public function testExtendsAndFinal() {
@@ -34,7 +34,7 @@ final class CodegenClassTestCase extends CodegenBaseTest {
       ->setIsFinal()
       ->render();
 
-    self::assertUnchanged($code);
+    $this->assertUnchanged($code);
   }
 
   public function testInterfacesAndAbstract() {
@@ -47,7 +47,7 @@ final class CodegenClassTestCase extends CodegenBaseTest {
       ->setIsAbstract()
       ->render();
 
-    self::assertUnchanged($code);
+    $this->assertUnchanged($code);
   }
 
   public function testMultipleInterfaces() {
@@ -61,7 +61,7 @@ final class CodegenClassTestCase extends CodegenBaseTest {
       ->addInterfaces(codegen_implements_interfaces($interfaces))
       ->render();
 
-    self::assertUnchanged($code);
+    $this->assertUnchanged($code);
   }
 
   public function testLongClassDeclaration() {
@@ -70,7 +70,7 @@ final class CodegenClassTestCase extends CodegenBaseTest {
       ->setExtends('NowThisIsTheParentClassWithALongNameItSelf')
       ->render();
 
-    self::assertUnchanged($code);
+    $this->assertUnchanged($code);
   }
 
   public function testLongClassDeclarationWithInterfaces() {
@@ -84,7 +84,7 @@ final class CodegenClassTestCase extends CodegenBaseTest {
       ->addInterfaces(codegen_implements_interfaces($interfaces))
       ->render();
 
-    self::assertUnchanged($code);
+    $this->assertUnchanged($code);
   }
 
   public function testClassDeclarationWithGenerics() {
@@ -98,7 +98,7 @@ final class CodegenClassTestCase extends CodegenBaseTest {
       ->setGenericsDecl($generics_decl)
       ->render();
 
-    self::assertUnchanged($code);
+    $this->assertUnchanged($code);
   }
 
   public function testDemo() {
@@ -145,7 +145,7 @@ final class CodegenClassTestCase extends CodegenBaseTest {
       ->setIsFinal()
       ->render();
 
-    self::assertUnchanged($code);
+    $this->assertUnchanged($code);
   }
 
   public function testLongGeneratedFrom() {
@@ -161,7 +161,7 @@ final class CodegenClassTestCase extends CodegenBaseTest {
         )
       )->render();
 
-    self::assertUnchanged($code);
+    $this->assertUnchanged($code);
   }
 
   public function testConstructorWrapperFuncDefault() {
@@ -177,7 +177,7 @@ final class CodegenClassTestCase extends CodegenBaseTest {
       ->addConstructorWrapperFunc()
       ->render();
 
-    self::assertUnchanged($code);
+    $this->assertUnchanged($code);
   }
 
   public function testConstructorWrapperFunc() {
@@ -196,7 +196,7 @@ final class CodegenClassTestCase extends CodegenBaseTest {
       ->addConstructorWrapperFunc()
       ->render();
 
-    self::assertUnchanged($code);
+    $this->assertUnchanged($code);
   }
 
   /*
@@ -213,7 +213,7 @@ final class CodegenClassTestCase extends CodegenBaseTest {
       ->addConstructorWrapperFunc(Vector {'string $text'})
       ->render();
 
-    self::assertUnchanged($code);
+    $this->assertUnchanged($code);
   }
 
 }

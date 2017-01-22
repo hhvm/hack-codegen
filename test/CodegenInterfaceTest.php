@@ -10,13 +10,13 @@
 
 namespace Facebook\HackCodegen;
 
-final class CodegenInterfaceTestCase extends CodegenBaseTest {
+final class CodegenInterfaceTest extends CodegenBaseTest {
 
 
   public function testEmptyInterface() {
     $code = codegen_interface('IEmpty')->render();
 
-    self::assertUnchanged($code);
+    $this->assertUnchanged($code);
   }
 
   public function testExtendsInterfaces() {
@@ -25,7 +25,7 @@ final class CodegenInterfaceTestCase extends CodegenBaseTest {
       ->addInterface(codegen_implements_interface('IOtherExtended'))
       ->render();
 
-    self::assertUnchanged($code);
+    $this->assertUnchanged($code);
   }
 
   public function testExtendsInterfaceWithGeneratedFrom() {
@@ -36,7 +36,7 @@ final class CodegenInterfaceTestCase extends CodegenBaseTest {
       )
       ->render();
 
-    self::assertUnchanged($code);
+    $this->assertUnchanged($code);
   }
 
   public function testInterfaceWithStuff() {
@@ -49,6 +49,6 @@ final class CodegenInterfaceTestCase extends CodegenBaseTest {
       ->addConst('A_CONST', 0)
       ->render();
 
-    self::assertUnchanged($code);
+    $this->assertUnchanged($code);
   }
 }

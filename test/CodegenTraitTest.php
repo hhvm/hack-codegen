@@ -10,7 +10,7 @@
 
 namespace Facebook\HackCodegen;
 
-final class CodegenTraitTestCase extends CodegenBaseTest {
+final class CodegenTraitTest extends CodegenBaseTest {
 
   public function testDocblock() {
     $code = codegen_trait('TestDocblockInternal')
@@ -24,7 +24,7 @@ final class CodegenTraitTestCase extends CodegenBaseTest {
       )
       ->render();
 
-    self::assertUnchanged($code);
+    $this->assertUnchanged($code);
   }
 
   public function testDemo() {
@@ -62,6 +62,6 @@ final class CodegenTraitTestCase extends CodegenBaseTest {
       ->setDocBlock('doc-doc-doc!')
       ->render();
 
-    self::assertUnchanged($code);
+    $this->assertUnchanged($code);
   }
 }

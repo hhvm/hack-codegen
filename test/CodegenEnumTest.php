@@ -10,7 +10,7 @@
 
 namespace Facebook\HackCodegen;
 
-final class CodegenEnumTestCase extends CodegenBaseTest {
+final class CodegenEnumTest extends CodegenBaseTest {
 
   public function testDocblock() {
     $code = codegen_enum('TestDocblock', 'int')
@@ -24,7 +24,7 @@ final class CodegenEnumTestCase extends CodegenBaseTest {
       )
       ->render();
 
-    self::assertUnchanged($code);
+    $this->assertUnchanged($code);
   }
 
   public function testIsAs() {
@@ -32,7 +32,7 @@ final class CodegenEnumTestCase extends CodegenBaseTest {
       ->setIsAs('int')
       ->render();
 
-    self::assertUnchanged($code);
+    $this->assertUnchanged($code);
   }
 
   public function testLongEnumDeclaration() {
@@ -40,7 +40,7 @@ final class CodegenEnumTestCase extends CodegenBaseTest {
       ->setIsAs('NowThisIsTheParentEnumWithALongNameItSelf')
       ->render();
 
-    self::assertUnchanged($code);
+    $this->assertUnchanged($code);
   }
 
   public function testDemo() {
@@ -49,6 +49,6 @@ final class CodegenEnumTestCase extends CodegenBaseTest {
       ->addConst('B', 'b', 'This is a different letter')
       ->render();
 
-    self::assertUnchanged($code);
+    $this->assertUnchanged($code);
   }
 }

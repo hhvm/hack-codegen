@@ -10,7 +10,7 @@
 
 namespace Facebook\HackCodegen;
 
-final class CodegenShapeTestCase extends CodegenBaseTest {
+final class CodegenShapeTest extends CodegenBaseTest {
 
 
   public function testShape() {
@@ -22,6 +22,6 @@ final class CodegenShapeTestCase extends CodegenBaseTest {
       )
     );
 
-    self::assertUnchanged($shape->render());
+    $this->assertUnchanged($shape->render());
   }
 }

@@ -10,7 +10,7 @@
 
 namespace Facebook\HackCodegen;
 
-final class HackBuilderTestCase extends CodegenBaseTest {
+final class HackBuilderTest extends CodegenBaseTest {
 
   public function testIfBlock() {
     $body = test_code_builder()
@@ -21,7 +21,7 @@ final class HackBuilderTestCase extends CodegenBaseTest {
       ->addElseBlock()
       ->addLine('return 2;')
       ->endIfBlock();
-    self::assertUnchanged($body->getCode());
+    $this->assertUnchanged($body->getCode());
   }
 
   public function testForeachLoop() {
@@ -32,7 +32,7 @@ final class HackBuilderTestCase extends CodegenBaseTest {
       ->startForeachLoop('$values', '$idx', '$value')
       ->addLine('$values[$idx] = $value + 1;')
       ->endForeachLoop();
-    self::assertUnchanged($body->getCode());
+    $this->assertUnchanged($body->getCode());
   }
 
   public function testTryBLock() {
@@ -44,7 +44,7 @@ final class HackBuilderTestCase extends CodegenBaseTest {
       ->addFinallyBlock()
       ->addLine('bump_ods();')
       ->endTryBlock();
-    self::assertUnchanged($body->getCode());
+    $this->assertUnchanged($body->getCode());
   }
 
   public function testDocBlock(): void {
@@ -53,22 +53,22 @@ final class HackBuilderTestCase extends CodegenBaseTest {
       'the limit so we gotta cut it up.';
     $body = hack_builder()
       ->addDocBlock($comment);
-    self::assertUnchanged($body->getCode());
+    $this->assertUnchanged($body->getCode());
 
     $body = hack_builder()
       ->addDocBlock($comment, /* max len */ 50);
-    self::assertUnchanged($body->getCode(), 'docblock2');
+    $this->assertUnchanged($body->getCode(), 'docblock2');
   }
 
   public function testShape() {
     $shape = test_code_builder()
       ->addShape(array('x' => 3, 'y' => 5, 'url' => 'www.facebook.com'));
 
-    self::assertUnchanged($shape->getCode());
+    $this->assertUnchanged($shape->getCode());
   }
 
   public function testWrappedStringSingle() {
-    self::assertUnchanged(
+    $this->assertUnchanged(
       test_code_builder()
         ->add('return ')
         ->addWrappedString('This is short')
@@ -78,7 +78,7 @@ final class HackBuilderTestCase extends CodegenBaseTest {
   }
 
   public function testWrappedStringDouble() {
-    self::assertUnchanged(
+    $this->assertUnchanged(
       test_code_builder()
         ->add('return ')
         ->addWrappedString('This is a bit longer so we will hit our max '.
@@ -93,7 +93,7 @@ final class HackBuilderTestCase extends CodegenBaseTest {
 two line breaks. Also note that we include a newline and also '.
       'do a concat operation to really mix it up. We need to
       respect newlines with this code and also senseless indentation.';
-    self::assertUnchanged(
+    $this->assertUnchanged(
       test_code_builder()
         ->add('return ')
         ->addWrappedString($lorem_ipsum)
@@ -103,7 +103,7 @@ two line breaks. Also note that we include a newline and also '.
   }
 
   public function testWrappedStringDoNotIndent() {
-    self::assertUnchanged(
+    $this->assertUnchanged(
       test_code_builder()
         ->add('$this->callMethod(')
         ->newLine()
@@ -125,7 +125,7 @@ two line breaks. Also note that we include a newline and also '.
     $set = test_code_builder()
       ->addSet(Set {'apple', 'oreos', 'banana'});
 
-    self::assertUnchanged($set->getCode());
+    $this->assertUnchanged($set->getCode());
   }
 
   public function testAddWithSuggestedLineBreaksNoBreakage() {
@@ -134,7 +134,7 @@ two line breaks. Also note that we include a newline and also '.
       "final class{$del}ClassNameJustLongEnoughToAvoidEightyColumns{$del}".
       "extends SomeBaseClass",
     );
-    self::assertUnchanged($body->getCode());
+    $this->assertUnchanged($body->getCode());
   }
 
   public function testAddWithSuggestedLineBreaksWithBreakage() {
@@ -143,7 +143,7 @@ two line breaks. Also note that we include a newline and also '.
       "final abstract class{$del}ImpossibleClassLongEnoughToCrossEightyColumns".
       "{$del}extends SomeBaseClass",
     );
-    self::assertUnchanged($body->getCode());
+    $this->assertUnchanged($body->getCode());
   }
 
   public function testAddSmartMultilineCall() {
@@ -157,7 +157,7 @@ two line breaks. Also note that we include a newline and also '.
         "\$foobarbaz_alphabetagamatheta_foobarbaz",
       },
     );
-    self::assertUnchanged($body->getCode());
+    $this->assertUnchanged($body->getCode());
   }
 
   public function testLiteralMap() {
@@ -170,7 +170,7 @@ two line breaks. Also note that we include a newline and also '.
         HackBuilderKeys::LITERAL,
         HackBuilderValues::LITERAL,
       );
-    self::assertUnchanged($body->getCode());
+    $this->assertUnchanged($body->getCode());
   }
 
   public function testAnotherConfig() {
@@ -184,7 +184,7 @@ two line breaks. Also note that we include a newline and also '.
       ->closeStatement()
       ->endIfBlock();
 
-    self::assertUnchanged($body->getCode());
+    $this->assertUnchanged($body->getCode());
   }
 
   public function testSwitchBodyWithReturnsInCaseAndDefault() {
@@ -209,7 +209,7 @@ two line breaks. Also note that we include a newline and also '.
       ->addLine('invariant_violation(\'ball deflated!\');')
       ->endDefault()
       ->endSwitch_();
-    self::assertUnchanged($body->getCode());
+    $this->assertUnchanged($body->getCode());
   }
 
   public function testSwitchBodyWithBreaksInCaseAndDefault() {
@@ -234,7 +234,7 @@ two line breaks. Also note that we include a newline and also '.
       ->addLine('invariant_violation(\'ball deflated!\');')
       ->endDefault()
       ->endSwitch_();
-    self::assertUnchanged($body->getCode());
+    $this->assertUnchanged($body->getCode());
   }
 
   public function testSwitchBodyWithMultipleCasesWithoutBreaks() {
@@ -259,7 +259,7 @@ two line breaks. Also note that we include a newline and also '.
       ->addLine('invariant_violation(\'ball deflated!\');')
       ->endDefault()
       ->endSwitch_();
-    self::assertUnchanged($body->getCode());
+    $this->assertUnchanged($body->getCode());
   }
 }
 

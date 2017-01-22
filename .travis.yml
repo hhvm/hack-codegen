@@ -10,6 +10,6 @@ php:
  - hhvm-3.9
 install: composer install
 script:
- - hh_client
- - hhvm test/run_tests.php
+ - hh_server --check $(pwd)
+ - hhvm vendor/bin/phpunit
  - hhvm examples/dorm/codegen.php examples/dorm/demo/DormUserSchema.php

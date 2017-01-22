@@ -10,7 +10,7 @@
 
 namespace Facebook\HackCodegen;
 
-final class CodegenMethodTestCase extends CodegenBaseTest {
+final class CodegenMethodTest extends CodegenBaseTest {
 
   public function testSimpleGetter() {
     $code = codegen_method('getName')
@@ -19,7 +19,7 @@ final class CodegenMethodTestCase extends CodegenBaseTest {
       ->setDocBlock('Return the name of the user.')
       ->render();
 
-    self::assertUnchanged($code);
+    $this->assertUnchanged($code);
   }
 
   public function testAbstractProtectedAndParams() {
@@ -29,7 +29,7 @@ final class CodegenMethodTestCase extends CodegenBaseTest {
       ->setProtected()
       ->render();
 
-    self::assertUnchanged($code);
+    $this->assertUnchanged($code);
  }
 
   public function testAsync() {
@@ -37,7 +37,7 @@ final class CodegenMethodTestCase extends CodegenBaseTest {
       ->setIsAsync()
       ->render();
 
-    self::assertUnchanged($code);
+    $this->assertUnchanged($code);
   }
 
   public function testPrivateAndStaticWithEmptyBody() {
@@ -46,7 +46,7 @@ final class CodegenMethodTestCase extends CodegenBaseTest {
       ->setPrivate()
       ->render();
 
-    self::assertUnchanged($code);
+    $this->assertUnchanged($code);
   }
 
   public function testManualSection() {
@@ -58,7 +58,7 @@ final class CodegenMethodTestCase extends CodegenBaseTest {
     codegen_class('MyClass')->addMethod($method);
     $code = $method->render();
 
-    self::assertUnchanged($code);
+    $this->assertUnchanged($code);
   }
 
   public function testConstructor() {
@@ -67,7 +67,7 @@ final class CodegenMethodTestCase extends CodegenBaseTest {
       ->setBody('$this->name = $name;')
       ->render();
 
-    self::assertUnchanged($code);
+    $this->assertUnchanged($code);
   }
 
   public function testDocBlockCommentsWrap() {
@@ -85,6 +85,6 @@ final class CodegenMethodTestCase extends CodegenBaseTest {
         )
       )->render();
 
-    self::assertUnchanged($code);
+    $this->assertUnchanged($code);
   }
 }

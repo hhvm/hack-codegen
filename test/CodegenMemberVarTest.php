@@ -10,11 +10,11 @@
 
 namespace Facebook\HackCodegen;
 
-final class CodegenMemberVarTestCase extends CodegenBaseTest {
+final class CodegenMemberVarTest extends CodegenBaseTest {
 
   public function testSimple() {
     $code = codegen_member_var('foo')->render();
-    self::assertUnchanged($code);
+    $this->assertUnchanged($code);
   }
 
   public function testPublicStatic() {
@@ -23,7 +23,7 @@ final class CodegenMemberVarTestCase extends CodegenBaseTest {
       ->setIsStatic()
       ->render();
 
-    self::assertUnchanged($code);
+    $this->assertUnchanged($code);
   }
 
   public function testTyped() {
@@ -32,7 +32,7 @@ final class CodegenMemberVarTestCase extends CodegenBaseTest {
       ->setType('string')
       ->render();
 
-    self::assertUnchanged($code);
+    $this->assertUnchanged($code);
   }
 
   public function testTypedWithFalsyValue() {
@@ -41,7 +41,7 @@ final class CodegenMemberVarTestCase extends CodegenBaseTest {
       ->setValue(0)
       ->render();
 
-    self::assertUnchanged($code);
+    $this->assertUnchanged($code);
   }
 
   public function testArrayValues() {
@@ -50,7 +50,7 @@ final class CodegenMemberVarTestCase extends CodegenBaseTest {
       ->setValue(array('en' => 'English', 'es' => 'Spanish', 'fr' => 'French'))
       ->render();
 
-    self::assertUnchanged($code);
+    $this->assertUnchanged($code);
   }
 
   public function testVector() {
@@ -59,7 +59,7 @@ final class CodegenMemberVarTestCase extends CodegenBaseTest {
       ->setLiteralValue('Vector {}')
       ->render();
 
-    self::assertUnchanged($code);
+    $this->assertUnchanged($code);
   }
 
   public function testDocBlock() {
@@ -67,7 +67,7 @@ final class CodegenMemberVarTestCase extends CodegenBaseTest {
       ->setInlineComment('a comment')
       ->render();
 
-    self::assertUnchanged($code);
+    $this->assertUnchanged($code);
   }
 
 }

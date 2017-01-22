@@ -10,7 +10,7 @@
 
 namespace Facebook\HackCodegen;
 
-final class CodegenFunctionTestCase extends CodegenBaseTest {
+final class CodegenFunctionTest extends CodegenBaseTest {
 
   public function testSimpleGetter() {
     $code = codegen_function('getName')
@@ -18,7 +18,7 @@ final class CodegenFunctionTestCase extends CodegenBaseTest {
       ->setBody('return $name;')
       ->setDocBlock('Return the name of the user.')
       ->render();
-    self::assertUnchanged($code);
+    $this->assertUnchanged($code);
   }
 
   public function testParams() {
@@ -26,28 +26,28 @@ final class CodegenFunctionTestCase extends CodegenBaseTest {
       ->addParameter('string $name')
       ->setBody('return $name . $name;')
       ->render();
-    self::assertUnchanged($code);
+    $this->assertUnchanged($code);
   }
 
   public function testAsync() {
     $code = codegen_function('genFoo')
       ->setIsAsync()
       ->render();
-    self::assertUnchanged($code);
+    $this->assertUnchanged($code);
   }
 
   public function testMemoize() {
     $code = codegen_function('getExpensive')
       ->setIsMemoized(true)
       ->render();
-    self::assertUnchanged($code);
+    $this->assertUnchanged($code);
   }
 
   public function testOverride() {
     $code = codegen_function('getNotLikeParent')
       ->setIsOverride(true)
       ->render();
-    self::assertUnchanged($code);
+    $this->assertUnchanged($code);
   }
 
   public function testOverrideAndMemoized() {
@@ -55,7 +55,7 @@ final class CodegenFunctionTestCase extends CodegenBaseTest {
       ->setIsOverride(true)
       ->setIsMemoized(true)
       ->render();
-    self::assertUnchanged($code);
+    $this->assertUnchanged($code);
   }
 
   public function testOverrideMemoizedAsync() {
@@ -64,21 +64,21 @@ final class CodegenFunctionTestCase extends CodegenBaseTest {
       ->setIsMemoized(true)
       ->setIsAsync()
       ->render();
-    self::assertUnchanged($code);
+    $this->assertUnchanged($code);
   }
 
   public function testSingleUserAttributeWithoutArgument() {
     $code = codegen_function('getTestsBypassVisibility')
       ->setUserAttribute('TestsBypassVisibility')
       ->render();
-    self::assertUnchanged($code);
+    $this->assertUnchanged($code);
   }
 
   public function testSingleUserAttributeWithArgument() {
     $code = codegen_function('getUseDataProvider')
       ->setUserAttribute('DataProvider', "'providerFunc'")
       ->render();
-    self::assertUnchanged($code);
+    $this->assertUnchanged($code);
   }
 
   public function testMixedUserAttributes() {
@@ -86,7 +86,7 @@ final class CodegenFunctionTestCase extends CodegenBaseTest {
       ->setUserAttribute('DataProvider', "'providerFunc'")
       ->setUserAttribute('TestsBypassVisibility')
       ->render();
-    self::assertUnchanged($code);
+    $this->assertUnchanged($code);
   }
 
   public function testMixedBuiltInAndUserAttributes() {
@@ -95,7 +95,7 @@ final class CodegenFunctionTestCase extends CodegenBaseTest {
       ->setUserAttribute('DataProvider', "'providerFunc'")
       ->setUserAttribute('TestsBypassVisibility')
       ->render();
-    self::assertUnchanged($code);
+    $this->assertUnchanged($code);
   }
 
   public function testMixedBuiltInAndUserAttributesAsync() {
@@ -105,7 +105,7 @@ final class CodegenFunctionTestCase extends CodegenBaseTest {
       ->setUserAttribute('TestsBypassVisibility')
       ->setIsAsync()
       ->render();
-    self::assertUnchanged($code);
+    $this->assertUnchanged($code);
   }
 
   public function testManualSection() {
@@ -114,7 +114,7 @@ final class CodegenFunctionTestCase extends CodegenBaseTest {
       ->setBody('// insert your code here')
       ->setManualBody()
       ->render();
-    self::assertUnchanged($code);
+    $this->assertUnchanged($code);
   }
 
   public function testDocBlockCommentsWrap() {
@@ -126,6 +126,6 @@ final class CodegenFunctionTestCase extends CodegenBaseTest {
       ->setDocBlock(str_repeat('x', 78))
       ->setGeneratedFrom(codegen_generated_from_class('EntTestSchema'))
       ->render();
-    self::assertUnchanged($code);
+    $this->assertUnchanged($code);
   }
 }

@@ -10,36 +10,8 @@
 
 namespace Facebook\HackCodegen;
 
-abstract class CodegenBaseTest {
-
-  public static function assertTrue(
-    bool $value,
-    string $message = 'Expected true',
-  ): void {
-    invariant($value, $message);
-  }
-
-  public static function assertFalse(
-    bool $value,
-    string $message = 'Expected false',
-  ): void {
-    invariant(!$value, $message);
-  }
-
-  public static function assertEquals(
-    mixed $expected,
-    mixed $actual,
-    ?string $message = null,
-  ): void {
-    if ($message === null) {
-       $message = "Expected ".print_r($expected, true).
-         " but got ".print_r($actual, true). " instead";
-    }
-    invariant($expected === $actual, $message);
-  }
-
-
-  public static function assertUnchanged(
+abstract class CodegenBaseTest extends \PHPUnit\Framework\TestCase {
+  public function assertUnchanged(
     string $value,
     ?string $token = null,
   ): void {

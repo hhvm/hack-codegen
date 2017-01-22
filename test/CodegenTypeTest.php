@@ -10,23 +10,23 @@
 
 namespace Facebook\HackCodegen;
 
-final class CodegenTypeTestCase extends CodegenBaseTest {
+final class CodegenTypeTest extends CodegenBaseTest {
 
 
   public function testType() {
     $type = codegen_type('Point')->setType('(int, int)');
-    self::assertUnchanged($type->render());
+    $this->assertUnchanged($type->render());
   }
 
   public function testNewType() {
     $type = codegen_newtype('Point')->setType('(int, int)');
-    self::assertUnchanged($type->render());
+    $this->assertUnchanged($type->render());
   }
 
   public function testShape() {
     $type = codegen_type('Point')
       ->setShape(codegen_shape(array('x' => 'int', 'y' => 'int')));
 
-    self::assertUnchanged($type->render());
+    $this->assertUnchanged($type->render());
   }
 }

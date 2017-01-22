@@ -7,6 +7,10 @@
     },
     "authors": [
         {
+            "name": "Fred Emmott",
+            "role": "Developer"
+        },
+        {
             "name": "Drew Hoskins",
             "role": "Developer"
         },
@@ -65,5 +69,17 @@
             "src/CodegenType.php",
             "src/CodegenUsesTrait.php"
         ]
+    },
+    "autoload-dev": {
+        "classmap": [
+            "test/"
+        ],
+        "files": [
+            "test/TestCodegenConfig.php"
+        ]
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.7",
+        "91carriage/phpunit-hhi": "^5.6"
     }
 }
