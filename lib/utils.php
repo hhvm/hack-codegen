@@ -256,9 +256,11 @@ function difference_render_fast(string $old, string $new): string {
 /**
  *  Returns the first argument which is not strictly null, or `null' if there
  *  are no such arguments.
+ *
+ * Will take `?T ...$args` when HHVM 3.12 support is dropped.
  */
-function coalesce<T>(?T ...$args): ?T {
-  foreach ($args as $arg) {
+function coalesce<T>(?T $_head, /* HH_FIXME[4033] ?T */ ...$rest): ?T {
+  foreach (func_get_args() as $arg) {
     if ($arg !== null) {
       return $arg;
     }
@@ -270,9 +272,11 @@ function coalesce<T>(?T ...$args): ?T {
 /**
  *  Returns the first argument which is not strictly null, or throws an
  *  exception if there are are no such arguments.
+ *
+ * Will take `?T ...$args` when HHVM 3.12 support is dropped.
  */
-function coalescex<T>(?T ...$args): T {
-  $result = coalesce(...$args);
+function coalescex<T>(?T $_head, /* HH_FIXME [4033] ?T */ ...$_rest): T {
+  $result = coalesce(...func_get_args());
   invariant(
     $result !== null,
     'All arguments were null',
