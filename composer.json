@@ -39,7 +39,6 @@
             "src/PartiallyGeneratedCode.php",
             "src/HackBuilderKeys.php",
             "src/HackBuilderValues.php",
-            "src/IHackCodegenConfig.php",
             "src/HackCodegenConfig.php",
             "src/CodegenWithVisibility.php",
             "src/ICodeBuilderRenderer.php",
