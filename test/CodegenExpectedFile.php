@@ -258,13 +258,13 @@ final class CodegenExpectedFile {
    */
   private static function prompt(string $message): bool {
     while (true) {
-      self::displayf('%s (Y/n)', $message);
+      self::displayf('%s (y/N)', $message);
       self::displayRaw('> ');
       $result = strtolower(trim(fgets(STDIN)));
-      if ($result === '' || $result === 'y') {
+      if ($result === 'y') {
         return true;
       }
-      if ($result === 'n') {
+      if ($result === '' || $result === 'n') {
         return false;
       }
     }
