@@ -362,13 +362,13 @@ final class HackBuilder extends BaseCodeBuilder {
   ): this {
     foreach ($map as $key => $value) {
       $rendered_key = $keys_config === HackBuilderKeys::LITERAL
-        ? $key
+        ? (string) $key
         : $this->varExport($key);
       $rendered_value = $values_config === HackBuilderValues::LITERAL
-        ? $value
+        ? (string) $value
         : $this->varExport($value);
-      $this->addWithSuggestedLineBreaks(
-        "%s =>".HackBuilder::DELIMITER."%s,",
+      $this->addfWithSuggestedLineBreaks(
+        "%s =>\t%s,",
         $rendered_key,
         $rendered_value,
       )->newLine();
@@ -489,7 +489,7 @@ final class HackBuilder extends BaseCodeBuilder {
     $this->assertIsVariable($key !== null ? $key : '$_');
     $this->assertIsVariable($value);
     return $this
-      ->addWithSuggestedLineBreaks(
+      ->addfWithSuggestedLineBreaks(
         'foreach (%s as%s%s%s)',
         $traversable,
         self::DELIMITER,

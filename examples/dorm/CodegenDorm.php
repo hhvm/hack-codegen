@@ -145,7 +145,7 @@ class CodegenDorm {
         // to break automatically on long lines on the specified places.
         $builder
           ->addAssignment('$value', $data.' ?? null')
-          ->addWithSuggestedLineBreaks(
+          ->addfWithSuggestedLineBreaks(
             "return %s === null\t? null\t: %s;",
             '$value',
             $return_data,

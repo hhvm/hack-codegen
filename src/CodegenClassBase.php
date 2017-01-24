@@ -275,12 +275,12 @@ abstract class CodegenClassBase
         $builder->addDocBlock($comment);
       }
       if ($is_abstract) {
-        $builder->addWithSuggestedLineBreaks('abstract const %s;', $name);
+        $builder->addfWithSuggestedLineBreaks('abstract const %s;', $name);
       } else {
-        $builder->addWithSuggestedLineBreaks(
-          'const %s ='.HackBuilder::DELIMITER.'%s;',
+        $builder->addfWithSuggestedLineBreaks(
+          "const %s =\t%s;",
           $name,
-          $value,
+          (string) $value,
         );
       }
       $builder->newLine();

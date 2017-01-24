@@ -148,6 +148,15 @@ two line breaks. Also note that we include a newline and also '.
     $this->assertUnchanged($body->getCode());
   }
 
+  public function testAddfWithSuggestedLineBreaks(): void {
+    $code = test_code_builder()->addfWithSuggestedLineBreaks(
+      "%s\n%s",
+      'foo',
+      'bar',
+    )->getCode();
+    $this->assertSame("foo\nbar", $code);
+  }
+
   public function testAddSmartMultilineCall(): void {
     $del = HackBuilder::DELIMITER;
     $body = test_code_builder()->addMultilineCall(

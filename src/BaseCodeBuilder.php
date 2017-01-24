@@ -156,6 +156,13 @@ abstract class BaseCodeBuilder implements ICodeBuilder {
     return $this;
   }
 
+  final public function addfWithSuggestedLineBreaks(
+    SprintfFormatString $code,
+    /* HH_FIXME[4033] mixed */...$args
+  ): this {
+    return $this->addWithSuggestedLineBreaks(vsprintf($code, $args));
+  }
+
   /**
    * Let's the user suggest linebreaks in the code string provided, marked by
    * the delimiter. The max length is calculated based on the current
@@ -172,10 +179,13 @@ abstract class BaseCodeBuilder implements ICodeBuilder {
    */
   final public function addWithSuggestedLineBreaks(
     ?string $code,
-    ...
   ): this {
     if ($code === null) {
       return $this;
+    }
+
+    if (count(debug_backtrace()) > 30) {
+      hphpd_break();
     }
 
     // If there's more than 1 line, add them 1 by 1
@@ -188,10 +198,6 @@ abstract class BaseCodeBuilder implements ICodeBuilder {
       return $this->addWithSuggestedLineBreaks($last_line);
     }
 
-    $args = array_slice(func_get_args(), 1);
-    if (count($args)) {
-      $code = vsprintf($code, $args);
-    }
     // Subtracting two to allow space for indenting and/or opening braces.
     $max_length = $this->getMaxCodeLength() - 2;
     if ($this->isInsideFunction) {
@@ -229,7 +235,7 @@ abstract class BaseCodeBuilder implements ICodeBuilder {
    * line at a time.  See that method for more information.
    */
   final public function addLinesWithSuggestedLineBreaks(
-    Vector<string> $lines,
+    \ConstVector<string> $lines,
   ): this {
     foreach ($lines as $line) {
       $this->addWithSuggestedLineBreaks($line)->newLine();
