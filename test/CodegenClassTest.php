@@ -228,4 +228,10 @@ final class CodegenClassTest extends CodegenBaseTest {
     $this->assertUnchanged($code);
   }
 
+  public function testExtendsGeneric(): void {
+    $code = codegen_class('Foo')
+      ->setExtends('X<%s>', 'Y')
+      ->render();
+    $this->assertContains('extends X<Y>', $code);
+  }
 }

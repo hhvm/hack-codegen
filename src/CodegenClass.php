@@ -42,8 +42,11 @@ final class CodegenClass
     return $this;
   }
 
-  public function setExtends(string $name): this {
-    $this->extendsClass = $name;
+  public function setExtends(
+    string $name,
+    /* HH_FIXME[4033] */ ...$args
+  ): this {
+    $this->extendsClass = vsprintf($name, $args);
     return $this;
   }
 
