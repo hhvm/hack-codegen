@@ -216,15 +216,24 @@ final class CodegenExpectedFile {
   /**
    * Helper to display any message on stdout
    */
-  final public static function display(string $format, ...): void {
-    $args = array_slice(func_get_args(), 1);
+  final public static function displayf(
+    SprintfFormatString $format,
+    /* HH_FIXME[4033] mixed */ ...$args
+  ): void {
     $message = vsprintf($format, $args);
-    echo 'gentest> '.$message ."\n";
+    self::displayRaw('gentest> '.$message ."\n");
   }
 
+  final public static function displayRaw(
+    string $message,
+  ): void {
+    fwrite(STDERR, $message);
+  }
+
+
   private static function promptForAdd(string $token, string $value): bool {
-    self::display('A new test %s was added, expected value is:', $token);
-    echo $value."\n";
+    self::displayf('A new test %s was added, expected value is:', $token);
+    self::displayRaw($value."\n");
     return self::prompt('Do you accept the new expected value ?');
   }
 
@@ -233,14 +242,14 @@ final class CodegenExpectedFile {
     string $old_value,
     string $new_value,
   ): bool {
-    self::display('Change of expected value for test %s:', $token);
-    echo difference_render_fast($old_value, $new_value);
+    self::displayf('Change of expected value for test %s:', $token);
+    self::displayRaw(difference_render_fast($old_value, $new_value));
     return self::prompt('Do you accept to update the expected value ?');
   }
 
   private static function promptForRemove(string $token, string $value): bool {
-    self::display('An old test %s was removed, expected value was:', $token);
-    echo $value."\n";
+    self::displayf('An old test %s was removed, expected value was:', $token);
+    self::displayRaw($value."\n");
     return self::prompt('Do you accept to remove the expected value ?');
   }
 
@@ -249,8 +258,8 @@ final class CodegenExpectedFile {
    */
   private static function prompt(string $message): bool {
     while (true) {
-      self::display('%s (Y/n)', $message);
-      echo '> ';
+      self::displayf('%s (Y/n)', $message);
+      self::displayRaw('> ');
       $result = strtolower(trim(fgets(STDIN)));
       if ($result === '' || $result === 'y') {
         return true;
