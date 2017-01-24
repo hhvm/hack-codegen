@@ -237,9 +237,9 @@ final class HackBuilder extends BaseCodeBuilder {
       }
       $first = false;
       $rendered_key = $keys_config === HackBuilderKeys::LITERAL
-        ? $key
+        ? (string) $key
         : $this->varExport($key);
-      $this->addLine("%s =>".HackBuilder::DELIMITER, $rendered_key);
+      $this->addLinef("%s =>\t", $rendered_key);
       $this->addArray($value, $values_config);
       $this->newLine();
     }
@@ -382,9 +382,9 @@ final class HackBuilder extends BaseCodeBuilder {
   ): this {
     foreach ($list as $value) {
       $rendered_value = $values_config === HackBuilderValues::LITERAL
-        ? $value
+        ? (string) $value
         : $this->varExport($value);
-      $this->addLine("%s,", $rendered_value);
+      $this->addLinef("%s,", $rendered_value);
     }
     return $this;
   }
@@ -396,7 +396,7 @@ final class HackBuilder extends BaseCodeBuilder {
 
   public function addAssignment(string $var_name, string $value): this {
     $this->assertIsVariable($var_name);
-    return $this->addLine('%s = %s;', $var_name, $value);
+    return $this->addLinef('%s = %s;', $var_name, $value);
   }
 
   /**
@@ -531,7 +531,7 @@ final class HackBuilder extends BaseCodeBuilder {
    */
   public function startSwitch(string $condition): this {
     return $this
-      ->addLine('switch (%s) {', $condition)
+      ->addLinef('switch (%s) {', $condition)
       ->indent();
   }
 
@@ -545,7 +545,7 @@ final class HackBuilder extends BaseCodeBuilder {
 
   public function addCase(string $case): this {
     return $this
-      ->addLine('case %s:', $case)
+      ->addLinef('case %s:', $case)
       ->indent();
   }
 
@@ -600,7 +600,7 @@ final class HackBuilder extends BaseCodeBuilder {
     return $this
       ->ensureNewLine()
       ->unindent()
-      ->add('} catch (%s %s)', $class, $variable)
+      ->addf('} catch (%s %s)', $class, $variable)
       ->openBrace();
   }
 

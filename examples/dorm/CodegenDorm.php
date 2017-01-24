@@ -92,7 +92,7 @@ class CodegenDorm {
     // There are specific methods that make easier to write "if",
     // "foreach", etc.  See HackBuilder documentation.
     $body = hack_builder()
-      ->addLine('$conn = new PDO(\'%s\');', $this->schema->getDsn())
+      ->addLinef('$conn = new PDO(\'%s\');', $this->schema->getDsn())
       ->add('$cursor = ')
       ->addMultilineCall('$conn->query', Vector {"\"$sql\""}, true)
       ->addLine('$result = $cursor->fetch(PDO::FETCH_ASSOC);')

@@ -47,10 +47,10 @@ final class CodegenTrait extends CodegenClassBase {
     }
     $builder->ensureEmptyLine();
     foreach ($this->requireClass as $class) {
-      $builder->addLine('require extends %s;', $class);
+      $builder->addLinef('require extends %s;', $class);
     }
     foreach ($this->requireInterface as $interface) {
-      $builder->addLine('require implements %s;', $interface);
+      $builder->addLinef('require implements %s;', $interface);
     }
   }
 

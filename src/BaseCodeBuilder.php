@@ -52,19 +52,21 @@ abstract class BaseCodeBuilder implements ICodeBuilder {
    * It automatically deals with indentation.  The code may contain line breaks.
    * If code is null, nothing will be added
    */
-  /* HH_FIXME[4033] variadic params with type constraints are not supported */
-  final public function add(?string $code, ...$args): this {
-    return $this->addv($code, $args);
+  final public function add(?string $code): this {
+    return $this->addf('%s', $code);
+  }
+  final public function addf(
+    SprintfFormatString $code,
+    /* HH_FIXME[4033] mixed */ ...$args
+  ): this {
+    return $this->addv((string) $code, $args);
   }
 
   final protected function addv(?string $code, array<mixed> $args): this {
     if ($code === null) {
       return $this;
     }
-
-    if (count($args)) {
-      $code = vsprintf($code, $args);
-    }
+    $code = vsprintf($code, $args);
 
     // break into lines and add one by one to handle indentation
     $lines = explode("\n", $code);
@@ -123,8 +125,15 @@ abstract class BaseCodeBuilder implements ICodeBuilder {
    * Add the code to the buffer followed by a new line.
    * If code is null, nothing will be added
    */
-  /* HH_FIXME[4033] variadic params with type constraints are not supported */
-  final public function addLine(?string $code, ...$args): this {
+  final public function addLine(?string $code): this {
+    return $this->addLinef('%s', $code);
+  }
+
+  final public function addLinef(
+    SprintfFormatString $code,
+    /* HH_FIXME[4033] mixed */ ...$args
+  ): this {
+    // UNSAFE
     return $this->addLineImpl($code, $args);
   }
 

@@ -58,7 +58,7 @@ final class CodegenType implements ICodeBuilderRenderer {
       $this->type !== null || $this->codegenShape !== null,
       "You need to set either the type or the shape",
     );
-    $builder->add(
+    $builder->addf(
       '%s %s = ',
       $this->keyword,
       $this->name

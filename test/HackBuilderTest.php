@@ -203,7 +203,7 @@ two line breaks. Also note that we include a newline and also '.
         $players,
         ($player, $body) ==> {
           $body->addCase(sprintf('\'%s\'', $player['name']))
-            ->addLine('$shot = new Shot(\'%s\');', $player['favorite_shot'])
+            ->addLinef('$shot = new Shot(\'%s\');', $player['favorite_shot'])
             ->returnCase('$shot->execute()');
         },
       )
@@ -228,7 +228,7 @@ two line breaks. Also note that we include a newline and also '.
         $players,
         ($player, $body) ==> {
           $body->addCase(sprintf('\'%s\'', $player['name']))
-            ->addLine('$shot = new Shot(\'%s\');', $player['favorite_shot'])
+            ->addLinef('$shot = new Shot(\'%s\');', $player['favorite_shot'])
             ->breakCase();
         },
       )
@@ -253,7 +253,7 @@ two line breaks. Also note that we include a newline and also '.
         $players,
         ($player, $body) ==> {
           $body->addCase(sprintf('\'%s\'', $player['name']))
-            ->addLine('$shot = new Shot(\'%s\');', $player['favorite_shot'])
+            ->addLinef('$shot = new Shot(\'%s\');', $player['favorite_shot'])
             ->unindent();
         },
       )

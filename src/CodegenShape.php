@@ -39,7 +39,7 @@ final class CodegenShape
       ->indent();
 
     foreach ($this->attrs as $name => $type) {
-      $builder->addLine("'%s' => %s,", $name, $type);
+      $builder->addLinef("'%s' => %s,", $name, $type);
     }
 
     $manual_id = $this->manualAttrsID;

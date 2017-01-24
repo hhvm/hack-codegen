@@ -155,7 +155,7 @@ class CodegenMutator {
     // wrap it in multiple lines if needed to.
     // Also notice that you can use startIfBlock to write an if statement
     $body = hack_builder()
-      ->addLine('$conn = new PDO(\'%s\');', $this->schema->getDsn())
+      ->addLinef('$conn = new PDO(\'%s\');', $this->schema->getDsn())
       ->addMultilineCall(
         '$quoted = $this->data->mapWithKey',
         Vector{'($k, $v) ==> $conn->quote($v, self::$pdoType[$k])'},
@@ -165,7 +165,7 @@ class CodegenMutator {
       ->addLine('$this->checkRequiredFields();')
       ->addLine('$names = "(".implode(",", $quoted->keys()).")";')
       ->addLine('$values = "(".implode(",", $quoted->values()).")";')
-      ->addLine(
+      ->addLinef(
         '$st = "insert into %s $names values $values";',
         $this->schema->getTableName(),
       )
@@ -176,7 +176,7 @@ class CodegenMutator {
         '$pairs',
         '$quoted->mapWithKey(($field, $value) ==>  "$field=$value")',
       )
-      ->addLine(
+      ->addLinef(
         '$st = "update %s set ".implode(",", $pairs)." where %s=".$this->id;',
         $this->schema->getTableName(),
         $this->schema->getIdField(),
@@ -238,7 +238,7 @@ class CodegenMutator {
           ->addInlineComment('You may manually change this section of code');
       }
       $body
-        ->addLine('$this->data["%s"] = %s;', $field->getDbColumn(), $value);
+        ->addLinef('$this->data["%s"] = %s;', $field->getDbColumn(), $value);
 
       if ($field->isManual()) {
         // You always need to close a manual section

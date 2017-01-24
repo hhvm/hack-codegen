@@ -58,8 +58,14 @@ abstract class CodegenFunctionBase
     return $this;
   }
 
-  /* HH_FIXME[4033] variadic params with type constraints are not supported */
-  public function setReturnType(string $type, ...$args): this {
+  public function setReturnType(string $type): this {
+    return $this->setReturnTypef('%s', $type);
+  }
+
+  public function setReturnTypef(
+    SprintfFormatString $type,
+    /* HH_FIXME[4033] mixed */ ...$args
+  ): this {
     $type = vsprintf($type, $args);
     if ($type) {
       $this->returnType = $type;
@@ -67,8 +73,15 @@ abstract class CodegenFunctionBase
     return $this;
   }
 
-  /* HH_FIXME[4033] variadic params with type constraints are not supported */
-  public function addParameter(string $param, ...$args): this {
+  public function addParameter(string $param): this {
+    return $this->addParameterf('%s', $param);
+  }
+
+  public function addParameterf(
+    SprintfFormatString $param,
+    /* HH_FIXME[4033] mixed */
+    ...$args
+  ): this {
     $param = vsprintf($param, $args);
     $this->parameters->add($param);
     return $this;
@@ -79,13 +92,15 @@ abstract class CodegenFunctionBase
     return $this;
   }
 
-  /* HH_FIXME[4033] variadic params with type constraints are not supported */
-  public function setBody(string $body, ...$args): this {
-    if (count($args)) {
-      $this->body = vsprintf($body, $args);
-    } else {
-      $this->body = $body;
-    }
+  public function setBody(string $body): this {
+    return $this->setBodyf('%s', $body);
+  }
+
+  public function setBodyf(
+    SprintfFormatString $body,
+    /* HH_FIXME[4033] mixed */ ...$args
+  ): this {
+    $this->body = vsprintf($body, $args);
 
     return $this;
   }
@@ -139,7 +154,7 @@ abstract class CodegenFunctionBase
   ): string {
     $builder = (new HackBuilder($this->config))
       ->add($keywords)
-      ->add(
+      ->addf(
         '%s(%s)',
         $this->name,
         implode(', ', $this->parameters->toArray())
