@@ -18,6 +18,7 @@ abstract class CodegenClassBase
   implements ICodeBuilderRenderer {
 
   use CodegenWithVisibility;
+  use CodegenWithAttributes;
   use HackBuilderRenderer;
 
   protected Map<string, ?string> $genericsDecl = Map {};
@@ -334,18 +335,13 @@ abstract class CodegenClassBase
     }
   }
 
-  private function hasClassAnnotation(): bool {
-    return $this->getClassAnnotation() !== null;
-  }
-
-  private function getClassAnnotation(): ?string {
-    $annotations = Vector {};
+  protected function getExtraAttributes(): ImmMap<string, ImmVector<string>> {
     if ($this->isConsistentConstruct) {
-      $annotations->add('__ConsistentConstruct');
+      return ImmMap {
+        '__ConsistentConstruct' => ImmVector {},
+      };
     }
-    return $annotations ?
-      '<<'.implode(', ', $annotations).'>>' :
-      null;
+    return ImmMap {};
   }
 
   abstract protected function appendBodyToBuilder(HackBuilder $builder): void;
@@ -369,8 +365,8 @@ abstract class CodegenClassBase
         ->ensureEmptyLine();
     }
 
-    if ($this->hasClassAnnotation()) {
-      $builder->ensureNewLine()->addLine($this->getClassAnnotation());
+    if ($this->hasAttributes()) {
+      $builder->ensureNewLine()->addLine($this->renderAttributes());
     }
 
     $this->buildDeclaration($builder);

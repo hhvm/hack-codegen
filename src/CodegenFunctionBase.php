@@ -17,6 +17,7 @@ abstract class CodegenFunctionBase
   implements ICodeBuilderRenderer {
 
   use HackBuilderRenderer;
+  use CodegenWithAttributes;
 
   protected string $name;
   protected ?string $body = null;
@@ -27,7 +28,6 @@ abstract class CodegenFunctionBase
   protected bool $isOverride = false;
   protected bool $isManualBody = false;
   protected bool $isMemoized = false;
-  protected Map<string, ImmVector<\Stringish>> $userAttributes = Map {};
   protected Vector<string> $parameters = Vector {};
   protected ?CodegenGeneratedFrom $generatedFrom;
 
@@ -55,12 +55,6 @@ abstract class CodegenFunctionBase
 
   public function setIsMemoized(bool $value = true): this {
     $this->isMemoized = $value;
-    return $this;
-  }
-
-  /* HH_FIXME[4033] variadic params with type constraints are not supported */
-  public function setUserAttribute(string $attribute_name, ...$args): this {
-    $this->userAttributes[$attribute_name] = new ImmVector($args);
     return $this;
   }
 
@@ -226,8 +220,8 @@ abstract class CodegenFunctionBase
         $builder->addInlineComment($this->generatedFrom->render());
       }
     }
-    if ($this->hasFunctionAnnotation()) {
-      $builder->ensureNewLine()->addLine($this->getFunctionAnnotation());
+    if ($this->hasAttributes()) {
+      $builder->ensureNewLine()->addLine($this->renderAttributes());
     }
     if ($this->fixme !== null) {
       $builder->addInlineCommentWithStars($this->fixme);
@@ -251,27 +245,15 @@ abstract class CodegenFunctionBase
     return $builder;
   }
 
-  private function hasFunctionAnnotation(): bool {
-    return $this->getFunctionAnnotation() !== null;
-  }
-
-  private function getFunctionAnnotation(): ?string {
-    $annotations = Vector {};
+  protected function getExtraAttributes(): ImmMap<string, ImmVector<string>> {
+    $attributes = Map {};
     if ($this->isOverride) {
-      $annotations->add('__Override');
+      $attributes['__Override'] = ImmVector {};
     }
     if ($this->isMemoized) {
-      $annotations->add('__Memoize');
+      $attributes['__Memoize'] = ImmVector {};
     }
-    foreach ($this->userAttributes as $attribute_name => $arguments) {
-      $annotations->add($arguments
-        ? $attribute_name.'('.implode(',', $arguments).')'
-        : $attribute_name,
-      );
-    }
-    return $annotations ?
-      '<<'.implode(', ', $annotations).'>>' :
-      null;
+    return $attributes->immutable();
   }
 
   private function getFunctionDeclaration(): string {
