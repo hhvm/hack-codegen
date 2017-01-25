@@ -367,7 +367,7 @@ final class HackBuilder extends BaseCodeBuilder {
       $rendered_value = $values_config === HackBuilderValues::LITERAL
         ? (string) $value
         : $this->varExport($value);
-      $this->addfWithSuggestedLineBreaks(
+      $this->addWithSuggestedLineBreaksf(
         "%s =>\t%s,",
         $rendered_key,
         $rendered_value,
@@ -389,9 +389,14 @@ final class HackBuilder extends BaseCodeBuilder {
     return $this;
   }
 
-  /* HH_FIXME[4033] variadic params with type constraints are not supported */
-  public function addReturn(string $value, ...$args): this {
-    return $this->addLineImpl("return $value;", $args);
+  public function addReturn(string $value): this {
+    return $this->addLineImpl('return %s;', [$value]);
+  }
+  public function addReturnf(
+    SprintfFormatString $value,
+    /* HH_FIXME[4033] mixed */ ...$args
+  ): this {
+    return $this->addReturn(vsprintf($value, $args));
   }
 
   public function addAssignment(string $var_name, string $value): this {
@@ -489,7 +494,7 @@ final class HackBuilder extends BaseCodeBuilder {
     $this->assertIsVariable($key !== null ? $key : '$_');
     $this->assertIsVariable($value);
     return $this
-      ->addfWithSuggestedLineBreaks(
+      ->addWithSuggestedLineBreaksf(
         'foreach (%s as%s%s%s)',
         $traversable,
         self::DELIMITER,

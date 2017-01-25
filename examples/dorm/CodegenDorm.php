@@ -107,7 +107,7 @@ class CodegenDorm {
         '$data',
         'TypeAssert::matchesTypeStructure($ts, $result)',
       )
-      ->addReturn('new %s($data)', $this->getSchemaName());
+      ->addReturnf('new %s($data)', $this->getSchemaName());
 
     // Here's an example of how to generate a method.  It's common when
     // the code in the method is not trivial to build it using hack_builder.
@@ -145,7 +145,7 @@ class CodegenDorm {
         // to break automatically on long lines on the specified places.
         $builder
           ->addAssignment('$value', $data.' ?? null')
-          ->addfWithSuggestedLineBreaks(
+          ->addWithSuggestedLineBreaksf(
             "return %s === null\t? null\t: %s;",
             '$value',
             $return_data,

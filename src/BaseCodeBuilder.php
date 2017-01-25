@@ -156,7 +156,7 @@ abstract class BaseCodeBuilder implements ICodeBuilder {
     return $this;
   }
 
-  final public function addfWithSuggestedLineBreaks(
+  final public function addWithSuggestedLineBreaksf(
     SprintfFormatString $code,
     /* HH_FIXME[4033] mixed */...$args
   ): this {

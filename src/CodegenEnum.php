@@ -52,7 +52,7 @@ final class CodegenEnum extends CodegenClassBase {
   }
 
   protected function buildDeclaration(HackBuilder $builder): void {
-    $builder->addfWithSuggestedLineBreaks(
+    $builder->addWithSuggestedLineBreaksf(
       '%s%s%s%s',
       (string)$this->declComment,
       "enum ". $this->name,
@@ -75,7 +75,7 @@ final class CodegenEnum extends CodegenClassBase {
         $builder->addDocBlock($comment);
       }
       $builder
-        ->addfWithSuggestedLineBreaks(
+        ->addWithSuggestedLineBreaksf(
           "%s =\t%s;",
           $name,
           (string) $value,

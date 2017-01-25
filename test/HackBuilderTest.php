@@ -149,7 +149,7 @@ two line breaks. Also note that we include a newline and also '.
   }
 
   public function testAddfWithSuggestedLineBreaks(): void {
-    $code = test_code_builder()->addfWithSuggestedLineBreaks(
+    $code = test_code_builder()->addWithSuggestedLineBreaksf(
       "%s\n%s",
       'foo',
       'bar',

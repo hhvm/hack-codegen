@@ -275,9 +275,9 @@ abstract class CodegenClassBase
         $builder->addDocBlock($comment);
       }
       if ($is_abstract) {
-        $builder->addfWithSuggestedLineBreaks('abstract const %s;', $name);
+        $builder->addWithSuggestedLineBreaksf('abstract const %s;', $name);
       } else {
-        $builder->addfWithSuggestedLineBreaks(
+        $builder->addWithSuggestedLineBreaksf(
           "const %s =\t%s;",
           $name,
           (string) $value,

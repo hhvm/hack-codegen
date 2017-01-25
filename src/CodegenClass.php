@@ -127,7 +127,7 @@ final class CodegenClass
   protected function buildDeclaration(HackBuilder $builder): void {
     $generics_dec = $this->buildGenericsDeclaration();
 
-    $builder->addfWithSuggestedLineBreaks(
+    $builder->addWithSuggestedLineBreaksf(
       '%s%s%s%s%s',
       $this->declComment,
       $this->isAbstract ? 'abstract ' : '',

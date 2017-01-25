@@ -67,10 +67,16 @@ final class CodegenMemberVar
    * Set the type of the member var.  In Hack, if it's nullable
    * you should prepend the question mark, e.g. "?string".
    */
-  /* HH_FIXME[4033] variadic params with type constraints are not supported */
-  public function setType(string $type, ...$args): this {
-    $this->type = vsprintf($type, $args);
+  public function setType(string $type): this {
+    $this->type = $type;
     return $this;
+  }
+
+  public function setTypef(
+    SprintfFormatString $format,
+    /* HH_FIXME[4033] mixed */ ...$args
+  ): this {
+    return $this->setType(vsprintf($format, $args));
   }
 
   /**

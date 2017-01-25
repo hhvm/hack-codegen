@@ -132,7 +132,7 @@ class CodegenMutator {
       ->setReturnType('this')
       ->setBody(
         hack_builder()
-        ->addReturn('new %s()', $this->getName())
+        ->addReturnf('new %s()', $this->getName())
         ->getCode()
       );
   }
@@ -144,7 +144,7 @@ class CodegenMutator {
       ->setReturnType('this')
       ->setBody(
         hack_builder()
-        ->addReturn('new %s($id)', $this->getName())
+        ->addReturnf('new %s($id)', $this->getName())
         ->getCode()
       );
   }
