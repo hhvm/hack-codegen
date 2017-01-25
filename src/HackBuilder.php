@@ -79,10 +79,10 @@ final class HackBuilder extends BaseCodeBuilder {
    *    useful for sorting the map for readability, as long as you don't need
    *    the sorting in actual code.
    */
-  public function addMap<Tk, Tv>(
+  public function addMap<Tk as arraykey, Tv>(
     \ConstMap<Tk, Tv> $map,
-    HackBuilderKeys $keys_config = HackBuilderKeys::EXPORT,
-    HackBuilderValues $values_config = HackBuilderValues::EXPORT,
+    IHackBuilderKeyRenderer<Tk> $keys_config = HackBuilderKeys::export(),
+    IHackBuilderValueRenderer<Tv> $values_config = HackBuilderValues::export(),
   ): this {
     return $this->addMapHelper(
       'Map',
@@ -100,10 +100,10 @@ final class HackBuilder extends BaseCodeBuilder {
    *    useful for sorting the map for readability, as long as you don't need
    *    the sorting in actual code.
    */
-  public function addImmMap<Tk, Tv>(
+  public function addImmMap<Tk as arraykey, Tv>(
     \ConstMap<Tk, Tv> $map,
-    HackBuilderKeys $keys_config = HackBuilderKeys::EXPORT,
-    HackBuilderValues $values_config = HackBuilderValues::EXPORT,
+    IHackBuilderKeyRenderer<Tk> $keys_config = HackBuilderKeys::export(),
+    IHackBuilderValueRenderer<Tv> $values_config = HackBuilderValues::export(),
   ): this {
     return $this->addMapHelper(
       'ImmMap',
@@ -113,11 +113,11 @@ final class HackBuilder extends BaseCodeBuilder {
     );
   }
 
-  private function addMapHelper<Tk, Tv>(
+  private function addMapHelper<Tk as arraykey, Tv>(
     string $type,
     \ConstMap<Tk, Tv> $map,
-    HackBuilderKeys $keys_config = HackBuilderKeys::EXPORT,
-    HackBuilderValues $values_config = HackBuilderValues::EXPORT,
+    IHackBuilderKeyRenderer<Tk> $keys_config = HackBuilderKeys::export(),
+    IHackBuilderValueRenderer<Tv> $values_config = HackBuilderValues::export(),
   ): this {
     // Sort the map to make sure that it will always be represented in the
     // same way.  This is to avoid the code to be re-written just with a
@@ -140,7 +140,7 @@ final class HackBuilder extends BaseCodeBuilder {
    */
   public function addVector<T>(
     \ConstVector<T> $vector,
-    HackBuilderValues $values_config = HackBuilderValues::EXPORT,
+    IHackBuilderValueRenderer<T> $values_config = HackBuilderValues::export(),
   ): this {
     return $this
       ->add('Vector')->openBrace()
@@ -153,7 +153,7 @@ final class HackBuilder extends BaseCodeBuilder {
    */
   public function addImmVector<T>(
     \ConstVector<T> $vector,
-    HackBuilderValues $values_config = HackBuilderValues::EXPORT,
+    IHackBuilderValueRenderer<T> $values_config = HackBuilderValues::export(),
   ): this {
     return $this
       ->add('ImmVector')->openBrace()
@@ -166,7 +166,7 @@ final class HackBuilder extends BaseCodeBuilder {
    */
   public function addSet<T>(
     \ConstSet<T> $set,
-    HackBuilderValues $values_config = HackBuilderValues::EXPORT,
+    IHackBuilderValueRenderer<T> $values_config = HackBuilderValues::export(),
   ): this {
     return $this
       ->add('Set')->openBrace()
@@ -177,9 +177,9 @@ final class HackBuilder extends BaseCodeBuilder {
   /**
    * Add an ImmSet with the specified elements.
    */
-  public function addImmSet<T>(
+  public function addImmSet<T as arraykey>(
     \ConstSet<T> $set,
-    HackBuilderValues $values_config = HackBuilderValues::EXPORT,
+    IHackBuilderValueRenderer<T> $values_config = HackBuilderValues::export(),
   ): this {
     return $this
       ->add('ImmSet')->openBrace()
@@ -190,9 +190,10 @@ final class HackBuilder extends BaseCodeBuilder {
   /**
    * Add an array with one element per line, vector style (no keys included).
    */
-  public function addArray(
-    array<mixed> $array,
-    HackBuilderValues $values_config = HackBuilderValues::EXPORT,
+  public function addArray<T>(
+    array<T> $array,
+    IHackBuilderValueRenderer<T> $values_config =
+      HackBuilderValues::export(),
   ): this {
     return $this
       ->addLine('array(')
@@ -205,10 +206,10 @@ final class HackBuilder extends BaseCodeBuilder {
   /**
    * Add an array with one element per line, map style (keys included).
    */
-  public function addArrayWithKeys(
-    array<mixed, mixed> $array,
-    HackBuilderKeys $keys_config = HackBuilderKeys::EXPORT,
-    HackBuilderValues $values_config = HackBuilderValues::EXPORT,
+  public function addArrayWithKeys<Tk as arraykey, Tv>(
+    array<Tk, Tv> $array,
+    IHackBuilderKeyRenderer<Tk> $keys_config = HackBuilderKeys::export(),
+    IHackBuilderValueRenderer<Tv> $values_config = HackBuilderValues::export(),
   ): this {
     return $this
       ->addLine('array(')
@@ -222,10 +223,10 @@ final class HackBuilder extends BaseCodeBuilder {
    * If the value of your array is an array (list, not hashmap), renders the
    * array with keys, but the inner map without keys.
    */
-  public function addArrayWithKeysAndArrayListValues(
-    array<mixed, array<mixed>> $array,
-    HackBuilderKeys $keys_config = HackBuilderKeys::EXPORT,
-    HackBuilderValues $values_config = HackBuilderValues::EXPORT,
+  public function addArrayWithKeysAndArrayListValues<Tk as arraykey, Tv>(
+    array<Tk, array<Tv>> $array,
+    IHackBuilderKeyRenderer<Tk> $keys_config = HackBuilderKeys::export(),
+    IHackBuilderValueRenderer<Tv> $values_config = HackBuilderValues::export(),
   ): this {
     $this
       ->addLine('array(')
@@ -236,9 +237,7 @@ final class HackBuilder extends BaseCodeBuilder {
         $this->add(',');
       }
       $first = false;
-      $rendered_key = $keys_config === HackBuilderKeys::LITERAL
-        ? (string) $key
-        : $this->varExport($key);
+      $rendered_key = $keys_config->render($key);
       $this->addLinef("%s =>\t", $rendered_key);
       $this->addArray($value, $values_config);
       $this->newLine();
@@ -251,14 +250,14 @@ final class HackBuilder extends BaseCodeBuilder {
   /**
    * Add a shape construction.
    */
-  public function addShape(
-    array<mixed, mixed> $shape,
-    HackBuilderValues $values_config = HackBuilderValues::EXPORT,
+  public function addShape<Tv>(
+    array<string, Tv> $shape,
+    IHackBuilderValueRenderer<Tv> $values_config = HackBuilderValues::export(),
   ): this {
     return $this
       ->addLine('shape(')
       ->indent()
-      ->addArrayKeysAndValues($shape, HackBuilderKeys::EXPORT, $values_config)
+      ->addArrayKeysAndValues($shape, HackBuilderKeys::export(), $values_config)
       ->unindent()
       ->add(')');
   }
@@ -355,18 +354,15 @@ final class HackBuilder extends BaseCodeBuilder {
     return $this;
   }
 
-  private function addArrayKeysAndValues(
-    array<mixed, mixed> $map,
-    HackBuilderKeys $keys_config = HackBuilderKeys::EXPORT,
-    HackBuilderValues $values_config = HackBuilderValues::EXPORT,
+  private function addArrayKeysAndValues<Tk as arraykey, Tv>(
+    array<Tk, Tv> $map,
+    IHackBuilderKeyRenderer<Tk> $keys_config = HackBuilderKeys::export(),
+    IHackBuilderValueRenderer<Tv> $values_config =
+      HackBuilderValues::export(),
   ): this {
     foreach ($map as $key => $value) {
-      $rendered_key = $keys_config === HackBuilderKeys::LITERAL
-        ? (string) $key
-        : $this->varExport($key);
-      $rendered_value = $values_config === HackBuilderValues::LITERAL
-        ? (string) $value
-        : $this->varExport($value);
+      $rendered_key = $keys_config->render($key);
+      $rendered_value = $values_config->render($value);
       $this->addWithSuggestedLineBreaksf(
         "%s =>\t%s,",
         $rendered_key,
@@ -376,14 +372,12 @@ final class HackBuilder extends BaseCodeBuilder {
     return $this;
   }
 
-  private function addArrayValues(
-    array<mixed> $list,
-    HackBuilderValues $values_config = HackBuilderValues::EXPORT,
+  private function addArrayValues<T>(
+    array<T> $list,
+    IHackBuilderValueRenderer<T> $values_config = HackBuilderValues::export(),
   ): this {
     foreach ($list as $value) {
-      $rendered_value = $values_config === HackBuilderValues::LITERAL
-        ? (string) $value
-        : $this->varExport($value);
+      $rendered_value = $values_config->render($value);
       $this->addLinef("%s,", $rendered_value);
     }
     return $this;

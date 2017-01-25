@@ -10,11 +10,16 @@
 
 namespace Facebook\HackCodegen;
 
-enum HackBuilderKeys : int {
+final abstract class HackBuilderKeys {
   // The key will be used literally, which is useful for example when
   // passing a constant such as MyEnum::Value
-  LITERAL = 1;
+  public static function literal(): IHackBuilderKeyRenderer<string> {
+    return new HackBuilderLiteralRender();
+  }
+
   // The key will be exported to be rendered according the type.  E.g. an int
   // will be rendered without changes but a string will be rendered with quotes.
-  EXPORT = 2;
+  public static function export(): IHackBuilderKeyRenderer<arraykey> {
+    return new HackBuilderKeyExportRender();
+  }
 }

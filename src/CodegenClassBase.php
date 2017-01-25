@@ -112,7 +112,7 @@ abstract class CodegenClassBase
       'type '.$name,
       $type,
       $comment,
-      HackBuilderValues::LITERAL,
+      HackBuilderValues::literal(),
     );
   }
 
@@ -126,7 +126,7 @@ abstract class CodegenClassBase
       sprintf('type %s as %s', $name, $constraint),
       $type,
       $comment,
-      HackBuilderValues::LITERAL,
+      HackBuilderValues::literal(),
     );
   }
 
@@ -150,7 +150,7 @@ abstract class CodegenClassBase
       sprintf('classname<%s> %s', $type, $name),
       sprintf('%s::class', $type),
       $comment,
-      HackBuilderValues::LITERAL,
+      HackBuilderValues::literal(),
     );
   }
 
@@ -165,15 +165,13 @@ abstract class CodegenClassBase
     );
   }
 
-  public function addConst(
+  public function addConst<T>(
     string $name,
-    mixed $value,
+    T $value,
     ?string $comment = null,
-    HackBuilderValues $values_config = HackBuilderValues::EXPORT,
+    IHackBuilderValueRenderer<T> $values_config = HackBuilderValues::export(),
   ): this {
-    $rendered_value = $values_config === HackBuilderValues::LITERAL
-      ? $value
-      : var_export($value, true);
+    $rendered_value = $values_config->render($value);
     $this->consts[] = tuple($name, false, $rendered_value, $comment);
     return $this;
   }

@@ -178,8 +178,8 @@ two line breaks. Also note that we include a newline and also '.
           'MY_ENUM::A' => 'ANOTHER_ENUM::A',
           'MY_ENUM::B' => 'ANOTHER_ENUM::B'
         },
-        HackBuilderKeys::LITERAL,
-        HackBuilderValues::LITERAL,
+        HackBuilderKeys::literal(),
+        HackBuilderValues::literal(),
       );
     $this->assertUnchanged($body->getCode());
   }
