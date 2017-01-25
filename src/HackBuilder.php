@@ -262,16 +262,8 @@ final class HackBuilder extends BaseCodeBuilder {
       ->add(')');
   }
 
-  private function varExport(mixed $value): string {
-    if ($value === null) {
-      // var_export capitalizes NULL
-      return 'null';
-    }
-    return strip_hh_prefix(var_export($value, true));
-  }
-
   public function addVarExport(mixed $value): this {
-    return $this->add($this->varExport($value));
+    return $this->add(normalized_var_export($value));
   }
 
   /**
@@ -328,7 +320,7 @@ final class HackBuilder extends BaseCodeBuilder {
       return $this;
     }
 
-    $this->add($this->varExport($lines->firstValue()));
+    $this->add(normalized_var_export($lines->firstValue()));
     if ($lines->count() === 1) {
       return $this;
     }
@@ -344,10 +336,10 @@ final class HackBuilder extends BaseCodeBuilder {
     }
 
     $lines->slice(1, $lines->count() - 2)->map(
-      $line ==> $this->addLine($this->varExport($line).'.'),
+      $line ==> $this->addLine(normalized_var_export($line).'.'),
     );
     // And then add the last
-    $this->add($this->varExport($lines->lastValue()));
+    $this->add(normalized_var_export($lines->lastValue()));
     if ($indent_non_first_lines) {
       $this->unindent();
     }

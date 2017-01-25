@@ -10,6 +10,14 @@
 
 namespace Facebook\HackCodegen;
 
+function normalized_var_export(mixed $value): string {
+    if ($value === null) {
+      // var_export capitalizes NULL
+      return 'null';
+    }
+    return strip_hh_prefix(var_export($value, true));
+}
+
 /**
  * Remove the 'HH\' prefix from typehint strings
  * and from strings produced by var_export().

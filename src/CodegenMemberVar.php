@@ -84,9 +84,8 @@ final class CodegenMemberVar
    * arrays, etc, and it will generate the code to render those values.
    */
   public function setValue(mixed $value): this {
-    $val_str = var_export($value, true);
-    $val_str = $val_str === 'NULL' ? 'null' : $val_str;
-    return $this->setLiteralValue(strip_hh_prefix($val_str));
+    $val_str = normalized_var_export($value);
+    return $this->setLiteralValue($val_str);
   }
 
   /**
