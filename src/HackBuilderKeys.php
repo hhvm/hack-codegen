@@ -10,7 +10,7 @@
 
 namespace Facebook\HackCodegen;
 
-final abstract class HackBuilderKeys {
+abstract final class HackBuilderKeys {
   // The key will be used literally, which is useful for example when
   // passing a constant such as MyEnum::Value
   public static function literal(): IHackBuilderKeyRenderer<string> {
