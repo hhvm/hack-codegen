@@ -10,16 +10,6 @@
 
 namespace Facebook\HackCodegen;
 
-use function Facebook\HackCodegen\LegacyHelpers\{
-  codegen_class,
-  codegen_constructor,
-  codegen_file,
-  codegen_generated_from_script,
-  codegen_method,
-  codegen_shape,
-  hack_builder
-};
-
 /**
  * For a given DormSchema, this class generates code for a class
  * that will allow to read the data from a database and store it
@@ -27,9 +17,15 @@ use function Facebook\HackCodegen\LegacyHelpers\{
  */
 class CodegenDorm {
 
+  private ICodegenFactory $codegen;
+
   public function __construct(
     private DormSchema $schema,
-  ) {}
+  ) {
+    $this->codegen = new HackCodegenFactory(
+      HackCodegenConfig::getDefaultInstance(),
+    );
+  }
 
   private function getSchemaName(): string {
     $ref = new \ReflectionClass($this->schema);
@@ -40,12 +36,14 @@ class CodegenDorm {
   }
 
   public function generate(): void {
+    $cg = $this->codegen;
+
     // Here's an example of how to generate the code for a class.
     // Notice the fluent interface.  It's possible to generate
     // everything in the same method, however, for clarity
     // sometimes it's easier to use helper methods such as
     // getConstructor or getLoad in this examples.
-    $class = codegen_class($this->getSchemaName())
+    $class = $cg->codegenClass($this->getSchemaName())
       ->setIsFinal()
       ->setConstructor($this->getConstructor())
       ->addMethod($this->getLoad())
@@ -64,19 +62,19 @@ class CodegenDorm {
     // to the script that is used to generate the file.
     // Notice that saving the file includes also verifying the checksum
     // of the existing file and merging it if it's partially generated.
-    codegen_file($dir.$this->getSchemaName().'.php')
+    $cg->codegenFile($dir.$this->getSchemaName().'.php')
       ->setIsStrict(true)
       ->useClass('Facebook\\TypeAssert\\TypeAssert')
       ->addClass($class)
-      ->setGeneratedFrom(codegen_generated_from_script($gen_from))
+      ->setGeneratedFrom($cg->codegenGeneratedFromScript($gen_from))
       ->save();
   }
 
   private function getConstructor(): CodegenConstructor {
     // Example of how to generate a constructor.  Very similar
-    // to generating a method, but using codegen_constructor()
+    // to generating a method, but using $cg->codegenConstructor()
     // doesn't require to set the name since it's always __constructor
-    return codegen_constructor()
+    return $this->codegen->codegenConstructor()
       ->setPrivate()
       ->addParameter('private self::TData $data');
   }
@@ -91,7 +89,7 @@ class CodegenDorm {
     // to make it easier to build expressions.
     // There are specific methods that make easier to write "if",
     // "foreach", etc.  See HackBuilder documentation.
-    $body = hack_builder()
+    $body = $this->codegen->codegenHackBuilder()
       ->addLinef('$conn = new PDO(\'%s\');', $this->schema->getDsn())
       ->add('$cursor = ')
       ->addMultilineCall('$conn->query', Vector {"\"$sql\""}, true)
@@ -112,7 +110,7 @@ class CodegenDorm {
     // Here's an example of how to generate a method.  It's common when
     // the code in the method is not trivial to build it using hack_builder.
     // Notice how the parameter and the return type are set.
-    return codegen_method('load')
+    return $this->codegen->codegenMethod('load')
       ->setIsStatic()
       ->addParameter('int $id')
       ->setReturnType('?'.$this->getSchemaName())
@@ -120,6 +118,7 @@ class CodegenDorm {
   }
 
   private function getGetters(): Vector<CodegenMethod> {
+    $cg = $this->codegen;
     $methods = Vector {};
     foreach ($this->schema->getFields() as $name => $field) {
       $return_type = $field->getType();
@@ -131,7 +130,7 @@ class CodegenDorm {
       }
       if ($field->isOptional()) {
         $return_type = '?'.$return_type;
-        $builder = hack_builder();
+        $builder = $cg->codegenHackBuilder();
         if ($field->isManual()) {
           // This part illustrates how to include a manual section, which the
           // user can edit and it will be kept even if the code is regenerated.
@@ -157,12 +156,12 @@ class CodegenDorm {
         $body = $builder->getCode();
       } else {
         $body =
-          hack_builder()
+          $cg->codegenHackBuilder()
             ->addAssignment('$value', $data)
             ->addReturn($return_data)
             ->getCode();
       }
-      $methods[] = codegen_method('get'.$name)
+      $methods[] = $cg->codegenMethod('get'.$name)
         ->setReturnType($return_type)
         ->setBody($body);
     }
@@ -179,6 +178,6 @@ class CodegenDorm {
       $type = $field->isOptional() ? '?'.$type : $type;
       $db_fields[$field->getDbColumn()] = $type;
     }
-    return codegen_shape($db_fields);
+    return $this->codegen->codegenShape($db_fields);
   }
 }
