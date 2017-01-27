@@ -139,52 +139,52 @@ final class HackBuilder extends BaseCodeBuilder {
    * Add a Vector with the specified elements.
    */
   public function addVector<T>(
-    \ConstVector<T> $vector,
+    Vector<T> $vector,
     IHackBuilderValueRenderer<T> $values_config = HackBuilderValues::export(),
   ): this {
-    return $this
-      ->add('Vector')->openBrace()
-      ->addArrayValues($vector->toArray(), $values_config)
-      ->unindent()->add('}');
+    return $this->add(
+      HackBuilderValues::vector($values_config)
+        ->render($this->config, $vector),
+    );
   }
 
   /**
    * Add an ImmVector with the specified elements.
    */
   public function addImmVector<T>(
-    \ConstVector<T> $vector,
+    ImmVector<T> $vector,
     IHackBuilderValueRenderer<T> $values_config = HackBuilderValues::export(),
   ): this {
-    return $this
-      ->add('ImmVector')->openBrace()
-      ->addArrayValues($vector->toArray(), $values_config)
-      ->unindent()->add('}');
+    return $this->add(
+      HackBuilderValues::immVector($values_config)
+        ->render($this->config, $vector),
+    );
   }
 
   /**
    * Add a Set with the specified elements.
    */
   public function addSet<T>(
-    \ConstSet<T> $set,
+    Set<T> $set,
     IHackBuilderValueRenderer<T> $values_config = HackBuilderValues::export(),
   ): this {
-    return $this
-      ->add('Set')->openBrace()
-      ->addArrayValues($set->toArray(), $values_config)
-      ->unindent()->add('}');
+    return $this->add(
+      HackBuilderValues::set($values_config)
+        ->render($this->config, $set),
+    );
   }
 
   /**
    * Add an ImmSet with the specified elements.
    */
   public function addImmSet<T as arraykey>(
-    \ConstSet<T> $set,
+    ImmSet<T> $set,
     IHackBuilderValueRenderer<T> $values_config = HackBuilderValues::export(),
   ): this {
-    return $this
-      ->add('ImmSet')->openBrace()
-      ->addArrayValues($set->toArray(), $values_config)
-      ->unindent()->add('}');
+    return $this->add(
+      HackBuilderValues::immSet($values_config)
+        ->render($this->config, $set),
+    );
   }
 
   /**
@@ -192,11 +192,10 @@ final class HackBuilder extends BaseCodeBuilder {
    */
   public function addArray<T>(
     array<T> $array,
-    IHackBuilderValueRenderer<T> $values_config =
-      HackBuilderValues::export(),
+    IHackBuilderValueRenderer<T> $values_config = HackBuilderValues::export(),
   ): this {
     return $this->add(
-      (new HackBuilderValueArrayRenderer($values_config))
+      HackBuilderValues::valueArray($values_config)
         ->render($this->config, $array),
     );
   }
@@ -209,12 +208,10 @@ final class HackBuilder extends BaseCodeBuilder {
     IHackBuilderKeyRenderer<Tk> $keys_config = HackBuilderKeys::export(),
     IHackBuilderValueRenderer<Tv> $values_config = HackBuilderValues::export(),
   ): this {
-    return $this
-      ->addLine('array(')
-      ->indent()
-      ->addArrayKeysAndValues($array, $keys_config, $values_config)
-      ->unindent()
-      ->add(')');
+    return $this->add(
+      HackBuilderValues::keyValueArray($keys_config, $values_config)
+        ->render($this->config, $array),
+    );
   }
 
   /*
@@ -226,23 +223,11 @@ final class HackBuilder extends BaseCodeBuilder {
     IHackBuilderKeyRenderer<Tk> $keys_config = HackBuilderKeys::export(),
     IHackBuilderValueRenderer<Tv> $values_config = HackBuilderValues::export(),
   ): this {
-    $this
-      ->addLine('array(')
-      ->indent();
-    $first = true;
-    foreach ($array as $key => $value) {
-      if (!$first) {
-        $this->add(',');
-      }
-      $first = false;
-      $rendered_key = $keys_config->render($this->config, $key);
-      $this->addLinef("%s =>\t", $rendered_key);
-      $this->addArray($value, $values_config);
-      $this->newLine();
-    }
-    return $this
-      ->unindent()
-      ->add(')');
+    return $this->addArrayWithKeys(
+      $array,
+      $keys_config,
+      HackBuilderValues::valueArray($values_config),
+    );
   }
 
   /**
@@ -358,17 +343,6 @@ final class HackBuilder extends BaseCodeBuilder {
         $rendered_key,
         $rendered_value,
       )->newLine();
-    }
-    return $this;
-  }
-
-  protected function addArrayValues<T>(
-    array<T> $list,
-    IHackBuilderValueRenderer<T> $values_config = HackBuilderValues::export(),
-  ): this {
-    foreach ($list as $value) {
-      $rendered_value = $values_config->render($this->config, $value);
-      $this->addLinef("%s,", $rendered_value);
     }
     return $this;
   }

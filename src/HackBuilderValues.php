@@ -22,4 +22,41 @@ abstract final class HackBuilderValues {
   public static function export(): IHackBuilderValueRenderer<mixed> {
     return new HackBuilderValueExportRender();
   }
+
+  public static function valueArray<Tv>(
+    IHackBuilderValueRenderer<Tv> $vr,
+  ): IHackBuilderValueRenderer<array<Tv>> {
+    return new HackBuilderValueArrayRenderer($vr);
+  }
+
+  public static function keyValueArray<Tk as arraykey,Tv>(
+    IHackBuilderKeyRenderer<Tk> $kr,
+    IHackBuilderValueRenderer<Tv> $vr,
+  ): IHackBuilderValueRenderer<array<Tk,Tv>> {
+    return new HackBuilderKeyValueArrayRenderer($kr, $vr);
+  }
+
+  public static function vector<Tv>(
+    IHackBuilderValueRenderer<Tv> $vr,
+  ): IHackBuilderValueRenderer<Vector<Tv>> {
+    return new HackBuilderValueCollectionRenderer(Vector::class, $vr);
+  }
+
+  public static function immVector<Tv>(
+    IHackBuilderValueRenderer<Tv> $vr,
+  ): IHackBuilderValueRenderer<ImmVector<Tv>> {
+    return new HackBuilderValueCollectionRenderer(ImmVector::class, $vr);
+  }
+
+  public static function set<Tv>(
+    IHackBuilderValueRenderer<Tv> $vr,
+  ): IHackBuilderValueRenderer<Set<Tv>> {
+    return new HackBuilderValueCollectionRenderer(Set::class, $vr);
+  }
+
+  public static function immSet<Tv>(
+    IHackBuilderValueRenderer<Tv> $vr,
+  ): IHackBuilderValueRenderer<ImmSet<Tv>> {
+    return new HackBuilderValueCollectionRenderer(ImmSet::class, $vr);
+  }
 }
