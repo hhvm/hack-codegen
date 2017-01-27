@@ -73,67 +73,31 @@ final class HackBuilder extends BaseCodeBuilder {
 
   /**
    * Add a Map with the specified pairs.
-   *
-   * @param \ConstMap<Tk, Tv> $map The Map or Map to output. Note that
-   *    regardless of which type is passed in, a Map will be output. This is
-   *    useful for sorting the map for readability, as long as you don't need
-   *    the sorting in actual code.
    */
   public function addMap<Tk as arraykey, Tv>(
-    \ConstMap<Tk, Tv> $map,
+    Map<Tk, Tv> $map,
     IHackBuilderKeyRenderer<Tk> $keys_config = HackBuilderKeys::export(),
     IHackBuilderValueRenderer<Tv> $values_config = HackBuilderValues::export(),
   ): this {
-    return $this->addMapHelper(
-      'Map',
-      $map,
-      $keys_config,
-      $values_config,
+    return $this->add(
+      HackBuilderValues::map($keys_config, $values_config)
+        ->render($this->config, $map),
     );
   }
 
   /**
    * Add an ImmMap with the specified pairs.
-   *
-   * @param \ConstMap<Tk, Tv> $map The Map or Map to output. Note that
-   *    regardless of which type is passed in, an ImmMap will be output. This is
-   *    useful for sorting the map for readability, as long as you don't need
-   *    the sorting in actual code.
    */
   public function addImmMap<Tk as arraykey, Tv>(
-    \ConstMap<Tk, Tv> $map,
+    ImmMap<Tk, Tv> $map,
     IHackBuilderKeyRenderer<Tk> $keys_config = HackBuilderKeys::export(),
     IHackBuilderValueRenderer<Tv> $values_config = HackBuilderValues::export(),
   ): this {
-    return $this->addMapHelper(
-      'ImmMap',
-      $map,
-      $keys_config,
-      $values_config,
+    return $this->add(
+      HackBuilderValues::immMap($keys_config, $values_config)
+        ->render($this->config, $map),
     );
   }
-
-  private function addMapHelper<Tk as arraykey, Tv>(
-    string $type,
-    \ConstMap<Tk, Tv> $map,
-    IHackBuilderKeyRenderer<Tk> $keys_config = HackBuilderKeys::export(),
-    IHackBuilderValueRenderer<Tv> $values_config = HackBuilderValues::export(),
-  ): this {
-    // Sort the map to make sure that it will always be represented in the
-    // same way.  This is to avoid the code to be re-written just with a
-    // different order that doesn't actually change anything.
-    $array = $map->toArray();
-    ksort($array);
-    return $this
-      ->add($type)->openBrace()
-      ->addArrayKeysAndValues(
-        $array,
-        $keys_config,
-        $values_config,
-      )
-      ->unindent()->add('}');
-  }
-
 
   /**
    * Add a Vector with the specified elements.
@@ -218,6 +182,7 @@ final class HackBuilder extends BaseCodeBuilder {
    * If the value of your array is an array (list, not hashmap), renders the
    * array with keys, but the inner map without keys.
    */
+  <<__Deprecated("use ArrayWithKeys with HackBuilderValues::valueArray()")>>
   public function addArrayWithKeysAndArrayListValues<Tk as arraykey, Tv>(
     array<Tk, array<Tv>> $array,
     IHackBuilderKeyRenderer<Tk> $keys_config = HackBuilderKeys::export(),
@@ -329,6 +294,7 @@ final class HackBuilder extends BaseCodeBuilder {
     return $this;
   }
 
+  <<__Deprecated('Killing this')>>
   private function addArrayKeysAndValues<Tk as arraykey, Tv>(
     array<Tk, Tv> $map,
     IHackBuilderKeyRenderer<Tk> $keys_config = HackBuilderKeys::export(),

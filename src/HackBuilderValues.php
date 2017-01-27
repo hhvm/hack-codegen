@@ -29,7 +29,7 @@ abstract final class HackBuilderValues {
     return new HackBuilderValueArrayRenderer($vr);
   }
 
-  public static function keyValueArray<Tk as arraykey,Tv>(
+  public static function keyValueArray<Tk as arraykey, Tv>(
     IHackBuilderKeyRenderer<Tk> $kr,
     IHackBuilderValueRenderer<Tv> $vr,
   ): IHackBuilderValueRenderer<array<Tk,Tv>> {
@@ -58,5 +58,19 @@ abstract final class HackBuilderValues {
     IHackBuilderValueRenderer<Tv> $vr,
   ): IHackBuilderValueRenderer<ImmSet<Tv>> {
     return new HackBuilderValueCollectionRenderer(ImmSet::class, $vr);
+  }
+
+  public static function map<Tk as arraykey, Tv>(
+    IHackBuilderKeyRenderer<Tk> $kr,
+    IHackBuilderValueRenderer<Tv> $vr,
+  ): IHackBuilderValueRenderer<Map<Tk,Tv>> {
+    return new HackBuilderKeyValueCollectionRenderer(Map::class, $kr, $vr);
+  }
+
+  public static function immMap<Tk as arraykey, Tv>(
+    IHackBuilderKeyRenderer<Tk> $kr,
+    IHackBuilderValueRenderer<Tv> $vr,
+  ): IHackBuilderValueRenderer<ImmMap<Tk,Tv>> {
+    return new HackBuilderKeyValueCollectionRenderer(ImmMap::class, $kr, $vr);
   }
 }
