@@ -171,7 +171,7 @@ abstract class CodegenClassBase
     ?string $comment = null,
     IHackBuilderValueRenderer<T> $values_config = HackBuilderValues::export(),
   ): this {
-    $rendered_value = $values_config->render($value);
+    $rendered_value = $values_config->render($this->config, $value);
     $this->consts[] = tuple($name, false, $rendered_value, $comment);
     return $this;
   }

@@ -195,12 +195,10 @@ final class HackBuilder extends BaseCodeBuilder {
     IHackBuilderValueRenderer<T> $values_config =
       HackBuilderValues::export(),
   ): this {
-    return $this
-      ->addLine('array(')
-      ->indent()
-      ->addArrayValues($array, $values_config)
-      ->unindent()
-      ->add(')');
+    return $this->add(
+      (new HackBuilderValueArrayRenderer($values_config))
+        ->render($this->config, $array),
+    );
   }
 
   /**
@@ -237,7 +235,7 @@ final class HackBuilder extends BaseCodeBuilder {
         $this->add(',');
       }
       $first = false;
-      $rendered_key = $keys_config->render($key);
+      $rendered_key = $keys_config->render($this->config, $key);
       $this->addLinef("%s =>\t", $rendered_key);
       $this->addArray($value, $values_config);
       $this->newLine();
@@ -353,8 +351,8 @@ final class HackBuilder extends BaseCodeBuilder {
       HackBuilderValues::export(),
   ): this {
     foreach ($map as $key => $value) {
-      $rendered_key = $keys_config->render($key);
-      $rendered_value = $values_config->render($value);
+      $rendered_key = $keys_config->render($this->config, $key);
+      $rendered_value = $values_config->render($this->config, $value);
       $this->addWithSuggestedLineBreaksf(
         "%s =>\t%s,",
         $rendered_key,
@@ -364,12 +362,12 @@ final class HackBuilder extends BaseCodeBuilder {
     return $this;
   }
 
-  private function addArrayValues<T>(
+  protected function addArrayValues<T>(
     array<T> $list,
     IHackBuilderValueRenderer<T> $values_config = HackBuilderValues::export(),
   ): this {
     foreach ($list as $value) {
-      $rendered_value = $values_config->render($value);
+      $rendered_value = $values_config->render($this->config, $value);
       $this->addLinef("%s,", $rendered_value);
     }
     return $this;

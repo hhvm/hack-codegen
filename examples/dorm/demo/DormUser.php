@@ -6,14 +6,13 @@
  * To re-generate this file run codegen.php DormUserSchema
  *
  *
- * @partially-generated SignedSource<<e9b63f28701eaf8fb07bfe820666b829>>
+ * @partially-generated SignedSource<<24bb59705c987ac2dc7d9d322466322d>>
  */
 use Facebook\TypeAssert\TypeAssert;
 
 final class DormUser {
 
-  const type TData =
-    shape(
+  const type TData = shape(
     'first_name' => string,
     'last_name' => string,
     'birthday' => ?int,

@@ -20,7 +20,7 @@ abstract class BaseCodeBuilder implements ICodeBuilder {
   private bool $isInsideFunction = false;
   private bool $wasGetCodeCalled = false;
 
-  final public function __construct(private HackCodegenConfig $config) {
+  final public function __construct(protected HackCodegenConfig $config) {
     $this->code = new StrBuffer();
   }
 
