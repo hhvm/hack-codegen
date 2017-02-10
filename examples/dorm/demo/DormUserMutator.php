@@ -6,7 +6,7 @@
  * To re-generate this file run codegen.php DormUserSchema
  *
  *
- * @partially-generated SignedSource<<aed81933eb3016547905627d230a9d5a>>
+ * @partially-generated SignedSource<<b997226b1faeee2d35509859d4ba4178>>
  */
 
 final class DormUserMutator {
