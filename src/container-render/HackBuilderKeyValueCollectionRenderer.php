@@ -35,7 +35,7 @@ class HackBuilderKeyValueCollectionRenderer<
       ->openBrace();
     foreach ($values as $key => $value) {
       $builder->addWithSuggestedLineBreaksf(
-        '%s =>\t%s',
+        "%s =>\t%s,",
         $key_renderer->render($config, $key),
         $value_renderer->render($config, $value),
       );
