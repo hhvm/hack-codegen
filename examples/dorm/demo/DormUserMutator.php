@@ -6,7 +6,7 @@
  * To re-generate this file run codegen.php DormUserSchema
  *
  *
- * @partially-generated SignedSource<<b997226b1faeee2d35509859d4ba4178>>
+ * @partially-generated SignedSource<<6b140aaf1a7f29aabdf5ad043a7ab6a6>>
  */
 
 final class DormUserMutator {
@@ -14,11 +14,11 @@ final class DormUserMutator {
   private Map<string, mixed> $data = Map {
   };
   private static Map<string, int> $pdoType = Map {
+    'first_name' => PDO::PARAM_STR,
+    'last_name' => PDO::PARAM_STR,
     'birthday' => PDO::PARAM_STR,
     'country_id' => PDO::PARAM_INT,
-    'first_name' => PDO::PARAM_STR,
     'is_active' => PDO::PARAM_BOOL,
-    'last_name' => PDO::PARAM_STR,
   };
 
   private function __construct(private ?int $id = null) {

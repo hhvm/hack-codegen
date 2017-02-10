@@ -30,7 +30,7 @@ implements IHackBuilderValueRenderer<array<Tk,Tv>> {
       ->indent();
     foreach ($array as $key => $value) {
       $builder->addWithSuggestedLineBreaksf(
-        "%s =>\t%s,",
+        "%s =>\t%s,\n",
         $key_renderer->render($config, $key),
         $value_renderer->render($config, $value),
       );
