@@ -178,23 +178,6 @@ final class HackBuilder extends BaseCodeBuilder {
     );
   }
 
-  /*
-   * If the value of your array is an array (list, not hashmap), renders the
-   * array with keys, but the inner map without keys.
-   */
-  <<__Deprecated("use ArrayWithKeys with HackBuilderValues::valueArray()")>>
-  public function addArrayWithKeysAndArrayListValues<Tk as arraykey, Tv>(
-    array<Tk, array<Tv>> $array,
-    IHackBuilderKeyRenderer<Tk> $keys_config = HackBuilderKeys::export(),
-    IHackBuilderValueRenderer<Tv> $values_config = HackBuilderValues::export(),
-  ): this {
-    return $this->addArrayWithKeys(
-      $array,
-      $keys_config,
-      HackBuilderValues::valueArray($values_config),
-    );
-  }
-
   /**
    * Add a shape construction.
    */
