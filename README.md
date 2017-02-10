@@ -1,4 +1,4 @@
-# Hack Codegen [![Build Status](https://travis-ci.org/fredemmott/hack-codegen.svg?branch=master)](https://travis-ci.org/fredemmott/hack-codegen)
+# Hack Codegen [![Build Status](https://travis-ci.org/hhvm/hack-codegen.svg?branch=master)](https://travis-ci.org/hhvm/hack-codegen)
 Hack Codegen is a library for easily generating Hack code and writing it
 into signed files that prevent undesired modifications.
 The idea behind writing code that writes code is to raise the level of
@@ -6,8 +6,6 @@ abstraction and reduce coupling.  You can use your own way of describing
 a problem and generate the corresponding code.  E.g. see examples/dorm.
 In this example, we use a schema to describe the structure of the data,
 and we use Hack Codegen to write the matching code.
-
-fredemmott/hack-codegen is derived from [facebookarchive/hack-codegen](https://github.com/facebookarchive/hack-codegen), which is no-longer supported by Facebook.
 
 ## Examples
 The DORM example shows how to use the different aspects of the code
@@ -23,7 +21,7 @@ Hack Codegen requires:
 This package can be installed via composer:
 
 ```bash
-composer require fredemmott/hack-codegen
+composer require facebook/hack-codegen
 ```
 
 ## Usage
