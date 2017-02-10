@@ -218,7 +218,7 @@ final class CodegenExpectedFile {
    */
   final public static function displayf(
     SprintfFormatString $format,
-    /* HH_FIXME[4033] mixed */ ...$args
+    mixed ...$args
   ): void {
     $message = vsprintf($format, $args);
     self::displayRaw('gentest> '.$message ."\n");

@@ -23,7 +23,7 @@ trait CodegenFactoryTrait implements ICodegenFactory {
 
   final public function codegenFilef(
     SprintfFormatString $format,
-    /* HH_FIXME[4033] mixed */ ...$args
+    mixed ...$args
   ): CodegenFile {
     return $this->codegenFile(vsprintf($format, $args));
   }
@@ -34,7 +34,7 @@ trait CodegenFactoryTrait implements ICodegenFactory {
 
   final public function codegenFunctionf(
     SprintfFormatString $format,
-    /* HH_FIXME[4033] */ ...$args
+    mixed ...$args
   ): CodegenFunction {
     return $this->codegenFunction(vsprintf($format, $args));
   }
@@ -45,7 +45,7 @@ trait CodegenFactoryTrait implements ICodegenFactory {
 
   final public function codegenClassf(
     SprintfFormatString $format,
-    /* HH_FIXME[4033] */ ...$args
+    mixed ...$args
   ): CodegenClass {
     return $this->codegenClass(vsprintf($format, $args));
   }
@@ -68,7 +68,7 @@ trait CodegenFactoryTrait implements ICodegenFactory {
 
   final public function codegenMethodf(
     SprintfFormatString $format,
-    /* HH_FIXME[4033] mixed */ ...$args
+    mixed ...$args
   ): CodegenMethod {
     return $this->codegenMethod(vsprintf($format, $args));
   }
@@ -97,7 +97,7 @@ trait CodegenFactoryTrait implements ICodegenFactory {
 
   final public function codegenMemberVarf(
     SprintfFormatString $format,
-    /* HH_FIXME[4033] mixed */ ...$args
+    mixed ...$args
   ): CodegenMemberVar {
     return $this->codegenMemberVar(vsprintf($format, $args));
   }

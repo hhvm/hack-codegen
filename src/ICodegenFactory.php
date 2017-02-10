@@ -17,21 +17,21 @@ interface ICodegenFactory {
 
   public function codegenFilef(
     SprintfFormatString $format,
-    /* HH_FIXME[4033] mixed */ ...$args
+    mixed ...$args
   ): CodegenFile;
 
   public function codegenFunction(string $name): CodegenFunction;
 
   public function codegenFunctionf(
     SprintfFormatString $format,
-    /* HH_FIXME[4033] mixed */ ...$args
+    mixed ...$args
   ): CodegenFunction;
 
   public function codegenClass(string $name): CodegenClass;
 
   public function codegenClassf(
     SprintfFormatString $format,
-    /* HH_FIXME[4033] mixed */ ...$args
+    mixed ...$args
   ): CodegenClass;
 
   public function codegenEnum(string $name, string $enumType): CodegenEnum;
@@ -44,7 +44,7 @@ interface ICodegenFactory {
 
   public function codegenMethodf(
     SprintfFormatString $format,
-    /* HH_FIXME[4033] mixed */ ...$args
+    mixed ...$args
   ): CodegenMethod;
 
   public function codegenHackBuilder(): HackBuilder;
@@ -59,7 +59,7 @@ interface ICodegenFactory {
 
   public function codegenMemberVarf(
     SprintfFormatString $format,
-    /* HH_FIXME[4033] mixed */ ...$args
+    mixed ...$args
   ): CodegenMemberVar;
 
   public function codegenUsesTrait(string $name): CodegenUsesTrait;

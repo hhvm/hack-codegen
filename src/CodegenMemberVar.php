@@ -74,7 +74,7 @@ final class CodegenMemberVar
 
   public function setTypef(
     SprintfFormatString $format,
-    /* HH_FIXME[4033] mixed */ ...$args
+    mixed ...$args
   ): this {
     return $this->setType(vsprintf($format, $args));
   }

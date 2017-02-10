@@ -48,7 +48,7 @@ final class CodegenClass
 
   public function setExtendsf(
     SprintfFormatString $name,
-    /* HH_FIXME[4033] */ ...$args
+    mixed ...$args
   ): this {
     $this->extendsClass = vsprintf($name, $args);
     return $this;

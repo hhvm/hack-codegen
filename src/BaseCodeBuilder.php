@@ -57,7 +57,7 @@ abstract class BaseCodeBuilder implements ICodeBuilder {
   }
   final public function addf(
     SprintfFormatString $code,
-    /* HH_FIXME[4033] mixed */ ...$args
+    mixed ...$args
   ): this {
     return $this->addv((string) $code, $args);
   }
@@ -131,7 +131,7 @@ abstract class BaseCodeBuilder implements ICodeBuilder {
 
   final public function addLinef(
     SprintfFormatString $code,
-    /* HH_FIXME[4033] mixed */ ...$args
+    mixed ...$args
   ): this {
     // UNSAFE
     return $this->addLineImpl($code, $args);
@@ -158,7 +158,7 @@ abstract class BaseCodeBuilder implements ICodeBuilder {
 
   final public function addWithSuggestedLineBreaksf(
     SprintfFormatString $code,
-    /* HH_FIXME[4033] mixed */...$args
+    mixed ...$args
   ): this {
     return $this->addWithSuggestedLineBreaks(vsprintf($code, $args));
   }

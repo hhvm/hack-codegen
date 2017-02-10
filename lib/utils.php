@@ -267,7 +267,7 @@ function difference_render_fast(string $old, string $new): string {
  *
  * Will take `?T ...$args` when HHVM 3.12 support is dropped.
  */
-function coalesce<T>(?T $_head, /* HH_FIXME[4033] ?T */ ...$rest): ?T {
+function coalesce<T>(?T $_head, ?T ...$rest): ?T {
   foreach (func_get_args() as $arg) {
     if ($arg !== null) {
       return $arg;
@@ -283,7 +283,7 @@ function coalesce<T>(?T $_head, /* HH_FIXME[4033] ?T */ ...$rest): ?T {
  *
  * Will take `?T ...$args` when HHVM 3.12 support is dropped.
  */
-function coalescex<T>(?T $_head, /* HH_FIXME [4033] ?T */ ...$_rest): T {
+function coalescex<T>(?T $_head, ?T ...$_rest): T {
   $result = coalesce(...func_get_args());
   invariant(
     $result !== null,

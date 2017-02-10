@@ -13,9 +13,10 @@ trait CodegenWithAttributes {
 
   final public function setUserAttribute(
     string $name,
-    /* HH_FIXME[4033] HHVM >= 3.15: string */...$params
+    \Stringish ...$params
   ): this {
-    $this->userAttributes[$name] = new ImmVector($params);
+    $this->userAttributes[$name] = (new ImmVector($params))
+      ->map($p ==> (string) $p);
     return $this;
   }
 

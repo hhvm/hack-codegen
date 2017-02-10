@@ -33,30 +33,29 @@ function codegen_constructor(): CodegenConstructor {
   return new CodegenConstructor(HackCodegenConfig::getDefaultInstance());
 }
 
-/* HH_FIXME[4033] variadic params with type constraints are not supported */
-function codegen_file(string $file_name, ...$args): CodegenFile {
+function codegen_file(string $file_name, mixed ...$args): CodegenFile {
   $file_name = vsprintf($file_name, $args);
   return new CodegenFile(HackCodegenConfig::getDefaultInstance(), $file_name);
 }
 
-/* HH_FIXME[4033] variadic params with type constraints are not supported */
-function codegen_function(string $name, ...$args): CodegenFunction {
+function codegen_function(string $name, mixed ...$args): CodegenFunction {
   return new CodegenFunction(
     HackCodegenConfig::getDefaultInstance(),
     vsprintf($name, $args),
   );
 }
 
-/* HH_FIXME[4033] variadic params with type constraints are not supported */
-function codegen_class(string $name, ...$args): CodegenClass {
+function codegen_class(string $name, mixed ...$args): CodegenClass {
   return new CodegenClass(
     HackCodegenConfig::getDefaultInstance(),
     vsprintf($name, $args),
   );
 }
 
-/* HH_FIXME[4033] variadic params with type constraints are not supported */
-function codegen_class_name_with_typeargs(string $class, ...$args): string {
+function codegen_class_name_with_typeargs(
+  string $class,
+  mixed ...$args
+): string {
   return $class."<\n  ".implode(",\n  ", $args)."\n>";
 }
 
@@ -79,8 +78,10 @@ function codegen_trait(string $name): CodegenTrait {
 }
 
 
-/* HH_FIXME[4033] variadic params with type constraints are not supported */
-function codegen_method(string $name, ...$args): CodegenMethod {
+function codegen_method(
+  string $name,
+  mixed ...$args
+): CodegenMethod {
   return new CodegenMethod(
     HackCodegenConfig::getDefaultInstance(),
     vsprintf($name, $args),
@@ -109,8 +110,10 @@ function codegen_implements_interfaces(
 }
 
 
-/* HH_FIXME[4033] variadic params with type constraints are not supported */
-function codegen_member_var(string $name, ...$args): CodegenMemberVar {
+function codegen_member_var(
+  string $name,
+  mixed ...$args
+): CodegenMemberVar {
   return new CodegenMemberVar(
     HackCodegenConfig::getDefaultInstance(),
     vsprintf($name, $args),

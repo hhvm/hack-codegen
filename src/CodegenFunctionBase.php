@@ -64,7 +64,7 @@ abstract class CodegenFunctionBase
 
   public function setReturnTypef(
     SprintfFormatString $type,
-    /* HH_FIXME[4033] mixed */ ...$args
+    mixed ...$args
   ): this {
     $type = vsprintf($type, $args);
     if ($type) {
@@ -79,8 +79,7 @@ abstract class CodegenFunctionBase
 
   public function addParameterf(
     SprintfFormatString $param,
-    /* HH_FIXME[4033] mixed */
-    ...$args
+    mixed ...$args
   ): this {
     $param = vsprintf($param, $args);
     $this->parameters->add($param);
@@ -98,7 +97,7 @@ abstract class CodegenFunctionBase
 
   public function setBodyf(
     SprintfFormatString $body,
-    /* HH_FIXME[4033] mixed */ ...$args
+    mixed ...$args
   ): this {
     $this->body = vsprintf($body, $args);
 
