@@ -162,7 +162,11 @@ class CodegenMutator {
         '$quoted = $this->data->mapWithKey',
         Vector{'($k, $v) ==> $conn->quote($v, self::$pdoType[$k])'},
       )
-      ->addAssignment('$id', '$this->id')
+      ->addAssignment(
+        '$id',
+        '$this->id',
+        HackBuilderValues::literal(),
+      )
       ->startIfBlock('$id === null')
       ->addLine('$this->checkRequiredFields();')
       ->addLine('$names = "(".implode(",", $quoted->keys()).")";')
@@ -177,6 +181,7 @@ class CodegenMutator {
       ->addAssignment(
         '$pairs',
         '$quoted->mapWithKey(($field, $value) ==>  "$field=$value")',
+        HackBuilderValues::literal(),
       )
       ->addLinef(
         '$st = "update %s set ".implode(",", $pairs)." where %s=".$this->id;',
@@ -206,7 +211,8 @@ class CodegenMutator {
       ->closeStatement()
       ->addAssignment(
         '$missing',
-        '$required->removeAll($this->data->keys());'
+        '$required->removeAll($this->data->keys());',
+        HackBuilderValues::literal(),
       )
       ->addMultilineCall(
         'invariant',

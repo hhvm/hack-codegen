@@ -99,11 +99,13 @@ class CodegenDorm {
       ->endIfBlock()
       ->addAssignment(
         '$ts',
-        "type_structure(self::class, 'TData')"
+        "type_structure(self::class, 'TData')",
+        HackBuilderValues::literal(),
       )
       ->addAssignment(
         '$data',
         'TypeAssert::matchesTypeStructure($ts, $result)',
+        HackBuilderValues::literal(),
       )
       ->addReturnf('new %s($data)', $this->getSchemaName());
 
@@ -143,7 +145,11 @@ class CodegenDorm {
         // using addWithSuggestedLineBreaks will allow the code
         // to break automatically on long lines on the specified places.
         $builder
-          ->addAssignment('$value', $data.' ?? null')
+          ->addAssignment(
+            '$value',
+            $data.' ?? null',
+            HackBuilderValues::literal(),
+          )
           ->addWithSuggestedLineBreaksf(
             "return %s === null\t? null\t: %s;",
             '$value',
@@ -157,7 +163,11 @@ class CodegenDorm {
       } else {
         $body =
           $cg->codegenHackBuilder()
-            ->addAssignment('$value', $data)
+            ->addAssignment(
+              '$value',
+              $data,
+              HackBuilderValues::literal(),
+            )
             ->addReturn($return_data)
             ->getCode();
       }

@@ -71,6 +71,13 @@ final class HackBuilder extends BaseCodeBuilder {
     return $this;
   }
 
+  public function addValue<T>(
+    T $value,
+    IHackBuilderValueRenderer<T> $r,
+  ): this {
+    return $this->add($r->render($this->config, $value));
+  }
+
   /**
    * Add a Map with the specified pairs.
    */
@@ -106,9 +113,9 @@ final class HackBuilder extends BaseCodeBuilder {
     Vector<T> $vector,
     IHackBuilderValueRenderer<T> $values_config = HackBuilderValues::export(),
   ): this {
-    return $this->add(
-      HackBuilderValues::vector($values_config)
-        ->render($this->config, $vector),
+    return $this->addValue(
+      $vector,
+      HackBuilderValues::vector($values_config),
     );
   }
 
@@ -116,12 +123,12 @@ final class HackBuilder extends BaseCodeBuilder {
    * Add an ImmVector with the specified elements.
    */
   public function addImmVector<T>(
-    ImmVector<T> $vector,
+    Traversable<T> $vector,
     IHackBuilderValueRenderer<T> $values_config = HackBuilderValues::export(),
   ): this {
-    return $this->add(
-      HackBuilderValues::immVector($values_config)
-        ->render($this->config, $vector),
+    return $this->addValue(
+      $vector,
+      HackBuilderValues::immVector($values_config),
     );
   }
 
@@ -307,9 +314,17 @@ final class HackBuilder extends BaseCodeBuilder {
     return $this->addReturn(vsprintf($value, $args));
   }
 
-  public function addAssignment(string $var_name, string $value): this {
+  public function addAssignment<T>(
+    string $var_name,
+    T $value,
+    IHackBuilderValueRenderer<T> $renderer,
+  ): this {
     $this->assertIsVariable($var_name);
-    return $this->addLinef('%s = %s;', $var_name, $value);
+    return $this->addWithSuggestedLineBreaksf(
+      "%s =\t%s;\n",
+      $var_name,
+      $renderer->render($this->config, $value),
+    );
   }
 
   /**
