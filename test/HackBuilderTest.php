@@ -10,12 +10,14 @@
 
 namespace Facebook\HackCodegen;
 
-use function Facebook\HackCodegen\LegacyHelpers\hack_builder;
-
 final class HackBuilderTest extends CodegenBaseTest {
 
+  private function getHackBuilder(): HackBuilder {
+    return $this->getCodegenFactory()->codegenHackBuilder();
+  }
+
   public function testIfBlock(): void {
-    $body = test_code_builder()
+    $body = $this->getHackBuilder()
       ->startIfBlockf('$value <= %d', 0)
       ->addLine('return 0;')
       ->addElseIfBlockf('$value === %d', 1)
@@ -27,7 +29,7 @@ final class HackBuilderTest extends CodegenBaseTest {
   }
 
   public function testForeachLoop(): void {
-    $body = test_code_builder()
+    $body = $this->getHackBuilder()
       ->startForeachLoop('$values', null, '$value')
       ->addLine('something($value);')
       ->endForeachLoop()
@@ -38,7 +40,7 @@ final class HackBuilderTest extends CodegenBaseTest {
   }
 
   public function testTryBLock(): void {
-    $body = test_code_builder()
+    $body = $this->getHackBuilder()
       ->startTryBlock()
       ->addLine('my_func();')
       ->addCatchBlock('SystemException', '$ex')
@@ -53,17 +55,17 @@ final class HackBuilderTest extends CodegenBaseTest {
     $comment = 'Wow a really long comment that '.
       'will span multiple lines and probably go over '.
       'the limit so we gotta cut it up.';
-    $body = hack_builder()
+    $body = $this->getHackBuilder()
       ->addDocBlock($comment);
     $this->assertUnchanged($body->getCode());
 
-    $body = hack_builder()
+    $body = $this->getHackBuilder()
       ->addDocBlock($comment, /* max len */ 50);
     $this->assertUnchanged($body->getCode(), 'docblock2');
   }
 
   public function testShape(): void {
-    $shape = test_code_builder()
+    $shape = $this->getHackBuilder()
       ->addShape(array('x' => 3, 'y' => 5, 'url' => 'www.facebook.com'));
 
     $this->assertUnchanged($shape->getCode());
@@ -71,7 +73,7 @@ final class HackBuilderTest extends CodegenBaseTest {
 
   public function testWrappedStringSingle(): void {
     $this->assertUnchanged(
-      test_code_builder()
+      $this->getHackBuilder()
         ->add('return ')
         ->addWrappedString('This is short')
         ->add(';')
@@ -81,7 +83,7 @@ final class HackBuilderTest extends CodegenBaseTest {
 
   public function testWrappedStringDouble(): void {
     $this->assertUnchanged(
-      test_code_builder()
+      $this->getHackBuilder()
         ->add('return ')
         ->addWrappedString('This is a bit longer so we will hit our max '.
           'length cap and then go ahead and finish the line.')
@@ -96,7 +98,7 @@ two line breaks. Also note that we include a newline and also '.
       'do a concat operation to really mix it up. We need to
       respect newlines with this code and also senseless indentation.';
     $this->assertUnchanged(
-      test_code_builder()
+      $this->getHackBuilder()
         ->add('return ')
         ->addWrappedString($lorem_ipsum)
         ->add(';')
@@ -106,7 +108,7 @@ two line breaks. Also note that we include a newline and also '.
 
   public function testWrappedStringDoNotIndent(): void {
     $this->assertUnchanged(
-      test_code_builder()
+      $this->getHackBuilder()
         ->add('$this->callMethod(')
         ->newLine()
         ->indent()
@@ -124,7 +126,7 @@ two line breaks. Also note that we include a newline and also '.
   }
 
   public function testSet(): void {
-    $set = test_code_builder()
+    $set = $this->getHackBuilder()
       ->addSet(Set {'apple', 'oreos', 'banana'});
 
     $this->assertUnchanged($set->getCode());
@@ -132,7 +134,7 @@ two line breaks. Also note that we include a newline and also '.
 
   public function testAddWithSuggestedLineBreaksNoBreakage(): void {
     $del = HackBuilder::DELIMITER;
-    $body = test_code_builder()->addWithSuggestedLineBreaks(
+    $body = $this->getHackBuilder()->addWithSuggestedLineBreaks(
       "final class{$del}ClassNameJustLongEnoughToAvoidEightyColumns{$del}".
       "extends SomeBaseClass",
     );
@@ -141,7 +143,7 @@ two line breaks. Also note that we include a newline and also '.
 
   public function testAddWithSuggestedLineBreaksWithBreakage(): void {
     $del = HackBuilder::DELIMITER;
-    $body = test_code_builder()->addWithSuggestedLineBreaks(
+    $body = $this->getHackBuilder()->addWithSuggestedLineBreaks(
       "final abstract class{$del}ImpossibleClassLongEnoughToCrossEightyColumns".
       "{$del}extends SomeBaseClass",
     );
@@ -149,7 +151,7 @@ two line breaks. Also note that we include a newline and also '.
   }
 
   public function testAddfWithSuggestedLineBreaks(): void {
-    $code = test_code_builder()->addWithSuggestedLineBreaksf(
+    $code = $this->getHackBuilder()->addWithSuggestedLineBreaksf(
       "%s\n%s",
       'foo',
       'bar',
@@ -159,7 +161,7 @@ two line breaks. Also note that we include a newline and also '.
 
   public function testAddSmartMultilineCall(): void {
     $del = HackBuilder::DELIMITER;
-    $body = test_code_builder()->addMultilineCall(
+    $body = $this->getHackBuilder()->addMultilineCall(
       "\$foobarbaz_alphabetagama ={$del}\$this->callSomeThingReallyLongName".
       "ReallyReallyLongName",
       Vector {
@@ -172,7 +174,7 @@ two line breaks. Also note that we include a newline and also '.
   }
 
   public function testLiteralMap(): void {
-    $body = test_code_builder()
+    $body = $this->getHackBuilder()
       ->addMap(
         Map {
           'MY_ENUM::A' => 'ANOTHER_ENUM::A',
@@ -206,7 +208,7 @@ two line breaks. Also note that we include a newline and also '.
       array('name' => 'Maradona', 'favorite_shot' => 'handOfGod'),
     };
 
-    $body = hack_builder()
+    $body = $this->getHackBuilder()
       ->startSwitch('$soccer_player')
       ->addCaseBlocks(
         $players,
@@ -231,7 +233,7 @@ two line breaks. Also note that we include a newline and also '.
       array('name' => 'Maradona', 'favorite_shot' => 'handOfGod'),
     };
 
-    $body = hack_builder()
+    $body = $this->getHackBuilder()
       ->startSwitch('$soccer_player')
       ->addCaseBlocks(
         $players,
@@ -256,7 +258,7 @@ two line breaks. Also note that we include a newline and also '.
       array('name' => 'Maradona', 'favorite_shot' => 'handOfGod'),
     };
 
-    $body = hack_builder()
+    $body = $this->getHackBuilder()
       ->startSwitch('$soccer_player')
       ->addCaseBlocks(
         $players,

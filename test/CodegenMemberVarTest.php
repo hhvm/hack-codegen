@@ -10,17 +10,15 @@
 
 namespace Facebook\HackCodegen;
 
-use function Facebook\HackCodegen\LegacyHelpers\codegen_member_var;
-
 final class CodegenMemberVarTest extends CodegenBaseTest {
 
   public function testSimple(): void {
-    $code = codegen_member_var('foo')->render();
+    $code = $this->getCodegenFactory()->codegenMemberVar('foo')->render();
     $this->assertUnchanged($code);
   }
 
   public function testPublicStatic(): void {
-    $code = codegen_member_var('foo')
+    $code = $this->getCodegenFactory()->codegenMemberVar('foo')
       ->setPublic()
       ->setIsStatic()
       ->render();
@@ -29,7 +27,7 @@ final class CodegenMemberVarTest extends CodegenBaseTest {
   }
 
   public function testTyped(): void {
-    $code = codegen_member_var('name')
+    $code = $this->getCodegenFactory()->codegenMemberVar('name')
       ->setProtected()
       ->setType('string')
       ->render();
@@ -38,7 +36,7 @@ final class CodegenMemberVarTest extends CodegenBaseTest {
   }
 
   public function testTypedWithFalsyValue(): void {
-    $code = codegen_member_var('count')
+    $code = $this->getCodegenFactory()->codegenMemberVar('count')
       ->setType('?int')
       ->setValue(0)
       ->render();
@@ -47,7 +45,7 @@ final class CodegenMemberVarTest extends CodegenBaseTest {
   }
 
   public function testArrayValues(): void {
-    $code = codegen_member_var('languages')
+    $code = $this->getCodegenFactory()->codegenMemberVar('languages')
       ->setIsStatic()
       ->setValue(array('en' => 'English', 'es' => 'Spanish', 'fr' => 'French'))
       ->render();
@@ -56,7 +54,7 @@ final class CodegenMemberVarTest extends CodegenBaseTest {
   }
 
   public function testVector(): void {
-    $code = codegen_member_var('parameters')
+    $code = $this->getCodegenFactory()->codegenMemberVar('parameters')
       ->setType('Vector<string>')
       ->setLiteralValue('Vector {}')
       ->render();
@@ -65,7 +63,7 @@ final class CodegenMemberVarTest extends CodegenBaseTest {
   }
 
   public function testDocBlock(): void {
-    $code = codegen_member_var('thingWithComment')
+    $code = $this->getCodegenFactory()->codegenMemberVar('thingWithComment')
       ->setInlineComment('a comment')
       ->render();
 

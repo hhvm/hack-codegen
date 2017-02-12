@@ -25,15 +25,7 @@ final class TestCodegenConfig implements IHackCodegenConfig {
   }
 
   public function getRootDir(): string {
-    return '/';
+    return __DIR__;
   }
 
-}
-
-function test_code_builder(): HackBuilder {
-  return new HackBuilder(new TestCodegenConfig());
-}
-
-function test_codegen_file(string $file_name): CodegenFile {
-  return new CodegenFile(new TestCodegenConfig(), $file_name);
 }

@@ -10,12 +10,10 @@
 
 namespace Facebook\HackCodegen;
 
-use function Facebook\HackCodegen\LegacyHelpers\codegen_shape;
-
 final class CodegenShapeTest extends CodegenBaseTest {
 
   public function testShape(): void {
-    $shape = codegen_shape(
+    $shape = $this->getCodegenFactory()->codegenShape(
       array(
         'x' => 'int',
         'y' => 'int',

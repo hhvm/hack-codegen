@@ -13,7 +13,7 @@ namespace Facebook\HackCodegen;
 abstract class CodegenBaseTest extends \PHPUnit\Framework\TestCase {
 
   protected function getCodegenFactory(): HackCodegenFactory {
-    return new HackCodegenFactory(new HackCodegenConfig());
+    return new HackCodegenFactory(new TestCodegenConfig());
   }
 
   public function assertUnchanged(

@@ -10,8 +10,6 @@
 
 namespace Facebook\HackCodegen;
 
-use function Facebook\HackCodegen\LegacyHelpers\codegen_class;
-
 final class RefactorCodegenTest extends CodegenBaseTest {
 
   /**
@@ -20,21 +18,22 @@ final class RefactorCodegenTest extends CodegenBaseTest {
    * transported into the like sections of NewClass.
    */
   public function testClassRename(): void {
+    $cgf = $this->getCodegenFactory();
     $old_file_name = Filesystem::createTemporaryFile('codegen', true);
-    $old_class = codegen_class('OldClass')
+    $old_class = $cgf->codegenClass('OldClass')
       ->setHasManualDeclarations(true, null, "// Let's see if this shows up")
       ->setHasManualMethodSection(true, null, "// Will this also show up?");
 
-    $codegen_old_file = test_codegen_file($old_file_name)
+    $codegen_old_file = $cgf->codegenFile($old_file_name)
       ->addClass($old_class);
     $codegen_old_file->save();
 
     $new_file_name = Filesystem::createTemporaryFile('codegen', true);
 
-    $new_class = codegen_class('NewClass')
+    $new_class = $cgf->codegenClass('NewClass')
       ->setHasManualMethodSection()
       ->setHasManualDeclarations();
-    $codegen_new_file = test_codegen_file($new_file_name)
+    $codegen_new_file = $cgf->codegenFile($new_file_name)
       ->addClass($new_class)
       ->addOriginalFile($old_file_name)
       ->rekeyManualSection('OldClass_header', 'NewClass_header')
@@ -48,20 +47,21 @@ final class RefactorCodegenTest extends CodegenBaseTest {
    * of the manual sections into one section instead of two.
    */
   public function testManualSectionMerge(): void {
+    $cgf = $this->getCodegenFactory();
     $old_file_name = Filesystem::createTemporaryFile('codegen', true);
-    $old_class = codegen_class('OldClass')
+    $old_class = $cgf->codegenClass('OldClass')
       ->setHasManualDeclarations(true, null, "// Let's see if this shows up")
       ->setHasManualMethodSection(true, null, "// Will this also show up?");
 
-    $codegen_old_file = test_codegen_file($old_file_name)
+    $codegen_old_file = $cgf->codegenFile($old_file_name)
       ->addClass($old_class);
     $codegen_old_file->save();
 
     $new_file_name = Filesystem::createTemporaryFile('codegen', true);
 
-    $new_class = codegen_class('NewClass')
+    $new_class = $cgf->codegenClass('NewClass')
       ->setHasManualMethodSection(true, "NewClass_manual");
-    $codegen_new_file = test_codegen_file($new_file_name)
+    $codegen_new_file = $cgf->codegenFile($new_file_name)
       ->addClass($new_class)
       ->addOriginalFile($old_file_name)
       ->rekeyManualSection('OldClass_header', 'NewClass_manual')
