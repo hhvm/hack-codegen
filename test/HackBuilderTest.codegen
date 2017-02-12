@@ -36,6 +36,12 @@ if ($do_that) {
  * the limit so we gotta cut it up.
  */
 
+!@#$%codegentest:testExportedVectorDoesNotHaveHHPrefix
+$foo = Vector {
+  1,
+  2,
+  3,
+}
 !@#$%codegentest:testForeachLoop
 foreach ($values as $value) {
   something($value);
@@ -121,6 +127,37 @@ try {
   bump_ods();
 }
 
+!@#$%codegentest:testVectorOfExportedVectors
+$foo = Vector {
+  Vector {
+    '$foo',
+    '$bar',
+  },
+  Vector {
+    '$herp',
+    '$derp',
+  },
+}
+!@#$%codegentest:testVectorOfLiteralVectors
+$foo = Vector {
+  Vector {
+    $foo,
+    $bar,
+  },
+  Vector {
+    $herp,
+    $derp,
+  },
+}
+!@#$%codegentest:testVectorOfMaps
+$foo = Vector {
+  Map {
+    'foo' => 'bar',
+  },
+  Map {
+    'herp' => 'derp',
+  },
+}
 !@#$%codegentest:testWrappedStringDoNotIndent
 $this->callMethod(
   'This string is quite long so will spread across three lines but the user '.

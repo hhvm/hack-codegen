@@ -274,6 +274,52 @@ two line breaks. Also note that we include a newline and also '.
       ->endSwitch_();
     $this->assertUnchanged($body->getCode());
   }
+
+  public function testExportedVectorDoesNotHaveHHPrefix(): void {
+    $body = $this->getHackBuilder()
+      ->add('$foo = ')
+      ->addVector(
+        Vector { 1, 2, 3 },
+        HackBuilderValues::export(),
+      )
+      ->getCode();
+    $this->assertContains('Vector', $body);
+    $this->assertNotContains('HH', $body);
+    $this->assertUnchanged($body);
+  }
+
+  public function testVectorOfExportedVectors(): void {
+    $body = $this->getHackBuilder()
+      ->add('$foo = ')
+      ->addVector(
+        Vector { Vector { '$foo', '$bar' }, Vector { '$herp', '$derp' }},
+        HackBuilderValues::vector(HackBuilderValues::export()),
+      );
+    $this->assertUnchanged($body->getCode());
+  }
+
+  public function testVectorOfLiteralVectors(): void {
+    $body = $this->getHackBuilder()
+      ->add('$foo = ')
+      ->addVector(
+        Vector { Vector { '$foo', '$bar' }, Vector { '$herp', '$derp' }},
+        HackBuilderValues::vector(HackBuilderValues::literal()),
+      );
+    $this->assertUnchanged($body->getCode());
+  }
+
+  public function testVectorOfMaps(): void {
+    $body = $this->getHackBuilder()
+      ->add('$foo = ')
+      ->addVector(
+        Vector { Map { 'foo' => 'bar' }, Map { 'herp' => 'derp' } },
+        HackBuilderValues::map(
+          HackBuilderKeys::export(),
+          HackBuilderValues::export(),
+        ),
+      );
+    $this->assertUnchanged($body->getCode());
+  }
 }
 
 final class TestAnotherCodegenConfig implements IHackCodegenConfig {
