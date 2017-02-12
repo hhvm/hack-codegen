@@ -12,28 +12,8 @@ namespace Facebook\HackCodegen;
 
 /**
  * This class contains the default configuration for Hack code generation.
- *
- * You can call IHackCodegenConfig::setDefaultInstance() to use a custom
- * subclass with the convenience functions (codegen_builder() or and similar),
- * or directly call the constructors passing in your configuration.
  */
 final class HackCodegenConfig implements IHackCodegenConfig {
-  private static ?IHackCodegenConfig $defaultInstance;
-
-  final public static function getDefaultInstance(): IHackCodegenConfig {
-    $instance = self::$defaultInstance;
-    if ($instance === null) {
-      $instance = new self();
-      self::$defaultInstance = $instance;
-    }
-    return $instance;
-  }
-
-  final public static function setDefaultInstance(
-    IHackCodegenConfig $instance,
-  ): void {
-    self::$defaultInstance = $instance;
-  }
 
   public function getFileHeader(): ?Vector<string> {
     // If you want a header on each generated file, insert it here.
