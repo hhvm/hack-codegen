@@ -16,7 +16,7 @@ namespace Facebook\HackCodegen;
 trait HackBuilderRenderer {
   require implements ICodeBuilderRenderer;
 
-  protected HackCodegenConfig $config;
+  protected IHackCodegenConfig $config;
 
   final public function render(?HackBuilder $builder = null): string {
     if ($builder === null) {

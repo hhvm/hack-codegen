@@ -34,7 +34,7 @@ final class CodegenMemberVar
   private bool $isStatic = false;
 
   public function __construct(
-    protected HackCodegenConfig $config,
+    protected IHackCodegenConfig $config,
     private string $name,
   ) {
     // Private by default

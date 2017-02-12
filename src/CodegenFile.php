@@ -50,7 +50,7 @@ final class CodegenFile {
   private Map<string, ?string> $useNamespaces = Map {};
 
   public function __construct(
-    private HackCodegenConfig $config,
+    private IHackCodegenConfig $config,
     string $file_name,
   ) {
     $root = $config->getRootDir();

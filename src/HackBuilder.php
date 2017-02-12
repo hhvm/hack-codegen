@@ -631,7 +631,7 @@ final class HackBuilder extends BaseCodeBuilder {
   }
 
   public static function multilineCall(
-    HackCodegenConfig $config,
+    IHackCodegenConfig $config,
     string $name,
     Vector<string> $params,
     bool $close_statement = false

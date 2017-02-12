@@ -15,11 +15,11 @@ final class HackCodegenFactory {
   use CodegenFactoryTrait;
 
   public function __construct(
-    private HackCodegenConfig $config,
+    private IHackCodegenConfig $config,
   ) {
   }
 
-  public function getConfig(): HackCodegenConfig {
+  public function getConfig(): IHackCodegenConfig {
     return $this->config;
   }
 }

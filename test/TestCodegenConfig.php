@@ -10,7 +10,7 @@
 
 namespace Facebook\HackCodegen;
 
-final class TestCodegenConfig extends HackCodegenConfig {
+final class TestCodegenConfig implements IHackCodegenConfig {
 
   public function getFileHeader(): ?Vector<string> {
     return Vector {'Codegen Tests'};

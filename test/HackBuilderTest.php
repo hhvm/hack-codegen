@@ -274,7 +274,7 @@ two line breaks. Also note that we include a newline and also '.
   }
 }
 
-final class TestAnotherCodegenConfig extends HackCodegenConfig {
+final class TestAnotherCodegenConfig implements IHackCodegenConfig {
   public function getFileHeader(): ?Vector<string> {
     return Vector {'Codegen Tests'};
   }

@@ -38,7 +38,7 @@ abstract class CodegenClassBase
   private ?string $footerContents;
 
   public function __construct(
-    protected HackCodegenConfig $config,
+    protected IHackCodegenConfig $config,
     protected string $name,
   ) {
   }

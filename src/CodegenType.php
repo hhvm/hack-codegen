@@ -26,7 +26,7 @@ final class CodegenType implements ICodeBuilderRenderer {
   private string $keyword = 'type';
 
   public function __construct(
-    protected HackCodegenConfig $config,
+    protected IHackCodegenConfig $config,
     private string $name,
   ) {
   }

@@ -20,7 +20,7 @@ implements IHackBuilderValueRenderer<T> {
   }
 
   final public function render(
-    HackCodegenConfig $config,
+    IHackCodegenConfig $config,
     T $values,
   ): string {
     $value_renderer = $this->valueRenderer;

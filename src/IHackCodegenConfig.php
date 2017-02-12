@@ -10,15 +10,10 @@
 
 namespace Facebook\HackCodegen;
 
-/**
- * Generate code for a constructor. E.g.
- *
- * codegen_constructor()
- *  ->setBody('$this->x = new Foo();')
- *  ->render();
- */
-final class CodegenConstructor extends CodegenMethodBase {
-  public function __construct(IHackCodegenConfig $config) {
-    parent::__construct($config, '__construct');
-  }
+interface IHackCodegenConfig {
+  public function getFileHeader(): ?Vector<string>;
+
+  public function getSpacesPerIndentation(): int;
+  public function getMaxLineLength(): int;
+  public function getRootDir(): string;
 }

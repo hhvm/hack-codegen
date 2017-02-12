@@ -24,7 +24,7 @@ final class CodegenShape
   private ?string $manualAttrsID = null;
 
   public function __construct(
-    protected HackCodegenConfig $config,
+    protected IHackCodegenConfig $config,
     private array<string, string> $attrs = array(),
   ) {}
 

@@ -19,7 +19,7 @@ implements IHackBuilderValueRenderer<array<Tv>> {
   }
 
   final public function render(
-    HackCodegenConfig $config,
+    IHackCodegenConfig $config,
     array<Tv> $array,
   ): string {
     $value_renderer = $this->valueRenderer;

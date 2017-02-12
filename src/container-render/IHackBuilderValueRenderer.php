@@ -12,5 +12,5 @@
 namespace Facebook\HackCodegen;
 
 interface IHackBuilderValueRenderer<-T> {
-  public function render(HackCodegenConfig $config, T $input): string;
+  public function render(IHackCodegenConfig $config, T $input): string;
 }

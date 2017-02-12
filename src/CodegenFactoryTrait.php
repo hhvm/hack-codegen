@@ -11,7 +11,7 @@
 namespace Facebook\HackCodegen;
 
 trait CodegenFactoryTrait implements ICodegenFactory {
-  public abstract function getConfig(): HackCodegenConfig;
+  public abstract function getConfig(): IHackCodegenConfig;
 
   final public function codegenConstructor(): CodegenConstructor {
     return new CodegenConstructor($this->getConfig());

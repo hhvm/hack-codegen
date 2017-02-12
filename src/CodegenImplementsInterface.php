@@ -31,7 +31,7 @@ final class CodegenImplementsInterface
   private ?string $comment;
 
   public function __construct(
-    protected HackCodegenConfig $config,
+    protected IHackCodegenConfig $config,
     private string $name,
   ) {}
 

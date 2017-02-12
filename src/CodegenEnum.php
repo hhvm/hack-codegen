@@ -27,7 +27,7 @@ final class CodegenEnum extends CodegenClassBase {
   private ?string $isAs = null;
 
   public function __construct(
-    HackCodegenConfig $config,
+    IHackCodegenConfig $config,
     string $name,
     string $enum_type,
   ) {

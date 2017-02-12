@@ -24,7 +24,7 @@ class HackBuilderKeyValueCollectionRenderer<
   }
 
   final public function render(
-    HackCodegenConfig $config,
+    IHackCodegenConfig $config,
     T $values,
   ): string {
     $key_renderer = $this->keyRenderer;

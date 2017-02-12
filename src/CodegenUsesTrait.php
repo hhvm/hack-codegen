@@ -28,7 +28,7 @@ final class CodegenUsesTrait {
   private ?string $comment;
 
   public function __construct(
-    private HackCodegenConfig $config,
+    private IHackCodegenConfig $config,
     private string $name,
   ) {}
 
