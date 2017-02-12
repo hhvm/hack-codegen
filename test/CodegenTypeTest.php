@@ -10,27 +10,24 @@
 
 namespace Facebook\HackCodegen;
 
-use function Facebook\HackCodegen\LegacyHelpers\{
-  codegen_newtype,
-  codegen_shape,
-  codegen_type
-};
-
 final class CodegenTypeTest extends CodegenBaseTest {
 
   public function testType(): void {
-    $type = codegen_type('Point')->setType('(int, int)');
+    $cgf = $this->getCodegenFactory();
+    $type = $cgf->codegenType('Point')->setType('(int, int)');
     $this->assertUnchanged($type->render());
   }
 
   public function testNewType(): void {
-    $type = codegen_newtype('Point')->setType('(int, int)');
+    $cgf = $this->getCodegenFactory();
+    $type = $cgf->codegenNewtype('Point')->setType('(int, int)');
     $this->assertUnchanged($type->render());
   }
 
   public function testShape(): void {
-    $type = codegen_type('Point')
-      ->setShape(codegen_shape(array('x' => 'int', 'y' => 'int')));
+    $cgf = $this->getCodegenFactory();
+    $type = $cgf->codegenType('Point')
+      ->setShape($cgf->codegenShape(array('x' => 'int', 'y' => 'int')));
 
     $this->assertUnchanged($type->render());
   }

@@ -10,35 +10,31 @@
 
 namespace Facebook\HackCodegen;
 
-use function Facebook\HackCodegen\LegacyHelpers\{
-  codegen_generated_from_method,
-  codegen_interface,
-  codegen_implements_interface,
-  codegen_method
-};
-
 final class CodegenInterfaceTest extends CodegenBaseTest {
 
   public function testEmptyInterface(): void {
-    $code = codegen_interface('IEmpty')->render();
+    $cgf = $this->getCodegenFactory();
+    $code = $cgf->codegenInterface('IEmpty')->render();
 
     $this->assertUnchanged($code);
   }
 
   public function testExtendsInterfaces(): void {
-    $code = codegen_interface('IExtenderOfTwo')
-      ->addInterface(codegen_implements_interface('IExtended'))
-      ->addInterface(codegen_implements_interface('IOtherExtended'))
+    $cgf = $this->getCodegenFactory();
+    $code = $cgf->codegenInterface('IExtenderOfTwo')
+      ->addInterface($cgf->codegenImplementsInterface('IExtended'))
+      ->addInterface($cgf->codegenImplementsInterface('IOtherExtended'))
       ->render();
 
     $this->assertUnchanged($code);
   }
 
   public function testExtendsInterfaceWithGeneratedFrom(): void {
-    $code = codegen_interface('IExtenderOfOne')
+    $cgf = $this->getCodegenFactory();
+    $code = $cgf->codegenInterface('IExtenderOfOne')
       ->addInterface(
-        codegen_implements_interface('IExtended')
-        ->setGeneratedFrom(codegen_generated_from_method('Foo', 'Bar'))
+        $cgf->codegenImplementsInterface('IExtended')
+        ->setGeneratedFrom($cgf->codegenGeneratedFromMethod('Foo', 'Bar'))
       )
       ->render();
 
@@ -46,9 +42,10 @@ final class CodegenInterfaceTest extends CodegenBaseTest {
   }
 
   public function testInterfaceWithStuff(): void {
-    $code = codegen_interface('IInterfaceWithStuff')
+    $cgf = $this->getCodegenFactory();
+    $code = $cgf->codegenInterface('IInterfaceWithStuff')
       ->addMethod(
-        codegen_method('genFoo')
+        $cgf->codegenMethod('genFoo')
         ->setReturnType('Awaitable<mixed>')
         ->setDocBlock("Override this to have the stuff")
       )

@@ -10,17 +10,11 @@
 
 namespace Facebook\HackCodegen;
 
-use function Facebook\HackCodegen\LegacyHelpers\{
-  codegen_class,
-  codegen_constructor,
-  codegen_generated_from_method_with_key,
-  codegen_method
-};
-
 final class CodegenMethodTest extends CodegenBaseTest {
 
   public function testSimpleGetter(): void {
-    $code = codegen_method('getName')
+    $cgf = $this->getCodegenFactory();
+    $code = $cgf->codegenMethod('getName')
       ->setReturnType('string')
       ->setBody('return $this->name;')
       ->setDocBlock('Return the name of the user.')
@@ -30,7 +24,8 @@ final class CodegenMethodTest extends CodegenBaseTest {
   }
 
   public function testAbstractProtectedAndParams(): void {
-    $code = codegen_method('getSchema')
+    $cgf = $this->getCodegenFactory();
+    $code = $cgf->codegenMethod('getSchema')
       ->addParameter('string $name')
       ->setIsAbstract()
       ->setProtected()
@@ -40,7 +35,8 @@ final class CodegenMethodTest extends CodegenBaseTest {
  }
 
   public function testAsync(): void {
-    $code = codegen_method('genFoo')
+    $cgf = $this->getCodegenFactory();
+    $code = $cgf->codegenMethod('genFoo')
       ->setIsAsync()
       ->render();
 
@@ -48,7 +44,8 @@ final class CodegenMethodTest extends CodegenBaseTest {
   }
 
   public function testPrivateAndStaticWithEmptyBody(): void {
-    $code = codegen_method('doNothing')
+    $cgf = $this->getCodegenFactory();
+    $code = $cgf->codegenMethod('doNothing')
       ->setIsStatic()
       ->setPrivate()
       ->render();
@@ -57,19 +54,21 @@ final class CodegenMethodTest extends CodegenBaseTest {
   }
 
   public function testManualSection(): void {
-    $method = codegen_method('genProprietorName')
+    $cgf = $this->getCodegenFactory();
+    $method = $cgf->codegenMethod('genProprietorName')
       ->setReturnType('string')
       ->setBody('// insert your code here')
       ->setManualBody();
 
-    codegen_class('MyClass')->addMethod($method);
+    $cgf->codegenClass('MyClass')->addMethod($method);
     $code = $method->render();
 
     $this->assertUnchanged($code);
   }
 
   public function testConstructor(): void {
-    $code = codegen_constructor()
+    $cgf = $this->getCodegenFactory();
+    $code = $cgf->codegenConstructor()
       ->addParameter('string $name')
       ->setBody('$this->name = $name;')
       ->render();
@@ -78,14 +77,15 @@ final class CodegenMethodTest extends CodegenBaseTest {
   }
 
   public function testDocBlockCommentsWrap(): void {
+    $cgf = $this->getCodegenFactory();
     // 1-3 characters in doc block account for ' * ' in this test.
-    $code = codegen_method('getName')
+    $code = $cgf->codegenMethod('getName')
       ->setReturnType('string')
       ->setBody('return $this->name;')
       // 81 characters
       ->setDocBlock(str_repeat('x', 78))
       ->setGeneratedFrom(
-        codegen_generated_from_method_with_key(
+        $cgf->codegenGeneratedFromMethodWithKey(
           'EntTestSchema',
           'getFields',
           'name'

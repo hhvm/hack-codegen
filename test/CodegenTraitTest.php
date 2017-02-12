@@ -10,18 +10,11 @@
 
 namespace Facebook\HackCodegen;
 
-use function Facebook\HackCodegen\LegacyHelpers\{
-  codegen_generated_from_method,
-  codegen_member_var,
-  codegen_method,
-  codegen_trait,
-  codegen_uses_trait
-};
-
 final class CodegenTraitTest extends CodegenBaseTest {
 
   public function testDocblock(): void {
-    $code = codegen_trait('TestDocblockInternal')
+    $cgf = $this->getCodegenFactory();
+    $code = $cgf->codegenTrait('TestDocblockInternal')
       ->setDocBlock(
         "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ".
         "do eiusmod tempor incididunt ut labore et dolore magna aliqua. ".
@@ -36,28 +29,29 @@ final class CodegenTraitTest extends CodegenBaseTest {
   }
 
   public function testDemo(): void {
-    $code = codegen_trait('DemoInternal')
+    $cgf = $this->getCodegenFactory();
+    $code = $cgf->codegenTrait('DemoInternal')
       ->addRequireClass('RequiredClass')
       ->addRequireInterface('RequiredInterface')
-      ->addTrait(codegen_uses_trait('DemoTrait'))
+      ->addTrait($cgf->codegenUsesTrait('DemoTrait'))
       ->addTrait(
-        codegen_uses_trait('WhateverTrait')
-        ->setGeneratedFrom(codegen_generated_from_method("Whatever", "Method"))
+        $cgf->codegenUsesTrait('WhateverTrait')
+        ->setGeneratedFrom($cgf->codegenGeneratedFromMethod("Whatever", "Method"))
       )
-      ->addTrait(codegen_uses_trait("Useless"))
+      ->addTrait($cgf->codegenUsesTrait("Useless"))
       ->addConst('MAX_SIZE', 256)
       ->addConst('DEFAULT_NAME', 'MyEnt', 'Default name of Ent.')
       ->addConst('PI', 3.1415)
       ->setHasManualMethodSection()
       ->setHasManualDeclarations()
       ->addVar(
-        codegen_member_var('text')->setProtected()->setType('string')
+        $cgf->codegenMemberVar('text')->setProtected()->setType('string')
       )
       ->addVar(
-        codegen_member_var('id')->setType('?int')->setValue(12345)
+        $cgf->codegenMemberVar('id')->setType('?int')->setValue(12345)
       )
       ->addMethod(
-        codegen_method('genX')
+        $cgf->codegenMethod('genX')
           ->setProtected()
           ->setDocBlock(
             'This is a 76 characters  comment to test the splitting '.
