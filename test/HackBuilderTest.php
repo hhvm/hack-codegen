@@ -365,6 +365,18 @@ two line breaks. Also note that we include a newline and also '.
       );
     $this->assertUnchanged($body->getCode());
   }
+
+  public function testClassnameMap(): void {
+    $body = $this->getHackBuilder()
+      ->addValue(
+        Map { self::class => \stdClass::class },
+        HackBuilderValues::map(
+          HackBuilderKeys::classname(),
+          HackBuilderValues::classname(),
+        ),
+      );
+    $this->assertUnchanged($body->getCode());
+  }
 }
 
 final class TestAnotherCodegenConfig implements IHackCodegenConfig {

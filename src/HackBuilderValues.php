@@ -92,4 +92,9 @@ abstract final class HackBuilderValues {
       $value_renderers,
     );
   }
+
+  /* The key will be renderered as a classname<T> */
+  public static function classname(): IHackBuilderValueRenderer<string> {
+    return new HackBuilderClassnameRender();
+  }
 }

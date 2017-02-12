@@ -30,6 +30,10 @@ if ($do_that) {
     );
 }
 
+!@#$%codegentest:testClassnameMap
+Map {
+  \Facebook\HackCodegen\HackBuilderTest::class => \stdClass::class,
+}
 !@#$%codegentest:testDocBlock
 /**
  * Wow a really long comment that will span multiple lines and probably go over
