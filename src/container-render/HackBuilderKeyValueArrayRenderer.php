@@ -14,6 +14,7 @@ namespace Facebook\HackCodegen;
 final class HackBuilderKeyValueArrayRenderer<Tk as arraykey,Tv>
 implements IHackBuilderValueRenderer<array<Tk,Tv>> {
   public function __construct(
+    private string $keyword,
     private IHackBuilderKeyRenderer<Tk> $keyRenderer,
     private IHackBuilderValueRenderer<Tv> $valueRenderer,
   ) {
@@ -26,7 +27,7 @@ implements IHackBuilderValueRenderer<array<Tk,Tv>> {
     $key_renderer = $this->keyRenderer;
     $value_renderer = $this->valueRenderer;
     $builder = (new HackBuilder($config))
-      ->addLine('array(')
+      ->addLinef('%s(', $this->keyword)
       ->indent();
     foreach ($array as $key => $value) {
       $builder->addWithSuggestedLineBreaksf(

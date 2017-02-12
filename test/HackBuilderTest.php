@@ -64,9 +64,32 @@ final class HackBuilderTest extends CodegenBaseTest {
     $this->assertUnchanged($body->getCode(), 'docblock2');
   }
 
-  public function testShape(): void {
+  public function testShapeWithUniformRendering(): void {
     $shape = $this->getHackBuilder()
-      ->addShape(array('x' => 3, 'y' => 5, 'url' => 'www.facebook.com'));
+      ->addValue(
+        shape('x' => 3, 'y' => 5, 'url' => 'www.facebook.com'),
+        HackBuilderValues::shapeWithUniformRendering(
+          HackBuilderValues::export(),
+        ),
+      );
+
+    $this->assertUnchanged($shape->getCode());
+  }
+
+  public function testShapeWithPerKeyRendering(): void {
+    $shape = $this->getHackBuilder()
+      ->addValue(
+        shape(
+          'herp' => 'derp',
+          'foo' => Vector { 'foo', 'bar', 'baz' },
+        ),
+        HackBuilderValues::shapeWithPerKeyRendering(
+          shape(
+            'herp' => HackBuilderValues::export(),
+            'foo' => HackBuilderValues::vector(HackBuilderValues::export()),
+          ),
+        ),
+      );
 
     $this->assertUnchanged($shape->getCode());
   }

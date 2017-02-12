@@ -79,22 +79,6 @@ final class HackBuilder extends BaseCodeBuilder {
   }
 
   /**
-   * Add a shape construction.
-   */
-  public function addShape<Tv>(
-    array<string, Tv> $shape,
-    IHackBuilderValueRenderer<Tv> $values_config = HackBuilderValues::export(),
-  ): this {
-    /* HH_FIXME[4128] rewrite this function: hhvm/hack-codegen#24 */
-    return $this
-      ->addLine('shape(')
-      ->indent()
-      ->addArrayKeysAndValues($shape, HackBuilderKeys::export(), $values_config)
-      ->unindent()
-      ->add(')');
-  }
-
-  /**
    * Add a string that is auto-wrapped to not exceed the maximum length.
    * The following lines will have a level of indentation added. Example:
    *

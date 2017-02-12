@@ -33,7 +33,7 @@ abstract final class HackBuilderValues {
     IHackBuilderKeyRenderer<Tk> $kr,
     IHackBuilderValueRenderer<Tv> $vr,
   ): IHackBuilderValueRenderer<array<Tk,Tv>> {
-    return new HackBuilderKeyValueArrayRenderer($kr, $vr);
+    return new HackBuilderKeyValueArrayRenderer('array', $kr, $vr);
   }
 
   public static function vector<Tv>(
@@ -72,5 +72,24 @@ abstract final class HackBuilderValues {
     IHackBuilderValueRenderer<Tv> $vr,
   ): IHackBuilderValueRenderer<ImmMap<Tk,Tv>> {
     return new HackBuilderKeyValueCollectionRenderer(ImmMap::class, $kr, $vr);
+  }
+
+  public static function shapeWithUniformRendering<Tv>(
+    IHackBuilderValueRenderer<Tv> $vr,
+  ): IHackBuilderValueRenderer<shape()> {
+    /* HH_IGNORE_ERROR[4110] munging array to shape */
+    return new HackBuilderKeyValueArrayRenderer(
+      'shape',
+      HackBuilderKeys::export(),
+      $vr,
+    );
+  }
+
+  public static function shapeWithPerKeyRendering(
+    shape() $value_renderers,
+  ): IHackBuilderValueRenderer<shape()> {
+    return new HackBuilderShapeRenderer(
+      $value_renderers,
+    );
   }
 }

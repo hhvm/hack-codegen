@@ -76,6 +76,21 @@ shape(
   'y' => 5,
   'url' => 'www.facebook.com',
 )
+!@#$%codegentest:testShapeWithPerKeyRendering
+shape(
+  'herp' => 'derp',
+  'foo' => Vector {
+    'foo',
+    'bar',
+    'baz',
+  },
+)
+!@#$%codegentest:testShapeWithUniformRendering
+shape(
+  'x' => 3,
+  'y' => 5,
+  'url' => 'www.facebook.com',
+)
 !@#$%codegentest:testSwitchBodyWithBreaksInCaseAndDefault
 switch ($soccer_player) {
   case 'Ronaldo':
