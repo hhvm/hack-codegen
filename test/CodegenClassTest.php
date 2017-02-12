@@ -10,22 +10,10 @@
 
 namespace Facebook\HackCodegen;
 
-use function Facebook\HackCodegen\LegacyHelpers\{
-    codegen_class,
-    codegen_constructor,
-    codegen_generated_from_method,
-    codegen_generated_from_method_with_key,
-    codegen_implements_interface,
-    codegen_implements_interfaces,
-    codegen_method,
-    codegen_member_var,
-    codegen_uses_trait
-};
-
 final class CodegenClassTest extends CodegenBaseTest {
 
   public function testDocblock(): void {
-    $code = codegen_class('TestDocblock')
+    $code = $this->getCodegenFactory()->codegenClass('TestDocblock')
       ->setDocBlock(
         "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ".
         "do eiusmod tempor incididunt ut labore et dolore magna aliqua. ".
@@ -40,9 +28,10 @@ final class CodegenClassTest extends CodegenBaseTest {
   }
 
   public function testExtendsAndFinal(): void {
-    $code = codegen_class('NothingHere')
+    $cgf = $this->getCodegenFactory();
+    $code = $cgf->codegenClass('NothingHere')
       ->setExtends('NothingHereBase')
-      ->addInterface(codegen_implements_interface('JustOneInterface'))
+      ->addInterface($cgf->codegenImplementsInterface('JustOneInterface'))
       ->setIsFinal()
       ->render();
 
@@ -50,11 +39,12 @@ final class CodegenClassTest extends CodegenBaseTest {
   }
 
   public function testInterfacesAndAbstract(): void {
-    $code = codegen_class('NothingHere')
-      ->addInterface(codegen_implements_interface('INothing'))
+    $cgf = $this->getCodegenFactory();
+    $code = $cgf->codegenClass('NothingHere')
+      ->addInterface($cgf->codegenImplementsInterface('INothing'))
       ->addInterface(
-        codegen_implements_interface('IMeh')
-        ->setGeneratedFrom(codegen_generated_from_method("Foo", "Bar"))
+        $cgf->codegenImplementsInterface('IMeh')
+        ->setGeneratedFrom($cgf->codegenGeneratedFromMethod("Foo", "Bar"))
       )
       ->setIsAbstract()
       ->render();
@@ -69,8 +59,9 @@ final class CodegenClassTest extends CodegenBaseTest {
       'IRonWeasley',
     };
 
-    $code = codegen_class('JKRowling')
-      ->addInterfaces(codegen_implements_interfaces($interfaces))
+    $cgf = $this->getCodegenFactory();
+    $code = $cgf->codegenClass('JKRowling')
+      ->addInterfaces($cgf->codegenImplementsInterfaces($interfaces))
       ->render();
 
     $this->assertUnchanged($code);
@@ -78,7 +69,7 @@ final class CodegenClassTest extends CodegenBaseTest {
 
   public function testLongClassDeclaration(): void {
     // The class declaration is just long enough (82 chars) to make it wrap
-    $code = codegen_class('ClassWithReallyLongName')
+    $code = $this->getCodegenFactory()->codegenClass('ClassWithReallyLongName')
       ->setExtends('NowThisIsTheParentClassWithALongNameItSelf')
       ->render();
 
@@ -91,9 +82,10 @@ final class CodegenClassTest extends CodegenBaseTest {
       'InterfaceDos',
       'InterfaceTres',
     };
-    $code = codegen_class('ClassWithReallyReallyLongName')
+    $cgf = $this->getCodegenFactory();
+    $code = $cgf->codegenClass('ClassWithReallyReallyLongName')
       ->setExtends('NowThisIsTheParentClassWithALongNameItSelf')
-      ->addInterfaces(codegen_implements_interfaces($interfaces))
+      ->addInterfaces($cgf->codegenImplementsInterfaces($interfaces))
       ->render();
 
     $this->assertUnchanged($code);
@@ -106,7 +98,7 @@ final class CodegenClassTest extends CodegenBaseTest {
       'Tstory' => "EntCreationStory<Tent>",
     };
 
-    $code = codegen_class('ClassWithGenerics')
+    $code = $this->getCodegenFactory()->codegenClass('ClassWithGenerics')
       ->setGenericsDecl($generics_decl)
       ->render();
 
@@ -114,37 +106,38 @@ final class CodegenClassTest extends CodegenBaseTest {
   }
 
   public function testDemo(): void {
-    $code = codegen_class('Demo')
-      ->addTrait(codegen_uses_trait('EntProvisionalMode'))
+    $cgf = $this->getCodegenFactory();
+    $code = $cgf->codegenClass('Demo')
+      ->addTrait($cgf->codegenUsesTrait('EntProvisionalMode'))
       ->addTrait(
-        codegen_uses_trait('WhateverTrait')
-        ->setGeneratedFrom(codegen_generated_from_method("Whatever", "Method"))
+        $cgf->codegenUsesTrait('WhateverTrait')
+        ->setGeneratedFrom($cgf->codegenGeneratedFromMethod("Whatever", "Method"))
       )
-      ->addTrait(codegen_uses_trait("Useless"))
+      ->addTrait($cgf->codegenUsesTrait("Useless"))
       ->addConst('MAX_SIZE', 256)
       ->addConst('DEFAULT_NAME', 'MyEnt', 'Default name of Ent.')
       ->addConst('PI', 3.1415)
       ->setHasManualMethodSection()
       ->setHasManualDeclarations()
       ->addVar(
-        codegen_member_var('text')->setProtected()->setType('string')
+        $cgf->codegenMemberVar('text')->setProtected()->setType('string')
       )
       ->addVar(
-        codegen_member_var('id')->setType('?int')->setValue(12345)
+        $cgf->codegenMemberVar('id')->setType('?int')->setValue(12345)
       )
       ->setConstructor(
-        codegen_constructor()
+        $cgf->codegenConstructor()
           ->addParameter('string $text')
           ->setBody('$this->text = $text;')
       )
       ->addMethod(
-        codegen_method('getText')
+        $cgf->codegenMethod('getText')
           ->setIsFinal()
           ->setReturnType('string')
           ->setBody('return $this->text;')
       )
       ->addMethod(
-        codegen_method('genX')
+        $cgf->codegenMethod('genX')
           ->setProtected()
           ->setDocBlock(
             'This is a 76 characters  comment to test the splitting '.
@@ -161,11 +154,12 @@ final class CodegenClassTest extends CodegenBaseTest {
   }
 
   public function testLongGeneratedFrom(): void {
-    $code = codegen_class('Demo')
+    $cgf = $this->getCodegenFactory();
+    $code = $cgf->codegenClass('Demo')
       ->addMethod(
-        codegen_method('getRawIntEnumCustomTest')
+        $cgf->codegenMethod('getRawIntEnumCustomTest')
         ->setGeneratedFrom(
-          codegen_generated_from_method_with_key(
+          $cgf->codegenGeneratedFromMethodWithKey(
             'EntTestFieldGettersCodegenSchema',
             'getFieldSpecification',
             'RawIntEnumCustomTest',
@@ -177,7 +171,8 @@ final class CodegenClassTest extends CodegenBaseTest {
   }
 
   public function testConstructorWrapperFuncDefault(): void {
-    $code = codegen_class('TestWrapperFunc')
+    $cgf = $this->getCodegenFactory();
+    $code = $cgf->codegenClass('TestWrapperFunc')
       ->setDocBlock(
         "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ".
         "do eiusmod tempor incididunt ut labore et dolore magna aliqua. ".
@@ -193,15 +188,16 @@ final class CodegenClassTest extends CodegenBaseTest {
   }
 
   public function testConstructorWrapperFunc(): void {
-    $code = codegen_class('TestWrapperFunc')
+    $cgf = $this->getCodegenFactory();
+    $code = $cgf->codegenClass('TestWrapperFunc')
       ->addVar(
-        codegen_member_var('text')->setPrivate()->setType('string')
+        $cgf->codegenMemberVar('text')->setPrivate()->setType('string')
       )
       ->addVar(
-        codegen_member_var('hack')->setType('?bool')->setValue(false)
+        $cgf->codegenMemberVar('hack')->setType('?bool')->setValue(false)
       )
       ->setConstructor(
-        codegen_constructor()
+        $cgf->codegenConstructor()
           ->addParameter('string $text, ?bool $hack')
           ->setBody('$this->text = $text;')
       )
@@ -220,7 +216,8 @@ final class CodegenClassTest extends CodegenBaseTest {
    *        }
    */
   public function testConstructorWrapperFuncWithExplicitParams(): void {
-    $code = codegen_class('TestWrapperFunc')
+    $cgf = $this->getCodegenFactory();
+    $code = $cgf->codegenClass('TestWrapperFunc')
       ->setExtends('StrangeParent')
       ->addConstructorWrapperFunc(Vector {'string $text'})
       ->render();
@@ -229,7 +226,8 @@ final class CodegenClassTest extends CodegenBaseTest {
   }
 
   public function testExtendsGeneric(): void {
-    $code = codegen_class('Foo')
+    $cgf = $this->getCodegenFactory();
+    $code = $cgf->codegenClass('Foo')
       ->setExtendsf('X<%s>', 'Y')
       ->render();
     $this->assertContains('extends X<Y>', $code);

@@ -11,6 +11,11 @@
 namespace Facebook\HackCodegen;
 
 abstract class CodegenBaseTest extends \PHPUnit\Framework\TestCase {
+
+  protected function getCodegenFactory(): HackCodegenFactory {
+    return new HackCodegenFactory(new HackCodegenConfig());
+  }
+
   public function assertUnchanged(
     string $value,
     ?string $token = null,
