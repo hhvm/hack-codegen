@@ -158,25 +158,6 @@ final class HackBuilder extends BaseCodeBuilder {
     return $this;
   }
 
-  <<__Deprecated('Killing this')>>
-  private function addArrayKeysAndValues<Tk as arraykey, Tv>(
-    array<Tk, Tv> $map,
-    IHackBuilderKeyRenderer<Tk> $keys_config = HackBuilderKeys::export(),
-    IHackBuilderValueRenderer<Tv> $values_config =
-      HackBuilderValues::export(),
-  ): this {
-    foreach ($map as $key => $value) {
-      $rendered_key = $keys_config->render($this->config, $key);
-      $rendered_value = $values_config->render($this->config, $value);
-      $this->addWithSuggestedLineBreaksf(
-        "%s =>\t%s,",
-        $rendered_key,
-        $rendered_value,
-      )->newLine();
-    }
-    return $this;
-  }
-
   public function addReturn(string $value): this {
     return $this->addLineImpl('return %s;', [$value]);
   }
