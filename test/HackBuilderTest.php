@@ -16,9 +16,9 @@ final class HackBuilderTest extends CodegenBaseTest {
 
   public function testIfBlock(): void {
     $body = test_code_builder()
-      ->startIfBlock('$value <= %d', 0)
+      ->startIfBlockf('$value <= %d', 0)
       ->addLine('return 0;')
-      ->addElseIfBlock('$value === %d', 1)
+      ->addElseIfBlockf('$value === %d', 1)
       ->addLine('return 1;')
       ->addElseBlock()
       ->addLine('return 2;')

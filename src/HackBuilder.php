@@ -302,7 +302,7 @@ final class HackBuilder extends BaseCodeBuilder {
   }
   public function addReturnf(
     SprintfFormatString $value,
-    /* HH_FIXME[4033] mixed */ ...$args
+    mixed ...$args
   ): this {
     return $this->addReturn(vsprintf($value, $args));
   }
@@ -341,13 +341,21 @@ final class HackBuilder extends BaseCodeBuilder {
    * it's equivalent to calling openBrace, which newline and indent.
    * startIfBlock('$a === 0') generates if ($a === 0) {\n
    */
-  /* HH_FIXME[4033] variadic params with type constraints are not supported */
-  public function startIfBlock(string $condition, ...$args): this {
+  public function startIfBlock(
+    string $condition,
+  ): this {
     return $this
       ->add('if (')
-      ->addv($condition, $args)
+      ->add($condition)
       ->add(')')
       ->openBrace();
+  }
+
+  public function startIfBlockf(
+    SprintfFormatString $condition,
+    mixed ...$args
+  ): this {
+    return $this->startIfBlock(vsprintf($condition, $args));
   }
 
   /**
@@ -361,13 +369,19 @@ final class HackBuilder extends BaseCodeBuilder {
   /**
    * End current if/else block, and start a 'else if (condition)' block
    */
-  /* HH_FIXME[4033] variadic params with type constraints are not supported */
-  public function addElseIfBlock(string $condition, ...$args): this {
+  public function addElseIfBlock(string $condition): this {
     return $this
       ->ensureNewLine()
       ->unindent()
       ->add('} else ')
-      ->startIfBlock(vsprintf($condition, $args));
+      ->startIfBlock($condition);
+  }
+
+  public function addElseIfBlockf(
+    SprintfFormatString $condition,
+    mixed ...$args
+  ): this {
+    return $this->addElseIfBlock(vsprintf($condition, $args));
   }
 
   /**
