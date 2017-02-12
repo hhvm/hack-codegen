@@ -10,25 +10,21 @@
 
 namespace Facebook\HackCodegen;
 
-use function Facebook\HackCodegen\LegacyHelpers\{
-  codegen_class,
-  codegen_constructor,
-  codegen_file,
-  codegen_generated_from_script,
-  codegen_method,
-  codegen_member_var,
-  hack_builder
-};
-
 /**
  * For a given DormSchema, this class generates code for a class
  * that will allow to insert rows in a database.
  */
 class CodegenMutator {
 
+  private HackCodegenFactory $codegen;
+
   public function __construct(
     private DormSchema $schema,
-  ) {}
+  ) {
+    $this->codegen = new HackCodegenFactory(
+      new HackCodegenConfig(__DIR__.'/../..'),
+    );
+  }
 
   private function getName(): string {
     $ref = new \ReflectionClass($this->schema);
@@ -40,13 +36,14 @@ class CodegenMutator {
   }
 
   public function generate(): void {
+    $cg = $this->codegen;
     $name = $this->getName();
     // Here's an example of how to generate the code for a class.
     // Notice the fluent interface.  It's possible to generate
     // everything in the same method, however, for clarity
     // sometimes it's easier to use helper methods such as
     // getConstructor or getLoad in this examples.
-    $class = codegen_class($name)
+    $class = $cg->codegenClass($name)
       ->setIsFinal()
       ->addVar($this->getDataVar())
       ->addVar($this->getPdoTypeVar())
@@ -65,10 +62,10 @@ class CodegenMutator {
 
     // This generates a file (we pass the file name) that contains the
     // class defined above and saves it.
-    codegen_file($dir.$name.'.php')
+    $cg->codegenFile($dir.$name.'.php')
       ->addClass($class)
       ->setIsStrict(true)
-      ->setGeneratedFrom(codegen_generated_from_script($gen_from))
+      ->setGeneratedFrom($cg->codegenGeneratedFromScript($gen_from))
       ->save();
   }
 
@@ -76,7 +73,7 @@ class CodegenMutator {
   private function getDataVar(): CodegenMemberVar {
     // Example of how to generate a class member variable, including
     // setting an initial value.
-    return codegen_member_var('data')
+    return $this->codegen->codegenMemberVar('data')
       ->setType('Map<string, mixed>')
       ->setValue(Map {});
   }
@@ -101,6 +98,8 @@ class CodegenMutator {
       $values[$field->getDbColumn()] = $type;
     }
 
+    $cg = $this->codegen;
+
     // Here's how we add the code for a Map. In hack_builder, the methods for
     // adding collections allow to customize the rendering for keys/values
     // to be either EXPORT or LITERAL.  By default is EXPORT, which will cause,
@@ -108,10 +107,10 @@ class CodegenMutator {
     // LITERAL will just output the value without processing.  Since the values
     // are, for example PDO::PARAM_STR, if we use EXPORT it would be
     // 'PDO::PARAM_STR', but using LITERAL it's PDO::PARAM_STR
-    $code = hack_builder()
+    $code = $cg->codegenHackBuilder()
       ->addMap($values, HackBuilderKeys::export(), HackBuilderValues::literal());
 
-    return codegen_member_var('pdoType')
+    return $cg->codegenMemberVar('pdoType')
       ->setType('Map<string, int>')
       ->setIsStatic()
       ->setLiteralValue($code->getCode());
@@ -121,40 +120,43 @@ class CodegenMutator {
     // This very simple exampe of generating a constructor shows
     // how to change its accesibility to private.  The same would
     // work in a method.
-    return codegen_constructor()
+    return $this->codegen->codegenConstructor()
       ->addParameter('private ?int $id = null')
       ->setPrivate();
   }
 
   private function getCreateMethod(): CodegenMethod {
+    $cg = $this->codegen;
     // This is a very simple example of generating a method
-    return codegen_method('create')
+    return $cg->codegenMethod('create')
       ->setReturnType('this')
       ->setBody(
-        hack_builder()
+        $cg->codegenHackBuilder()
         ->addReturnf('new %s()', $this->getName())
         ->getCode()
       );
   }
 
   private function getUpdateMethod(): CodegenMethod {
+    $cg = $this->codegen;
     // This is a very simple example of generating a method
-    return codegen_method('update')
+    return $cg->codegenMethod('update')
       ->addParameter('int $id')
       ->setReturnType('this')
       ->setBody(
-        hack_builder()
+        $cg->codegenHackBuilder()
         ->addReturnf('new %s($id)', $this->getName())
         ->getCode()
       );
   }
 
   private function getSaveMethod(): CodegenMethod {
+    $cg = $this->codegen;
     // Here's an example of building a piece of code with hack_builder.
     // Notice addMultilineCall, which makes easy to call a method and
     // wrap it in multiple lines if needed to.
     // Also notice that you can use startIfBlock to write an if statement
-    $body = hack_builder()
+    $body = $cg->codegenHackBuilder()
       ->addLinef('$conn = new PDO(\'%s\');', $this->schema->getDsn())
       ->addMultilineCall(
         '$quoted = $this->data->mapWithKey',
@@ -185,7 +187,7 @@ class CodegenMutator {
       ->addReturn('$id')
       ->endIfBlock();
 
-    return codegen_method('save')
+    return $cg->codegenMethod('save')
       ->setReturnType('int')
       ->setBody($body->getCode());
   }
@@ -196,7 +198,9 @@ class CodegenMutator {
       ->map($field ==> $field->getDbColumn())
       ->values()->toSet();
 
-    $body = hack_builder()
+    $cg = $this->codegen;
+
+    $body = $cg->codegenHackBuilder()
       ->add('$required = ')
       ->addSet($required)
       ->closeStatement()
@@ -213,12 +217,13 @@ class CodegenMutator {
         }
       );
 
-    return codegen_method('checkRequiredFields')
+    return $cg->codegenMethod('checkRequiredFields')
       ->setReturnType('void')
       ->setBody($body->getCode());
   }
 
   private function getSetters(): Vector<CodegenMethod> {
+    $cg = $this->codegen;
     $methods = Vector {};
     foreach($this->schema->getFields() as $name => $field) {
       if ($field->getType() === 'DateTime') {
@@ -227,7 +232,7 @@ class CodegenMutator {
         $value = '$value';
       }
 
-      $body = hack_builder();
+      $body = $cg->codegenHackBuilder();
       if ($field->isManual()) {
         // This part illustrates how to include a manual section, which the
         // user can edit and it will be kept even if the code is regenerated.
@@ -247,7 +252,7 @@ class CodegenMutator {
 
       $body->addReturn('$this');
 
-      $methods[] = codegen_method('set'.$name)
+      $methods[] = $cg->codegenMethod('set'.$name)
         ->setReturnType('this')
         ->addParameter($field->getType().' $value')
         ->setBody($body->getCode());

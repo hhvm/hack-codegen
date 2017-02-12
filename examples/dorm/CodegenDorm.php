@@ -23,7 +23,7 @@ class CodegenDorm {
     private DormSchema $schema,
   ) {
     $this->codegen = new HackCodegenFactory(
-      HackCodegenConfig::getDefaultInstance(),
+      new HackCodegenConfig(__DIR__.'/../..'),
     );
   }
 
