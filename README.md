@@ -42,15 +42,42 @@ echo $cg->codegenFile('HelloWorld.php')
       ->addMethod(
         $cg->codegenMethod('sayHi')
           ->setReturnType('void')
-          ->setBody('echo "hello world\n";')
+          ->setBody(
+            $cg->codegenHackBuilder()
+              ->addAssignment(
+                '$some_vector',
+                Vector { 1, 2, 3 },
+                HackBuilderValues::vector(
+                  HackBuilderValues::export(),
+                ),
+              )
+              ->addAssignment(
+                '$debug_info',
+                Map { 'file' => '__FILE__', 'line' => '__LINE__' },
+                HackBuilderValues::map(
+                  HackBuilderKeys::export(),
+                  HackBuilderValues::literal(),
+                ),
+              )
+              ->addAssignment(
+                '$some_vector_of_vectors',
+                Vector { Vector { 1, 2, 3 }, Vector { 4, 5, 6 } },
+                HackBuilderValues::vector(
+                  HackBuilderValues::vector(
+                    HackBuilderValues::export(),
+                  ),
+                ),
+              )
+              ->addLine('echo "hello world\n";')
+              ->getCode();
+          );
       )
   )->save();
-
 ```
 
 ## Configuration
 You can configure some options such as the maximum line width, spacing and
-headers by subclassing `HackCodegenConfig.php` and passing a subclass to
+headers by implementing `IHackCodegenConfig` and passing an instance to
 `HackCodegenFactory`'s constructor.
 
 ## License
