@@ -35,8 +35,7 @@
         ],
         "files": [
             "lib/typedefs.php",
-            "lib/utils.php",
-            "src/LegacyHelpers.php"
+            "lib/utils.php"
         ]
     },
     "autoload-dev": {
