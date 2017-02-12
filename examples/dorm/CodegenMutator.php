@@ -216,7 +216,7 @@ class CodegenMutator {
       ->addValue(
         $required,
         HackBuilderValues::set(
-          HackBuilderKeys::export(),
+          HackBuilderValues::export(),
         ),
       )
       ->closeStatement()

@@ -12,7 +12,7 @@
 namespace Facebook\HackCodegen;
 
 final class HackBuilderLiteralRender
-implements IHackBuilderKeyRenderer<string> {
+implements IHackBuilderKeyRenderer<string>, IHackBuilderValueRenderer<string> {
   final public function render(
     IHackCodegenConfig $_,
     string $value,

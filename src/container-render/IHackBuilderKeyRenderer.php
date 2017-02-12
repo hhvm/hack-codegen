@@ -11,6 +11,6 @@
 
 namespace Facebook\HackCodegen;
 
-interface IHackBuilderKeyRenderer<-T as arraykey>
-extends IHackBuilderValueRenderer<T> {
+interface IHackBuilderKeyRenderer<-T as arraykey> {
+  public function render(IHackCodegenConfig $config, T $input): string;
 }

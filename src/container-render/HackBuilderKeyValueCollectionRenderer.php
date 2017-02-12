@@ -18,7 +18,7 @@ class HackBuilderKeyValueCollectionRenderer<
 > implements IHackBuilderValueRenderer<T> {
   public function __construct(
     private classname<T> $containerName,
-    private IHackBuilderValueRenderer<Tk> $keyRenderer,
+    private IHackBuilderKeyRenderer<Tk> $keyRenderer,
     private IHackBuilderValueRenderer<Tv> $valueRenderer,
   ) {
   }
