@@ -127,7 +127,12 @@ two line breaks. Also note that we include a newline and also '.
 
   public function testSet(): void {
     $set = $this->getHackBuilder()
-      ->addSet(Set {'apple', 'oreos', 'banana'});
+      ->addValue(
+        Set {'apple', 'oreos', 'banana'},
+        HackBuilderValues::set(
+          HackBuilderValues::export(),
+        ),
+      );
 
     $this->assertUnchanged($set->getCode());
   }
@@ -175,13 +180,15 @@ two line breaks. Also note that we include a newline and also '.
 
   public function testLiteralMap(): void {
     $body = $this->getHackBuilder()
-      ->addMap(
+      ->addValue(
         Map {
           'MY_ENUM::A' => 'ANOTHER_ENUM::A',
           'MY_ENUM::B' => 'ANOTHER_ENUM::B'
         },
-        HackBuilderKeys::literal(),
-        HackBuilderValues::literal(),
+        HackBuilderValues::map(
+          HackBuilderKeys::literal(),
+          HackBuilderValues::literal(),
+        ),
       );
     $this->assertUnchanged($body->getCode());
   }
@@ -193,7 +200,12 @@ two line breaks. Also note that we include a newline and also '.
       )
       ->startIfBlock('$do_that')
       ->add('return ')
-      ->addArray(array(1, 2, 3))
+      ->addValue(
+        array(1, 2, 3),
+        HackBuilderValues::valueArray(
+          HackBuilderValues::export(),
+        ),
+      )
       ->closeStatement()
       ->endIfBlock();
 
@@ -278,9 +290,9 @@ two line breaks. Also note that we include a newline and also '.
   public function testExportedVectorDoesNotHaveHHPrefix(): void {
     $body = $this->getHackBuilder()
       ->add('$foo = ')
-      ->addVector(
+      ->addValue(
         Vector { 1, 2, 3 },
-        HackBuilderValues::export(),
+        HackBuilderValues::vector(HackBuilderValues::export()),
       )
       ->getCode();
     $this->assertContains('Vector', $body);
@@ -290,32 +302,42 @@ two line breaks. Also note that we include a newline and also '.
 
   public function testVectorOfExportedVectors(): void {
     $body = $this->getHackBuilder()
-      ->add('$foo = ')
-      ->addVector(
+      ->addAssignment(
+        '$foo',
         Vector { Vector { '$foo', '$bar' }, Vector { '$herp', '$derp' }},
-        HackBuilderValues::vector(HackBuilderValues::export()),
+        HackBuilderValues::vector(
+          HackBuilderValues::vector(
+            HackBuilderValues::export(),
+          ),
+        ),
       );
     $this->assertUnchanged($body->getCode());
   }
 
   public function testVectorOfLiteralVectors(): void {
     $body = $this->getHackBuilder()
-      ->add('$foo = ')
-      ->addVector(
+      ->addAssignment(
+        '$foo',
         Vector { Vector { '$foo', '$bar' }, Vector { '$herp', '$derp' }},
-        HackBuilderValues::vector(HackBuilderValues::literal()),
+        HackBuilderValues::vector(
+          HackBuilderValues::vector(
+            HackBuilderValues::literal(),
+          ),
+        ),
       );
     $this->assertUnchanged($body->getCode());
   }
 
   public function testVectorOfMaps(): void {
     $body = $this->getHackBuilder()
-      ->add('$foo = ')
-      ->addVector(
+      ->addAssignment(
+        '$foo',
         Vector { Map { 'foo' => 'bar' }, Map { 'herp' => 'derp' } },
-        HackBuilderValues::map(
-          HackBuilderKeys::export(),
-          HackBuilderValues::export(),
+        HackBuilderValues::vector(
+          HackBuilderValues::map(
+            HackBuilderKeys::export(),
+            HackBuilderValues::export(),
+          ),
         ),
       );
     $this->assertUnchanged($body->getCode());

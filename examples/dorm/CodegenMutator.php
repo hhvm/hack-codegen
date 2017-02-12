@@ -108,7 +108,13 @@ class CodegenMutator {
     // are, for example PDO::PARAM_STR, if we use EXPORT it would be
     // 'PDO::PARAM_STR', but using LITERAL it's PDO::PARAM_STR
     $code = $cg->codegenHackBuilder()
-      ->addMap($values, HackBuilderKeys::export(), HackBuilderValues::literal());
+      ->addValue(
+        $values,
+        HackBuilderValues::map(
+          HackBuilderKeys::export(),
+          HackBuilderValues::literal(),
+        ),
+      );
 
     return $cg->codegenMemberVar('pdoType')
       ->setType('Map<string, int>')
@@ -207,7 +213,12 @@ class CodegenMutator {
 
     $body = $cg->codegenHackBuilder()
       ->add('$required = ')
-      ->addSet($required)
+      ->addValue(
+        $required,
+        HackBuilderValues::set(
+          HackBuilderKeys::export(),
+        ),
+      )
       ->closeStatement()
       ->addAssignment(
         '$missing',

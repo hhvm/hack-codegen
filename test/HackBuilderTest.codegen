@@ -137,7 +137,8 @@ $foo = Vector {
     '$herp',
     '$derp',
   },
-}
+};
+
 !@#$%codegentest:testVectorOfLiteralVectors
 $foo = Vector {
   Vector {
@@ -148,7 +149,8 @@ $foo = Vector {
     $herp,
     $derp,
   },
-}
+};
+
 !@#$%codegentest:testVectorOfMaps
 $foo = Vector {
   Map {
@@ -157,7 +159,8 @@ $foo = Vector {
   Map {
     'herp' => 'derp',
   },
-}
+};
+
 !@#$%codegentest:testWrappedStringDoNotIndent
 $this->callMethod(
   'This string is quite long so will spread across three lines but the user '.
