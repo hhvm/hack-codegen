@@ -229,8 +229,8 @@ class CodegenMutator {
         'invariant',
         Vector {
           '$missing->isEmpty()',
-          '"The following required fields are missing: "'.
-            '.implode(", ", $missing)',
+          '"The following required fields are missing: %s"',
+          'implode(", ", $missing)',
         }
       );
 
