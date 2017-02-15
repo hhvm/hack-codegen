@@ -376,7 +376,8 @@ final class CodegenFile {
   public function useNamespace(string $ns, ?string $as = null): this {
     invariant(
       !$this->useNamespaces->contains($ns),
-      $ns.' is already being used',
+      '%s is already being used',
+      $ns,
     );
     $this->useNamespaces[$ns] = $as;
     return $this;
