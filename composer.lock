@@ -112,16 +112,16 @@
         },
         {
             "name": "fredemmott/type-assert",
-            "version": "v1.0",
+            "version": "v1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fredemmott/type-assert.git",
-                "reference": "4b6ccc8b6abb503308472c440f30a3e2d5e5d2e0"
+                "reference": "38460b438ca85701585abe471d944c678d242847"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fredemmott/type-assert/zipball/4b6ccc8b6abb503308472c440f30a3e2d5e5d2e0",
-                "reference": "4b6ccc8b6abb503308472c440f30a3e2d5e5d2e0",
+                "url": "https://api.github.com/repos/fredemmott/type-assert/zipball/38460b438ca85701585abe471d944c678d242847",
+                "reference": "38460b438ca85701585abe471d944c678d242847",
                 "shasum": ""
             },
             "require": {
@@ -146,7 +146,7 @@
                 "TypeAssert",
                 "hack"
             ],
-            "time": "2016-12-04T19:05:17+00:00"
+            "time": "2017-02-15T02:26:23+00:00"
         },
         {
             "name": "myclabs/deep-copy",
