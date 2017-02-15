@@ -16,14 +16,14 @@ abstract class CodegenBaseTest {
     bool $value,
     string $message = 'Expected true',
   ): void {
-    invariant($value, $message);
+    invariant($value, '%s', $message);
   }
 
   public static function assertFalse(
     bool $value,
     string $message = 'Expected false',
   ): void {
-    invariant(!$value, $message);
+    invariant(!$value, '%s', $message);
   }
 
   public static function assertEquals(
@@ -35,7 +35,7 @@ abstract class CodegenBaseTest {
        $message = "Expected ".print_r($expected, true).
          " but got ".print_r($actual, true). " instead";
     }
-    invariant($expected === $actual, $message);
+    invariant($expected === $actual, '%s', $message);
   }
 
 
