@@ -11,12 +11,18 @@
 
 namespace Facebook\HackCodegen;
 
-final class HackBuilderKeyExportRenderer
-implements IHackBuilderKeyRenderer<arraykey> {
+final class HackBuilderValueLambdaRenderer<T>
+implements IHackBuilderValueRenderer<T> {
+  public function __construct(
+    private (function(IHackCodegenConfig, T):string) $callback,
+  ) {
+  }
+
   final public function render(
-    IHackCodegenConfig $_,
-    arraykey $value,
+    IHackCodegenConfig $config,
+    T $value,
   ): string {
-    return normalized_var_export($value);
+    $callback = $this->callback;
+    return $callback($config, $value);
   }
 }

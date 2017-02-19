@@ -14,13 +14,13 @@ abstract final class HackBuilderValues {
   // The value will be used literally, which is useful for example when
   // passing a constant such as MyEnum::Value
   public static function literal(): IHackBuilderValueRenderer<string> {
-    return new HackBuilderLiteralRender();
+    return new HackBuilderLiteralRenderer();
   }
 
   // The value will be exported to be rendered according the type.  E.g. an int
   // will be rendered without changes but a string will be rendered with quotes.
   public static function export(): IHackBuilderValueRenderer<mixed> {
-    return new HackBuilderValueExportRender();
+    return new HackBuilderValueExportRenderer();
   }
 
   public static function valueArray<Tv>(
@@ -95,6 +95,15 @@ abstract final class HackBuilderValues {
 
   /* The key will be renderered as a classname<T> */
   public static function classname(): IHackBuilderValueRenderer<string> {
-    return new HackBuilderClassnameRender();
+    return new HackBuilderClassnameRenderer();
+  }
+
+  /**
+   * The value will be rendered with the specified lambda
+   */
+  public static function lambda<T>(
+    (function(IHackCodegenConfig, T): string) $render,
+  ): IHackBuilderValueRenderer<T> {
+    return new HackBuilderValueLambdaRenderer($render);
   }
 }

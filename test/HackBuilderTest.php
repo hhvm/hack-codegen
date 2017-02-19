@@ -377,6 +377,18 @@ two line breaks. Also note that we include a newline and also '.
       );
     $this->assertUnchanged($body->getCode());
   }
+
+  public function testLambdaMap(): void {
+    $body = $this->getHackBuilder()
+      ->addValue(
+        Map { 'foo' => 'bar' },
+        HackBuilderValues::map(
+          HackBuilderKeys::lambda(($_config, $v) ==> "'key:$v'"),
+          HackBuilderValues::lambda(($_config, $v) ==> "'value:$v'",)
+        ),
+      );
+    $this->assertUnchanged($body->getCode());
+  }
 }
 
 final class TestAnotherCodegenConfig implements IHackCodegenConfig {

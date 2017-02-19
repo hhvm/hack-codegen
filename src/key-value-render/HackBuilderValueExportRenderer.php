@@ -11,7 +11,7 @@
 
 namespace Facebook\HackCodegen;
 
-final class HackBuilderValueExportRender
+final class HackBuilderValueExportRenderer
 implements IHackBuilderValueRenderer<mixed> {
   final public function render(
     IHackCodegenConfig $_,

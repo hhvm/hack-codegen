@@ -63,6 +63,10 @@ if ($value <= 0) {
   return 2;
 }
 
+!@#$%codegentest:testLambdaMap
+Map {
+  'key:foo' => 'value:bar',
+}
 !@#$%codegentest:testLiteralMap
 Map {
   MY_ENUM::A => ANOTHER_ENUM::A,

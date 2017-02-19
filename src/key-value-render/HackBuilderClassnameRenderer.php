@@ -11,7 +11,7 @@
 
 namespace Facebook\HackCodegen;
 
-final class HackBuilderClassnameRender
+final class HackBuilderClassnameRenderer
 implements IHackBuilderKeyRenderer<string>, IHackBuilderValueRenderer<string> {
   final public function render(
     IHackCodegenConfig $_,
