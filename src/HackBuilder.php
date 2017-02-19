@@ -158,14 +158,23 @@ final class HackBuilder extends BaseCodeBuilder {
     return $this;
   }
 
-  public function addReturn(string $value): this {
-    return $this->addLineImpl('return %s;', [$value]);
+  public function addReturn<T>(
+    T $value,
+    IHackBuilderValueRenderer<T> $renderer,
+  ): this {
+    return $this
+      ->add('return ')
+      ->addValue($value, $renderer)
+      ->addLine(';');
   }
   public function addReturnf(
     SprintfFormatString $value,
     mixed ...$args
   ): this {
-    return $this->addReturn(vsprintf($value, $args));
+    return $this->addReturn(
+      vsprintf($value, $args),
+      HackBuilderValues::literal(),
+    );
   }
 
   public function addAssignment<T>(
@@ -353,8 +362,21 @@ final class HackBuilder extends BaseCodeBuilder {
     return $this->unindent();
   }
 
-  public function returnCase(string $statement): this {
-    return $this->addReturn($statement)->unindent();
+  public function returnCase<T>(
+    T $value,
+    IHackBuilderValueRenderer<T> $r,
+  ): this {
+    return $this->addReturn($value, $r)->unindent();
+  }
+
+  public function returnCasef(
+    SprintfFormatString $value,
+    mixed ...$args
+  ): this {
+    return $this->returnCase(
+      vsprintf($value, $args),
+      HackBuilderValues::literal(),
+    );
   }
 
   public function breakCase(): this {

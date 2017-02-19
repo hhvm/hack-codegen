@@ -182,7 +182,7 @@ class CodegenMutator {
         $this->schema->getTableName(),
       )
       ->addLine('$conn->exec($st);')
-      ->addReturn('(int) $conn->lastInsertId()')
+      ->addReturnf('(int) $conn->lastInsertId()')
       ->addElseBlock()
       ->addAssignment(
         '$pairs',
@@ -195,7 +195,7 @@ class CodegenMutator {
         $this->schema->getIdField(),
       )
       ->addLine('$conn->exec($st);')
-      ->addReturn('$id')
+      ->addReturnf('$id')
       ->endIfBlock();
 
     return $cg->codegenMethod('save')
@@ -267,7 +267,7 @@ class CodegenMutator {
         $body->endManualSection();
       }
 
-      $body->addReturn('$this');
+      $body->addReturnf('$this');
 
       $methods[] = $cg->codegenMethod('set'.$name)
         ->setReturnType('this')

@@ -250,7 +250,7 @@ two line breaks. Also note that we include a newline and also '.
         ($player, $body) ==> {
           $body->addCase(sprintf('\'%s\'', $player['name']))
             ->addLinef('$shot = new Shot(\'%s\');', $player['favorite_shot'])
-            ->returnCase('$shot->execute()');
+            ->returnCasef('$shot->execute()');
         },
       )
       ->addDefault()

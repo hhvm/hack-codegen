@@ -95,7 +95,7 @@ class CodegenDorm {
       ->addMultilineCall('$conn->query', Vector {"\"$sql\""}, true)
       ->addLine('$result = $cursor->fetch(PDO::FETCH_ASSOC);')
       ->startIfBlock('!$result')
-      ->addReturn('null')
+      ->addReturnf('null')
       ->endIfBlock()
       ->addAssignment(
         '$ts',
@@ -168,7 +168,7 @@ class CodegenDorm {
               $data,
               HackBuilderValues::literal(),
             )
-            ->addReturn($return_data)
+            ->addReturn($return_data, HackBuilderValues::literal())
             ->getCode();
       }
       $methods[] = $cg->codegenMethod('get'.$name)
