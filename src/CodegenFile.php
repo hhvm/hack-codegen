@@ -253,6 +253,13 @@ final class CodegenFile {
     return $this;
   }
 
+  public function setShebangLinef(
+    SprintfFormatString $format,
+    mixed ...$args
+  ): this {
+    return $this->setShebangLine(vsprintf($format, $args));
+  }
+
   /**
    * Use to execute code before declarations.
    *
@@ -264,6 +271,13 @@ final class CodegenFile {
     return $this;
   }
 
+  public function setPseudoMainHeaderf(
+    SprintfFormatString $format,
+    mixed ...$args
+  ): this {
+    return $this->setPseudoMainHeader(vsprintf($format, $args));
+  }
+
   /**
    * Use to execute code after declarations.
    *
@@ -273,6 +287,13 @@ final class CodegenFile {
   public function setPseudoMainFooter(string $code): this {
     $this->pseudoMainFooter = $code;
     return $this;
+  }
+
+  public function setPseudoMainFooterf(
+    SprintfFormatString $format,
+    mixed ...$args
+  ): this {
+    return $this->setPseudoMainFooter(vsprintf($format, $args));
   }
 
   private function assertNotHackStrictForExecutable(): void {
