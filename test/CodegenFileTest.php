@@ -281,4 +281,57 @@ final class CodegenFileTest extends CodegenBaseTest {
     $this->assertUnchanged($code);
   }
 
+  public function testExecutable(): void {
+    $cgf = $this->getCodegenFactory();
+    $code = $cgf->codegenFile('no_file')
+      ->setFileType(CodegenFileType::HACK_PARTIAL)
+      ->setShebangLine('#!/usr/bin/env hhvm')
+      ->setPseudoMainHeader(
+        'require_once(\'vendor/autoload.php\');'
+      )
+      ->addFunction(
+        $cgf->codegenFunction('main')
+          ->setReturnType('void')
+          ->setBody('print("Hello, world!\n");')
+      )
+      ->setPseudoMainFooter('main();')
+      ->render();
+    $this->assertUnchanged($code);
+  }
+
+  public function testNoShebangInStrict(): void {
+    $this->expectException(
+      /* HH_FIXME[2049] no hhi for invariantexception */
+      \HH\InvariantException::class,
+    );
+    $cgf = $this->getCodegenFactory();
+    $code = $cgf->codegenFile('no_file')
+      ->setFileType(CodegenFileType::HACK_STRICT)
+      ->setShebangLine('#!/usr/bin/env hhvm')
+      ->render();
+  }
+
+  public function testNoPseudoMainHeaderInStrict(): void {
+    $this->expectException(
+      /* HH_FIXME[2049] no hhi for invariantexception */
+      \HH\InvariantException::class,
+    );
+    $cgf = $this->getCodegenFactory();
+    $code = $cgf->codegenFile('no_file')
+      ->setFileType(CodegenFileType::HACK_STRICT)
+      ->setPseudoMainHeader('exit();')
+      ->render();
+  }
+
+  public function testNoPseudoMainFooterInStrict(): void {
+    $this->expectException(
+      /* HH_FIXME[2049] no hhi for invariantexception */
+      \HH\InvariantException::class,
+    );
+    $cgf = $this->getCodegenFactory();
+    $code = $cgf->codegenFile('no_file')
+      ->setFileType(CodegenFileType::HACK_STRICT)
+      ->setPseudoMainFooter('exit();')
+      ->render();
+  }
 }

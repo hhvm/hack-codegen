@@ -48,6 +48,9 @@ final class CodegenFile {
   private ?ICodegenFormatter $formatter;
   private ?string $fileNamespace;
   private Map<string, ?string> $useNamespaces = Map {};
+  private ?string $shebang;
+  private ?string $pseudoMainHeader;
+  private ?string $pseudoMainFooter;
 
   public function __construct(
     private IHackCodegenConfig $config,
@@ -218,7 +221,6 @@ final class CodegenFile {
     return $this->formatter;
   }
 
-
   private function getFileTypeDeclaration(): string {
     switch($this->fileType) {
       case CodegenFileType::PHP:
@@ -232,8 +234,62 @@ final class CodegenFile {
     }
   }
 
+  /**
+   * Useful when creating scripts.
+   *
+   * You probably want:
+   *     setShebangLine('#!/usr/bin/env hhvm')
+   */
+  public function setShebangLine(string $shebang): this {
+    invariant(
+      !strpbrk($shebang, "\n"),
+      "Expected single line",
+    );
+    invariant(
+      Str::startsWith($shebang, '#!'),
+      'Shebang lines start with #!',
+    );
+    $this->shebang = $shebang;
+    return $this;
+  }
+
+  /**
+   * Use to execute code before declarations.
+   *
+   * Useful for scripts; eg:
+   *     setPseudoMainHeader('require_once("vendor/autoload.php");');
+   */
+  public function setPseudoMainHeader(string $code): this {
+    $this->pseudoMainHeader = $code;
+    return $this;
+  }
+
+  /**
+   * Use to execute code after declarations.
+   *
+   * Useful for scripts; eg:
+   *     setPseudoMainFooter((new MyScript())->main($argv));
+   */
+  public function setPseudoMainFooter(string $code): this {
+    $this->pseudoMainFooter = $code;
+    return $this;
+  }
+
+  private function assertNotHackStrictForExecutable(): void {
+    invariant(
+      $this->fileType !== CodegenFileType::HACK_STRICT,
+      "Hack Strict can't be used for executables",
+    );
+  }
+
   public function render(): string {
     $builder = new HackBuilder($this->config);
+
+    $shebang = $this->shebang;
+    if ($shebang !== null) {
+      $this->assertNotHackStrictForExecutable();
+      $builder->addLine($shebang);
+    }
 
     $builder->addLine($this->getFileTypeDeclaration());
     $header = $this->config->getFileHeader();
@@ -303,8 +359,18 @@ final class CodegenFile {
       'namespace %s;',
       $this->fileNamespace,
     );
+
     foreach ($this->useNamespaces as $ns => $as) {
       $builder->addLine($as === null ? "use $ns;" : "use $ns as $as;");
+    }
+
+    $header = $this->pseudoMainHeader;
+    if ($header !== null) {
+      $this->assertNotHackStrictForExecutable();
+      $builder
+        ->ensureNewLine()
+        ->add($header)
+        ->ensureNewLine();
     }
 
     foreach ($this->beforeTypes as $type) {
@@ -328,6 +394,15 @@ final class CodegenFile {
     foreach ($this->afterTypes as $type) {
       $builder->ensureNewLine()->newLine();
       $builder->add($type->render());
+    }
+
+    $footer = $this->pseudoMainFooter;
+    if ($footer !== null) {
+      $this->assertNotHackStrictForExecutable();
+      $builder
+        ->ensureEmptyLine()
+        ->add($footer)
+        ->ensureNewLine();
     }
     return $builder->getCode();
   }
