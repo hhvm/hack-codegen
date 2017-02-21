@@ -4,6 +4,9 @@
   - id: overview-config-and-factory
   - id: overview-hack-builder
   - id: overview-definitions
+- title: Hack Builder
+  items:
+  - id: hack-builder-blocks
 
 # n title:, 1 items: per title:, n id: per items:
 # - title: A

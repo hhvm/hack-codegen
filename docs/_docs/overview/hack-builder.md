@@ -45,6 +45,8 @@ As readable code is a goal of Hack Codegen, several whitespace helpers are provi
  - `->addMultilineCall($call, $args)`: either renders the call all on one line, or with
    one argument on one line, depending on if it can fit within the maximum line length
 
+Finally, you can get the generated code as a string by calling `->getCode()`.
+
 Values
 ------
 
@@ -76,10 +78,11 @@ Blocks
 Helpers are provided for common block constructs - eg:
 
 ``` php
+<?hh
 $builder
   ->startIf('$condition')
   ->addLine('doStuff();')
   ->endIf()
 ```
 
-See the `HackBuilder` source for a complete list.
+See [the reference documentation](/hack-codegen/docs/hack-builder/blocks/) for details.
