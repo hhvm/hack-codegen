@@ -16,7 +16,7 @@ This is based on the `IHackBuilderValueRenderer<T>` interface, which provides
 `public function render(IHackCodegenConfig $config, T $input): string` which
 returns PHP code.
 
-Basic Built-ins
+Basic Built-Ins
 ---------------
 
 Hack Codegen provides several implementation of this interface, accessed via

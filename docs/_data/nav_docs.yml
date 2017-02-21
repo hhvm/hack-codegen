@@ -8,6 +8,7 @@
   items:
   - id: hack-builder-blocks
   - id: hack-builder-keys-and-values
+  - id: hack-builder-custom-renderers
 
 # n title:, 1 items: per title:, n id: per items:
 # - title: A
