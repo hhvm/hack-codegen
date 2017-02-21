@@ -58,7 +58,6 @@ nav.toc {
     position: relative;
 
     .navGroups {
-      display: none;
       padding: 40px 10px 10px;
     }
   }
@@ -124,15 +123,17 @@ nav.toc {
       background: $sidenav-overlay;
       margin: 1px 0;
 
-      ul {
-        display: none;
+      .navListItem {
+        margin-left: 1em;
+        font-style: 'italic';
       }
 
       h3 {
         background: $sidenav-overlay;
         color: $sidenav-text;
+        font-weight: bold;
         cursor: pointer;
-        font-size: 14px;
+        font-size: 18px;
         font-weight: 400;
         line-height: 1.2em;
         padding: 10px;
@@ -162,12 +163,6 @@ nav.toc {
         background: $sidenav-active;
         color: $sidenav-text;
 
-        ul {
-          display: block;
-          padding-bottom: 10px;
-          padding-top: 10px;
-        }
-
         h3 {
           background: $primary-bg;
           color: $primary-overlay;
@@ -182,6 +177,8 @@ nav.toc {
     ul {
       padding-left: 0;
       padding-right: 24px;
+      padding-bottom: 10px;
+      padding-top: 10px;
 
       li {
         list-style-type: none;

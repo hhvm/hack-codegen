@@ -24,6 +24,7 @@
             {% assign grouptitle = group.title %}
             {% for item in group.items %}
               {% if item.id == page.docid %}
+              {% assign currentselected = item.id %}
               {% assign currentgroup = group %}
               {% endif %}
             {% endfor %}

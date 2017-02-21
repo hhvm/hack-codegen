@@ -66,19 +66,11 @@ $primary-overlay-special:		lighten($primary-bg, 30%);
 {% endif %}
 
 // $secondary-bg overlays
-{% if site.color.secondary-overlay == 'light' %}
 $text:              #393939;
-$sidenav: 				  darken($secondary-bg, 20%);
+$sidenav: 				  darken($secondary-bg, 15%);
 $sidenav-text: 			$text;
-$sidenav-overlay: 	darken($sidenav, 10%);
-$sidenav-active: 		lighten($sidenav, 10%);
-{% else %}
-$text:              #fff;
-$sidenav: 				  lighten($secondary-bg, 20%);
-$sidenav-text: 			$text;
-$sidenav-overlay: 	lighten($sidenav, 10%);
-$sidenav-active: 		darken($sidenav, 10%);
-{% endif %}
+$sidenav-overlay: 	$sidenav;
+$sidenav-active: 		$sidenav;
 
 $code-bg: 					#002b36;
 
