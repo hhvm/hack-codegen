@@ -1,0 +1,18 @@
+- title: Docs
+  href: /docs/
+  category: docs
+
+- title: Release Notes
+  href: https://github.com/hhvm/hack-codegen/releases
+  category: external
+
+- title: Issues
+  href: https://github.com/hhvm/hack-codegen/issues
+  category: external
+
+- title: Packagist
+  href: https://packagist.org/packages/facebook/hack-codegen
+  category: external
+
+# Use external for external links not associated with the paths of the current site.
+# If a category is external, site urls, for example, are not prepended to the href, etc.

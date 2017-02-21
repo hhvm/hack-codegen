@@ -1,0 +1,9 @@
+- type: button
+  href: docs/
+  text: Get Started
+
+- type: github_star
+
+- type: github_watch
+
+- type: twitter_share

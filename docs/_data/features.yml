@@ -1,0 +1,25 @@
+- title: Signed Files
+  text: |
+        Generated files are signed to prevent or detect manual modifications of
+        generated code; this can be disabled if required.
+
+- title: Partially Generated Files
+  text: |
+        Generated code can be marked as containing manually-modifiable
+        sections; you can use hack-codegen to rewrite the rest of the file,
+        and all manual sections will be left unmodified.
+  
+- title: Readable Output
+  text: |
+        All built-in features handle whitespace correctly, and it's easy to
+        integrate this into custom code.
+
+- title: Extensible and Type-Safe Value Rendering
+  text: |
+        Hack Codegen can render any value as raw literal code or using
+        `var_export()`; additionally, there's built-in support for
+        pretty-printed collections, shapes, and `classname<T>`.
+        
+        These can be nested arbitrarily for shapes and collections, and can
+        be extended by providing a lambda, or creating a class implementing the
+        key or value renderer interfaces.
