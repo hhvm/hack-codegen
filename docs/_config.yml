@@ -1,6 +1,6 @@
 # Site settings
 permalink: /blog/:year/:month/:day/:title.html
-title: Hack-Codegen
+title: Hack Codegen
 tagline: Code that writes code
 description: >
   Hack Codegen is a library for easily generating Hack code and writing it
