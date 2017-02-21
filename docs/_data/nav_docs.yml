@@ -7,6 +7,7 @@
 - title: Hack Builder
   items:
   - id: hack-builder-blocks
+  - id: hack-builder-keys-and-values
 
 # n title:, 1 items: per title:, n id: per items:
 # - title: A
