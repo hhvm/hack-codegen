@@ -3,6 +3,7 @@
   - id: overview-quick-start
   - id: overview-config-and-factory
   - id: overview-hack-builder
+  - id: overview-definitions
 
 # n title:, 1 items: per title:, n id: per items:
 # - title: A
