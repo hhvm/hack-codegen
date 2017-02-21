@@ -14,5 +14,9 @@
   href: https://packagist.org/packages/facebook/hack-codegen
   category: external
 
+- title: GitHub
+  href: https://github.com/hhvm/hack-codegen/
+  category: external
+
 # Use external for external links not associated with the paths of the current site.
 # If a category is external, site urls, for example, are not prepended to the href, etc.
