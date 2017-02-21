@@ -1,8 +1,8 @@
 ---
-docid: quick-start
+docid: overview-quick-start
 title: Quick Start
 layout: docs
-permalink: /docs/quick-start/
+permalink: /docs/overview/quick-start/
 ---
 
 ## Installation

@@ -1,6 +1,8 @@
-- title: Documentation
+- title: Overview
   items:
-  - id: quick-start
+  - id: overview-quick-start
+  - id: overview-config-and-factory
+  - id: overview-hack-builder
 
 # n title:, 1 items: per title:, n id: per items:
 # - title: A
