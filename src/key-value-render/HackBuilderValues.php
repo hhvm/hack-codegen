@@ -48,13 +48,13 @@ abstract final class HackBuilderValues {
     return new HackBuilderValueCollectionRenderer(ImmVector::class, $vr);
   }
 
-  public static function set<Tv>(
+  public static function set<Tv as arraykey>(
     IHackBuilderValueRenderer<Tv> $vr,
   ): IHackBuilderValueRenderer<Set<Tv>> {
     return new HackBuilderValueCollectionRenderer(Set::class, $vr);
   }
 
-  public static function immSet<Tv>(
+  public static function immSet<Tv as arraykey>(
     IHackBuilderValueRenderer<Tv> $vr,
   ): IHackBuilderValueRenderer<ImmSet<Tv>> {
     return new HackBuilderValueCollectionRenderer(ImmSet::class, $vr);
