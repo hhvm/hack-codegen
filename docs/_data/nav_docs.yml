@@ -9,6 +9,7 @@
   items:
   - id: hack-builder-blocks
   - id: hack-builder-keys-and-values
+  - id: hack-builder-shapes
   - id: hack-builder-custom-renderers
 - title: Other Classes
   items:
