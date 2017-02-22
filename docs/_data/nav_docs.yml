@@ -10,6 +10,9 @@
   - id: hack-builder-blocks
   - id: hack-builder-keys-and-values
   - id: hack-builder-custom-renderers
+- title: Other Classes
+  items:
+  - id: classes-codegen-file
 
 # n title:, 1 items: per title:, n id: per items:
 # - title: A
