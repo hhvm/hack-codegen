@@ -11,9 +11,11 @@
   - id: hack-builder-keys-and-values
   - id: hack-builder-shapes
   - id: hack-builder-custom-renderers
-- title: Other Classes
+- title: Classes
   items:
   - id: classes-codegen-file
+  - id: classes-codegen-function
+  - id: classes-other
 
 # n title:, 1 items: per title:, n id: per items:
 # - title: A
