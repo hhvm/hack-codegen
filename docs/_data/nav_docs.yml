@@ -4,6 +4,7 @@
   - id: overview-config-and-factory
   - id: overview-hack-builder
   - id: overview-definitions
+  - id: overview-partially-generated
 - title: Hack Builder
   items:
   - id: hack-builder-blocks
