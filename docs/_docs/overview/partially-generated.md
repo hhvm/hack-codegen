@@ -19,9 +19,10 @@ files can have major benefits:
    especially useful when the majority of implementations will not need any
    modifications, or when generating both a class and a unit test for that class
    at the same time
+ - manual sections can be used outside of classes
 
-Additionally, there are some cases where it's not possible to use techniques like
-this, such as when generating scripts:
+There are some cases where it's not possible to use techniques like superclasses and
+traits, such as when generating scripts:
 
 ``` php
 #!/usr/bin/env hhvm
@@ -89,3 +90,14 @@ $file = $factory
       ->getCode()
   );
 ```
+
+Keys & Signatures
+-----------------
+
+Keys must be unique within a file; they are used by Hack Codegen to put the code
+they contain in the appropriate place when a file is rewritten; this can include
+re-ordering them, adding more, or removing existing ones that are no longer needed.
+
+Files created by Hack Codegen are signed by default; if a file is modified, the
+signature will not match, and Hack Codegen will refuse to modify the file - however,
+manual sections are excluded from this calculation.
