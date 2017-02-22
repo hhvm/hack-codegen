@@ -129,8 +129,8 @@ nav.toc {
       }
 
       h3 {
-        background: $sidenav-overlay;
-        color: $sidenav-text;
+        background: $sidenav-group-header-bg;
+        color: $sidenav-group-header;
         font-weight: bold;
         cursor: pointer;
         font-size: 18px;
@@ -138,39 +138,6 @@ nav.toc {
         line-height: 1.2em;
         padding: 10px;
         transition: color 0.2s;
-
-        i:not(:empty) {
-          width: 16px;
-          height: 16px;
-          display: inline-block;
-          box-sizing: border-box;
-          text-align: center;
-          color: rgba($sidenav-text, 0.5);
-          margin-right: 10px;
-          transition: color 0.2s;
-        }
-
-        &:hover {
-          color: $primary-bg;
-
-          i:not(:empty) {
-            color: $primary-bg;
-          }
-        }
-      }
-
-      &.navGroupActive {
-        background: $sidenav-active;
-        color: $sidenav-text;
-
-        h3 {
-          background: $primary-bg;
-          color: $primary-overlay;
-
-          i {
-            display: none;
-          }
-        }
       }
     }
 
@@ -202,7 +169,7 @@ nav.toc {
 
           &.navItemActive {
             color: $primary-bg;
-            font-weight: 900;
+            font-weight: bold;
           }
         }
       }

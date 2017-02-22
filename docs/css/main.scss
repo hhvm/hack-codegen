@@ -71,6 +71,8 @@ $sidenav: 				  darken($secondary-bg, 15%);
 $sidenav-text: 			$text;
 $sidenav-overlay: 	$sidenav;
 $sidenav-active: 		$sidenav;
+$sidenav-group-header-bg: $primary-bg;
+$sidenav-group-header: lighten($sidenav, 10%);
 
 $code-bg: 					#002b36;
 
