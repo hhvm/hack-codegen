@@ -34,18 +34,6 @@ To make a function memoized (adding the `<<__Memoize>>` attribute), call
 `->setIsMemoized(bool $value = true)`; for other attributes, call
 `->setUserAttribute(string $name, ?string $value)`.
 
-CodegenMethod
--------------
-
-Methods are created with `$factory->codegenMethod('methodName')`, and have some
-additional features over functions:
-
- - `->setIsOverride(bool $value = true)`: add the `<<__Override>>` attribute, which
-   requires that the method is declared in a parent class
- - `->setIsFinal(bool $value = true)`: mark the method as final
- - `->setIsAbstract(bool $value = true)`: mark the method as abstract
- - `->setIsStatic(bool $value = true)`: mark the method as static
-
 FIXMEs
 ------
 

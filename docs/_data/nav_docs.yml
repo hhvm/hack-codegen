@@ -15,7 +15,7 @@
   items:
   - id: classes-codegen-file
   - id: classes-codegen-function
-  - id: classes-other
+  - id: classes-codegen-method
 
 # n title:, 1 items: per title:, n id: per items:
 # - title: A
