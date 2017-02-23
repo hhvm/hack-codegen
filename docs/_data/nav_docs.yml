@@ -21,6 +21,7 @@
   - id: classes-codegen-class-base
   - id: classes-codegen-interface
   - id: classes-codegen-class
+  - id: classes-codegen-trait
   - id: classes-codegen-enum
 
 # n title:, 1 items: per title:, n id: per items:
