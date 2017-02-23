@@ -16,5 +16,8 @@ It is constructed with an array of key names to types as strings:
 $factory->codegenShape(['foo' => 'string', 'bar' = 'int']);
 ```
 
+This API is likely to be changed in a future release of Hack Codegen to support
+nesting.
+
 Manual sections are also supported - to allow additional members to be added,
 call `->setManualAttrID(string $key)` with a key that is unique within each file.
