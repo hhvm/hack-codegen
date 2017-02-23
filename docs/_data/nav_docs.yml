@@ -19,6 +19,7 @@
   - id: classes-codegen-type
   - id: classes-codegen-shape
   - id: classes-codegen-class-base
+  - id: classes-codegen-interface
   - id: classes-codegen-class
 
 # n title:, 1 items: per title:, n id: per items:
