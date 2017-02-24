@@ -29,10 +29,10 @@ foreach ($map as $k => $v) {
 }
 $builder
   ->addValue(
-    $map,
+    $processed,
     HackBuilderValues::map(
-      HackBuilderKeys::literal(),
-      HackBuilderValues::export(),
+      HackBuilderKeys::literal(), // The key is literal PHP code...
+      HackBuilderValues::export(), // ... but use var_export() for the values
     ),
   );
 ```
