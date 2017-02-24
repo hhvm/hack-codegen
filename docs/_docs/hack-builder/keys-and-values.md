@@ -68,24 +68,42 @@ renderers are:
  - `HackBuilderValues::immSet($value_renderer)`
 
 For example:
+
 ``` php
 <?hh
 
 $builder
-  ->addValue(
+  ->addAssignment(
+    '$vector_of_exported_values',
     Vector { 'foo' },
     HackBuilderValues::vector(
-      HackBuilderValues::export(),
+      HackBuilderValues::export(), // use var_export for values
     ),
   )
-  ->addValue(
-    Vector { Vector { 'foo ' } },
-    HackBuilderValues::vector(
+  ->addAssignment(
+    '$map_of_exported_strings_to_vectors_of_exported_values',
+    Map { 'SubItems' => Vector { 'foo ' } },
+    HackBuilderValues::map(
+      HackBuilderKeys::export(),
       HackBuilderValues::vector(
         HackBuilderValues::export(),
-      )
+      ),
     ),
   );
+```
+
+This will generate something similar to:
+
+``` php
+<?hh
+$vector_of_exported_values = Vector {
+  'foo',
+};
+$map_of_exported_strings_to_vectors_of_exported_values = Map {
+  'SubItems' => Vector {
+    'foo',
+  },
+};
 ```
 
 `IHackBuilderKeyRenderer<T>` is similar to `IHackBuilderValueRenderer<T>`, however
