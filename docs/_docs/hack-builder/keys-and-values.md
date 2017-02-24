@@ -32,9 +32,26 @@ For example:
 
 ``` php
 <?hh
-$builder->addValue(
-  'foo',
+// Output: $foo = $bar;
+$builder->addAssignment(
+  '$foo',
+  '$bar',
+  HackBuilderValues::literal(),
+);
+
+// Output: $foo = '$bar';
+$builder->addAssignment(
+  '$foo',
+  '$bar',
   HackBuilderValues::export(),
+);
+
+// Output: $foo = \Foo\Bar::class;
+use Foo\Bar;
+$builder->addAssignment(
+  '$foo',
+  Bar::class,
+  HackBuilderValues::classname(),
 );
 ```
 
