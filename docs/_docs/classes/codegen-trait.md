@@ -5,7 +5,7 @@ layout: docs
 permalink: /docs/classes/CodegenTrait/
 ---
 
-A `CodegenTrait` is created with `$factory->codegenInterface(name)`; it can
+A `CodegenTrait` is created with `$factory->codegenTrait(name)`; it can
 be marked as implementing interfaces with
 `->addInterface($codegen_implements_interface)`, and also adds two Hack-specific
 features on top of `CodegenBaseClass`:
