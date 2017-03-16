@@ -38,17 +38,14 @@ require_once(__DIR__.'/../../../vendor/autoload.php');
 /* END MANUAL SECTION */
 ```
 
-While the manual section could be avoided by adding a configuration option to the
-script generator, this requires putting code into a string, which is generally less
-preferable than having it as real code.
+There alternative approaches, however they generall require putting code into
+a string, which is usually less preferable than having it as real code.
 
 One of the reasons that partially-generated files are generally discouraged with
 other frameworks is that major upgrades often require re-creating the files
-completely, then manually re-doing edits.
-
-This isn't the case with Hack Codegen: if a new version of a file contains a manual
-section with the same 'key' as an old version, the old manual section is copied
-into the new manual section.
+completely, then manually re-doing edits; This isn't the case with Hack Codegen:
+if a new version of a file contains a manual section with the same 'key' as an
+old version, the old manual section is copiedi into the new manual section.
 
 Creating Manual Sections
 ------------------------

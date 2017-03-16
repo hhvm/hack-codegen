@@ -1,13 +1,15 @@
 - title: Signed Files
   text: |
         Generated files are signed to prevent or detect manual modifications of
-        generated code; this can be disabled if required.
+        generated code; these files can then be regenerated with new content in
+        the future, or signatures can be disabled to generate 'skeleton' code,
+        if any future changes will be manual.
 
 - title: Partially Generated Files
   text: |
         Generated code can be marked as containing manually-modifiable
-        sections; you can use hack-codegen to rewrite the rest of the file,
-        and all manual sections will be left unmodified.
+        sections; you can use hack-codegen to rewrite the rest of the file in
+        the future, and all manual sections will be left unmodified.
   
 - title: Readable Output
   text: |
