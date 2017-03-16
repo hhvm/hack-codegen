@@ -12,7 +12,7 @@ create definitions with methods like:
  - `->codegenClass('SomeClass'): CodegenClass`
  - `->codegenTrait('SomeTrait'): CodegenTrait`
  - `->codegenMethod('someMethod'): CodegenMethod`
- - `->codegenShape($members)`: CodegenShape`
+ - `->codegenShape($members)`: `CodegenShape`
 
 Using these helpers is recommended; see
 [`IHackCodegenFactory`](https://github.com/hhvm/hack-codegen/blob/master/src/ICodegenFactory.php)
