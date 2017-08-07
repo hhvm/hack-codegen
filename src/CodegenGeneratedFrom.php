@@ -26,7 +26,8 @@ final class CodegenGeneratedFrom implements ICodeBuilderRenderer {
   public function __construct(
     protected IHackCodegenConfig $config,
     private string $msg,
-  ) {}
+  ) {
+  }
 
   public function appendToBuilder(HackBuilder $builder): HackBuilder {
     return $builder->add($this->msg);

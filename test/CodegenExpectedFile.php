@@ -138,11 +138,7 @@ final class CodegenExpectedFile {
           $final_expected->set($token, $new_value);
         } else {
           // Prompt user to accept the change
-          $update_it = self::promptForUpdate(
-            $token,
-            $old_value,
-            $new_value,
-          );
+          $update_it = self::promptForUpdate($token, $old_value, $new_value);
           if ($update_it === true) {
             $final_expected->set($token, $new_value);
           } else {
@@ -221,12 +217,10 @@ final class CodegenExpectedFile {
     mixed ...$args
   ): void {
     $message = vsprintf($format, $args);
-    self::displayRaw('gentest> '.$message ."\n");
+    self::displayRaw('gentest> '.$message."\n");
   }
 
-  final public static function displayRaw(
-    string $message,
-  ): void {
+  final public static function displayRaw(string $message): void {
     fwrite(STDERR, $message);
   }
 
@@ -281,19 +275,13 @@ final class CodegenExpectedFile {
    */
   final private static function escapeTokens(string $s): string {
     $result = Str::replace('@'.'generated', '@-generated', $s);
-    return Str::replace(
-      '@'.'partially-generated',
-      '@-partially-generated',
-      $result,
-    );
+    return
+      Str::replace('@'.'partially-generated', '@-partially-generated', $result);
   }
 
   final private static function unescapeTokens(string $s): string {
     $result = Str::replace('@-generated', '@'.'generated', $s);
-    return Str::replace(
-      '@-partially-generated',
-      '@'.'partially-generated',
-      $result,
-    );
+    return
+      Str::replace('@-partially-generated', '@'.'partially-generated', $result);
   }
 }

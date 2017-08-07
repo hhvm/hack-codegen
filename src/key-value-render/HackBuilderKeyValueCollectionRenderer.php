@@ -11,11 +11,12 @@
 
 namespace Facebook\HackCodegen;
 
-class HackBuilderKeyValueCollectionRenderer<
-  Tk as arraykey,
-  Tv,
-  T as KeyedTraversable<Tk, Tv>
-> implements IHackBuilderValueRenderer<T> {
+class
+  HackBuilderKeyValueCollectionRenderer<
+    Tk as arraykey,
+    Tv,
+    T as KeyedTraversable<Tk, Tv>,
+  > implements IHackBuilderValueRenderer<T> {
   public function __construct(
     private classname<T> $containerName,
     private IHackBuilderKeyRenderer<Tk> $keyRenderer,
@@ -23,10 +24,7 @@ class HackBuilderKeyValueCollectionRenderer<
   ) {
   }
 
-  final public function render(
-    IHackCodegenConfig $config,
-    T $values,
-  ): string {
+  final public function render(IHackCodegenConfig $config, T $values): string {
     $key_renderer = $this->keyRenderer;
     $value_renderer = $this->valueRenderer;
 
@@ -40,9 +38,6 @@ class HackBuilderKeyValueCollectionRenderer<
         $value_renderer->render($config, $value),
       );
     }
-    return $builder
-      ->unindent()
-      ->add('}')
-      ->getCode();
+    return $builder->unindent()->add('}')->getCode();
   }
 }

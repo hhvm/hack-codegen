@@ -10,7 +10,7 @@
 
 namespace Facebook\HackCodegen;
 
-enum CodegenPHPMethodVisibility : string as string {
+enum CodegenPHPMethodVisibility: string as string {
   V_PUBLIC = 'public';
   V_PRIVATE = 'private';
   V_PROTECTED = 'protected';

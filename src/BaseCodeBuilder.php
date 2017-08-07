@@ -55,11 +55,8 @@ abstract class BaseCodeBuilder implements ICodeBuilder {
   final public function add(?string $code): this {
     return $this->addf('%s', $code);
   }
-  final public function addf(
-    SprintfFormatString $code,
-    mixed ...$args
-  ): this {
-    return $this->addv((string) $code, $args);
+  final public function addf(SprintfFormatString $code, mixed ...$args): this {
+    return $this->addv((string)$code, $args);
   }
 
   final protected function addv(?string $code, array<mixed> $args): this {
@@ -177,9 +174,7 @@ abstract class BaseCodeBuilder implements ICodeBuilder {
    *                  the delimiter which it always replaces
    *                  either with " " or "\n".
    */
-  final public function addWithSuggestedLineBreaks(
-    ?string $code,
-  ): this {
+  final public function addWithSuggestedLineBreaks(?string $code): this {
     if ($code === null) {
       return $this;
     }
@@ -218,7 +213,7 @@ abstract class BaseCodeBuilder implements ICodeBuilder {
         $final_lines->add($line);
       } else {
         $last_line = $final_lines->pop();
-        $composite_line = $last_line . ' ' . $line;
+        $composite_line = $last_line.' '.$line;
         if (strlen($composite_line) > $max_length) {
           $final_lines->add($last_line)->add($line);
         } else {

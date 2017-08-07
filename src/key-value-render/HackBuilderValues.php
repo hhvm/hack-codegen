@@ -32,7 +32,7 @@ abstract final class HackBuilderValues {
   public static function keyValueArray<Tk as arraykey, Tv>(
     IHackBuilderKeyRenderer<Tk> $kr,
     IHackBuilderValueRenderer<Tv> $vr,
-  ): IHackBuilderValueRenderer<array<Tk,Tv>> {
+  ): IHackBuilderValueRenderer<array<Tk, Tv>> {
     return new HackBuilderKeyValueArrayRenderer('array', $kr, $vr);
   }
 
@@ -63,14 +63,14 @@ abstract final class HackBuilderValues {
   public static function map<Tk as arraykey, Tv>(
     IHackBuilderKeyRenderer<Tk> $kr,
     IHackBuilderValueRenderer<Tv> $vr,
-  ): IHackBuilderValueRenderer<Map<Tk,Tv>> {
+  ): IHackBuilderValueRenderer<Map<Tk, Tv>> {
     return new HackBuilderKeyValueCollectionRenderer(Map::class, $kr, $vr);
   }
 
   public static function immMap<Tk as arraykey, Tv>(
     IHackBuilderKeyRenderer<Tk> $kr,
     IHackBuilderValueRenderer<Tv> $vr,
-  ): IHackBuilderValueRenderer<ImmMap<Tk,Tv>> {
+  ): IHackBuilderValueRenderer<ImmMap<Tk, Tv>> {
     return new HackBuilderKeyValueCollectionRenderer(ImmMap::class, $kr, $vr);
   }
 
@@ -88,9 +88,7 @@ abstract final class HackBuilderValues {
   public static function shapeWithPerKeyRendering(
     shape() $value_renderers,
   ): IHackBuilderValueRenderer<shape()> {
-    return new HackBuilderShapeRenderer(
-      $value_renderers,
-    );
+    return new HackBuilderShapeRenderer($value_renderers);
   }
 
   /* The key will be renderered as a classname<T> */

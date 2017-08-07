@@ -14,8 +14,7 @@ namespace Facebook\HackCodegen;
  * Abstract class to generate code for a class or trait.
  *
  */
-abstract class CodegenClassBase
-  implements ICodeBuilderRenderer {
+abstract class CodegenClassBase implements ICodeBuilderRenderer {
 
   use CodegenWithVisibility;
   use CodegenWithAttributes;
@@ -84,7 +83,8 @@ abstract class CodegenClassBase
 
   protected function getTraits(): Vector<string> {
     // Trait<T> becomes Trait
-    return $this->traits
+    return $this
+      ->traits
       ->map($trait ==> {
         $name = $trait->getName();
         return strstr($name, '<', true) ?: $name;
@@ -278,7 +278,7 @@ abstract class CodegenClassBase
         $builder->addWithSuggestedLineBreaksf(
           "const %s =\t%s;",
           $name,
-          (string) $value,
+          (string)$value,
         );
       }
       $builder->newLine();
@@ -297,19 +297,15 @@ abstract class CodegenClassBase
 
   protected function buildMethods(HackBuilder $builder): void {
     foreach ($this->methods as $method) {
-      $builder
-        ->ensureEmptyLine()
-        ->addRenderer($method);
+      $builder->ensureEmptyLine()->addRenderer($method);
     }
     if ($this->hasManualFooter) {
-      $footer_name =
-        $this->footerName === null
-          ? ($this->name.'_footer')
-          : $this->footerName;
-      $footer =
-        $this->footerContents === null
-          ? '// Insert additional methods here'
-          : $this->footerContents;
+      $footer_name = $this->footerName === null
+        ? ($this->name.'_footer')
+        : $this->footerName;
+      $footer = $this->footerContents === null
+        ? '// Insert additional methods here'
+        : $this->footerContents;
       $builder
         ->ensureEmptyLine()
         ->beginManualSection($footer_name)
@@ -320,7 +316,7 @@ abstract class CodegenClassBase
 
   protected function buildManualDeclarations(HackBuilder $builder): void {
     if ($this->hasManualHeader) {
-      $manual_section = coalescex($this->headerName, $this->name . '_header');
+      $manual_section = coalescex($this->headerName, $this->name.'_header');
       $content = coalescex(
         $this->headerContents,
         '// Insert additional consts and vars here',
@@ -335,9 +331,7 @@ abstract class CodegenClassBase
 
   protected function getExtraAttributes(): ImmMap<string, ImmVector<string>> {
     if ($this->isConsistentConstruct) {
-      return ImmMap {
-        '__ConsistentConstruct' => ImmVector {},
-      };
+      return ImmMap { '__ConsistentConstruct' => ImmVector {} };
     }
     return ImmMap {};
   }
@@ -345,12 +339,10 @@ abstract class CodegenClassBase
   abstract protected function appendBodyToBuilder(HackBuilder $builder): void;
 
   public function appendToBuilder(HackBuilder $builder): HackBuilder {
-    $generated_from = $this->generatedFrom
-      ? $this->generatedFrom->render()
-      : null;
+    $generated_from =
+      $this->generatedFrom ? $this->generatedFrom->render() : null;
 
-    $doc_block_parts =
-      array_filter(array($this->docBlock, $generated_from));
+    $doc_block_parts = array_filter(array($this->docBlock, $generated_from));
 
     if ($doc_block_parts) {
       $builder->addDocBlock(implode("\n\n", $doc_block_parts));
@@ -358,9 +350,7 @@ abstract class CodegenClassBase
 
     $wrapper_func = $this->wrapperFunc;
     if ($wrapper_func) {
-      $builder
-        ->addRenderer($wrapper_func)
-        ->ensureEmptyLine();
+      $builder->addRenderer($wrapper_func)->ensureEmptyLine();
     }
 
     if ($this->hasAttributes()) {
@@ -382,7 +372,7 @@ trait CodegenClassWithInterfaces {
   private Vector<CodegenImplementsInterface> $interfaces = Vector {};
 
   public function setInterfaces(
-    Vector<CodegenImplementsInterface> $value
+    Vector<CodegenImplementsInterface> $value,
   ): this {
     invariant($this->interfaces->isEmpty(), 'interfaces have already been set');
     $this->interfaces = $value;
@@ -403,7 +393,8 @@ trait CodegenClassWithInterfaces {
 
   public function getImplements(): Vector<string> {
     // Interface<T> becomes Interface
-    return $this->interfaces
+    return $this
+      ->interfaces
       ->map($interface ==> {
         $name = $interface->getName();
         return strstr($name, '<', true) ?: $name;

@@ -63,9 +63,9 @@ abstract class CodegenMethodBase extends CodegenFunctionBase
       ->addIf(
         $this->isAbstract &&
         !($this->containingClass instanceof CodegenInterface),
-        'abstract '
+        'abstract ',
       )
-      ->add($this->getVisibility() . ' ')
+      ->add($this->getVisibility().' ')
       ->addIf($this->isStatic, 'static ')
       ->addIf($this->isAsync && !$this->isAbstract, 'async ')
       ->add('function ')
@@ -78,16 +78,15 @@ abstract class CodegenMethodBase extends CodegenFunctionBase
     $id = '';
     if ($this->isManualBody()) {
       invariant($this->containingClass, 'The method should belong to a class');
-      $id = $this->containingClass->getName() . '::';
+      $id = $this->containingClass->getName().'::';
     }
     $func_declaration = $this->getFunctionDeclaration();
 
-    return
-      $this->appendToBuilderBase(
-        $builder,
-        $func_declaration,
-        $this->isAbstract,
-        $id
-      );
+    return $this->appendToBuilderBase(
+      $builder,
+      $func_declaration,
+      $this->isAbstract,
+      $id,
+    );
   }
 }

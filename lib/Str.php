@@ -24,7 +24,7 @@ final class Str {
   public static function explode(
     string $delimiter,
     string $str,
-    ?int $limit=null,
+    ?int $limit = null,
   ): Vector<string> {
     if ($delimiter == '') {
       if ($limit === null) {
@@ -66,11 +66,10 @@ final class Str {
   public static function substr(
     string $str,
     int $offset,
-    ?int $length=null,
+    ?int $length = null,
   ): string {
-    $r = is_null($length) ?
-      substr($str, $offset) :
-      substr($str, $offset, $length);
+    $r =
+      is_null($length) ? substr($str, $offset) : substr($str, $offset, $length);
     if ($r === false) {
       return '';
     }

@@ -14,9 +14,7 @@ namespace Facebook\HackCodegen;
 final class HackCodegenFactory {
   use CodegenFactoryTrait;
 
-  public function __construct(
-    private IHackCodegenConfig $config,
-  ) {
+  public function __construct(private IHackCodegenConfig $config) {
   }
 
   public function getConfig(): IHackCodegenConfig {

@@ -21,7 +21,8 @@ final class CodegenInterfaceTest extends CodegenBaseTest {
 
   public function testExtendsInterfaces(): void {
     $cgf = $this->getCodegenFactory();
-    $code = $cgf->codegenInterface('IExtenderOfTwo')
+    $code = $cgf
+      ->codegenInterface('IExtenderOfTwo')
       ->addInterface($cgf->codegenImplementsInterface('IExtended'))
       ->addInterface($cgf->codegenImplementsInterface('IOtherExtended'))
       ->render();
@@ -31,10 +32,12 @@ final class CodegenInterfaceTest extends CodegenBaseTest {
 
   public function testExtendsInterfaceWithGeneratedFrom(): void {
     $cgf = $this->getCodegenFactory();
-    $code = $cgf->codegenInterface('IExtenderOfOne')
+    $code = $cgf
+      ->codegenInterface('IExtenderOfOne')
       ->addInterface(
-        $cgf->codegenImplementsInterface('IExtended')
-        ->setGeneratedFrom($cgf->codegenGeneratedFromMethod('Foo', 'Bar'))
+        $cgf
+          ->codegenImplementsInterface('IExtended')
+          ->setGeneratedFrom($cgf->codegenGeneratedFromMethod('Foo', 'Bar')),
       )
       ->render();
 
@@ -43,11 +46,13 @@ final class CodegenInterfaceTest extends CodegenBaseTest {
 
   public function testInterfaceWithStuff(): void {
     $cgf = $this->getCodegenFactory();
-    $code = $cgf->codegenInterface('IInterfaceWithStuff')
+    $code = $cgf
+      ->codegenInterface('IInterfaceWithStuff')
       ->addMethod(
-        $cgf->codegenMethod('genFoo')
-        ->setReturnType('Awaitable<mixed>')
-        ->setDocBlock("Override this to have the stuff")
+        $cgf
+          ->codegenMethod('genFoo')
+          ->setReturnType('Awaitable<mixed>')
+          ->setDocBlock("Override this to have the stuff"),
       )
       ->addConst('A_CONST', 0)
       ->render();

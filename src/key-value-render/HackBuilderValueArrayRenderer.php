@@ -12,7 +12,7 @@
 namespace Facebook\HackCodegen;
 
 final class HackBuilderValueArrayRenderer<Tv>
-implements IHackBuilderValueRenderer<array<Tv>> {
+  implements IHackBuilderValueRenderer<array<Tv>> {
   public function __construct(
     private IHackBuilderValueRenderer<Tv> $valueRenderer,
   ) {
@@ -23,15 +23,10 @@ implements IHackBuilderValueRenderer<array<Tv>> {
     array<Tv> $array,
   ): string {
     $value_renderer = $this->valueRenderer;
-    $builder = (new HackBuilder($config))
-      ->addLine('array(')
-      ->indent();
+    $builder = (new HackBuilder($config))->addLine('array(')->indent();
     foreach ($array as $value) {
       $builder->addLinef('%s,', $value_renderer->render($config, $value));
     }
-    return $builder
-      ->unindent()
-      ->add(')')
-      ->getCode();
+    return $builder->unindent()->add(')')->getCode();
   }
 }

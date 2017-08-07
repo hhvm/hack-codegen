@@ -13,14 +13,16 @@ namespace Facebook\HackCodegen;
 final class CodegenEnumTest extends CodegenBaseTest {
 
   public function testDocblock(): void {
-    $code = $this->getCodegenFactory()->codegenEnum('TestDocblock', 'int')
+    $code = $this
+      ->getCodegenFactory()
+      ->codegenEnum('TestDocblock', 'int')
       ->setDocBlock(
         "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ".
         "do eiusmod tempor incididunt ut labore et dolore magna aliqua. ".
         "Ut enim ad minim veniam, quis nostrud exercitation ullamco ".
         "laboris nisi ut aliquip ex ea commodo consequat.\n".
         "Understood?\n".
-        "Yes!"
+        "Yes!",
       )
       ->render();
 
@@ -28,7 +30,9 @@ final class CodegenEnumTest extends CodegenBaseTest {
   }
 
   public function testIsAs(): void {
-    $code = $this->getCodegenFactory()->codegenEnum('NothingHere', 'int')
+    $code = $this
+      ->getCodegenFactory()
+      ->codegenEnum('NothingHere', 'int')
       ->setIsAs('int')
       ->render();
 
@@ -36,10 +40,9 @@ final class CodegenEnumTest extends CodegenBaseTest {
   }
 
   public function testLongEnumDeclaration(): void {
-    $code = $this->getCodegenFactory()->codegenEnum(
-      'EnumWithReallyLongName',
-      'string',
-    )
+    $code = $this
+      ->getCodegenFactory()
+      ->codegenEnum('EnumWithReallyLongName', 'string')
       ->setIsAs('NowThisIsTheParentEnumWithALongNameItSelf')
       ->render();
 
@@ -47,7 +50,9 @@ final class CodegenEnumTest extends CodegenBaseTest {
   }
 
   public function testDemo(): void {
-    $code = $this->getCodegenFactory()->codegenEnum('Demo', 'string')
+    $code = $this
+      ->getCodegenFactory()
+      ->codegenEnum('Demo', 'string')
       ->addConst('A', 'a')
       ->addConst('B', 'b', 'This is a different letter')
       ->render();

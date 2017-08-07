@@ -16,8 +16,7 @@ namespace Facebook\HackCodegen;
  *
  * codegen_shape(array('x' => 'int', 'y' => 'int'))
  */
-final class CodegenShape
-  implements ICodeBuilderRenderer {
+final class CodegenShape implements ICodeBuilderRenderer {
 
   use HackBuilderRenderer;
 
@@ -26,7 +25,8 @@ final class CodegenShape
   public function __construct(
     protected IHackCodegenConfig $config,
     private array<string, string> $attrs = array(),
-  ) {}
+  ) {
+  }
 
   public function setManualAttrsID(?string $id = null): this {
     $this->manualAttrsID = $id;
@@ -34,9 +34,7 @@ final class CodegenShape
   }
 
   public function appendToBuilder(HackBuilder $builder): HackBuilder {
-    $builder
-      ->addLine('shape(')
-      ->indent();
+    $builder->addLine('shape(')->indent();
 
     foreach ($this->attrs as $name => $type) {
       $builder->addLinef("'%s' => %s,", $name, $type);
@@ -51,8 +49,6 @@ final class CodegenShape
         ->endManualSection();
     }
 
-    return $builder
-      ->unindent()
-      ->add(')');
+    return $builder->unindent()->add(')');
   }
 }

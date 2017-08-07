@@ -34,7 +34,7 @@ final class CodegenType implements ICodeBuilderRenderer {
   public function setType(string $type): this {
     invariant(
       $this->codegenShape === null,
-      "You can't set both the type and the shape."
+      "You can't set both the type and the shape.",
     );
     $this->type = $type;
     return $this;
@@ -58,22 +58,14 @@ final class CodegenType implements ICodeBuilderRenderer {
       $this->type !== null || $this->codegenShape !== null,
       "You need to set either the type or the shape",
     );
-    $builder->addf(
-      '%s %s = ',
-      $this->keyword,
-      $this->name
-    );
+    $builder->addf('%s %s = ', $this->keyword, $this->name);
     if ($this->type !== null) {
-      return $builder
-        ->add($this->type)
-        ->closeStatement();
+      return $builder->add($this->type)->closeStatement();
     }
     invariant(
       $this->codegenShape !== null,
       "Somehow the type and the shape were null!",
     );
-    return $builder
-      ->addRenderer($this->codegenShape)
-      ->closeStatement();
+    return $builder->addRenderer($this->codegenShape)->closeStatement();
   }
 }

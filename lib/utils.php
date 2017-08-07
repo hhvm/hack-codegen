@@ -11,11 +11,11 @@
 namespace Facebook\HackCodegen;
 
 function normalized_var_export(mixed $value): string {
-    if ($value === null) {
-      // var_export capitalizes NULL
-      return 'null';
-    }
-    return strip_hh_prefix(var_export($value, true));
+  if ($value === null) {
+    // var_export capitalizes NULL
+    return 'null';
+  }
+  return strip_hh_prefix(var_export($value, true));
 }
 
 /**
@@ -24,15 +24,27 @@ function normalized_var_export(mixed $value): string {
  */
 function strip_hh_prefix(
   string $str,
-  bool $nonobject_types_only = false
+  bool $nonobject_types_only = false,
 ): string {
   if (!is_int(stripos($str, 'HH\\'))) {
     // Bail out early if $str doesn't contain 'HH\'
     return $str;
   }
   $nonobject_types = ImmSet {
-    'bool', 'boolean', 'int', 'integer', 'float', 'double', 'real', 'num',
-    'string', 'resource', 'mixed', 'void', 'this', 'arraykey',
+    'bool',
+    'boolean',
+    'int',
+    'integer',
+    'float',
+    'double',
+    'real',
+    'num',
+    'string',
+    'resource',
+    'mixed',
+    'void',
+    'this',
+    'arraykey',
   };
   $len = strlen($str);
   $in_literal = '';
@@ -45,7 +57,8 @@ function strip_hh_prefix(
       if ($c === '\\') {
         $out .= $c;
         ++$i;
-        if ($i >= $len) break;
+        if ($i >= $len)
+          break;
         $c = $str[$i];
         $out .= $c;
         continue;
@@ -54,9 +67,13 @@ function strip_hh_prefix(
         $in_literal = '';
       }
     } else {
-      if (($c === 'H' || $c === 'h') &&
-          strtoupper(substr($str, $i, 3)) === "HH\\" &&
-          !ctype_alnum($prev) && $prev !== '_' && $prev !== '\\') {
+      if (
+        ($c === 'H' || $c === 'h') &&
+        strtoupper(substr($str, $i, 3)) === "HH\\" &&
+        !ctype_alnum($prev) &&
+        $prev !== '_' &&
+        $prev !== '\\'
+      ) {
         if ($nonobject_types_only) {
           $sub = substr($str, $i + 3, 9);
           $sub_len = strlen($sub);
@@ -91,13 +108,13 @@ function difference_render_fast(string $old, string $new): string {
   // UNSAFE_BLOCK
   // split the source text into arrays of lines
   $t1 = explode("\n", $old);
-  $x  = array_pop($t1);
+  $x = array_pop($t1);
   if ($x > '') {
     $t1[] = "$x\n\\ No newline at end of file";
   }
 
   $t2 = explode("\n", $new);
-  $x  = array_pop($t2);
+  $x = array_pop($t2);
   if ($x > '') {
     $t2[] = "$x\n\\ No newline at end of file";
   }
@@ -141,30 +158,28 @@ function difference_render_fast(string $old, string $new): string {
     $s2 = $a2;
     while (($s1 + $s2 - $a1 - $a2) < ($best1 + $best2 - $a1 - $a2)) {
       $d = -1;
-      foreach ((array) @$r1[$t2[$s2]] as $n) {
+      foreach ((array)@$r1[$t2[$s2]] as $n) {
         if ($n >= $s1) {
           $d = $n;
           break;
         }
       }
 
-      if ($d >= $s1 && ($d + $s2 - $a1 - $a2) <
-          ($best1 + $best2 - $a1 - $a2)) {
+      if ($d >= $s1 && ($d + $s2 - $a1 - $a2) < ($best1 + $best2 - $a1 - $a2)) {
         $best1 = $d;
         $best2 = $s2;
       }
 
       $d = -1;
 
-      foreach ((array) @$r2[$t1[$s1]] as $n) {
+      foreach ((array)@$r2[$t1[$s1]] as $n) {
         if ($n >= $s2) {
           $d = $n;
           break;
         }
       }
 
-      if ($d >= $s2 && ($s1 + $d - $a1 - $a2) <
-          ($best1 + $best2 - $a1 - $a2)) {
+      if ($d >= $s2 && ($s1 + $d - $a1 - $a2) < ($best1 + $best2 - $a1 - $a2)) {
         $best1 = $s1;
         $best2 = $d;
       }
@@ -285,9 +300,6 @@ function coalesce<T>(?T $_head, ?T ...$rest): ?T {
  */
 function coalescex<T>(?T $_head, ?T ...$_rest): T {
   $result = coalesce(...func_get_args());
-  invariant(
-    $result !== null,
-    'All arguments were null',
-  );
+  invariant($result !== null, 'All arguments were null');
   return $result;
 }

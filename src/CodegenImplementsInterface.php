@@ -23,8 +23,7 @@ namespace Facebook\HackCodegen;
  * $class = codegen_class('MyClass')
  *   ->addInterface($i);
  */
-final class CodegenImplementsInterface
-  implements ICodeBuilderRenderer {
+final class CodegenImplementsInterface implements ICodeBuilderRenderer {
 
   use HackBuilderRenderer;
 
@@ -33,7 +32,8 @@ final class CodegenImplementsInterface
   public function __construct(
     protected IHackCodegenConfig $config,
     private string $name,
-  ) {}
+  ) {
+  }
 
   public function getName(): string {
     return $this->name;

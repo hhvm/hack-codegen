@@ -32,8 +32,6 @@ final class HackCodegenConfig implements IHackCodegenConfig {
     return $this->rootDir;
   }
 
-  public function __construct(
-    private string $rootDir = __DIR__,
-  ) {
+  public function __construct(private string $rootDir = __DIR__) {
   }
 }

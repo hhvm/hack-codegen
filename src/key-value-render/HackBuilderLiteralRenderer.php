@@ -12,11 +12,10 @@
 namespace Facebook\HackCodegen;
 
 final class HackBuilderLiteralRenderer
-implements IHackBuilderKeyRenderer<string>, IHackBuilderValueRenderer<string> {
-  final public function render(
-    IHackCodegenConfig $_,
-    string $value,
-  ): string {
+  implements
+    IHackBuilderKeyRenderer<string>,
+    IHackBuilderValueRenderer<string> {
+  final public function render(IHackCodegenConfig $_, string $value): string {
     return $value;
   }
 }

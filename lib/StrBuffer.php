@@ -16,7 +16,7 @@ class StrBuffer {
   private bool $detached = false;
 
   public function append(mixed $value): void {
-    $this->str .= (string) $value;
+    $this->str .= (string)$value;
   }
 
   public function detach(): string {

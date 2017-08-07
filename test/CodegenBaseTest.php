@@ -16,10 +16,7 @@ abstract class CodegenBaseTest extends \PHPUnit\Framework\TestCase {
     return new HackCodegenFactory(new TestCodegenConfig());
   }
 
-  public function assertUnchanged(
-    string $value,
-    ?string $token = null,
-  ): void {
+  public function assertUnchanged(string $value, ?string $token = null): void {
     $class_name = get_called_class();
     $path = CodegenExpectedFile::getPath($class_name);
     $expected = CodegenExpectedFile::parseFile($path);

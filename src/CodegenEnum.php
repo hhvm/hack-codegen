@@ -55,9 +55,9 @@ final class CodegenEnum extends CodegenClassBase {
     $builder->addWithSuggestedLineBreaksf(
       '%s%s%s%s',
       (string)$this->declComment,
-      "enum ". $this->name,
-      HackBuilder::DELIMITER . ": " . $this->enumType,
-      $this->isAs !== null ? HackBuilder::DELIMITER . "as " . $this->isAs : '',
+      "enum ".$this->name,
+      HackBuilder::DELIMITER.": ".$this->enumType,
+      $this->isAs !== null ? HackBuilder::DELIMITER."as ".$this->isAs : '',
     );
   }
 
@@ -75,11 +75,8 @@ final class CodegenEnum extends CodegenClassBase {
         $builder->addDocBlock($comment);
       }
       $builder
-        ->addWithSuggestedLineBreaksf(
-          "%s =\t%s;",
-          $name,
-          (string) $value,
-        )->newLine();
+        ->addWithSuggestedLineBreaksf("%s =\t%s;", $name, (string)$value)
+        ->newLine();
     }
   }
 

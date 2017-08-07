@@ -41,14 +41,14 @@ final class HackBuilder extends BaseCodeBuilder {
 
     // Let's put everything in a single line
     $args = '('.implode(', ', $params->toArray()).')';
-    $composite_line = $func_call_line . $args;
+    $composite_line = $func_call_line.$args;
     // Ignore suggested line breaks within individual args; otherwise we could
     // split in the middle of arguments rather than after each parameter.
-    $composite_line_no_breaks = $func_call_line.
-      str_replace(self::DELIMITER, ' ', $args);
+    $composite_line_no_breaks =
+      $func_call_line.str_replace(self::DELIMITER, ' ', $args);
     if ($include_close_statement) {
-      $composite_line = $composite_line . ";\n";
-      $composite_line_no_breaks = $composite_line_no_breaks . ";\n";
+      $composite_line = $composite_line.";\n";
+      $composite_line_no_breaks = $composite_line_no_breaks.";\n";
     }
     $clone_builder = $this->getClone();
     $clone_builder->addWithSuggestedLineBreaks($composite_line_no_breaks);
@@ -57,12 +57,15 @@ final class HackBuilder extends BaseCodeBuilder {
       return $this->addWithSuggestedLineBreaks($composite_line);
     }
 
-    $this->addWithSuggestedLineBreaks("$func_call_line(")
-     ->newLine()
-     ->indent()
-     ->addLinesWithSuggestedLineBreaks(
-         $params->map(function(string $line) { return $line.','; })
-       )
+    $this
+      ->addWithSuggestedLineBreaks("$func_call_line(")
+      ->newLine()
+      ->indent()
+      ->addLinesWithSuggestedLineBreaks(
+        $params->map(function(string $line) {
+          return $line.',';
+        }),
+      )
       ->unindent()
       ->add(')');
     if ($include_close_statement) {
@@ -71,10 +74,7 @@ final class HackBuilder extends BaseCodeBuilder {
     return $this;
   }
 
-  public function addValue<T>(
-    T $value,
-    IHackBuilderValueRenderer<T> $r,
-  ): this {
+  public function addValue<T>(T $value, IHackBuilderValueRenderer<T> $r): this {
     return $this->add($r->render($this->config, $value));
   }
 
@@ -89,11 +89,7 @@ final class HackBuilder extends BaseCodeBuilder {
     string $line,
     ?int $max_length = null,
   ): this {
-    return $this->addWrappedStringImpl(
-      $line,
-      $max_length,
-      true,
-    );
+    return $this->addWrappedStringImpl($line, $max_length, true);
   }
 
   /**
@@ -110,11 +106,7 @@ final class HackBuilder extends BaseCodeBuilder {
     string $line,
     ?int $max_length = null,
   ): this {
-    return $this->addWrappedStringImpl(
-      $line,
-      $max_length,
-      false,
-    );
+    return $this->addWrappedStringImpl($line, $max_length, false);
   }
 
   private function addWrappedStringImpl(
@@ -122,10 +114,11 @@ final class HackBuilder extends BaseCodeBuilder {
     ?int $max_length = null,
     bool $indent_non_first_lines = true,
   ): this {
-    $max_length = $max_length !== null ?
-      $max_length :
-      // subtract 3 for the two quotes and . operator
-      $this->getMaxCodeLength() - 3;
+    $max_length = $max_length !== null
+      ? $max_length
+      :
+        // subtract 3 for the two quotes and . operator
+        $this->getMaxCodeLength() - 3;
 
     $lines = $this->splitString($line, $max_length, /*preserve_space*/ true);
     if (!$lines) {
@@ -139,17 +132,15 @@ final class HackBuilder extends BaseCodeBuilder {
 
     // If we have multiple line segments to add, add all the
     // inbetween ones with the concat operator
-    $this
-      ->add('.')
-      ->newLine();
+    $this->add('.')->newLine();
 
     if ($indent_non_first_lines) {
       $this->indent();
     }
 
-    $lines->slice(1, $lines->count() - 2)->map(
-      $line ==> $this->addLine(normalized_var_export($line).'.'),
-    );
+    $lines
+      ->slice(1, $lines->count() - 2)
+      ->map($line ==> $this->addLine(normalized_var_export($line).'.'));
     // And then add the last
     $this->add(normalized_var_export($lines->lastValue()));
     if ($indent_non_first_lines) {
@@ -162,19 +153,11 @@ final class HackBuilder extends BaseCodeBuilder {
     T $value,
     IHackBuilderValueRenderer<T> $renderer,
   ): this {
-    return $this
-      ->add('return ')
-      ->addValue($value, $renderer)
-      ->addLine(';');
+    return $this->add('return ')->addValue($value, $renderer)->addLine(';');
   }
-  public function addReturnf(
-    SprintfFormatString $value,
-    mixed ...$args
-  ): this {
-    return $this->addReturn(
-      vsprintf($value, $args),
-      HackBuilderValues::literal(),
-    );
+  public function addReturnf(SprintfFormatString $value, mixed ...$args): this {
+    return
+      $this->addReturn(vsprintf($value, $args), HackBuilderValues::literal());
   }
 
   public function addAssignment<T>(
@@ -195,19 +178,14 @@ final class HackBuilder extends BaseCodeBuilder {
    * with one more level of indentation.
    */
   public function openBrace(): this {
-    return $this
-      ->addLine(' {')
-      ->indent();
+    return $this->addLine(' {')->indent();
   }
 
   /**
    * Close a brace in a new line and sets one less level of indentation.
    */
   public function closeBrace(): this {
-    return $this
-      ->ensureNewLine()
-      ->unindent()
-      ->addLine('}');
+    return $this->ensureNewLine()->unindent()->addLine('}');
   }
 
   public function closeStatement(): this {
@@ -219,14 +197,8 @@ final class HackBuilder extends BaseCodeBuilder {
    * it's equivalent to calling openBrace, which newline and indent.
    * startIfBlock('$a === 0') generates if ($a === 0) {\n
    */
-  public function startIfBlock(
-    string $condition,
-  ): this {
-    return $this
-      ->add('if (')
-      ->add($condition)
-      ->add(')')
-      ->openBrace();
+  public function startIfBlock(string $condition): this {
+    return $this->add('if (')->add($condition)->add(')')->openBrace();
   }
 
   public function startIfBlockf(
@@ -266,11 +238,7 @@ final class HackBuilder extends BaseCodeBuilder {
    * End current if/else block, and start a else block
    */
   public function addElseBlock(): this {
-    return $this
-      ->ensureNewLine()
-      ->unindent()
-      ->add('} else')
-      ->openBrace();
+    return $this->ensureNewLine()->unindent()->add('} else')->openBrace();
   }
 
   /**
@@ -335,23 +303,19 @@ final class HackBuilder extends BaseCodeBuilder {
    *
    */
   public function startSwitch(string $condition): this {
-    return $this
-      ->addLinef('switch (%s) {', $condition)
-      ->indent();
+    return $this->addLinef('switch (%s) {', $condition)->indent();
   }
 
   public function addCaseBlocks<T>(
     Iterable<T> $switch_values,
-    (function (T, HackBuilder): void) $func,
+    (function(T, HackBuilder): void) $func,
   ): this {
     $switch_values->map($v ==> $func($v, $this));
     return $this;
   }
 
   public function addCase(string $case): this {
-    return $this
-      ->addLinef('case %s:', $case)
-      ->indent();
+    return $this->addLinef('case %s:', $case)->indent();
   }
 
   public function addDefault(): this {
@@ -373,10 +337,8 @@ final class HackBuilder extends BaseCodeBuilder {
     SprintfFormatString $value,
     mixed ...$args
   ): this {
-    return $this->returnCase(
-      vsprintf($value, $args),
-      HackBuilderValues::literal(),
-    );
+    return
+      $this->returnCase(vsprintf($value, $args), HackBuilderValues::literal());
   }
 
   public function breakCase(): this {
@@ -403,9 +365,7 @@ final class HackBuilder extends BaseCodeBuilder {
    *   ->endTryBlock()
    */
   public function startTryBlock(): this {
-    return $this
-      ->add('try')
-      ->openBrace();
+    return $this->add('try')->openBrace();
   }
 
   /**
@@ -426,11 +386,7 @@ final class HackBuilder extends BaseCodeBuilder {
    * Start a finally block.
    */
   public function addFinallyBlock(): this {
-    return $this
-      ->ensureNewLine()
-      ->unindent()
-      ->add('} finally')
-      ->openBrace();
+    return $this->ensureNewLine()->unindent()->add('} finally')->openBrace();
   }
 
   /**
@@ -482,23 +438,19 @@ final class HackBuilder extends BaseCodeBuilder {
    * comment inside.  It will take care of the indentation and splitting long
    * lines.  You can use line breaks in the comment.
    */
-  public function addDocBlock(
-    ?string $comment,
-    ?int $max_length = null,
-  ): this {
+  public function addDocBlock(?string $comment, ?int $max_length = null): this {
     if ($comment === '' || $comment === null) {
       return $this;
     }
     // Max length of each line of the docblock.  Substract 3 to compensate
     // for the initial " * "
-    $max_length = $max_length !== null ?
-      $max_length :
-      $this->getMaxCodeLength() - 3;
+    $max_length =
+      $max_length !== null ? $max_length : $this->getMaxCodeLength() - 3;
 
     $lines = $this->splitString($comment, $max_length);
     $this->ensureNewLine()->addLine('/**');
     foreach ($lines as $line) {
-      $this->addLine(rtrim(' * ' .$line));
+      $this->addLine(rtrim(' * '.$line));
     }
     $this->addLine(' */');
     return $this;
@@ -539,7 +491,7 @@ final class HackBuilder extends BaseCodeBuilder {
     IHackCodegenConfig $config,
     string $name,
     Vector<string> $params,
-    bool $close_statement = false
+    bool $close_statement = false,
   ): string {
     return (new HackBuilder($config))
       ->addSimpleMultilineCall($name, $params)
@@ -556,12 +508,14 @@ final class HackBuilder extends BaseCodeBuilder {
    */
   private function addSimpleMultilineCall(
     string $name,
-    Vector<string> $params
+    Vector<string> $params,
   ): this {
     return $this
       ->addLine("$name(")
       ->indent()
-      ->addLines($params->map(function(string $line) { return $line.','; }))
+      ->addLines($params->map(function(string $line) {
+        return $line.',';
+      }))
       ->unindent()
       ->add(')');
   }

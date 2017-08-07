@@ -15,18 +15,16 @@ trait CodegenWithAttributes {
     string $name,
     \Stringish ...$params
   ): this {
-    $this->userAttributes[$name] = (new ImmVector($params))
-      ->map($p ==> (string) $p);
+    $this->userAttributes[$name] =
+      (new ImmVector($params))->map($p ==> (string)$p);
     return $this;
   }
 
-  final public function getUserAttributes(
-  ): ImmMap<string, ImmVector<string>> {
+  final public function getUserAttributes(): ImmMap<string, ImmVector<string>> {
     return $this->userAttributes->immutable();
   }
 
-  final public function getAttributes(
-  ): ImmMap<string, ImmVector<string>> {
+  final public function getAttributes(): ImmMap<string, ImmVector<string>> {
     $attributes = $this->getExtraAttributes()->toMap();
     $attributes->setAll($this->userAttributes);
     return $attributes->immutable();
@@ -42,8 +40,7 @@ trait CodegenWithAttributes {
       return null;
     }
 
-    return
-      '<<'.
+    return '<<'.
       implode(
         ', ',
         $attributes->mapWithKey(

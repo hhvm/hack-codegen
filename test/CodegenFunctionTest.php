@@ -13,7 +13,8 @@ namespace Facebook\HackCodegen;
 final class CodegenFunctionTest extends CodegenBaseTest {
 
   public function testSimpleGetter(): void {
-    $code = $this->getCodegenFactory()
+    $code = $this
+      ->getCodegenFactory()
       ->codegenFunction('getName')
       ->setReturnType('string')
       ->setBody('return $name;')
@@ -23,7 +24,8 @@ final class CodegenFunctionTest extends CodegenBaseTest {
   }
 
   public function testParams(): void {
-    $code = $this->getCodegenFactory()
+    $code = $this
+      ->getCodegenFactory()
       ->codegenFunction('getName')
       ->addParameter('string $name')
       ->setBody('return $name . $name;')
@@ -32,7 +34,8 @@ final class CodegenFunctionTest extends CodegenBaseTest {
   }
 
   public function testAsync(): void {
-    $code = $this->getCodegenFactory()
+    $code = $this
+      ->getCodegenFactory()
       ->codegenFunction('genFoo')
       ->setIsAsync()
       ->render();
@@ -40,7 +43,8 @@ final class CodegenFunctionTest extends CodegenBaseTest {
   }
 
   public function testMemoize(): void {
-    $code = $this->getCodegenFactory()
+    $code = $this
+      ->getCodegenFactory()
       ->codegenFunction('getExpensive')
       ->setIsMemoized(true)
       ->render();
@@ -48,7 +52,8 @@ final class CodegenFunctionTest extends CodegenBaseTest {
   }
 
   public function testOverride(): void {
-    $code = $this->getCodegenFactory()
+    $code = $this
+      ->getCodegenFactory()
       ->codegenFunction('getNotLikeParent')
       ->setIsOverride(true)
       ->render();
@@ -56,7 +61,8 @@ final class CodegenFunctionTest extends CodegenBaseTest {
   }
 
   public function testOverrideAndMemoized(): void {
-    $code = $this->getCodegenFactory()
+    $code = $this
+      ->getCodegenFactory()
       ->codegenFunction('getExpensiveNotLikeParent')
       ->setIsOverride(true)
       ->setIsMemoized(true)
@@ -65,7 +71,8 @@ final class CodegenFunctionTest extends CodegenBaseTest {
   }
 
   public function testOverrideMemoizedAsync(): void {
-    $code = $this->getCodegenFactory()
+    $code = $this
+      ->getCodegenFactory()
       ->codegenFunction('genExpensiveNotLikeParent')
       ->setIsOverride(true)
       ->setIsMemoized(true)
@@ -75,7 +82,8 @@ final class CodegenFunctionTest extends CodegenBaseTest {
   }
 
   public function testSingleUserAttributeWithoutArgument(): void {
-    $code = $this->getCodegenFactory()
+    $code = $this
+      ->getCodegenFactory()
       ->codegenFunction('getTestsBypassVisibility')
       ->setUserAttribute('TestsBypassVisibility')
       ->render();
@@ -83,7 +91,8 @@ final class CodegenFunctionTest extends CodegenBaseTest {
   }
 
   public function testSingleUserAttributeWithArgument(): void {
-    $code = $this->getCodegenFactory()
+    $code = $this
+      ->getCodegenFactory()
       ->codegenFunction('getUseDataProvider')
       ->setUserAttribute('DataProvider', "'providerFunc'")
       ->render();
@@ -91,7 +100,8 @@ final class CodegenFunctionTest extends CodegenBaseTest {
   }
 
   public function testMixedUserAttributes(): void {
-    $code = $this->getCodegenFactory()
+    $code = $this
+      ->getCodegenFactory()
       ->codegenFunction('getBypassVisibilityAndUseDataProvider')
       ->setUserAttribute('DataProvider', "'providerFunc'")
       ->setUserAttribute('TestsBypassVisibility')
@@ -100,7 +110,8 @@ final class CodegenFunctionTest extends CodegenBaseTest {
   }
 
   public function testMixedBuiltInAndUserAttributes(): void {
-    $code = $this->getCodegenFactory()
+    $code = $this
+      ->getCodegenFactory()
       ->codegenFunction('getOverridedBypassVisibilityAndUseDataProvider')
       ->setIsOverride(true)
       ->setUserAttribute('DataProvider', "'providerFunc'")
@@ -110,7 +121,8 @@ final class CodegenFunctionTest extends CodegenBaseTest {
   }
 
   public function testMixedBuiltInAndUserAttributesAsync(): void {
-    $code = $this->getCodegenFactory()
+    $code = $this
+      ->getCodegenFactory()
       ->codegenFunction('genOverridedBypassVisibilityAndUseDataProvider')
       ->setIsOverride(true)
       ->setUserAttribute('DataProvider', "'providerFunc'")
@@ -121,7 +133,8 @@ final class CodegenFunctionTest extends CodegenBaseTest {
   }
 
   public function testManualSection(): void {
-    $code = $this->getCodegenFactory()
+    $code = $this
+      ->getCodegenFactory()
       ->codegenFunction('genProprietorName')
       ->setReturnType('string')
       ->setBody('// insert your code here')
@@ -133,7 +146,8 @@ final class CodegenFunctionTest extends CodegenBaseTest {
   public function testDocBlockCommentsWrap(): void {
     $cgf = $this->getCodegenFactory();
     // 1-3 characters in doc block account for ' * ' in this test.
-    $code = $cgf->codegenFunction('getName')
+    $code = $cgf
+      ->codegenFunction('getName')
       ->setReturnType('string')
       ->setBody('return $name;')
       // 81 characters

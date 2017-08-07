@@ -50,7 +50,10 @@ trait CodegenFactoryTrait implements ICodegenFactory {
     return $this->codegenClass(vsprintf($format, $args));
   }
 
-  final public function codegenEnum(string $name, string $enumType): CodegenEnum {
+  final public function codegenEnum(
+    string $name,
+    string $enumType,
+  ): CodegenEnum {
     return new CodegenEnum($this->getConfig(), $name, $enumType);
   }
 

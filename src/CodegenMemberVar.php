@@ -20,8 +20,7 @@ namespace Facebook\HackCodegen;
  *  ->setInlineComment('Represent the foo of the bar")
  *  ->render();
  */
-final class CodegenMemberVar
-  implements ICodeBuilderRenderer {
+final class CodegenMemberVar implements ICodeBuilderRenderer {
 
   const string UNSET_VALUE = "<<CodegenMemberVar_value_not_set>>";
 
@@ -72,10 +71,7 @@ final class CodegenMemberVar
     return $this;
   }
 
-  public function setTypef(
-    SprintfFormatString $format,
-    mixed ...$args
-  ): this {
+  public function setTypef(SprintfFormatString $format, mixed ...$args): this {
     return $this->setType(vsprintf($format, $args));
   }
 
@@ -101,11 +97,11 @@ final class CodegenMemberVar
   public function appendToBuilder(HackBuilder $builder): HackBuilder {
     return $builder
       ->addInlineComment($this->comment)
-      ->add($this->getVisibility() . ' ')
+      ->add($this->getVisibility().' ')
       ->addIf($this->isStatic, 'static ')
-      ->addIf($this->type !== null, $this->type . ' ')
-      ->add('$' . $this->name)
-      ->addIf($this->value != self::UNSET_VALUE, ' = ' . $this->value)
+      ->addIf($this->type !== null, $this->type.' ')
+      ->add('$'.$this->name)
+      ->addIf($this->value != self::UNSET_VALUE, ' = '.$this->value)
       ->addLine(';');
   }
 

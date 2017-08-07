@@ -13,7 +13,7 @@ namespace Facebook\HackCodegen;
 final class TestCodegenConfig implements IHackCodegenConfig {
 
   public function getFileHeader(): ?Vector<string> {
-    return Vector {'Codegen Tests'};
+    return Vector { 'Codegen Tests' };
   }
 
   public function getSpacesPerIndentation(): int {

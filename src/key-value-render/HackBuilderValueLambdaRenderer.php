@@ -12,16 +12,13 @@
 namespace Facebook\HackCodegen;
 
 final class HackBuilderValueLambdaRenderer<T>
-implements IHackBuilderValueRenderer<T> {
+  implements IHackBuilderValueRenderer<T> {
   public function __construct(
-    private (function(IHackCodegenConfig, T):string) $callback,
+    private (function(IHackCodegenConfig, T): string) $callback,
   ) {
   }
 
-  final public function render(
-    IHackCodegenConfig $config,
-    T $value,
-  ): string {
+  final public function render(IHackCodegenConfig $config, T $value): string {
     $callback = $this->callback;
     return $callback($config, $value);
   }

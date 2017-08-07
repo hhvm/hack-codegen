@@ -13,13 +13,9 @@ namespace Facebook\HackCodegen;
 final class CodegenShapeTest extends CodegenBaseTest {
 
   public function testShape(): void {
-    $shape = $this->getCodegenFactory()->codegenShape(
-      array(
-        'x' => 'int',
-        'y' => 'int',
-        'url' => 'string',
-      )
-    );
+    $shape = $this
+      ->getCodegenFactory()
+      ->codegenShape(array('x' => 'int', 'y' => 'int', 'url' => 'string'));
 
     $this->assertUnchanged($shape->render());
   }

@@ -21,8 +21,7 @@ namespace Facebook\HackCodegen;
  *  ->render();
  *
  */
-final class CodegenClass
-  extends CodegenClassBase {
+final class CodegenClass extends CodegenClassBase {
 
   use CodegenClassWithInterfaces;
 
@@ -46,10 +45,7 @@ final class CodegenClass
     return $this->setExtendsf('%s', $name);
   }
 
-  public function setExtendsf(
-    SprintfFormatString $name,
-    mixed ...$args
-  ): this {
+  public function setExtendsf(SprintfFormatString $name, mixed ...$args): this {
     $this->extendsClass = vsprintf($name, $args);
     return $this;
   }
@@ -108,18 +104,20 @@ final class CodegenClass
         }
       }
       $params_str = implode(', ', $param_names);
-      $body = 'return new '. $this->getName(). '('. $params_str . ');';
+      $body = 'return new '.$this->getName().'('.$params_str.');';
 
-      $this->wrapperFunc =
-        (new CodegenFunction($this->config, $this->getName()))
-          ->setParameters($param_full)
-          ->setReturnType($this->getName())
-          ->setBody($body);
+      $this->wrapperFunc = (
+        new CodegenFunction($this->config, $this->getName())
+      )
+        ->setParameters($param_full)
+        ->setReturnType($this->getName())
+        ->setBody($body);
     } else {
-      $this->wrapperFunc =
-        (new CodegenFunction($this->config, $this->getName()))
-          ->setReturnType($this->getName())
-          ->setBody('return new '. $this->getName(). '();');
+      $this->wrapperFunc = (
+        new CodegenFunction($this->config, $this->getName())
+      )
+        ->setReturnType($this->getName())
+        ->setBody('return new '.$this->getName().'();');
     }
     return $this;
   }
@@ -132,9 +130,10 @@ final class CodegenClass
       $this->declComment,
       $this->isAbstract ? 'abstract ' : '',
       $this->isFinal ? 'final ' : '',
-      "class ". $this->name.$generics_dec,
-      $this->extendsClass !== null ?
-        HackBuilder::DELIMITER . "extends " . $this->extendsClass : '',
+      "class ".$this->name.$generics_dec,
+      $this->extendsClass !== null
+        ? HackBuilder::DELIMITER."extends ".$this->extendsClass
+        : '',
     );
 
     $this->renderInterfaceList($builder, 'implements');
@@ -143,9 +142,7 @@ final class CodegenClass
   private function buildConstructor(HackBuilder $builder): void {
     $constructor = $this->constructor;
     if ($constructor) {
-      $builder
-        ->ensureEmptyLine()
-        ->addRenderer($constructor);
+      $builder->ensureEmptyLine()->addRenderer($constructor);
     }
   }
 

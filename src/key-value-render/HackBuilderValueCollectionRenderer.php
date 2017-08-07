@@ -12,17 +12,14 @@
 namespace Facebook\HackCodegen;
 
 class HackBuilderValueCollectionRenderer<Tv, T as Traversable<Tv>>
-implements IHackBuilderValueRenderer<T> {
+  implements IHackBuilderValueRenderer<T> {
   public function __construct(
     private classname<T> $containerName,
     private IHackBuilderValueRenderer<Tv> $valueRenderer,
   ) {
   }
 
-  final public function render(
-    IHackCodegenConfig $config,
-    T $values,
-  ): string {
+  final public function render(IHackCodegenConfig $config, T $values): string {
     $value_renderer = $this->valueRenderer;
     $builder = (new HackBuilder($config))
       ->add(strip_hh_prefix($this->containerName))
@@ -30,9 +27,6 @@ implements IHackBuilderValueRenderer<T> {
     foreach ($values as $value) {
       $builder->addLinef('%s,', $value_renderer->render($config, $value));
     }
-    return $builder
-      ->unindent()
-      ->add('}')
-      ->getCode();
+    return $builder->unindent()->add('}')->getCode();
   }
 }

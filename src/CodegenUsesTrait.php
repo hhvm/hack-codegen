@@ -30,7 +30,8 @@ final class CodegenUsesTrait {
   public function __construct(
     private IHackCodegenConfig $config,
     private string $name,
-  ) {}
+  ) {
+  }
 
   public function getName(): string {
     return $this->name;
@@ -42,9 +43,7 @@ final class CodegenUsesTrait {
     return $this;
   }
 
-  public function setGeneratedFrom(
-    CodegenGeneratedFrom $from
-  ): this {
+  public function setGeneratedFrom(CodegenGeneratedFrom $from): this {
     $this->setComment($from->render());
     return $this;
   }

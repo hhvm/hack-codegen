@@ -14,7 +14,8 @@ enum CodegenFileResult: int {
   NONE = 0;
   UPDATE = 1;
   CREATE = 2;
-};
+}
+;
 
 enum CodegenFileType: int {
   PHP = 0;
@@ -61,10 +62,7 @@ final class CodegenFile {
       $this->relativeFileName = $file_name;
       $file_name = $root.'/'.$file_name;
     } else if (Str::startsWith($file_name, $root)) {
-      $this->relativeFileName = substr(
-        $file_name,
-        Str::len($root) + 1,
-      );
+      $this->relativeFileName = substr($file_name, Str::len($root) + 1);
     } else {
       $this->relativeFileName = $file_name;
     }
@@ -222,7 +220,7 @@ final class CodegenFile {
   }
 
   private function getFileTypeDeclaration(): string {
-    switch($this->fileType) {
+    switch ($this->fileType) {
       case CodegenFileType::PHP:
         return '<?php';
       case CodegenFileType::HACK_DECL:
@@ -241,14 +239,8 @@ final class CodegenFile {
    *     setShebangLine('#!/usr/bin/env hhvm')
    */
   public function setShebangLine(string $shebang): this {
-    invariant(
-      !strpbrk($shebang, "\n"),
-      "Expected single line",
-    );
-    invariant(
-      Str::startsWith($shebang, '#!'),
-      'Shebang lines start with #!',
-    );
+    invariant(!strpbrk($shebang, "\n"), "Expected single line");
+    invariant(Str::startsWith($shebang, '#!'), 'Shebang lines start with #!');
     $this->shebang = $shebang;
     return $this;
   }
@@ -344,7 +336,7 @@ final class CodegenFile {
 
     if (PartiallyGeneratedCode::containsManualSection($content)) {
       $builder->addDocBlock(
-        PartiallyGeneratedSignedSource::getDocBlock($doc_block)
+        PartiallyGeneratedSignedSource::getDocBlock($doc_block),
       );
       $builder->add($content);
 
@@ -388,10 +380,7 @@ final class CodegenFile {
     $header = $this->pseudoMainHeader;
     if ($header !== null) {
       $this->assertNotHackStrictForExecutable();
-      $builder
-        ->ensureNewLine()
-        ->add($header)
-        ->ensureNewLine();
+      $builder->ensureNewLine()->add($header)->ensureNewLine();
     }
 
     foreach ($this->beforeTypes as $type) {
@@ -420,10 +409,7 @@ final class CodegenFile {
     $footer = $this->pseudoMainFooter;
     if ($footer !== null) {
       $this->assertNotHackStrictForExecutable();
-      $builder
-        ->ensureEmptyLine()
-        ->add($footer)
-        ->ensureNewLine();
+      $builder->ensureEmptyLine()->add($footer)->ensureNewLine();
     }
     return $builder->getCode();
   }
@@ -456,9 +442,7 @@ final class CodegenFile {
     return implode('', $all_content);
   }
 
-  public function setGeneratedFrom(
-    CodegenGeneratedFrom $from
-  ): this {
+  public function setGeneratedFrom(CodegenGeneratedFrom $from): this {
     $this->generatedFrom = $from;
     return $this;
   }
@@ -513,10 +497,7 @@ final class CodegenFile {
     if (!$is_creating && $this->createOnly) {
       return CodegenFileResult::NONE;
     }
-    $changed = Filesystem::writeFileIfChanged(
-      $this->fileName,
-      $this->render(),
-    );
+    $changed = Filesystem::writeFileIfChanged($this->fileName, $this->render());
     return $is_creating
       ? CodegenFileResult::CREATE
       : ($changed ? CodegenFileResult::UPDATE : CodegenFileResult::NONE);
@@ -525,10 +506,7 @@ final class CodegenFile {
 
 abstract class CodegenFileSignatureException extends \Exception {
 
-  public function __construct(
-    string $message,
-    private string $fileName,
-  ) {
+  public function __construct(string $message, private string $fileName) {
     parent::__construct($message);
   }
 

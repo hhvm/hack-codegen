@@ -49,7 +49,9 @@ interface ICodegenFactory {
 
   public function codegenHackBuilder(): HackBuilder;
 
-  public function codegenImplementsInterface(string $name): CodegenImplementsInterface;
+  public function codegenImplementsInterface(
+    string $name,
+  ): CodegenImplementsInterface;
 
   public function codegenImplementsInterfaces(
     \ConstVector<string> $names,
@@ -68,7 +70,9 @@ interface ICodegenFactory {
     \ConstVector<string> $traits,
   ): Vector<CodegenUsesTrait>;
 
-  public function codegenGeneratedFromClass(string $class): CodegenGeneratedFrom;
+  public function codegenGeneratedFromClass(
+    string $class,
+  ): CodegenGeneratedFrom;
 
   public function codegenGeneratedFromMethod(
     string $class,

@@ -14,14 +14,15 @@ final class CodegenTraitTest extends CodegenBaseTest {
 
   public function testDocblock(): void {
     $cgf = $this->getCodegenFactory();
-    $code = $cgf->codegenTrait('TestDocblockInternal')
+    $code = $cgf
+      ->codegenTrait('TestDocblockInternal')
       ->setDocBlock(
         "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ".
         "do eiusmod tempor incididunt ut labore et dolore magna aliqua. ".
         "Ut enim ad minim veniam, quis nostrud exercitation ullamco ".
         "laboris nisi ut aliquip ex ea commodo consequat.\n".
         "Understood?\n".
-        "Yes!"
+        "Yes!",
       )
       ->render();
 
@@ -30,13 +31,17 @@ final class CodegenTraitTest extends CodegenBaseTest {
 
   public function testDemo(): void {
     $cgf = $this->getCodegenFactory();
-    $code = $cgf->codegenTrait('DemoInternal')
+    $code = $cgf
+      ->codegenTrait('DemoInternal')
       ->addRequireClass('RequiredClass')
       ->addRequireInterface('RequiredInterface')
       ->addTrait($cgf->codegenUsesTrait('DemoTrait'))
       ->addTrait(
-        $cgf->codegenUsesTrait('WhateverTrait')
-        ->setGeneratedFrom($cgf->codegenGeneratedFromMethod("Whatever", "Method"))
+        $cgf
+          ->codegenUsesTrait('WhateverTrait')
+          ->setGeneratedFrom(
+            $cgf->codegenGeneratedFromMethod("Whatever", "Method"),
+          ),
       )
       ->addTrait($cgf->codegenUsesTrait("Useless"))
       ->addConst('MAX_SIZE', 256)
@@ -45,13 +50,12 @@ final class CodegenTraitTest extends CodegenBaseTest {
       ->setHasManualMethodSection()
       ->setHasManualDeclarations()
       ->addVar(
-        $cgf->codegenMemberVar('text')->setProtected()->setType('string')
+        $cgf->codegenMemberVar('text')->setProtected()->setType('string'),
       )
-      ->addVar(
-        $cgf->codegenMemberVar('id')->setType('?int')->setValue(12345)
-      )
+      ->addVar($cgf->codegenMemberVar('id')->setType('?int')->setValue(12345))
       ->addMethod(
-        $cgf->codegenMethod('genX')
+        $cgf
+          ->codegenMethod('genX')
           ->setProtected()
           ->setDocBlock(
             'This is a 76 characters  comment to test the splitting '.
@@ -59,7 +63,7 @@ final class CodegenTraitTest extends CodegenBaseTest {
           )
           ->setReturnType('Awaitable<int>')
           ->setManualBody()
-          ->setBody('// your code here')
+          ->setBody('// your code here'),
       )
       ->setDocBlock('doc-doc-doc!')
       ->render();

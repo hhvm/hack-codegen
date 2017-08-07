@@ -18,7 +18,9 @@ final class CodegenMemberVarTest extends CodegenBaseTest {
   }
 
   public function testPublicStatic(): void {
-    $code = $this->getCodegenFactory()->codegenMemberVar('foo')
+    $code = $this
+      ->getCodegenFactory()
+      ->codegenMemberVar('foo')
       ->setPublic()
       ->setIsStatic()
       ->render();
@@ -27,7 +29,9 @@ final class CodegenMemberVarTest extends CodegenBaseTest {
   }
 
   public function testTyped(): void {
-    $code = $this->getCodegenFactory()->codegenMemberVar('name')
+    $code = $this
+      ->getCodegenFactory()
+      ->codegenMemberVar('name')
       ->setProtected()
       ->setType('string')
       ->render();
@@ -36,7 +40,9 @@ final class CodegenMemberVarTest extends CodegenBaseTest {
   }
 
   public function testTypedWithFalsyValue(): void {
-    $code = $this->getCodegenFactory()->codegenMemberVar('count')
+    $code = $this
+      ->getCodegenFactory()
+      ->codegenMemberVar('count')
       ->setType('?int')
       ->setValue(0)
       ->render();
@@ -45,7 +51,9 @@ final class CodegenMemberVarTest extends CodegenBaseTest {
   }
 
   public function testArrayValues(): void {
-    $code = $this->getCodegenFactory()->codegenMemberVar('languages')
+    $code = $this
+      ->getCodegenFactory()
+      ->codegenMemberVar('languages')
       ->setIsStatic()
       ->setValue(array('en' => 'English', 'es' => 'Spanish', 'fr' => 'French'))
       ->render();
@@ -54,7 +62,9 @@ final class CodegenMemberVarTest extends CodegenBaseTest {
   }
 
   public function testVector(): void {
-    $code = $this->getCodegenFactory()->codegenMemberVar('parameters')
+    $code = $this
+      ->getCodegenFactory()
+      ->codegenMemberVar('parameters')
       ->setType('Vector<string>')
       ->setLiteralValue('Vector {}')
       ->render();
@@ -63,7 +73,9 @@ final class CodegenMemberVarTest extends CodegenBaseTest {
   }
 
   public function testDocBlock(): void {
-    $code = $this->getCodegenFactory()->codegenMemberVar('thingWithComment')
+    $code = $this
+      ->getCodegenFactory()
+      ->codegenMemberVar('thingWithComment')
       ->setInlineComment('a comment')
       ->render();
 

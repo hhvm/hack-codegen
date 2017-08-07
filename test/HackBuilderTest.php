@@ -17,7 +17,8 @@ final class HackBuilderTest extends CodegenBaseTest {
   }
 
   public function testIfBlock(): void {
-    $body = $this->getHackBuilder()
+    $body = $this
+      ->getHackBuilder()
       ->startIfBlockf('$value <= %d', 0)
       ->addLine('return 0;')
       ->addElseIfBlockf('$value === %d', 1)
@@ -29,7 +30,8 @@ final class HackBuilderTest extends CodegenBaseTest {
   }
 
   public function testForeachLoop(): void {
-    $body = $this->getHackBuilder()
+    $body = $this
+      ->getHackBuilder()
       ->startForeachLoop('$values', null, '$value')
       ->addLine('something($value);')
       ->endForeachLoop()
@@ -40,7 +42,8 @@ final class HackBuilderTest extends CodegenBaseTest {
   }
 
   public function testTryBLock(): void {
-    $body = $this->getHackBuilder()
+    $body = $this
+      ->getHackBuilder()
       ->startTryBlock()
       ->addLine('my_func();')
       ->addCatchBlock('SystemException', '$ex')
@@ -55,17 +58,16 @@ final class HackBuilderTest extends CodegenBaseTest {
     $comment = 'Wow a really long comment that '.
       'will span multiple lines and probably go over '.
       'the limit so we gotta cut it up.';
-    $body = $this->getHackBuilder()
-      ->addDocBlock($comment);
+    $body = $this->getHackBuilder()->addDocBlock($comment);
     $this->assertUnchanged($body->getCode());
 
-    $body = $this->getHackBuilder()
-      ->addDocBlock($comment, /* max len */ 50);
+    $body = $this->getHackBuilder()->addDocBlock($comment, /* max len */ 50);
     $this->assertUnchanged($body->getCode(), 'docblock2');
   }
 
   public function testShapeWithUniformRendering(): void {
-    $shape = $this->getHackBuilder()
+    $shape = $this
+      ->getHackBuilder()
       ->addValue(
         shape('x' => 3, 'y' => 5, 'url' => 'www.facebook.com'),
         HackBuilderValues::shapeWithUniformRendering(
@@ -77,12 +79,10 @@ final class HackBuilderTest extends CodegenBaseTest {
   }
 
   public function testShapeWithPerKeyRendering(): void {
-    $shape = $this->getHackBuilder()
+    $shape = $this
+      ->getHackBuilder()
       ->addValue(
-        shape(
-          'herp' => 'derp',
-          'foo' => Vector { 'foo', 'bar', 'baz' },
-        ),
+        shape('herp' => 'derp', 'foo' => Vector { 'foo', 'bar', 'baz' }),
         HackBuilderValues::shapeWithPerKeyRendering(
           shape(
             'herp' => HackBuilderValues::export(),
@@ -96,7 +96,8 @@ final class HackBuilderTest extends CodegenBaseTest {
 
   public function testWrappedStringSingle(): void {
     $this->assertUnchanged(
-      $this->getHackBuilder()
+      $this
+        ->getHackBuilder()
         ->add('return ')
         ->addWrappedString('This is short')
         ->add(';')
@@ -106,7 +107,8 @@ final class HackBuilderTest extends CodegenBaseTest {
 
   public function testWrappedStringDouble(): void {
     $this->assertUnchanged(
-      $this->getHackBuilder()
+      $this
+        ->getHackBuilder()
         ->add('return ')
         ->addWrappedString('This is a bit longer so we will hit our max '.
           'length cap and then go ahead and finish the line.')
@@ -121,7 +123,8 @@ two line breaks. Also note that we include a newline and also '.
       'do a concat operation to really mix it up. We need to
       respect newlines with this code and also senseless indentation.';
     $this->assertUnchanged(
-      $this->getHackBuilder()
+      $this
+        ->getHackBuilder()
         ->add('return ')
         ->addWrappedString($lorem_ipsum)
         ->add(';')
@@ -131,7 +134,8 @@ two line breaks. Also note that we include a newline and also '.
 
   public function testWrappedStringDoNotIndent(): void {
     $this->assertUnchanged(
-      $this->getHackBuilder()
+      $this
+        ->getHackBuilder()
         ->add('$this->callMethod(')
         ->newLine()
         ->indent()
@@ -149,12 +153,11 @@ two line breaks. Also note that we include a newline and also '.
   }
 
   public function testSet(): void {
-    $set = $this->getHackBuilder()
+    $set = $this
+      ->getHackBuilder()
       ->addValue(
-        Set {'apple', 'oreos', 'banana'},
-        HackBuilderValues::set(
-          HackBuilderValues::export(),
-        ),
+        Set { 'apple', 'oreos', 'banana' },
+        HackBuilderValues::set(HackBuilderValues::export()),
       );
 
     $this->assertUnchanged($set->getCode());
@@ -162,51 +165,57 @@ two line breaks. Also note that we include a newline and also '.
 
   public function testAddWithSuggestedLineBreaksNoBreakage(): void {
     $del = HackBuilder::DELIMITER;
-    $body = $this->getHackBuilder()->addWithSuggestedLineBreaks(
-      "final class{$del}ClassNameJustLongEnoughToAvoidEightyColumns{$del}".
-      "extends SomeBaseClass",
-    );
+    $body = $this
+      ->getHackBuilder()
+      ->addWithSuggestedLineBreaks(
+        "final class{$del}ClassNameJustLongEnoughToAvoidEightyColumns{$del}".
+        "extends SomeBaseClass",
+      );
     $this->assertUnchanged($body->getCode());
   }
 
   public function testAddWithSuggestedLineBreaksWithBreakage(): void {
     $del = HackBuilder::DELIMITER;
-    $body = $this->getHackBuilder()->addWithSuggestedLineBreaks(
-      "final abstract class{$del}ImpossibleClassLongEnoughToCrossEightyColumns".
-      "{$del}extends SomeBaseClass",
-    );
+    $body = $this
+      ->getHackBuilder()
+      ->addWithSuggestedLineBreaks(
+        "final abstract class{$del}ImpossibleClassLongEnoughToCrossEightyColumns".
+        "{$del}extends SomeBaseClass",
+      );
     $this->assertUnchanged($body->getCode());
   }
 
   public function testAddfWithSuggestedLineBreaks(): void {
-    $code = $this->getHackBuilder()->addWithSuggestedLineBreaksf(
-      "%s\n%s",
-      'foo',
-      'bar',
-    )->getCode();
+    $code = $this
+      ->getHackBuilder()
+      ->addWithSuggestedLineBreaksf("%s\n%s", 'foo', 'bar')
+      ->getCode();
     $this->assertSame("foo\nbar", $code);
   }
 
   public function testAddSmartMultilineCall(): void {
     $del = HackBuilder::DELIMITER;
-    $body = $this->getHackBuilder()->addMultilineCall(
-      "\$foobarbaz_alphabetagama ={$del}\$this->callSomeThingReallyLongName".
-      "ReallyReallyLongName",
-      Vector {
-        '$someSmallParameter',
-        "\$foobarbaz_alphabetagama +{$del}\$foobarbaz_alphabetagamaa +{$del}".
-        "\$foobarbaz_alphabetagamatheta_foobarbaz",
-      },
-    );
+    $body = $this
+      ->getHackBuilder()
+      ->addMultilineCall(
+        "\$foobarbaz_alphabetagama ={$del}\$this->callSomeThingReallyLongName".
+        "ReallyReallyLongName",
+        Vector {
+          '$someSmallParameter',
+          "\$foobarbaz_alphabetagama +{$del}\$foobarbaz_alphabetagamaa +{$del}".
+          "\$foobarbaz_alphabetagamatheta_foobarbaz",
+        },
+      );
     $this->assertUnchanged($body->getCode());
   }
 
   public function testLiteralMap(): void {
-    $body = $this->getHackBuilder()
+    $body = $this
+      ->getHackBuilder()
       ->addValue(
         Map {
           'MY_ENUM::A' => 'ANOTHER_ENUM::A',
-          'MY_ENUM::B' => 'ANOTHER_ENUM::B'
+          'MY_ENUM::B' => 'ANOTHER_ENUM::B',
         },
         HackBuilderValues::map(
           HackBuilderKeys::literal(),
@@ -219,15 +228,13 @@ two line breaks. Also note that we include a newline and also '.
   public function testAnotherConfig(): void {
     $body = (new HackBuilder(new TestAnotherCodegenConfig()))
       ->addInlineComment(
-        "Here we wrap at 40 chars because we use a different configuration."
+        "Here we wrap at 40 chars because we use a different configuration.",
       )
       ->startIfBlock('$do_that')
       ->add('return ')
       ->addValue(
         array(1, 2, 3),
-        HackBuilderValues::valueArray(
-          HackBuilderValues::export(),
-        ),
+        HackBuilderValues::valueArray(HackBuilderValues::export()),
       )
       ->closeStatement()
       ->endIfBlock();
@@ -243,12 +250,14 @@ two line breaks. Also note that we include a newline and also '.
       array('name' => 'Maradona', 'favorite_shot' => 'handOfGod'),
     };
 
-    $body = $this->getHackBuilder()
+    $body = $this
+      ->getHackBuilder()
       ->startSwitch('$soccer_player')
       ->addCaseBlocks(
         $players,
         ($player, $body) ==> {
-          $body->addCase(sprintf('\'%s\'', $player['name']))
+          $body
+            ->addCase(sprintf('\'%s\'', $player['name']))
             ->addLinef('$shot = new Shot(\'%s\');', $player['favorite_shot'])
             ->returnCasef('$shot->execute()');
         },
@@ -268,12 +277,14 @@ two line breaks. Also note that we include a newline and also '.
       array('name' => 'Maradona', 'favorite_shot' => 'handOfGod'),
     };
 
-    $body = $this->getHackBuilder()
+    $body = $this
+      ->getHackBuilder()
       ->startSwitch('$soccer_player')
       ->addCaseBlocks(
         $players,
         ($player, $body) ==> {
-          $body->addCase(sprintf('\'%s\'', $player['name']))
+          $body
+            ->addCase(sprintf('\'%s\'', $player['name']))
             ->addLinef('$shot = new Shot(\'%s\');', $player['favorite_shot'])
             ->breakCase();
         },
@@ -293,12 +304,14 @@ two line breaks. Also note that we include a newline and also '.
       array('name' => 'Maradona', 'favorite_shot' => 'handOfGod'),
     };
 
-    $body = $this->getHackBuilder()
+    $body = $this
+      ->getHackBuilder()
       ->startSwitch('$soccer_player')
       ->addCaseBlocks(
         $players,
         ($player, $body) ==> {
-          $body->addCase(sprintf('\'%s\'', $player['name']))
+          $body
+            ->addCase(sprintf('\'%s\'', $player['name']))
             ->addLinef('$shot = new Shot(\'%s\');', $player['favorite_shot'])
             ->unindent();
         },
@@ -311,7 +324,8 @@ two line breaks. Also note that we include a newline and also '.
   }
 
   public function testExportedVectorDoesNotHaveHHPrefix(): void {
-    $body = $this->getHackBuilder()
+    $body = $this
+      ->getHackBuilder()
       ->add('$foo = ')
       ->addValue(
         Vector { 1, 2, 3 },
@@ -324,35 +338,34 @@ two line breaks. Also note that we include a newline and also '.
   }
 
   public function testVectorOfExportedVectors(): void {
-    $body = $this->getHackBuilder()
+    $body = $this
+      ->getHackBuilder()
       ->addAssignment(
         '$foo',
-        Vector { Vector { '$foo', '$bar' }, Vector { '$herp', '$derp' }},
+        Vector { Vector { '$foo', '$bar' }, Vector { '$herp', '$derp' } },
         HackBuilderValues::vector(
-          HackBuilderValues::vector(
-            HackBuilderValues::export(),
-          ),
+          HackBuilderValues::vector(HackBuilderValues::export()),
         ),
       );
     $this->assertUnchanged($body->getCode());
   }
 
   public function testVectorOfLiteralVectors(): void {
-    $body = $this->getHackBuilder()
+    $body = $this
+      ->getHackBuilder()
       ->addAssignment(
         '$foo',
-        Vector { Vector { '$foo', '$bar' }, Vector { '$herp', '$derp' }},
+        Vector { Vector { '$foo', '$bar' }, Vector { '$herp', '$derp' } },
         HackBuilderValues::vector(
-          HackBuilderValues::vector(
-            HackBuilderValues::literal(),
-          ),
+          HackBuilderValues::vector(HackBuilderValues::literal()),
         ),
       );
     $this->assertUnchanged($body->getCode());
   }
 
   public function testVectorOfMaps(): void {
-    $body = $this->getHackBuilder()
+    $body = $this
+      ->getHackBuilder()
       ->addAssignment(
         '$foo',
         Vector { Map { 'foo' => 'bar' }, Map { 'herp' => 'derp' } },
@@ -367,7 +380,8 @@ two line breaks. Also note that we include a newline and also '.
   }
 
   public function testClassnameMap(): void {
-    $body = $this->getHackBuilder()
+    $body = $this
+      ->getHackBuilder()
       ->addValue(
         Map { self::class => \stdClass::class },
         HackBuilderValues::map(
@@ -379,12 +393,13 @@ two line breaks. Also note that we include a newline and also '.
   }
 
   public function testLambdaMap(): void {
-    $body = $this->getHackBuilder()
+    $body = $this
+      ->getHackBuilder()
       ->addValue(
         Map { 'foo' => 'bar' },
         HackBuilderValues::map(
           HackBuilderKeys::lambda(($_config, $v) ==> "'key:$v'"),
-          HackBuilderValues::lambda(($_config, $v) ==> "'value:$v'",)
+          HackBuilderValues::lambda(($_config, $v) ==> "'value:$v'"),
         ),
       );
     $this->assertUnchanged($body->getCode());
@@ -393,7 +408,7 @@ two line breaks. Also note that we include a newline and also '.
 
 final class TestAnotherCodegenConfig implements IHackCodegenConfig {
   public function getFileHeader(): ?Vector<string> {
-    return Vector {'Codegen Tests'};
+    return Vector { 'Codegen Tests' };
   }
 
   public function getSpacesPerIndentation(): int {

@@ -13,8 +13,7 @@ namespace Facebook\HackCodegen;
 /**
  * Base class to generate a function or a method.
  */
-abstract class CodegenFunctionBase
-  implements ICodeBuilderRenderer {
+abstract class CodegenFunctionBase implements ICodeBuilderRenderer {
 
   use HackBuilderRenderer;
   use CodegenWithAttributes;
@@ -95,10 +94,7 @@ abstract class CodegenFunctionBase
     return $this->setBodyf('%s', $body);
   }
 
-  public function setBodyf(
-    SprintfFormatString $body,
-    mixed ...$args
-  ): this {
+  public function setBodyf(SprintfFormatString $body, mixed ...$args): this {
     $this->body = vsprintf($body, $args);
 
     return $this;
@@ -153,12 +149,8 @@ abstract class CodegenFunctionBase
   ): string {
     $builder = (new HackBuilder($this->config))
       ->add($keywords)
-      ->addf(
-        '%s(%s)',
-        $this->name,
-        implode(', ', $this->parameters->toArray())
-      )
-      ->addIf($this->returnType !== null, ': ' . $this->returnType);
+      ->addf('%s(%s)', $this->name, implode(', ', $this->parameters->toArray()))
+      ->addIf($this->returnType !== null, ': '.$this->returnType);
 
     $code = $builder->getCode();
 
@@ -166,15 +158,18 @@ abstract class CodegenFunctionBase
     // return Total length = 2 (indent) + codelength + 2 or 1 (" {" or ";")
     // If the function/method is abstract, the ";" will be appended later
     // Therefore it has one char less than non-abstract functions, which has "{"
-    if (Str::len($code) <=
+    if (
+      Str::len($code) <=
         $this->config->getMaxLineLength() - 4 + (int)$is_abstract ||
-        $this->fixme !== null) {
-      return (new HackBuilder($this->config))
-        ->add($code)
-        ->getCode();
+      $this->fixme !== null
+    ) {
+      return (new HackBuilder($this->config))->add($code)->getCode();
     } else {
-      $parameter_lines = $this->parameters
-        ->map(function(string $line) { return $line.","; });
+      $parameter_lines = $this
+        ->parameters
+        ->map(function(string $line) {
+          return $line.",";
+        });
 
       $multi_line_builder = (new HackBuilder($this->config))
         ->add($keywords)
@@ -183,7 +178,7 @@ abstract class CodegenFunctionBase
         ->addLines($parameter_lines)
         ->unindent()
         ->add(')')
-        ->addIf($this->returnType !== null, ': ' . $this->returnType);
+        ->addIf($this->returnType !== null, ': '.$this->returnType);
 
       return $multi_line_builder->getCode();
     }
@@ -224,7 +219,7 @@ abstract class CodegenFunctionBase
     if ($this->docBlock !== null && $this->docBlock !== '') {
       if ($this->generatedFrom) {
         $builder->addDocBlock(
-          $this->docBlock . "\n(" . $this->generatedFrom->render() . ")"
+          $this->docBlock."\n(".$this->generatedFrom->render().")",
         );
       } else {
         $builder->addDocBlock($this->docBlock);
@@ -249,7 +244,7 @@ abstract class CodegenFunctionBase
 
     $builder->openBrace();
     if ($this->isManualBody) {
-      $builder->beginManualSection($containing_class_name. $this->name);
+      $builder->beginManualSection($containing_class_name.$this->name);
       $builder->add($this->body);
       $builder->endManualSection();
     } else {

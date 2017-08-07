@@ -12,7 +12,7 @@ namespace Facebook\HackCodegen;
 
 abstract class SignedSourceBase {
 
-  const TOKEN   ='<<SignedSource::*O*zOeWoEQle#+L!plEphiEmie@I>>';
+  const TOKEN = '<<SignedSource::*O*zOeWoEQle#+L!plEphiEmie@I>>';
 
   abstract protected static function getTokenName(): string;
 
@@ -51,14 +51,11 @@ abstract class SignedSourceBase {
    */
   public static function signFile(string $file_data): string {
     $signature = md5(static::preprocess($file_data));
-    $replaced_data = str_replace(
-      static::TOKEN,
-      'SignedSource<<'.$signature.'>>',
-      $file_data,
-    );
+    $replaced_data =
+      str_replace(static::TOKEN, 'SignedSource<<'.$signature.'>>', $file_data);
     if ($replaced_data == $file_data) {
       throw new \Exception(
-        'Before signing a file, you must embed a signing token within it.'
+        'Before signing a file, you must embed a signing token within it.',
       );
     }
     return $replaced_data;
@@ -88,11 +85,8 @@ abstract class SignedSourceBase {
     if (!preg_match(static::getPattern(), $file_data, $matches)) {
       throw new \Exception('Can not verify the signature of an unsigned file.');
     }
-    $replaced_data = str_replace(
-      'SignedSource<<'.$matches[1].'>>',
-      static::TOKEN,
-      $file_data
-    );
+    $replaced_data =
+      str_replace('SignedSource<<'.$matches[1].'>>', static::TOKEN, $file_data);
 
     $signature = md5(static::preprocess($replaced_data));
     return $signature === $matches[1];
@@ -111,8 +105,8 @@ abstract class SignedSourceBase {
   }
 
   public static function isSignedByAnySigner(string $data): bool {
-    return SignedSource::isSigned($data)
-     || PartiallyGeneratedSignedSource::isSigned($data);
+    return SignedSource::isSigned($data) ||
+      PartiallyGeneratedSignedSource::isSigned($data);
   }
 
   public static function hasValidSignatureFromAnySigner(string $data): bool {

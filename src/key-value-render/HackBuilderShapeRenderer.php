@@ -12,10 +12,8 @@
 namespace Facebook\HackCodegen;
 
 final class HackBuilderShapeRenderer
-implements IHackBuilderValueRenderer<shape()> {
-  public function __construct(
-    private shape() $valueRenderers,
-  ) {
+  implements IHackBuilderValueRenderer<shape()> {
+  public function __construct(private shape() $valueRenderers) {
   }
 
   final public function render(
@@ -26,14 +24,9 @@ implements IHackBuilderValueRenderer<shape()> {
     $value_renderers = Shapes::toArray($this->valueRenderers);
     $array = Shapes::toArray($shape);
 
-    $builder = (new HackBuilder($config))
-      ->addLine('shape(')
-      ->indent();
+    $builder = (new HackBuilder($config))->addLine('shape(')->indent();
     foreach ($array as $key => $value) {
-      $value_renderer = idx(
-        $value_renderers,
-        $key,
-      );
+      $value_renderer = idx($value_renderers, $key);
       invariant(
         $value_renderer !== null,
         'No renderer specified for key "%s"',
@@ -54,9 +47,6 @@ implements IHackBuilderValueRenderer<shape()> {
         $value_renderer->render($config, $value),
       );
     }
-    return $builder
-      ->unindent()
-      ->add(')')
-      ->getCode();
+    return $builder->unindent()->add(')')->getCode();
   }
 }

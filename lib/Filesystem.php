@@ -13,7 +13,7 @@ namespace Facebook\HackCodegen;
 final class Filesystem {
   public static function createTemporaryFile(
     string $prefix = '',
-    bool $cleanup = false
+    bool $cleanup = false,
   ): string {
     $fname = tempnam(sys_get_temp_dir(), $prefix);
     if ($cleanup) {
