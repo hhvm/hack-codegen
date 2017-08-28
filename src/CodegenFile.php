@@ -35,20 +35,20 @@ final class CodegenFile {
   private ?string $docBlock;
   private string $fileName;
   private string $relativeFileName;
-  private Vector<string> $otherFileNames = Vector {};
-  private Vector<CodegenClassBase> $classes = Vector {};
-  private Vector<CodegenTrait> $traits = Vector {};
-  private Vector<CodegenFunction> $functions = Vector {};
-  private Vector<CodegenType> $beforeTypes = Vector {};
-  private Vector<CodegenType> $afterTypes = Vector {};
+  private vec<string> $otherFileNames = vec[];
+  private vec<CodegenClassBase> $classes = vec[];
+  private vec<CodegenTrait> $traits = vec[];
+  private vec<CodegenFunction> $functions = vec[];
+  private vec<CodegenType> $beforeTypes = vec[];
+  private vec<CodegenType> $afterTypes = vec[];
   private bool $doClobber = false;
   protected ?CodegenGeneratedFrom $generatedFrom;
   private bool $isSignedFile = true;
-  private ?Map<string, Vector<string>> $rekey = null;
+  private ?dict<string, vec<string>> $rekey = null;
   private bool $createOnly = false;
   private ?ICodegenFormatter $formatter;
   private ?string $fileNamespace;
-  private Map<string, ?string> $useNamespaces = Map {};
+  private dict<string, ?string> $useNamespaces = dict[];
   private ?string $shebang;
   private ?string $pseudoMainHeader;
   private ?string $pseudoMainFooter;
@@ -58,11 +58,12 @@ final class CodegenFile {
     string $file_name,
   ) {
     $root = $config->getRootDir();
-    if (!Str::startsWith($file_name, '/')) {
+    if (!\HH\Lib\Str\starts_with($file_name, '/')) {
       $this->relativeFileName = $file_name;
       $file_name = $root.'/'.$file_name;
-    } else if (Str::startsWith($file_name, $root)) {
-      $this->relativeFileName = substr($file_name, Str::len($root) + 1);
+    } else if (\HH\Lib\Str\starts_with($file_name, $root)) {
+      $this->relativeFileName =
+        substr($file_name, \HH\Lib\Str\length($root) + 1);
     } else {
       $this->relativeFileName = $file_name;
     }
@@ -78,7 +79,7 @@ final class CodegenFile {
     return $this;
   }
 
-  public function addClasses(\ConstVector<CodegenClassBase> $classes): this {
+  public function addClasses(vec<CodegenClassBase> $classes): this {
     foreach ($classes as $class) {
       $this->addClass($class);
     }
@@ -90,7 +91,7 @@ final class CodegenFile {
     return $this;
   }
 
-  public function getClasses(): Vector<CodegenClassBase> {
+  public function getClasses(): vec<CodegenClassBase> {
     return $this->classes;
   }
 
@@ -99,7 +100,7 @@ final class CodegenFile {
     return $this;
   }
 
-  public function addFunctions(\ConstVector<CodegenFunction> $functions): this {
+  public function addFunctions(vec<CodegenFunction> $functions): this {
     foreach ($functions as $function) {
       $this->addFunction($function);
     }
@@ -111,11 +112,11 @@ final class CodegenFile {
     return $this;
   }
 
-  public function getFunctions(): Vector<CodegenFunction> {
+  public function getFunctions(): vec<CodegenFunction> {
     return $this->functions;
   }
 
-  public function addBeforeTypes(Vector<CodegenType> $types): this {
+  public function addBeforeTypes(vec<CodegenType> $types): this {
     foreach ($types as $type) {
       $this->addBeforeType($type);
     }
@@ -127,11 +128,11 @@ final class CodegenFile {
     return $this;
   }
 
-  public function getBeforeTypes(): Vector<CodegenType> {
+  public function getBeforeTypes(): vec<CodegenType> {
     return $this->beforeTypes;
   }
 
-  public function addAfterTypes(Vector<CodegenType> $types): this {
+  public function addAfterTypes(vec<CodegenType> $types): this {
     foreach ($types as $type) {
       $this->addAfterType($type);
     }
@@ -143,7 +144,7 @@ final class CodegenFile {
     return $this;
   }
 
-  public function getAfterTypes(): Vector<CodegenType> {
+  public function getAfterTypes(): vec<CodegenType> {
     return $this->afterTypes;
   }
 
@@ -171,14 +172,15 @@ final class CodegenFile {
    */
   public function rekeyManualSection(string $old_key, string $new_key): this {
     if ($this->rekey === null) {
-      $this->rekey = Map {};
+      $this->rekey = dict[];
     }
     $rekey = $this->rekey;
-    if (!$rekey->containsKey($new_key)) {
-      $rekey[$new_key] = Vector { $old_key };
+    if (!\HH\Lib\C\contains_key($rekey, $new_key)) {
+      $rekey[$new_key] = vec[$old_key];
     } else {
       $rekey[$new_key][] = $old_key;
     }
+    $this->rekey = $rekey;
     return $this;
   }
 
@@ -240,7 +242,10 @@ final class CodegenFile {
    */
   public function setShebangLine(string $shebang): this {
     invariant(!strpbrk($shebang, "\n"), "Expected single line");
-    invariant(Str::startsWith($shebang, '#!'), 'Shebang lines start with #!');
+    invariant(
+      \HH\Lib\Str\starts_with($shebang, '#!'),
+      'Shebang lines start with #!',
+    );
     $this->shebang = $shebang;
     return $this;
   }
@@ -328,7 +333,7 @@ final class CodegenFile {
     $doc_block = (string)$this->docBlock;
     $gen_from = $this->generatedFrom;
     if ($gen_from !== null) {
-      if ($doc_block && !Str::endsWith($doc_block, "\n")) {
+      if ($doc_block && !\HH\Lib\Str\ends_with($doc_block, "\n")) {
         $doc_block .= "\n";
       }
       $doc_block = $doc_block.$gen_from->render()."\n";
@@ -423,8 +428,8 @@ final class CodegenFile {
         $content = Filesystem::readFile($file_name);
         if ($content) {
           $root_dir = $this->config->getRootDir();
-          $relative_path = Str::startsWith($file_name, $root_dir)
-            ? Str::substr($file_name, Str::len($root_dir) + 1)
+          $relative_path = \HH\Lib\Str\starts_with($file_name, $root_dir)
+            ? \HH\Lib\Str\slice($file_name, \HH\Lib\Str\length($root_dir) + 1)
             : $file_name;
 
           if (!$this->doClobber) {
@@ -455,7 +460,7 @@ final class CodegenFile {
 
   public function useNamespace(string $ns, ?string $as = null): this {
     invariant(
-      !$this->useNamespaces->contains($ns),
+      !\HH\Lib\C\contains_key($this->useNamespaces, $ns),
       '%s is already being used',
       $ns,
     );

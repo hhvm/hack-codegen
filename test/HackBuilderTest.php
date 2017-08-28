@@ -82,7 +82,7 @@ final class HackBuilderTest extends CodegenBaseTest {
     $shape = $this
       ->getHackBuilder()
       ->addValue(
-        shape('herp' => 'derp', 'foo' => Vector { 'foo', 'bar', 'baz' }),
+        shape('herp' => 'derp', 'foo' => vec [ 'foo', 'bar', 'baz' ]),
         HackBuilderValues::shapeWithPerKeyRendering(
           shape(
             'herp' => HackBuilderValues::export(),
@@ -156,8 +156,8 @@ two line breaks. Also note that we include a newline and also '.
     $set = $this
       ->getHackBuilder()
       ->addValue(
-        Set { 'apple', 'oreos', 'banana' },
-        HackBuilderValues::set(HackBuilderValues::export()),
+        keyset [ 'apple', 'oreos', 'banana' ],
+        HackBuilderValues::set(HackBuilderKeys::export()),
       );
 
     $this->assertUnchanged($set->getCode());
@@ -200,11 +200,11 @@ two line breaks. Also note that we include a newline and also '.
       ->addMultilineCall(
         "\$foobarbaz_alphabetagama ={$del}\$this->callSomeThingReallyLongName".
         "ReallyReallyLongName",
-        Vector {
+        vec [
           '$someSmallParameter',
           "\$foobarbaz_alphabetagama +{$del}\$foobarbaz_alphabetagamaa +{$del}".
           "\$foobarbaz_alphabetagamatheta_foobarbaz",
-        },
+        ],
       );
     $this->assertUnchanged($body->getCode());
   }
@@ -213,10 +213,10 @@ two line breaks. Also note that we include a newline and also '.
     $body = $this
       ->getHackBuilder()
       ->addValue(
-        Map {
+        dict [
           'MY_ENUM::A' => 'ANOTHER_ENUM::A',
           'MY_ENUM::B' => 'ANOTHER_ENUM::B',
-        },
+        ],
         HackBuilderValues::map(
           HackBuilderKeys::literal(),
           HackBuilderValues::literal(),
@@ -244,11 +244,11 @@ two line breaks. Also note that we include a newline and also '.
 
   public function testSwitchBodyWithReturnsInCaseAndDefault(): void {
     // Gosh, I have no idea what names of football shots are!
-    $players = Vector {
+    $players = vec [
       array('name' => 'Ronaldo', 'favorite_shot' => 'freeKick'),
       array('name' => 'Messi', 'favorite_shot' => 'slideKick'),
       array('name' => 'Maradona', 'favorite_shot' => 'handOfGod'),
-    };
+    ];
 
     $body = $this
       ->getHackBuilder()
@@ -271,11 +271,11 @@ two line breaks. Also note that we include a newline and also '.
 
   public function testSwitchBodyWithBreaksInCaseAndDefault(): void {
     // Gosh, I have no idea what names of football shots are!
-    $players = Vector {
+    $players = vec [
       array('name' => 'Ronaldo', 'favorite_shot' => 'freeKick'),
       array('name' => 'Messi', 'favorite_shot' => 'slideKick'),
       array('name' => 'Maradona', 'favorite_shot' => 'handOfGod'),
-    };
+    ];
 
     $body = $this
       ->getHackBuilder()
@@ -298,11 +298,11 @@ two line breaks. Also note that we include a newline and also '.
 
   public function testSwitchBodyWithMultipleCasesWithoutBreaks(): void {
     // Gosh, I have no idea what names of football shots are!
-    $players = Vector {
+    $players = vec [
       array('name' => 'Ronaldo', 'favorite_shot' => 'freeKick'),
       array('name' => 'Messi', 'favorite_shot' => 'slideKick'),
       array('name' => 'Maradona', 'favorite_shot' => 'handOfGod'),
-    };
+    ];
 
     $body = $this
       ->getHackBuilder()
@@ -328,11 +328,11 @@ two line breaks. Also note that we include a newline and also '.
       ->getHackBuilder()
       ->add('$foo = ')
       ->addValue(
-        Vector { 1, 2, 3 },
+        vec [ 1, 2, 3 ],
         HackBuilderValues::vector(HackBuilderValues::export()),
       )
       ->getCode();
-    $this->assertContains('Vector', $body);
+    $this->assertContains('vec', $body);
     $this->assertNotContains('HH', $body);
     $this->assertUnchanged($body);
   }
@@ -342,7 +342,7 @@ two line breaks. Also note that we include a newline and also '.
       ->getHackBuilder()
       ->addAssignment(
         '$foo',
-        Vector { Vector { '$foo', '$bar' }, Vector { '$herp', '$derp' } },
+        vec [ vec [ '$foo', '$bar' ], vec [ '$herp', '$derp' ] ],
         HackBuilderValues::vector(
           HackBuilderValues::vector(HackBuilderValues::export()),
         ),
@@ -355,7 +355,7 @@ two line breaks. Also note that we include a newline and also '.
       ->getHackBuilder()
       ->addAssignment(
         '$foo',
-        Vector { Vector { '$foo', '$bar' }, Vector { '$herp', '$derp' } },
+        vec [ vec [ '$foo', '$bar' ], vec [ '$herp', '$derp' ] ],
         HackBuilderValues::vector(
           HackBuilderValues::vector(HackBuilderValues::literal()),
         ),
@@ -368,7 +368,7 @@ two line breaks. Also note that we include a newline and also '.
       ->getHackBuilder()
       ->addAssignment(
         '$foo',
-        Vector { Map { 'foo' => 'bar' }, Map { 'herp' => 'derp' } },
+        vec [ dict [ 'foo' => 'bar' ], dict [ 'herp' => 'derp' ] ],
         HackBuilderValues::vector(
           HackBuilderValues::map(
             HackBuilderKeys::export(),
@@ -383,7 +383,7 @@ two line breaks. Also note that we include a newline and also '.
     $body = $this
       ->getHackBuilder()
       ->addValue(
-        Map { self::class => \stdClass::class },
+        dict [ self::class => \stdClass::class ],
         HackBuilderValues::map(
           HackBuilderKeys::classname(),
           HackBuilderValues::classname(),
@@ -396,7 +396,7 @@ two line breaks. Also note that we include a newline and also '.
     $body = $this
       ->getHackBuilder()
       ->addValue(
-        Map { 'foo' => 'bar' },
+        dict [ 'foo' => 'bar' ],
         HackBuilderValues::map(
           HackBuilderKeys::lambda(($_config, $v) ==> "'key:$v'"),
           HackBuilderValues::lambda(($_config, $v) ==> "'value:$v'"),
@@ -407,8 +407,8 @@ two line breaks. Also note that we include a newline and also '.
 }
 
 final class TestAnotherCodegenConfig implements IHackCodegenConfig {
-  public function getFileHeader(): ?Vector<string> {
-    return Vector { 'Codegen Tests' };
+  public function getFileHeader(): ?vec<string> {
+    return vec [ 'Codegen Tests' ];
   }
 
   public function getSpacesPerIndentation(): int {

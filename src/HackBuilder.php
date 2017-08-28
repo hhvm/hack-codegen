@@ -30,7 +30,7 @@ final class HackBuilder extends BaseCodeBuilder {
    */
   public function addMultilineCall(
     string $func_call_line,
-    Vector<string> $params,
+    vec<string> $params,
     bool $include_close_statement = true,
   ): this {
     // Mark that the call is inside a function
@@ -40,7 +40,7 @@ final class HackBuilder extends BaseCodeBuilder {
     $max_length = $this->getMaxCodeLength() - 4;
 
     // Let's put everything in a single line
-    $args = '('.implode(', ', $params->toArray()).')';
+    $args = '('.\HH\Lib\Str\join(', ', $params).')';
     $composite_line = $func_call_line.$args;
     // Ignore suggested line breaks within individual args; otherwise we could
     // split in the middle of arguments rather than after each parameter.
@@ -62,9 +62,13 @@ final class HackBuilder extends BaseCodeBuilder {
       ->newLine()
       ->indent()
       ->addLinesWithSuggestedLineBreaks(
-        $params->map(function(string $line) {
-          return $line.',';
-        }),
+        $params
+        |> \HH\Lib\Vec\map(
+          $$,
+          $line ==> {
+            return $line.',';
+          },
+        ),
       )
       ->unindent()
       ->add(')');
@@ -125,8 +129,8 @@ final class HackBuilder extends BaseCodeBuilder {
       return $this;
     }
 
-    $this->add(normalized_var_export($lines->firstValue()));
-    if ($lines->count() === 1) {
+    $this->add(normalized_var_export(\HH\Lib\C\first($lines)));
+    if (\HH\Lib\C\count($lines) === 1) {
       return $this;
     }
 
@@ -139,10 +143,14 @@ final class HackBuilder extends BaseCodeBuilder {
     }
 
     $lines
-      ->slice(1, $lines->count() - 2)
-      ->map($line ==> $this->addLine(normalized_var_export($line).'.'));
+      |> \HH\Lib\Vec\slice($$, 1, \HH\Lib\C\count($$) - 2)
+      |> \HH\Lib\Vec\map(
+        $$,
+        $line ==> $this->addLine(normalized_var_export($line).'.'),
+      );
+
     // And then add the last
-    $this->add(normalized_var_export($lines->lastValue()));
+    $this->add(normalized_var_export(\HH\Lib\C\last($lines)));
     if ($indent_non_first_lines) {
       $this->unindent();
     }
@@ -182,10 +190,23 @@ final class HackBuilder extends BaseCodeBuilder {
   }
 
   /**
+   * Open a brace in the current line and start a new line
+   * with one more level of indentation.
+   */
+  public function openBracket(): this {
+    return $this->addLine(' [')->indent();
+  }
+
+
+  /**
    * Close a brace in a new line and sets one less level of indentation.
    */
   public function closeBrace(): this {
     return $this->ensureNewLine()->unindent()->addLine('}');
+  }
+
+  public function closeBracket(): this {
+    return $this->ensureNewLine()->unindent()->add(']');
   }
 
   public function closeStatement(): this {
@@ -307,10 +328,11 @@ final class HackBuilder extends BaseCodeBuilder {
   }
 
   public function addCaseBlocks<T>(
-    Iterable<T> $switch_values,
+    Traversable<T> $switch_values,
     (function(T, HackBuilder): void) $func,
   ): this {
-    $switch_values->map($v ==> $func($v, $this));
+    $switch_values =
+      $switch_values |> \HH\Lib\Vec\map($$, $v ==> $func($v, $this));
     return $this;
   }
 
@@ -464,12 +486,11 @@ final class HackBuilder extends BaseCodeBuilder {
     string $str,
     int $maxlen,
     bool $preserve_space = false,
-  ): Vector<string> {
-    $lines = Vector {};
-    $src_lines = explode("\n", $str);
-
+  ): vec<string> {
+    $lines = vec[];
+    $src_lines = \HH\Lib\Str\split("\n", $str);
     foreach ($src_lines as $src_line) {
-      while (Str::len($src_line) > $maxlen) {
+      while (\HH\Lib\Str\length($src_line) > $maxlen) {
         $last_space = strrpos(substr($src_line, 0, $maxlen), ' ');
         if ($last_space === false) {
           break;
@@ -490,7 +511,7 @@ final class HackBuilder extends BaseCodeBuilder {
   public static function multilineCall(
     IHackCodegenConfig $config,
     string $name,
-    Vector<string> $params,
+    vec<string> $params,
     bool $close_statement = false,
   ): string {
     return (new HackBuilder($config))
@@ -508,14 +529,18 @@ final class HackBuilder extends BaseCodeBuilder {
    */
   private function addSimpleMultilineCall(
     string $name,
-    Vector<string> $params,
+    vec<string> $params,
   ): this {
     return $this
       ->addLine("$name(")
       ->indent()
-      ->addLines($params->map(function(string $line) {
-        return $line.',';
-      }))
+      ->addLines($params
+        |> \HH\Lib\Vec\map(
+          $$,
+          $line ==> {
+            return $line.',';
+          },
+        ))
       ->unindent()
       ->add(')');
   }
@@ -527,7 +552,7 @@ final class HackBuilder extends BaseCodeBuilder {
 
   private function assertIsVariable(string $name): void {
     invariant(
-      Str::startsWith($name, '$'),
+      \HH\Lib\Str\starts_with($name, '$'),
       'Expecting a variable name, but "%s" is not valid.',
       $name,
     );

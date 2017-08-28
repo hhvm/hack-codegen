@@ -135,9 +135,9 @@ abstract class BaseCodeBuilder implements ICodeBuilder {
   }
 
   /**
-   * Add each element of the vector as a new line
+   * Add each element of the vec as a new line
    */
-  final public function addLines(\ConstVector<string> $lines): this {
+  final public function addLines(vec<string> $lines): this {
     foreach ($lines as $line) {
       $this->addLine($line);
     }
@@ -184,11 +184,12 @@ abstract class BaseCodeBuilder implements ICodeBuilder {
     }
 
     // If there's more than 1 line, add them 1 by 1
-    $lines = Str::explode("\n", $code);
-    if ($lines->count() > 1) {
+    $lines = \HH\Lib\Str\split("\n", $code);
+    if (\HH\Lib\C\count($lines) > 1) {
       // The last line shouldn't have a finishing end line,
       // so add it manually
-      $last_line = $lines->pop();
+      $last_line = \HH\Lib\C\lastx($lines);
+      $lines = \HH\Lib\Vec\slice($lines, 0, \HH\Lib\C\count($lines) - 1);
       $this->addLinesWithSuggestedLineBreaks($lines);
       return $this->addWithSuggestedLineBreaks($last_line);
     }
@@ -202,27 +203,30 @@ abstract class BaseCodeBuilder implements ICodeBuilder {
     }
 
     $lines_with_sugg_breaks = explode(self::DELIMITER, $code);
-    $final_lines = Vector {};
+    $final_lines = vec[];
     foreach ($lines_with_sugg_breaks as $line) {
       if (!$line) {
         // Continue if the line is empty
         continue;
       }
       invariant(is_string($line), 'For Hack');
-      if ($final_lines->isEmpty()) {
-        $final_lines->add($line);
+      if (\HH\Lib\C\is_empty($final_lines)) {
+        $final_lines[] = $line;
       } else {
-        $last_line = $final_lines->pop();
+        $last_line = \HH\Lib\C\lastx($final_lines);
+        $final_lines =
+          \HH\Lib\Vec\slice($final_lines, 0, \HH\Lib\C\count($final_lines) - 1);
         $composite_line = $last_line.' '.$line;
         if (strlen($composite_line) > $max_length) {
-          $final_lines->add($last_line)->add($line);
+          $final_lines[] = $last_line;
+          $final_lines[] = $line;
         } else {
           // Concatenate the line to the last line
-          $final_lines->add($composite_line);
+          $final_lines[] = $composite_line;
         }
       }
     }
-    return $this->add(implode("\n  ", $final_lines->toArray()));
+    return $this->add(\HH\Lib\Str\join("\n  ", $final_lines));
   }
 
   /**
@@ -230,7 +234,7 @@ abstract class BaseCodeBuilder implements ICodeBuilder {
    * line at a time.  See that method for more information.
    */
   final public function addLinesWithSuggestedLineBreaks(
-    \ConstVector<string> $lines,
+    vec<string> $lines,
   ): this {
     foreach ($lines as $line) {
       $this->addWithSuggestedLineBreaks($line)->newLine();

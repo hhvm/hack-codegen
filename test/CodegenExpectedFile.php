@@ -8,6 +8,8 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
+use HH\Lib\Str;
+
 namespace Facebook\HackCodegen;
 
 /**
@@ -53,7 +55,7 @@ final class CodegenExpectedFile {
     $stack = debug_backtrace();
     foreach ($stack as $function) {
       $function_name = $function['function'];
-      if (Str::startsWith($function_name, 'test')) {
+      if (\HH\Lib\Str\starts_with($function_name, 'test')) {
         $token = $function_name;
         break;
       }
@@ -96,7 +98,7 @@ final class CodegenExpectedFile {
     $token = null;
     $expected = '';
     foreach ($lines as $line) {
-      if (Str::startsWith($line, self::SEPARATOR)) {
+      if (\HH\Lib\Str\starts_with($line, self::SEPARATOR)) {
         if ($token !== null) {
           // We always add 1 newline at the end
           $expected = substr($expected, 0, -1);
@@ -274,14 +276,14 @@ final class CodegenExpectedFile {
    * the .codegen file, it doesn't seem like that's the file signature.
    */
   final private static function escapeTokens(string $s): string {
-    $result = Str::replace('@'.'generated', '@-generated', $s);
+    $result = \HH\Lib\Str\replace($s, '@'.'generated', '@-generated');
     return
-      Str::replace('@'.'partially-generated', '@-partially-generated', $result);
+      \HH\Lib\Str\replace($result, '@'.'partially-generated', '@-partially-generated');
   }
 
   final private static function unescapeTokens(string $s): string {
-    $result = Str::replace('@-generated', '@'.'generated', $s);
+    $result = \HH\Lib\Str\replace($s, '@-generated', '@'.'generated');
     return
-      Str::replace('@-partially-generated', '@'.'partially-generated', $result);
+      \HH\Lib\Str\replace($result, '@-partially-generated', '@'.'partially-generated');
   }
 }

@@ -54,8 +54,8 @@ interface ICodegenFactory {
   ): CodegenImplementsInterface;
 
   public function codegenImplementsInterfaces(
-    \ConstVector<string> $names,
-  ): Vector<CodegenImplementsInterface>;
+    vec<string> $names,
+  ): vec<CodegenImplementsInterface>;
 
   public function codegenMemberVar(string $name): CodegenMemberVar;
 
@@ -66,9 +66,7 @@ interface ICodegenFactory {
 
   public function codegenUsesTrait(string $name): CodegenUsesTrait;
 
-  public function codegenUsesTraits(
-    \ConstVector<string> $traits,
-  ): Vector<CodegenUsesTrait>;
+  public function codegenUsesTraits(vec<string> $traits): vec<CodegenUsesTrait>;
 
   public function codegenGeneratedFromClass(
     string $class,

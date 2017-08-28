@@ -54,7 +54,7 @@ final class DormUser {
     /* BEGIN MANUAL SECTION CountryId */
     // You may manually change this section of code
     $value = $this->data['country_id'] ?? null;
-    return $value;
+    return $value === null ? null : $value;
     /* END MANUAL SECTION */
   }
 

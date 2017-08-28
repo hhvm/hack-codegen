@@ -29,8 +29,8 @@ class CodegenMutator {
   private function getName(): string {
     $ref = new \ReflectionClass($this->schema);
     $name = $ref->getShortName();
-    $remove_schema = Str::endsWith($name, 'Schema')
-      ? Str::substr($name, 0, -6)
+    $remove_schema = \HH\Lib\Str\ends_with($name, 'Schema')
+      ? \HH\Lib\Str\slice($name, 0, \HH\Lib\Str\length($name) - 6)
       : $name;
     return $remove_schema.'Mutator';
   }
@@ -74,12 +74,12 @@ class CodegenMutator {
     // Example of how to generate a class member variable, including
     // setting an initial value.
     return $this->codegen->codegenMemberVar('data')
-      ->setType('Map<string, mixed>')
-      ->setValue(Map {});
+      ->setType('dict<string, mixed>')
+      ->setValue(dict[]);
   }
 
   private function getPdoTypeVar(): CodegenMemberVar {
-    $values = Map {};
+    $values = dict[];
     foreach ($this->schema->getFields() as $field) {
       switch($field->getType()) {
         case 'string':
@@ -117,7 +117,7 @@ class CodegenMutator {
       );
 
     return $cg->codegenMemberVar('pdoType')
-      ->setType('Map<string, int>')
+      ->setType('dict<string, int>')
       ->setIsStatic()
       ->setLiteralValue($code->getCode());
   }
@@ -165,8 +165,8 @@ class CodegenMutator {
     $body = $cg->codegenHackBuilder()
       ->addLinef('$conn = new PDO(\'%s\');', $this->schema->getDsn())
       ->addMultilineCall(
-        '$quoted = $this->data->mapWithKey',
-        Vector{'($k, $v) ==> $conn->quote($v, self::$pdoType[$k])'},
+        '$quoted = \HH\Lib\Dict\map_with_key',
+        vec['$this->data', '($k, $v) ==> $conn->quote($v, self::$pdoType[$k])'],
       )
       ->addAssignment(
         '$id',
@@ -175,8 +175,8 @@ class CodegenMutator {
       )
       ->startIfBlock('$id === null')
       ->addLine('$this->checkRequiredFields();')
-      ->addLine('$names = "(".implode(",", $quoted->keys()).")";')
-      ->addLine('$values = "(".implode(",", $quoted->values()).")";')
+      ->addLine('$names = "(".\HH\Lib\Str\join(",", \HH\Lib\Vec\keys($quoted)).")";')
+      ->addLine('$values = "(".\HH\Lib\Str\join(",", vec($quoted)).")";')
       ->addLinef(
         '$st = "insert into %s $names values $values";',
         $this->schema->getTableName(),
@@ -186,11 +186,11 @@ class CodegenMutator {
       ->addElseBlock()
       ->addAssignment(
         '$pairs',
-        '$quoted->mapWithKey(($field, $value) ==>  "$field=$value")',
+        '\HH\Lib\Dict\map_with_key($quoted, ($field, $value) ==>  "$field=$value")',
         HackBuilderValues::literal(),
       )
       ->addLinef(
-        '$st = "update %s set ".implode(",", $pairs)." where %s=".$this->id;',
+        '$st = "update %s set ".\HH\Lib\Str\join(",", $pairs)." where %s=".$this->id;',
         $this->schema->getTableName(),
         $this->schema->getIdField(),
       )
@@ -204,10 +204,10 @@ class CodegenMutator {
   }
 
   private function getCheckRequiredFieldsMethod(): CodegenMethod {
-    $required = $this->schema->getFields()
+    $required = keyset($this->schema->getFields()
       ->filter($field ==> !$field->isOptional())
       ->map($field ==> $field->getDbColumn())
-      ->values()->toSet();
+      ->values());
 
     $cg = $this->codegen;
 
@@ -216,22 +216,22 @@ class CodegenMutator {
       ->addValue(
         $required,
         HackBuilderValues::set(
-          HackBuilderValues::export(),
+          HackBuilderKeys::export(),
         ),
       )
       ->closeStatement()
       ->addAssignment(
         '$missing',
-        '$required->removeAll($this->data->keys());',
+        '\HH\Lib\Dict\diff_by_key($required, $this->data);',
         HackBuilderValues::literal(),
       )
       ->addMultilineCall(
         'invariant',
-        Vector {
-          '$missing->isEmpty()',
+        vec[
+          '\HH\Lib\C\is_empty($missing)',
           '"The following required fields are missing: %s"',
-          'implode(", ", $missing)',
-        }
+          '\HH\Lib\Str\join(", ", $missing)',
+        ]
       );
 
     return $cg->codegenMethod('checkRequiredFields')
@@ -239,9 +239,9 @@ class CodegenMutator {
       ->setBody($body->getCode());
   }
 
-  private function getSetters(): Vector<CodegenMethod> {
+  private function getSetters(): vec<CodegenMethod> {
     $cg = $this->codegen;
-    $methods = Vector {};
+    $methods = vec[];
     foreach($this->schema->getFields() as $name => $field) {
       if ($field->getType() === 'DateTime') {
         $value = '$value->format("Y-m-d")';

@@ -10,6 +10,8 @@
 
 namespace Facebook\HackCodegen;
 
+require_once(__DIR__ . "/../../vendor/hh_autoload.php");
+
 /**
  * For a given DormSchema, this class generates code for a class
  * that will allow to read the data from a database and store it
@@ -30,8 +32,8 @@ class CodegenDorm {
   private function getSchemaName(): string {
     $ref = new \ReflectionClass($this->schema);
     $name = $ref->getShortName();
-    return Str::endsWith($name, 'Schema')
-      ? Str::substr($name, 0, -6)
+    return \HH\Lib\Str\ends_with($name, 'Schema')
+      ? \HH\Lib\Str\slice($name, 0, \HH\Lib\Str\length($name) - 6)
       : $name;
   }
 
@@ -92,7 +94,7 @@ class CodegenDorm {
     $body = $this->codegen->codegenHackBuilder()
       ->addLinef('$conn = new PDO(\'%s\');', $this->schema->getDsn())
       ->add('$cursor = ')
-      ->addMultilineCall('$conn->query', Vector {"\"$sql\""}, true)
+      ->addMultilineCall('$conn->query', vec["\"$sql\""], true)
       ->addLine('$result = $cursor->fetch(PDO::FETCH_ASSOC);')
       ->startIfBlock('!$result')
       ->addReturnf('null')
@@ -119,9 +121,9 @@ class CodegenDorm {
       ->setBody($body->getCode());
   }
 
-  private function getGetters(): Vector<CodegenMethod> {
+  private function getGetters(): vec<CodegenMethod> {
     $cg = $this->codegen;
-    $methods = Vector {};
+    $methods = vec[];
     foreach ($this->schema->getFields() as $name => $field) {
       $return_type = $field->getType();
       $data = '$this->data[\''.$field->getDbColumn().'\']';

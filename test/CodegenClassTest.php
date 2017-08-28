@@ -58,7 +58,7 @@ final class CodegenClassTest extends CodegenBaseTest {
   }
 
   public function testMultipleInterfaces(): void {
-    $interfaces = Vector { 'IHarryPotter', 'IHermioneGranger', 'IRonWeasley' };
+    $interfaces = vec [ 'IHarryPotter', 'IHermioneGranger', 'IRonWeasley' ];
 
     $cgf = $this->getCodegenFactory();
     $code = $cgf
@@ -81,7 +81,7 @@ final class CodegenClassTest extends CodegenBaseTest {
   }
 
   public function testLongClassDeclarationWithInterfaces(): void {
-    $interfaces = Vector { 'InterfaceUno', 'InterfaceDos', 'InterfaceTres' };
+    $interfaces = vec [ 'InterfaceUno', 'InterfaceDos', 'InterfaceTres' ];
     $cgf = $this->getCodegenFactory();
     $code = $cgf
       ->codegenClass('ClassWithReallyReallyLongName')
@@ -94,7 +94,7 @@ final class CodegenClassTest extends CodegenBaseTest {
 
   public function testClassDeclarationWithGenerics(): void {
     $generics_decl =
-      Map { 'Tent' => 'Ixyz', 'T' => "", 'Tstory' => "EntCreationStory<Tent>" };
+      dict [ 'Tent' => 'Ixyz', 'T' => "", 'Tstory' => "EntCreationStory<Tent>" ];
 
     $code = $this
       ->getCodegenFactory()
@@ -229,7 +229,7 @@ final class CodegenClassTest extends CodegenBaseTest {
     $code = $cgf
       ->codegenClass('TestWrapperFunc')
       ->setExtends('StrangeParent')
-      ->addConstructorWrapperFunc(Vector { 'string $text' })
+      ->addConstructorWrapperFunc(vec [ 'string $text' ])
       ->render();
 
     $this->assertUnchanged($code);

@@ -31,9 +31,9 @@ if ($do_that) {
 }
 
 !@#$%codegentest:testClassnameMap
-Map {
+dict [
   \Facebook\HackCodegen\HackBuilderTest::class => \stdClass::class,
-}
+]
 !@#$%codegentest:testDocBlock
 /**
  * Wow a really long comment that will span multiple lines and probably go over
@@ -41,11 +41,11 @@ Map {
  */
 
 !@#$%codegentest:testExportedVectorDoesNotHaveHHPrefix
-$foo = Vector {
+$foo = vec [
   1,
   2,
   3,
-}
+]
 !@#$%codegentest:testForeachLoop
 foreach ($values as $value) {
   something($value);
@@ -64,20 +64,20 @@ if ($value <= 0) {
 }
 
 !@#$%codegentest:testLambdaMap
-Map {
+dict [
   'key:foo' => 'value:bar',
-}
+]
 !@#$%codegentest:testLiteralMap
-Map {
+dict [
   MY_ENUM::A => ANOTHER_ENUM::A,
   MY_ENUM::B => ANOTHER_ENUM::B,
-}
+]
 !@#$%codegentest:testSet
-Set {
+keyset [
   'apple',
   'oreos',
   'banana',
-}
+]
 !@#$%codegentest:testShape
 shape(
   'x' => 3,
@@ -87,11 +87,11 @@ shape(
 !@#$%codegentest:testShapeWithPerKeyRendering
 shape(
   'herp' => 'derp',
-  'foo' => Vector {
+  'foo' => vec [
     'foo',
     'bar',
     'baz',
-  },
+  ],
 )
 !@#$%codegentest:testShapeWithUniformRendering
 shape(
@@ -151,38 +151,38 @@ try {
 }
 
 !@#$%codegentest:testVectorOfExportedVectors
-$foo = Vector {
-  Vector {
+$foo = vec [
+  vec [
     '$foo',
     '$bar',
-  },
-  Vector {
+  ],
+  vec [
     '$herp',
     '$derp',
-  },
-};
+  ],
+];
 
 !@#$%codegentest:testVectorOfLiteralVectors
-$foo = Vector {
-  Vector {
+$foo = vec [
+  vec [
     $foo,
     $bar,
-  },
-  Vector {
+  ],
+  vec [
     $herp,
     $derp,
-  },
-};
+  ],
+];
 
 !@#$%codegentest:testVectorOfMaps
-$foo = Vector {
-  Map {
+$foo = vec [
+  dict [
     'foo' => 'bar',
-  },
-  Map {
+  ],
+  dict [
     'herp' => 'derp',
-  },
-};
+  ],
+];
 
 !@#$%codegentest:testWrappedStringDoNotIndent
 $this->callMethod(

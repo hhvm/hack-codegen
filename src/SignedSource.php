@@ -67,7 +67,7 @@ final class SignedSource extends SignedSourceBase {
    * If a comment is set, it will be included in the doc block.
    */
   public static function getDocBlock(?string $comment = null): string {
-    $comment = Str::isEmpty($comment) ? null : $comment."\n\n";
+    $comment = \HH\Lib\Str\is_empty($comment) ? null : $comment."\n\n";
     return "This file is generated. Do not modify it manually!\n\n".
       $comment.
       self::getSigningToken();

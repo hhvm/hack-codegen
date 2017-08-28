@@ -82,9 +82,7 @@ final class CodegenClass extends CodegenClassBase {
    *   return new MyClass($s);
    * }
    */
-  public function addConstructorWrapperFunc(
-    ?Vector<string> $params = null,
-  ): this {
+  public function addConstructorWrapperFunc(?vec<string> $params = null): this {
     // Check if parameters are specified explicitly
     $param_full = null;
     if ($params) {
@@ -95,12 +93,12 @@ final class CodegenClass extends CodegenClassBase {
 
     if ($param_full) {
       // Extract variable names from parameters
-      $param_names = Vector {};
+      $param_names = vec[];
       $re = '/\$[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*/';
       foreach ($param_full as $str) {
         $matches = array();
         if (preg_match_all($re, $str, $matches)) {
-          $param_names->addAll($matches[0]);
+          $param_names = \HH\Lib\Vec\concat($param_names, $matches[0]);
         }
       }
       $params_str = implode(', ', $param_names);

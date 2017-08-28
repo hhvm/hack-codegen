@@ -1,0 +1,8 @@
+
+{
+  "roots": [
+    "src/",
+    "test/",
+    "examples/"
+  ]
+}

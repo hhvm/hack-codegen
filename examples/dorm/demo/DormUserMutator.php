@@ -6,20 +6,20 @@
  * To re-generate this file run codegen.php DormUserSchema
  *
  *
- * @partially-generated SignedSource<<2907c9297c1fcac4465afbc522b1f46f>>
+ * @partially-generated SignedSource<<62acdce3703664c784088994a3e9951d>>
  */
 
 final class DormUserMutator {
 
-  private Map<string, mixed> $data = Map {
-  };
-  private static Map<string, int> $pdoType = Map {
+  private dict<string, mixed> $data = dict [
+  ];
+  private static dict<string, int> $pdoType = dict [
     'first_name' => PDO::PARAM_STR,
     'last_name' => PDO::PARAM_STR,
     'birthday' => PDO::PARAM_STR,
     'country_id' => PDO::PARAM_INT,
     'is_active' => PDO::PARAM_BOOL,
-  };
+  ];
 
   private function __construct(private ?int $id = null) {
   }
@@ -34,36 +34,38 @@ final class DormUserMutator {
 
   public function save(): int {
     $conn = new PDO('sqlite:/path/to/database.db');
-    $quoted = $this->data->mapWithKey(
+    $quoted = \HH\Lib\Dict\map_with_key(
+      $this->data,
       ($k, $v) ==> $conn->quote($v, self::$pdoType[$k]),
     );
     $id = $this->id;
     if ($id === null) {
       $this->checkRequiredFields();
-      $names = "(".implode(",", $quoted->keys()).")";
-      $values = "(".implode(",", $quoted->values()).")";
+      $names = "(".\HH\Lib\Str\join(",", \HH\Lib\Vec\keys($quoted)).")";
+      $values = "(".\HH\Lib\Str\join(",", vec($quoted)).")";
       $st = "insert into user $names values $values";
       $conn->exec($st);
       return (int) $conn->lastInsertId();
     } else {
-      $pairs = $quoted->mapWithKey(($field, $value) ==>  "$field=$value");
-      $st = "update user set ".implode(",", $pairs)." where user_id=".$this->id;
+      $pairs =
+        \HH\Lib\Dict\map_with_key($quoted, ($field, $value) ==>  "$field=$value");
+      $st = "update user set ".\HH\Lib\Str\join(",", $pairs)." where user_id=".$this->id;
       $conn->exec($st);
       return $id;
     }
   }
 
   public function checkRequiredFields(): void {
-    $required = Set {
+    $required = keyset [
       'first_name',
       'last_name',
       'is_active',
-    };
-    $missing = $required->removeAll($this->data->keys());;
+    ];
+    $missing = \HH\Lib\Dict\diff_by_key($required, $this->data);;
     invariant(
-      $missing->isEmpty(),
+      \HH\Lib\C\is_empty($missing),
       "The following required fields are missing: %s",
-      implode(", ", $missing),
+      \HH\Lib\Str\join(", ", $missing),
     );
   }
 
