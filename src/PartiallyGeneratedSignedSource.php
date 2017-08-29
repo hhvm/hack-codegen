@@ -10,7 +10,6 @@
 
 namespace Facebook\HackCodegen;
 
-
 /**
  * Similar to SignedSource, but it uses a different header to indicate that the
  * file is partially generated
@@ -31,7 +30,7 @@ final class PartiallyGeneratedSignedSource extends SignedSourceBase {
    * If a comment is set, it will be included in the doc block.
    */
   public static function getDocBlock(?string $comment = null): string {
-    $comment = Str::isEmpty($comment) ? null : $comment."\n\n";
+    $comment = \HH\Lib\Str\is_empty($comment) ? null : $comment."\n\n";
     return "This file is partially generated. ".
       "Only make modifications between BEGIN MANUAL SECTION ".
       "and END MANUAL SECTION designators.\n\n".

@@ -62,7 +62,7 @@ final class CodegenEnum extends CodegenClassBase {
   }
 
   protected function buildConsts(HackBuilder $builder): void {
-    if ($this->consts->isEmpty()) {
+    if (\HH\Lib\C\is_empty($this->consts)) {
       return;
     }
     $builder->ensureEmptyLine();

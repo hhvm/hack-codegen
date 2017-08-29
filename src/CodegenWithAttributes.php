@@ -6,46 +6,47 @@
  * This source code is licensed under the BSD-style license found in the
  * LICENSE file in the root directory of this source tree.
  */
+
 namespace Facebook\HackCodegen;
 
 trait CodegenWithAttributes {
-  private Map<string, ImmVector<string>> $userAttributes = Map {};
+  private dict<string, vec<string>> $userAttributes = dict[];
 
   final public function setUserAttribute(
     string $name,
     \Stringish ...$params
   ): this {
     $this->userAttributes[$name] =
-      (new ImmVector($params))->map($p ==> (string)$p);
+      $params |> \HH\Lib\Vec\map($$, $p ==> (string)$p);
     return $this;
   }
 
-  final public function getUserAttributes(): ImmMap<string, ImmVector<string>> {
-    return $this->userAttributes->immutable();
+  final public function getUserAttributes(): dict<string, vec<string>> {
+    return $this->userAttributes;
   }
 
-  final public function getAttributes(): ImmMap<string, ImmVector<string>> {
-    $attributes = $this->getExtraAttributes()->toMap();
-    $attributes->setAll($this->userAttributes);
-    return $attributes->immutable();
+  final public function getAttributes(): dict<string, vec<string>> {
+    return $this->getExtraAttributes()
+      |> \HH\Lib\Dict\merge($$, $this->userAttributes);
   }
 
   final public function hasAttributes(): bool {
-    return !$this->getAttributes()->isEmpty();
+    return !\HH\Lib\C\is_empty($this->getAttributes());
   }
 
   final public function renderAttributes(): ?string {
     $attributes = $this->getAttributes();
-    if ($attributes->isEmpty()) {
+    if (\HH\Lib\C\is_empty($attributes)) {
       return null;
     }
 
     return '<<'.
-      implode(
+      \HH\Lib\Str\join(
         ', ',
-        $attributes->mapWithKey(
+        \HH\Lib\Dict\map_with_key(
+          $attributes,
           ($name, $params) ==> {
-            if ($params->isEmpty()) {
+            if (\HH\Lib\C\is_empty($params)) {
               return $name;
             }
             return $name.'('.implode(', ', $params).')';
@@ -55,7 +56,7 @@ trait CodegenWithAttributes {
       '>>';
   }
 
-  protected function getExtraAttributes(): ImmMap<string, ImmVector<string>> {
-    return ImmMap {};
+  protected function getExtraAttributes(): dict<string, vec<string>> {
+    return dict[];
   }
 }

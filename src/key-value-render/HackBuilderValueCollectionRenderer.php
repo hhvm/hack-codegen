@@ -23,10 +23,10 @@ class HackBuilderValueCollectionRenderer<Tv, T as Traversable<Tv>>
     $value_renderer = $this->valueRenderer;
     $builder = (new HackBuilder($config))
       ->add(strip_hh_prefix($this->containerName))
-      ->openBrace();
+      ->openBracket();
     foreach ($values as $value) {
       $builder->addLinef('%s,', $value_renderer->render($config, $value));
     }
-    return $builder->unindent()->add('}')->getCode();
+    return $builder->closeBracket()->getCode();
   }
 }

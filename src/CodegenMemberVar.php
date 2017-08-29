@@ -86,7 +86,7 @@ final class CodegenMemberVar implements ICodeBuilderRenderer {
 
   /**
    * Set the value of the variable to exactly what is specified. This is useful
-   * for example to set it to "Vector {}", or other things that setValue
+   * for example to set it to "vec []", or other things that setValue
    * can't do.
    */
   public function setLiteralValue(string $value): this {

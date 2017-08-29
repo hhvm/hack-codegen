@@ -38,40 +38,43 @@ abstract final class HackBuilderValues {
 
   public static function vector<Tv>(
     IHackBuilderValueRenderer<Tv> $vr,
-  ): IHackBuilderValueRenderer<Vector<Tv>> {
-    return new HackBuilderValueCollectionRenderer(Vector::class, $vr);
+  ): IHackBuilderValueRenderer<vec<Tv>> {
+    return new HackBuilderValueCollectionRenderer(vec::class, $vr);
   }
 
+  <<__Deprecated("Use vector(), since vecs are immutable")>>
   public static function immVector<Tv>(
     IHackBuilderValueRenderer<Tv> $vr,
-  ): IHackBuilderValueRenderer<ImmVector<Tv>> {
-    return new HackBuilderValueCollectionRenderer(ImmVector::class, $vr);
+  ): IHackBuilderValueRenderer<vec<Tv>> {
+    return new HackBuilderValueCollectionRenderer(vec::class, $vr);
   }
 
-  public static function set<Tv>(
-    IHackBuilderValueRenderer<Tv> $vr,
-  ): IHackBuilderValueRenderer<Set<Tv>> {
-    return new HackBuilderValueCollectionRenderer(Set::class, $vr);
+  public static function set<Tv as arraykey>(
+    IHackBuilderKeyRenderer<Tv> $vr,
+  ): IHackBuilderValueRenderer<keyset<Tv>> {
+    return new HackBuilderKeyedCollectionRenderer(keyset::class, $vr);
   }
 
-  public static function immSet<Tv>(
-    IHackBuilderValueRenderer<Tv> $vr,
-  ): IHackBuilderValueRenderer<ImmSet<Tv>> {
-    return new HackBuilderValueCollectionRenderer(ImmSet::class, $vr);
+  <<__Deprecated("Use set(), since keysets are immutable")>>
+  public static function immSet<Tv as arraykey>(
+    IHackBuilderKeyRenderer<Tv> $vr,
+  ): IHackBuilderValueRenderer<keyset<Tv>> {
+    return new HackBuilderKeyedCollectionRenderer(keyset::class, $vr);
   }
 
   public static function map<Tk as arraykey, Tv>(
     IHackBuilderKeyRenderer<Tk> $kr,
     IHackBuilderValueRenderer<Tv> $vr,
-  ): IHackBuilderValueRenderer<Map<Tk, Tv>> {
-    return new HackBuilderKeyValueCollectionRenderer(Map::class, $kr, $vr);
+  ): IHackBuilderValueRenderer<dict<Tk, Tv>> {
+    return new HackBuilderKeyValueCollectionRenderer(dict::class, $kr, $vr);
   }
 
+  <<__Deprecated("Use map(), since dicts are immutable")>>
   public static function immMap<Tk as arraykey, Tv>(
     IHackBuilderKeyRenderer<Tk> $kr,
     IHackBuilderValueRenderer<Tv> $vr,
-  ): IHackBuilderValueRenderer<ImmMap<Tk, Tv>> {
-    return new HackBuilderKeyValueCollectionRenderer(ImmMap::class, $kr, $vr);
+  ): IHackBuilderValueRenderer<dict<Tk, Tv>> {
+    return new HackBuilderKeyValueCollectionRenderer(dict::class, $kr, $vr);
   }
 
   public static function shapeWithUniformRendering<Tv>(

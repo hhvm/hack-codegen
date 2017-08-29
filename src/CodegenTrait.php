@@ -22,8 +22,8 @@ namespace Facebook\HackCodegen;
 final class CodegenTrait extends CodegenClassBase {
   use CodegenClassWithInterfaces;
 
-  private Vector<string> $requireClass = Vector {};
-  private Vector<string> $requireInterface = Vector {};
+  private vec<string> $requireClass = vec[];
+  private vec<string> $requireInterface = vec[];
 
   public function addRequireClass(string $class): this {
     $this->requireClass[] = $class;
@@ -42,7 +42,10 @@ final class CodegenTrait extends CodegenClassBase {
   }
 
   private function buildRequires(HackBuilder $builder): void {
-    if ($this->requireClass->isEmpty() && $this->requireInterface->isEmpty()) {
+    if (
+      \HH\Lib\C\is_empty($this->requireClass) &&
+      \HH\Lib\C\is_empty($this->requireInterface)
+    ) {
       return;
     }
     $builder->ensureEmptyLine();
