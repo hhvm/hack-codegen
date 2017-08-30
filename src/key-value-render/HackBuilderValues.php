@@ -48,6 +48,12 @@ abstract final class HackBuilderValues {
     return new HackBuilderValueCollectionRenderer(ImmVector::class, $vr);
   }
 
+  public static function vec<Tv>(
+    IHackBuilderValueRenderer<Tv> $vr,
+  ): IHackBuilderValueRenderer<vec<Tv>> {
+    return new HackBuilderNativeValueCollectionRenderer(vec::class, $vr);
+  }
+
   public static function set<Tv>(
     IHackBuilderValueRenderer<Tv> $vr,
   ): IHackBuilderValueRenderer<Set<Tv>> {
@@ -58,6 +64,12 @@ abstract final class HackBuilderValues {
     IHackBuilderValueRenderer<Tv> $vr,
   ): IHackBuilderValueRenderer<ImmSet<Tv>> {
     return new HackBuilderValueCollectionRenderer(ImmSet::class, $vr);
+  }
+
+  public static function keyset<Tv as arraykey>(
+    IHackBuilderValueRenderer<Tv> $vr,
+  ): IHackBuilderValueRenderer<keyset<Tv>> {
+    return new HackBuilderNativeValueCollectionRenderer(keyset::class, $vr);
   }
 
   public static function map<Tk as arraykey, Tv>(
@@ -72,6 +84,13 @@ abstract final class HackBuilderValues {
     IHackBuilderValueRenderer<Tv> $vr,
   ): IHackBuilderValueRenderer<ImmMap<Tk, Tv>> {
     return new HackBuilderKeyValueCollectionRenderer(ImmMap::class, $kr, $vr);
+  }
+
+  public static function dict<Tk as arraykey, Tv>(
+    IHackBuilderKeyRenderer<Tk> $kr,
+    IHackBuilderValueRenderer<Tv> $vr,
+  ): IHackBuilderValueRenderer<dict<Tk, Tv>> {
+    return new HackBuilderNativeKeyValueCollectionRenderer(dict::class, $kr, $vr);
   }
 
   public static function shapeWithUniformRendering<Tv>(

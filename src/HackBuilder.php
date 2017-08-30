@@ -180,11 +180,19 @@ final class HackBuilder extends BaseCodeBuilder {
     return $this->addLine(' {')->indent();
   }
 
+  public function openBracket(): this {
+    return $this->addLine(' [')->indent();
+  }
+
   /**
    * Close a brace in a new line and sets one less level of indentation.
    */
   public function closeBrace(): this {
     return $this->ensureNewLine()->unindent()->addLine('}');
+  }
+
+  public function closeBracket(): this {
+    return $this->unindent()->add(']');
   }
 
   public function closeStatement(): this {
