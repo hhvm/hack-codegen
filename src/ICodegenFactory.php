@@ -54,8 +54,8 @@ interface ICodegenFactory {
   ): CodegenImplementsInterface;
 
   public function codegenImplementsInterfaces(
-    \ConstVector<string> $names,
-  ): Vector<CodegenImplementsInterface>;
+    Traversable<string> $names,
+  ): Traversable<CodegenImplementsInterface>;
 
   public function codegenMemberVar(string $name): CodegenMemberVar;
 
@@ -67,8 +67,8 @@ interface ICodegenFactory {
   public function codegenUsesTrait(string $name): CodegenUsesTrait;
 
   public function codegenUsesTraits(
-    \ConstVector<string> $traits,
-  ): Vector<CodegenUsesTrait>;
+    Traversable<string> $traits,
+  ): Traversable<CodegenUsesTrait>;
 
   public function codegenGeneratedFromClass(
     string $class,
@@ -90,7 +90,7 @@ interface ICodegenFactory {
   ): CodegenGeneratedFrom;
 
   public function codegenShape(
-    array<string, string> $attrs = array(),
+    KeyedTraversable<string, string> $attrs = array(),
   ): CodegenShape;
 
   public function codegenType(string $name): CodegenType;

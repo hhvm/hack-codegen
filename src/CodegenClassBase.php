@@ -10,6 +10,8 @@
 
 namespace Facebook\HackCodegen;
 
+use namespace HH\Lib\{C, Vec};
+
 /**
  * Abstract class to generate code for a class or trait.
  *
@@ -20,14 +22,14 @@ abstract class CodegenClassBase implements ICodeBuilderRenderer {
   use CodegenWithAttributes;
   use HackBuilderRenderer;
 
-  protected Map<string, ?string> $genericsDecl = Map {};
+  protected dict<string, ?string> $genericsDecl = dict[];
   protected ?string $docBlock;
   protected ?CodegenGeneratedFrom $generatedFrom;
   protected ?CodegenFunction $wrapperFunc = null;
-  protected Vector<CodegenMethod> $methods = Vector {};
-  private Vector<CodegenUsesTrait> $traits = Vector {};
-  protected Vector<(string, bool, mixed, ?string)> $consts = Vector {};
-  protected Vector<CodegenMemberVar> $vars = Vector {};
+  protected vec<CodegenMethod> $methods = vec[];
+  private vec<CodegenUsesTrait> $traits = vec[];
+  protected vec<(string, bool, mixed, ?string)> $consts = vec[];
+  protected vec<CodegenMemberVar> $vars = vec[];
   protected bool $hasManualFooter = false;
   protected bool $hasManualHeader = false;
   private bool $isConsistentConstruct = false;
@@ -53,12 +55,14 @@ abstract class CodegenClassBase implements ICodeBuilderRenderer {
    * Will generate:
    * class MyClass<TRead, TWrite as T> {
    */
-  public function setGenericsDecl(Map<string, ?string> $generics_decl): this {
-    $this->genericsDecl = $generics_decl;
+  public function setGenericsDecl(
+    KeyedTraversable<string, ?string> $generics_decl,
+  ): this {
+    $this->genericsDecl = dict($generics_decl);
     return $this;
   }
 
-  public function addMethods(\ConstVector<CodegenMethod> $methods): this {
+  public function addMethods(Traversable<CodegenMethod> $methods): this {
     foreach ($methods as $method) {
       $this->addMethod($method);
     }
@@ -67,7 +71,7 @@ abstract class CodegenClassBase implements ICodeBuilderRenderer {
 
   public function addMethod(CodegenMethod $method): this {
     $method->setContainingClass($this);
-    $this->methods->add($method);
+    $this->methods[] = $method;
     return $this;
   }
 
@@ -81,17 +85,18 @@ abstract class CodegenClassBase implements ICodeBuilderRenderer {
     return $this;
   }
 
-  protected function getTraits(): Vector<string> {
+  protected function getTraits(): vec<string> {
     // Trait<T> becomes Trait
-    return $this
-      ->traits
-      ->map($trait ==> {
+    return Vec\map(
+      $this->traits,
+      $trait ==> {
         $name = $trait->getName();
         return strstr($name, '<', true) ?: $name;
-      });
+      },
+    );
   }
 
-  public function addTraits(Vector<CodegenUsesTrait> $traits): this {
+  public function addTraits(Traversable<CodegenUsesTrait> $traits): this {
     foreach ($traits as $trait) {
       $this->addTrait($trait);
     }
@@ -99,7 +104,7 @@ abstract class CodegenClassBase implements ICodeBuilderRenderer {
   }
 
   public function addTrait(CodegenUsesTrait $trait): this {
-    $this->traits->add($trait);
+    $this->traits[] = $trait;
     return $this;
   }
 
@@ -251,7 +256,7 @@ abstract class CodegenClassBase implements ICodeBuilderRenderer {
   }
 
   protected function buildTraits(HackBuilder $builder): void {
-    if ($this->traits->isEmpty()) {
+    if (C\is_empty($this->traits)) {
       return;
     }
     $builder->ensureEmptyLine();
@@ -261,7 +266,7 @@ abstract class CodegenClassBase implements ICodeBuilderRenderer {
   }
 
   protected function buildConsts(HackBuilder $builder): void {
-    if ($this->consts->isEmpty()) {
+    if (C\is_empty($this->consts)) {
       return;
     }
     $builder->ensureEmptyLine();
@@ -286,7 +291,7 @@ abstract class CodegenClassBase implements ICodeBuilderRenderer {
   }
 
   protected function buildVars(HackBuilder $builder): void {
-    if ($this->vars->isEmpty()) {
+    if (C\is_empty($this->vars)) {
       return;
     }
     $builder->ensureEmptyLine();
@@ -329,11 +334,11 @@ abstract class CodegenClassBase implements ICodeBuilderRenderer {
     }
   }
 
-  protected function getExtraAttributes(): ImmMap<string, ImmVector<string>> {
+  protected function getExtraAttributes(): dict<string, vec<string>> {
     if ($this->isConsistentConstruct) {
-      return ImmMap { '__ConsistentConstruct' => ImmVector {} };
+      return dict['__ConsistentConstruct' => vec[]];
     }
-    return ImmMap {};
+    return dict[];
   }
 
   abstract protected function appendBodyToBuilder(HackBuilder $builder): void;
@@ -369,49 +374,53 @@ abstract class CodegenClassBase implements ICodeBuilderRenderer {
 }
 
 trait CodegenClassWithInterfaces {
-  private Vector<CodegenImplementsInterface> $interfaces = Vector {};
+  private vec<CodegenImplementsInterface> $interfaces = vec[];
 
   public function setInterfaces(
-    Vector<CodegenImplementsInterface> $value,
+    Traversable<CodegenImplementsInterface> $value,
   ): this {
-    invariant($this->interfaces->isEmpty(), 'interfaces have already been set');
-    $this->interfaces = $value;
+    invariant(
+      C\is_empty($this->interfaces),
+      'interfaces have already been set',
+    );
+    $this->interfaces = vec($value);
     return $this;
   }
 
   public function addInterface(CodegenImplementsInterface $value): this {
-    $this->interfaces->add($value);
+    $this->interfaces[] = $value;
     return $this;
   }
 
   public function addInterfaces(
-    Vector<CodegenImplementsInterface> $interfaces,
+    Traversable<CodegenImplementsInterface> $interfaces,
   ): this {
-    $this->interfaces->addAll($interfaces);
+    $this->interfaces = Vec\concat($this->interfaces, $interfaces);
     return $this;
   }
 
-  public function getImplements(): Vector<string> {
+  public function getImplements(): vec<string> {
     // Interface<T> becomes Interface
-    return $this
-      ->interfaces
-      ->map($interface ==> {
+    return Vec\map(
+      $this->interfaces,
+      $interface ==> {
         $name = $interface->getName();
         return strstr($name, '<', true) ?: $name;
-      });
+      },
+    );
   }
 
   public function renderInterfaceList(
     HackBuilder $builder,
     string $introducer,
   ): void {
-    if (!$this->interfaces->isEmpty()) {
+    if (!C\is_empty($this->interfaces)) {
       $builder->newLine()->indent()->addLine($introducer);
       $i = 0;
       foreach ($this->interfaces as $interface) {
         $i++;
         $builder->addRenderer($interface);
-        $builder->addLineIf($i !== $this->interfaces->count(), ',');
+        $builder->addLineIf($i !== C\count($this->interfaces), ',');
       }
       $builder->unindent();
     }

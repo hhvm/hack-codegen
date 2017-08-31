@@ -15,7 +15,7 @@ namespace Facebook\HackCodegen;
  */
 final class HackCodegenConfig implements IHackCodegenConfig {
 
-  public function getFileHeader(): ?Vector<string> {
+  public function getFileHeader(): ?vec<string> {
     // If you want a header on each generated file, insert it here.
     return null;
   }

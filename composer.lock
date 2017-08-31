@@ -4,9 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "7231a061ac3367c3bd62930f65af25de",
-    "packages": [],
-    "packages-dev": [
+    "content-hash": "87732e934e4f31681af6310b4d575bea",
+    "packages": [
         {
             "name": "91carriage/phpunit-hhi",
             "version": "5.7.0",
@@ -56,6 +55,201 @@
             ],
             "time": "2017-01-29T01:05:19+00:00"
         },
+        {
+            "name": "facebook/definition-finder",
+            "version": "v1.6.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hhvm/definition-finder.git",
+                "reference": "3d1faa5f7d9c954ca1793cddeaf187e3631c4ed8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hhvm/definition-finder/zipball/3d1faa5f7d9c954ca1793cddeaf187e3631c4ed8",
+                "reference": "3d1faa5f7d9c954ca1793cddeaf187e3631c4ed8",
+                "shasum": ""
+            },
+            "require": {
+                "hhvm": "~3.12"
+            },
+            "require-dev": {
+                "91carriage/phpunit-hhi": "~5.1",
+                "hhvm/systemlib-extractor": "~1.0",
+                "phpunit/phpunit": "~5.1"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ],
+                "files": [
+                    "autoload_files.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "Find definitions in PHP or Hack files. Useful for autoloaders.",
+            "homepage": "https://github.com/hhvm/definitions-finder",
+            "keywords": [
+                "autoload",
+                "definitions",
+                "hack",
+                "hhvm"
+            ],
+            "time": "2017-08-25T16:56:25+00:00"
+        },
+        {
+            "name": "facebook/hhvm-autoload",
+            "version": "v1.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hhvm/hhvm-autoload.git",
+                "reference": "cd4aed7a0b4a5cf889ed9ab1a27d4b777258e15c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hhvm/hhvm-autoload/zipball/cd4aed7a0b4a5cf889ed9ab1a27d4b777258e15c",
+                "reference": "cd4aed7a0b4a5cf889ed9ab1a27d4b777258e15c",
+                "shasum": ""
+            },
+            "require": {
+                "91carriage/phpunit-hhi": "^5.1",
+                "composer-plugin-api": "^1.0",
+                "facebook/definition-finder": "^1.0",
+                "fredemmott/hack-error-suppressor": "^1.0",
+                "fredemmott/type-assert": "^1.1",
+                "hhvm": "^3.12"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.1"
+            },
+            "bin": [
+                "bin/hh-autoload"
+            ],
+            "type": "composer-plugin",
+            "extra": {
+                "class": [
+                    "Facebook\\AutoloadMap\\ComposerPlugin"
+                ]
+            },
+            "autoload": {
+                "classmap": [
+                    "src/Writer.php",
+                    "src/"
+                ],
+                "files": [
+                    "src/AutoloadMap.php",
+                    "src/Config.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "time": "2017-07-24T17:00:40+00:00"
+        },
+        {
+            "name": "fredemmott/hack-error-suppressor",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fredemmott/hack-error-suppressor.git",
+                "reference": "cb145c771b50f4f4eeec8c9cac4740df3d486a12"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fredemmott/hack-error-suppressor/zipball/cb145c771b50f4f4eeec8c9cac4740df3d486a12",
+                "reference": "cb145c771b50f4f4eeec8c9cac4740df3d486a12",
+                "shasum": ""
+            },
+            "require-dev": {
+                "91carriage/phpunit-hhi": "^5.6",
+                "phpunit/phpunit": "^5.7"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "ISC"
+            ],
+            "authors": [
+                {
+                    "name": "Fred Emmott",
+                    "email": "fred@fredemmott.co.uk"
+                }
+            ],
+            "description": "Suppress HHVM's automatic conversion of typechecker errors to fatals.",
+            "time": "2017-05-02T03:07:37+00:00"
+        },
+        {
+            "name": "fredemmott/type-assert",
+            "version": "v1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fredemmott/type-assert.git",
+                "reference": "38460b438ca85701585abe471d944c678d242847"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fredemmott/type-assert/zipball/38460b438ca85701585abe471d944c678d242847",
+                "reference": "38460b438ca85701585abe471d944c678d242847",
+                "shasum": ""
+            },
+            "require": {
+                "hhvm": "~3.12"
+            },
+            "require-dev": {
+                "91carriage/phpunit-hhi": "~5.1",
+                "phpunit/phpunit": "~5.1"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "ISC"
+            ],
+            "description": "Convert untyped data to typed data",
+            "keywords": [
+                "TypeAssert",
+                "hack"
+            ],
+            "abandoned": "hhvm/type-assert",
+            "time": "2017-02-15T02:26:23+00:00"
+        },
+        {
+            "name": "hhvm/hsl",
+            "version": "v0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hhvm/hsl.git",
+                "reference": "1cde7b351cc84a216a21dbe9570a4662fd738467"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hhvm/hsl/zipball/1cde7b351cc84a216a21dbe9570a4662fd738467",
+                "reference": "1cde7b351cc84a216a21dbe9570a4662fd738467",
+                "shasum": ""
+            },
+            "require": {
+                "facebook/hhvm-autoload": "^1.4"
+            },
+            "require-dev": {
+                "91carriage/phpunit-hhi": "^5.7",
+                "facebook/definition-finder": "^1.6.1",
+                "facebook/fbexpect": "^0.2",
+                "phpunit/phpunit": "^5.7"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "The Hack Standard Library",
+            "time": "2017-08-18T01:08:01+00:00"
+        }
+    ],
+    "packages-dev": [
         {
             "name": "doctrine/instantiator",
             "version": "1.0.5",
@@ -109,44 +303,6 @@
                 "instantiate"
             ],
             "time": "2015-06-14T21:17:01+00:00"
-        },
-        {
-            "name": "fredemmott/type-assert",
-            "version": "v1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/fredemmott/type-assert.git",
-                "reference": "38460b438ca85701585abe471d944c678d242847"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/fredemmott/type-assert/zipball/38460b438ca85701585abe471d944c678d242847",
-                "reference": "38460b438ca85701585abe471d944c678d242847",
-                "shasum": ""
-            },
-            "require": {
-                "hhvm": "~3.12"
-            },
-            "require-dev": {
-                "91carriage/phpunit-hhi": "~5.1",
-                "phpunit/phpunit": "~5.1"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "src/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "ISC"
-            ],
-            "description": "Convert untyped data to typed data",
-            "keywords": [
-                "TypeAssert",
-                "hack"
-            ],
-            "time": "2017-02-15T02:26:23+00:00"
         },
         {
             "name": "myclabs/deep-copy",

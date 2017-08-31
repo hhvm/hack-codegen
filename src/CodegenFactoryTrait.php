@@ -10,6 +10,8 @@
 
 namespace Facebook\HackCodegen;
 
+use namespace HH\Lib\Vec;
+
 trait CodegenFactoryTrait implements ICodegenFactory {
   public abstract function getConfig(): IHackCodegenConfig;
 
@@ -87,11 +89,9 @@ trait CodegenFactoryTrait implements ICodegenFactory {
   }
 
   final public function codegenImplementsInterfaces(
-    \ConstVector<string> $names,
-  ): Vector<CodegenImplementsInterface> {
-    return $names
-      ->map($name ==> $this->codegenImplementsInterface($name))
-      ->toVector();
+    Traversable<string> $names,
+  ): vec<CodegenImplementsInterface> {
+    return Vec\map($names, $name ==> $this->codegenImplementsInterface($name));
   }
 
   final public function codegenMemberVar(string $name): CodegenMemberVar {
@@ -110,9 +110,9 @@ trait CodegenFactoryTrait implements ICodegenFactory {
   }
 
   final public function codegenUsesTraits(
-    \ConstVector<string> $names,
-  ): Vector<CodegenUsesTrait> {
-    return $names->map($x ==> $this->codegenUsesTrait($x))->toVector();
+    Traversable<string> $names,
+  ): vec<CodegenUsesTrait> {
+    return Vec\map($names, $x ==> $this->codegenUsesTrait($x));
   }
 
   final public function codegenGeneratedFromClass(
@@ -163,7 +163,7 @@ trait CodegenFactoryTrait implements ICodegenFactory {
   }
 
   final public function codegenShape(
-    array<string, string> $attrs = array(),
+    KeyedTraversable<string, string> $attrs = array(),
   ): CodegenShape {
     return new CodegenShape($this->getConfig(), $attrs);
   }

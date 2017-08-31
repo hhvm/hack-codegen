@@ -10,6 +10,8 @@
 
 namespace Facebook\HackCodegen;
 
+use namespace HH\Lib\C;
+
 enum CodegenFileResult: int {
   NONE = 0;
   UPDATE = 1;
@@ -35,20 +37,20 @@ final class CodegenFile {
   private ?string $docBlock;
   private string $fileName;
   private string $relativeFileName;
-  private Vector<string> $otherFileNames = Vector {};
-  private Vector<CodegenClassBase> $classes = Vector {};
-  private Vector<CodegenTrait> $traits = Vector {};
-  private Vector<CodegenFunction> $functions = Vector {};
-  private Vector<CodegenType> $beforeTypes = Vector {};
-  private Vector<CodegenType> $afterTypes = Vector {};
+  private vec<string> $otherFileNames = vec[];
+  private vec<CodegenClassBase> $classes = vec[];
+  private vec<CodegenTrait> $traits = vec[];
+  private vec<CodegenFunction> $functions = vec[];
+  private vec<CodegenType> $beforeTypes = vec[];
+  private vec<CodegenType> $afterTypes = vec[];
   private bool $doClobber = false;
   protected ?CodegenGeneratedFrom $generatedFrom;
   private bool $isSignedFile = true;
-  private ?Map<string, Vector<string>> $rekey = null;
+  private ?dict<string, vec<string>> $rekey = null;
   private bool $createOnly = false;
   private ?ICodegenFormatter $formatter;
   private ?string $fileNamespace;
-  private Map<string, ?string> $useNamespaces = Map {};
+  private dict<string, ?string> $useNamespaces = dict[];
   private ?string $shebang;
   private ?string $pseudoMainHeader;
   private ?string $pseudoMainFooter;
@@ -78,7 +80,7 @@ final class CodegenFile {
     return $this;
   }
 
-  public function addClasses(\ConstVector<CodegenClassBase> $classes): this {
+  public function addClasses(Traversable<CodegenClassBase> $classes): this {
     foreach ($classes as $class) {
       $this->addClass($class);
     }
@@ -90,7 +92,7 @@ final class CodegenFile {
     return $this;
   }
 
-  public function getClasses(): Vector<CodegenClassBase> {
+  public function getClasses(): vec<CodegenClassBase> {
     return $this->classes;
   }
 
@@ -99,7 +101,7 @@ final class CodegenFile {
     return $this;
   }
 
-  public function addFunctions(\ConstVector<CodegenFunction> $functions): this {
+  public function addFunctions(Traversable<CodegenFunction> $functions): this {
     foreach ($functions as $function) {
       $this->addFunction($function);
     }
@@ -111,11 +113,11 @@ final class CodegenFile {
     return $this;
   }
 
-  public function getFunctions(): Vector<CodegenFunction> {
+  public function getFunctions(): vec<CodegenFunction> {
     return $this->functions;
   }
 
-  public function addBeforeTypes(Vector<CodegenType> $types): this {
+  public function addBeforeTypes(Traversable<CodegenType> $types): this {
     foreach ($types as $type) {
       $this->addBeforeType($type);
     }
@@ -127,11 +129,11 @@ final class CodegenFile {
     return $this;
   }
 
-  public function getBeforeTypes(): Vector<CodegenType> {
+  public function getBeforeTypes(): vec<CodegenType> {
     return $this->beforeTypes;
   }
 
-  public function addAfterTypes(Vector<CodegenType> $types): this {
+  public function addAfterTypes(Traversable<CodegenType> $types): this {
     foreach ($types as $type) {
       $this->addAfterType($type);
     }
@@ -143,7 +145,7 @@ final class CodegenFile {
     return $this;
   }
 
-  public function getAfterTypes(): Vector<CodegenType> {
+  public function getAfterTypes(): vec<CodegenType> {
     return $this->afterTypes;
   }
 
@@ -171,14 +173,15 @@ final class CodegenFile {
    */
   public function rekeyManualSection(string $old_key, string $new_key): this {
     if ($this->rekey === null) {
-      $this->rekey = Map {};
+      $this->rekey = dict[];
     }
     $rekey = $this->rekey;
-    if (!$rekey->containsKey($new_key)) {
-      $rekey[$new_key] = Vector { $old_key };
+    if (!C\contains_key($rekey, $new_key)) {
+      $rekey[$new_key] = vec[$old_key];
     } else {
       $rekey[$new_key][] = $old_key;
     }
+    $this->rekey = $rekey;
     return $this;
   }
 
@@ -455,7 +458,7 @@ final class CodegenFile {
 
   public function useNamespace(string $ns, ?string $as = null): this {
     invariant(
-      !$this->useNamespaces->contains($ns),
+      !C\contains_key($this->useNamespaces, $ns),
       '%s is already being used',
       $ns,
     );

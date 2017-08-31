@@ -8,44 +8,45 @@
  */
 namespace Facebook\HackCodegen;
 
+use namespace HH\Lib\{C, Dict, Vec};
+
 trait CodegenWithAttributes {
-  private Map<string, ImmVector<string>> $userAttributes = Map {};
+  private dict<string, vec<string>> $userAttributes = dict[];
 
   final public function setUserAttribute(
     string $name,
     \Stringish ...$params
   ): this {
-    $this->userAttributes[$name] =
-      (new ImmVector($params))->map($p ==> (string)$p);
+    $this->userAttributes[$name] = Vec\map($params, $p ==> (string)$p);
     return $this;
   }
 
-  final public function getUserAttributes(): ImmMap<string, ImmVector<string>> {
-    return $this->userAttributes->immutable();
+  final public function getUserAttributes(): dict<string, vec<string>> {
+    return $this->userAttributes;
   }
 
-  final public function getAttributes(): ImmMap<string, ImmVector<string>> {
-    $attributes = $this->getExtraAttributes()->toMap();
-    $attributes->setAll($this->userAttributes);
-    return $attributes->immutable();
+  final public function getAttributes(): dict<string, vec<string>> {
+    $attributes = $this->getExtraAttributes();
+    return Dict\merge($attributes, $this->userAttributes);
   }
 
   final public function hasAttributes(): bool {
-    return !$this->getAttributes()->isEmpty();
+    return !C\is_empty($this->getAttributes());
   }
 
   final public function renderAttributes(): ?string {
     $attributes = $this->getAttributes();
-    if ($attributes->isEmpty()) {
+    if (C\is_empty($attributes)) {
       return null;
     }
 
     return '<<'.
       implode(
         ', ',
-        $attributes->mapWithKey(
+        Dict\map_with_key(
+          $attributes,
           ($name, $params) ==> {
-            if ($params->isEmpty()) {
+            if (C\is_empty($params)) {
               return $name;
             }
             return $name.'('.implode(', ', $params).')';
@@ -55,7 +56,7 @@ trait CodegenWithAttributes {
       '>>';
   }
 
-  protected function getExtraAttributes(): ImmMap<string, ImmVector<string>> {
-    return ImmMap {};
+  protected function getExtraAttributes(): dict<string, vec<string>> {
+    return dict[];
   }
 }

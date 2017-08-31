@@ -229,7 +229,7 @@ final class CodegenClassTest extends CodegenBaseTest {
     $code = $cgf
       ->codegenClass('TestWrapperFunc')
       ->setExtends('StrangeParent')
-      ->addConstructorWrapperFunc(Vector { 'string $text' })
+      ->addConstructorWrapperFunc(vec[ 'string $text' ])
       ->render();
 
     $this->assertUnchanged($code);

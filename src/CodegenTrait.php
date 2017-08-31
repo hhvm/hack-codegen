@@ -10,6 +10,8 @@
 
 namespace Facebook\HackCodegen;
 
+use namespace HH\Lib\C;
+
 /**
  * Generate code for a trait. Please don't use this class directly; instead use
  * the function codegen_trait.  E.g.:
@@ -22,8 +24,8 @@ namespace Facebook\HackCodegen;
 final class CodegenTrait extends CodegenClassBase {
   use CodegenClassWithInterfaces;
 
-  private Vector<string> $requireClass = Vector {};
-  private Vector<string> $requireInterface = Vector {};
+  private vec<string> $requireClass = vec[];
+  private vec<string> $requireInterface = vec[];
 
   public function addRequireClass(string $class): this {
     $this->requireClass[] = $class;
@@ -42,7 +44,9 @@ final class CodegenTrait extends CodegenClassBase {
   }
 
   private function buildRequires(HackBuilder $builder): void {
-    if ($this->requireClass->isEmpty() && $this->requireInterface->isEmpty()) {
+    if (
+      C\is_empty($this->requireClass) && C\is_empty($this->requireInterface)
+    ) {
       return;
     }
     $builder->ensureEmptyLine();
