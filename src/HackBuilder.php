@@ -10,7 +10,15 @@
 
 namespace Facebook\HackCodegen;
 
+
 use namespace HH\Lib\{C, Vec};
+
+enum ContainerType: string {
+  PHP_ARRAY = 'array';
+  DICT = 'dict';
+  VEC = 'vec';
+  KEYSET = 'keyset';
+}
 
 /**
  * Class to facilitate building code. It has methods for some common patterns
@@ -180,8 +188,22 @@ final class HackBuilder extends BaseCodeBuilder {
     return $this->addLine(' {')->indent();
   }
 
-  public function openBracket(): this {
-    return $this->addLine(' [')->indent();
+  public function openContainer(ContainerType $type): this {
+    switch ($type) {
+      case ContainerType::DICT:
+        $style = 'dict[';
+        break;
+      case ContainerType::KEYSET:
+        $style = 'keyset[';
+        break;
+      case ContainerType::PHP_ARRAY:
+        $style = 'array(';
+        break;
+      case ContainerType::VEC:
+        $style = 'vec[';
+        break;
+    }
+    return $this->addLine($style)->indent();
   }
 
   /**
@@ -191,7 +213,10 @@ final class HackBuilder extends BaseCodeBuilder {
     return $this->ensureNewLine()->unindent()->addLine('}');
   }
 
-  public function closeBracket(): this {
+  public function closeContainer(ContainerType $type): this {
+    if ($type === ContainerType::PHP_ARRAY) {
+      return $this->unindent()->add(')');
+    }
     return $this->unindent()->add(']');
   }
 

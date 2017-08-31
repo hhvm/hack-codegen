@@ -26,14 +26,21 @@ abstract final class HackBuilderValues {
   public static function valueArray<Tv>(
     IHackBuilderValueRenderer<Tv> $vr,
   ): IHackBuilderValueRenderer<array<Tv>> {
-    return new HackBuilderValueArrayRenderer($vr);
+    return new HackBuilderNativeValueCollectionRenderer(
+      ContainerType::PHP_ARRAY,
+      $vr,
+    );
   }
 
   public static function keyValueArray<Tk as arraykey, Tv>(
     IHackBuilderKeyRenderer<Tk> $kr,
     IHackBuilderValueRenderer<Tv> $vr,
   ): IHackBuilderValueRenderer<array<Tk, Tv>> {
-    return new HackBuilderKeyValueArrayRenderer('array', $kr, $vr);
+    return new HackBuilderNativeKeyValueCollectionRenderer(
+      ContainerType::PHP_ARRAY,
+      $kr,
+      $vr,
+    );
   }
 
   public static function vector<Tv>(
@@ -51,7 +58,8 @@ abstract final class HackBuilderValues {
   public static function vec<Tv>(
     IHackBuilderValueRenderer<Tv> $vr,
   ): IHackBuilderValueRenderer<vec<Tv>> {
-    return new HackBuilderNativeValueCollectionRenderer(vec::class, $vr);
+    return
+      new HackBuilderNativeValueCollectionRenderer(ContainerType::VEC, $vr);
   }
 
   public static function set<Tv>(
@@ -69,7 +77,8 @@ abstract final class HackBuilderValues {
   public static function keyset<Tv as arraykey>(
     IHackBuilderValueRenderer<Tv> $vr,
   ): IHackBuilderValueRenderer<keyset<Tv>> {
-    return new HackBuilderNativeValueCollectionRenderer(keyset::class, $vr);
+    return
+      new HackBuilderNativeValueCollectionRenderer(ContainerType::KEYSET, $vr);
   }
 
   public static function map<Tk as arraykey, Tv>(
@@ -90,7 +99,11 @@ abstract final class HackBuilderValues {
     IHackBuilderKeyRenderer<Tk> $kr,
     IHackBuilderValueRenderer<Tv> $vr,
   ): IHackBuilderValueRenderer<dict<Tk, Tv>> {
-    return new HackBuilderNativeKeyValueCollectionRenderer(dict::class, $kr, $vr);
+    return new HackBuilderNativeKeyValueCollectionRenderer(
+      ContainerType::DICT,
+      $kr,
+      $vr,
+    );
   }
 
   public static function shapeWithUniformRendering<Tv>(

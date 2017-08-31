@@ -35,7 +35,7 @@ Map {
   \Facebook\HackCodegen\HackBuilderTest::class => \stdClass::class,
 }
 !@#$%codegentest:testDict
-$foo = dict [
+$foo = dict[
   'foo' => 1,
   'bar' => 2,
 ];
@@ -70,7 +70,7 @@ if ($value <= 0) {
 }
 
 !@#$%codegentest:testKeyset
-$foo = keyset [
+$foo = keyset[
   'foo',
   'bar',
 ];
@@ -163,7 +163,7 @@ try {
 }
 
 !@#$%codegentest:testVec
-$foo = vec [
+$foo = vec[
   'foo',
   'bar',
 ];

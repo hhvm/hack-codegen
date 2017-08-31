@@ -18,7 +18,7 @@ class
     T as KeyedTraversable<Tk, Tv>,
   > implements IHackBuilderValueRenderer<T> {
   public function __construct(
-    private classname<T> $containerName,
+    private ContainerType $container,
     private IHackBuilderKeyRenderer<Tk> $keyRenderer,
     private IHackBuilderValueRenderer<Tv> $valueRenderer,
   ) {
@@ -28,9 +28,7 @@ class
     $key_renderer = $this->keyRenderer;
     $value_renderer = $this->valueRenderer;
 
-    $builder = (new HackBuilder($config))
-      ->add(strip_hh_prefix($this->containerName))
-      ->openBracket();
+    $builder = (new HackBuilder($config))->openContainer($this->container);
     foreach ($values as $key => $value) {
       $builder->addWithSuggestedLineBreaksf(
         "%s =>\t%s,\n",
@@ -38,6 +36,6 @@ class
         $value_renderer->render($config, $value),
       );
     }
-    return $builder->closeBracket()->getCode();
+    return $builder->closeContainer($this->container)->getCode();
   }
 }
