@@ -10,7 +10,22 @@
 
 namespace Facebook\HackCodegen;
 
+
 use namespace HH\Lib\{C, Vec};
+
+enum ContainerType: string {
+  PHP_ARRAY = 'array';
+  DICT = 'dict';
+  VEC = 'vec';
+  KEYSET = 'keyset';
+  MAP = 'Map';
+  IMMU_MAP = 'ImmuMap';
+  VECTOR = 'Vector';
+  IMMU_VECTOR = 'ImmuVector';
+  SET = 'Set';
+  IMMU_SET = 'ImmuSet';
+  SHAPE_TYPE = 'shape';
+}
 
 /**
  * Class to facilitate building code. It has methods for some common patterns
@@ -114,8 +129,7 @@ final class HackBuilder extends BaseCodeBuilder {
   ): this {
     $max_length = $max_length !== null
       ? $max_length
-      :
-        // subtract 3 for the two quotes and . operator
+      : // subtract 3 for the two quotes and . operator
         $this->getMaxCodeLength() - 3;
 
     $lines = $this->splitString($line, $max_length, /*preserve_space*/ true);
@@ -180,11 +194,57 @@ final class HackBuilder extends BaseCodeBuilder {
     return $this->addLine(' {')->indent();
   }
 
+  public function openContainer(ContainerType $type): this {
+    switch ($type) {
+      case ContainerType::DICT:
+      case ContainerType::KEYSET:
+      case ContainerType::VEC:
+        $container_sign = "[";
+        break;
+      case ContainerType::IMMU_MAP:
+      case ContainerType::IMMU_SET:
+      case ContainerType::IMMU_VECTOR:
+      case ContainerType::MAP:
+      case ContainerType::SET:
+      case ContainerType::VECTOR:
+        $container_sign = " {";
+        break;
+      case ContainerType::SHAPE_TYPE:
+      case ContainerType::PHP_ARRAY:
+        $container_sign = "(";
+        break;
+    }
+    return $this->addLine(((string)$type).$container_sign)->indent();
+  }
+
   /**
    * Close a brace in a new line and sets one less level of indentation.
    */
   public function closeBrace(): this {
     return $this->ensureNewLine()->unindent()->addLine('}');
+  }
+
+  public function closeContainer(ContainerType $type): this {
+    switch ($type) {
+      case ContainerType::DICT:
+      case ContainerType::KEYSET:
+      case ContainerType::VEC:
+        $container_sign = "]";
+        break;
+      case ContainerType::IMMU_MAP:
+      case ContainerType::IMMU_SET:
+      case ContainerType::IMMU_VECTOR:
+      case ContainerType::MAP:
+      case ContainerType::SET:
+      case ContainerType::VECTOR:
+        $container_sign = "}";
+        break;
+      case ContainerType::SHAPE_TYPE:
+      case ContainerType::PHP_ARRAY:
+        $container_sign = ")";
+        break;
+    }
+    return $this->unindent()->add($container_sign);
   }
 
   public function closeStatement(): this {

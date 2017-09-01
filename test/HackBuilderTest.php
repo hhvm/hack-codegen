@@ -379,6 +379,46 @@ two line breaks. Also note that we include a newline and also '.
     $this->assertUnchanged($body->getCode());
   }
 
+  public function testVec(): void {
+    $body = $this
+      ->getHackBuilder()
+      ->addAssignment(
+        '$foo',
+        vec['foo', 'bar'],
+        HackBuilderValues::vec(
+          HackBuilderValues::export()
+        )
+      );
+    $this->assertUnchanged($body->getCode());
+  }
+
+  public function testKeyset(): void {
+    $body = $this
+      ->getHackBuilder()
+      ->addAssignment(
+        '$foo',
+        keyset['foo', 'bar'],
+        HackBuilderValues::keyset(
+          HackBuilderValues::export()
+        )
+      );
+    $this->assertUnchanged($body->getCode());
+  }
+
+  public function testDict(): void {
+    $body = $this
+      ->getHackBuilder()
+      ->addAssignment(
+        '$foo',
+        dict['foo' => 1, 'bar' => 2],
+        HackBuilderValues::dict(
+          HackBuilderKeys::export(),
+          HackBuilderValues::export(),
+        )
+      );
+    $this->assertUnchanged($body->getCode());
+  }
+
   public function testClassnameMap(): void {
     $body = $this
       ->getHackBuilder()

@@ -26,60 +26,108 @@ abstract final class HackBuilderValues {
   public static function valueArray<Tv>(
     IHackBuilderValueRenderer<Tv> $vr,
   ): IHackBuilderValueRenderer<array<Tv>> {
-    return new HackBuilderValueArrayRenderer($vr);
+    return new HackBuilderNativeValueCollectionRenderer(
+      ContainerType::PHP_ARRAY,
+      $vr,
+    );
   }
 
   public static function keyValueArray<Tk as arraykey, Tv>(
     IHackBuilderKeyRenderer<Tk> $kr,
     IHackBuilderValueRenderer<Tv> $vr,
   ): IHackBuilderValueRenderer<array<Tk, Tv>> {
-    return new HackBuilderKeyValueArrayRenderer('array', $kr, $vr);
+    return new HackBuilderNativeKeyValueCollectionRenderer(
+      ContainerType::PHP_ARRAY,
+      $kr,
+      $vr,
+    );
   }
 
   public static function vector<Tv>(
     IHackBuilderValueRenderer<Tv> $vr,
   ): IHackBuilderValueRenderer<Vector<Tv>> {
-    return new HackBuilderValueCollectionRenderer(Vector::class, $vr);
+    return
+      new HackBuilderNativeValueCollectionRenderer(ContainerType::VECTOR, $vr);
   }
 
   public static function immVector<Tv>(
     IHackBuilderValueRenderer<Tv> $vr,
   ): IHackBuilderValueRenderer<ImmVector<Tv>> {
-    return new HackBuilderValueCollectionRenderer(ImmVector::class, $vr);
+    return new HackBuilderNativeValueCollectionRenderer(
+      ContainerType::IMMU_VECTOR,
+      $vr,
+    );
+  }
+
+  public static function vec<Tv>(
+    IHackBuilderValueRenderer<Tv> $vr,
+  ): IHackBuilderValueRenderer<vec<Tv>> {
+    return
+      new HackBuilderNativeValueCollectionRenderer(ContainerType::VEC, $vr);
   }
 
   public static function set<Tv>(
     IHackBuilderValueRenderer<Tv> $vr,
   ): IHackBuilderValueRenderer<Set<Tv>> {
-    return new HackBuilderValueCollectionRenderer(Set::class, $vr);
+    return
+      new HackBuilderNativeValueCollectionRenderer(ContainerType::SET, $vr);
   }
 
   public static function immSet<Tv>(
     IHackBuilderValueRenderer<Tv> $vr,
   ): IHackBuilderValueRenderer<ImmSet<Tv>> {
-    return new HackBuilderValueCollectionRenderer(ImmSet::class, $vr);
+    return new HackBuilderNativeValueCollectionRenderer(
+      ContainerType::IMMU_SET,
+      $vr,
+    );
+  }
+
+  public static function keyset<Tv as arraykey>(
+    IHackBuilderValueRenderer<Tv> $vr,
+  ): IHackBuilderValueRenderer<keyset<Tv>> {
+    return
+      new HackBuilderNativeValueCollectionRenderer(ContainerType::KEYSET, $vr);
   }
 
   public static function map<Tk as arraykey, Tv>(
     IHackBuilderKeyRenderer<Tk> $kr,
     IHackBuilderValueRenderer<Tv> $vr,
   ): IHackBuilderValueRenderer<Map<Tk, Tv>> {
-    return new HackBuilderKeyValueCollectionRenderer(Map::class, $kr, $vr);
+    return new HackBuilderNativeKeyValueCollectionRenderer(
+      ContainerType::MAP,
+      $kr,
+      $vr,
+    );
   }
 
   public static function immMap<Tk as arraykey, Tv>(
     IHackBuilderKeyRenderer<Tk> $kr,
     IHackBuilderValueRenderer<Tv> $vr,
   ): IHackBuilderValueRenderer<ImmMap<Tk, Tv>> {
-    return new HackBuilderKeyValueCollectionRenderer(ImmMap::class, $kr, $vr);
+    return new HackBuilderNativeKeyValueCollectionRenderer(
+      ContainerType::MAP,
+      $kr,
+      $vr,
+    );
+  }
+
+  public static function dict<Tk as arraykey, Tv>(
+    IHackBuilderKeyRenderer<Tk> $kr,
+    IHackBuilderValueRenderer<Tv> $vr,
+  ): IHackBuilderValueRenderer<dict<Tk, Tv>> {
+    return new HackBuilderNativeKeyValueCollectionRenderer(
+      ContainerType::DICT,
+      $kr,
+      $vr,
+    );
   }
 
   public static function shapeWithUniformRendering<Tv>(
     IHackBuilderValueRenderer<Tv> $vr,
   ): IHackBuilderValueRenderer<shape()> {
     /* HH_IGNORE_ERROR[4110] munging array to shape */
-    return new HackBuilderKeyValueArrayRenderer(
-      'shape',
+    return new HackBuilderNativeKeyValueCollectionRenderer(
+      ContainerType::SHAPE_TYPE,
       HackBuilderKeys::export(),
       $vr,
     );

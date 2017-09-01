@@ -34,6 +34,12 @@ if ($do_that) {
 Map {
   \Facebook\HackCodegen\HackBuilderTest::class => \stdClass::class,
 }
+!@#$%codegentest:testDict
+$foo = dict[
+  'foo' => 1,
+  'bar' => 2,
+];
+
 !@#$%codegentest:testDocBlock
 /**
  * Wow a really long comment that will span multiple lines and probably go over
@@ -62,6 +68,12 @@ if ($value <= 0) {
 } else {
   return 2;
 }
+
+!@#$%codegentest:testKeyset
+$foo = keyset[
+  'foo',
+  'bar',
+];
 
 !@#$%codegentest:testLambdaMap
 Map {
@@ -149,6 +161,12 @@ try {
 } finally {
   bump_ods();
 }
+
+!@#$%codegentest:testVec
+$foo = vec[
+  'foo',
+  'bar',
+];
 
 !@#$%codegentest:testVectorOfExportedVectors
 $foo = Vector {
