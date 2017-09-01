@@ -24,7 +24,7 @@ final class CodegenShape implements ICodeBuilderRenderer {
 
   public function __construct(
     protected IHackCodegenConfig $config,
-    private array<string, string> $attrs = array(),
+    private KeyedTraversable<string, string> $attrs = array(),
   ) {
   }
 

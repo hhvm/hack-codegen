@@ -10,6 +10,8 @@
 
 namespace Facebook\HackCodegen;
 
+use namespace HH\Lib\Vec;
+
 /**
  * Base class to generate a function or a method.
  */
@@ -27,7 +29,7 @@ abstract class CodegenFunctionBase implements ICodeBuilderRenderer {
   protected bool $isOverride = false;
   protected bool $isManualBody = false;
   protected bool $isMemoized = false;
-  protected Vector<string> $parameters = Vector {};
+  protected vec<string> $parameters = vec[];
   protected ?CodegenGeneratedFrom $generatedFrom;
 
   public function __construct(
@@ -81,12 +83,12 @@ abstract class CodegenFunctionBase implements ICodeBuilderRenderer {
     mixed ...$args
   ): this {
     $param = vsprintf($param, $args);
-    $this->parameters->add($param);
+    $this->parameters[] = $param;
     return $this;
   }
 
-  public function setParameters(Vector<string> $params): this {
-    $this->parameters = $params;
+  public function setParameters(Traversable<string> $params): this {
+    $this->parameters = vec($params);
     return $this;
   }
 
@@ -124,7 +126,7 @@ abstract class CodegenFunctionBase implements ICodeBuilderRenderer {
     return $this->name;
   }
 
-  public function getParameters(): Vector<string> {
+  public function getParameters(): vec<string> {
     return $this->parameters;
   }
 
@@ -149,7 +151,7 @@ abstract class CodegenFunctionBase implements ICodeBuilderRenderer {
   ): string {
     $builder = (new HackBuilder($this->config))
       ->add($keywords)
-      ->addf('%s(%s)', $this->name, implode(', ', $this->parameters->toArray()))
+      ->addf('%s(%s)', $this->name, implode(', ', $this->parameters))
       ->addIf($this->returnType !== null, ': '.$this->returnType);
 
     $code = $builder->getCode();
@@ -165,11 +167,7 @@ abstract class CodegenFunctionBase implements ICodeBuilderRenderer {
     ) {
       return (new HackBuilder($this->config))->add($code)->getCode();
     } else {
-      $parameter_lines = $this
-        ->parameters
-        ->map(function(string $line) {
-          return $line.",";
-        });
+      $parameter_lines = Vec\map($this->parameters, $line ==> $line.",");
 
       $multi_line_builder = (new HackBuilder($this->config))
         ->add($keywords)
@@ -254,15 +252,15 @@ abstract class CodegenFunctionBase implements ICodeBuilderRenderer {
     return $builder;
   }
 
-  protected function getExtraAttributes(): ImmMap<string, ImmVector<string>> {
-    $attributes = Map {};
+  protected function getExtraAttributes(): dict<string, vec<string>> {
+    $attributes = dict[];
     if ($this->isOverride) {
-      $attributes['__Override'] = ImmVector {};
+      $attributes['__Override'] = vec[];
     }
     if ($this->isMemoized) {
-      $attributes['__Memoize'] = ImmVector {};
+      $attributes['__Memoize'] = vec[];
     }
-    return $attributes->immutable();
+    return $attributes;
   }
 
   private function getFunctionDeclaration(): string {

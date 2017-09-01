@@ -10,6 +10,8 @@
 
 namespace Facebook\HackCodegen;
 
+use namespace HH\Lib\C;
+
 /**
  * Generate code for an enum. Please don't use this class directly; instead use
  * the function codegen_enum.  E.g.:
@@ -62,7 +64,7 @@ final class CodegenEnum extends CodegenClassBase {
   }
 
   protected function buildConsts(HackBuilder $builder): void {
-    if ($this->consts->isEmpty()) {
+    if (C\is_empty($this->consts)) {
       return;
     }
     $builder->ensureEmptyLine();

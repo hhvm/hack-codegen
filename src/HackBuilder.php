@@ -10,6 +10,8 @@
 
 namespace Facebook\HackCodegen;
 
+use namespace HH\Lib\{C, Vec};
+
 /**
  * Class to facilitate building code. It has methods for some common patterns
  * used to generate code. It also deals with indentation and new lines.
@@ -30,7 +32,7 @@ final class HackBuilder extends BaseCodeBuilder {
    */
   public function addMultilineCall(
     string $func_call_line,
-    Vector<string> $params,
+    Traversable<string> $params,
     bool $include_close_statement = true,
   ): this {
     // Mark that the call is inside a function
@@ -40,7 +42,7 @@ final class HackBuilder extends BaseCodeBuilder {
     $max_length = $this->getMaxCodeLength() - 4;
 
     // Let's put everything in a single line
-    $args = '('.implode(', ', $params->toArray()).')';
+    $args = '('.implode(', ', $params).')';
     $composite_line = $func_call_line.$args;
     // Ignore suggested line breaks within individual args; otherwise we could
     // split in the middle of arguments rather than after each parameter.
@@ -61,11 +63,7 @@ final class HackBuilder extends BaseCodeBuilder {
       ->addWithSuggestedLineBreaks("$func_call_line(")
       ->newLine()
       ->indent()
-      ->addLinesWithSuggestedLineBreaks(
-        $params->map(function(string $line) {
-          return $line.',';
-        }),
-      )
+      ->addLinesWithSuggestedLineBreaks(Vec\map($params, $line ==> $line.','))
       ->unindent()
       ->add(')');
     if ($include_close_statement) {
@@ -125,8 +123,8 @@ final class HackBuilder extends BaseCodeBuilder {
       return $this;
     }
 
-    $this->add(normalized_var_export($lines->firstValue()));
-    if ($lines->count() === 1) {
+    $this->add(normalized_var_export(C\first($lines)));
+    if (C\count($lines) === 1) {
       return $this;
     }
 
@@ -139,10 +137,11 @@ final class HackBuilder extends BaseCodeBuilder {
     }
 
     $lines
-      ->slice(1, $lines->count() - 2)
-      ->map($line ==> $this->addLine(normalized_var_export($line).'.'));
+      |> Vec\slice($$, 1, C\count($lines) - 2)
+      |>
+      Vec\map($$, $line ==> $this->addLine(normalized_var_export($line).'.'));
     // And then add the last
-    $this->add(normalized_var_export($lines->lastValue()));
+    $this->add(normalized_var_export(C\last($lines)));
     if ($indent_non_first_lines) {
       $this->unindent();
     }
@@ -464,8 +463,8 @@ final class HackBuilder extends BaseCodeBuilder {
     string $str,
     int $maxlen,
     bool $preserve_space = false,
-  ): Vector<string> {
-    $lines = Vector {};
+  ): vec<string> {
+    $lines = vec[];
     $src_lines = explode("\n", $str);
 
     foreach ($src_lines as $src_line) {
@@ -490,7 +489,7 @@ final class HackBuilder extends BaseCodeBuilder {
   public static function multilineCall(
     IHackCodegenConfig $config,
     string $name,
-    Vector<string> $params,
+    Traversable<string> $params,
     bool $close_statement = false,
   ): string {
     return (new HackBuilder($config))
@@ -508,14 +507,12 @@ final class HackBuilder extends BaseCodeBuilder {
    */
   private function addSimpleMultilineCall(
     string $name,
-    Vector<string> $params,
+    Traversable<string> $params,
   ): this {
     return $this
       ->addLine("$name(")
       ->indent()
-      ->addLines($params->map(function(string $line) {
-        return $line.',';
-      }))
+      ->addLines(Vec\map($params, $line ==> $line.','))
       ->unindent()
       ->add(')');
   }

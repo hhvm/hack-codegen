@@ -10,6 +10,8 @@
 
 namespace Facebook\HackCodegen;
 
+use namespace HH\Lib\{C, Vec};
+
 abstract class BaseCodeBuilder implements ICodeBuilder {
 
   const string DELIMITER = "\t";
@@ -135,9 +137,9 @@ abstract class BaseCodeBuilder implements ICodeBuilder {
   }
 
   /**
-   * Add each element of the vector as a new line
+   * Add each element of the Traversable as a new line
    */
-  final public function addLines(\ConstVector<string> $lines): this {
+  final public function addLines(Traversable<string> $lines): this {
     foreach ($lines as $line) {
       $this->addLine($line);
     }
@@ -202,27 +204,29 @@ abstract class BaseCodeBuilder implements ICodeBuilder {
     }
 
     $lines_with_sugg_breaks = explode(self::DELIMITER, $code);
-    $final_lines = Vector {};
+    $final_lines = vec[];
     foreach ($lines_with_sugg_breaks as $line) {
       if (!$line) {
         // Continue if the line is empty
         continue;
       }
       invariant(is_string($line), 'For Hack');
-      if ($final_lines->isEmpty()) {
-        $final_lines->add($line);
+      if (C\is_empty($final_lines)) {
+        $final_lines[] = $line;
       } else {
-        $last_line = $final_lines->pop();
+        $last_line = C\lastx($final_lines);
+        $final_lines = Vec\take($final_lines, C\count($final_lines) - 1);
         $composite_line = $last_line.' '.$line;
         if (strlen($composite_line) > $max_length) {
-          $final_lines->add($last_line)->add($line);
+          $final_lines[] = $last_line;
+          $final_lines[] = $line;
         } else {
           // Concatenate the line to the last line
-          $final_lines->add($composite_line);
+          $final_lines[] = $composite_line;
         }
       }
     }
-    return $this->add(implode("\n  ", $final_lines->toArray()));
+    return $this->add(implode("\n  ", $final_lines));
   }
 
   /**
@@ -230,7 +234,7 @@ abstract class BaseCodeBuilder implements ICodeBuilder {
    * line at a time.  See that method for more information.
    */
   final public function addLinesWithSuggestedLineBreaks(
-    \ConstVector<string> $lines,
+    Traversable<string> $lines,
   ): this {
     foreach ($lines as $line) {
       $this->addWithSuggestedLineBreaks($line)->newLine();
