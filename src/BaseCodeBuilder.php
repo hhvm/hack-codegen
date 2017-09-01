@@ -137,7 +137,7 @@ abstract class BaseCodeBuilder implements ICodeBuilder {
   }
 
   /**
-   * Add each element of the vec as a new line
+   * Add each element of the Traversable as a new line
    */
   final public function addLines(Traversable<string> $lines): this {
     foreach ($lines as $line) {
@@ -215,7 +215,7 @@ abstract class BaseCodeBuilder implements ICodeBuilder {
         $final_lines[] = $line;
       } else {
         $last_line = C\lastx($final_lines);
-        $final_lines = Vec\slice($final_lines, 0, C\count($final_lines) - 1);
+        $final_lines = Vec\take($final_lines, C\count($final_lines) - 1);
         $composite_line = $last_line.' '.$line;
         if (strlen($composite_line) > $max_length) {
           $final_lines[] = $last_line;
