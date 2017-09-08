@@ -6,9 +6,9 @@
  * To re-generate this file run codegen.php DormUserSchema
  *
  *
- * @partially-generated SignedSource<<24bb59705c987ac2dc7d9d322466322d>>
+ * @partially-generated SignedSource<<7e439b34aceff2b1d18695b63eef9ea0>>
  */
-use FredEmmott\TypeAssert\TypeAssert;
+use Facebook\TypeAssert\TypeAssert;
 
 final class DormUser {
 
