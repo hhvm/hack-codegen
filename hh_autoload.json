@@ -1,7 +1,10 @@
 {
   "roots": [
     "src/",
-    "test/",
     "lib/"
+  ],
+  "devRoots": [
+    "examples/",
+    "test/"
   ]
 }

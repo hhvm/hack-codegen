@@ -10,11 +10,7 @@
 
 namespace Facebook\HackCodegen;
 
-require_once('../../vendor/hh_autoload.php');
-require_once('core/DormSchema.php');
-require_once('core/DormField.php');
-require_once('CodegenDorm.php');
-require_once('CodegenMutator.php');
+require_once(__DIR__.'/../../vendor/hh_autoload.php');
 
 if ($argc == 1) {
   echo "  Usage: ".$argv[0]." file_name.php\n\n";
