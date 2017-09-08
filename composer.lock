@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "6eb85350acd2e98c207792c6e38b5e05",
+    "content-hash": "bf41ebf6a02ecbf9ac0a8bf0da50f7e1",
     "packages": [
         {
             "name": "91carriage/phpunit-hhi",
@@ -183,16 +183,16 @@
         },
         {
             "name": "hhvm/hsl",
-            "version": "v0.2",
+            "version": "v0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hhvm/hsl.git",
-                "reference": "1cde7b351cc84a216a21dbe9570a4662fd738467"
+                "reference": "69c536bcfdd1ee0d50e37ef87ec69a13a73b62f3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hhvm/hsl/zipball/1cde7b351cc84a216a21dbe9570a4662fd738467",
-                "reference": "1cde7b351cc84a216a21dbe9570a4662fd738467",
+                "url": "https://api.github.com/repos/hhvm/hsl/zipball/69c536bcfdd1ee0d50e37ef87ec69a13a73b62f3",
+                "reference": "69c536bcfdd1ee0d50e37ef87ec69a13a73b62f3",
                 "shasum": ""
             },
             "require": {
@@ -207,7 +207,7 @@
             "type": "library",
             "notification-url": "https://packagist.org/downloads/",
             "description": "The Hack Standard Library",
-            "time": "2017-08-18T01:08:01+00:00"
+            "time": "2017-09-08T00:53:44+00:00"
         },
         {
             "name": "hhvm/type-assert",

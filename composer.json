@@ -5,7 +5,7 @@
     "require": {
         "hhvm": "^3.21",
         "facebook/hhvm-autoload": "^1.4",
-        "hhvm/hsl": "^0.2"
+        "hhvm/hsl": "<1.0 >=0.3"
     },
     "authors": [
         {
