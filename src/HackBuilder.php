@@ -375,8 +375,14 @@ final class HackBuilder extends BaseCodeBuilder {
     return $this;
   }
 
-  public function addCase(string $case): this {
-    return $this->addLinef('case %s:', $case)->indent();
+  public function addCase<T>(
+    T $case,
+    IHackBuilderValueRenderer<T> $formatter,
+  ): this {
+    return $this->addLinef(
+      'case %s:',
+      $formatter->render($this->config, $case),
+    )->indent();
   }
 
   public function addDefault(): this {

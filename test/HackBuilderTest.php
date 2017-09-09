@@ -257,7 +257,7 @@ two line breaks. Also note that we include a newline and also '.
         $players,
         ($player, $body) ==> {
           $body
-            ->addCase(sprintf('\'%s\'', $player['name']))
+            ->addCase($player['name'], HackBuilderValues::export())
             ->addLinef('$shot = new Shot(\'%s\');', $player['favorite_shot'])
             ->returnCasef('$shot->execute()');
         },
@@ -284,7 +284,7 @@ two line breaks. Also note that we include a newline and also '.
         $players,
         ($player, $body) ==> {
           $body
-            ->addCase(sprintf('\'%s\'', $player['name']))
+            ->addCase($player['name'], HackBuilderValues::export())
             ->addLinef('$shot = new Shot(\'%s\');', $player['favorite_shot'])
             ->breakCase();
         },
@@ -311,7 +311,7 @@ two line breaks. Also note that we include a newline and also '.
         $players,
         ($player, $body) ==> {
           $body
-            ->addCase(sprintf('\'%s\'', $player['name']))
+            ->addCase($player['name'], HackBuilderValues::export())
             ->addLinef('$shot = new Shot(\'%s\');', $player['favorite_shot'])
             ->unindent();
         },
