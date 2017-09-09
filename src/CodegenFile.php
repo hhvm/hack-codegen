@@ -311,13 +311,14 @@ final class CodegenFile {
     $content = $this->getContent();
 
     $formatter = $this->config->getFormatter();
-    if ($formatter !== null) {
-      $content = $formatter->format($content, $this->getFileName());
-    }
 
     if (!$this->isSignedFile) {
       $builder->add($content);
-      return $builder->getCode();
+      $content = $builder->getCode();
+      if ($formatter !== null) {
+        $content = $formatter->format($content, $this->getFileName());
+      }
+      return $content;
     }
 
     $old_content = $this->loadExistingFiles();
@@ -344,12 +345,19 @@ final class CodegenFile {
       } else {
         $partial->assertValidManualSections();
       }
+      if ($formatter !== null) {
+        $code = $formatter->format($code, $this->getFileName());
+      }
       return PartiallyGeneratedSignedSource::signFile($code);
 
     } else {
       $builder->addDocBlock(SignedSource::getDocBlock($doc_block));
       $builder->add($content);
-      return SignedSource::signFile($builder->getCode());
+      $code = $builder->getCode();
+      if ($formatter !== null) {
+        $code = $formatter->format($code, $this->getFileName());
+      }
+      return SignedSource::signFile($code);
     }
   }
 

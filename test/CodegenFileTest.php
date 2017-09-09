@@ -342,4 +342,115 @@ final class CodegenFileTest extends CodegenBaseTest {
       ->setPseudoMainFooter('exit();')
       ->render();
   }
+
+  public function testFormattingFullyGeneratedFile(): void {
+    $cgf = new HackCodegenFactory(
+      (new HackCodegenConfig())
+        ->withRootDir(__DIR__)
+        ->withFormatter(new HackfmtFormatter())
+    );
+
+    $code = $cgf
+      ->codegenFile('no_file')
+      ->addFunction(
+        $cgf->codegenFunction('my_func')
+          ->addParameter(
+            'string $'.str_repeat('a', 60),
+          )
+          ->addParameter(
+            'string $'.str_repeat('b', 60),
+          )
+          ->setReturnType('(string, string)')
+          ->setBody(
+            $cgf->codegenHackBuilder()
+              ->addReturnf(
+                'tuple($%s, $%s)',
+                str_repeat('a', 60),
+                str_repeat('b', 60),
+              )
+              ->getCode()
+          )
+      )
+      ->render();
+    $this->assertUnchanged($code);
+    $this->assertTrue(
+      SignedSourceBase::hasValidSignatureFromAnySigner($code),
+      'bad signed source',
+    );
+  }
+
+  public function testFormattingUnsignedFile(): void {
+    $cgf = new HackCodegenFactory(
+      (new HackCodegenConfig())
+        ->withRootDir(__DIR__)
+        ->withFormatter(new HackfmtFormatter())
+    );
+
+    $code = $cgf
+      ->codegenFile('no_file')
+      ->setIsSignedFile(false)
+      ->addFunction(
+        $cgf->codegenFunction('my_func')
+          ->addParameter(
+            'string $'.str_repeat('a', 60),
+          )
+          ->addParameter(
+            'string $'.str_repeat('b', 60),
+          )
+          ->setReturnType('(string, string)')
+          ->setBody(
+            $cgf->codegenHackBuilder()
+              ->addReturnf(
+                'tuple($%s, $%s)',
+                str_repeat('a', 60),
+                str_repeat('b', 60),
+              )
+              ->getCode()
+          )
+      )
+      ->render();
+    $this->assertUnchanged($code);
+    $this->assertFalse(
+      SignedSourceBase::hasValidSignatureFromAnySigner($code),
+      'file should be unsigned, but has valid signature',
+    );
+  }
+
+  public function testFormattingPartiallyGeneratedFile(): void {
+    $cgf = new HackCodegenFactory(
+      (new HackCodegenConfig())
+        ->withRootDir(__DIR__)
+        ->withFormatter(new HackfmtFormatter())
+    );
+
+    $code = $cgf
+      ->codegenFile('no_file')
+      ->addFunction(
+        $cgf->codegenFunction('my_func')
+          ->addParameter(
+            'string $'.str_repeat('a', 60),
+          )
+          ->addParameter(
+            'string $'.str_repeat('b', 60),
+          )
+          ->setReturnType('(string, string)')
+          ->setBody(
+            $cgf->codegenHackBuilder()
+              ->startManualSection('whut')
+              ->endManualSection()
+              ->addReturnf(
+                'tuple($%s, $%s)',
+                str_repeat('a', 60),
+                str_repeat('b', 60),
+              )
+              ->getCode()
+          )
+      )
+      ->render();
+    $this->assertUnchanged($code);
+    $this->assertTrue(
+      SignedSourceBase::hasValidSignatureFromAnySigner($code),
+      'bad signed source',
+    );
+  }
 }
