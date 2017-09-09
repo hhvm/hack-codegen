@@ -22,7 +22,7 @@ class CodegenMutator {
     private DormSchema $schema,
   ) {
     $this->codegen = new HackCodegenFactory(
-      new HackCodegenConfig(__DIR__.'/../..'),
+      (new HackCodegenConfig())->withRootDir(__DIR__.'/../..'),
     );
   }
 

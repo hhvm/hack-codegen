@@ -13,8 +13,6 @@ namespace Facebook\HackCodegen;
 /**
  * Implement this interface to define a class to format a file after the
  * code is generated.
- * In order to using the formatting, in the instance of codegen_file, call
- * setFormatter with an instance of a formatter.
  */
 interface ICodegenFormatter {
   public function format(string $code, string $file_name): string;

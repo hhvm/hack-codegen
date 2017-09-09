@@ -14,6 +14,8 @@ namespace Facebook\HackCodegen;
  * This class contains the default configuration for Hack code generation.
  */
 final class HackCodegenConfig implements IHackCodegenConfig {
+  private string $rootDir = __DIR__;
+  private ?ICodegenFormatter $formatter = null;
 
   public function getFileHeader(): ?vec<string> {
     // If you want a header on each generated file, insert it here.
@@ -33,9 +35,18 @@ final class HackCodegenConfig implements IHackCodegenConfig {
   }
 
   public function getFormatter(): ?ICodegenFormatter {
-    return null;
+    return $this->formatter;
   }
 
-  public function __construct(private string $rootDir = __DIR__) {
+  public function withRootDir(string $root): this {
+    $out = clone $this;
+    $out->rootDir = $root;
+    return $out;
+  }
+
+  public function withFormatter(ICodegenFormatter $formatter): this {
+    $out = clone $this;
+    $out->formatter = $formatter;
+    return $out;
   }
 }
