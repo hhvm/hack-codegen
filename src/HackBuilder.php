@@ -366,10 +366,12 @@ final class HackBuilder extends BaseCodeBuilder {
   }
 
   public function addCaseBlocks<T>(
-    Iterable<T> $switch_values,
+    Traversable<T> $switch_values,
     (function(T, HackBuilder): void) $func,
   ): this {
-    $switch_values->map($v ==> $func($v, $this));
+    foreach ($switch_values as $v) {
+      $func($v, $this);
+    }
     return $this;
   }
 
