@@ -358,7 +358,7 @@ final class HackBuilder extends BaseCodeBuilder {
    *   ->addDefault()
    *   ->addLine('invariant_violation(\'ball deflated!\');')
    *   ->endDefault()
-   *   ->endSwitch_();
+   *   ->endSwitch();
    *
    */
   public function startSwitch(string $condition): this {
@@ -412,7 +412,7 @@ final class HackBuilder extends BaseCodeBuilder {
     return $this->addLine('break;')->unindent();
   }
 
-  public function endSwitch_(): this {
+  public function endSwitch(): this {
     return $this->closeBrace();
   }
 

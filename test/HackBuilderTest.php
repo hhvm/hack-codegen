@@ -265,7 +265,7 @@ two line breaks. Also note that we include a newline and also '.
       ->addDefault()
       ->addLine('invariant_violation(\'ball deflated!\');')
       ->endDefault()
-      ->endSwitch_();
+      ->endSwitch();
     $this->assertUnchanged($body->getCode());
   }
 
@@ -292,7 +292,7 @@ two line breaks. Also note that we include a newline and also '.
       ->addDefault()
       ->addLine('invariant_violation(\'ball deflated!\');')
       ->endDefault()
-      ->endSwitch_();
+      ->endSwitch();
     $this->assertUnchanged($body->getCode());
   }
 
@@ -319,7 +319,7 @@ two line breaks. Also note that we include a newline and also '.
       ->addDefault()
       ->addLine('invariant_violation(\'ball deflated!\');')
       ->endDefault()
-      ->endSwitch_();
+      ->endSwitch();
     $this->assertUnchanged($body->getCode());
   }
 
