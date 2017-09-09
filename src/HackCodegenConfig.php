@@ -32,6 +32,10 @@ final class HackCodegenConfig implements IHackCodegenConfig {
     return $this->rootDir;
   }
 
+  public function getFormatter(): ?ICodegenFormatter {
+    return null;
+  }
+
   public function __construct(private string $rootDir = __DIR__) {
   }
 }

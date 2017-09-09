@@ -16,4 +16,5 @@ interface IHackCodegenConfig {
   public function getSpacesPerIndentation(): int;
   public function getMaxLineLength(): int;
   public function getRootDir(): string;
+  public function getFormatter(): ?ICodegenFormatter;
 }

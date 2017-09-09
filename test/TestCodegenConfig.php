@@ -28,4 +28,7 @@ final class TestCodegenConfig implements IHackCodegenConfig {
     return __DIR__;
   }
 
+  public function getFormatter(): ?ICodegenFormatter {
+    return null;
+  }
 }

@@ -48,7 +48,6 @@ final class CodegenFile {
   private bool $isSignedFile = true;
   private ?dict<string, vec<string>> $rekey = null;
   private bool $createOnly = false;
-  private ?ICodegenFormatter $formatter;
   private ?string $fileNamespace;
   private dict<string, ?string> $useNamespaces = dict[];
   private dict<string, ?string> $useTypes = dict[];
@@ -216,15 +215,6 @@ final class CodegenFile {
     return $this;
   }
 
-  public function setFormatter(ICodegenFormatter $formatter): this {
-    $this->formatter = $formatter;
-    return $this;
-  }
-
-  public function getFormatter(): ?ICodegenFormatter {
-    return $this->formatter;
-  }
-
   private function getFileTypeDeclaration(): string {
     switch ($this->fileType) {
       case CodegenFileType::PHP:
@@ -320,8 +310,9 @@ final class CodegenFile {
 
     $content = $this->getContent();
 
-    if ($this->formatter !== null) {
-      $content = $this->formatter->format($content, $this->getFileName());
+    $formatter = $this->config->getFormatter();
+    if ($formatter !== null) {
+      $content = $formatter->format($content, $this->getFileName());
     }
 
     if (!$this->isSignedFile) {

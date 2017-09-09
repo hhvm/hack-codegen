@@ -462,4 +462,8 @@ final class TestAnotherCodegenConfig implements IHackCodegenConfig {
   public function getRootDir(): string {
     return '/';
   }
+
+  public function getFormatter(): ?ICodegenFormatter {
+    return null;
+  }
 }
