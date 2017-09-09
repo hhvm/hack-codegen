@@ -39,7 +39,7 @@ main();
 /**
  * This file is generated. Do not modify it manually!
  *
- * @-generated SignedSource<<e7dab09df2c7894d8bec443cc7fe945d>>
+ * @-generated SignedSource<<b530c12e7fe16894ac3fc030ab8415eb>>
  */
 
 function my_func(
@@ -51,13 +51,14 @@ function my_func(
     $bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb,
   );
 }
+
 !@#$%codegentest:testFormattingPartiallyGeneratedFile
 <?hh
 /**
  * This file is partially generated. Only make modifications between BEGIN
  * MANUAL SECTION and END MANUAL SECTION designators.
  *
- * @-partially-generated SignedSource<<893c6f6c11f813a23f7cb574e3092210>>
+ * @-partially-generated SignedSource<<ed97cbd1c6f7c0d58cd9671401d9a604>>
  */
 
 function my_func(
@@ -71,6 +72,7 @@ function my_func(
     $bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb,
   );
 }
+
 !@#$%codegentest:testFormattingUnsignedFile
 <?hh
 
@@ -83,6 +85,7 @@ function my_func(
     $bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb,
   );
 }
+
 !@#$%codegentest:testGenerateTopLevelFunctions
 <?hh
 // Codegen Tests

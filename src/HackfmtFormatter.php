@@ -10,6 +10,8 @@
 
 namespace Facebook\HackCodegen;
 
+use namespace HH\Lib\Str;
+
 final class HackfmtFormatter implements ICodegenFormatter {
   public function format(
     string $code,
@@ -37,6 +39,6 @@ final class HackfmtFormatter implements ICodegenFormatter {
       $exit_code === 0,
       'Failed to invoke hackfmt',
     );
-    return implode("\n", $output);
+    return implode("\n", $output)."\n";
   }
 }
