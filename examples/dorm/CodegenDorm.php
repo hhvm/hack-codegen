@@ -64,7 +64,7 @@ class CodegenDorm {
     // of the existing file and merging it if it's partially generated.
     $cg->codegenFile($dir.$this->getSchemaName().'.php')
       ->setIsStrict(true)
-      ->useClass('Facebook\\TypeAssert\\TypeAssert')
+      ->useType('Facebook\\TypeAssert\\TypeAssert')
       ->addClass($class)
       ->setGeneratedFrom($cg->codegenGeneratedFromScript($gen_from))
       ->save();

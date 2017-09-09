@@ -51,6 +51,9 @@ final class CodegenFile {
   private ?ICodegenFormatter $formatter;
   private ?string $fileNamespace;
   private dict<string, ?string> $useNamespaces = dict[];
+  private dict<string, ?string> $useTypes = dict[];
+  private dict<string, ?string> $useConsts = dict[];
+  private dict<string, ?string> $useFunctions = dict[];
   private ?string $shebang;
   private ?string $pseudoMainHeader;
   private ?string $pseudoMainFooter;
@@ -376,8 +379,24 @@ final class CodegenFile {
       $this->fileNamespace,
     );
 
+    $get_use_statement = ($type, $ns, $as) ==> sprintf(
+      'use %s %s%s;',
+      $type,
+      $ns,
+      $as === null ? '' : ' as '.$as,
+    );
+
     foreach ($this->useNamespaces as $ns => $as) {
-      $builder->addLine($as === null ? "use $ns;" : "use $ns as $as;");
+      $builder->addLine($get_use_statement('namespace', $ns, $as));
+    }
+    foreach ($this->useTypes as $ns => $as) {
+      $builder->addLine($get_use_statement('type', $ns, $as));
+    }
+    foreach ($this->useFunctions as $ns => $as) {
+      $builder->addLine($get_use_statement('function', $ns, $as));
+    }
+    foreach ($this->useConsts as $ns => $as) {
+      $builder->addLine($get_use_statement('const', $ns, $as));
     }
 
     $header = $this->pseudoMainHeader;
@@ -466,16 +485,37 @@ final class CodegenFile {
     return $this;
   }
 
-  public function useClass(string $ns, ?string $as = null): this {
-    return $this->useNamespace($ns, $as);
+  public function useType(string $ns, ?string $as = null): this {
+    invariant(
+      !C\contains_key($this->useTypes, $ns),
+      '%s is already being used',
+      $ns,
+    );
+    $this->useTypes[$ns] = $as;
+
+    return $this;
   }
 
   public function useFunction(string $ns, ?string $as = null): this {
-    return $this->useNamespace('function '.$ns, $as);
+    invariant(
+      !C\contains_key($this->useFunctions, $ns),
+      '%s is already being used',
+      $ns,
+    );
+    $this->useFunctions[$ns] = $as;
+
+    return $this;
   }
 
   public function useConst(string $ns, ?string $as = null): this {
-    return $this->useNamespace('const '.$ns, $as);
+    invariant(
+      !C\contains_key($this->useConsts, $ns),
+      '%s is already being used',
+      $ns,
+    );
+    $this->useConsts[$ns] = $as;
+
+    return $this;
   }
 
   /**

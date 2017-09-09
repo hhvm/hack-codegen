@@ -255,7 +255,7 @@ final class CodegenFileTest extends CodegenBaseTest {
       ->codegenFile('no_file')
       ->setNamespace('MyNamespace')
       ->useNamespace('Another\Space')
-      ->useClass('My\Space\Bar', 'bar')
+      ->useType('My\Space\Bar', 'bar')
       ->useFunction('My\Space\my_function', 'f')
       ->useConst('My\Space\MAX_RETRIES')
       ->addClass($cgf->codegenClass('Foo'))

@@ -53,11 +53,11 @@ function fun(): int {
 /**
  * This file is generated. Do not modify it manually!
  *
- * @-generated SignedSource<<1b0ad98452e2fc568c0eda46ed43952e>>
+ * @-generated SignedSource<<1481c11ba22809366a94dbf9766535a5>>
  */
 namespace MyNamespace;
-use Another\Space;
-use My\Space\Bar as bar;
+use namespace Another\Space;
+use type My\Space\Bar as bar;
 use function My\Space\my_function as f;
 use const My\Space\MAX_RETRIES;
 
