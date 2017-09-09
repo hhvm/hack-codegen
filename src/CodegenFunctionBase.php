@@ -242,7 +242,7 @@ abstract class CodegenFunctionBase implements ICodeBuilderRenderer {
 
     $builder->openBrace();
     if ($this->isManualBody) {
-      $builder->beginManualSection($containing_class_name.$this->name);
+      $builder->startManualSection($containing_class_name.$this->name);
       $builder->add($this->body);
       $builder->endManualSection();
     } else {

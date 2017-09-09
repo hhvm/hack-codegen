@@ -313,7 +313,7 @@ abstract class CodegenClassBase implements ICodeBuilderRenderer {
         : $this->footerContents;
       $builder
         ->ensureEmptyLine()
-        ->beginManualSection($footer_name)
+        ->startManualSection($footer_name)
         ->addLine($footer)
         ->endManualSection();
     }
@@ -328,7 +328,7 @@ abstract class CodegenClassBase implements ICodeBuilderRenderer {
       );
       $builder
         ->ensureEmptyLine()
-        ->beginManualSection($manual_section)
+        ->startManualSection($manual_section)
         ->addLine($content)
         ->endManualSection();
     }

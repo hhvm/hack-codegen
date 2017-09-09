@@ -256,7 +256,7 @@ class CodegenMutator {
         // Notice that each section needs to have a unique name, since that's
         // used to match the section when re-generating the code
         $body
-          ->beginManualSection($name)
+          ->startManualSection($name)
           ->addInlineComment('You may manually change this section of code');
       }
       $body

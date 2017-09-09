@@ -313,7 +313,7 @@ abstract class BaseCodeBuilder implements ICodeBuilder {
   /**
    * Add to the buffer the begin of a manual section with the specified id.
    */
-  public function beginManualSection(string $id): this {
+  public function startManualSection(string $id): this {
     return $this
       ->ensureNewLine()
       ->addLine(PartiallyGeneratedCode::getBeginManualSection($id));

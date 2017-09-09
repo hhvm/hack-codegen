@@ -139,7 +139,7 @@ class CodegenDorm {
           // Notice that each section needs to have a unique name, since that's
           // used to match the section when re-generating the code
           $builder
-            ->beginManualSection($name)
+            ->startManualSection($name)
             ->addInlineComment('You may manually change this section of code');
         }
         // using addWithSuggestedLineBreaks will allow the code

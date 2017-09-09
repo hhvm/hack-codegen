@@ -44,7 +44,7 @@ final class CodegenShape implements ICodeBuilderRenderer {
     if ($manual_id !== null) {
       $builder
         ->ensureNewLine()
-        ->beginManualSection($manual_id)
+        ->startManualSection($manual_id)
         ->ensureEmptyLine()
         ->endManualSection();
     }
