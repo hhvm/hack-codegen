@@ -57,12 +57,12 @@ interface ICodegenFactory {
     Traversable<string> $names,
   ): Traversable<CodegenImplementsInterface>;
 
-  public function codegenMemberVar(string $name): CodegenMemberVar;
+  public function codegenProperty(string $name): CodegenProperty;
 
-  public function codegenMemberVarf(
+  public function codegenPropertyf(
     SprintfFormatString $format,
     mixed ...$args
-  ): CodegenMemberVar;
+  ): CodegenProperty;
 
   public function codegenUsesTrait(string $name): CodegenUsesTrait;
 

@@ -124,9 +124,9 @@ final class CodegenClassTest extends CodegenBaseTest {
       ->setHasManualMethodSection()
       ->setHasManualDeclarations()
       ->addVar(
-        $cgf->codegenMemberVar('text')->setProtected()->setType('string'),
+        $cgf->codegenProperty('text')->setProtected()->setType('string'),
       )
-      ->addVar($cgf->codegenMemberVar('id')->setType('?int')->setValue(12345))
+      ->addVar($cgf->codegenProperty('id')->setType('?int')->setValue(12345))
       ->setConstructor(
         $cgf
           ->codegenConstructor()
@@ -200,9 +200,9 @@ final class CodegenClassTest extends CodegenBaseTest {
     $cgf = $this->getCodegenFactory();
     $code = $cgf
       ->codegenClass('TestWrapperFunc')
-      ->addVar($cgf->codegenMemberVar('text')->setPrivate()->setType('string'))
+      ->addVar($cgf->codegenProperty('text')->setPrivate()->setType('string'))
       ->addVar(
-        $cgf->codegenMemberVar('hack')->setType('?bool')->setValue(false),
+        $cgf->codegenProperty('hack')->setType('?bool')->setValue(false),
       )
       ->setConstructor(
         $cgf

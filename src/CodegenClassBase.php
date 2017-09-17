@@ -29,7 +29,7 @@ abstract class CodegenClassBase implements ICodeBuilderRenderer {
   protected vec<CodegenMethod> $methods = vec[];
   private vec<CodegenUsesTrait> $traits = vec[];
   protected vec<(string, bool, mixed, ?string)> $consts = vec[];
-  protected vec<CodegenMemberVar> $vars = vec[];
+  protected vec<CodegenProperty> $vars = vec[];
   protected bool $hasManualFooter = false;
   protected bool $hasManualHeader = false;
   private bool $isConsistentConstruct = false;
@@ -189,7 +189,7 @@ abstract class CodegenClassBase implements ICodeBuilderRenderer {
     return $this;
   }
 
-  public function addVar(CodegenMemberVar $var): this {
+  public function addVar(CodegenProperty $var): this {
     $this->vars[] = $var;
     return $this;
   }

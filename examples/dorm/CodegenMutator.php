@@ -69,15 +69,15 @@ class CodegenMutator {
   }
 
 
-  private function getDataVar(): CodegenMemberVar {
+  private function getDataVar(): CodegenProperty{
     // Example of how to generate a class member variable, including
     // setting an initial value.
-    return $this->codegen->codegenMemberVar('data')
+    return $this->codegen->codegenProperty('data')
       ->setType('Map<string, mixed>')
       ->setValue(Map {});
   }
 
-  private function getPdoTypeVar(): CodegenMemberVar {
+  private function getPdoTypeVar(): CodegenProperty {
     $values = Map {};
     foreach ($this->schema->getFields() as $field) {
       switch($field->getType()) {
@@ -115,7 +115,7 @@ class CodegenMutator {
         ),
       );
 
-    return $cg->codegenMemberVar('pdoType')
+    return $cg->codegenProperty('pdoType')
       ->setType('Map<string, int>')
       ->setIsStatic()
       ->setLiteralValue($code->getCode());

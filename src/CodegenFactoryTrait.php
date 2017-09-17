@@ -94,15 +94,15 @@ trait CodegenFactoryTrait implements ICodegenFactory {
     return Vec\map($names, $name ==> $this->codegenImplementsInterface($name));
   }
 
-  final public function codegenMemberVar(string $name): CodegenMemberVar {
-    return new CodegenMemberVar($this->getConfig(), $name);
+  final public function codegenProperty(string $name): CodegenProperty {
+    return new CodegenProperty($this->getConfig(), $name);
   }
 
-  final public function codegenMemberVarf(
+  final public function codegenPropertyf(
     SprintfFormatString $format,
     mixed ...$args
-  ): CodegenMemberVar {
-    return $this->codegenMemberVar(vsprintf($format, $args));
+  ): CodegenProperty {
+    return $this->codegenProperty(vsprintf($format, $args));
   }
 
   final public function codegenUsesTrait(string $name): CodegenUsesTrait {

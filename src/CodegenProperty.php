@@ -11,18 +11,18 @@
 namespace Facebook\HackCodegen;
 
 /**
- * Generate code for a member variable. Please don't use this class directly;
- * instead use the function codegen_member_var.  E.g.:
+ * Generate code for a property variable. Please don't use this class directly;
+ * instead use the function codegen_property.  E.g.:
  *
- * codegen_member_var('foo')
+ * codegen_property('foo')
  *  ->setProtected()
  *  ->setType('string')
  *  ->setInlineComment('Represent the foo of the bar")
  *  ->render();
  */
-final class CodegenMemberVar implements ICodeBuilderRenderer {
+final class CodegenProperty implements ICodeBuilderRenderer {
 
-  const string UNSET_VALUE = "<<CodegenMemberVar_value_not_set>>";
+  const string UNSET_VALUE = "<<CodegenProperty_value_not_set>>";
 
   use CodegenWithVisibility;
   use HackBuilderRenderer;

@@ -10,17 +10,17 @@
 
 namespace Facebook\HackCodegen;
 
-final class CodegenMemberVarTest extends CodegenBaseTest {
+final class CodegenPropertyTest extends CodegenBaseTest {
 
   public function testSimple(): void {
-    $code = $this->getCodegenFactory()->codegenMemberVar('foo')->render();
+    $code = $this->getCodegenFactory()->codegenProperty('foo')->render();
     $this->assertUnchanged($code);
   }
 
   public function testPublicStatic(): void {
     $code = $this
       ->getCodegenFactory()
-      ->codegenMemberVar('foo')
+      ->codegenProperty('foo')
       ->setPublic()
       ->setIsStatic()
       ->render();
@@ -31,7 +31,7 @@ final class CodegenMemberVarTest extends CodegenBaseTest {
   public function testTyped(): void {
     $code = $this
       ->getCodegenFactory()
-      ->codegenMemberVar('name')
+      ->codegenProperty('name')
       ->setProtected()
       ->setType('string')
       ->render();
@@ -42,7 +42,7 @@ final class CodegenMemberVarTest extends CodegenBaseTest {
   public function testTypedWithFalsyValue(): void {
     $code = $this
       ->getCodegenFactory()
-      ->codegenMemberVar('count')
+      ->codegenProperty('count')
       ->setType('?int')
       ->setValue(0)
       ->render();
@@ -53,7 +53,7 @@ final class CodegenMemberVarTest extends CodegenBaseTest {
   public function testArrayValues(): void {
     $code = $this
       ->getCodegenFactory()
-      ->codegenMemberVar('languages')
+      ->codegenProperty('languages')
       ->setIsStatic()
       ->setValue(array('en' => 'English', 'es' => 'Spanish', 'fr' => 'French'))
       ->render();
@@ -64,7 +64,7 @@ final class CodegenMemberVarTest extends CodegenBaseTest {
   public function testVector(): void {
     $code = $this
       ->getCodegenFactory()
-      ->codegenMemberVar('parameters')
+      ->codegenProperty('parameters')
       ->setType('Vector<string>')
       ->setLiteralValue('Vector {}')
       ->render();
@@ -75,7 +75,7 @@ final class CodegenMemberVarTest extends CodegenBaseTest {
   public function testDocBlock(): void {
     $code = $this
       ->getCodegenFactory()
-      ->codegenMemberVar('thingWithComment')
+      ->codegenProperty('thingWithComment')
       ->setInlineComment('a comment')
       ->render();
 
