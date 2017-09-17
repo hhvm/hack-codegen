@@ -11,13 +11,21 @@ namespace Facebook\HackCodegen;
 use namespace HH\Lib\{C, Dict, Vec};
 
 trait CodegenWithAttributes {
+  protected IHackCodegenConfig $config;
   private dict<string, vec<string>> $userAttributes = dict[];
 
-  final public function setUserAttribute(
+  final public function addEmptyUserAttribute(string $name): this {
+    $this->addUserAttribute($name, vec[], HackBuilderValues::export());
+    return $this;
+  }
+
+  final public function addUserAttribute<T>(
     string $name,
-    \Stringish ...$params
+    vec<T> $values,
+    IHackBuilderValueRenderer<T> $renderer,
   ): this {
-    $this->userAttributes[$name] = Vec\map($params, $p ==> (string)$p);
+    $this->userAttributes[$name] =
+      Vec\map($values, $v ==> $renderer->render($this->config, $v));
     return $this;
   }
 

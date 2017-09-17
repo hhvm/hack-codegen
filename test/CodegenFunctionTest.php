@@ -85,7 +85,7 @@ final class CodegenFunctionTest extends CodegenBaseTest {
     $code = $this
       ->getCodegenFactory()
       ->codegenFunction('getTestsBypassVisibility')
-      ->setUserAttribute('TestsBypassVisibility')
+      ->addEmptyUserAttribute('TestsBypassVisibility')
       ->render();
     $this->assertUnchanged($code);
   }
@@ -94,7 +94,11 @@ final class CodegenFunctionTest extends CodegenBaseTest {
     $code = $this
       ->getCodegenFactory()
       ->codegenFunction('getUseDataProvider')
-      ->setUserAttribute('DataProvider', "'providerFunc'")
+      ->addUserAttribute(
+        'DataProvider',
+        vec['providerFunc'],
+        HackBuilderValues::export(),
+      )
       ->render();
     $this->assertUnchanged($code);
   }
@@ -103,8 +107,12 @@ final class CodegenFunctionTest extends CodegenBaseTest {
     $code = $this
       ->getCodegenFactory()
       ->codegenFunction('getBypassVisibilityAndUseDataProvider')
-      ->setUserAttribute('DataProvider', "'providerFunc'")
-      ->setUserAttribute('TestsBypassVisibility')
+      ->addUserAttribute(
+        'DataProvider',
+        vec['providerFunc'],
+        HackBuilderValues::export(),
+      )
+      ->addEmptyUserAttribute('TestsBypassVisibility')
       ->render();
     $this->assertUnchanged($code);
   }
@@ -114,8 +122,12 @@ final class CodegenFunctionTest extends CodegenBaseTest {
       ->getCodegenFactory()
       ->codegenFunction('getOverridedBypassVisibilityAndUseDataProvider')
       ->setIsOverride(true)
-      ->setUserAttribute('DataProvider', "'providerFunc'")
-      ->setUserAttribute('TestsBypassVisibility')
+      ->addUserAttribute(
+        'DataProvider',
+        vec['providerFunc'],
+        HackBuilderValues::export(),
+      )
+      ->addEmptyUserAttribute('TestsBypassVisibility')
       ->render();
     $this->assertUnchanged($code);
   }
@@ -125,8 +137,12 @@ final class CodegenFunctionTest extends CodegenBaseTest {
       ->getCodegenFactory()
       ->codegenFunction('genOverridedBypassVisibilityAndUseDataProvider')
       ->setIsOverride(true)
-      ->setUserAttribute('DataProvider', "'providerFunc'")
-      ->setUserAttribute('TestsBypassVisibility')
+      ->addUserAttribute(
+        'DataProvider',
+        vec['providerFunc'],
+        HackBuilderValues::export(),
+      )
+      ->addEmptyUserAttribute('TestsBypassVisibility')
       ->setIsAsync()
       ->render();
     $this->assertUnchanged($code);
