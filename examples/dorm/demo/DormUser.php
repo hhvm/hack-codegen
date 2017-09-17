@@ -6,9 +6,9 @@
  * To re-generate this file run codegen.php DormUserSchema
  *
  *
- * @partially-generated SignedSource<<7e439b34aceff2b1d18695b63eef9ea0>>
+ * @partially-generated SignedSource<<60c1cef666778a7213e26b6e305019b0>>
  */
-use Facebook\TypeAssert\TypeAssert;
+use namespace Facebook\TypeAssert;
 
 final class DormUser {
 
@@ -31,7 +31,7 @@ final class DormUser {
       return null;
     }
     $ts = type_structure(self::class, 'TData');
-    $data = TypeAssert::matchesTypeStructure($ts, $result);
+    $data = TypeAssert\matches_type_structure($ts, $result);
     return new DormUser($data);
   }
 

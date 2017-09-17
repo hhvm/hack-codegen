@@ -64,7 +64,7 @@ class CodegenDorm {
     // of the existing file and merging it if it's partially generated.
     $cg->codegenFile($dir.$this->getSchemaName().'.php')
       ->setIsStrict(true)
-      ->useType('Facebook\\TypeAssert\\TypeAssert')
+      ->useNamespace('Facebook\\TypeAssert')
       ->addClass($class)
       ->setGeneratedFrom($cg->codegenGeneratedFromScript($gen_from))
       ->save();
@@ -104,7 +104,7 @@ class CodegenDorm {
       )
       ->addAssignment(
         '$data',
-        'TypeAssert::matchesTypeStructure($ts, $result)',
+        'TypeAssert\\matches_type_structure($ts, $result)',
         HackBuilderValues::literal(),
       )
       ->addReturnf('new %s($data)', $this->getSchemaName());
