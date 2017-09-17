@@ -45,8 +45,8 @@ class CodegenMutator {
     // getConstructor or getLoad in this examples.
     $class = $cg->codegenClass($name)
       ->setIsFinal()
-      ->addVar($this->getDataVar())
-      ->addVar($this->getPdoTypeVar())
+      ->addProperty($this->getDataVar())
+      ->addProperty($this->getPdoTypeVar())
       ->setConstructor($this->getConstructor())
       ->addMethod($this->getCreateMethod())
       ->addMethod($this->getUpdateMethod())

@@ -49,10 +49,10 @@ final class CodegenTraitTest extends CodegenBaseTest {
       ->addConst('PI', 3.1415)
       ->setHasManualMethodSection()
       ->setHasManualDeclarations()
-      ->addVar(
+      ->addProperty(
         $cgf->codegenProperty('text')->setProtected()->setType('string'),
       )
-      ->addVar($cgf->codegenProperty('id')->setType('?int')->setValue(12345))
+      ->addProperty($cgf->codegenProperty('id')->setType('?int')->setValue(12345))
       ->addMethod(
         $cgf
           ->codegenMethod('genX')

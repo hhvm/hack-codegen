@@ -189,8 +189,16 @@ abstract class CodegenClassBase implements ICodeBuilderRenderer {
     return $this;
   }
 
-  public function addVar(CodegenProperty $var): this {
+  public function addProperty(CodegenProperty $var): this {
     $this->vars[] = $var;
+    return $this;
+  }
+
+  public function addProperties(Traversable<CodegenProperty> $vars): this {
+    $this->vars = Vec\concat(
+      $this->vars,
+      $vars,
+    );
     return $this;
   }
 
