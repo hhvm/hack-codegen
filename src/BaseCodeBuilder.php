@@ -157,8 +157,7 @@ abstract class BaseCodeBuilder implements ICodeBuilder {
     SprintfFormatString $code,
     mixed ...$args
   ): this {
-    // UNSAFE
-    return $this->addLineImpl($code, $args);
+    return $this->addLineImplvf((string)$code, $args);
   }
 
   /**
