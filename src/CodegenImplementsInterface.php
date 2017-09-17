@@ -39,10 +39,18 @@ final class CodegenImplementsInterface implements ICodeBuilderRenderer {
     return $this->name;
   }
 
-  public function setComment(string $format, ...): this {
-    $comment = vsprintf($format, array_slice(func_get_args(), 1));
+  public function setComment(
+    string $comment,
+  ): this {
     $this->comment = $comment;
     return $this;
+  }
+
+  public function setCommentf(
+    SprintfFormatString $format,
+    mixed ...$args
+  ): this {
+    return $this->setComment(vsprintf($format, $args));
   }
 
   public function setGeneratedFrom(CodegenGeneratedFrom $from): this {
