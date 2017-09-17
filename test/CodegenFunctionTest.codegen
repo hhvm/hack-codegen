@@ -26,12 +26,12 @@ function getExpensive() {
 
 !@#$%codegentest:testMixedBuiltInAndUserAttributes
 <<__Override, DataProvider('providerFunc'), TestsBypassVisibility>>
-function getOverridedBypassVisibilityAndUseDataProvider() {
+public function getOverridedBypassVisibilityAndUseDataProvider() {
 }
 
 !@#$%codegentest:testMixedBuiltInAndUserAttributesAsync
 <<__Override, DataProvider('providerFunc'), TestsBypassVisibility>>
-async function genOverridedBypassVisibilityAndUseDataProvider() {
+public async function genOverridedBypassVisibilityAndUseDataProvider() {
 }
 
 !@#$%codegentest:testMixedUserAttributes
@@ -41,17 +41,17 @@ function getBypassVisibilityAndUseDataProvider() {
 
 !@#$%codegentest:testOverride
 <<__Override>>
-function getNotLikeParent() {
+public function getNotLikeParent() {
 }
 
 !@#$%codegentest:testOverrideAndMemoized
 <<__Override, __Memoize>>
-function getExpensiveNotLikeParent() {
+public function getExpensiveNotLikeParent() {
 }
 
 !@#$%codegentest:testOverrideMemoizedAsync
 <<__Override, __Memoize>>
-async function genExpensiveNotLikeParent() {
+public async function genExpensiveNotLikeParent() {
 }
 
 !@#$%codegentest:testParams
