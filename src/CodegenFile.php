@@ -359,7 +359,7 @@ final class CodegenFile {
 
   private function getContent(): string {
     $builder = (new HackBuilder($this->config));
-    $builder->addLineIf(
+    $builder->addLineIff(
       $this->fileNamespace !== null,
       'namespace %s;',
       $this->fileNamespace,

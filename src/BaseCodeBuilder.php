@@ -58,10 +58,10 @@ abstract class BaseCodeBuilder implements ICodeBuilder {
     return $this->addf('%s', $code);
   }
   final public function addf(SprintfFormatString $code, mixed ...$args): this {
-    return $this->addv((string)$code, $args);
+    return $this->addvf((string) $code, $args);
   }
 
-  final protected function addv(?string $code, array<mixed> $args): this {
+  final public function addvf(string $code, array<mixed> $args): this {
     if ($code === null) {
       return $this;
     }
@@ -95,27 +95,52 @@ abstract class BaseCodeBuilder implements ICodeBuilder {
   /**
    * If the condition evaluates to true, the code will be added to the buffer.
    */
-  final public function addIf(bool $condition, string $code, ...): this {
+  final public function addIf(
+    bool $condition,
+    string $code,
+  ): this {
     if ($condition) {
-      $this->addv($code, array_slice(func_get_args(), 2));
+      $this->add($code);
     }
     return $this;
   }
 
-  final protected function addLineImpl(
+  final public function addIff(
+    bool $condition,
+    SprintfFormatString $code,
+    mixed ...$args
+  ): this {
+    if ($condition) {
+      $this->addvf((string) $code, $args);
+    }
+    return $this;
+  }
+
+  final protected function addLineImplvf(
     ?string $code,
     array<mixed> $args,
   ): this {
-    return $this->addv($code, $args)->newLine();
+    return $this->addvf((string) $code, $args)->newLine();
   }
 
   /**
    * If the condition evaluates to true, the code will be added to the buffer
    * with a new line.
    */
-  final public function addLineIf(bool $condition, string $code, ...): this {
+  final public function addLineIf(
+    bool $condition,
+    string $code,
+  ): this {
+    return $this->addLineIff($condition, '%s', $code);
+  }
+
+  final public function addLineIff(
+    bool $condition,
+    SprintfFormatString $code,
+    mixed ...$args
+  ): this {
     if ($condition) {
-      $this->addLineImpl($code, array_slice(func_get_args(), 2));
+      $this->addLineImplvf((string) $code, $args);
     }
     return $this;
   }
