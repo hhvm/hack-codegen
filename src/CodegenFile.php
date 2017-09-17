@@ -33,7 +33,7 @@ enum CodegenFileType: int {
  */
 final class CodegenFile {
 
-  private CodegenFileType $fileType = CodegenFileType::HACK_PARTIAL;
+  private CodegenFileType $fileType = CodegenFileType::HACK_STRICT;
   private ?string $docBlock;
   private string $fileName;
   private string $relativeFileName;
@@ -184,19 +184,6 @@ final class CodegenFile {
       $rekey[$new_key][] = $old_key;
     }
     $this->rekey = $rekey;
-    return $this;
-  }
-
-  /**
-   * Whether the generated file will be Hack strict mode or partial mode.
-   * For more flexibility, use setFileType.
-   */
-  public function setIsStrict(bool $value): this {
-    if ($value) {
-      $this->setFileType(CodegenFileType::HACK_STRICT);
-    } else {
-      $this->setFileType(CodegenFileType::HACK_PARTIAL);
-    }
     return $this;
   }
 

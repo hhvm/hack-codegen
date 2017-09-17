@@ -270,7 +270,6 @@ final class CodegenFileTest extends CodegenBaseTest {
     $cgf = $this->getCodegenFactory();
     $code = $cgf
       ->codegenFile('no_file')
-      ->setIsStrict(true)
       ->addClass($cgf->codegenClass('Foo'))
       ->render();
 

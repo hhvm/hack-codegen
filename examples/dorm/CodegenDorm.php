@@ -63,7 +63,6 @@ class CodegenDorm {
     // Notice that saving the file includes also verifying the checksum
     // of the existing file and merging it if it's partially generated.
     $cg->codegenFile($dir.$this->getSchemaName().'.php')
-      ->setIsStrict(true)
       ->useNamespace('Facebook\\TypeAssert')
       ->addClass($class)
       ->setGeneratedFrom($cg->codegenGeneratedFromScript($gen_from))

@@ -64,7 +64,6 @@ class CodegenMutator {
     // class defined above and saves it.
     $cg->codegenFile($dir.$name.'.php')
       ->addClass($class)
-      ->setIsStrict(true)
       ->setGeneratedFrom($cg->codegenGeneratedFromScript($gen_from))
       ->save();
   }
