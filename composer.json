@@ -7,6 +7,7 @@
         "hhvm/hhvm-autoload": "^1.5",
         "hhvm/hsl": "<1.0 >=0.3"
     },
+    "bin": [ "bin/hh-codegen-verify-signatures" ],
     "authors": [
         {
             "name": "Fred Emmott",
