@@ -54,7 +54,7 @@ final class CodegenFunctionTest extends CodegenBaseTest {
   public function testOverride(): void {
     $code = $this
       ->getCodegenFactory()
-      ->codegenFunction('getNotLikeParent')
+      ->codegenMethod('getNotLikeParent')
       ->setIsOverride(true)
       ->render();
     $this->assertUnchanged($code);
@@ -63,7 +63,7 @@ final class CodegenFunctionTest extends CodegenBaseTest {
   public function testOverrideAndMemoized(): void {
     $code = $this
       ->getCodegenFactory()
-      ->codegenFunction('getExpensiveNotLikeParent')
+      ->codegenMethod('getExpensiveNotLikeParent')
       ->setIsOverride(true)
       ->setIsMemoized(true)
       ->render();
@@ -73,7 +73,7 @@ final class CodegenFunctionTest extends CodegenBaseTest {
   public function testOverrideMemoizedAsync(): void {
     $code = $this
       ->getCodegenFactory()
-      ->codegenFunction('genExpensiveNotLikeParent')
+      ->codegenMethod('genExpensiveNotLikeParent')
       ->setIsOverride(true)
       ->setIsMemoized(true)
       ->setIsAsync()
@@ -120,7 +120,7 @@ final class CodegenFunctionTest extends CodegenBaseTest {
   public function testMixedBuiltInAndUserAttributes(): void {
     $code = $this
       ->getCodegenFactory()
-      ->codegenFunction('getOverridedBypassVisibilityAndUseDataProvider')
+      ->codegenMethod('getOverridedBypassVisibilityAndUseDataProvider')
       ->setIsOverride(true)
       ->addUserAttribute(
         'DataProvider',
@@ -135,7 +135,7 @@ final class CodegenFunctionTest extends CodegenBaseTest {
   public function testMixedBuiltInAndUserAttributesAsync(): void {
     $code = $this
       ->getCodegenFactory()
-      ->codegenFunction('genOverridedBypassVisibilityAndUseDataProvider')
+      ->codegenMethod('genOverridedBypassVisibilityAndUseDataProvider')
       ->setIsOverride(true)
       ->addUserAttribute(
         'DataProvider',

@@ -23,4 +23,8 @@ namespace Facebook\HackCodegen;
  *
  */
 final class CodegenMethod extends CodegenMethodBase {
+  public function setIsOverride(bool $value = true): this {
+    $this->isOverride = $value;
+    return $this;
+  }
 }

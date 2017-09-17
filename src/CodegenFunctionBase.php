@@ -49,11 +49,6 @@ abstract class CodegenFunctionBase implements ICodeBuilderRenderer {
     return $this;
   }
 
-  public function setIsOverride(bool $value = true): this {
-    $this->isOverride = $value;
-    return $this;
-  }
-
   public function setIsMemoized(bool $value = true): this {
     $this->isMemoized = $value;
     return $this;
