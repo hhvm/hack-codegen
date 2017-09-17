@@ -111,7 +111,7 @@ final class CodegenClass extends CodegenClassBase {
       $this->wrapperFunc = (
         new CodegenFunction($this->config, $this->getName())
       )
-        ->setParameters($param_full)
+        ->addParameters($param_full)
         ->setReturnType($this->getName())
         ->setBody($body);
     } else {

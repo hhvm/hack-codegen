@@ -87,8 +87,10 @@ abstract class CodegenFunctionBase implements ICodeBuilderRenderer {
     return $this;
   }
 
-  public function setParameters(Traversable<string> $params): this {
-    $this->parameters = vec($params);
+  public function addParameters(Traversable<string> $params): this {
+    foreach ($params as $param) {
+      $this->addParameter($param);
+    }
     return $this;
   }
 
