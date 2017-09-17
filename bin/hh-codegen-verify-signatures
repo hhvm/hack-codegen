@@ -102,7 +102,7 @@ final class CLIVerifier {
       $good_dir = $this->verifyDirectory($dir);
       $good = $good && $good_dir;
     }
-    exit($good ? 1 : 0);
+    exit($good ? 0 : 1);
   }
 }
 
