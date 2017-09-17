@@ -19,7 +19,7 @@ a `CodegenImplementsInterface` to `->addInterface()`.
 
 `CodegenImplementsInterface` instances are created by calling
 `$factory->codegenImplementsInterface('IFoo')`; optionally, a comment can be
-added by calling `->setComment($format, ...)`, and code can be marked as responsible
+added by calling `->setComment($comment)` or `->setCommentf($format, ...)`, and code can be marked as responsible
 for them by calling `->setGeneratedFrom($codegen_generated_from)`.
 
 `->addTrait()` works in combination with `CodegenUsesTrait` via
