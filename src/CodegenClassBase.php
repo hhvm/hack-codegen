@@ -10,7 +10,7 @@
 
 namespace Facebook\HackCodegen;
 
-use namespace HH\Lib\{C, Vec};
+use namespace HH\Lib\{C, Str, Vec};
 
 /**
  * Abstract class to generate code for a class or trait.
@@ -22,7 +22,7 @@ abstract class CodegenClassBase implements ICodeBuilderRenderer {
   use CodegenWithAttributes;
   use HackBuilderRenderer;
 
-  protected dict<string, ?string> $genericsDecl = dict[];
+  protected vec<string> $genericsDecl = vec[];
   protected ?string $docBlock;
   protected ?CodegenGeneratedFrom $generatedFrom;
   protected ?CodegenFunction $wrapperFunc = null;
@@ -50,15 +50,32 @@ abstract class CodegenClassBase implements ICodeBuilderRenderer {
 
   /**
    * E.g.
-   * $class->setGenericsDecl(Map {'TRead' => null, 'TWrite' => 'T'})
+   * $class->setGenerics(Map {'TRead' => null, 'TWrite' => 'T'})
    *
    * Will generate:
    * class MyClass<TRead, TWrite as T> {
    */
-  public function setGenericsDecl(
-    KeyedTraversable<string, ?string> $generics_decl,
+  public function addGenerics(
+    Traversable<string> $generics_decl,
   ): this {
-    $this->genericsDecl = dict($generics_decl);
+    foreach ($generics_decl as $decl) {
+      $this->addGeneric($decl);
+    }
+    return $this;
+  }
+
+  public function addGenericf(
+    SprintfFormatString $format,
+    mixed ...$args
+  ): this {
+    $this->addGenerics(vsprintf($format, $args));
+    return $this;
+  }
+
+  public function addGeneric(
+    string $decl,
+  ): this {
+    $this->genericsDecl[] = $decl;
     return $this;
   }
 
@@ -246,21 +263,23 @@ abstract class CodegenClassBase implements ICodeBuilderRenderer {
   abstract protected function buildDeclaration(HackBuilder $builder): void;
 
   protected function buildGenericsDeclaration(): string {
-    $generics_dec = "";
-    $generics_count = count($this->genericsDecl);
-    if ($generics_count == 1) {
-      foreach ($this->genericsDecl as $key => $type) {
-        $generics_dec = "<$key".((bool)$type ? " as $type>" : ">");
-      }
-    } else if ($generics_count > 1) {
-      $generics_dec .= "\n  <\n";
-      foreach ($this->genericsDecl as $key => $type) {
-        $generics_dec .= "    $key".((bool)$type ? " as $type,\n" : ",\n");
-      }
-      $generics_dec = substr($generics_dec, 0, strlen($generics_dec) - 2);
-      $generics_dec .= "\n  >";
+    $generics_count = C\count($this->genericsDecl);
+    if ($generics_count === 0) {
+      return '';
     }
-    return $generics_dec;
+
+    if ($generics_count == 1) {
+      return '<'.C\onlyx($this->genericsDecl).'>';
+    }
+
+    return $this->genericsDecl
+      |> Vec\map(
+        $$,
+        $decl ==> '    '.$decl.",\n",
+      )
+      |> implode("", $$)
+      |> Str\strip_suffix($$, ",\n")
+      |> "\n  <\n".$$."\n  >";
   }
 
   protected function buildTraits(HackBuilder $builder): void {

@@ -94,12 +94,12 @@ final class CodegenClassTest extends CodegenBaseTest {
 
   public function testClassDeclarationWithGenerics(): void {
     $generics_decl =
-      Map { 'Tent' => 'Ixyz', 'T' => "", 'Tstory' => "EntCreationStory<Tent>" };
+      vec['Tent as Ixyz', 'T', 'Tstory as EntCreationStory<Tent>'];
 
     $code = $this
       ->getCodegenFactory()
       ->codegenClass('ClassWithGenerics')
-      ->setGenericsDecl($generics_decl)
+      ->addGenerics($generics_decl)
       ->render();
 
     $this->assertUnchanged($code);
