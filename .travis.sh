@@ -2,6 +2,8 @@
 set -ex
 hhvm --version
 
+curl https://getcomposer.org/installer | hhvm --php -- /dev/stdin --install-dir=/usr/local/bin --filename=composer
+
 cd /var/source
 hhvm /usr/local/bin/composer install
 
