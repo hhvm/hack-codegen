@@ -1,0 +1,13 @@
+{
+  "roots": [ "src/", "examples/", "test/" ],
+  "builtinLinters": "all",
+  "overrides": [
+    {
+      "patterns": [
+        "examples/dorm/demo/DormUser.php",
+        "examples/dorm/demo/DormUserMutator.php"
+      ],
+      "disableAllAutoFixes": true
+    }
+  ]
+}

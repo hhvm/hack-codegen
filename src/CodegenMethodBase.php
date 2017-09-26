@@ -74,6 +74,7 @@ abstract class CodegenMethodBase extends CodegenFunctionBase
     return $this->getFunctionDeclarationBase($keywords, $this->isAbstract);
   }
 
+  <<__Override>>
   public function appendToBuilder(HackBuilder $builder): HackBuilder {
     $id = '';
     if ($this->isManualBody()) {

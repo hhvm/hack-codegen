@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "4d603d60f0e57ad1d0eec7f029d1c681",
+    "content-hash": "ae4d8bcb048ef418dab8a73015b092a0",
     "packages": [
         {
             "name": "facebook/definition-finder",
@@ -299,6 +299,39 @@
             "notification-url": "https://packagist.org/downloads/",
             "description": "Unit test helpers for Facebook projects",
             "time": "2017-08-01T16:44:27+00:00"
+        },
+        {
+            "name": "hhvm/hhast",
+            "version": "v0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hhvm/hhast.git",
+                "reference": "378125cb5b1e44b7aa99d36e910568871c2045b1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hhvm/hhast/zipball/378125cb5b1e44b7aa99d36e910568871c2045b1",
+                "reference": "378125cb5b1e44b7aa99d36e910568871c2045b1",
+                "shasum": ""
+            },
+            "require": {
+                "hhvm": ">=3.21.3",
+                "hhvm/hsl": ">=0.3 <= 2.0",
+                "hhvm/type-assert": "^3.0"
+            },
+            "require-dev": {
+                "91carriage/phpunit-hhi": "^5.7",
+                "facebook/fbexpect": "^0.3.0",
+                "facebook/hack-codegen": "dev-master",
+                "hhvm/hhvm-autoload": "^1.5",
+                "phpunit/phpunit": "^5.7"
+            },
+            "bin": [
+                "bin/hhast-lint"
+            ],
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "time": "2017-09-26T18:10:09+00:00"
         },
         {
             "name": "hhvm/type-assert",
@@ -1599,7 +1632,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "hhvm": "^3.21"
+        "hhvm": ">=3.21.3"
     },
     "platform-dev": []
 }

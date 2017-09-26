@@ -27,11 +27,13 @@ final class CodegenInterface extends CodegenClassBase {
 
   use CodegenClassWithInterfaces;
 
+  <<__Override>>
   protected function buildDeclaration(HackBuilder $builder): void {
     $builder->add('interface '.$this->name);
     $this->renderInterfaceList($builder, 'extends');
   }
 
+  <<__Override>>
   protected function appendBodyToBuilder(HackBuilder $builder): void {
     $this->buildConsts($builder);
     $this->buildMethods($builder);

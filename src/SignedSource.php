@@ -58,6 +58,7 @@ namespace Facebook\HackCodegen;
  *
  */
 final class SignedSource extends SignedSourceBase {
+  <<__Override>>
   protected static function getTokenName(): string {
     return 'generated';
   }

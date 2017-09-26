@@ -124,6 +124,7 @@ final class CodegenClass extends CodegenClassBase {
     return $this;
   }
 
+  <<__Override>>
   protected function buildDeclaration(HackBuilder $builder): void {
     $generics_dec = $this->buildGenericsDeclaration();
 
@@ -148,6 +149,7 @@ final class CodegenClass extends CodegenClassBase {
     }
   }
 
+  <<__Override>>
   protected function appendBodyToBuilder(HackBuilder $builder): void {
     $this->buildTraits($builder);
     $this->buildConsts($builder);

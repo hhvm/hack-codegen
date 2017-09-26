@@ -17,10 +17,12 @@ namespace Facebook\HackCodegen;
  */
 final class PartiallyGeneratedSignedSource extends SignedSourceBase {
 
+  <<__Override>>
   protected static function preprocess(string $file_data): string {
     return (new PartiallyGeneratedCode($file_data))->extractGeneratedCode();
   }
 
+  <<__Override>>
   protected static function getTokenName(): string {
     return 'partially-generated';
   }

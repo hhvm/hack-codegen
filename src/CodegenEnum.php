@@ -53,6 +53,7 @@ final class CodegenEnum extends CodegenClassBase {
     return $this;
   }
 
+  <<__Override>>
   protected function buildDeclaration(HackBuilder $builder): void {
     $builder->addWithSuggestedLineBreaksf(
       '%s%s%s%s',
@@ -63,6 +64,7 @@ final class CodegenEnum extends CodegenClassBase {
     );
   }
 
+  <<__Override>>
   protected function buildConsts(HackBuilder $builder): void {
     if (C\is_empty($this->consts)) {
       return;
@@ -82,6 +84,7 @@ final class CodegenEnum extends CodegenClassBase {
     }
   }
 
+  <<__Override>>
   protected function appendBodyToBuilder(HackBuilder $builder): void {
     $this->buildConsts($builder);
     $this->buildManualDeclarations($builder);
