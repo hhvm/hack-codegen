@@ -12,13 +12,13 @@
 namespace Facebook\HackCodegen;
 
 final class HackBuilderShapeRenderer
-  implements IHackBuilderValueRenderer<shape()> {
-  public function __construct(private shape() $valueRenderers) {
+  implements IHackBuilderValueRenderer<shape(...)> {
+  public function __construct(private shape(...) $valueRenderers) {
   }
 
   final public function render(
     IHackCodegenConfig $config,
-    shape() $shape,
+    shape(...) $shape,
   ): string {
     $key_renderer = HackBuilderKeys::export();
     $value_renderers = Shapes::toArray($this->valueRenderers);
