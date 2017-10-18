@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "51ecef5e7ac9cc9facecec008d8e070c",
+    "content-hash": "847bb76f5cf8fa82b6e441ca9a29d8ab",
     "packages": [
         {
             "name": "facebook/definition-finder",
@@ -270,23 +270,55 @@
             "time": "2015-06-14T21:17:01+00:00"
         },
         {
-            "name": "hhvm/hhast",
-            "version": "v0.1",
+            "name": "facebook/fbexpect",
+            "version": "v0.3",
             "source": {
                 "type": "git",
-                "url": "https://github.com/hhvm/hhast.git",
-                "reference": "378125cb5b1e44b7aa99d36e910568871c2045b1"
+                "url": "https://github.com/hhvm/fbexpect.git",
+                "reference": "d650f97d7da0b7bbaf7a3641feca4cdb41414dce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hhvm/hhast/zipball/378125cb5b1e44b7aa99d36e910568871c2045b1",
-                "reference": "378125cb5b1e44b7aa99d36e910568871c2045b1",
+                "url": "https://api.github.com/repos/hhvm/fbexpect/zipball/d650f97d7da0b7bbaf7a3641feca4cdb41414dce",
+                "reference": "d650f97d7da0b7bbaf7a3641feca4cdb41414dce",
                 "shasum": ""
             },
             "require": {
-                "hhvm": ">=3.21.3",
+                "91carriage/phpunit-hhi": "^5.7",
+                "phpunit/phpunit": "^5.7"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ],
+                "files": [
+                    "src/expect.php",
+                    "src/utils.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "Unit test helpers for Facebook projects",
+            "time": "2017-09-20T18:27:43+00:00"
+        },
+        {
+            "name": "hhvm/hhast",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hhvm/hhast.git",
+                "reference": "ed302c90418be6eea625fe835a4ab020e6ec86c6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hhvm/hhast/zipball/ed302c90418be6eea625fe835a4ab020e6ec86c6",
+                "reference": "ed302c90418be6eea625fe835a4ab020e6ec86c6",
+                "shasum": ""
+            },
+            "require": {
+                "hhvm": ">=3.22.0 <3.23.0",
                 "hhvm/hsl": ">=0.3 <= 2.0",
-                "hhvm/type-assert": "^3.0"
+                "hhvm/type-assert": "dev-master"
             },
             "require-dev": {
                 "91carriage/phpunit-hhi": "^5.7",
@@ -300,24 +332,24 @@
             ],
             "type": "library",
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2017-09-26T18:10:09+00:00"
+            "time": "2017-10-17T23:34:43+00:00"
         },
         {
             "name": "hhvm/type-assert",
-            "version": "v3.0.3",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hhvm/type-assert.git",
-                "reference": "f2dececcfab97ae1b36439fa8ff09b7ae36cf10f"
+                "reference": "119f317b3a911963befc2ae4118a39c86a2975fc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hhvm/type-assert/zipball/f2dececcfab97ae1b36439fa8ff09b7ae36cf10f",
-                "reference": "f2dececcfab97ae1b36439fa8ff09b7ae36cf10f",
+                "url": "https://api.github.com/repos/hhvm/type-assert/zipball/119f317b3a911963befc2ae4118a39c86a2975fc",
+                "reference": "119f317b3a911963befc2ae4118a39c86a2975fc",
                 "shasum": ""
             },
             "require": {
-                "hhvm": ">= 3.21.3",
+                "hhvm": ">= 3.22.0 <3.23.0",
                 "hhvm/hsl": ">=0.3 <2.0"
             },
             "require-dev": {
@@ -333,7 +365,7 @@
                 "TypeAssert",
                 "hack"
             ],
-            "time": "2017-10-02T16:23:15+00:00"
+            "time": "2017-10-17T21:59:30+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -1597,7 +1629,10 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "hhvm/type-assert": 20,
+        "hhvm/hhast": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
