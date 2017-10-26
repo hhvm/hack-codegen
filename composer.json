@@ -5,7 +5,7 @@
     "require": {
         "hhvm": ">=3.22.0",
         "hhvm/hhvm-autoload": "^1.5",
-        "hhvm/hsl": "<1.0 >=0.3"
+        "hhvm/hsl": "^1.0.0"
     },
     "bin": [ "bin/hh-codegen-verify-signatures" ],
     "authors": [
