@@ -10,6 +10,8 @@
 
 namespace Facebook\HackCodegen;
 
+use namespace HH\Lib\Str;
+
 /**
  * For a given DormSchema, this class generates code for a class
  * that will allow to insert rows in a database.
@@ -29,8 +31,8 @@ class CodegenMutator {
   private function getName(): string {
     $ref = new \ReflectionClass($this->schema);
     $name = $ref->getShortName();
-    $remove_schema = Str::endsWith($name, 'Schema')
-      ? Str::substr($name, 0, -6)
+    $remove_schema = Str\ends_with($name, 'Schema')
+      ? Str\slice($name, 0, -6)
       : $name;
     return $remove_schema.'Mutator';
   }

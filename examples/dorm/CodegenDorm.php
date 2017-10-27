@@ -10,6 +10,8 @@
 
 namespace Facebook\HackCodegen;
 
+use namespace HH\Lib\Str;
+
 /**
  * For a given DormSchema, this class generates code for a class
  * that will allow to read the data from a database and store it
@@ -30,9 +32,7 @@ class CodegenDorm {
   private function getSchemaName(): string {
     $ref = new \ReflectionClass($this->schema);
     $name = $ref->getShortName();
-    return Str::endsWith($name, 'Schema')
-      ? Str::substr($name, 0, -6)
-      : $name;
+    return Str\strip_suffix($name, 'Schema');
   }
 
   public function generate(): void {

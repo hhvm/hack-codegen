@@ -33,7 +33,8 @@ final class PartiallyGeneratedSignedSource extends SignedSourceBase {
    * If a comment is set, it will be included in the doc block.
    */
   public static function getDocBlock(?string $comment = null): string {
-    $comment = Str::isEmpty($comment) ? null : $comment."\n\n";
+    invariant($comment !== '', 'specify null instead of empty comments');
+    $comment = ($comment === null) ? null : $comment."\n\n";
     return "This file is partially generated. ".
       "Only make modifications between BEGIN MANUAL SECTION ".
       "and END MANUAL SECTION designators.\n\n".

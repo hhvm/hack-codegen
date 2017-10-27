@@ -10,6 +10,8 @@
 
 namespace Facebook\HackCodegen;
 
+use namespace HH\Lib\Str;
+
 /**
  * The main purposes of this class are to:
  * 1) Serialize a Map<string,string> into a file.
@@ -53,7 +55,7 @@ final class CodegenExpectedFile {
     $stack = debug_backtrace();
     foreach ($stack as $function) {
       $function_name = $function['function'];
-      if (Str::startsWith($function_name, 'test')) {
+      if (Str\starts_with($function_name, 'test')) {
         $token = $function_name;
         break;
       }
@@ -96,7 +98,7 @@ final class CodegenExpectedFile {
     $token = null;
     $expected = '';
     foreach ($lines as $line) {
-      if (Str::startsWith($line, self::SEPARATOR)) {
+      if (Str\starts_with($line, self::SEPARATOR)) {
         if ($token !== null) {
           // We always add 1 newline at the end
           $expected = substr($expected, 0, -1);
@@ -274,14 +276,22 @@ final class CodegenExpectedFile {
    * the .codegen file, it doesn't seem like that's the file signature.
    */
   final private static function escapeTokens(string $s): string {
-    $result = Str::replace('@'.'generated', '@-generated', $s);
-    return
-      Str::replace('@'.'partially-generated', '@-partially-generated', $result);
+    return Str\replace_every(
+      $s,
+      dict[
+        '@'.'generated' => '@-generated',
+        '@'.'partially-generated' => '@-partially-generated',
+      ],
+    );
   }
 
   final private static function unescapeTokens(string $s): string {
-    $result = Str::replace('@-generated', '@'.'generated', $s);
-    return
-      Str::replace('@-partially-generated', '@'.'partially-generated', $result);
+    return Str\replace_every(
+      $s,
+      dict[
+        '@-generated' => '@'.'generated',
+        '@-partially-generated' => '@'.'partially-generated',
+      ],
+    );
   }
 }

@@ -10,7 +10,7 @@
 
 namespace Facebook\HackCodegen;
 
-use namespace HH\Lib\Vec;
+use namespace HH\Lib\{Str, Vec};
 
 /**
  * Base class to generate a function or a method.
@@ -158,7 +158,7 @@ abstract class CodegenFunctionBase implements ICodeBuilderRenderer {
     // If the function/method is abstract, the ";" will be appended later
     // Therefore it has one char less than non-abstract functions, which has "{"
     if (
-      Str::len($code) <=
+      Str\length($code) <=
         $this->config->getMaxLineLength() - 4 + (int)$is_abstract ||
       $this->fixme !== null
     ) {

@@ -10,8 +10,7 @@
 
 namespace Facebook\HackCodegen;
 
-
-use namespace HH\Lib\{C, Vec};
+use namespace HH\Lib\{C, Str, Vec};
 
 enum ContainerType: string {
   PHP_ARRAY = 'array';
@@ -536,7 +535,7 @@ final class HackBuilder extends BaseCodeBuilder {
     $src_lines = explode("\n", $str);
 
     foreach ($src_lines as $src_line) {
-      while (Str::len($src_line) > $maxlen) {
+      while (Str\length($src_line) > $maxlen) {
         $last_space = strrpos(substr($src_line, 0, $maxlen), ' ');
         if ($last_space === false) {
           break;
@@ -592,7 +591,7 @@ final class HackBuilder extends BaseCodeBuilder {
 
   private function assertIsVariable(string $name): void {
     invariant(
-      Str::startsWith($name, '$'),
+      Str\starts_with($name, '$'),
       'Expecting a variable name, but "%s" is not valid.',
       $name,
     );

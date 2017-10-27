@@ -10,7 +10,8 @@
 
 namespace Facebook\HackCodegen;
 
-use namespace HH\Lib\{C, Vec};
+use namespace HH\Lib\{C, Str, Vec};
+use namespace Facebook\HackCodegen\_Private\Vec as VecP;
 
 abstract class BaseCodeBuilder implements ICodeBuilder {
 
@@ -210,11 +211,11 @@ abstract class BaseCodeBuilder implements ICodeBuilder {
     }
 
     // If there's more than 1 line, add them 1 by 1
-    $lines = Str::explode("\n", $code);
-    if ($lines->count() > 1) {
+    $lines = Str\split($code, "\n");
+    if (C\count($lines) > 1) {
       // The last line shouldn't have a finishing end line,
       // so add it manually
-      $last_line = $lines->pop();
+      list($lines, $last_line) = VecP\pop_backx($lines);
       $this->addLinesWithSuggestedLineBreaks($lines);
       return $this->addWithSuggestedLineBreaks($last_line);
     }

@@ -10,7 +10,7 @@
 
 namespace Facebook\HackCodegen;
 
-use namespace HH\Lib\C;
+use namespace HH\Lib\{C, Str};
 
 enum CodegenFileResult: int {
   NONE = 0;
@@ -62,11 +62,11 @@ final class CodegenFile {
     string $file_name,
   ) {
     $root = $config->getRootDir();
-    if (!Str::startsWith($file_name, '/')) {
+    if (!Str\starts_with($file_name, '/')) {
       $this->relativeFileName = $file_name;
       $file_name = $root.'/'.$file_name;
-    } else if (Str::startsWith($file_name, $root)) {
-      $this->relativeFileName = substr($file_name, Str::len($root) + 1);
+    } else if (Str\starts_with($file_name, $root)) {
+      $this->relativeFileName = Str\slice($file_name, Str\length($root) + 1);
     } else {
       $this->relativeFileName = $file_name;
     }
@@ -223,7 +223,7 @@ final class CodegenFile {
    */
   public function setShebangLine(string $shebang): this {
     invariant(!strpbrk($shebang, "\n"), "Expected single line");
-    invariant(Str::startsWith($shebang, '#!'), 'Shebang lines start with #!');
+    invariant(Str\starts_with($shebang, '#!'), 'Shebang lines start with #!');
     $this->shebang = $shebang;
     return $this;
   }
@@ -310,10 +310,10 @@ final class CodegenFile {
 
     $old_content = $this->loadExistingFiles();
 
-    $doc_block = (string)$this->docBlock;
+    $doc_block = $this->docBlock;
     $gen_from = $this->generatedFrom;
     if ($gen_from !== null) {
-      if ($doc_block && !Str::endsWith($doc_block, "\n")) {
+      if ($doc_block !== null && !Str\ends_with($doc_block, "\n")) {
         $doc_block .= "\n";
       }
       $doc_block = $doc_block.$gen_from->render()."\n";
@@ -431,8 +431,8 @@ final class CodegenFile {
         $content = Filesystem::readFile($file_name);
         if ($content) {
           $root_dir = $this->config->getRootDir();
-          $relative_path = Str::startsWith($file_name, $root_dir)
-            ? Str::substr($file_name, Str::len($root_dir) + 1)
+          $relative_path = Str\starts_with($file_name, $root_dir)
+            ? Str\slice($file_name, Str\length($root_dir) + 1)
             : $file_name;
 
           if (!$this->doClobber) {
