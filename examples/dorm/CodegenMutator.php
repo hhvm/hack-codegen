@@ -31,9 +31,7 @@ class CodegenMutator {
   private function getName(): string {
     $ref = new \ReflectionClass($this->schema);
     $name = $ref->getShortName();
-    $remove_schema = Str\ends_with($name, 'Schema')
-      ? Str\slice($name, 0, -6)
-      : $name;
+    $remove_schema = Str\strip_suffix($name, 'Schema');
     return $remove_schema.'Mutator';
   }
 
