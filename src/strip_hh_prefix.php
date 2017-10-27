@@ -51,8 +51,9 @@ function strip_hh_prefix(
       if ($c === '\\') {
         $out .= $c;
         ++$i;
-        if ($i >= $len)
+        if ($i >= $len) {
           break;
+        }
         $c = $str[$i];
         $out .= $c;
         continue;
