@@ -307,12 +307,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/hhvm/hhast.git",
-                "reference": "0fdf2bcf1dd8c191e5847ec99301f7c82e0512ff"
+                "reference": "80293eb1626aece0c2a3a2cb112edfb13041c044"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hhvm/hhast/zipball/0fdf2bcf1dd8c191e5847ec99301f7c82e0512ff",
-                "reference": "0fdf2bcf1dd8c191e5847ec99301f7c82e0512ff",
+                "url": "https://api.github.com/repos/hhvm/hhast/zipball/80293eb1626aece0c2a3a2cb112edfb13041c044",
+                "reference": "80293eb1626aece0c2a3a2cb112edfb13041c044",
                 "shasum": ""
             },
             "require": {
@@ -332,7 +332,7 @@
             ],
             "type": "library",
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2017-10-26T20:45:37+00:00"
+            "time": "2017-10-27T17:38:01+00:00"
         },
         {
             "name": "hhvm/type-assert",
