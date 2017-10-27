@@ -239,7 +239,7 @@ final class CodegenExpectedFile {
     string $new_value,
   ): bool {
     self::displayf('Change of expected value for test %s:', $token);
-    self::displayRaw(difference_render_fast($old_value, $new_value));
+    self::displayRaw(_Private\difference_render_fast($old_value, $new_value));
     return self::prompt('Do you accept to update the expected value ?');
   }
 

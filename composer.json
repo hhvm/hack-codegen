@@ -31,24 +31,6 @@
         }
     ],
     "type": "library",
-    "autoload": {
-        "classmap": [
-            "lib/",
-            "src/"
-        ],
-        "files": [
-            "lib/typedefs.php",
-            "lib/utils.php"
-        ]
-    },
-    "autoload-dev": {
-        "classmap": [
-            "test/"
-        ],
-        "files": [
-            "test/TestCodegenConfig.php"
-        ]
-    },
     "require-dev": {
         "phpunit/phpunit": "^5.7",
         "91carriage/phpunit-hhi": "^5.6",

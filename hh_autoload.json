@@ -1,7 +1,6 @@
 {
   "roots": [
-    "src/",
-    "lib/"
+    "src/"
   ],
   "devRoots": [
     "examples/",

@@ -11,6 +11,7 @@
 namespace Facebook\HackCodegen;
 
 use namespace HH\Lib\{C, Str, Vec};
+use namespace Facebook\HackCodegen\_Private\C as CP;
 
 /**
  * Abstract class to generate code for a class or trait.
@@ -348,8 +349,8 @@ abstract class CodegenClassBase implements ICodeBuilderRenderer {
 
   protected function buildManualDeclarations(HackBuilder $builder): void {
     if ($this->hasManualHeader) {
-      $manual_section = coalescex($this->headerName, $this->name.'_header');
-      $content = coalescex(
+      $manual_section = CP\coalescevax($this->headerName, $this->name.'_header');
+      $content = CP\coalescevax(
         $this->headerContents,
         '// Insert additional consts and vars here',
       );
