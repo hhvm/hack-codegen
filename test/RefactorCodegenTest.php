@@ -10,6 +10,8 @@
 
 namespace Facebook\HackCodegen;
 
+use type Facebook\HackCodegen\_Private\Filesystem;
+
 final class RefactorCodegenTest extends CodegenBaseTest {
 
   /**

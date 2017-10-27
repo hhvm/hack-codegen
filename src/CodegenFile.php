@@ -10,6 +10,7 @@
 
 namespace Facebook\HackCodegen;
 
+use type Facebook\HackCodegen\_Private\Filesystem;
 use namespace HH\Lib\{C, Str};
 
 enum CodegenFileResult: int {

@@ -8,7 +8,7 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
-namespace Facebook\HackCodegen;
+namespace Facebook\HackCodegen\_Private;
 
 final class Filesystem {
   public static function createTemporaryFile(

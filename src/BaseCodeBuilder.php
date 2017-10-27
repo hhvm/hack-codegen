@@ -17,14 +17,14 @@ abstract class BaseCodeBuilder implements ICodeBuilder {
 
   const string DELIMITER = "\t";
 
-  private StrBuffer $code;
+  private _Private\StrBuffer $code;
   private bool $isNewLine = true;
   private int $indentationLevel = 0;
   private bool $isInsideFunction = false;
   private bool $wasGetCodeCalled = false;
 
   final public function __construct(protected IHackCodegenConfig $config) {
-    $this->code = new StrBuffer();
+    $this->code = new _Private\StrBuffer();
   }
 
   final public function newLine(): this {
