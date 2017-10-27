@@ -1,2 +1,3 @@
 assume_php=false
 enable_experimental_tc_features = optional_shape_field, unknown_fields_shape_is_not_subtype_of_known_fields_shape
+sharedmem_hash_table_pow=20
