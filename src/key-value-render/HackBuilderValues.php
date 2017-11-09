@@ -124,7 +124,7 @@ abstract final class HackBuilderValues {
 
   public static function shapeWithUniformRendering<Tv>(
     IHackBuilderValueRenderer<Tv> $vr,
-  ): IHackBuilderValueRenderer<shape(...)> {
+  ): IHackBuilderValueRenderer<shape(/* HH_IGNORE_ERROR[0003] */...)> {
     /* HH_IGNORE_ERROR[4110] munging array to shape */
     return new HackBuilderNativeKeyValueCollectionRenderer(
       ContainerType::SHAPE_TYPE,
@@ -134,8 +134,8 @@ abstract final class HackBuilderValues {
   }
 
   public static function shapeWithPerKeyRendering(
-    shape(...) $value_renderers,
-  ): IHackBuilderValueRenderer<shape(...)> {
+    shape(/* HH_IGNORE_ERROR[0003] */...) $value_renderers,
+  ): IHackBuilderValueRenderer<shape(/* HH_IGNORE_ERROR[0003] */...)> {
     return new HackBuilderShapeRenderer($value_renderers);
   }
 

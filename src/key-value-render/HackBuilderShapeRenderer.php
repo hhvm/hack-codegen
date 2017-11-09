@@ -12,13 +12,15 @@
 namespace Facebook\HackCodegen;
 
 final class HackBuilderShapeRenderer
-  implements IHackBuilderValueRenderer<shape(...)> {
-  public function __construct(private shape(...) $valueRenderers) {
+  implements IHackBuilderValueRenderer<shape(/* HH_IGNORE_ERROR[0003] */...)> {
+  public function __construct(
+    private shape(/* HH_IGNORE_ERROR[0003] */...) $valueRenderers
+  ) {
   }
 
   final public function render(
     IHackCodegenConfig $config,
-    shape(...) $shape,
+    shape(/* HH_IGNORE_ERROR[0003] */...) $shape,
   ): string {
     $key_renderer = HackBuilderKeys::export();
     $value_renderers = Shapes::toArray($this->valueRenderers);
