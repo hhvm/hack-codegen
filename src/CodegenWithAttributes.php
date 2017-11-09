@@ -21,7 +21,7 @@ trait CodegenWithAttributes {
 
   final public function addUserAttribute<T>(
     string $name,
-    vec<T> $values,
+    Traversable<T> $values,
     IHackBuilderValueRenderer<T> $renderer,
   ): this {
     $this->userAttributes[$name] =
