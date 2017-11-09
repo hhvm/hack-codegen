@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "14c4b6ae7d1d94ae6bd5f72204c4540e",
+    "content-hash": "497c113461aad01f8f7b8cd48e80bd89",
     "packages": [
         {
             "name": "facebook/definition-finder",
@@ -340,16 +340,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/hhvm/type-assert.git",
-                "reference": "e437cbab50530ba3ec09fed8a59abf2eb1a2115b"
+                "reference": "92848dbb1598f1df3f86cc5fab5226d6f68e8282"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hhvm/type-assert/zipball/e437cbab50530ba3ec09fed8a59abf2eb1a2115b",
-                "reference": "e437cbab50530ba3ec09fed8a59abf2eb1a2115b",
+                "url": "https://api.github.com/repos/hhvm/type-assert/zipball/92848dbb1598f1df3f86cc5fab5226d6f68e8282",
+                "reference": "92848dbb1598f1df3f86cc5fab5226d6f68e8282",
                 "shasum": ""
             },
             "require": {
-                "hhvm": ">= 3.22.0",
+                "hhvm": "^3.21.0",
                 "hhvm/hsl": "^1.0"
             },
             "require-dev": {
@@ -365,7 +365,7 @@
                 "TypeAssert",
                 "hack"
             ],
-            "time": "2017-10-26T20:42:05+00:00"
+            "time": "2017-11-08T23:32:34+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -1639,7 +1639,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "hhvm": ">=3.23.0"
+        "hhvm": ">=3.21.0"
     },
     "platform-dev": []
 }
