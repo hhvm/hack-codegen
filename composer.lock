@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "497c113461aad01f8f7b8cd48e80bd89",
+    "content-hash": "2859e77ff089f438367dd52177ad65de",
     "packages": [
         {
             "name": "facebook/definition-finder",
@@ -303,22 +303,22 @@
         },
         {
             "name": "hhvm/hhast",
-            "version": "dev-master",
+            "version": "v0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hhvm/hhast.git",
-                "reference": "80293eb1626aece0c2a3a2cb112edfb13041c044"
+                "reference": "4405a33582d3700c18ab30d1202e994e084b0849"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hhvm/hhast/zipball/80293eb1626aece0c2a3a2cb112edfb13041c044",
-                "reference": "80293eb1626aece0c2a3a2cb112edfb13041c044",
+                "url": "https://api.github.com/repos/hhvm/hhast/zipball/4405a33582d3700c18ab30d1202e994e084b0849",
+                "reference": "4405a33582d3700c18ab30d1202e994e084b0849",
                 "shasum": ""
             },
             "require": {
-                "hhvm": ">=3.22.0",
+                "hhvm": "^3.21.0",
                 "hhvm/hsl": "^1.0.0",
-                "hhvm/type-assert": "dev-master"
+                "hhvm/type-assert": "^3.1"
             },
             "require-dev": {
                 "91carriage/phpunit-hhi": "^5.7",
@@ -332,11 +332,11 @@
             ],
             "type": "library",
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2017-10-27T17:38:01+00:00"
+            "time": "2017-11-09T18:37:23+00:00"
         },
         {
             "name": "hhvm/type-assert",
-            "version": "dev-master",
+            "version": "v3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hhvm/type-assert.git",
@@ -1632,10 +1632,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "hhvm/type-assert": 20,
-        "hhvm/hhast": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
