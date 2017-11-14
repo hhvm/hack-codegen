@@ -31,13 +31,7 @@ Generics
 
 This API is likely to be changed in a future release of Hack Codegen.
 
-A class can be marked as generic by calling `setGenericsDecl()`, which takes a `Map`.
-
-The keys for this map are the type name, and the values are an optional `as`
-constraint - use `null` for no contraint.
-
-For constraints other than `as`, also leave the value as null, but put the name
-and the constraints together in the key, eg `Map { 'T as Foo super Bar' => null }`;
+A class can be marked as generic by calling `addGenerics()`, which takes a `Traversable`. Alternatively, you can separately call `addGeneric()` or `addGenericf()` for each generic.
 
 Constants
 ---------

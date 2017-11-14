@@ -59,7 +59,7 @@ function make_script(): void {
         ->setReturnType('void')
         ->setBody(
           $cg->codegenHackBuilder()
-            ->beginManualSection('greeting')
+            ->startManualSection('greeting')
             ->addAssignment(
               '$greeting',
               "Hello, world!",

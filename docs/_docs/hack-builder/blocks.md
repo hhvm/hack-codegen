@@ -44,10 +44,10 @@ Switch Statements
 <?hh
 $builder
   ->startSwitch('$var')
-  ->addCase('foo')
+  ->addCase('foo', HackBuilderValues::export())
   /* do stuff */
   ->breakCase()
-  ->addCase('bar')
+  ->addCase('bar', HackBuilderValues::export())
   /* do stuff */
   ->returnCase('$x', HackBuilderValues::literal())
   ->addDefault()

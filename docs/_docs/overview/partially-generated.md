@@ -81,7 +81,7 @@ $file = $factory
   ->setPseudomainHeader(
     $factory
       ->codegenHackBuilder()
-      ->beginManualSection('mykey')
+      ->startManualSection('mykey')
       ->addLine('require_once(\'vendor/autoload.php\');')
       ->endManualSection()
       ->getCode()

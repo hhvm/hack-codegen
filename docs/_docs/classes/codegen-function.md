@@ -32,7 +32,7 @@ Attributes
 
 To make a function memoized (adding the `<<__Memoize>>` attribute), call
 `->setIsMemoized(bool $value = true)`; for other attributes, call
-`->setUserAttribute(string $name, ?string $value)`.
+`->addUserAttribute(string $name, ?string $value)`.
 
 FIXMEs
 ------
