@@ -69,6 +69,35 @@ if ($value <= 0) {
   return 2;
 }
 
+!@#$%codegentest:testImmMapOfImmMaps
+$foo = ImmMap {
+  'foo' => ImmMap {
+    'a' => 12,
+    'b' => 34,
+  },
+  'bar' => ImmMap {
+    'c' => 45,
+  },
+};
+
+!@#$%codegentest:testImmSet
+$foo = ImmSet {
+  'abc',
+  'def',
+};
+
+!@#$%codegentest:testImmVectorOfImmVectors
+$foo = ImmVector {
+  ImmVector {
+    'abc',
+    'def',
+  },
+  ImmVector {
+    'ghi',
+    'jkl',
+  },
+};
+
 !@#$%codegentest:testKeyset
 $foo = keyset[
   'foo',

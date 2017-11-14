@@ -54,7 +54,7 @@ abstract final class HackBuilderValues {
     IHackBuilderValueRenderer<Tv> $vr,
   ): IHackBuilderValueRenderer<ImmVector<Tv>> {
     return new HackBuilderNativeValueCollectionRenderer(
-      ContainerType::IMMU_VECTOR,
+      ContainerType::IMM_VECTOR,
       $vr,
     );
   }
@@ -77,7 +77,7 @@ abstract final class HackBuilderValues {
     IHackBuilderValueRenderer<Tv> $vr,
   ): IHackBuilderValueRenderer<ImmSet<Tv>> {
     return new HackBuilderNativeValueCollectionRenderer(
-      ContainerType::IMMU_SET,
+      ContainerType::IMM_SET,
       $vr,
     );
   }
@@ -105,7 +105,7 @@ abstract final class HackBuilderValues {
     IHackBuilderValueRenderer<Tv> $vr,
   ): IHackBuilderValueRenderer<ImmMap<Tk, Tv>> {
     return new HackBuilderNativeKeyValueCollectionRenderer(
-      ContainerType::MAP,
+      ContainerType::IMM_MAP,
       $kr,
       $vr,
     );

@@ -379,6 +379,50 @@ two line breaks. Also note that we include a newline and also '.
     $this->assertUnchanged($body->getCode());
   }
 
+  public function testImmVectorOfImmVectors(): void {
+    $body = $this
+      ->getHackBuilder()
+      ->addAssignment(
+        '$foo',
+        ImmVector { ImmVector { 'abc', 'def' }, ImmVector { 'ghi', 'jkl' } },
+        HackBuilderValues::immVector(
+          HackBuilderValues::immVector(HackBuilderValues::export())
+        ),
+      );
+    $this->assertUnchanged($body->getCode());
+  }
+
+  public function testImmMapOfImmMaps(): void {
+    $body = $this
+      ->getHackBuilder()
+      ->addAssignment(
+        '$foo',
+        ImmMap {
+          'foo' => ImmMap { 'a' => 12, 'b' => 34 },
+          'bar' => ImmMap { 'c' => 45 },
+        },
+        HackBuilderValues::immMap(
+          HackBuilderKeys::export(),
+          HackBuilderValues::immMap(
+            HackBuilderKeys::export(),
+            HackBuilderValues::export(),
+          ),
+        ),
+      );
+    $this->assertUnchanged($body->getCode());
+  }
+
+  public function testImmSet(): void {
+    $body = $this
+      ->getHackBuilder()
+      ->addAssignment(
+        '$foo',
+        ImmSet { 'abc', 'def' },
+        HackBuilderValues::immSet(HackBuilderValues::export()),
+      );
+    $this->assertUnchanged($body->getCode());
+  }
+
   public function testVec(): void {
     $body = $this
       ->getHackBuilder()

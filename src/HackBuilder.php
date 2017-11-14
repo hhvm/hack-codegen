@@ -18,11 +18,11 @@ enum ContainerType: string {
   VEC = 'vec';
   KEYSET = 'keyset';
   MAP = 'Map';
-  IMMU_MAP = 'ImmuMap';
+  IMM_MAP = 'ImmMap';
   VECTOR = 'Vector';
-  IMMU_VECTOR = 'ImmuVector';
+  IMM_VECTOR = 'ImmVector';
   SET = 'Set';
-  IMMU_SET = 'ImmuSet';
+  IMM_SET = 'ImmSet';
   SHAPE_TYPE = 'shape';
 }
 
@@ -200,9 +200,9 @@ final class HackBuilder extends BaseCodeBuilder {
       case ContainerType::VEC:
         $container_sign = "[";
         break;
-      case ContainerType::IMMU_MAP:
-      case ContainerType::IMMU_SET:
-      case ContainerType::IMMU_VECTOR:
+      case ContainerType::IMM_MAP:
+      case ContainerType::IMM_SET:
+      case ContainerType::IMM_VECTOR:
       case ContainerType::MAP:
       case ContainerType::SET:
       case ContainerType::VECTOR:
@@ -230,9 +230,9 @@ final class HackBuilder extends BaseCodeBuilder {
       case ContainerType::VEC:
         $container_sign = "]";
         break;
-      case ContainerType::IMMU_MAP:
-      case ContainerType::IMMU_SET:
-      case ContainerType::IMMU_VECTOR:
+      case ContainerType::IMM_MAP:
+      case ContainerType::IMM_SET:
+      case ContainerType::IMM_VECTOR:
       case ContainerType::MAP:
       case ContainerType::SET:
       case ContainerType::VECTOR:
