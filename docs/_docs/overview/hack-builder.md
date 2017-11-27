@@ -69,8 +69,7 @@ Additionally, shortcuts are provided for common uses:
  - `->addAssigment('$someVar', $value, $renderer)`: assigns `$value` to `$somevar`
  - `->addReturn('$somevar', $value, $renderer)`: return $value from the current function
 
-`->addAssignmentf()` and `->addReturnf()` are also available, however they always treat the
-final string as literal code.
+`->addReturnf()` is also available, however it always treats the final string as literal code.
 
 Blocks
 ------
