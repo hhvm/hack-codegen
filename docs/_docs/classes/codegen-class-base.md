@@ -51,6 +51,6 @@ Manual Sections
  - `->setHasManualDeclarations($enabled = true, $key = null, $contents = null)`:
    creates a manual section at the top of the class for declarations; you can
    optionally specify a custom key for the section, or default contents
- - `->setHasManualMethod($enabled = true, $key = null, $contents = null)`: creates
-   a manual section at the bottom of the class for any additional methods to be
-   added by hand
+ - `->setHasManualMethodSection($enabled = true, $key = null, $contents = null)`:
+   creates a manual section at the bottom of the class for any additional methods
+   to be added by hand
