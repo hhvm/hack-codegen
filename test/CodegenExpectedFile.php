@@ -10,7 +10,7 @@
 
 namespace Facebook\HackCodegen;
 
-use namespace HH\Lib\Str;
+use namespace HH\Lib\{Str, Vec};
 
 /**
  * The main purposes of this class are to:
@@ -89,7 +89,8 @@ final class CodegenExpectedFile {
       $file_name,
     );
 
-    $generated = array_shift($lines);
+    $generated = $lines[0];
+    $lines = Vec\drop($lines, 1);
     invariant(
       rtrim($generated) === '@'.'generated',
       'Codegen test record file should start with a generated tag',
@@ -192,8 +193,7 @@ final class CodegenExpectedFile {
 
     // Sorting is important or we would have merge conflict
     // in the generated file all the time
-    $tokens = $map->keys();
-    sort($tokens);
+    $tokens = Vec\sort($map->keys());
 
     fwrite($file, '@'."generated\n");
     foreach ($tokens as $token) {

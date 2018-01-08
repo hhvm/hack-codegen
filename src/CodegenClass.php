@@ -101,7 +101,7 @@ final class CodegenClass extends CodegenClassBase {
       $re = '/\$[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*/';
       foreach ($param_full as $str) {
         $matches = array();
-        if (preg_match_all($re, $str, $matches)) {
+        if (preg_match_all($re, $str, &$matches)) {
           $param_names = Vec\concat($param_names, $matches[0]);
         }
       }

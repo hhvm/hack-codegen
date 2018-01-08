@@ -28,8 +28,8 @@ final class HackfmtFormatter implements ICodegenFormatter {
       file_put_contents($tempnam, $code);
       exec(
         'hackfmt '.escapeshellarg($tempnam),
-        $output,
-        $exit_code,
+        &$output,
+        &$exit_code,
       );
     } finally {
       unlink($tempnam);

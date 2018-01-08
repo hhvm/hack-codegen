@@ -1,2 +1,7 @@
 assume_php=false
-sharedmem_hash_table_pow=20
+enable_experimental_tc_features = safe_pass_by_ref, safe_array, safe_vector_array, contextual_inference
+
+# ignore HHAST as:
+# - otherwise, we get a circular dependency
+# - we don't use anything other than executables from it
+ignored_paths = [ "vendor/.+/tests/.+", "vendor/hhvm/hhast/.+" ]

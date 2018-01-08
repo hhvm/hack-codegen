@@ -10,7 +10,7 @@
 
 namespace Facebook\HackCodegen;
 
-use namespace HH\Lib\Vec;
+use namespace HH\Lib\{C, Vec};
 
 trait CodegenFactoryTrait implements ICodegenFactory {
   public abstract function getConfig(): IHackCodegenConfig;
@@ -148,7 +148,7 @@ trait CodegenFactoryTrait implements ICodegenFactory {
   ): CodegenGeneratedFrom {
     if ($script === null) {
       $trace = debug_backtrace();
-      $last = end($trace);
+      $last = C\lastx($trace);
       invariant(
         $last !== false,
         "Couldn't get the strack trace.  Please pass the script name to ".

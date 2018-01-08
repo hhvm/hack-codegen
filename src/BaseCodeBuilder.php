@@ -69,8 +69,8 @@ abstract class BaseCodeBuilder implements ICodeBuilder {
     $code = vsprintf($code, $args);
 
     // break into lines and add one by one to handle indentation
-    $lines = explode("\n", $code);
-    $last_line = array_pop($lines);
+    $lines = Str\split($code, "\n");
+    $last_line = array_pop(&$lines);
     foreach ($lines as $line) {
       $this->addLine($line);
     }

@@ -13,13 +13,13 @@ namespace Facebook\HackCodegen\_Private\Vec;
 use namespace HH\Lib\C;
 
 function pop_back<T>(Container<T> $list): (vec<T>, ?T) {
-  $last = \array_pop($list);
+  $last = \array_pop(&$list);
   return tuple(vec($list), $last);
 }
 
 function pop_backx<T>(Container<T> $list): (vec<T>, T) {
   $list = vec($list);
   $last = C\lastx($list);
-  array_pop($list);
+  \array_pop(&$list);
   return tuple(vec($list), $last);
 }

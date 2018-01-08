@@ -82,7 +82,7 @@ abstract class SignedSourceBase {
    */
   public static function verifySignature(string $file_data): bool {
     $matches = array();
-    if (!preg_match(static::getPattern(), $file_data, $matches)) {
+    if (!preg_match(static::getPattern(), $file_data, &$matches)) {
       throw new \Exception('Can not verify the signature of an unsigned file.');
     }
     $replaced_data =
