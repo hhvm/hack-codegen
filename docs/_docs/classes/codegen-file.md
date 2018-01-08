@@ -53,9 +53,9 @@ Scripts can not be Hack strict, as scripts require top-level ('pseudo-main') cod
 
  - `->setShebangLine(string $line)`: set the first line of the file, in Unix
    'shebang' format - eg `->setShebangLine('#!/usr/bin/env hhvm')`
- - `->setPsuedoMainHeader(string $code)`: add raw code before all definitions. Using
+ - `->setPseudoMainHeader(string $code)`: add raw code before all definitions. Using
    `HackBuilder` is recommended.
- - `->setPsuedoMainFooter(string $code)`: add raw code at the bottom of the file.
+ - `->setPseudoMainFooter(string $code)`: add raw code at the bottom of the file.
    Using `HackBuilder` is recommended.
 
 Metadata
