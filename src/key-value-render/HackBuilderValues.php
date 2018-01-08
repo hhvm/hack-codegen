@@ -23,6 +23,10 @@ abstract final class HackBuilderValues {
     return new HackBuilderValueExportRenderer();
   }
 
+  public static function code(): IHackBuilderValueRenderer<HackBuilder> {
+    return new HackBuilderCodeRenderer();
+  }
+
   public static function valueArray<Tv>(
     IHackBuilderValueRenderer<Tv> $vr,
   ): IHackBuilderValueRenderer<array<Tv>> {
