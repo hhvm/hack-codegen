@@ -467,8 +467,17 @@ final class CodegenFileTest extends CodegenBaseTest {
       ->codegenFile('no_file')
       ->setNamespace('Foo\\Bar')
       ->useNamespace('Herp\\Derp')
-      ->addConst('string FOO', 'bar')
-      ->addConst('string HERP', 'derp', 'doc comment')
+      ->addConstant(
+        $cgf->codegenConstant('FOO')
+          ->setType('string')
+          ->setValue('bar', HackBuilderValues::export()),
+      )
+      ->addConstant(
+        $cgf->codegenConstant('HERP')
+          ->setDocBlock('doc comment')
+          ->setType('string')
+          ->setValue('derp', HackBuilderValues::export()),
+      )
       ->render();
     $this->assertUnchanged($code);
   }

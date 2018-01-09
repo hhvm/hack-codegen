@@ -19,6 +19,17 @@ trait CodegenFactoryTrait implements ICodegenFactory {
     return new CodegenConstructor($this->getConfig());
   }
 
+  final public function codegenConstant(string $name): CodegenConstant {
+    return new CodegenConstant($this->getConfig(), $name);
+  }
+
+  final public function codegenConstantf(
+    SprintfFormatString $format,
+    mixed ...$args
+   ): CodegenConstant {
+    return new CodegenConstant($this->getConfig(), vsprintf($format, $args));
+  }
+
   final public function codegenFile(string $file): CodegenFile {
     return new CodegenFile($this->getConfig(), $file);
   }

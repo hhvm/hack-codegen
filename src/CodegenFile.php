@@ -11,7 +11,7 @@
 namespace Facebook\HackCodegen;
 
 use type Facebook\HackCodegen\_Private\Filesystem;
-use namespace HH\Lib\{C, Str};
+use namespace HH\Lib\{C, Str, Vec};
 
 enum CodegenFileResult: int {
   NONE = 0;
@@ -44,7 +44,7 @@ final class CodegenFile {
   private vec<CodegenFunction> $functions = vec[];
   private vec<CodegenType> $beforeTypes = vec[];
   private vec<CodegenType> $afterTypes = vec[];
-  private vec<(string, string, ?string)> $consts = vec[];
+  private vec<CodegenConstant> $consts = vec[];
   private bool $doClobber = false;
   protected ?CodegenGeneratedFrom $generatedFrom;
   private bool $isSignedFile = true;
@@ -96,14 +96,13 @@ final class CodegenFile {
     return $this;
   }
 
-  public function addConst<T>(
-    string $name,
-    T $value,
-    ?string $comment = null,
-    IHackBuilderValueRenderer<T> $values_config = HackBuilderValues::export(),
-  ): this {
-    $rendered_value = $values_config->render($this->config, $value);
-    $this->consts[] = tuple($name, $rendered_value, $comment);
+  public function addConstants(Traversable<CodegenConstant> $constants): this {
+    $this->consts = Vec\concat($this->consts, $constants);
+    return $this;
+  }
+
+  public function addConstant(CodegenConstant $const): this {
+    $this->consts[] = $const;
     return $this;
   }
 
@@ -408,17 +407,8 @@ final class CodegenFile {
       $builder->ensureNewLine()->newLine();
       $builder->add($type->render());
     }
-    foreach ($this->consts as list($name, $value, $comment)) {
-      $builder->ensureEmptyLine();
-      if ($comment !== null) {
-        $builder->addDocBlock($comment);
-      }
-      $builder->addWithSuggestedLineBreaksf(
-        "const %s =\t%s;",
-        $name,
-        $value,
-      );
-      $builder->newLine();
+    foreach ($this->consts as $const) {
+      $builder->ensureEmptyLine()->add($const->render());
     }
     foreach ($this->functions as $function) {
       $builder->ensureNewLine()->newLine();

@@ -34,6 +34,12 @@ interface ICodegenFactory {
     mixed ...$args
   ): CodegenClass;
 
+  public function codegenConstant(string $name): CodegenConstant;
+  public function codegenConstantf(
+    SprintfFormatString $format,
+    mixed ...$args
+  ): CodegenConstant;
+
   public function codegenEnum(string $name, string $enumType): CodegenEnum;
 
   public function codegenInterface(string $name): CodegenInterface;
