@@ -460,4 +460,16 @@ final class CodegenFileTest extends CodegenBaseTest {
       'bad signed source',
     );
   }
+
+  public function testConstants(): void {
+    $cgf = $this->getCodegenFactory();
+    $code = $cgf
+      ->codegenFile('no_file')
+      ->setNamespace('Foo\\Bar')
+      ->useNamespace('Herp\\Derp')
+      ->addConst('string FOO', 'bar')
+      ->addConst('string HERP', 'derp', 'doc comment')
+      ->render();
+    $this->assertUnchanged($code);
+  }
 }

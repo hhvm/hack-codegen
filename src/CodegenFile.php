@@ -44,6 +44,7 @@ final class CodegenFile {
   private vec<CodegenFunction> $functions = vec[];
   private vec<CodegenType> $beforeTypes = vec[];
   private vec<CodegenType> $afterTypes = vec[];
+  private vec<(string, string, ?string)> $consts = vec[];
   private bool $doClobber = false;
   protected ?CodegenGeneratedFrom $generatedFrom;
   private bool $isSignedFile = true;
@@ -92,6 +93,17 @@ final class CodegenFile {
 
   public function addClass(CodegenClassBase $class): this {
     $this->classes[] = $class;
+    return $this;
+  }
+
+  public function addConst<T>(
+    string $name,
+    T $value,
+    ?string $comment = null,
+    IHackBuilderValueRenderer<T> $values_config = HackBuilderValues::export(),
+  ): this {
+    $rendered_value = $values_config->render($this->config, $value);
+    $this->consts[] = tuple($name, $rendered_value, $comment);
     return $this;
   }
 
@@ -395,6 +407,18 @@ final class CodegenFile {
     foreach ($this->beforeTypes as $type) {
       $builder->ensureNewLine()->newLine();
       $builder->add($type->render());
+    }
+    foreach ($this->consts as list($name, $value, $comment)) {
+      $builder->ensureEmptyLine();
+      if ($comment !== null) {
+        $builder->addDocBlock($comment);
+      }
+      $builder->addWithSuggestedLineBreaksf(
+        "const %s =\t%s;",
+        $name,
+        $value,
+      );
+      $builder->newLine();
     }
     foreach ($this->functions as $function) {
       $builder->ensureNewLine()->newLine();
