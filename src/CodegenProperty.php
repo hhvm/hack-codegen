@@ -22,14 +22,12 @@ namespace Facebook\HackCodegen;
  */
 final class CodegenProperty implements ICodeBuilderRenderer {
 
-  const string UNSET_VALUE = "<<CodegenProperty_value_not_set>>";
-
   use CodegenWithVisibility;
   use HackBuilderRenderer;
 
   private ?string $comment;
   private ?string $type;
-  private string $value = self::UNSET_VALUE;
+  private ?string $value;
   private bool $isStatic = false;
 
   public function __construct(
@@ -79,29 +77,21 @@ final class CodegenProperty implements ICodeBuilderRenderer {
    * Set the initial value for the variable.  You can pass numbers, strings,
    * arrays, etc, and it will generate the code to render those values.
    */
-  public function setValue(mixed $value): this {
-    $val_str = normalized_var_export($value);
-    return $this->setLiteralValue($val_str);
-  }
-
-  /**
-   * Set the value of the variable to exactly what is specified. This is useful
-   * for example to set it to "Vector {}", or other things that setValue
-   * can't do.
-   */
-  public function setLiteralValue(string $value): this {
-    $this->value = $value;
+  public function setValue<T>(T $value, IHackBuilderValueRenderer<T> $renderer): this {
+    $this->value = $renderer->render($this->config, $value);
     return $this;
   }
 
   public function appendToBuilder(HackBuilder $builder): HackBuilder {
+    $value = $this->value;
+
     return $builder
       ->addInlineComment($this->comment)
       ->add($this->getVisibility().' ')
       ->addIf($this->isStatic, 'static ')
       ->addIf($this->type !== null, $this->type.' ')
       ->add('$'.$this->name)
-      ->addIf($this->value != self::UNSET_VALUE, ' = '.$this->value)
+      ->addIf($this->value != null, ' = '.$value)
       ->addLine(';');
   }
 

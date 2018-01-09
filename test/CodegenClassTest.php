@@ -126,7 +126,11 @@ final class CodegenClassTest extends CodegenBaseTest {
       ->addProperty(
         $cgf->codegenProperty('text')->setProtected()->setType('string'),
       )
-      ->addProperty($cgf->codegenProperty('id')->setType('?int')->setValue(12345))
+      ->addProperty(
+        $cgf->codegenProperty('id')
+          ->setType('?int')
+          ->setValue(12345, HackBuilderValues::export())
+      )
       ->setConstructor(
         $cgf
           ->codegenConstructor()
@@ -202,7 +206,10 @@ final class CodegenClassTest extends CodegenBaseTest {
       ->codegenClass('TestWrapperFunc')
       ->addProperty($cgf->codegenProperty('text')->setPrivate()->setType('string'))
       ->addProperty(
-        $cgf->codegenProperty('hack')->setType('?bool')->setValue(false),
+        $cgf
+          ->codegenProperty('hack')
+          ->setType('?bool')
+          ->setValue(false, HackBuilderValues::export()),
       )
       ->setConstructor(
         $cgf

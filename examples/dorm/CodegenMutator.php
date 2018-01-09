@@ -74,7 +74,7 @@ class CodegenMutator {
     // setting an initial value.
     return $this->codegen->codegenProperty('data')
       ->setType('Map<string, mixed>')
-      ->setValue(Map {});
+      ->setValue(Map {}, HackBuilderValues::export());
   }
 
   private function getPdoTypeVar(): CodegenProperty {
@@ -118,7 +118,7 @@ class CodegenMutator {
     return $cg->codegenProperty('pdoType')
       ->setType('Map<string, int>')
       ->setIsStatic()
-      ->setLiteralValue($code->getCode());
+      ->setValue($code, HackBuilderValues::code());
   }
 
   private function getConstructor(): CodegenConstructor {

@@ -44,7 +44,7 @@ final class CodegenPropertyTest extends CodegenBaseTest {
       ->getCodegenFactory()
       ->codegenProperty('count')
       ->setType('?int')
-      ->setValue(0)
+      ->setValue(0, HackBuilderValues::export())
       ->render();
 
     $this->assertUnchanged($code);
@@ -55,7 +55,10 @@ final class CodegenPropertyTest extends CodegenBaseTest {
       ->getCodegenFactory()
       ->codegenProperty('languages')
       ->setIsStatic()
-      ->setValue(array('en' => 'English', 'es' => 'Spanish', 'fr' => 'French'))
+      ->setValue(
+        array('en' => 'English', 'es' => 'Spanish', 'fr' => 'French'),
+        HackBuilderValues::export(),
+      )
       ->render();
 
     $this->assertUnchanged($code);
@@ -66,7 +69,7 @@ final class CodegenPropertyTest extends CodegenBaseTest {
       ->getCodegenFactory()
       ->codegenProperty('parameters')
       ->setType('Vector<string>')
-      ->setLiteralValue('Vector {}')
+      ->setValue('Vector {}', HackBuilderValues::literal())
       ->render();
 
     $this->assertUnchanged($code);
