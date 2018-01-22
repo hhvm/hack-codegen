@@ -30,7 +30,7 @@ You can set the namespace of the file by calling `->setNamespace($ns)`; you can
 `use` declarations from other namespaces by calling:
 
  - `->useNamespace(string $ns, ?string $as = null)`
- - `->useType(string $ns, ?string $as = null)`
+ - `->useType(string $ns, ?string $as = null)`, which also includes classes
  - `->useFunction(string $ns, ?string $as = null)`
  - `->useConst(string $ns, ?string $as = null)`
 
