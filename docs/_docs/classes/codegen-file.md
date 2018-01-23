@@ -34,6 +34,9 @@ You can set the namespace of the file by calling `->setNamespace($ns)`; you can
  - `->useFunction(string $ns, ?string $as = null)`
  - `->useConst(string $ns, ?string $as = null)`
 
+`useType` is for any kind of type; this includes `type`s, `newtype`s,
+enums, classes, and interfaces.
+
 File Types
 ----------
 
