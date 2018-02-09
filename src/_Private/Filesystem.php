@@ -15,24 +15,24 @@ final class Filesystem {
     string $prefix = '',
     bool $cleanup = false,
   ): string {
-    $fname = tempnam(sys_get_temp_dir(), $prefix);
+    $fname = \tempnam(\sys_get_temp_dir(), $prefix);
     if ($cleanup) {
-      register_shutdown_function(array(Filesystem::class, 'remove'), $fname);
+      \register_shutdown_function(array(Filesystem::class, 'remove'), $fname);
     }
     return $fname;
   }
 
   public static function remove(string $path): void {
-    if (!file_exists($path)) {
+    if (!\file_exists($path)) {
       return;
     }
-    if (!unlink($path)) {
+    if (!\unlink($path)) {
       throw new \Exception("Unable to remove `{$path}'.");
     }
   }
 
   public static function readFile(string $path): string {
-    $data = @file_get_contents($path);
+    $data = @\file_get_contents($path);
     if ($data === false) {
       throw new \Exception("Failed to read file `{$path}'.");
     }
@@ -41,7 +41,7 @@ final class Filesystem {
   }
 
   public static function writeFile(string $path, string $data): void {
-    $res = @file_put_contents($path, $data);
+    $res = @\file_put_contents($path, $data);
 
     if ($res === false) {
       throw new \Exception("Failed to write file `{$path}'.");
@@ -49,7 +49,7 @@ final class Filesystem {
   }
 
   public static function writeFileIfChanged(string $path, string $data): bool {
-    if (file_exists($path)) {
+    if (\file_exists($path)) {
       $current = self::readFile($path);
       if ($current === $data) {
         return false;
@@ -63,9 +63,9 @@ final class Filesystem {
     string $path,
     int $umask = 0777,
   ): void {
-    if (is_dir($path)) {
+    if (\is_dir($path)) {
       return;
     }
-    mkdir($path, $umask);
+    \mkdir($path, $umask);
   }
 }

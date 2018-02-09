@@ -20,25 +20,25 @@ final class HackfmtFormatter implements ICodegenFormatter {
     $output = array();
     $exit_code = null;
 
-    $tempnam = tempnam(
-      sys_get_temp_dir(),
+    $tempnam = \tempnam(
+      \sys_get_temp_dir(),
       'hack-codegen-hackfmt',
     );
     try {
-      file_put_contents($tempnam, $code);
-      exec(
-        'hackfmt '.escapeshellarg($tempnam),
+      \file_put_contents($tempnam, $code);
+      \exec(
+        'hackfmt '.\escapeshellarg($tempnam),
         &$output,
         &$exit_code,
       );
     } finally {
-      unlink($tempnam);
+      \unlink($tempnam);
     }
 
     invariant(
       $exit_code === 0,
       'Failed to invoke hackfmt',
     );
-    return implode("\n", $output)."\n";
+    return \implode("\n", $output)."\n";
   }
 }

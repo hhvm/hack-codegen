@@ -40,7 +40,7 @@ function strip_hh_prefix(
     'this',
     'arraykey',
   };
-  $len = strlen($str);
+  $len = \strlen($str);
   $in_literal = '';
   $out = '';
   $c = ' ';
@@ -64,22 +64,22 @@ function strip_hh_prefix(
     } else {
       if (
         ($c === 'H' || $c === 'h') &&
-        strtoupper(substr($str, $i, 3)) === "HH\\" &&
-        !ctype_alnum($prev) &&
+        \strtoupper(\substr($str, $i, 3)) === "HH\\" &&
+        !\ctype_alnum($prev) &&
         $prev !== '_' &&
         $prev !== '\\'
       ) {
         if ($nonobject_types_only) {
-          $sub = substr($str, $i + 3, 9);
-          $sub_len = strlen($sub);
+          $sub = \substr($str, $i + 3, 9);
+          $sub_len = \strlen($sub);
           $k = 0;
           for (; $k < $sub_len; ++$k) {
             $sub_c = $sub[$k];
-            if (!ctype_alnum($sub_c) && $sub_c !== '_' && $sub_c !== '\\') {
+            if (!\ctype_alnum($sub_c) && $sub_c !== '_' && $sub_c !== '\\') {
               break;
             }
           }
-          $sub = strtolower(substr($sub, 0, $k));
+          $sub = \strtolower(\substr($sub, 0, $k));
           $strip = ($nonobject_types->contains($sub));
         } else {
           $strip = true;

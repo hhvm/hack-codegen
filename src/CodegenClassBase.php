@@ -69,7 +69,7 @@ abstract class CodegenClassBase implements ICodeBuilderRenderer {
     SprintfFormatString $format,
     mixed ...$args
   ): this {
-    $this->addGenerics(vsprintf($format, $args));
+    $this->addGenerics(\vsprintf($format, $args));
     return $this;
   }
 
@@ -109,7 +109,7 @@ abstract class CodegenClassBase implements ICodeBuilderRenderer {
       $this->traits,
       $trait ==> {
         $name = $trait->getName();
-        return strstr($name, '<', true) ?: $name;
+        return \strstr($name, '<', true) ?: $name;
       },
     );
   }
@@ -146,7 +146,7 @@ abstract class CodegenClassBase implements ICodeBuilderRenderer {
     ?string $comment = null,
   ): this {
     return $this->addConst(
-      sprintf('type %s as %s', $name, $constraint),
+      \sprintf('type %s as %s', $name, $constraint),
       $type,
       $comment,
       HackBuilderValues::literal(),
@@ -159,7 +159,7 @@ abstract class CodegenClassBase implements ICodeBuilderRenderer {
     ?string $comment = null,
   ): this {
     return $this->addAbstractConst(
-      sprintf('type %s as%s%s', $name, HackBuilder::DELIMITER, $type),
+      \sprintf('type %s as%s%s', $name, HackBuilder::DELIMITER, $type),
       $comment,
     );
   }
@@ -170,8 +170,8 @@ abstract class CodegenClassBase implements ICodeBuilderRenderer {
     ?string $comment = null,
   ): this {
     return $this->addConst(
-      sprintf('classname<%s> %s', $type, $name),
-      sprintf('%s::class', $type),
+      \sprintf('classname<%s> %s', $type, $name),
+      \sprintf('%s::class', $type),
       $comment,
       HackBuilderValues::literal(),
     );
@@ -183,7 +183,7 @@ abstract class CodegenClassBase implements ICodeBuilderRenderer {
     ?string $comment = null,
   ): this {
     return $this->addAbstractConst(
-      sprintf('classname<%s> %s', $type, $name),
+      \sprintf('classname<%s> %s', $type, $name),
       $comment,
     );
   }
@@ -278,7 +278,7 @@ abstract class CodegenClassBase implements ICodeBuilderRenderer {
         $$,
         $decl ==> '    '.$decl.",\n",
       )
-      |> implode("", $$)
+      |> \implode("", $$)
       |> Str\strip_suffix($$, ",\n")
       |> "\n  <\n".$$."\n  >";
   }
@@ -375,10 +375,10 @@ abstract class CodegenClassBase implements ICodeBuilderRenderer {
     $generated_from =
       $this->generatedFrom ? $this->generatedFrom->render() : null;
 
-    $doc_block_parts = array_filter(array($this->docBlock, $generated_from));
+    $doc_block_parts = \array_filter(array($this->docBlock, $generated_from));
 
     if ($doc_block_parts) {
-      $builder->addDocBlock(implode("\n\n", $doc_block_parts));
+      $builder->addDocBlock(\implode("\n\n", $doc_block_parts));
     }
 
     $wrapper_func = $this->wrapperFunc;
@@ -433,7 +433,7 @@ trait CodegenClassWithInterfaces {
       $this->interfaces,
       $interface ==> {
         $name = $interface->getName();
-        return strstr($name, '<', true) ?: $name;
+        return \strstr($name, '<', true) ?: $name;
       },
     );
   }

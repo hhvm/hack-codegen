@@ -176,7 +176,7 @@ final class CodegenFile {
   }
 
   public function exists(): bool {
-    return file_exists($this->fileName);
+    return \file_exists($this->fileName);
   }
 
   /**
@@ -234,7 +234,7 @@ final class CodegenFile {
    *     setShebangLine('#!/usr/bin/env hhvm')
    */
   public function setShebangLine(string $shebang): this {
-    invariant(!strpbrk($shebang, "\n"), "Expected single line");
+    invariant(!\strpbrk($shebang, "\n"), "Expected single line");
     invariant(Str\starts_with($shebang, '#!'), 'Shebang lines start with #!');
     $this->shebang = $shebang;
     return $this;
@@ -244,7 +244,7 @@ final class CodegenFile {
     SprintfFormatString $format,
     mixed ...$args
   ): this {
-    return $this->setShebangLine(vsprintf($format, $args));
+    return $this->setShebangLine(\vsprintf($format, $args));
   }
 
   /**
@@ -262,7 +262,7 @@ final class CodegenFile {
     SprintfFormatString $format,
     mixed ...$args
   ): this {
-    return $this->setPseudoMainHeader(vsprintf($format, $args));
+    return $this->setPseudoMainHeader(\vsprintf($format, $args));
   }
 
   /**
@@ -280,7 +280,7 @@ final class CodegenFile {
     SprintfFormatString $format,
     mixed ...$args
   ): this {
-    return $this->setPseudoMainFooter(vsprintf($format, $args));
+    return $this->setPseudoMainFooter(\vsprintf($format, $args));
   }
 
   private function assertNotHackStrictForExecutable(): void {
@@ -377,7 +377,7 @@ final class CodegenFile {
       $this->fileNamespace,
     );
 
-    $get_use_statement = ($type, $ns, $as) ==> sprintf(
+    $get_use_statement = ($type, $ns, $as) ==> \sprintf(
       'use %s %s%s;',
       $type,
       $ns,
@@ -442,7 +442,7 @@ final class CodegenFile {
     $file_names[] = $this->fileName;
     $all_content = array();
     foreach ($file_names as $file_name) {
-      if (file_exists($file_name)) {
+      if (\file_exists($file_name)) {
         $content = Filesystem::readFile($file_name);
         if ($content) {
           $root_dir = $this->config->getRootDir();
@@ -462,7 +462,7 @@ final class CodegenFile {
         $all_content[] = $content;
       }
     }
-    return implode('', $all_content);
+    return \implode('', $all_content);
   }
 
   public function setGeneratedFrom(CodegenGeneratedFrom $from): this {
@@ -534,10 +534,10 @@ final class CodegenFile {
    */
   public function save(): CodegenFileResult {
     Filesystem::createDirectory(
-      substr($this->fileName, 0, strrpos($this->fileName, '/')),
+      \substr($this->fileName, 0, \strrpos($this->fileName, '/')),
       0777,
     );
-    $is_creating = !file_exists($this->fileName);
+    $is_creating = !\file_exists($this->fileName);
     if (!$is_creating && $this->createOnly) {
       return CodegenFileResult::NONE;
     }
@@ -563,7 +563,7 @@ final class CodegenFileBadSignatureException
   extends CodegenFileSignatureException {
 
   public function __construct(string $file_name) {
-    $message = sprintf(
+    $message = \sprintf(
       'The signature of the existing generated file \'%s\' is invalid',
       $file_name,
     );
@@ -575,7 +575,7 @@ final class CodegenFileNoSignatureException
   extends CodegenFileSignatureException {
 
   public function __construct(string $file_name) {
-    $message = sprintf(
+    $message = \sprintf(
       'The existing generated file \'%s\' does not have a signature',
       $file_name,
     );

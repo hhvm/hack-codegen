@@ -39,8 +39,8 @@ final class HackBuilderShapeRenderer
         'Value renderer for key "%s" is of type "%s", which is not a %s',
         $key,
         is_object($value_renderer)
-          ? get_class($value_renderer)
-          : gettype($value_renderer),
+          ? \get_class($value_renderer)
+          : \gettype($value_renderer),
         IHackBuilderValueRenderer::class,
       );
       $builder->addWithSuggestedLineBreaksf(

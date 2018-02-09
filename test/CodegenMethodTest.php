@@ -84,7 +84,7 @@ final class CodegenMethodTest extends CodegenBaseTest {
       ->setReturnType('string')
       ->setBody('return $this->name;')
       // 81 characters
-      ->setDocBlock(str_repeat('x', 78))
+      ->setDocBlock(\str_repeat('x', 78))
       ->setGeneratedFrom(
         $cgf->codegenGeneratedFromMethodWithKey(
           'EntTestSchema',

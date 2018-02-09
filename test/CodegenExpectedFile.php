@@ -40,7 +40,7 @@ final class CodegenExpectedFile {
     $source_file = $ref->getFileName();
     // Get classname without namespace
     $class_name = $ref->getShortName();
-    return dirname($source_file).'/'.$class_name.self::EXTENSION;
+    return \dirname($source_file).'/'.$class_name.self::EXTENSION;
   }
 
   /**
@@ -52,7 +52,7 @@ final class CodegenExpectedFile {
   public static function findToken(): string {
     $token = null;
     // Get caller function name
-    $stack = debug_backtrace();
+    $stack = \debug_backtrace();
     foreach ($stack as $function) {
       $function_name = $function['function'];
       if (Str\starts_with($function_name, 'test')) {
@@ -78,11 +78,11 @@ final class CodegenExpectedFile {
   public static function parseFile(string $file_name): Map<string, string> {
     $map = Map {};
 
-    if (!file_exists($file_name)) {
+    if (!\file_exists($file_name)) {
       return $map;
     }
 
-    $lines = file($file_name);
+    $lines = \file($file_name);
     invariant(
       $lines !== false,
       'Fail to open the file %s for reading',
@@ -92,7 +92,7 @@ final class CodegenExpectedFile {
     $generated = $lines[0];
     $lines = Vec\drop($lines, 1);
     invariant(
-      rtrim($generated) === '@'.'generated',
+      \rtrim($generated) === '@'.'generated',
       'Codegen test record file should start with a generated tag',
     );
 
@@ -102,11 +102,11 @@ final class CodegenExpectedFile {
       if (Str\starts_with($line, self::SEPARATOR)) {
         if ($token !== null) {
           // We always add 1 newline at the end
-          $expected = substr($expected, 0, -1);
+          $expected = \substr($expected, 0, -1);
           $map->set($token, $expected);
         }
         // Format is separator:token\n
-        $token = substr(rtrim($line), strlen(self::SEPARATOR));
+        $token = \substr(\rtrim($line), \strlen(self::SEPARATOR));
         $expected = '';
         continue;
       }
@@ -115,7 +115,7 @@ final class CodegenExpectedFile {
     }
     if ($token !== null) {
       // We always add 1 newline at the end
-      $expected = substr($expected, 0, -1);
+      $expected = \substr($expected, 0, -1);
       $map->set($token, $expected);
     }
     return $map;
@@ -180,11 +180,11 @@ final class CodegenExpectedFile {
     string $file_name,
     Map<string, string> $map,
   ): void {
-    if (!file_exists($file_name)) {
-      touch($file_name);
-      chmod($file_name, 0666);
+    if (!\file_exists($file_name)) {
+      \touch($file_name);
+      \chmod($file_name, 0666);
     }
-    $file = fopen($file_name, 'w');
+    $file = \fopen($file_name, 'w');
     invariant(
       $file !== false,
       'Fail to open the file %s for writing',
@@ -195,16 +195,16 @@ final class CodegenExpectedFile {
     // in the generated file all the time
     $tokens = Vec\sort($map->keys());
 
-    fwrite($file, '@'."generated\n");
+    \fwrite($file, '@'."generated\n");
     foreach ($tokens as $token) {
       $value = self::escapeTokens($map->at($token));
 
       // Format is separator:token\n
-      fwrite($file, self::SEPARATOR.$token."\n");
+      \fwrite($file, self::SEPARATOR.$token."\n");
       // We always add 1 newline at the end
-      fwrite($file, $value."\n");
+      \fwrite($file, $value."\n");
     }
-    fclose($file);
+    \fclose($file);
   }
 
   //
@@ -218,12 +218,12 @@ final class CodegenExpectedFile {
     SprintfFormatString $format,
     mixed ...$args
   ): void {
-    $message = vsprintf($format, $args);
+    $message = \vsprintf($format, $args);
     self::displayRaw('gentest> '.$message."\n");
   }
 
   final public static function displayRaw(string $message): void {
-    fwrite(STDERR, $message);
+    \fwrite(\STDERR, $message);
   }
 
 
@@ -256,7 +256,7 @@ final class CodegenExpectedFile {
     while (true) {
       self::displayf('%s (y/N)', $message);
       self::displayRaw('> ');
-      $result = strtolower(trim(fgets(STDIN)));
+      $result = \strtolower(\trim(\fgets(\STDIN)));
       if ($result === 'y') {
         return true;
       }

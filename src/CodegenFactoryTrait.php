@@ -27,7 +27,7 @@ trait CodegenFactoryTrait implements ICodegenFactory {
     SprintfFormatString $format,
     mixed ...$args
    ): CodegenConstant {
-    return new CodegenConstant($this->getConfig(), vsprintf($format, $args));
+    return new CodegenConstant($this->getConfig(), \vsprintf($format, $args));
   }
 
   final public function codegenFile(string $file): CodegenFile {
@@ -38,7 +38,7 @@ trait CodegenFactoryTrait implements ICodegenFactory {
     SprintfFormatString $format,
     mixed ...$args
   ): CodegenFile {
-    return $this->codegenFile(vsprintf($format, $args));
+    return $this->codegenFile(\vsprintf($format, $args));
   }
 
   final public function codegenFunction(string $name): CodegenFunction {
@@ -49,7 +49,7 @@ trait CodegenFactoryTrait implements ICodegenFactory {
     SprintfFormatString $format,
     mixed ...$args
   ): CodegenFunction {
-    return $this->codegenFunction(vsprintf($format, $args));
+    return $this->codegenFunction(\vsprintf($format, $args));
   }
 
   final public function codegenClass(string $name): CodegenClass {
@@ -60,7 +60,7 @@ trait CodegenFactoryTrait implements ICodegenFactory {
     SprintfFormatString $format,
     mixed ...$args
   ): CodegenClass {
-    return $this->codegenClass(vsprintf($format, $args));
+    return $this->codegenClass(\vsprintf($format, $args));
   }
 
   final public function codegenEnum(
@@ -86,7 +86,7 @@ trait CodegenFactoryTrait implements ICodegenFactory {
     SprintfFormatString $format,
     mixed ...$args
   ): CodegenMethod {
-    return $this->codegenMethod(vsprintf($format, $args));
+    return $this->codegenMethod(\vsprintf($format, $args));
   }
 
   final public function codegenHackBuilder(): HackBuilder {
@@ -113,7 +113,7 @@ trait CodegenFactoryTrait implements ICodegenFactory {
     SprintfFormatString $format,
     mixed ...$args
   ): CodegenProperty {
-    return $this->codegenProperty(vsprintf($format, $args));
+    return $this->codegenProperty(\vsprintf($format, $args));
   }
 
   final public function codegenUsesTrait(string $name): CodegenUsesTrait {
@@ -158,7 +158,7 @@ trait CodegenFactoryTrait implements ICodegenFactory {
     ?string $script = null,
   ): CodegenGeneratedFrom {
     if ($script === null) {
-      $trace = debug_backtrace();
+      $trace = \debug_backtrace();
       $last = C\lastx($trace);
       invariant(
         $last !== false,

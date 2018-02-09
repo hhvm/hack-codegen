@@ -56,12 +56,12 @@ final class HackBuilder extends BaseCodeBuilder {
     $max_length = $this->getMaxCodeLength() - 4;
 
     // Let's put everything in a single line
-    $args = '('.implode(', ', $params).')';
+    $args = '('.\implode(', ', $params).')';
     $composite_line = $func_call_line.$args;
     // Ignore suggested line breaks within individual args; otherwise we could
     // split in the middle of arguments rather than after each parameter.
     $composite_line_no_breaks =
-      $func_call_line.str_replace(self::DELIMITER, ' ', $args);
+      $func_call_line.\str_replace(self::DELIMITER, ' ', $args);
     if ($include_close_statement) {
       $composite_line = $composite_line.";\n";
       $composite_line_no_breaks = $composite_line_no_breaks.";\n";
@@ -169,7 +169,7 @@ final class HackBuilder extends BaseCodeBuilder {
   }
   public function addReturnf(SprintfFormatString $value, mixed ...$args): this {
     return
-      $this->addReturn(vsprintf($value, $args), HackBuilderValues::literal());
+      $this->addReturn(\vsprintf($value, $args), HackBuilderValues::literal());
   }
 
   public function addAssignment<T>(
@@ -263,7 +263,7 @@ final class HackBuilder extends BaseCodeBuilder {
     SprintfFormatString $condition,
     mixed ...$args
   ): this {
-    return $this->startIfBlock(vsprintf($condition, $args));
+    return $this->startIfBlock(\vsprintf($condition, $args));
   }
 
   /**
@@ -289,7 +289,7 @@ final class HackBuilder extends BaseCodeBuilder {
     SprintfFormatString $condition,
     mixed ...$args
   ): this {
-    return $this->addElseIfBlock(vsprintf($condition, $args));
+    return $this->addElseIfBlock(\vsprintf($condition, $args));
   }
 
   /**
@@ -324,7 +324,7 @@ final class HackBuilder extends BaseCodeBuilder {
         'foreach (%s as%s%s%s)',
         $traversable,
         self::DELIMITER,
-        $key !== null ? sprintf('%s => ', $key) : '',
+        $key !== null ? \sprintf('%s => ', $key) : '',
         $value,
       )
       ->openBrace();
@@ -404,7 +404,7 @@ final class HackBuilder extends BaseCodeBuilder {
     mixed ...$args
   ): this {
     return
-      $this->returnCase(vsprintf($value, $args), HackBuilderValues::literal());
+      $this->returnCase(\vsprintf($value, $args), HackBuilderValues::literal());
   }
 
   public function breakCase(): this {
@@ -475,7 +475,7 @@ final class HackBuilder extends BaseCodeBuilder {
     $max_length = $this->getMaxCodeLength() - 3;
     $lines = $this->splitString($comment, $max_length);
     foreach ($lines as $line) {
-      $this->addLine(rtrim('// '.$line));
+      $this->addLine(\rtrim('// '.$line));
     }
     return $this;
   }
@@ -494,7 +494,7 @@ final class HackBuilder extends BaseCodeBuilder {
     $max_length = $this->getMaxCodeLength() - 6;
     $lines = $this->splitString($comment, $max_length);
     foreach ($lines as $line) {
-      $this->addLine('/* '.rtrim($line).' */');
+      $this->addLine('/* '.\rtrim($line).' */');
     }
     return $this;
   }
@@ -516,7 +516,7 @@ final class HackBuilder extends BaseCodeBuilder {
     $lines = $this->splitString($comment, $max_length);
     $this->ensureNewLine()->addLine('/**');
     foreach ($lines as $line) {
-      $this->addLine(rtrim(' * '.$line));
+      $this->addLine(\rtrim(' * '.$line));
     }
     $this->addLine(' */');
     return $this;
@@ -532,20 +532,20 @@ final class HackBuilder extends BaseCodeBuilder {
     bool $preserve_space = false,
   ): vec<string> {
     $lines = vec[];
-    $src_lines = explode("\n", $str);
+    $src_lines = \explode("\n", $str);
 
     foreach ($src_lines as $src_line) {
       while (Str\length($src_line) > $maxlen) {
-        $last_space = strrpos(substr($src_line, 0, $maxlen), ' ');
+        $last_space = \strrpos(\substr($src_line, 0, $maxlen), ' ');
         if ($last_space === false) {
           break;
         }
         if ($preserve_space) {
-          $lines[] = substr($src_line, 0, $last_space + 1);
+          $lines[] = \substr($src_line, 0, $last_space + 1);
         } else {
-          $lines[] = substr($src_line, 0, $last_space);
+          $lines[] = \substr($src_line, 0, $last_space);
         }
-        $src_line = substr($src_line, $last_space + 1);
+        $src_line = \substr($src_line, $last_space + 1);
       }
       $lines[] = $src_line;
     }

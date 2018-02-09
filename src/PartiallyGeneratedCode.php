@@ -28,12 +28,12 @@ final class PartiallyGeneratedCode {
   }
 
   public static function getBeginManualSection(string $id): string {
-    return sprintf('/* BEGIN MANUAL SECTION %s */', $id);
+    return \sprintf('/* BEGIN MANUAL SECTION %s */', $id);
   }
 
   private static function getBeginManualSectionRegex(string $regex): string {
     // this needs to be kept in sync with getBeginManualSection.
-    return sprintf('|/\* BEGIN MANUAL SECTION %s \*/|', $regex);
+    return \sprintf('|/\* BEGIN MANUAL SECTION %s \*/|', $regex);
   }
 
   public static function getEndManualSection(): string {
@@ -41,7 +41,7 @@ final class PartiallyGeneratedCode {
   }
 
   public static function containsManualSection(string $code): bool {
-    return strpos($code, self::getEndManualSection()) !== false;
+    return \strpos($code, self::getEndManualSection()) !== false;
   }
 
   /**
@@ -80,7 +80,7 @@ final class PartiallyGeneratedCode {
             }
           }
           if ($content) {
-            $merged[] = implode("\n\n", $content);
+            $merged[] = \implode("\n\n", $content);
           } else {
             // This manual section is new, so insert inside it the chunk from
             // the generated code (e.g. the generated code can have a comment
@@ -90,7 +90,7 @@ final class PartiallyGeneratedCode {
         }
       }
     }
-    return implode("\n", array_filter($merged));
+    return \implode("\n", \array_filter($merged));
   }
 
   /**
@@ -118,7 +118,7 @@ final class PartiallyGeneratedCode {
         $generated[] = $chunk;
       }
     }
-    return implode("\n", $generated);
+    return \implode("\n", $generated);
   }
 
   /**
@@ -142,7 +142,7 @@ final class PartiallyGeneratedCode {
     string $code,
   ): \Generator<int, (?string, string), void> {
     // Regular expression to match the beginning of a manual section
-    $quoted = preg_quote(self::$manualBegin, '/');
+    $quoted = \preg_quote(self::$manualBegin, '/');
     $begin = self::getBeginManualSectionRegex('(.*)');
     $valid_begin = self::getBeginManualSectionRegex('([A-Za-z0-9:_]+)');
 
@@ -150,29 +150,29 @@ final class PartiallyGeneratedCode {
     $current_id = null;
     $chunk = array();
     $manual = array();
-    $lines = explode("\n", $code);
+    $lines = \explode("\n", $code);
     foreach ($lines as $line) {
-      if (strpos($line, self::$manualEnd) !== false) {
-        yield tuple($current_id, implode("\n", $chunk));
+      if (\strpos($line, self::$manualEnd) !== false) {
+        yield tuple($current_id, \implode("\n", $chunk));
         $chunk = array($line);
         $current_id = null;
 
-      } else if (preg_match($begin, $line) === 1) {
+      } else if (\preg_match($begin, $line) === 1) {
         if ($current_id !== null) {
           throw new PartiallyGeneratedCodeException(
             "The manual section $current_id was open before ".
             "the previous one was closed",
           );
         }
-        if (!preg_match($valid_begin, $line)) {
+        if (!\preg_match($valid_begin, $line)) {
           throw
             new PartiallyGeneratedCodeException("Invalid id specified: ".$line);
         }
 
         $chunk[] = $line;
-        yield tuple(null, implode("\n", $chunk));
+        yield tuple(null, \implode("\n", $chunk));
         $chunk = array();
-        $current_id = trim(preg_replace($begin, '\\1', $line));
+        $current_id = \trim(\preg_replace($begin, '\\1', $line));
 
         if (C\contains($seen_ids, $current_id)) {
           throw new PartiallyGeneratedCodeException(
@@ -190,7 +190,7 @@ final class PartiallyGeneratedCode {
       );
     }
     if ($code) {
-      yield tuple(null, implode("\n", $chunk));
+      yield tuple(null, \implode("\n", $chunk));
     }
   }
 }
