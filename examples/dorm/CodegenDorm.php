@@ -50,10 +50,10 @@ class CodegenDorm {
       ->addMethods($this->getGetters())
       ->addTypeConst('TData', $this->getDatabaseRowShape()->render());
 
-    $rc = new \ReflectionClass(get_class($this->schema));
+    $rc = new \ReflectionClass(\get_class($this->schema));
     $path = $rc->getFileName();
-    $pos = strrpos($path, '/');
-    $dir = substr($path, 0, $pos + 1);
+    $pos = \strrpos($path, '/');
+    $dir = \substr($path, 0, $pos + 1);
     $gen_from = 'codegen.php '.$this->getSchemaName().'Schema';
 
     // This generates a file (we pass the file name) that contains the

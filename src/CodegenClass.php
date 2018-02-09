@@ -48,7 +48,7 @@ final class CodegenClass extends CodegenClassBase {
   }
 
   public function setExtendsf(SprintfFormatString $name, mixed ...$args): this {
-    $this->extendsClass = vsprintf($name, $args);
+    $this->extendsClass = \vsprintf($name, $args);
     return $this;
   }
 
@@ -101,11 +101,11 @@ final class CodegenClass extends CodegenClassBase {
       $re = '/\$[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*/';
       foreach ($param_full as $str) {
         $matches = array();
-        if (preg_match_all($re, $str, &$matches)) {
+        if (\preg_match_all($re, $str, &$matches)) {
           $param_names = Vec\concat($param_names, $matches[0]);
         }
       }
-      $params_str = implode(', ', $param_names);
+      $params_str = \implode(', ', $param_names);
       $body = 'return new '.$this->getName().'('.$params_str.');';
 
       $this->wrapperFunc = (

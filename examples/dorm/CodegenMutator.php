@@ -54,10 +54,10 @@ class CodegenMutator {
       ->addMethod($this->getCheckRequiredFieldsMethod())
       ->addMethods($this->getSetters());
 
-    $rc = new \ReflectionClass(get_class($this->schema));
+    $rc = new \ReflectionClass(\get_class($this->schema));
     $path = $rc->getFileName();
-    $pos = strrpos($path, '/');
-    $dir = substr($path, 0, $pos + 1);
+    $pos = \strrpos($path, '/');
+    $dir = \substr($path, 0, $pos + 1);
     $gen_from = 'codegen.php '.$rc->getShortName();
 
     // This generates a file (we pass the file name) that contains the

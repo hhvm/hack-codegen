@@ -62,7 +62,7 @@ abstract class CodegenFunctionBase implements ICodeBuilderRenderer {
     SprintfFormatString $type,
     mixed ...$args
   ): this {
-    $type = vsprintf($type, $args);
+    $type = \vsprintf($type, $args);
     if ($type) {
       $this->returnType = $type;
     }
@@ -77,7 +77,7 @@ abstract class CodegenFunctionBase implements ICodeBuilderRenderer {
     SprintfFormatString $param,
     mixed ...$args
   ): this {
-    $param = vsprintf($param, $args);
+    $param = \vsprintf($param, $args);
     $this->parameters[] = $param;
     return $this;
   }
@@ -94,7 +94,7 @@ abstract class CodegenFunctionBase implements ICodeBuilderRenderer {
   }
 
   public function setBodyf(SprintfFormatString $body, mixed ...$args): this {
-    $this->body = vsprintf($body, $args);
+    $this->body = \vsprintf($body, $args);
 
     return $this;
   }
@@ -148,7 +148,7 @@ abstract class CodegenFunctionBase implements ICodeBuilderRenderer {
   ): string {
     $builder = (new HackBuilder($this->config))
       ->add($keywords)
-      ->addf('%s(%s)', $this->name, implode(', ', $this->parameters))
+      ->addf('%s(%s)', $this->name, \implode(', ', $this->parameters))
       ->addIf($this->returnType !== null, ': '.$this->returnType);
 
     $code = $builder->getCode();
@@ -189,13 +189,13 @@ abstract class CodegenFunctionBase implements ICodeBuilderRenderer {
 
   public function addHHFixMe(int $code, string $why): this {
     $max_length = $this->getMaxCodeLength() - 6;
-    $str = sprintf('HH_FIXME[%d] %s', $code, $why);
+    $str = \sprintf('HH_FIXME[%d] %s', $code, $why);
     invariant(
-      strlen($str) <= $max_length,
+      \strlen($str) <= $max_length,
       'ERROR: Your fixme has to fit on one line, with indentation '.
       'and comments. So you need to shorten your message by %d '.
       'characters.',
-      strlen($str) - $max_length,
+      \strlen($str) - $max_length,
     );
     $this->fixme = $str;
     return $this;

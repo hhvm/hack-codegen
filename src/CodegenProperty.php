@@ -72,7 +72,7 @@ final class CodegenProperty implements ICodeBuilderRenderer {
   }
 
   public function setTypef(SprintfFormatString $format, mixed ...$args): this {
-    return $this->setType(vsprintf($format, $args));
+    return $this->setType(\vsprintf($format, $args));
   }
 
   /**

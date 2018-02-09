@@ -15,5 +15,5 @@ function normalized_var_export(mixed $value): string {
     // var_export capitalizes NULL
     return 'null';
   }
-  return strip_hh_prefix(var_export($value, true));
+  return strip_hh_prefix(\var_export($value, true));
 }

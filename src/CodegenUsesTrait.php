@@ -46,7 +46,7 @@ final class CodegenUsesTrait {
     SprintfFormatString $format,
     mixed ...$args
   ): this {
-    return $this->setComment(vsprintf($format, $args));
+    return $this->setComment(\vsprintf($format, $args));
   }
 
   public function setGeneratedFrom(CodegenGeneratedFrom $from): this {

@@ -49,7 +49,7 @@ trait CodegenWithAttributes {
     }
 
     return '<<'.
-      implode(
+      \implode(
         ', ',
         Dict\map_with_key(
           $attributes,
@@ -57,7 +57,7 @@ trait CodegenWithAttributes {
             if (C\is_empty($params)) {
               return $name;
             }
-            return $name.'('.implode(', ', $params).')';
+            return $name.'('.\implode(', ', $params).')';
           },
         ),
       ).

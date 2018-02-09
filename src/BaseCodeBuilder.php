@@ -66,16 +66,16 @@ abstract class BaseCodeBuilder implements ICodeBuilder {
     if ($code === null) {
       return $this;
     }
-    $code = vsprintf($code, $args);
+    $code = \vsprintf($code, $args);
 
     // break into lines and add one by one to handle indentation
     $lines = Str\split($code, "\n");
-    $last_line = array_pop(&$lines);
+    $last_line = \array_pop(&$lines);
     foreach ($lines as $line) {
       $this->addLine($line);
     }
 
-    if (trim($last_line) === '') {
+    if (\trim($last_line) === '') {
       return $this;
     }
 
@@ -83,7 +83,7 @@ abstract class BaseCodeBuilder implements ICodeBuilder {
     if ($this->isNewLine) {
       if ($this->indentationLevel !== 0) {
         $n = $this->config->getSpacesPerIndentation() * $this->indentationLevel;
-        $this->code->append(str_repeat(' ', $n));
+        $this->code->append(\str_repeat(' ', $n));
       }
       $this->isNewLine = false;
     }
@@ -184,7 +184,7 @@ abstract class BaseCodeBuilder implements ICodeBuilder {
     SprintfFormatString $code,
     mixed ...$args
   ): this {
-    return $this->addWithSuggestedLineBreaks(vsprintf($code, $args));
+    return $this->addWithSuggestedLineBreaks(\vsprintf($code, $args));
   }
 
   /**
@@ -206,8 +206,8 @@ abstract class BaseCodeBuilder implements ICodeBuilder {
       return $this;
     }
 
-    if (count(debug_backtrace()) > 30) {
-      hphpd_break();
+    if (\count(\debug_backtrace()) > 30) {
+      \hphpd_break();
     }
 
     // If there's more than 1 line, add them 1 by 1
@@ -228,7 +228,7 @@ abstract class BaseCodeBuilder implements ICodeBuilder {
       $max_length = $max_length - 2;
     }
 
-    $lines_with_sugg_breaks = explode(self::DELIMITER, $code);
+    $lines_with_sugg_breaks = \explode(self::DELIMITER, $code);
     $final_lines = vec[];
     foreach ($lines_with_sugg_breaks as $line) {
       if (!$line) {
@@ -242,7 +242,7 @@ abstract class BaseCodeBuilder implements ICodeBuilder {
         $last_line = C\lastx($final_lines);
         $final_lines = Vec\take($final_lines, C\count($final_lines) - 1);
         $composite_line = $last_line.' '.$line;
-        if (strlen($composite_line) > $max_length) {
+        if (\strlen($composite_line) > $max_length) {
           $final_lines[] = $last_line;
           $final_lines[] = $line;
         } else {
@@ -251,7 +251,7 @@ abstract class BaseCodeBuilder implements ICodeBuilder {
         }
       }
     }
-    return $this->add(implode("\n  ", $final_lines));
+    return $this->add(\implode("\n  ", $final_lines));
   }
 
   /**
@@ -276,8 +276,8 @@ abstract class BaseCodeBuilder implements ICodeBuilder {
     int $max_length,
   ): bool {
     $line_too_long = false;
-    foreach (explode("\n", $code) as $line) {
-      if (strlen($line) > $max_length) {
+    foreach (\explode("\n", $code) as $line) {
+      if (\strlen($line) > $max_length) {
         $line_too_long = true;
         break;
       }

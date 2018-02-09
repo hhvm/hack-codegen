@@ -50,9 +50,9 @@ abstract class SignedSourceBase {
    *
    */
   public static function signFile(string $file_data): string {
-    $signature = md5(static::preprocess($file_data));
+    $signature = \md5(static::preprocess($file_data));
     $replaced_data =
-      str_replace(static::TOKEN, 'SignedSource<<'.$signature.'>>', $file_data);
+      \str_replace(static::TOKEN, 'SignedSource<<'.$signature.'>>', $file_data);
     if ($replaced_data == $file_data) {
       throw new \Exception(
         'Before signing a file, you must embed a signing token within it.',
@@ -69,7 +69,7 @@ abstract class SignedSourceBase {
    *
    */
   public static function isSigned(string $file_data): bool {
-    return (bool)preg_match(static::getPattern(), $file_data);
+    return (bool)\preg_match(static::getPattern(), $file_data);
   }
 
   /**
@@ -82,13 +82,13 @@ abstract class SignedSourceBase {
    */
   public static function verifySignature(string $file_data): bool {
     $matches = array();
-    if (!preg_match(static::getPattern(), $file_data, &$matches)) {
+    if (!\preg_match(static::getPattern(), $file_data, &$matches)) {
       throw new \Exception('Can not verify the signature of an unsigned file.');
     }
     $replaced_data =
-      str_replace('SignedSource<<'.$matches[1].'>>', static::TOKEN, $file_data);
+      \str_replace('SignedSource<<'.$matches[1].'>>', static::TOKEN, $file_data);
 
-    $signature = md5(static::preprocess($replaced_data));
+    $signature = \md5(static::preprocess($replaced_data));
     return $signature === $matches[1];
   }
 

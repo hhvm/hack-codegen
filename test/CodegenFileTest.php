@@ -195,7 +195,7 @@ final class CodegenFileTest extends CodegenBaseTest {
     $content = Filesystem::readFile($fname);
 
     $new_content =
-      str_replace('// manual_section_here', 'return $this->name;', $content);
+      \str_replace('// manual_section_here', 'return $this->name;', $content);
     $this->assertFalse(
       $content == $new_content,
       "The manual content wasn't replaced. Please fix the test setup!",
@@ -212,7 +212,7 @@ final class CodegenFileTest extends CodegenBaseTest {
     $fname = $this->createAndModifyPartiallyGeneratedFile();
     $this->savePartiallyGeneratedFile($fname);
     $content = Filesystem::readFile($fname);
-    $this->assertTrue(strpos($content, 'this->name') !== false);
+    $this->assertTrue(\strpos($content, 'this->name') !== false);
   }
 
   /**
@@ -224,8 +224,8 @@ final class CodegenFileTest extends CodegenBaseTest {
     $fname = $this->createAndModifyPartiallyGeneratedFile();
     $this->savePartiallyGeneratedFile($fname, true);
     $content = Filesystem::readFile($fname);
-    $this->assertTrue(strpos($content, 'return $this->name;') !== false);
-    $this->assertTrue(strpos($content, 'function extraMethod()') !== false);
+    $this->assertTrue(\strpos($content, 'return $this->name;') !== false);
+    $this->assertTrue(\strpos($content, 'function extraMethod()') !== false);
   }
 
   public function testNoSignature(): void {
@@ -354,18 +354,18 @@ final class CodegenFileTest extends CodegenBaseTest {
       ->addFunction(
         $cgf->codegenFunction('my_func')
           ->addParameter(
-            'string $'.str_repeat('a', 60),
+            'string $'.\str_repeat('a', 60),
           )
           ->addParameter(
-            'string $'.str_repeat('b', 60),
+            'string $'.\str_repeat('b', 60),
           )
           ->setReturnType('(string, string)')
           ->setBody(
             $cgf->codegenHackBuilder()
               ->addReturnf(
                 'tuple($%s, $%s)',
-                str_repeat('a', 60),
-                str_repeat('b', 60),
+                \str_repeat('a', 60),
+                \str_repeat('b', 60),
               )
               ->getCode()
           )
@@ -399,18 +399,18 @@ final class CodegenFileTest extends CodegenBaseTest {
       ->addFunction(
         $cgf->codegenFunction('my_func')
           ->addParameter(
-            'string $'.str_repeat('a', 60),
+            'string $'.\str_repeat('a', 60),
           )
           ->addParameter(
-            'string $'.str_repeat('b', 60),
+            'string $'.\str_repeat('b', 60),
           )
           ->setReturnType('(string, string)')
           ->setBody(
             $cgf->codegenHackBuilder()
               ->addReturnf(
                 'tuple($%s, $%s)',
-                str_repeat('a', 60),
-                str_repeat('b', 60),
+                \str_repeat('a', 60),
+                \str_repeat('b', 60),
               )
               ->getCode()
           )
@@ -435,10 +435,10 @@ final class CodegenFileTest extends CodegenBaseTest {
       ->addFunction(
         $cgf->codegenFunction('my_func')
           ->addParameter(
-            'string $'.str_repeat('a', 60),
+            'string $'.\str_repeat('a', 60),
           )
           ->addParameter(
-            'string $'.str_repeat('b', 60),
+            'string $'.\str_repeat('b', 60),
           )
           ->setReturnType('(string, string)')
           ->setBody(
@@ -447,8 +447,8 @@ final class CodegenFileTest extends CodegenBaseTest {
               ->endManualSection()
               ->addReturnf(
                 'tuple($%s, $%s)',
-                str_repeat('a', 60),
-                str_repeat('b', 60),
+                \str_repeat('a', 60),
+                \str_repeat('b', 60),
               )
               ->getCode()
           )
