@@ -8,6 +8,6 @@ hh_client
 
 hhvm vendor/bin/phpunit test/
 
-composer install --no-dev
 echo > .hhconfig
+rm -rf vendor/hhvm/hhast # avoid circular dependency when fixing things
 hh_server --check $(pwd)
