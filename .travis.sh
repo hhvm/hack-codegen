@@ -6,7 +6,7 @@ composer install
 
 hh_client
 
-hhvm vendor/bin/phpunit tests/
+hhvm vendor/bin/phpunit
 
 echo > .hhconfig
 rm -rf vendor/hhvm/hhast # avoid circular dependency when fixing things
