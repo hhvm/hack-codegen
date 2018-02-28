@@ -204,8 +204,8 @@ function coalesce<T>(?T $_head, ?T ...$rest): ?T {
  *
  * Will take `?T ...$args` when HHVM 3.12 support is dropped.
  */
-function coalescex<T>(?T $_head, ?T ...$_rest): T {
-  $result = coalesce(...\func_get_args());
+function coalescex<T>(?T $head, ?T ...$rest): T {
+  $result = coalesce($head, ...$rest);
   invariant($result !== null, 'All arguments were null');
   return $result;
 }
