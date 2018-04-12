@@ -81,4 +81,4 @@ headers by implementing `IHackCodegenConfig` and passing an instance to
 `HackCodegenFactory`'s constructor.
 
 ## License
-Hack Codegen is BSD-licensed. We also provide an additional patent grant.
+Hack Codegen is MIT-licensed.
