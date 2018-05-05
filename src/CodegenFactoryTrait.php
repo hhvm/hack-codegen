@@ -179,6 +179,12 @@ trait CodegenFactoryTrait implements ICodegenFactory {
     return new CodegenShape($this->getConfig(), $attrs);
   }
 
+  final public function codegenShape_FUTURE(
+    vec<CodegenShapeMember> $members = vec([]),
+  ): CodegenShapeFuture {
+    return new CodegenShapeFuture($this->getConfig(), $members);
+  }
+
   final public function codegenType(string $name): CodegenType {
     return new CodegenType($this->getConfig(), $name);
   }
