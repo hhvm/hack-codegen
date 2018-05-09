@@ -5,7 +5,7 @@
     "require": {
         "hhvm": ">=3.23.0",
         "hhvm/hhvm-autoload": "^1.5",
-        "hhvm/hsl": "^1.0.0"
+        "hhvm/hsl": "^1.0.0|^3.26.0"
     },
     "bin": [ "bin/hh-codegen-verify-signatures" ],
     "authors": [
@@ -35,7 +35,7 @@
         "phpunit/phpunit": "^5.7",
         "91carriage/phpunit-hhi": "^5.6",
         "hhvm/type-assert": "^3.1",
-        "facebook/fbexpect": "^0.4.0",
-        "hhvm/hhast": "^0.4.0"
+        "facebook/fbexpect": "^0.4.0|^1.0.0",
+        "hhvm/hhast": "^0.4.0|^1.0.0"
     }
 }
