@@ -59,4 +59,14 @@ final class CodegenInterfaceTest extends CodegenBaseTest {
 
     $this->assertUnchanged($code);
   }
+
+  public function testInterfaceWithGenerics(): void {
+    $cgf = $this->getCodegenFactory();
+    $code = $cgf
+      ->codegenInterface('IInterfaceWithGenerics')
+      ->addGenerics(Vector {'TKey', 'TObject'})
+      ->render();
+
+    $this->assertUnchanged($code);
+  }
 }
