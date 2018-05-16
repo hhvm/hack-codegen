@@ -14,10 +14,12 @@ namespace Facebook\HackCodegen;
  * Generate code for a shape. Please don't use this class directly; instead use
  * the function codegenShape_FUTURE.  E.g.:
  *
- * codegenShape_FUTURE(vec[
+ * ```
+ * codegenShape_FUTURE(
  *   new CodegenShapeMember('x', 'int'),
  *   (new CodegenShapeMember('y', 'int'))->setIsOptional(),
- * ])
+ * )
+ * ```
  *
  */
 final class CodegenShape_FUTURE implements ICodeBuilderRenderer {
