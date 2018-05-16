@@ -1,6 +1,9 @@
 {
   "roots": [ "src/", "examples/", "test/" ],
   "builtinLinters": "all",
+  "disabledLinters": [
+    "Facebook\\HHAST\\Linters\\UseStatementWithAsLinter"
+  ],
   "overrides": [
     {
       "patterns": [
