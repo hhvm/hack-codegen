@@ -215,7 +215,7 @@ abstract class BaseCodeBuilder implements ICodeBuilder {
     if (C\count($lines) > 1) {
       // The last line shouldn't have a finishing end line,
       // so add it manually
-      list($lines, $last_line) = VecP\pop_backx($lines);
+      $last_line = VecP\pop_backx(inout $lines);
       $this->addLinesWithSuggestedLineBreaks($lines);
       return $this->addWithSuggestedLineBreaks($last_line);
     }
