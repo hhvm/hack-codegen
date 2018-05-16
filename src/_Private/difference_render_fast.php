@@ -10,6 +10,7 @@
 
 namespace Facebook\HackCodegen\_Private;
 
+/** Quick and dirty difff algorithm */
 function difference_render_fast(string $old, string $new): string {
   // UNSAFE_BLOCK
   // split the source text into arrays of lines

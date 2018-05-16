@@ -10,15 +10,24 @@
 
 namespace Facebook\HackCodegen\_Private;
 
+/** Class for building a string, only permitting append operations.
+ * 
+ * The string can be retrived once via the `detach()` method.
+ */
 class StrBuffer {
 
   private string $str = '';
   private bool $detached = false;
 
+  /** @selfdocumenting */
   public function append(mixed $value): void {
     $this->str .= (string)$value;
   }
 
+  /** Return the build string.
+   *
+   * This will only work exactly once.
+   */
   public function detach(): string {
     invariant(!$this->detached, 'The buffer has been already detached');
     $this->detached = true;
