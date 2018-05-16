@@ -12,14 +12,18 @@ namespace Facebook\HackCodegen\_Private\Vec;
 
 use namespace HH\Lib\C;
 
-function pop_back<T>(Container<T> $list): (vec<T>, ?T) {
+/**
+ * Return and remove the last element from a container.
+ *
+ * @throws an exception if the container is empty
+ * @return the last element in the container
+ */
+function pop_backx<T>(inout Container<T> $list): T {
+  invariant(
+    !C\is_empty($list),
+    "%s called, but container is empty",
+    __FUNCTION__,
+  );
   $last = \array_pop(&$list);
-  return tuple(vec($list), $last);
-}
-
-function pop_backx<T>(Container<T> $list): (vec<T>, T) {
-  $list = vec($list);
-  $last = C\lastx($list);
-  \array_pop(&$list);
-  return tuple(vec($list), $last);
+  return $last;
 }
