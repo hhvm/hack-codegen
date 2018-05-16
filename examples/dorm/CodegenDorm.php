@@ -81,7 +81,7 @@ class CodegenDorm {
   private function getLoad(): CodegenMethod {
     $sql = 'select * from '.
       $this->schema->getTableName().
-      ' where '.$this->schema->getIdField().'=$id';
+      ' where '.$this->schema->getIdField().'=".$id."';
 
     // Here's how to build a block of code using hack_builder.
     // Notice that some methods have a sprintf style of arguments

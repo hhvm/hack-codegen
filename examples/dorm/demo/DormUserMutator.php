@@ -6,7 +6,7 @@
  * To re-generate this file run codegen.php DormUserSchema
  *
  *
- * @partially-generated SignedSource<<2907c9297c1fcac4465afbc522b1f46f>>
+ * @partially-generated SignedSource<<9fb8e54530e36453a76d12bf05064db6>>
  */
 
 final class DormUserMutator {
@@ -42,11 +42,11 @@ final class DormUserMutator {
       $this->checkRequiredFields();
       $names = "(".implode(",", $quoted->keys()).")";
       $values = "(".implode(",", $quoted->values()).")";
-      $st = "insert into user $names values $values";
+      $st = "insert into user ".$names." values ".$values;
       $conn->exec($st);
       return (int) $conn->lastInsertId();
     } else {
-      $pairs = $quoted->mapWithKey(($field, $value) ==>  "$field=$value");
+      $pairs = $quoted->mapWithKey(($field, $value) ==>  $field."=".$value);
       $st = "update user set ".implode(",", $pairs)." where user_id=".$this->id;
       $conn->exec($st);
       return $id;

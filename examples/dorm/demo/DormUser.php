@@ -6,7 +6,7 @@
  * To re-generate this file run codegen.php DormUserSchema
  *
  *
- * @partially-generated SignedSource<<60c1cef666778a7213e26b6e305019b0>>
+ * @partially-generated SignedSource<<09509aa1af895b3a95cd41b6c344247c>>
  */
 use namespace Facebook\TypeAssert;
 
@@ -25,7 +25,7 @@ final class DormUser {
 
   public static function load(int $id): ?DormUser {
     $conn = new PDO('sqlite:/path/to/database.db');
-    $cursor = $conn->query("select * from user where user_id=$id");
+    $cursor = $conn->query("select * from user where user_id=".$id."");
     $result = $cursor->fetch(PDO::FETCH_ASSOC);
     if (!$result) {
       return null;

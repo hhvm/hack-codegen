@@ -177,7 +177,7 @@ class CodegenMutator {
       ->addLine('$names = "(".implode(",", $quoted->keys()).")";')
       ->addLine('$values = "(".implode(",", $quoted->values()).")";')
       ->addLinef(
-        '$st = "insert into %s $names values $values";',
+        '$st = "insert into %s ".$names." values ".$values;',
         $this->schema->getTableName(),
       )
       ->addLine('$conn->exec($st);')
@@ -185,7 +185,7 @@ class CodegenMutator {
       ->addElseBlock()
       ->addAssignment(
         '$pairs',
-        '$quoted->mapWithKey(($field, $value) ==>  "$field=$value")',
+        '$quoted->mapWithKey(($field, $value) ==>  $field."=".$value)',
         HackBuilderValues::literal(),
       )
       ->addLinef(
