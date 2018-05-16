@@ -29,7 +29,8 @@ final class CodegenInterface extends CodegenClassBase {
 
   <<__Override>>
   protected function buildDeclaration(HackBuilder $builder): void {
-    $builder->add('interface '.$this->name);
+    $generics_dec = $this->buildGenericsDeclaration();
+    $builder->add('interface '.$this->name.$generics_dec);
     $this->renderInterfaceList($builder, 'extends');
   }
 

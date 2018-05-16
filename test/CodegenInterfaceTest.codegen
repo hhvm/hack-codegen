@@ -17,6 +17,14 @@ interface IExtenderOfTwo
     IOtherExtended {
 }
 
+!@#$%codegentest:testInterfaceWithGenerics
+interface IInterfaceWithGenerics
+  <
+    TKey,
+    TObject
+  > {
+}
+
 !@#$%codegentest:testInterfaceWithStuff
 interface IInterfaceWithStuff {
 
