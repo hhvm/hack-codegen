@@ -11,7 +11,7 @@
 namespace Facebook\HackCodegen\_Private;
 
 /** Class for building a string, only permitting append operations.
- * 
+ *
  * The string can be retrived once via the `detach()` method.
  */
 class StrBuffer {
