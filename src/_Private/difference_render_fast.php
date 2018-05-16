@@ -16,13 +16,13 @@ function difference_render_fast(string $old, string $new): string {
   $t1 = explode("\n", $old);
   $x = array_pop($t1);
   if ($x > '') {
-    $t1[] = "$x\n\\ No newline at end of file";
+    $t1[] = $x."\n\\ No newline at end of file";
   }
 
   $t2 = explode("\n", $new);
   $x = array_pop($t2);
   if ($x > '') {
-    $t2[] = "$x\n\\ No newline at end of file";
+    $t2[] = $x."\n\\ No newline at end of file";
   }
 
   // build a reverse-index array using the line as key and line number as
@@ -143,13 +143,13 @@ function difference_render_fast(string $old, string $new): string {
     }
 
     if ($op > 0) {
-      $xstr = ($x1 == ($x0 + 1)) ? $x1 : ($x0 + 1).",$x1";
-      $ystr = ($y1 == ($y0 + 1)) ? $y1 : ($y0 + 1).",$y1";
+      $xstr = ($x1 == ($x0 + 1)) ? $x1 : ($x0 + 1).",".$x1;
+      $ystr = ($y1 == ($y0 + 1)) ? $y1 : ($y0 + 1).",".$y1;
 
       if ($op == 1) {
-        $out[] = "{$xstr}d{$y1}";
+        $out[] = $xstr."d".$y1;
       } else if ($op == 3) {
-        $out[] = "{$xstr}c{$ystr}";
+        $out[] = $xstr."c".$ystr;
       }
 
       // deleted elems
@@ -159,7 +159,7 @@ function difference_render_fast(string $old, string $new): string {
       }
 
       if ($op == 2) {
-        $out[] = "{$x1}a{$ystr}";
+        $out[] = $x1."a".$ystr;
       } else if ($op == 3) {
         $out[] = '---';
       }

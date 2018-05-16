@@ -18,7 +18,7 @@ if ($argc == 1) {
 }
 $fname = $argv[1];
 if (!file_exists($fname)) {
-  echo "  File doesn't exist: $fname\n\n";
+  echo "  File doesn't exist: ".$fname."\n\n";
   exit(1);
 }
 
@@ -36,7 +36,7 @@ foreach($new_classes as $class_name) {
   if (!$instance instanceof DormSchema) {
     continue;
   }
-  echo "Generating code for $class_name\n";
+  echo "Generating code for ".$class_name."\n";
   (new CodegenDorm($instance))->generate();
   (new CodegenMutator($instance))->generate();
 }

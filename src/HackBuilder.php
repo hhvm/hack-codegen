@@ -74,7 +74,7 @@ final class HackBuilder extends BaseCodeBuilder {
     }
 
     $this
-      ->addWithSuggestedLineBreaks("$func_call_line(")
+      ->addWithSuggestedLineBreaks($func_call_line."(")
       ->newLine()
       ->indent()
       ->addLinesWithSuggestedLineBreaks(Vec\map($params, $line ==> $line.','))
@@ -577,7 +577,7 @@ final class HackBuilder extends BaseCodeBuilder {
     Traversable<string> $params,
   ): this {
     return $this
-      ->addLine("$name(")
+      ->addLine($name."(")
       ->indent()
       ->addLines(Vec\map($params, $line ==> $line.','))
       ->unindent()

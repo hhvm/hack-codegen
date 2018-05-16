@@ -181,7 +181,7 @@ two line breaks. Also note that we include a newline and also '.
     $body = $this
       ->getHackBuilder()
       ->addWithSuggestedLineBreaks(
-        "final class{$del}ClassNameJustLongEnoughToAvoidEightyColumns{$del}".
+        "final class".$del."ClassNameJustLongEnoughToAvoidEightyColumns".$del.
         "extends SomeBaseClass",
       );
     $this->assertUnchanged($body->getCode());
@@ -192,8 +192,8 @@ two line breaks. Also note that we include a newline and also '.
     $body = $this
       ->getHackBuilder()
       ->addWithSuggestedLineBreaks(
-        "final abstract class{$del}ImpossibleClassLongEnoughToCrossEightyColumns".
-        "{$del}extends SomeBaseClass",
+        "final abstract class".$del."ImpossibleClassLongEnoughToCrossEightyColumns".
+$del."extends SomeBaseClass",
       );
     $this->assertUnchanged($body->getCode());
   }
@@ -211,11 +211,11 @@ two line breaks. Also note that we include a newline and also '.
     $body = $this
       ->getHackBuilder()
       ->addMultilineCall(
-        "\$foobarbaz_alphabetagama ={$del}\$this->callSomeThingReallyLongName".
+        "\$foobarbaz_alphabetagama =".$del."\$this->callSomeThingReallyLongName".
         "ReallyReallyLongName",
         Vector {
           '$someSmallParameter',
-          "\$foobarbaz_alphabetagama +{$del}\$foobarbaz_alphabetagamaa +{$del}".
+          "\$foobarbaz_alphabetagama +".$del."\$foobarbaz_alphabetagamaa +".$del.
           "\$foobarbaz_alphabetagamatheta_foobarbaz",
         },
       );
@@ -495,8 +495,8 @@ two line breaks. Also note that we include a newline and also '.
       ->addValue(
         Map { 'foo' => 'bar' },
         HackBuilderValues::map(
-          HackBuilderKeys::lambda(($_config, $v) ==> "'key:$v'"),
-          HackBuilderValues::lambda(($_config, $v) ==> "'value:$v'"),
+          HackBuilderKeys::lambda(($_config, $v) ==> "'key:".$v."'"),
+          HackBuilderValues::lambda(($_config, $v) ==> "'value:".$v."'"),
         ),
       );
     $this->assertUnchanged($body->getCode());

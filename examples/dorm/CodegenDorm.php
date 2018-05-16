@@ -91,7 +91,7 @@ class CodegenDorm {
     $body = $this->codegen->codegenHackBuilder()
       ->addLinef('$conn = new PDO(\'%s\');', $this->schema->getDsn())
       ->add('$cursor = ')
-      ->addMultilineCall('$conn->query', Vector {"\"$sql\""}, true)
+      ->addMultilineCall('$conn->query', Vector {"\"".$sql."\""}, true)
       ->addLine('$result = $cursor->fetch(PDO::FETCH_ASSOC);')
       ->startIfBlock('!$result')
       ->addReturnf('null')
