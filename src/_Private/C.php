@@ -12,6 +12,9 @@ namespace Facebook\HackCodegen\_Private\C;
 
 use namespace HH\Lib\C;
 
+/** Return the first non-null parameter, or throw an exception if there are
+  * none.
+  */
 function coalescevax<T>(?T ...$in): T {
   $x = C\find($in, $v ==> $v !== null);
   invariant(
