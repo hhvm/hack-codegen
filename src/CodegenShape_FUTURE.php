@@ -14,12 +14,13 @@ namespace Facebook\HackCodegen;
  * Generate code for a shape. Please don't use this class directly; instead use
  * the function codegenShape_FUTURE.  E.g.:
  *
- * codegenShape_FUTURE(vec([
+ * codegenShape_FUTURE(vec[
  *   new CodegenShapeMember('x', 'int'),
- *   new CodegenShapeMember('y', 'int'),
- * ]))
+ *   (new CodegenShapeMember('y', 'int'))->setIsOptional(),
+ * ])
+ *
  */
-final class CodegenShapeFuture implements ICodeBuilderRenderer {
+final class CodegenShape_FUTURE implements ICodeBuilderRenderer {
 
   use HackBuilderRenderer;
 
@@ -27,7 +28,7 @@ final class CodegenShapeFuture implements ICodeBuilderRenderer {
 
   public function __construct(
     protected IHackCodegenConfig $config,
-    private vec<CodegenShapeMember> $members = vec([]),
+    private array<CodegenShapeMember> $members,
   ) {
   }
 
@@ -40,11 +41,11 @@ final class CodegenShapeFuture implements ICodeBuilderRenderer {
     $builder->addLine('shape(')->indent();
 
     foreach ($this->members as $member) {
-      $prefix = $member->optional ? '?' : '';
+      $prefix = $member->getIsOptional() ? '?' : '';
       $builder->addLinef(
         "%s'%s' => %s,",
         $prefix,
-        $member->name,
+        $member->getName(),
         $member->getType(),
       );
     }

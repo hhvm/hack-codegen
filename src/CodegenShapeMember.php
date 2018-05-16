@@ -12,15 +12,29 @@
 
  final class CodegenShapeMember {
 
+   private bool $isOptional = false;
+
    public function __construct(
-     public string $name,
+     private string $name,
      private mixed $type,
-     public bool $optional = false,
    ) {
      invariant(
-       is_string($type) || $type instanceof CodegenShapeFuture || $type instanceof CodegenShape,
+       is_string($type) || $type instanceof CodegenShape_FUTURE || $type instanceof CodegenShape,
        "You must provide either a string or shape",
      );
+   }
+
+   public function setIsOptional(bool $value = true): this {
+     $this->isOptional = $value;
+     return $this;
+   }
+
+   public function getIsOptional(): bool {
+     return $this->isOptional;
+   }
+
+   public function getName(): string {
+     return $this->name;
    }
 
    public function getType(): string {
