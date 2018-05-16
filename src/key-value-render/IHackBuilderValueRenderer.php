@@ -10,6 +10,8 @@
 
 namespace Facebook\HackCodegen;
 
+/** Base interface for rendering a value to code */
 interface IHackBuilderValueRenderer<-T> {
+  /** Convert `$input` into code */
   public function render(IHackCodegenConfig $config, T $input): string;
 }

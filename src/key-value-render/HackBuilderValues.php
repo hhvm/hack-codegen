@@ -10,6 +10,7 @@
 
 namespace Facebook\HackCodegen;
 
+/** Factory class for creating `IHackBuilderValueRenderer` instances */
 abstract final class HackBuilderValues {
   // The value will be used literally, which is useful for example when
   // passing a constant such as MyEnum::Value
