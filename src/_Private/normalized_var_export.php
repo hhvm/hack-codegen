@@ -8,8 +8,14 @@
  *
  */
 
-namespace Facebook\HackCodegen;
+namespace Facebook\HackCodegen\_Private;
 
+/** `var_export()`, normalized to produce valid Hack code, rather than PHP.
+ *
+ * This includes changes such as:
+ * - `null` instead of `NULL`
+ * - `vec` instead of `HH\vec`
+ */
 function normalized_var_export(mixed $value): string {
   if ($value === null) {
     // var_export capitalizes NULL

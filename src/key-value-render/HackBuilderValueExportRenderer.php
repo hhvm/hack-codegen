@@ -13,6 +13,6 @@ namespace Facebook\HackCodegen;
 final class HackBuilderValueExportRenderer
   implements IHackBuilderValueRenderer<mixed> {
   final public function render(IHackCodegenConfig $_, mixed $value): string {
-    return normalized_var_export($value);
+    return _Private\normalized_var_export($value);
   }
 }
