@@ -21,7 +21,7 @@ class HackBuilderValueCollectionRenderer<Tv, T as Traversable<Tv>>
   final public function render(IHackCodegenConfig $config, T $values): string {
     $value_renderer = $this->valueRenderer;
     $builder = (new HackBuilder($config))
-      ->add(strip_hh_prefix($this->containerName))
+      ->add(_Private\strip_hh_prefix($this->containerName))
       ->openBrace();
     foreach ($values as $value) {
       $builder->addLinef('%s,', $value_renderer->render($config, $value));

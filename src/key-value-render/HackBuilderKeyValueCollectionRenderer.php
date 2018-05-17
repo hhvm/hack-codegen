@@ -28,7 +28,7 @@ class
     $value_renderer = $this->valueRenderer;
 
     $builder = (new HackBuilder($config))
-      ->add(strip_hh_prefix($this->containerName))
+      ->add(_Private\strip_hh_prefix($this->containerName))
       ->openBrace();
     foreach ($values as $key => $value) {
       $builder->addWithSuggestedLineBreaksf(

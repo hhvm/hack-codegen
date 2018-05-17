@@ -136,7 +136,7 @@ final class HackBuilder extends BaseCodeBuilder {
       return $this;
     }
 
-    $this->add(normalized_var_export(C\first($lines)));
+    $this->add(_Private\normalized_var_export(C\first($lines)));
     if (C\count($lines) === 1) {
       return $this;
     }
@@ -152,9 +152,9 @@ final class HackBuilder extends BaseCodeBuilder {
     $lines
       |> Vec\slice($$, 1, C\count($lines) - 2)
       |>
-      Vec\map($$, $line ==> $this->addLine(normalized_var_export($line).'.'));
+      Vec\map($$, $line ==> $this->addLine(_Private\normalized_var_export($line).'.'));
     // And then add the last
-    $this->add(normalized_var_export(C\last($lines)));
+    $this->add(_Private\normalized_var_export(C\last($lines)));
     if ($indent_non_first_lines) {
       $this->unindent();
     }

@@ -8,7 +8,7 @@
  *
  */
 
-namespace Facebook\HackCodegen;
+namespace Facebook\HackCodegen\_Private;
 
 use namespace HH\Lib\Str;
 
