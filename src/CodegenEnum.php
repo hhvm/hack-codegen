@@ -22,7 +22,7 @@ use namespace HH\Lib\C;
  *  ->render();
  *
  */
-final class CodegenEnum extends CodegenClassBase {
+final class CodegenEnum extends CodegenClassish {
 
   private ?string $declComment = null;
   private string $enumType;

@@ -14,10 +14,9 @@ use namespace HH\Lib\{C, Str, Vec};
 use namespace Facebook\HackCodegen\_Private\C as CP;
 
 /**
- * Abstract class to generate code for a class or trait.
- *
+ * Abstract class to generate code for a class, trait, or interface
  */
-abstract class CodegenClassBase implements ICodeBuilderRenderer {
+abstract class CodegenClassish implements ICodeBuilderRenderer {
 
   use CodegenWithVisibility;
   use CodegenWithAttributes;

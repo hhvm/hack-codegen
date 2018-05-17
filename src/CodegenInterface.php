@@ -23,7 +23,7 @@ namespace Facebook\HackCodegen;
  *   abstract; that will be done for you.
  * - Interfaces cannot use traits.
  */
-final class CodegenInterface extends CodegenClassBase {
+final class CodegenInterface extends CodegenClassish {
 
   use CodegenClassWithInterfaces;
 

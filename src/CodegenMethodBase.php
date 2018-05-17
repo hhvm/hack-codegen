@@ -22,7 +22,7 @@ abstract class CodegenMethodBase extends CodegenFunctionBase
   protected bool $isAbstract = false;
   protected bool $isStatic = false;
   private bool $isFinal = false;
-  private ?CodegenClassBase $containingClass = null;
+  private ?CodegenClassish $containingClass = null;
 
   public function setIsFinal(bool $value = true): this {
     $this->isFinal = $value;
@@ -47,7 +47,7 @@ abstract class CodegenMethodBase extends CodegenFunctionBase
     return $this->isStatic;
   }
 
-  public function setContainingClass(CodegenClassBase $class): this {
+  public function setContainingClass(CodegenClassish $class): this {
     $this->containingClass = $class;
     if ($this->containingClass instanceof CodegenInterface) {
       $this->isAbstract = true;

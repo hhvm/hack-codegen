@@ -39,7 +39,7 @@ final class CodegenFile {
   private string $fileName;
   private string $relativeFileName;
   private vec<string> $otherFileNames = vec[];
-  private vec<CodegenClassBase> $classes = vec[];
+  private vec<CodegenClassish> $classes = vec[];
   private vec<CodegenTrait> $traits = vec[];
   private vec<CodegenFunction> $functions = vec[];
   private vec<CodegenType> $beforeTypes = vec[];
@@ -84,14 +84,14 @@ final class CodegenFile {
     return $this;
   }
 
-  public function addClasses(Traversable<CodegenClassBase> $classes): this {
+  public function addClasses(Traversable<CodegenClassish> $classes): this {
     foreach ($classes as $class) {
       $this->addClass($class);
     }
     return $this;
   }
 
-  public function addClass(CodegenClassBase $class): this {
+  public function addClass(CodegenClassish $class): this {
     $this->classes[] = $class;
     return $this;
   }
@@ -106,7 +106,7 @@ final class CodegenFile {
     return $this;
   }
 
-  public function getClasses(): vec<CodegenClassBase> {
+  public function getClasses(): vec<CodegenClassish> {
     return $this->classes;
   }
 

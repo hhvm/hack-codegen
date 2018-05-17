@@ -21,7 +21,7 @@ use namespace HH\Lib\C;
  *  ->render();
  *
  */
-final class CodegenTrait extends CodegenClassBase {
+final class CodegenTrait extends CodegenClassish {
   use CodegenClassWithInterfaces;
 
   private vec<string> $requireClass = vec[];

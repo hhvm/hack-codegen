@@ -23,7 +23,7 @@ use namespace HH\Lib\Vec;
  *  ->render();
  *
  */
-final class CodegenClass extends CodegenClassBase {
+final class CodegenClass extends CodegenClassish {
 
   use CodegenClassWithInterfaces;
 
