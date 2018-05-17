@@ -8,7 +8,12 @@
  *
  */
 
-namespace Facebook\HackCodegen;
+namespace Facebook\HackCodegen\_Private;
+
+use type Facebook\HackCodegen\{
+  IHackBuilderKeyRenderer,
+  IHackCodegenConfig,
+};
 
 final class HackBuilderKeyLambdaRenderer<T as arraykey>
   implements IHackBuilderKeyRenderer<T> {

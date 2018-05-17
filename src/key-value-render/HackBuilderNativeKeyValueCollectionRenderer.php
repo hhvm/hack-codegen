@@ -8,14 +8,21 @@
  *
  */
 
-namespace Facebook\HackCodegen;
+namespace Facebook\HackCodegen\_Private;
 
-class
-  HackBuilderNativeKeyValueCollectionRenderer<
-    Tk as arraykey,
-    Tv,
-    T as KeyedTraversable<Tk, Tv>,
-  > implements IHackBuilderValueRenderer<T> {
+use type Facebook\HackCodegen\{
+  ContainerType,
+  HackBuilder,
+  IHackBuilderKeyRenderer,
+  IHackBuilderValueRenderer,
+  IHackCodegenConfig,
+};
+
+final class HackBuilderNativeKeyValueCollectionRenderer<
+  Tk as arraykey,
+  Tv,
+  T as KeyedTraversable<Tk, Tv>,
+> implements IHackBuilderValueRenderer<T> {
   public function __construct(
     private ContainerType $container,
     private IHackBuilderKeyRenderer<Tk> $keyRenderer,

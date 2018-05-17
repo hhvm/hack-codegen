@@ -8,7 +8,15 @@
  *
  */
 
-namespace Facebook\HackCodegen;
+namespace Facebook\HackCodegen\_Private;
+
+use type Facebook\HackCodegen\{
+  ContainerType,
+  HackBuilder,
+  IHackBuilderKeyRenderer,
+  IHackBuilderValueRenderer,
+  IHackCodegenConfig,
+};
 
 class HackBuilderNativeValueCollectionRenderer<Tv, T as Traversable<Tv>>
   implements IHackBuilderValueRenderer<T> {

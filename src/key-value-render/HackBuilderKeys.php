@@ -13,26 +13,27 @@ namespace Facebook\HackCodegen;
 /** Factory class for creating `IHackBuilderKeyRenderer` instances */
 abstract final class HackBuilderKeys {
   /**
-   * The key will be used literally, which is useful for example when passing a
-   * constant such as MyEnum::Value
+   * Render the key with no changes or escaping.
+   *
+   * This effectively means that the key should be a code literal.
    */
   public static function literal(): IHackBuilderKeyRenderer<string> {
-    return new HackBuilderLiteralRenderer();
+    return new _Private\HackBuilderLiteralRenderer();
   }
 
   /**
-   * The key will be exported to be rendered according the type.
+   * Render the key as Hack code that produces the same value.
    *
-   * For example, E.g. an `int` will be rendered without changes but a string
+   * For example, an `int` will be rendered without changes but a `string`
    * will be rendered with quotes.
    */
   public static function export(): IHackBuilderKeyRenderer<arraykey> {
-    return new HackBuilderKeyExportRenderer();
+    return new _Private\HackBuilderKeyExportRenderer();
   }
 
-  /** The key will be renderered as a classname<T> */
+  /** Assume the key is a classname, and render a `::class` constant */
   public static function classname(): IHackBuilderKeyRenderer<string> {
-    return new HackBuilderClassnameRenderer();
+    return new _Private\HackBuilderClassnameRenderer();
   }
 
   /**
@@ -41,6 +42,6 @@ abstract final class HackBuilderKeys {
   public static function lambda<T as arraykey>(
     (function(IHackCodegenConfig, T): string) $render,
   ): IHackBuilderKeyRenderer<T> {
-    return new HackBuilderKeyLambdaRenderer($render);
+    return new _Private\HackBuilderKeyLambdaRenderer($render);
   }
 }
