@@ -19,7 +19,7 @@
      private mixed $type,
    ) {
      invariant(
-       is_string($type) || $type instanceof CodegenShape_FUTURE || $type instanceof CodegenShape,
+       is_string($type) || $type instanceof CodegenShape_FUTURE,
        "You must provide either a string or shape",
      );
    }

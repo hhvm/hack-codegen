@@ -54,21 +54,6 @@ final class CodegenShapeFutureTest extends CodegenBaseTest {
     $this->assertUnchanged($shape->render());
   }
 
-  public function testNestedShapeLegacy(): void {
-    $nested = $this
-      ->getCodegenFactory()
-      ->codegenShape(array('x' => 'int', 'y' => 'int'));
-
-    $shape = $this
-      ->getCodegenFactory()
-      ->codegenShape_FUTURE(
-        new CodegenShapeMember('url', 'string'),
-        (new CodegenShapeMember('point', $nested))->setIsOptional(),
-      );
-
-    $this->assertUnchanged($shape->render());
-  }
-
   public function testMultipleNestedShapes(): void {
     $first = $this
       ->getCodegenFactory()
