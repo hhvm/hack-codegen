@@ -13,7 +13,7 @@ namespace Facebook\HackCodegen;
 use namespace HH\Lib\{C, Str, Vec};
 use namespace Facebook\HackCodegen\_Private\Vec as VecP;
 
-abstract class BaseCodeBuilder implements ICodeBuilder {
+abstract class BaseCodeBuilder {
 
   const string DELIMITER = "\t";
 
