@@ -24,7 +24,7 @@ abstract final class HackBuilderKeys {
   /**
    * Render the key as Hack code that produces the same value.
    *
-   * For example, E.g. an `int` will be rendered without changes but a `string`
+   * For example, an `int` will be rendered without changes but a `string`
    * will be rendered with quotes.
    */
   public static function export(): IHackBuilderKeyRenderer<arraykey> {
