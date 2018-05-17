@@ -8,7 +8,15 @@
  *
  */
 
-namespace Facebook\HackCodegen;
+namespace Facebook\HackCodegen\_Private;
+
+use type Facebook\HackCodegen\{
+  HackBuilder,
+  HackBuilderKeys,
+  IHackBuilderKeyRenderer,
+  IHackBuilderValueRenderer,
+  IHackCodegenConfig,
+};
 
 final class HackBuilderShapeRenderer
   implements IHackBuilderValueRenderer<shape(/* HH_FIXME[0003] */...)> {

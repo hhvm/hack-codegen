@@ -8,11 +8,16 @@
  *
  */
 
-namespace Facebook\HackCodegen;
+namespace Facebook\HackCodegen\_Private;
+
+use type Facebook\HackCodegen\{
+  IHackBuilderKeyRenderer,
+  IHackCodegenConfig,
+};
 
 final class HackBuilderKeyExportRenderer
   implements IHackBuilderKeyRenderer<arraykey> {
   final public function render(IHackCodegenConfig $_, arraykey $value): string {
-    return _Private\normalized_var_export($value);
+    return normalized_var_export($value);
   }
 }
