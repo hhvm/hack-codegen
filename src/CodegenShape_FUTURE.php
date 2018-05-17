@@ -30,7 +30,7 @@ final class CodegenShape_FUTURE implements ICodeBuilderRenderer {
 
   public function __construct(
     protected IHackCodegenConfig $config,
-    private array<CodegenShapeMember> $members,
+    private vec<CodegenShapeMember> $members,
   ) {
   }
 
