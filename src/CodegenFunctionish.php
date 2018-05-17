@@ -15,7 +15,7 @@ use namespace HH\Lib\{Str, Vec};
 /**
  * Base class to generate a function or a method.
  */
-abstract class CodegenFunctionBase implements ICodeBuilderRenderer {
+abstract class CodegenFunctionish implements ICodeBuilderRenderer {
 
   use HackBuilderRenderer;
   use CodegenWithAttributes;
@@ -181,7 +181,7 @@ abstract class CodegenFunctionBase implements ICodeBuilderRenderer {
 
   protected function getMaxCodeLength(): int {
     $max_length = $this->config->getMaxLineLength();
-    if ($this instanceof CodegenMethodBase) {
+    if ($this instanceof CodegenMethodish) {
       $max_length -= $this->config->getSpacesPerIndentation();
     }
     return $max_length;

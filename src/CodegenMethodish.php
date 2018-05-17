@@ -12,9 +12,11 @@ namespace Facebook\HackCodegen;
 
 /**
  * Base class to generate a method or a constructor.
- * See CodegenMethod or CodegenConstructor
+ *
+ * @see CodegenMethod
+ * @see CodegenConstructor
  */
-abstract class CodegenMethodBase extends CodegenFunctionBase
+abstract class CodegenMethodish extends CodegenFunctionish
   implements ICodeBuilderRenderer {
 
   use CodegenWithVisibility;

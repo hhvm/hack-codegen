@@ -21,5 +21,5 @@ namespace Facebook\HackCodegen;
  *   ->render();
  *
  */
-final class CodegenFunction extends CodegenFunctionBase {
+final class CodegenFunction extends CodegenFunctionish {
 }

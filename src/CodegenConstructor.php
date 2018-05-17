@@ -17,7 +17,7 @@ namespace Facebook\HackCodegen;
  *  ->setBody('$this->x = new Foo();')
  *  ->render();
  */
-final class CodegenConstructor extends CodegenMethodBase {
+final class CodegenConstructor extends CodegenMethodish {
   public function __construct(IHackCodegenConfig $config) {
     parent::__construct($config, '__construct');
   }
