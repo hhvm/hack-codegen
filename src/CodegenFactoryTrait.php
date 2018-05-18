@@ -12,7 +12,13 @@ namespace Facebook\HackCodegen;
 
 use namespace HH\Lib\{C, Vec};
 
+/**
+ * Trait to implement `ICodegenFactory` if no special behavior is provided.
+ *
+ * You must implement `getConfig()`, but all other methods are final.
+ */
 trait CodegenFactoryTrait implements ICodegenFactory {
+  /** @selfdocumenting */
   public abstract function getConfig(): IHackCodegenConfig;
 
   final public function codegenConstructor(): CodegenConstructor {

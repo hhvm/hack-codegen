@@ -10,12 +10,21 @@
 
 namespace Facebook\HackCodegen;
 
+/**
+ * An `IHackCodegenFactory` that takes a configuration object.
+ *
+ * To avoid needing to specify the configuration at every call site, you
+ * can create your own class using `CodegenFactoryTrait`, or directly
+ * implement `ICodegenFactory`.
+ */
 final class HackCodegenFactory {
   use CodegenFactoryTrait;
 
+  /** @selfdocumenting */
   public function __construct(private IHackCodegenConfig $config) {
   }
 
+  <<__Override>>
   public function getConfig(): IHackCodegenConfig {
     return $this->config;
   }
