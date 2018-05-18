@@ -420,9 +420,16 @@ abstract class CodegenClassish implements ICodeBuilderRenderer {
     return dict[];
   }
 
+  /** Append just the body of the class (between `{` and `}` to a
+   * `HackBuilder` */
   abstract protected function appendBodyToBuilder(HackBuilder $builder): void;
 
-  public function appendToBuilder(HackBuilder $builder): HackBuilder {
+  /** Append the entire declaration to a `HackBuilder`.
+   *
+   * This includes the keywords, interface declaraitons, etc - and the
+   * body.
+   */
+  final public function appendToBuilder(HackBuilder $builder): HackBuilder {
     $generated_from =
       $this->generatedFrom ? $this->generatedFrom->render() : null;
 
