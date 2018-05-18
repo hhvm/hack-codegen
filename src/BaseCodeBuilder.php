@@ -13,7 +13,7 @@ namespace Facebook\HackCodegen;
 use namespace HH\Lib\{C, Str, Vec};
 use namespace Facebook\HackCodegen\_Private\Vec as VecP;
 
-/** Class contining basic language-agnostic code generation functions.
+/** Class containing basic language-agnostic code generation functions.
  *
  * This should not be used directly; instantiable language-specific subclasses
  * should be used to generate code. For example, Hack code is generated using
