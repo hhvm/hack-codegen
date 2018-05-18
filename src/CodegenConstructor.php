@@ -11,13 +11,16 @@
 namespace Facebook\HackCodegen;
 
 /**
- * Generate code for a constructor. E.g.
+ * Generate code for a constructor.
  *
- * codegen_constructor()
+ * ```
+ * $codegen_factory->codegenConstructor()
  *  ->setBody('$this->x = new Foo();')
  *  ->render();
+ * ```
  */
 final class CodegenConstructor extends CodegenMethodish {
+  /** @selfdocumenting */
   public function __construct(IHackCodegenConfig $config) {
     parent::__construct($config, '__construct');
   }
