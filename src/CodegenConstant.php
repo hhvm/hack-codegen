@@ -10,6 +10,11 @@
 
 namespace Facebook\HackCodegen;
 
+/**
+ * Generate code for a constant that is not part of a class.
+ *
+ * @see IHackCodegenFactory::codegenConstant
+ */
 final class CodegenConstant implements ICodeBuilderRenderer {
   use HackBuilderRenderer;
 
@@ -17,38 +22,51 @@ final class CodegenConstant implements ICodeBuilderRenderer {
   private ?string $type;
   private ?string $value = null;
 
+  /** @selfdocumenting */
   public function __construct(
     protected IHackCodegenConfig $config,
     private string $name,
   ) {
   }
 
+  /** @selfdocumenting */
   public function getName(): string {
     return $this->name;
   }
 
+  /** @selfdocumenting */
   public function getType(): ?string {
     return $this->type;
   }
 
+  /** @selfdocumenting */
   public function getValue(): mixed {
     return $this->value;
   }
 
+  /** @selfdocumenting */
   public function setDocBlock(string $comment): this {
     $this->comment = $comment;
     return $this;
   }
 
+  /** @selfdocumenting */
   public function setType(string $type): this {
     $this->type = $type;
     return $this;
   }
 
+  /** Set the type of the constant using a %-placeholder format string */
   public function setTypef(SprintfFormatString $format, mixed ...$args): this {
     return $this->setType(\vsprintf($format, $args));
   }
 
+  /**
+   * Set the value of the constant using a renderer.
+   *
+   * @param $renderer a renderer for the value. In general, this should be
+   *   created using `HackBuilderValues`
+   */
   public function setValue<T>(
       T $value,
       IHackBuilderValueRenderer<T> $renderer,
