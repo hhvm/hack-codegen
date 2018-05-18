@@ -13,6 +13,12 @@ namespace Facebook\HackCodegen;
 use namespace HH\Lib\{C, Str, Vec};
 use namespace Facebook\HackCodegen\_Private\Vec as VecP;
 
+/** Class containing basic language-agnostic code generation functions.
+ *
+ * This should not be used directly; instantiable language-specific subclasses
+ * should be used to generate code. For example, Hack code is generated using
+ * the `HackBuilder` class.
+ */
 abstract class BaseCodeBuilder {
 
   const string DELIMITER = "\t";
@@ -27,6 +33,14 @@ abstract class BaseCodeBuilder {
     $this->code = new _Private\StrBuffer();
   }
 
+  /** Append a new line.
+   *
+   * This will always append a new line, even if the previous character was
+   * a new line.
+   *
+   * To add a new line character only if we are not at the start of a line, use
+   * `ensureNewLine()`.
+   */
   final public function newLine(): this {
     $this->code->append("\n");
     $this->isNewLine = true;
@@ -51,18 +65,33 @@ abstract class BaseCodeBuilder {
   }
 
   /**
-   * Add the code to the buffer (sprintf style may be used).
-   * It automatically deals with indentation.  The code may contain line breaks.
-   * If code is null, nothing will be added
+   * Add code to the buffer.
+   *
+   * It automatically deals with indentation, and the code may contain line
+   * breaks.
+   *
+   * If code is `null`, nothing will be added.
+   *
+   * For format-string support, see `addf()`
    */
   final public function add(?string $code): this {
+    if ($code === null) {
+      return $this;
+    }
     return $this->addf('%s', $code);
   }
+
+  /** Add code to the buffer, using a % placeholder format string. */
   final public function addf(SprintfFormatString $code, mixed ...$args): this {
     return $this->addvf((string) $code, $args);
   }
 
-  final public function addvf(string $code, array<mixed> $args): this {
+  /** Add code to the buffer, using a % placeholder format string and
+   * an array of arguments.
+   *
+   * This is unsafe. Use `addf` instead if you have a literal format string.
+   */
+  final protected function addvf(string $code, array<mixed> $args): this {
     if ($code === null) {
       return $this;
     }
@@ -94,7 +123,7 @@ abstract class BaseCodeBuilder {
   }
 
   /**
-   * If the condition evaluates to true, the code will be added to the buffer.
+   * If the condition is true, add code to the buffer; otherwise, do nothing.
    */
   final public function addIf(
     bool $condition,
@@ -106,6 +135,10 @@ abstract class BaseCodeBuilder {
     return $this;
   }
 
+  /**
+   * If the condition is true, add code to the buffer using a %-placeholder
+   * format string and arguments; otherwise, do nothing.
+   */
   final public function addIff(
     bool $condition,
     SprintfFormatString $code,
@@ -117,6 +150,9 @@ abstract class BaseCodeBuilder {
     return $this;
   }
 
+  /**
+   * Add code using the %-placeholder format string and array of values, then
+   * insert a newline. */
   final protected function addLineImplvf(
     ?string $code,
     array<mixed> $args,
@@ -125,8 +161,9 @@ abstract class BaseCodeBuilder {
   }
 
   /**
-   * If the condition evaluates to true, the code will be added to the buffer
-   * with a new line.
+   * If the condition is true, append the code followed by a newline.
+   *
+   * @see addLineIff
    */
   final public function addLineIf(
     bool $condition,
@@ -135,6 +172,10 @@ abstract class BaseCodeBuilder {
     return $this->addLineIff($condition, '%s', $code);
   }
 
+  /**
+   * If the condition is true, append code to the buffer using a %-placeholder
+   * format string and arguments, followed by a newline.
+   */
   final public function addLineIff(
     bool $condition,
     SprintfFormatString $code,
@@ -148,12 +189,19 @@ abstract class BaseCodeBuilder {
 
   /**
    * Add the code to the buffer followed by a new line.
-   * If code is null, nothing will be added
+   *
+   * If code is `null`, nothing will be added.
+   * For %-placeholder format strings, use `addLinef()`.
    */
   final public function addLine(?string $code): this {
+    if ($code === null) {
+      return $this;
+    }
     return $this->addLinef('%s', $code);
   }
 
+  /** Add code specified using a %-placeholder format string and arguments,
+   * followed by a newline */
   final public function addLinef(
     SprintfFormatString $code,
     mixed ...$args
@@ -162,7 +210,7 @@ abstract class BaseCodeBuilder {
   }
 
   /**
-   * Add each element of the Traversable as a new line
+   * Add each element of the `Traversable` as a new line
    */
   final public function addLines(Traversable<string> $lines): this {
     foreach ($lines as $line) {
@@ -180,6 +228,11 @@ abstract class BaseCodeBuilder {
     return $this;
   }
 
+  /**
+   * Insert code with %-placeholder format strings and suggested line breaks.
+   *
+   * @see `addWithSuggestedLineBreaks` for details on the behavior.
+   */
   final public function addWithSuggestedLineBreaksf(
     SprintfFormatString $code,
     mixed ...$args
@@ -191,23 +244,18 @@ abstract class BaseCodeBuilder {
    * Let's the user suggest linebreaks in the code string provided, marked by
    * the delimiter. The max length is calculated based on the current
    * indentation level.
+   *
    * If the code string exceeds the max length
    *        - Preferentially uses the delimiter to break the line
    *        - If some part is too big to fit, it lets it be.
    * If the code string or a part doesn't exceed the max length
    *        - Replaces the delimiter with space.
    *
-   * @param delimiter e.g "\t" The function respects all other chars except
-   *                  the delimiter which it always replaces
-   *                  either with " " or "\n".
+   * The delimiter is `BaseCodeBuilder::DELIMITER`.
    */
   final public function addWithSuggestedLineBreaks(?string $code): this {
     if ($code === null) {
       return $this;
-    }
-
-    if (\count(\debug_backtrace()) > 30) {
-      \hphpd_break();
     }
 
     // If there's more than 1 line, add them 1 by 1
@@ -267,22 +315,27 @@ abstract class BaseCodeBuilder {
     return $this;
   }
 
+  /** The logical indentation level.
+   *
+   * How many levels the current code is nested. For the number of spaces
+   * used for a single logical indentation, see
+  * `IHackCodegenConfig::getSpacesPerIndentation()`.
+  */
   final protected function setIndentationLevel(int $level): void {
     $this->indentationLevel = $level;
   }
 
+  /** Returns true if any lines are longer than the maximum length */
   final protected static function checkIfLineIsTooLong(
     string $code,
     int $max_length,
   ): bool {
-    $line_too_long = false;
-    foreach (\explode("\n", $code) as $line) {
-      if (\strlen($line) > $max_length) {
-        $line_too_long = true;
-        break;
+    foreach (Str\split($code, "\n") as $line) {
+      if (Str\length($line) > $max_length) {
+        return true;
       }
     }
-    return $line_too_long;
+    return false;
   }
 
   /**
@@ -293,11 +346,21 @@ abstract class BaseCodeBuilder {
       $this->config->getSpacesPerIndentation() * $this->indentationLevel;
   }
 
+  /**
+   * Increase the logical indentation level.
+   *
+   * @see unindent()
+   */
   final public function indent(): this {
     $this->indentationLevel++;
     return $this;
   }
 
+  /**
+   * Decrease the logical indentation level.
+   *
+   * @see indent()
+   */
   final public function unindent(): this {
     invariant(
       $this->indentationLevel >= 1,
@@ -308,7 +371,9 @@ abstract class BaseCodeBuilder {
   }
 
   /**
-   * Get the code that was inserted in the buffer.
+   * Get all the code that has been appended to the buffer.
+   *
+   * This may only be called once.
    */
   final public function getCode(): string {
     invariant(
@@ -320,6 +385,8 @@ abstract class BaseCodeBuilder {
   }
 
   /**
+   * Create a new builder for the same scope, but a new buffer.
+   *
    * clone() doesn't work as they end up sharing the same String Buffer, sharing
    * all the history (code already added to it).
    * So, if code is detached from the clone, it gets detached from original
