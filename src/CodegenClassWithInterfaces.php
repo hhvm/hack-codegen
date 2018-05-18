@@ -12,9 +12,18 @@ namespace Facebook\HackCodegen;
 
 use namespace HH\Lib\{C, Vec};
 
+/** Functionality shared by all class-like definitions that are able to
+ * implement interfaces.
+ *
+ * For example, classes and traits can implement interfaces, but enums
+ * can't.
+ */
 trait CodegenClassWithInterfaces {
+  require extends CodegenClassish;
+
   private vec<CodegenImplementsInterface> $interfaces = vec[];
 
+  /** @selfdocumenting */
   public function setInterfaces(
     Traversable<CodegenImplementsInterface> $value,
   ): this {
@@ -26,11 +35,13 @@ trait CodegenClassWithInterfaces {
     return $this;
   }
 
+  /** @selfdocumenting */
   public function addInterface(CodegenImplementsInterface $value): this {
     $this->interfaces[] = $value;
     return $this;
   }
 
+  /** @selfdocumenting */
   public function addInterfaces(
     Traversable<CodegenImplementsInterface> $interfaces,
   ): this {
@@ -38,6 +49,7 @@ trait CodegenClassWithInterfaces {
     return $this;
   }
 
+  /** Return the list of interfaces implemented by the generated class */
   public function getImplements(): vec<string> {
     // Interface<T> becomes Interface
     return Vec\map(
@@ -49,7 +61,8 @@ trait CodegenClassWithInterfaces {
     );
   }
 
-  public function renderInterfaceList(
+  /** @selfdocumenting */
+  protected function renderInterfaceList(
     HackBuilder $builder,
     string $introducer,
   ): void {
