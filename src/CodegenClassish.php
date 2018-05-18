@@ -14,7 +14,12 @@ use namespace HH\Lib\{C, Str, Vec};
 use namespace Facebook\HackCodegen\_Private\C as CP;
 
 /**
- * Abstract class to generate code for a class, trait, or interface
+ * Abstract class to generate class-like definitions.
+ *
+ * @see CodegenClass
+ * @see CodegenInterface
+ * @see CodegenTrait
+ * @see CodegenEnum
  */
 abstract class CodegenClassish implements ICodeBuilderRenderer {
 
@@ -44,16 +49,28 @@ abstract class CodegenClassish implements ICodeBuilderRenderer {
   ) {
   }
 
+  /** @selfdocumenting */
   public function getName(): string {
     return $this->name;
   }
 
   /**
-   * E.g.
-   * $class->setGenerics(Map {'TRead' => null, 'TWrite' => 'T'})
+   * Add generic parameters.
+   *
+   * For example:
+   *
+   * ```
+   * $class->addGenerics(vec['TRead', 'TWrite as T']);
+   * ```
    *
    * Will generate:
+   *
+   * ```
    * class MyClass<TRead, TWrite as T> {
+   * ```
+   *
+   * @see addGeneric
+   * @see addGenericf
    */
   public function addGenerics(
     Traversable<string> $generics_decl,
@@ -64,6 +81,10 @@ abstract class CodegenClassish implements ICodeBuilderRenderer {
     return $this;
   }
 
+  /** Add a generic parameter using a %-placeholder format string.
+   *
+   * @see addGenerics
+   */
   public function addGenericf(
     SprintfFormatString $format,
     mixed ...$args
@@ -72,6 +93,11 @@ abstract class CodegenClassish implements ICodeBuilderRenderer {
     return $this;
   }
 
+  /** Add a generic parameter.
+   *
+   * @see addGenerics
+   * @see addGenericsf
+   */
   public function addGeneric(
     string $decl,
   ): this {
@@ -79,6 +105,7 @@ abstract class CodegenClassish implements ICodeBuilderRenderer {
     return $this;
   }
 
+  /** @selfdocumenting */
   public function addMethods(Traversable<CodegenMethod> $methods): this {
     foreach ($methods as $method) {
       $this->addMethod($method);
@@ -86,22 +113,26 @@ abstract class CodegenClassish implements ICodeBuilderRenderer {
     return $this;
   }
 
+  /** @selfdocumenting */
   public function addMethod(CodegenMethod $method): this {
     $method->setContainingClass($this);
     $this->methods[] = $method;
     return $this;
   }
 
+  /** @selfdocumenting */
   public function setDocBlock(string $comment): this {
     $this->docBlock = $comment;
     return $this;
   }
 
+  /** @selfdocumenting */
   public function setGeneratedFrom(CodegenGeneratedFrom $from): this {
     $this->generatedFrom = $from;
     return $this;
   }
 
+  /** @selfdocumenting */
   protected function getTraits(): vec<string> {
     // Trait<T> becomes Trait
     return Vec\map(
@@ -113,6 +144,7 @@ abstract class CodegenClassish implements ICodeBuilderRenderer {
     );
   }
 
+  /** @selfdocumenting */
   public function addTraits(Traversable<CodegenUsesTrait> $traits): this {
     foreach ($traits as $trait) {
       $this->addTrait($trait);
@@ -120,11 +152,13 @@ abstract class CodegenClassish implements ICodeBuilderRenderer {
     return $this;
   }
 
+  /** @selfdocumenting */
   public function addTrait(CodegenUsesTrait $trait): this {
     $this->traits[] = $trait;
     return $this;
   }
 
+  /** @selfdocumenting */
   public function addTypeConst(
     string $name,
     string $type,
@@ -138,6 +172,7 @@ abstract class CodegenClassish implements ICodeBuilderRenderer {
     );
   }
 
+  /** @selfdocumenting */
   public function addPartiallyAbstractTypeConst(
     string $name,
     string $type,
@@ -152,6 +187,7 @@ abstract class CodegenClassish implements ICodeBuilderRenderer {
     );
   }
 
+  /** @selfdocumenting */
   public function addAbstractTypeConst(
     string $name,
     string $type,
@@ -163,6 +199,7 @@ abstract class CodegenClassish implements ICodeBuilderRenderer {
     );
   }
 
+  /** @selfdocumenting */
   public function addClassNameConst(
     string $type,
     string $name,
@@ -176,6 +213,7 @@ abstract class CodegenClassish implements ICodeBuilderRenderer {
     );
   }
 
+  /** @selfdocumenting */
   public function addAbstractClassNameConst(
     string $type,
     string $name,
@@ -187,6 +225,7 @@ abstract class CodegenClassish implements ICodeBuilderRenderer {
     );
   }
 
+  /** @selfdocumenting */
   public function addConst<T>(
     string $name,
     T $value,
@@ -198,6 +237,7 @@ abstract class CodegenClassish implements ICodeBuilderRenderer {
     return $this;
   }
 
+  /** @selfdocumenting */
   public function addAbstractConst(
     string $name,
     ?string $comment = null,
@@ -206,11 +246,13 @@ abstract class CodegenClassish implements ICodeBuilderRenderer {
     return $this;
   }
 
+  /** @selfdocumenting */
   public function addProperty(CodegenProperty $var): this {
     $this->vars[] = $var;
     return $this;
   }
 
+  /** @selfdocumenting */
   public function addProperties(Traversable<CodegenProperty> $vars): this {
     $this->vars = Vec\concat(
       $this->vars,
@@ -220,8 +262,12 @@ abstract class CodegenClassish implements ICodeBuilderRenderer {
   }
 
   /**
-   * If value is set to true, the class will have a section for manually adding
-   * methods.  You may specify a name for the section, which will appear in
+   * Set whether or not the class has a section to contain manually written
+   * or modified methods.
+   *
+   * Manual method sections appear at the bottom of the class.
+   *
+   * You may specify a name for the section, which will appear in
    * the comment and is used to merge the code when re-generating it.
    * You may also specify a default content for the manual section, e.g.
    * a comment indicating that additional methods should be placed there.
@@ -239,7 +285,11 @@ abstract class CodegenClassish implements ICodeBuilderRenderer {
 
   /**
    * If value is set to true, the class will have a section for manually adding
-   * declarations.  You may specify a name for the section, which will appear in
+   * declarations, such as type constants.
+   *
+   * Manual declaration sections appear at the top of the class.
+   *
+   * You may specify a name for the section, which will appear in
    * the comment and is used to merge the code when re-generating it.
    * You may also specify a default content for the manual section, e.g.
    * a comment indicating that additional declarations should be placed there.
@@ -255,6 +305,7 @@ abstract class CodegenClassish implements ICodeBuilderRenderer {
     return $this;
   }
 
+  /** Requires subclasses to have compatible constructors. */
   public function setIsConsistentConstruct(bool $value = true): this {
     $this->isConsistentConstruct = $value;
     return $this;
@@ -361,6 +412,7 @@ abstract class CodegenClassish implements ICodeBuilderRenderer {
     }
   }
 
+  /** Returns all the attributes defined on the class */
   protected function getExtraAttributes(): dict<string, vec<string>> {
     if ($this->isConsistentConstruct) {
       return dict['__ConsistentConstruct' => vec[]];
@@ -397,60 +449,5 @@ abstract class CodegenClassish implements ICodeBuilderRenderer {
     $builder->closeBrace();
 
     return $builder;
-  }
-}
-
-trait CodegenClassWithInterfaces {
-  private vec<CodegenImplementsInterface> $interfaces = vec[];
-
-  public function setInterfaces(
-    Traversable<CodegenImplementsInterface> $value,
-  ): this {
-    invariant(
-      C\is_empty($this->interfaces),
-      'interfaces have already been set',
-    );
-    $this->interfaces = vec($value);
-    return $this;
-  }
-
-  public function addInterface(CodegenImplementsInterface $value): this {
-    $this->interfaces[] = $value;
-    return $this;
-  }
-
-  public function addInterfaces(
-    Traversable<CodegenImplementsInterface> $interfaces,
-  ): this {
-    $this->interfaces = Vec\concat($this->interfaces, $interfaces);
-    return $this;
-  }
-
-  public function getImplements(): vec<string> {
-    // Interface<T> becomes Interface
-    return Vec\map(
-      $this->interfaces,
-      $interface ==> {
-        $name = $interface->getName();
-        return \strstr($name, '<', true) ?: $name;
-      },
-    );
-  }
-
-  public function renderInterfaceList(
-    HackBuilder $builder,
-    string $introducer,
-  ): void {
-    if (!C\is_empty($this->interfaces)) {
-      $builder->newLine()->indent()->addLine($introducer);
-      $i = 0;
-      foreach ($this->interfaces as $interface) {
-        $i++;
-        $builder->addRenderer($interface);
-        $builder->addLineIf($i !== C\count($this->interfaces), ',');
-      }
-      $builder->unindent();
-    }
-
   }
 }
