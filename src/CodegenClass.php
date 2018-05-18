@@ -13,15 +13,17 @@ namespace Facebook\HackCodegen;
 use namespace HH\Lib\Vec;
 
 /**
- * Generate code for a class. Please don't use this class directly; instead use
- * the function codegen_class.  E.g.:
+ * Generate code for a class.
  *
- * codegen_class('Foo')
+ * To construct an instance, use `ICodegenFactory::codegenClass()`.
+ *
+ * ```
+ * $factory->codegenClass('Foo')
  *  ->setExtends('bar')
  *  ->setIsFinal()
  *  ->addMethod(codegen_method('foobar'))
  *  ->render();
- *
+ * ```
  */
 final class CodegenClass extends CodegenClassish {
 
@@ -33,43 +35,56 @@ final class CodegenClass extends CodegenClassish {
   private bool $isAbstract = false;
   private ?CodegenConstructor $constructor = null;
 
+  /** @selfdocumenting */
   public function setIsFinal(bool $value = true): this {
     $this->isFinal = $value;
     return $this;
   }
 
+  /** @selfdocumenting */
   public function setIsAbstract(bool $value = true): this {
     $this->isAbstract = $value;
     return $this;
   }
 
+  /** Set the parent class of the generated class. */
   public function setExtends(string $name): this {
     return $this->setExtendsf('%s', $name);
   }
 
+  /**
+   * Set the parent class of the generated class, using a %-placeholder format
+   * string.
+   */
   public function setExtendsf(SprintfFormatString $name, mixed ...$args): this {
     $this->extendsClass = \vsprintf($name, $args);
     return $this;
   }
 
+  /**
+   * Get the name of the parent class, or `null` if there is none.
+   */
   public function getExtends(): ?string {
     return $this->extendsClass;
   }
 
 
+  /** @selfdocumenting */
   public function setConstructor(CodegenConstructor $constructor): this {
     $this->constructor = $constructor;
     return $this;
   }
 
   /**
-   * Add a comment before the class.  Notice that you need to pass the
-   * comment characters.  Use this just for HH_FIXME or other ad-hoc uses.
-   * For commenting the class, use method setDocBlock.
-   * Example (a fake space was included between / and * to avoid a hack error
-   * in this comment, but normally you won't have it):
+   * Add a comment before the class.
    *
-   * $class->addDeclComment('/ * HH_FIXME[4040] * /');
+   * For example:
+   *
+   * ```
+   * $class->addDeclComment('\/* HH_FIXME[4040] *\/');
+   * ```
+   *
+   * @param $comment the full comment, including delimiters
    */
   final public function addDeclComment(string $comment): this {
     $this->declComment .= $comment."\n";
@@ -77,12 +92,19 @@ final class CodegenClass extends CodegenClassish {
   }
 
   /**
-   * Add a function to wrap calls to the class.  E.g., for MyClass accepting
-   * a string parameter it would generate:
+   * Add a factory function to wrap instantiations of to the class.
    *
+   * For example, if `MyClass` accepts a single `string` parameter, it would
+   * generate:
+   *
+   * ```
    * function MyClass(string $s): MyClass {
    *   return new MyClass($s);
    * }
+   * ```
+   *
+   * @param $params the parameters to generate, including types. If `null`,
+   *   it will be inferred from the constructor if set.
    */
   public function addConstructorWrapperFunc(
     ?Traversable<string> $params = null,
