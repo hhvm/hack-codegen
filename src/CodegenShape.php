@@ -12,9 +12,15 @@ namespace Facebook\HackCodegen;
 
 /**
  * Generate code for a shape. Please don't use this class directly; instead use
- * the function codegen_shape.  E.g.:
+ * the function codegenShape.  E.g.:
  *
- * codegen_shape(array('x' => 'int', 'y' => 'int'))
+ * ```
+ * codegenShape(
+ *   new CodegenShapeMember('x', 'int'),
+ *   (new CodegenShapeMember('y', 'int'))->setIsOptional(),
+ * )
+ * ```
+ *
  */
 final class CodegenShape implements ICodeBuilderRenderer {
 
@@ -24,7 +30,7 @@ final class CodegenShape implements ICodeBuilderRenderer {
 
   public function __construct(
     protected IHackCodegenConfig $config,
-    private KeyedTraversable<string, string> $attrs = array(),
+    private vec<CodegenShapeMember> $members,
   ) {
   }
 
@@ -36,8 +42,14 @@ final class CodegenShape implements ICodeBuilderRenderer {
   public function appendToBuilder(HackBuilder $builder): HackBuilder {
     $builder->addLine('shape(')->indent();
 
-    foreach ($this->attrs as $name => $type) {
-      $builder->addLinef("'%s' => %s,", $name, $type);
+    foreach ($this->members as $member) {
+      $prefix = $member->getIsOptional() ? '?' : '';
+      $builder->addLinef(
+        "%s'%s' => %s,",
+        $prefix,
+        $member->getName(),
+        $member->getType(),
+      );
     }
 
     $manual_id = $this->manualAttrsID;

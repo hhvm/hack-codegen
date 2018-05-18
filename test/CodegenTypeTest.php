@@ -28,16 +28,7 @@ final class CodegenTypeTest extends CodegenBaseTest {
     $cgf = $this->getCodegenFactory();
     $type = $cgf
       ->codegenType('Point')
-      ->setShape($cgf->codegenShape(array('x' => 'int', 'y' => 'int')));
-
-    $this->assertUnchanged($type->render());
-  }
-
-  public function testShape_FUTURE(): void {
-    $cgf = $this->getCodegenFactory();
-    $type = $cgf
-      ->codegenType('Point')
-      ->setShape($cgf->codegenShape_FUTURE(
+      ->setShape($cgf->codegenShape(
         new CodegenShapeMember('x', 'int'),
         new CodegenShapeMember('y', 'int'),
       ));

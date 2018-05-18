@@ -8,12 +8,6 @@ type Point = shape(
   'y' => int,
 );
 
-!@#$%codegentest:testShape_FUTURE
-type Point = shape(
-  'x' => int,
-  'y' => int,
-);
-
 !@#$%codegentest:testType
 type Point = (int, int);
 
