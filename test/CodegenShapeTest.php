@@ -15,7 +15,66 @@ final class CodegenShapeTest extends CodegenBaseTest {
   public function testShape(): void {
     $shape = $this
       ->getCodegenFactory()
-      ->codegenShape(array('x' => 'int', 'y' => 'int', 'url' => 'string'));
+      ->codegenShape(
+        new CodegenShapeMember('x', 'int'),
+        new CodegenShapeMember('y', 'int'),
+        new CodegenShapeMember('url', 'string'),
+      );
+
+    $this->assertUnchanged($shape->render());
+  }
+
+  public function testShapeOptionalFields(): void {
+    $shape = $this
+      ->getCodegenFactory()
+      ->codegenShape(
+        (new CodegenShapeMember('x', 'int'))->setIsOptional(),
+        (new CodegenShapeMember('y', 'int'))->setIsOptional(),
+        new CodegenShapeMember('url', 'string'),
+      );
+
+    $this->assertUnchanged($shape->render());
+  }
+
+  public function testNestedShape(): void {
+    $nested = $this
+      ->getCodegenFactory()
+      ->codegenShape(
+        new CodegenShapeMember('x', 'int'),
+        new CodegenShapeMember('y', 'int'),
+      );
+
+    $shape = $this
+      ->getCodegenFactory()
+      ->codegenShape(
+        new CodegenShapeMember('url', 'string'),
+        (new CodegenShapeMember('point', $nested))->setIsOptional(),
+      );
+
+    $this->assertUnchanged($shape->render());
+  }
+
+  public function testMultipleNestedShapes(): void {
+    $first = $this
+      ->getCodegenFactory()
+      ->codegenShape(
+        new CodegenShapeMember('x', 'int'),
+        new CodegenShapeMember('y', 'int'),
+      );
+
+    $second = $this
+      ->getCodegenFactory()
+      ->codegenShape(
+        (new CodegenShapeMember('point', $first))->setIsOptional(),
+        new CodegenShapeMember('url', 'string'),
+      );
+
+    $shape = $this
+      ->getCodegenFactory()
+      ->codegenShape(
+        new CodegenShapeMember('test', $second),
+        (new CodegenShapeMember('key', 'string'))->setIsOptional(),
+      );
 
     $this->assertUnchanged($shape->render());
   }

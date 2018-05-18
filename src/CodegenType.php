@@ -22,7 +22,7 @@ final class CodegenType implements ICodeBuilderRenderer {
   use HackBuilderRenderer;
 
   private ?string $type;
-  private ?ICodeBuilderRenderer $codegenShape;
+  private ?CodegenShape $codegenShape;
   private string $keyword = 'type';
 
   public function __construct(
@@ -40,14 +40,10 @@ final class CodegenType implements ICodeBuilderRenderer {
     return $this;
   }
 
-  public function setShape(mixed $codegen_shape): this {
+  public function setShape(CodegenShape $codegen_shape): this {
     invariant(
       $this->type === null,
       "You can't set both the type and the shape.",
-    );
-    invariant(
-      $codegen_shape instanceof ICodeBuilderRenderer && ($codegen_shape instanceof CodegenShape_FUTURE || $codegen_shape instanceof CodegenShape),
-      "You must provide either CodegenShape_FUTURE or CodegenShape",
     );
 
     $this->codegenShape = $codegen_shape;

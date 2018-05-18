@@ -185,8 +185,10 @@ class CodegenDorm {
         $type = 'int';
       }
       $type = $field->isOptional() ? '?'.$type : $type;
-      $db_fields[$field->getDbColumn()] = $type;
+
+      $field = new CodegenShapeMember($field->getDbColumn(), $type);
+      $db_fields[] = $field;
     }
-    return $this->codegen->codegenShape($db_fields);
+    return $this->codegen->codegenShape(...$db_fields);
   }
 }
