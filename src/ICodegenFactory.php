@@ -96,7 +96,7 @@ interface ICodegenFactory {
   ): CodegenGeneratedFrom;
 
   public function codegenShape(
-    KeyedTraversable<string, string> $attrs = array(),
+    CodegenShapeMember ...$members
   ): CodegenShape;
 
   public function codegenType(string $name): CodegenType;
