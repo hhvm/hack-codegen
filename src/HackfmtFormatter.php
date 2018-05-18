@@ -10,9 +10,17 @@
 
 namespace Facebook\HackCodegen;
 
-use namespace HH\Lib\Str;
+use namespace HH\Lib\{Str, Vec};
 
 final class HackfmtFormatter implements ICodegenFormatter {
+  private vec<string> $options;
+
+  public function __construct(
+    string ...$options
+  ) {
+    $this->options = vec($options);
+  }
+
   public function format(
     string $code,
     string $file_name,
@@ -24,10 +32,16 @@ final class HackfmtFormatter implements ICodegenFormatter {
       \sys_get_temp_dir(),
       'hack-codegen-hackfmt',
     );
+
+    $options = Vec\map(
+      $this->options,
+      $option ==> \escapeshellarg($option),
+    ) |> Str\join($$, " ");
+
     try {
       \file_put_contents($tempnam, $code);
       \exec(
-        'hackfmt '.\escapeshellarg($tempnam),
+        'hackfmt '.$options.' '.\escapeshellarg($tempnam),
         &$output,
         &$exit_code,
       );

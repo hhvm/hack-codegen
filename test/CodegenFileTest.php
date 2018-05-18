@@ -384,6 +384,54 @@ final class CodegenFileTest extends CodegenBaseTest {
       Str\ends_with($code, "\n\n"),
       "Should end with one newline, not multiple",
     );
+
+    $lines = Str\split($code, "\n");
+    $this->assertTrue(
+      Str\starts_with($lines[8], " "),
+      'use spaces instead of tabs',
+    );
+  }
+
+  public function testFormattingFullyGeneratedFileWithOptions(): void {
+    $cgf = new HackCodegenFactory(
+      (new HackCodegenConfig())
+        ->withRootDir(__DIR__)
+        ->withFormatter(new HackfmtFormatter('--tabs'))
+    );
+
+    $code = $cgf
+      ->codegenFile('no_file')
+      ->addFunction(
+        $cgf->codegenFunction('my_func')
+          ->addParameter(
+            'string $'.\str_repeat('a', 60),
+          )
+          ->addParameter(
+            'string $'.\str_repeat('b', 60),
+          )
+          ->setReturnType('(string, string)')
+          ->setBody(
+            $cgf->codegenHackBuilder()
+              ->addReturnf(
+                'tuple($%s, $%s)',
+                \str_repeat('a', 60),
+                \str_repeat('b', 60),
+              )
+              ->getCode()
+          )
+      )
+      ->render();
+    $this->assertUnchanged($code);
+    $this->assertTrue(
+      SignedSourceBase::hasValidSignatureFromAnySigner($code),
+      'bad signed source',
+    );
+
+    $lines = Str\split($code, "\n");
+    $this->assertTrue(
+      Str\starts_with($lines[8], "\t"),
+      'use tabs instead of spaces',
+    );
   }
 
   public function testFormattingUnsignedFile(): void {
