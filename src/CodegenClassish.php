@@ -105,6 +105,40 @@ abstract class CodegenClassish implements ICodeBuilderRenderer {
     return $this;
   }
 
+  /** Add a generic parameter with subtype constraint.
+   *
+   * Subtype constraint of two types ```T``` and ```U``` will be evaluated to
+   * the following: ```T as U``` whereas this statement asserts
+   * that ```T``` must be a subtype of ```U```.
+   *
+   * @see addGeneric
+   * @see addGenericSupertypeConstraint
+   */
+  public function addGenericSubtypeConstraint(
+    string $subtype,
+    string $baseType
+  ): this {
+    $this->addGeneric($subtype.' as '.$baseType);
+    return $this;
+  }
+
+  /** Add a generic parameter with supertype constraint.
+   *
+   * Supertype constraint of two types ```T``` and ```U``` will be evaluated to
+   * the following: ```T super U``` whereas this statement asserts
+   * that ```T``` must be a supertype of ```U```.
+   *
+   * @see addGeneric
+   * @see addGenericSubtypeConstraint
+   */
+  public function addGenericSupertypeConstraint(
+    string $superType,
+    string $subtype
+  ): this {
+    $this->addGeneric($superType.' super '.$subtype);
+    return $this;
+  }
+
   /** @selfdocumenting */
   public function addMethods(Traversable<CodegenMethod> $methods): this {
     foreach ($methods as $method) {
