@@ -245,18 +245,21 @@ final class CodegenClassTest extends CodegenBaseTest {
   public function testExtendsGeneric(): void {
     $cgf = $this->getCodegenFactory();
     $code = $cgf->codegenClass('Foo')->setExtendsf('X<%s>', 'Y')->render();
+
     $this->assertContains('extends X<Y>', $code);
   }
 
   public function testGenericsWithSubtypeConstraints(): void {
     $cgf = $this->getCodegenFactory();
     $code = $cgf->codegenClass('GenericsTestClass')->addGenericSubtypeConstraint('T', 'U')->render();
+
     $this->assertContains('T as U', $code);
   }
 
   public function testGenericsWithSuperTypeConstraints(): void {
     $cgf = $this->getCodegenFactory();
     $code = $cgf->codegenClass('GenericsTestClass')->addGenericSupertypeConstraint('T', 'U')->render();
+
     $this->assertContains('T super U', $code);
   }
 
@@ -269,6 +272,7 @@ final class CodegenClassTest extends CodegenBaseTest {
       ->addGenericSubtypeConstraint('Tt', 'Xx')
       ->addGeneric('Tsingle')
       ->render();
+
     $this->assertContains('Tk as Tv', $code);
     $this->assertContains('Tu super Sp', $code);
     $this->assertContains('Tt as Xx', $code);
