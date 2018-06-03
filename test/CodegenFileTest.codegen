@@ -57,17 +57,14 @@ main();
 /**
  * This file is generated. Do not modify it manually!
  *
- * @-generated SignedSource<<8873291d72dbb45b8a9e70890f7d2f0a>>
+ * @-generated SignedSource<<cae8937d5d1b0b531d063ad40d8a8898>>
  */
 
 function my_func(
   string $aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa,
   string $bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb,
 ): (string, string) {
-  return tuple(
-    $aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa,
-    $bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb,
-  );
+  return tuple($aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa, $bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb);
 }
 
 !@#$%codegentest:testFormattingFullyGeneratedFileWithOptions
@@ -88,13 +85,28 @@ function my_func(
 	);
 }
 
+!@#$%codegentest:testFormattingFullyGeneratedFileWithTabs
+<?hh // strict
+/**
+ * This file is generated. Do not modify it manually!
+ *
+ * @-generated SignedSource<<763ad93f9a1a4caf70638a8de8786e49>>
+ */
+
+function my_func(
+	string $aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa,
+	string $bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb,
+): (string, string) {
+	return tuple($aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa, $bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb);
+}
+
 !@#$%codegentest:testFormattingPartiallyGeneratedFile
 <?hh // strict
 /**
  * This file is partially generated. Only make modifications between BEGIN
  * MANUAL SECTION and END MANUAL SECTION designators.
  *
- * @-partially-generated SignedSource<<a6295bf3f813f9420063cf2da7478571>>
+ * @-partially-generated SignedSource<<4c90706892f92492fa9f9c0798c9794b>>
  */
 
 function my_func(
@@ -103,10 +115,7 @@ function my_func(
 ): (string, string) {
   /* BEGIN MANUAL SECTION whut */
   /* END MANUAL SECTION */
-  return tuple(
-    $aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa,
-    $bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb,
-  );
+  return tuple($aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa, $bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb);
 }
 
 !@#$%codegentest:testFormattingUnsignedFile
@@ -116,10 +125,7 @@ function my_func(
   string $aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa,
   string $bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb,
 ): (string, string) {
-  return tuple(
-    $aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa,
-    $bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb,
-  );
+  return tuple($aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa, $bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb);
 }
 
 !@#$%codegentest:testGenerateTopLevelFunctions

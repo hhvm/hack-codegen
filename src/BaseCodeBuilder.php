@@ -111,8 +111,12 @@ abstract class BaseCodeBuilder {
     // if we're in a new line, insert indentation
     if ($this->isNewLine) {
       if ($this->indentationLevel !== 0) {
-        $n = $this->config->getSpacesPerIndentation() * $this->indentationLevel;
-        $this->code->append(\str_repeat(' ', $n));
+        if ($this->config->shouldUseTabs()){
+          $this->code->append(\str_repeat("\t", $this->indentationLevel));
+        } else {
+          $n = $this->config->getSpacesPerIndentation() * $this->indentationLevel;
+          $this->code->append(\str_repeat(' ', $n));
+        }
       }
       $this->isNewLine = false;
     }

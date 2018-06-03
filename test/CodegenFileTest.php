@@ -346,7 +346,6 @@ final class CodegenFileTest extends CodegenBaseTest {
     $cgf = new HackCodegenFactory(
       (new HackCodegenConfig())
         ->withRootDir(__DIR__)
-        ->withFormatter(new HackfmtFormatter())
     );
 
     $code = $cgf
@@ -392,11 +391,9 @@ final class CodegenFileTest extends CodegenBaseTest {
     );
   }
 
-  public function testFormattingFullyGeneratedFileWithOptions(): void {
+  public function testFormattingFullyGeneratedFileWithTabs(): void {
     $cgf = new HackCodegenFactory(
-      (new HackCodegenConfig())
-        ->withRootDir(__DIR__)
-        ->withFormatter(new HackfmtFormatter('--tabs'))
+      (new TestTabbedCodegenConfig())
     );
 
     $code = $cgf
@@ -429,7 +426,47 @@ final class CodegenFileTest extends CodegenBaseTest {
 
     $lines = Str\split($code, "\n");
     $this->assertTrue(
-      Str\starts_with($lines[8], "\t"),
+      Str\starts_with($lines[9], "\t"),
+      'use tabs instead of spaces',
+    );
+  }
+
+  public function testFormattingFullyGeneratedFileWithOptions(): void {
+    $cgf = new HackCodegenFactory(
+      (new TestHackfmtCodegenConfig())
+    );
+
+    $code = $cgf
+      ->codegenFile('no_file')
+      ->addFunction(
+        $cgf->codegenFunction('my_func')
+          ->addParameter(
+            'string $'.\str_repeat('a', 60),
+          )
+          ->addParameter(
+            'string $'.\str_repeat('b', 60),
+          )
+          ->setReturnType('(string, string)')
+          ->setBody(
+            $cgf->codegenHackBuilder()
+              ->addReturnf(
+                'tuple($%s, $%s)',
+                \str_repeat('a', 60),
+                \str_repeat('b', 60),
+              )
+              ->getCode()
+          )
+      )
+      ->render();
+    $this->assertUnchanged($code);
+    $this->assertTrue(
+      SignedSourceBase::hasValidSignatureFromAnySigner($code),
+      'bad signed source',
+    );
+
+    $lines = Str\split($code, "\n");
+    $this->assertTrue(
+      Str\starts_with($lines[9], "\t"),
       'use tabs instead of spaces',
     );
   }
@@ -438,7 +475,6 @@ final class CodegenFileTest extends CodegenBaseTest {
     $cgf = new HackCodegenFactory(
       (new HackCodegenConfig())
         ->withRootDir(__DIR__)
-        ->withFormatter(new HackfmtFormatter())
     );
 
     $code = $cgf
@@ -475,7 +511,6 @@ final class CodegenFileTest extends CodegenBaseTest {
     $cgf = new HackCodegenFactory(
       (new HackCodegenConfig())
         ->withRootDir(__DIR__)
-        ->withFormatter(new HackfmtFormatter())
     );
 
     $code = $cgf
@@ -528,5 +563,56 @@ final class CodegenFileTest extends CodegenBaseTest {
       )
       ->render();
     $this->assertUnchanged($code);
+  }
+}
+
+final class TestTabbedCodegenConfig implements IHackCodegenConfig {
+  public function getFileHeader(): ?Vector<string> {
+    return null;
+  }
+
+  public function getSpacesPerIndentation(): int {
+    return 4;
+  }
+
+  public function getMaxLineLength(): int {
+    return 80;
+  }
+
+  public function shouldUseTabs(): bool {
+    return true;
+  }
+
+  public function getRootDir(): string {
+    return __DIR__;
+  }
+public function getFormatter(): ?ICodegenFormatter {
+    return null;
+  }
+}
+
+final class TestHackfmtCodegenConfig implements IHackCodegenConfig {
+  public function getFileHeader(): ?Vector<string> {
+    return null;
+  }
+
+  public function getSpacesPerIndentation(): int {
+    return 4;
+  }
+
+  public function getMaxLineLength(): int {
+    return 80;
+  }
+
+  public function shouldUseTabs(): bool {
+    return true;
+  }
+
+  public function getRootDir(): string {
+    return __DIR__;
+  }
+
+  public function getFormatter(): ?ICodegenFormatter {
+    return new HackfmtFormatter($this);
   }
 }

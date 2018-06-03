@@ -24,6 +24,10 @@ final class TestCodegenConfig implements IHackCodegenConfig {
     return 80;
   }
 
+  public function shouldUseTabs(): bool {
+    return false;
+  }
+
   public function getRootDir(): string {
     return __DIR__;
   }

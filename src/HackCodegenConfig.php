@@ -30,6 +30,10 @@ final class HackCodegenConfig implements IHackCodegenConfig {
     return 80;
   }
 
+  public function shouldUseTabs(): bool {
+    return false;
+  }
+
   public function getRootDir(): string {
     return $this->rootDir;
   }
