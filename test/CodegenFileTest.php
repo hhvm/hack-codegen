@@ -343,9 +343,12 @@ final class CodegenFileTest extends CodegenBaseTest {
   }
 
   public function testFormattingFullyGeneratedFile(): void {
+    $config = (new HackCodegenConfig())
+      ->withRootDir(__DIR__);
+
     $cgf = new HackCodegenFactory(
-      (new HackCodegenConfig())
-        ->withRootDir(__DIR__)
+      $config
+        ->withFormatter(new HackfmtFormatter($config))
     );
 
     $code = $cgf
@@ -472,9 +475,12 @@ final class CodegenFileTest extends CodegenBaseTest {
   }
 
   public function testFormattingUnsignedFile(): void {
+    $config = (new HackCodegenConfig())
+      ->withRootDir(__DIR__);
+
     $cgf = new HackCodegenFactory(
-      (new HackCodegenConfig())
-        ->withRootDir(__DIR__)
+      $config
+        ->withFormatter(new HackfmtFormatter($config))
     );
 
     $code = $cgf
@@ -508,9 +514,12 @@ final class CodegenFileTest extends CodegenBaseTest {
   }
 
   public function testFormattingPartiallyGeneratedFile(): void {
+    $config = (new HackCodegenConfig())
+      ->withRootDir(__DIR__);
+
     $cgf = new HackCodegenFactory(
-      (new HackCodegenConfig())
-        ->withRootDir(__DIR__)
+      $config
+        ->withFormatter(new HackfmtFormatter($config))
     );
 
     $code = $cgf
