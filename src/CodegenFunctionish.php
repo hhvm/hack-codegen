@@ -164,7 +164,12 @@ abstract class CodegenFunctionish implements ICodeBuilderRenderer {
     ) {
       return (new HackBuilder($this->config))->add($code)->getCode();
     } else {
-      $parameter_lines = Vec\map($this->parameters, $line ==> $line.",");
+      $parameter_lines = Vec\map($this->parameters, $line ==> {
+        if (Str\search($line, '...$') !== null) {
+          return $line;
+        }
+        return $line.',';
+      });
 
       $multi_line_builder = (new HackBuilder($this->config))
         ->add($keywords)

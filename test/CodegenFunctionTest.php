@@ -35,6 +35,25 @@ final class CodegenFunctionTest extends CodegenBaseTest {
     $this->assertUnchanged($code);
   }
 
+  public function testVariadicParamDoesntAddComma(): void {
+    $code = $this
+      ->getCodegenFactory()
+      ->codegenFunction('addNames')
+      ->addParameter('string ...$names_is_a_variadic_with_a_very_long_name_to_trigger_the_reformat')
+      ->render();
+    $this->assertUnchanged($code);
+  }
+
+  public function testLongParamParamNamesAddCommasButNotToVariadics(): void {
+    $code = $this
+      ->getCodegenFactory()
+      ->codegenFunction('addPerson')
+      ->addParameter('string $first_name_is_a_param_with_a_very_long_name_to_trigger_the_reformat')
+      ->addParameter('string ...$sur_name_is_a_param_with_a_very_long_name_to_trigger_the_reformat')
+      ->render();
+    $this->assertUnchanged($code);
+  }
+
   public function testAsync(): void {
     $code = $this
       ->getCodegenFactory()
