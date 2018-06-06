@@ -112,10 +112,10 @@ abstract class BaseCodeBuilder {
     if ($this->isNewLine) {
       if ($this->indentationLevel !== 0) {
         if ($this->config->shouldUseTabs()){
-          $this->code->append(\str_repeat("\t", $this->indentationLevel));
+          $this->code->append(Str\repeat("\t", $this->indentationLevel));
         } else {
           $n = $this->config->getSpacesPerIndentation() * $this->indentationLevel;
-          $this->code->append(\str_repeat(' ', $n));
+          $this->code->append(Str\repeat(' ', $n));
         }
       }
       $this->isNewLine = false;

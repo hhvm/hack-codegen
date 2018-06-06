@@ -74,9 +74,11 @@ final class CodegenFileTest extends CodegenBaseTest {
       ->addClass(
         $cgf
           ->codegenClass('Demo')
-          ->addMethod($cgf
-            ->codegenMethod('getName')
-            ->setBody('return "Codegen";')),
+          ->addMethod(
+            $cgf
+              ->codegenMethod('getName')
+              ->setBody('return "Codegen";'),
+          ),
       )
       ->save();
 
@@ -348,29 +350,25 @@ final class CodegenFileTest extends CodegenBaseTest {
 
     $cgf = new HackCodegenFactory(
       $config
-        ->withFormatter(new HackfmtFormatter($config))
+        ->withFormatter(new HackfmtFormatter($config)),
     );
 
     $code = $cgf
       ->codegenFile('no_file')
       ->addFunction(
         $cgf->codegenFunction('my_func')
-          ->addParameter(
-            'string $'.\str_repeat('a', 60),
-          )
-          ->addParameter(
-            'string $'.\str_repeat('b', 60),
-          )
+          ->addParameter('string $'.Str\repeat('a', 60))
+          ->addParameter('string $'.Str\repeat('b', 60))
           ->setReturnType('(string, string)')
           ->setBody(
             $cgf->codegenHackBuilder()
               ->addReturnf(
                 'tuple($%s, $%s)',
-                \str_repeat('a', 60),
-                \str_repeat('b', 60),
+                Str\repeat('a', 60),
+                Str\repeat('b', 60),
               )
-              ->getCode()
-          )
+              ->getCode(),
+          ),
       )
       ->render();
     $this->assertUnchanged($code);
@@ -378,10 +376,7 @@ final class CodegenFileTest extends CodegenBaseTest {
       SignedSourceBase::hasValidSignatureFromAnySigner($code),
       'bad signed source',
     );
-    $this->assertTrue(
-      Str\ends_with($code, "\n"),
-      "Should end with newline",
-    );
+    $this->assertTrue(Str\ends_with($code, "\n"), "Should end with newline");
     $this->assertFalse(
       Str\ends_with($code, "\n\n"),
       "Should end with one newline, not multiple",
@@ -395,30 +390,24 @@ final class CodegenFileTest extends CodegenBaseTest {
   }
 
   public function testFormattingFullyGeneratedFileWithTabs(): void {
-    $cgf = new HackCodegenFactory(
-      (new TestTabbedCodegenConfig())
-    );
+    $cgf = new HackCodegenFactory((new TestTabbedCodegenConfig()));
 
     $code = $cgf
       ->codegenFile('no_file')
       ->addFunction(
         $cgf->codegenFunction('my_func')
-          ->addParameter(
-            'string $'.\str_repeat('a', 60),
-          )
-          ->addParameter(
-            'string $'.\str_repeat('b', 60),
-          )
+          ->addParameter('string $'.Str\repeat('a', 60))
+          ->addParameter('string $'.Str\repeat('b', 60))
           ->setReturnType('(string, string)')
           ->setBody(
             $cgf->codegenHackBuilder()
               ->addReturnf(
                 'tuple($%s, $%s)',
-                \str_repeat('a', 60),
-                \str_repeat('b', 60),
+                Str\repeat('a', 60),
+                Str\repeat('b', 60),
               )
-              ->getCode()
-          )
+              ->getCode(),
+          ),
       )
       ->render();
     $this->assertUnchanged($code);
@@ -435,30 +424,24 @@ final class CodegenFileTest extends CodegenBaseTest {
   }
 
   public function testFormattingFullyGeneratedFileWithOptions(): void {
-    $cgf = new HackCodegenFactory(
-      (new TestHackfmtCodegenConfig())
-    );
+    $cgf = new HackCodegenFactory((new TestHackfmtCodegenConfig()));
 
     $code = $cgf
       ->codegenFile('no_file')
       ->addFunction(
         $cgf->codegenFunction('my_func')
-          ->addParameter(
-            'string $'.\str_repeat('a', 60),
-          )
-          ->addParameter(
-            'string $'.\str_repeat('b', 60),
-          )
+          ->addParameter('string $'.Str\repeat('a', 60))
+          ->addParameter('string $'.Str\repeat('b', 60))
           ->setReturnType('(string, string)')
           ->setBody(
             $cgf->codegenHackBuilder()
               ->addReturnf(
                 'tuple($%s, $%s)',
-                \str_repeat('a', 60),
-                \str_repeat('b', 60),
+                Str\repeat('a', 60),
+                Str\repeat('b', 60),
               )
-              ->getCode()
-          )
+              ->getCode(),
+          ),
       )
       ->render();
     $this->assertUnchanged($code);
@@ -480,7 +463,7 @@ final class CodegenFileTest extends CodegenBaseTest {
 
     $cgf = new HackCodegenFactory(
       $config
-        ->withFormatter(new HackfmtFormatter($config))
+        ->withFormatter(new HackfmtFormatter($config)),
     );
 
     $code = $cgf
@@ -488,22 +471,18 @@ final class CodegenFileTest extends CodegenBaseTest {
       ->setIsSignedFile(false)
       ->addFunction(
         $cgf->codegenFunction('my_func')
-          ->addParameter(
-            'string $'.\str_repeat('a', 60),
-          )
-          ->addParameter(
-            'string $'.\str_repeat('b', 60),
-          )
+          ->addParameter('string $'.Str\repeat('a', 60))
+          ->addParameter('string $'.Str\repeat('b', 60))
           ->setReturnType('(string, string)')
           ->setBody(
             $cgf->codegenHackBuilder()
               ->addReturnf(
                 'tuple($%s, $%s)',
-                \str_repeat('a', 60),
-                \str_repeat('b', 60),
+                Str\repeat('a', 60),
+                Str\repeat('b', 60),
               )
-              ->getCode()
-          )
+              ->getCode(),
+          ),
       )
       ->render();
     $this->assertUnchanged($code);
@@ -519,19 +498,15 @@ final class CodegenFileTest extends CodegenBaseTest {
 
     $cgf = new HackCodegenFactory(
       $config
-        ->withFormatter(new HackfmtFormatter($config))
+        ->withFormatter(new HackfmtFormatter($config)),
     );
 
     $code = $cgf
       ->codegenFile('no_file')
       ->addFunction(
         $cgf->codegenFunction('my_func')
-          ->addParameter(
-            'string $'.\str_repeat('a', 60),
-          )
-          ->addParameter(
-            'string $'.\str_repeat('b', 60),
-          )
+          ->addParameter('string $'.Str\repeat('a', 60))
+          ->addParameter('string $'.Str\repeat('b', 60))
           ->setReturnType('(string, string)')
           ->setBody(
             $cgf->codegenHackBuilder()
@@ -539,11 +514,11 @@ final class CodegenFileTest extends CodegenBaseTest {
               ->endManualSection()
               ->addReturnf(
                 'tuple($%s, $%s)',
-                \str_repeat('a', 60),
-                \str_repeat('b', 60),
+                Str\repeat('a', 60),
+                Str\repeat('b', 60),
               )
-              ->getCode()
-          )
+              ->getCode(),
+          ),
       )
       ->render();
     $this->assertUnchanged($code);
@@ -595,7 +570,8 @@ final class TestTabbedCodegenConfig implements IHackCodegenConfig {
   public function getRootDir(): string {
     return __DIR__;
   }
-public function getFormatter(): ?ICodegenFormatter {
+
+  public function getFormatter(): ?ICodegenFormatter {
     return null;
   }
 }

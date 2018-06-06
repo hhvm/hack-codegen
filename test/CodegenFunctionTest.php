@@ -10,6 +10,8 @@
 
 namespace Facebook\HackCodegen;
 
+use namespace HH\Lib\{Str};
+
 final class CodegenFunctionTest extends CodegenBaseTest {
 
   public function testSimpleGetter(): void {
@@ -167,7 +169,7 @@ final class CodegenFunctionTest extends CodegenBaseTest {
       ->setReturnType('string')
       ->setBody('return $name;')
       // 81 characters
-      ->setDocBlock(\str_repeat('x', 78))
+      ->setDocBlock(Str\repeat('x', 78))
       ->setGeneratedFrom($cgf->codegenGeneratedFromClass('EntTestSchema'))
       ->render();
     $this->assertUnchanged($code);
