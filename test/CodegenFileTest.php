@@ -74,9 +74,11 @@ final class CodegenFileTest extends CodegenBaseTest {
       ->addClass(
         $cgf
           ->codegenClass('Demo')
-          ->addMethod($cgf
-            ->codegenMethod('getName')
-            ->setBody('return "Codegen";')),
+          ->addMethod(
+            $cgf
+              ->codegenMethod('getName')
+              ->setBody('return "Codegen";'),
+          ),
       )
       ->save();
 
@@ -343,32 +345,30 @@ final class CodegenFileTest extends CodegenBaseTest {
   }
 
   public function testFormattingFullyGeneratedFile(): void {
+    $config = (new HackCodegenConfig())
+      ->withRootDir(__DIR__);
+
     $cgf = new HackCodegenFactory(
-      (new HackCodegenConfig())
-        ->withRootDir(__DIR__)
-        ->withFormatter(new HackfmtFormatter())
+      $config
+        ->withFormatter(new HackfmtFormatter($config)),
     );
 
     $code = $cgf
       ->codegenFile('no_file')
       ->addFunction(
         $cgf->codegenFunction('my_func')
-          ->addParameter(
-            'string $'.\str_repeat('a', 60),
-          )
-          ->addParameter(
-            'string $'.\str_repeat('b', 60),
-          )
+          ->addParameter('string $'.Str\repeat('a', 60))
+          ->addParameter('string $'.Str\repeat('b', 60))
           ->setReturnType('(string, string)')
           ->setBody(
             $cgf->codegenHackBuilder()
               ->addReturnf(
                 'tuple($%s, $%s)',
-                \str_repeat('a', 60),
-                \str_repeat('b', 60),
+                Str\repeat('a', 60),
+                Str\repeat('b', 60),
               )
-              ->getCode()
-          )
+              ->getCode(),
+          ),
       )
       ->render();
     $this->assertUnchanged($code);
@@ -376,21 +376,94 @@ final class CodegenFileTest extends CodegenBaseTest {
       SignedSourceBase::hasValidSignatureFromAnySigner($code),
       'bad signed source',
     );
-    $this->assertTrue(
-      Str\ends_with($code, "\n"),
-      "Should end with newline",
-    );
+    $this->assertTrue(Str\ends_with($code, "\n"), "Should end with newline");
     $this->assertFalse(
       Str\ends_with($code, "\n\n"),
       "Should end with one newline, not multiple",
     );
+
+    $lines = Str\split($code, "\n");
+    $this->assertTrue(
+      Str\starts_with($lines[8], " "),
+      'use spaces instead of tabs',
+    );
+  }
+
+  public function testFormattingFullyGeneratedFileWithTabs(): void {
+    $cgf = new HackCodegenFactory((new TestTabbedCodegenConfig()));
+
+    $code = $cgf
+      ->codegenFile('no_file')
+      ->addFunction(
+        $cgf->codegenFunction('my_func')
+          ->addParameter('string $'.Str\repeat('a', 60))
+          ->addParameter('string $'.Str\repeat('b', 60))
+          ->setReturnType('(string, string)')
+          ->setBody(
+            $cgf->codegenHackBuilder()
+              ->addReturnf(
+                'tuple($%s, $%s)',
+                Str\repeat('a', 60),
+                Str\repeat('b', 60),
+              )
+              ->getCode(),
+          ),
+      )
+      ->render();
+    $this->assertUnchanged($code);
+    $this->assertTrue(
+      SignedSourceBase::hasValidSignatureFromAnySigner($code),
+      'bad signed source',
+    );
+
+    $lines = Str\split($code, "\n");
+    $this->assertTrue(
+      Str\starts_with($lines[9], "\t"),
+      'use tabs instead of spaces',
+    );
+  }
+
+  public function testFormattingFullyGeneratedFileWithOptions(): void {
+    $cgf = new HackCodegenFactory((new TestHackfmtCodegenConfig()));
+
+    $code = $cgf
+      ->codegenFile('no_file')
+      ->addFunction(
+        $cgf->codegenFunction('my_func')
+          ->addParameter('string $'.Str\repeat('a', 60))
+          ->addParameter('string $'.Str\repeat('b', 60))
+          ->setReturnType('(string, string)')
+          ->setBody(
+            $cgf->codegenHackBuilder()
+              ->addReturnf(
+                'tuple($%s, $%s)',
+                Str\repeat('a', 60),
+                Str\repeat('b', 60),
+              )
+              ->getCode(),
+          ),
+      )
+      ->render();
+    $this->assertUnchanged($code);
+    $this->assertTrue(
+      SignedSourceBase::hasValidSignatureFromAnySigner($code),
+      'bad signed source',
+    );
+
+    $lines = Str\split($code, "\n");
+    $this->assertTrue(
+      Str\starts_with($lines[9], "\t"),
+      'use tabs instead of spaces',
+    );
   }
 
   public function testFormattingUnsignedFile(): void {
+    $config = (new HackCodegenConfig())
+      ->withRootDir(__DIR__);
+
     $cgf = new HackCodegenFactory(
-      (new HackCodegenConfig())
-        ->withRootDir(__DIR__)
-        ->withFormatter(new HackfmtFormatter())
+      $config
+        ->withFormatter(new HackfmtFormatter($config)),
     );
 
     $code = $cgf
@@ -398,22 +471,18 @@ final class CodegenFileTest extends CodegenBaseTest {
       ->setIsSignedFile(false)
       ->addFunction(
         $cgf->codegenFunction('my_func')
-          ->addParameter(
-            'string $'.\str_repeat('a', 60),
-          )
-          ->addParameter(
-            'string $'.\str_repeat('b', 60),
-          )
+          ->addParameter('string $'.Str\repeat('a', 60))
+          ->addParameter('string $'.Str\repeat('b', 60))
           ->setReturnType('(string, string)')
           ->setBody(
             $cgf->codegenHackBuilder()
               ->addReturnf(
                 'tuple($%s, $%s)',
-                \str_repeat('a', 60),
-                \str_repeat('b', 60),
+                Str\repeat('a', 60),
+                Str\repeat('b', 60),
               )
-              ->getCode()
-          )
+              ->getCode(),
+          ),
       )
       ->render();
     $this->assertUnchanged($code);
@@ -424,22 +493,20 @@ final class CodegenFileTest extends CodegenBaseTest {
   }
 
   public function testFormattingPartiallyGeneratedFile(): void {
+    $config = (new HackCodegenConfig())
+      ->withRootDir(__DIR__);
+
     $cgf = new HackCodegenFactory(
-      (new HackCodegenConfig())
-        ->withRootDir(__DIR__)
-        ->withFormatter(new HackfmtFormatter())
+      $config
+        ->withFormatter(new HackfmtFormatter($config)),
     );
 
     $code = $cgf
       ->codegenFile('no_file')
       ->addFunction(
         $cgf->codegenFunction('my_func')
-          ->addParameter(
-            'string $'.\str_repeat('a', 60),
-          )
-          ->addParameter(
-            'string $'.\str_repeat('b', 60),
-          )
+          ->addParameter('string $'.Str\repeat('a', 60))
+          ->addParameter('string $'.Str\repeat('b', 60))
           ->setReturnType('(string, string)')
           ->setBody(
             $cgf->codegenHackBuilder()
@@ -447,11 +514,11 @@ final class CodegenFileTest extends CodegenBaseTest {
               ->endManualSection()
               ->addReturnf(
                 'tuple($%s, $%s)',
-                \str_repeat('a', 60),
-                \str_repeat('b', 60),
+                Str\repeat('a', 60),
+                Str\repeat('b', 60),
               )
-              ->getCode()
-          )
+              ->getCode(),
+          ),
       )
       ->render();
     $this->assertUnchanged($code);
@@ -480,5 +547,57 @@ final class CodegenFileTest extends CodegenBaseTest {
       )
       ->render();
     $this->assertUnchanged($code);
+  }
+}
+
+final class TestTabbedCodegenConfig implements IHackCodegenConfig {
+  public function getFileHeader(): ?Vector<string> {
+    return null;
+  }
+
+  public function getSpacesPerIndentation(): int {
+    return 4;
+  }
+
+  public function getMaxLineLength(): int {
+    return 80;
+  }
+
+  public function shouldUseTabs(): bool {
+    return true;
+  }
+
+  public function getRootDir(): string {
+    return __DIR__;
+  }
+
+  public function getFormatter(): ?ICodegenFormatter {
+    return null;
+  }
+}
+
+final class TestHackfmtCodegenConfig implements IHackCodegenConfig {
+  public function getFileHeader(): ?Vector<string> {
+    return null;
+  }
+
+  public function getSpacesPerIndentation(): int {
+    return 4;
+  }
+
+  public function getMaxLineLength(): int {
+    return 80;
+  }
+
+  public function shouldUseTabs(): bool {
+    return true;
+  }
+
+  public function getRootDir(): string {
+    return __DIR__;
+  }
+
+  public function getFormatter(): ?ICodegenFormatter {
+    return new HackfmtFormatter($this);
   }
 }
