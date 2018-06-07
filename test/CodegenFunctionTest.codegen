@@ -12,6 +12,13 @@ function getName(): string {
   return $name;
 }
 
+!@#$%codegentest:testLongParamParamNamesAddCommasButNotToVariadics
+function addPerson(
+  string $first_name_is_a_param_with_a_very_long_name_to_trigger_the_reformat,
+  string ...$sur_name_is_a_param_with_a_very_long_name_to_trigger_the_reformat
+) {
+}
+
 !@#$%codegentest:testManualSection
 function genProprietorName(): string {
   /* BEGIN MANUAL SECTION genProprietorName */
@@ -75,5 +82,11 @@ function getUseDataProvider() {
 !@#$%codegentest:testSingleUserAttributeWithoutArgument
 <<TestsBypassVisibility>>
 function getTestsBypassVisibility() {
+}
+
+!@#$%codegentest:testVariadicParamDoesntAddComma
+function addNames(
+  string ...$names_is_a_variadic_with_a_very_long_name_to_trigger_the_reformat
+) {
 }
 

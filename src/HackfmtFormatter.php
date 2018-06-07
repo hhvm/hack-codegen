@@ -10,9 +10,14 @@
 
 namespace Facebook\HackCodegen;
 
-use namespace HH\Lib\Str;
+use namespace HH\Lib\{Str, Vec};
 
 final class HackfmtFormatter implements ICodegenFormatter {
+
+  public function __construct(
+    private IHackCodegenConfig $config
+  ) {}
+
   public function format(
     string $code,
     string $file_name,
@@ -24,10 +29,13 @@ final class HackfmtFormatter implements ICodegenFormatter {
       \sys_get_temp_dir(),
       'hack-codegen-hackfmt',
     );
+
+    $options = $this->getFormattedOptions();
+
     try {
       \file_put_contents($tempnam, $code);
       \exec(
-        'hackfmt '.\escapeshellarg($tempnam),
+        'hackfmt '.$options.' '.\escapeshellarg($tempnam),
         &$output,
         &$exit_code,
       );
@@ -40,5 +48,24 @@ final class HackfmtFormatter implements ICodegenFormatter {
       'Failed to invoke hackfmt',
     );
     return \implode("\n", $output)."\n";
+  }
+
+  <<__Memoize>>
+  private function getFormattedOptions(): string {
+    $options = vec[
+      '--indent-width',
+      $this->config->getSpacesPerIndentation(),
+      '--line-width',
+      $this->config->getMaxLineLength(),
+    ];
+
+    if ($this->config->shouldUseTabs()) {
+      $options[] = '--tabs';
+    }
+
+    return Vec\map(
+      $options,
+      $option ==> \escapeshellarg($option),
+    ) |> Str\join($$, " ");
   }
 }

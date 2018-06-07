@@ -10,6 +10,8 @@
 
 namespace Facebook\HackCodegen;
 
+use namespace HH\Lib\{Str};
+
 final class CodegenFunctionTest extends CodegenBaseTest {
 
   public function testSimpleGetter(): void {
@@ -29,6 +31,25 @@ final class CodegenFunctionTest extends CodegenBaseTest {
       ->codegenFunction('getName')
       ->addParameter('string $name')
       ->setBody('return $name . $name;')
+      ->render();
+    expect_with_context(static::class, $code)->toBeUnchanged();
+  }
+
+  public function testVariadicParamDoesntAddComma(): void {
+    $code = $this
+      ->getCodegenFactory()
+      ->codegenFunction('addNames')
+      ->addParameter('string ...$names_is_a_variadic_with_a_very_long_name_to_trigger_the_reformat')
+      ->render();
+    expect_with_context(static::class, $code)->toBeUnchanged();
+  }
+
+  public function testLongParamParamNamesAddCommasButNotToVariadics(): void {
+    $code = $this
+      ->getCodegenFactory()
+      ->codegenFunction('addPerson')
+      ->addParameter('string $first_name_is_a_param_with_a_very_long_name_to_trigger_the_reformat')
+      ->addParameter('string ...$sur_name_is_a_param_with_a_very_long_name_to_trigger_the_reformat')
       ->render();
     expect_with_context(static::class, $code)->toBeUnchanged();
   }
@@ -167,7 +188,7 @@ final class CodegenFunctionTest extends CodegenBaseTest {
       ->setReturnType('string')
       ->setBody('return $name;')
       // 81 characters
-      ->setDocBlock(\str_repeat('x', 78))
+      ->setDocBlock(Str\repeat('x', 78))
       ->setGeneratedFrom($cgf->codegenGeneratedFromClass('EntTestSchema'))
       ->render();
     expect_with_context(static::class, $code)->toBeUnchanged();
