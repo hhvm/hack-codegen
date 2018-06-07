@@ -43,7 +43,7 @@ final class RefactorCodegenTest extends CodegenBaseTest {
       ->rekeyManualSection('OldClass_header', 'NewClass_header')
       ->rekeyManualSection('OldClass_footer', 'NewClass_footer');
 
-    $this->assertUnchanged($codegen_new_file->render());
+    expect_with_context(static::class, $codegen_new_file->render())->toBeUnchanged();
   }
 
   /**
@@ -73,6 +73,6 @@ final class RefactorCodegenTest extends CodegenBaseTest {
       ->rekeyManualSection('OldClass_header', 'NewClass_manual')
       ->rekeyManualSection('OldClass_footer', 'NewClass_manual');
 
-    $this->assertUnchanged($codegen_new_file->render());
+    expect_with_context(static::class, $codegen_new_file->render())->toBeUnchanged();
   }
 }

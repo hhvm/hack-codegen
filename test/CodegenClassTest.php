@@ -26,7 +26,7 @@ final class CodegenClassTest extends CodegenBaseTest {
       )
       ->render();
 
-    expect($code)->toBeUnchanged();
+    expect_with_context(static::class, $code)->toBeUnchanged();
   }
 
   public function testExtendsAndFinal(): void {
@@ -38,7 +38,7 @@ final class CodegenClassTest extends CodegenBaseTest {
       ->setIsFinal()
       ->render();
 
-    expect($code)->toBeUnchanged();
+    expect_with_context(static::class, $code)->toBeUnchanged();
   }
 
   public function testInterfacesAndAbstract(): void {
@@ -54,7 +54,7 @@ final class CodegenClassTest extends CodegenBaseTest {
       ->setIsAbstract()
       ->render();
 
-    expect($code)->toBeUnchanged();
+    expect_with_context(static::class, $code)->toBeUnchanged();
   }
 
   public function testMultipleInterfaces(): void {
@@ -66,7 +66,7 @@ final class CodegenClassTest extends CodegenBaseTest {
       ->addInterfaces($cgf->codegenImplementsInterfaces($interfaces))
       ->render();
 
-    expect($code)->toBeUnchanged();
+    expect_with_context(static::class, $code)->toBeUnchanged();
   }
 
   public function testLongClassDeclaration(): void {
@@ -77,7 +77,7 @@ final class CodegenClassTest extends CodegenBaseTest {
       ->setExtends('NowThisIsTheParentClassWithALongNameItSelf')
       ->render();
 
-    expect($code)->toBeUnchanged();
+    expect_with_context(static::class, $code)->toBeUnchanged();
   }
 
   public function testLongClassDeclarationWithInterfaces(): void {
@@ -89,7 +89,7 @@ final class CodegenClassTest extends CodegenBaseTest {
       ->addInterfaces($cgf->codegenImplementsInterfaces($interfaces))
       ->render();
 
-    expect($code)->toBeUnchanged();
+    expect_with_context(static::class, $code)->toBeUnchanged();
   }
 
   public function testClassDeclarationWithGenerics(): void {
@@ -102,7 +102,7 @@ final class CodegenClassTest extends CodegenBaseTest {
       ->addGenerics($generics_decl)
       ->render();
 
-    expect($code)->toBeUnchanged();
+    expect_with_context(static::class, $code)->toBeUnchanged();
   }
 
   public function testDemo(): void {
@@ -159,7 +159,7 @@ final class CodegenClassTest extends CodegenBaseTest {
       ->setIsFinal()
       ->render();
 
-    expect($code)->toBeUnchanged();
+    expect_with_context(static::class, $code)->toBeUnchanged();
   }
 
   public function testLongGeneratedFrom(): void {
@@ -179,7 +179,7 @@ final class CodegenClassTest extends CodegenBaseTest {
       )
       ->render();
 
-    expect($code)->toBeUnchanged();
+    expect_with_context(static::class, $code)->toBeUnchanged();
   }
 
   public function testConstructorWrapperFuncDefault(): void {
@@ -197,7 +197,7 @@ final class CodegenClassTest extends CodegenBaseTest {
       ->addConstructorWrapperFunc()
       ->render();
 
-    expect($code)->toBeUnchanged();
+    expect_with_context(static::class, $code)->toBeUnchanged();
   }
 
   public function testConstructorWrapperFunc(): void {
@@ -220,7 +220,7 @@ final class CodegenClassTest extends CodegenBaseTest {
       ->addConstructorWrapperFunc()
       ->render();
 
-    expect($code)->toBeUnchanged();
+    expect_with_context(static::class, $code)->toBeUnchanged();
   }
 
   /*
@@ -239,28 +239,28 @@ final class CodegenClassTest extends CodegenBaseTest {
       ->addConstructorWrapperFunc(vec[ 'string $text' ])
       ->render();
 
-    expect($code)->toBeUnchanged();
+    expect_with_context(static::class, $code)->toBeUnchanged();
   }
 
   public function testExtendsGeneric(): void {
     $cgf = $this->getCodegenFactory();
     $code = $cgf->codegenClass('Foo')->setExtendsf('X<%s>', 'Y')->render();
 
-    $this->assertContains('extends X<Y>', $code);
+    expect($code)->toContain('extends X<Y>');
   }
 
   public function testGenericsWithSubtypeConstraints(): void {
     $cgf = $this->getCodegenFactory();
     $code = $cgf->codegenClass('GenericsTestClass')->addGenericSubtypeConstraint('T', 'U')->render();
 
-    $this->assertContains('T as U', $code);
+    expect($code)->toContain('T as U');
   }
 
   public function testGenericsWithSuperTypeConstraints(): void {
     $cgf = $this->getCodegenFactory();
     $code = $cgf->codegenClass('GenericsTestClass')->addGenericSupertypeConstraint('T', 'U')->render();
 
-    $this->assertContains('T super U', $code);
+    expect($code)->toContain('T super U');
   }
 
   public function testGenericsWithConstraints(): void {
@@ -273,9 +273,9 @@ final class CodegenClassTest extends CodegenBaseTest {
       ->addGeneric('Tsingle')
       ->render();
 
-    $this->assertContains('Tk as Tv', $code);
-    $this->assertContains('Tu super Sp', $code);
-    $this->assertContains('Tt as Xx', $code);
-    $this->assertContains('Tsingle', $code);
+    expect($code)->toContain('Tk as Tv');
+    expect($code)->toContain('Tu super Sp');
+    expect($code)->toContain('Tt as Xx');
+    expect($code)->toContain('Tsingle');
   }
 }

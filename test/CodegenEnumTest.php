@@ -26,7 +26,7 @@ final class CodegenEnumTest extends CodegenBaseTest {
       )
       ->render();
 
-    expect($code)->toBeUnchanged();
+    expect_with_context(static::class, $code)->toBeUnchanged();
   }
 
   public function testIsAs(): void {
@@ -36,7 +36,7 @@ final class CodegenEnumTest extends CodegenBaseTest {
       ->setIsAs('int')
       ->render();
 
-    expect($code)->toBeUnchanged();
+    expect_with_context(static::class, $code)->toBeUnchanged();
   }
 
   public function testLongEnumDeclaration(): void {
@@ -46,7 +46,7 @@ final class CodegenEnumTest extends CodegenBaseTest {
       ->setIsAs('NowThisIsTheParentEnumWithALongNameItSelf')
       ->render();
 
-    expect($code)->toBeUnchanged();
+    expect_with_context(static::class, $code)->toBeUnchanged();
   }
 
   public function testDemo(): void {
@@ -57,6 +57,6 @@ final class CodegenEnumTest extends CodegenBaseTest {
       ->addConst('B', 'b', 'This is a different letter')
       ->render();
 
-    expect($code)->toBeUnchanged();
+    expect_with_context(static::class, $code)->toBeUnchanged();
   }
 }

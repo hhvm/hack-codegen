@@ -26,7 +26,7 @@ final class HackBuilderTest extends CodegenBaseTest {
       ->addElseBlock()
       ->addLine('return 2;')
       ->endIfBlock();
-    $this->assertUnchanged($body->getCode());
+    expect_with_context(static::class, $body->getCode())->toBeUnchanged();
   }
 
   public function testForeachLoop(): void {
@@ -38,7 +38,7 @@ final class HackBuilderTest extends CodegenBaseTest {
       ->startForeachLoop('$values', '$idx', '$value')
       ->addLine('$values[$idx] = $value + 1;')
       ->endForeachLoop();
-    $this->assertUnchanged($body->getCode());
+    expect_with_context(static::class, $body->getCode())->toBeUnchanged();
   }
 
   public function testTryBLock(): void {
@@ -51,7 +51,7 @@ final class HackBuilderTest extends CodegenBaseTest {
       ->addFinallyBlock()
       ->addLine('bump_ods();')
       ->endTryBlock();
-    $this->assertUnchanged($body->getCode());
+    expect_with_context(static::class, $body->getCode())->toBeUnchanged();
   }
 
   public function testDocBlock(): void {
@@ -59,10 +59,10 @@ final class HackBuilderTest extends CodegenBaseTest {
       'will span multiple lines and probably go over '.
       'the limit so we gotta cut it up.';
     $body = $this->getHackBuilder()->addDocBlock($comment);
-    $this->assertUnchanged($body->getCode());
+    expect_with_context(static::class, $body->getCode())->toBeUnchanged();
 
     $body = $this->getHackBuilder()->addDocBlock($comment, /* max len */ 50);
-    $this->assertUnchanged($body->getCode(), 'docblock2');
+    expect_with_context(static::class, $body->getCode())->toBeUnchanged('docblock2');
   }
 
   public function testAsValue(): void {
@@ -88,7 +88,7 @@ final class HackBuilderTest extends CodegenBaseTest {
         ),
       );
 
-    $this->assertUnchanged($shape->getCode());
+    expect_with_context(static::class, $shape->getCode())->toBeUnchanged();
   }
 
   public function testShapeWithPerKeyRendering(): void {
@@ -104,22 +104,22 @@ final class HackBuilderTest extends CodegenBaseTest {
         ),
       );
 
-    $this->assertUnchanged($shape->getCode());
+    expect_with_context(static::class, $shape->getCode())->toBeUnchanged();
   }
 
   public function testWrappedStringSingle(): void {
-    $this->assertUnchanged(
+    expect_with_context(static::class,
       $this
         ->getHackBuilder()
         ->add('return ')
         ->addWrappedString('This is short')
         ->add(';')
         ->getCode(),
-    );
+    )->toBeUnchanged();
   }
 
   public function testWrappedStringDouble(): void {
-    $this->assertUnchanged(
+    expect_with_context(static::class,
       $this
         ->getHackBuilder()
         ->add('return ')
@@ -127,7 +127,7 @@ final class HackBuilderTest extends CodegenBaseTest {
           'length cap and then go ahead and finish the line.')
         ->add(';')
         ->getCode(),
-    );
+    )->toBeUnchanged();
   }
 
   public function testWrappedStringMulti(): void {
@@ -135,18 +135,18 @@ final class HackBuilderTest extends CodegenBaseTest {
 two line breaks. Also note that we include a newline and also '.
       'do a concat operation to really mix it up. We need to
       respect newlines with this code and also senseless indentation.';
-    $this->assertUnchanged(
+    expect_with_context(static::class,
       $this
         ->getHackBuilder()
         ->add('return ')
         ->addWrappedString($lorem_ipsum)
         ->add(';')
         ->getCode(),
-    );
+    )->toBeUnchanged();
   }
 
   public function testWrappedStringDoNotIndent(): void {
-    $this->assertUnchanged(
+    expect_with_context(static::class,
       $this
         ->getHackBuilder()
         ->add('$this->callMethod(')
@@ -162,7 +162,7 @@ two line breaks. Also note that we include a newline and also '.
         ->newLine()
         ->add(');')
         ->getCode(),
-    );
+    )->toBeUnchanged();
   }
 
   public function testSet(): void {
@@ -173,7 +173,7 @@ two line breaks. Also note that we include a newline and also '.
         HackBuilderValues::set(HackBuilderValues::export()),
       );
 
-    $this->assertUnchanged($set->getCode());
+    expect_with_context(static::class, $set->getCode())->toBeUnchanged();
   }
 
   public function testAddWithSuggestedLineBreaksNoBreakage(): void {
@@ -184,7 +184,7 @@ two line breaks. Also note that we include a newline and also '.
         "final class".$del."ClassNameJustLongEnoughToAvoidEightyColumns".$del.
         "extends SomeBaseClass",
       );
-    $this->assertUnchanged($body->getCode());
+    expect_with_context(static::class, $body->getCode())->toBeUnchanged();
   }
 
   public function testAddWithSuggestedLineBreaksWithBreakage(): void {
@@ -195,7 +195,7 @@ two line breaks. Also note that we include a newline and also '.
         "final abstract class".$del."ImpossibleClassLongEnoughToCrossEightyColumns".
 $del."extends SomeBaseClass",
       );
-    $this->assertUnchanged($body->getCode());
+    expect_with_context(static::class, $body->getCode())->toBeUnchanged();
   }
 
   public function testAddfWithSuggestedLineBreaks(): void {
@@ -203,7 +203,7 @@ $del."extends SomeBaseClass",
       ->getHackBuilder()
       ->addWithSuggestedLineBreaksf("%s\n%s", 'foo', 'bar')
       ->getCode();
-    $this->assertSame("foo\nbar", $code);
+    expect($code)->toBeSame("foo\nbar");
   }
 
   public function testAddSmartMultilineCall(): void {
@@ -219,7 +219,7 @@ $del."extends SomeBaseClass",
           "\$foobarbaz_alphabetagamatheta_foobarbaz",
         },
       );
-    $this->assertUnchanged($body->getCode());
+    expect_with_context(static::class, $body->getCode())->toBeUnchanged();
   }
 
   public function testLiteralMap(): void {
@@ -235,7 +235,7 @@ $del."extends SomeBaseClass",
           HackBuilderValues::literal(),
         ),
       );
-    $this->assertUnchanged($body->getCode());
+    expect_with_context(static::class, $body->getCode())->toBeUnchanged();
   }
 
   public function testAnotherConfig(): void {
@@ -252,7 +252,7 @@ $del."extends SomeBaseClass",
       ->closeStatement()
       ->endIfBlock();
 
-    $this->assertUnchanged($body->getCode());
+    expect_with_context(static::class, $body->getCode())->toBeUnchanged();
   }
 
   public function testSwitchBodyWithReturnsInCaseAndDefault(): void {
@@ -279,7 +279,7 @@ $del."extends SomeBaseClass",
       ->addLine('invariant_violation(\'ball deflated!\');')
       ->endDefault()
       ->endSwitch();
-    $this->assertUnchanged($body->getCode());
+    expect_with_context(static::class, $body->getCode())->toBeUnchanged();
   }
 
   public function testSwitchBodyWithBreaksInCaseAndDefault(): void {
@@ -306,7 +306,7 @@ $del."extends SomeBaseClass",
       ->addLine('invariant_violation(\'ball deflated!\');')
       ->endDefault()
       ->endSwitch();
-    $this->assertUnchanged($body->getCode());
+    expect_with_context(static::class, $body->getCode())->toBeUnchanged();
   }
 
   public function testSwitchBodyWithMultipleCasesWithoutBreaks(): void {
@@ -333,7 +333,7 @@ $del."extends SomeBaseClass",
       ->addLine('invariant_violation(\'ball deflated!\');')
       ->endDefault()
       ->endSwitch();
-    $this->assertUnchanged($body->getCode());
+    expect_with_context(static::class, $body->getCode())->toBeUnchanged();
   }
 
   public function testExportedVectorDoesNotHaveHHPrefix(): void {
@@ -345,9 +345,9 @@ $del."extends SomeBaseClass",
         HackBuilderValues::vector(HackBuilderValues::export()),
       )
       ->getCode();
-    $this->assertContains('Vector', $body);
-    $this->assertNotContains('HH', $body);
-    $this->assertUnchanged($body);
+    expect($body)->toContain('Vector');
+    expect($body)->toNotContain('HH');
+    expect_with_context(static::class, $body)->toBeUnchanged();
   }
 
   public function testVectorOfExportedVectors(): void {
@@ -360,7 +360,7 @@ $del."extends SomeBaseClass",
           HackBuilderValues::vector(HackBuilderValues::export()),
         ),
       );
-    $this->assertUnchanged($body->getCode());
+    expect_with_context(static::class, $body->getCode())->toBeUnchanged();
   }
 
   public function testVectorOfLiteralVectors(): void {
@@ -373,7 +373,7 @@ $del."extends SomeBaseClass",
           HackBuilderValues::vector(HackBuilderValues::literal()),
         ),
       );
-    $this->assertUnchanged($body->getCode());
+    expect_with_context(static::class, $body->getCode())->toBeUnchanged();
   }
 
   public function testVectorOfMaps(): void {
@@ -389,7 +389,7 @@ $del."extends SomeBaseClass",
           ),
         ),
       );
-    $this->assertUnchanged($body->getCode());
+    expect_with_context(static::class, $body->getCode())->toBeUnchanged();
   }
 
   public function testImmVectorOfImmVectors(): void {
@@ -402,7 +402,7 @@ $del."extends SomeBaseClass",
           HackBuilderValues::immVector(HackBuilderValues::export())
         ),
       );
-    $this->assertUnchanged($body->getCode());
+    expect_with_context(static::class, $body->getCode())->toBeUnchanged();
   }
 
   public function testImmMapOfImmMaps(): void {
@@ -422,7 +422,7 @@ $del."extends SomeBaseClass",
           ),
         ),
       );
-    $this->assertUnchanged($body->getCode());
+    expect_with_context(static::class, $body->getCode())->toBeUnchanged();
   }
 
   public function testImmSet(): void {
@@ -433,7 +433,7 @@ $del."extends SomeBaseClass",
         ImmSet { 'abc', 'def' },
         HackBuilderValues::immSet(HackBuilderValues::export()),
       );
-    $this->assertUnchanged($body->getCode());
+    expect_with_context(static::class, $body->getCode())->toBeUnchanged();
   }
 
   public function testVec(): void {
@@ -446,7 +446,7 @@ $del."extends SomeBaseClass",
           HackBuilderValues::export()
         )
       );
-    $this->assertUnchanged($body->getCode());
+    expect_with_context(static::class, $body->getCode())->toBeUnchanged();
   }
 
   public function testKeyset(): void {
@@ -459,7 +459,7 @@ $del."extends SomeBaseClass",
           HackBuilderValues::export()
         )
       );
-    $this->assertUnchanged($body->getCode());
+    expect_with_context(static::class, $body->getCode())->toBeUnchanged();
   }
 
   public function testDict(): void {
@@ -473,7 +473,7 @@ $del."extends SomeBaseClass",
           HackBuilderValues::export(),
         )
       );
-    $this->assertUnchanged($body->getCode());
+    expect_with_context(static::class, $body->getCode())->toBeUnchanged();
   }
 
   public function testClassnameMap(): void {
@@ -486,7 +486,7 @@ $del."extends SomeBaseClass",
           HackBuilderValues::classname(),
         ),
       );
-    $this->assertUnchanged($body->getCode());
+    expect_with_context(static::class, $body->getCode())->toBeUnchanged();
   }
 
   public function testLambdaMap(): void {
@@ -499,7 +499,7 @@ $del."extends SomeBaseClass",
           HackBuilderValues::lambda(($_config, $v) ==> "'value:".$v."'"),
         ),
       );
-    $this->assertUnchanged($body->getCode());
+    expect_with_context(static::class, $body->getCode())->toBeUnchanged();
   }
 }
 
