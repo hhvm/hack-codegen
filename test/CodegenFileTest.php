@@ -380,6 +380,18 @@ final class CodegenFileTest extends CodegenBaseTest {
     expect(
       Str\ends_with($code, "\n\n")
     )->toBeFalse("Should end with one newline, not multiple");
+    expect_with_context(static::class, $code)->toBeUnchanged();
+    expect(
+      SignedSourceBase::hasValidSignatureFromAnySigner($code)
+    )->toBeTrue('bad signed source');
+    expect(Str\ends_with($code, "\n"))->toBeTrue("Should end with newline");
+    expect(
+      Str\ends_with($code, "\n\n")
+    )->toBeFalse("Should end with one newline, not multiple");
+    $lines = Str\split($code, "\n");
+    expect(
+      Str\starts_with($lines[8], " ")
+    )->toBeTrue('use spaces instead of tabs');
   }
 
   public function testFormattingUnsignedFile(): void {
