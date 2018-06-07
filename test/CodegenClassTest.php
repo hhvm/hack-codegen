@@ -26,7 +26,7 @@ final class CodegenClassTest extends CodegenBaseTest {
       )
       ->render();
 
-    $this->assertUnchanged($code);
+    expect($code)->toBeUnchanged();
   }
 
   public function testExtendsAndFinal(): void {
@@ -38,7 +38,7 @@ final class CodegenClassTest extends CodegenBaseTest {
       ->setIsFinal()
       ->render();
 
-    $this->assertUnchanged($code);
+    expect($code)->toBeUnchanged();
   }
 
   public function testInterfacesAndAbstract(): void {
@@ -54,7 +54,7 @@ final class CodegenClassTest extends CodegenBaseTest {
       ->setIsAbstract()
       ->render();
 
-    $this->assertUnchanged($code);
+    expect($code)->toBeUnchanged();
   }
 
   public function testMultipleInterfaces(): void {
@@ -66,7 +66,7 @@ final class CodegenClassTest extends CodegenBaseTest {
       ->addInterfaces($cgf->codegenImplementsInterfaces($interfaces))
       ->render();
 
-    $this->assertUnchanged($code);
+    expect($code)->toBeUnchanged();
   }
 
   public function testLongClassDeclaration(): void {
@@ -77,7 +77,7 @@ final class CodegenClassTest extends CodegenBaseTest {
       ->setExtends('NowThisIsTheParentClassWithALongNameItSelf')
       ->render();
 
-    $this->assertUnchanged($code);
+    expect($code)->toBeUnchanged();
   }
 
   public function testLongClassDeclarationWithInterfaces(): void {
@@ -89,7 +89,7 @@ final class CodegenClassTest extends CodegenBaseTest {
       ->addInterfaces($cgf->codegenImplementsInterfaces($interfaces))
       ->render();
 
-    $this->assertUnchanged($code);
+    expect($code)->toBeUnchanged();
   }
 
   public function testClassDeclarationWithGenerics(): void {
@@ -102,7 +102,7 @@ final class CodegenClassTest extends CodegenBaseTest {
       ->addGenerics($generics_decl)
       ->render();
 
-    $this->assertUnchanged($code);
+    expect($code)->toBeUnchanged();
   }
 
   public function testDemo(): void {
@@ -159,7 +159,7 @@ final class CodegenClassTest extends CodegenBaseTest {
       ->setIsFinal()
       ->render();
 
-    $this->assertUnchanged($code);
+    expect($code)->toBeUnchanged();
   }
 
   public function testLongGeneratedFrom(): void {
@@ -179,7 +179,7 @@ final class CodegenClassTest extends CodegenBaseTest {
       )
       ->render();
 
-    $this->assertUnchanged($code);
+    expect($code)->toBeUnchanged();
   }
 
   public function testConstructorWrapperFuncDefault(): void {
@@ -197,7 +197,7 @@ final class CodegenClassTest extends CodegenBaseTest {
       ->addConstructorWrapperFunc()
       ->render();
 
-    $this->assertUnchanged($code);
+    expect($code)->toBeUnchanged();
   }
 
   public function testConstructorWrapperFunc(): void {
@@ -220,7 +220,7 @@ final class CodegenClassTest extends CodegenBaseTest {
       ->addConstructorWrapperFunc()
       ->render();
 
-    $this->assertUnchanged($code);
+    expect($code)->toBeUnchanged();
   }
 
   /*
@@ -239,7 +239,7 @@ final class CodegenClassTest extends CodegenBaseTest {
       ->addConstructorWrapperFunc(vec[ 'string $text' ])
       ->render();
 
-    $this->assertUnchanged($code);
+    expect($code)->toBeUnchanged();
   }
 
   public function testExtendsGeneric(): void {

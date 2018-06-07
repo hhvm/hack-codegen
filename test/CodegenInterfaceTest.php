@@ -16,7 +16,7 @@ final class CodegenInterfaceTest extends CodegenBaseTest {
     $cgf = $this->getCodegenFactory();
     $code = $cgf->codegenInterface('IEmpty')->render();
 
-    $this->assertUnchanged($code);
+    expect($code)->toBeUnchanged();
   }
 
   public function testExtendsInterfaces(): void {
@@ -27,7 +27,7 @@ final class CodegenInterfaceTest extends CodegenBaseTest {
       ->addInterface($cgf->codegenImplementsInterface('IOtherExtended'))
       ->render();
 
-    $this->assertUnchanged($code);
+    expect($code)->toBeUnchanged();
   }
 
   public function testExtendsInterfaceWithGeneratedFrom(): void {
@@ -41,7 +41,7 @@ final class CodegenInterfaceTest extends CodegenBaseTest {
       )
       ->render();
 
-    $this->assertUnchanged($code);
+    expect($code)->toBeUnchanged();
   }
 
   public function testInterfaceWithStuff(): void {
@@ -57,7 +57,7 @@ final class CodegenInterfaceTest extends CodegenBaseTest {
       ->addConst('A_CONST', 0)
       ->render();
 
-    $this->assertUnchanged($code);
+    expect($code)->toBeUnchanged();
   }
 
   public function testInterfaceWithGenerics(): void {
@@ -67,6 +67,6 @@ final class CodegenInterfaceTest extends CodegenBaseTest {
       ->addGenerics(Vector {'TKey', 'TObject'})
       ->render();
 
-    $this->assertUnchanged($code);
+    expect($code)->toBeUnchanged();
   }
 }

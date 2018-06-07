@@ -21,7 +21,7 @@ final class CodegenShapeTest extends CodegenBaseTest {
         new CodegenShapeMember('url', 'string'),
       );
 
-    $this->assertUnchanged($shape->render());
+    expect($shape->render())->toBeUnchanged();
   }
 
   public function testShapeOptionalFields(): void {
@@ -33,7 +33,7 @@ final class CodegenShapeTest extends CodegenBaseTest {
         new CodegenShapeMember('url', 'string'),
       );
 
-    $this->assertUnchanged($shape->render());
+    expect($shape->render())->toBeUnchanged();
   }
 
   public function testNestedShape(): void {
@@ -51,7 +51,7 @@ final class CodegenShapeTest extends CodegenBaseTest {
         (new CodegenShapeMember('point', $nested))->setIsOptional(),
       );
 
-    $this->assertUnchanged($shape->render());
+    expect($shape->render())->toBeUnchanged();
   }
 
   public function testMultipleNestedShapes(): void {
@@ -76,6 +76,6 @@ final class CodegenShapeTest extends CodegenBaseTest {
         (new CodegenShapeMember('key', 'string'))->setIsOptional(),
       );
 
-    $this->assertUnchanged($shape->render());
+    expect($shape->render())->toBeUnchanged();
   }
 }

@@ -21,7 +21,7 @@ final class CodegenMethodTest extends CodegenBaseTest {
       ->setDocBlock('Return the name of the user.')
       ->render();
 
-    $this->assertUnchanged($code);
+    expect($code)->toBeUnchanged();
   }
 
   public function testAbstractProtectedAndParams(): void {
@@ -33,14 +33,14 @@ final class CodegenMethodTest extends CodegenBaseTest {
       ->setProtected()
       ->render();
 
-    $this->assertUnchanged($code);
+    expect($code)->toBeUnchanged();
   }
 
   public function testAsync(): void {
     $cgf = $this->getCodegenFactory();
     $code = $cgf->codegenMethod('genFoo')->setIsAsync()->render();
 
-    $this->assertUnchanged($code);
+    expect($code)->toBeUnchanged();
   }
 
   public function testPrivateAndStaticWithEmptyBody(): void {
@@ -48,7 +48,7 @@ final class CodegenMethodTest extends CodegenBaseTest {
     $code =
       $cgf->codegenMethod('doNothing')->setIsStatic()->setPrivate()->render();
 
-    $this->assertUnchanged($code);
+    expect($code)->toBeUnchanged();
   }
 
   public function testManualSection(): void {
@@ -62,7 +62,7 @@ final class CodegenMethodTest extends CodegenBaseTest {
     $cgf->codegenClass('MyClass')->addMethod($method);
     $code = $method->render();
 
-    $this->assertUnchanged($code);
+    expect($code)->toBeUnchanged();
   }
 
   public function testConstructor(): void {
@@ -73,7 +73,7 @@ final class CodegenMethodTest extends CodegenBaseTest {
       ->setBody('$this->name = $name;')
       ->render();
 
-    $this->assertUnchanged($code);
+    expect($code)->toBeUnchanged();
   }
 
   public function testDocBlockCommentsWrap(): void {
@@ -94,6 +94,6 @@ final class CodegenMethodTest extends CodegenBaseTest {
       )
       ->render();
 
-    $this->assertUnchanged($code);
+    expect($code)->toBeUnchanged();
   }
 }

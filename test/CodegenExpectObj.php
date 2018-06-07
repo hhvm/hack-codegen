@@ -10,18 +10,20 @@
 
 namespace Facebook\HackCodegen;
 
-abstract class CodegenBaseTest extends \PHPUnit\Framework\TestCase {
+class CodegenExpectObj<T> extends \Facebook\FBExpect\ExpectObj<T> {
 
-  protected function getCodegenFactory(): HackCodegenFactory {
-    return new HackCodegenFactory(new TestCodegenConfig());
+  public function __construct(private ImmVector<mixed> $vars) {
+    parent::__construct($vars);
   }
-  /*
-  public function assertUnchanged(string $value, ?string $token = null): void {
+
+  public function toBeUnchanged(?string $token = null, string $msg = '', ...): void {
+    $msg = \vsprintf($msg, \array_slice(\func_get_args(), 2));
+    $this->assertSingleArg(__FUNCTION__);
     $class_name = \get_called_class();
     $path = CodegenExpectedFile::getPath($class_name);
     $expected = CodegenExpectedFile::parseFile($path);
     $token = $token === null ? CodegenExpectedFile::findToken() : $token;
-
+    $value = (string) $this->vars->firstValue();
     if ($expected->contains($token) && $expected[$token] === $value) {
       return;
     }
@@ -36,5 +38,13 @@ abstract class CodegenBaseTest extends \PHPUnit\Framework\TestCase {
       'New value not accepted by user',
     );
   }
-  */
+
+  private function assertSingleArg(string $method): void {
+    invariant(
+      \count($this->vars) === 1,
+      'Single arg expected for expect()->%s()',
+      $method,
+    );
+  }
+
 }
