@@ -26,7 +26,7 @@ final class CodegenTraitTest extends CodegenBaseTest {
       )
       ->render();
 
-    $this->assertUnchanged($code);
+    expect_with_context(static::class, $code)->toBeUnchanged();
   }
 
   public function testDemo(): void {
@@ -73,6 +73,6 @@ final class CodegenTraitTest extends CodegenBaseTest {
       ->setDocBlock('doc-doc-doc!')
       ->render();
 
-    $this->assertUnchanged($code);
+    expect_with_context(static::class, $code)->toBeUnchanged();
   }
 }

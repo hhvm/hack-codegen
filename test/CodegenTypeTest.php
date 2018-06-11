@@ -15,13 +15,13 @@ final class CodegenTypeTest extends CodegenBaseTest {
   public function testType(): void {
     $cgf = $this->getCodegenFactory();
     $type = $cgf->codegenType('Point')->setType('(int, int)');
-    $this->assertUnchanged($type->render());
+    expect_with_context(static::class, $type->render())->toBeUnchanged();
   }
 
   public function testNewType(): void {
     $cgf = $this->getCodegenFactory();
     $type = $cgf->codegenNewtype('Point')->setType('(int, int)');
-    $this->assertUnchanged($type->render());
+    expect_with_context(static::class, $type->render())->toBeUnchanged();
   }
 
   public function testShape(): void {
@@ -33,6 +33,6 @@ final class CodegenTypeTest extends CodegenBaseTest {
         new CodegenShapeMember('y', 'int'),
       ));
 
-    $this->assertUnchanged($type->render());
+    expect_with_context(static::class, $type->render())->toBeUnchanged();
   }
 }

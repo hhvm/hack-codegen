@@ -22,7 +22,7 @@ final class CodegenFunctionTest extends CodegenBaseTest {
       ->setBody('return $name;')
       ->setDocBlock('Return the name of the user.')
       ->render();
-    $this->assertUnchanged($code);
+    expect_with_context(static::class, $code)->toBeUnchanged();
   }
 
   public function testParams(): void {
@@ -32,7 +32,7 @@ final class CodegenFunctionTest extends CodegenBaseTest {
       ->addParameter('string $name')
       ->setBody('return $name . $name;')
       ->render();
-    $this->assertUnchanged($code);
+    expect_with_context(static::class, $code)->toBeUnchanged();
   }
 
   public function testVariadicParamDoesntAddComma(): void {
@@ -41,7 +41,7 @@ final class CodegenFunctionTest extends CodegenBaseTest {
       ->codegenFunction('addNames')
       ->addParameter('string ...$names_is_a_variadic_with_a_very_long_name_to_trigger_the_reformat')
       ->render();
-    $this->assertUnchanged($code);
+    expect_with_context(static::class, $code)->toBeUnchanged();
   }
 
   public function testLongParamParamNamesAddCommasButNotToVariadics(): void {
@@ -51,7 +51,7 @@ final class CodegenFunctionTest extends CodegenBaseTest {
       ->addParameter('string $first_name_is_a_param_with_a_very_long_name_to_trigger_the_reformat')
       ->addParameter('string ...$sur_name_is_a_param_with_a_very_long_name_to_trigger_the_reformat')
       ->render();
-    $this->assertUnchanged($code);
+    expect_with_context(static::class, $code)->toBeUnchanged();
   }
 
   public function testAsync(): void {
@@ -60,7 +60,7 @@ final class CodegenFunctionTest extends CodegenBaseTest {
       ->codegenFunction('genFoo')
       ->setIsAsync()
       ->render();
-    $this->assertUnchanged($code);
+    expect_with_context(static::class, $code)->toBeUnchanged();
   }
 
   public function testMemoize(): void {
@@ -69,7 +69,7 @@ final class CodegenFunctionTest extends CodegenBaseTest {
       ->codegenFunction('getExpensive')
       ->setIsMemoized(true)
       ->render();
-    $this->assertUnchanged($code);
+    expect_with_context(static::class, $code)->toBeUnchanged();
   }
 
   public function testOverride(): void {
@@ -78,7 +78,7 @@ final class CodegenFunctionTest extends CodegenBaseTest {
       ->codegenMethod('getNotLikeParent')
       ->setIsOverride(true)
       ->render();
-    $this->assertUnchanged($code);
+    expect_with_context(static::class, $code)->toBeUnchanged();
   }
 
   public function testOverrideAndMemoized(): void {
@@ -88,7 +88,7 @@ final class CodegenFunctionTest extends CodegenBaseTest {
       ->setIsOverride(true)
       ->setIsMemoized(true)
       ->render();
-    $this->assertUnchanged($code);
+    expect_with_context(static::class, $code)->toBeUnchanged();
   }
 
   public function testOverrideMemoizedAsync(): void {
@@ -99,7 +99,7 @@ final class CodegenFunctionTest extends CodegenBaseTest {
       ->setIsMemoized(true)
       ->setIsAsync()
       ->render();
-    $this->assertUnchanged($code);
+    expect_with_context(static::class, $code)->toBeUnchanged();
   }
 
   public function testSingleUserAttributeWithoutArgument(): void {
@@ -108,7 +108,7 @@ final class CodegenFunctionTest extends CodegenBaseTest {
       ->codegenFunction('getTestsBypassVisibility')
       ->addEmptyUserAttribute('TestsBypassVisibility')
       ->render();
-    $this->assertUnchanged($code);
+    expect_with_context(static::class, $code)->toBeUnchanged();
   }
 
   public function testSingleUserAttributeWithArgument(): void {
@@ -121,7 +121,7 @@ final class CodegenFunctionTest extends CodegenBaseTest {
         HackBuilderValues::export(),
       )
       ->render();
-    $this->assertUnchanged($code);
+    expect_with_context(static::class, $code)->toBeUnchanged();
   }
 
   public function testMixedUserAttributes(): void {
@@ -135,7 +135,7 @@ final class CodegenFunctionTest extends CodegenBaseTest {
       )
       ->addEmptyUserAttribute('TestsBypassVisibility')
       ->render();
-    $this->assertUnchanged($code);
+    expect_with_context(static::class, $code)->toBeUnchanged();
   }
 
   public function testMixedBuiltInAndUserAttributes(): void {
@@ -150,7 +150,7 @@ final class CodegenFunctionTest extends CodegenBaseTest {
       )
       ->addEmptyUserAttribute('TestsBypassVisibility')
       ->render();
-    $this->assertUnchanged($code);
+    expect_with_context(static::class, $code)->toBeUnchanged();
   }
 
   public function testMixedBuiltInAndUserAttributesAsync(): void {
@@ -166,7 +166,7 @@ final class CodegenFunctionTest extends CodegenBaseTest {
       ->addEmptyUserAttribute('TestsBypassVisibility')
       ->setIsAsync()
       ->render();
-    $this->assertUnchanged($code);
+    expect_with_context(static::class, $code)->toBeUnchanged();
   }
 
   public function testManualSection(): void {
@@ -177,7 +177,7 @@ final class CodegenFunctionTest extends CodegenBaseTest {
       ->setBody('// insert your code here')
       ->setManualBody()
       ->render();
-    $this->assertUnchanged($code);
+    expect_with_context(static::class, $code)->toBeUnchanged();
   }
 
   public function testDocBlockCommentsWrap(): void {
@@ -191,6 +191,6 @@ final class CodegenFunctionTest extends CodegenBaseTest {
       ->setDocBlock(Str\repeat('x', 78))
       ->setGeneratedFrom($cgf->codegenGeneratedFromClass('EntTestSchema'))
       ->render();
-    $this->assertUnchanged($code);
+    expect_with_context(static::class, $code)->toBeUnchanged();
   }
 }

@@ -14,7 +14,7 @@ final class CodegenPropertyTest extends CodegenBaseTest {
 
   public function testSimple(): void {
     $code = $this->getCodegenFactory()->codegenProperty('foo')->render();
-    $this->assertUnchanged($code);
+    expect_with_context(static::class, $code)->toBeUnchanged();
   }
 
   public function testPublicStatic(): void {
@@ -25,7 +25,7 @@ final class CodegenPropertyTest extends CodegenBaseTest {
       ->setIsStatic()
       ->render();
 
-    $this->assertUnchanged($code);
+    expect_with_context(static::class, $code)->toBeUnchanged();
   }
 
   public function testTyped(): void {
@@ -36,7 +36,7 @@ final class CodegenPropertyTest extends CodegenBaseTest {
       ->setType('string')
       ->render();
 
-    $this->assertUnchanged($code);
+    expect_with_context(static::class, $code)->toBeUnchanged();
   }
 
   public function testTypedWithFalsyValue(): void {
@@ -47,7 +47,7 @@ final class CodegenPropertyTest extends CodegenBaseTest {
       ->setValue(0, HackBuilderValues::export())
       ->render();
 
-    $this->assertUnchanged($code);
+    expect_with_context(static::class, $code)->toBeUnchanged();
   }
 
   public function testArrayValues(): void {
@@ -61,7 +61,7 @@ final class CodegenPropertyTest extends CodegenBaseTest {
       )
       ->render();
 
-    $this->assertUnchanged($code);
+    expect_with_context(static::class, $code)->toBeUnchanged();
   }
 
   public function testVector(): void {
@@ -72,7 +72,7 @@ final class CodegenPropertyTest extends CodegenBaseTest {
       ->setValue('Vector {}', HackBuilderValues::literal())
       ->render();
 
-    $this->assertUnchanged($code);
+    expect_with_context(static::class, $code)->toBeUnchanged();
   }
 
   public function testDocBlock(): void {
@@ -82,7 +82,7 @@ final class CodegenPropertyTest extends CodegenBaseTest {
       ->setInlineComment('a comment')
       ->render();
 
-    $this->assertUnchanged($code);
+    expect_with_context(static::class, $code)->toBeUnchanged();
   }
 
 }
