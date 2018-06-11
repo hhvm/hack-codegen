@@ -10,7 +10,7 @@
 
 namespace Facebook\HackCodegen;
 
-class CodegenExpectObj<T> extends \Facebook\FBExpect\ExpectObj<T> {
+final class ExpectObj<T> extends \Facebook\FBExpect\ExpectObj<T> {
 
   public function __construct(private ImmVector<mixed> $vars, private string $called_class = '') {
     parent::__construct($vars);
