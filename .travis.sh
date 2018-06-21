@@ -13,7 +13,3 @@ if ! git diff --quiet; then
   echo "Demo codegen not up to date."
   exit 1
 fi
-
-echo > .hhconfig
-rm -rf vendor/hhvm/hhast # avoid circular dependency when fixing things
-hh_server --check $(pwd)
