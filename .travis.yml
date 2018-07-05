@@ -1,7 +1,7 @@
 language: php
 php:
  - hhvm
- - hhvm-3.24
+ - hhvm-3.27
  - hhvm-nightly
 script:
  - ./.travis.sh

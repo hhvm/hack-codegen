@@ -95,7 +95,7 @@ final class CodegenClass extends CodegenClassBase {
       $param_full = $this->constructor->getParameters();
     }
 
-    if ($param_full) {
+    if ($param_full !== null) {
       // Extract variable names from parameters
       $param_names = vec[];
       $re = '/\$[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*/';
