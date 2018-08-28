@@ -10,10 +10,10 @@
 
 namespace Facebook\HackCodegen;
 
-function expect<T>(T $obj, mixed ...$args): ExpectObj<T> {
-  return new ExpectObj(new ImmVector(\func_get_args()));
+function expect<T>(T $obj): ExpectObj<T> {
+  return new ExpectObj($obj);
 }
 
-function expect_with_context<T>(string $context, T $obj, mixed ...$args): ExpectObj<T> {
-  return new ExpectObj(new ImmVector(\array_slice(\func_get_args(), 1)), $context);
+function expect_with_context<T>(string $context, T $obj): ExpectObj<T> {
+  return new ExpectObj($obj, $context);
 }

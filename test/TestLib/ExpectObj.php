@@ -12,8 +12,8 @@ namespace Facebook\HackCodegen;
 
 final class ExpectObj<T> extends \Facebook\FBExpect\ExpectObj<T> {
 
-  public function __construct(private ImmVector<mixed> $vars, private string $called_class = '') {
-    parent::__construct($vars);
+  public function __construct(private T $obj, private string $called_class = '') {
+    parent::__construct($obj);
     $this->called_class = $called_class;
   }
 
@@ -23,7 +23,7 @@ final class ExpectObj<T> extends \Facebook\FBExpect\ExpectObj<T> {
     $path = CodegenExpectedFile::getPath($class_name);
     $expected = CodegenExpectedFile::parseFile($path);
     $token = $token === null ? CodegenExpectedFile::findToken() : $token;
-    $value = (string) $this->vars->firstValue();
+    $value = (string) $this->obj;
     if ($expected->contains($token) && $expected[$token] === $value) {
       return;
     }
