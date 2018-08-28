@@ -197,7 +197,7 @@ final class CodegenFileTest extends CodegenBaseTest {
     $new_content =
       \str_replace('// manual_section_here', 'return $this->name;', $content);
     $this->assertFalse(
-      $content == $new_content,
+      $content === $new_content,
       "The manual content wasn't replaced. Please fix the test setup!",
     );
     Filesystem::writeFile($fname, $new_content);

@@ -119,7 +119,7 @@ trait CodegenFactoryTrait implements ICodegenFactory {
     string $class,
   ): CodegenGeneratedFrom {
     return
-      new CodegenGeneratedFrom($this->getConfig(), "Generated from $class");
+      new CodegenGeneratedFrom($this->getConfig(), "Generated from ".$class);
   }
 
   final public function codegenGeneratedFromMethod(
@@ -128,7 +128,7 @@ trait CodegenFactoryTrait implements ICodegenFactory {
   ): CodegenGeneratedFrom {
     return new CodegenGeneratedFrom(
       $this->getConfig(),
-      "Generated from $class::$method()",
+      "Generated from ".$class."::".$method."()",
     );
   }
 
@@ -139,7 +139,7 @@ trait CodegenFactoryTrait implements ICodegenFactory {
   ): CodegenGeneratedFrom {
     return new CodegenGeneratedFrom(
       $this->getConfig(),
-      "Generated from $class::$method()['$key']",
+      "Generated from ".$class."::".$method."()['".$key."']",
     );
   }
 
@@ -158,7 +158,7 @@ trait CodegenFactoryTrait implements ICodegenFactory {
     }
     return new CodegenGeneratedFrom(
       $this->getConfig(),
-      "To re-generate this file run $script",
+      "To re-generate this file run ".$script,
     );
   }
 

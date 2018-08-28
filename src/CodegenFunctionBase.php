@@ -168,7 +168,7 @@ abstract class CodegenFunctionBase implements ICodeBuilderRenderer {
 
       $multi_line_builder = (new HackBuilder($this->config))
         ->add($keywords)
-        ->addLine("$this->name(")
+        ->addLine($this->name."(")
         ->indent()
         ->addLines($parameter_lines)
         ->unindent()

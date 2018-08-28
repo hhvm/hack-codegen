@@ -1,4 +1,4 @@
-<?hh
+<?hh // strict
 /*
  *  Copyright (c) 2015-present, Facebook, Inc.
  *  All rights reserved.
@@ -40,7 +40,7 @@ $id = DormUserMutator::create()
  ->setIsActive(true)
  ->save();
 
-echo "Created user with id $id\n";
+echo "Created user with id ".$id."\n";
 
 $user = DormUser::load($id);
 echo "Loaded: ".$user->getFirstName()." ".$user->getLastName()."\n";

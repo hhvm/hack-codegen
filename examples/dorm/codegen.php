@@ -1,4 +1,4 @@
-<?hh
+<?hh // strict
 /*
  *  Copyright (c) 2015-present, Facebook, Inc.
  *  All rights reserved.
@@ -12,13 +12,13 @@ namespace Facebook\HackCodegen;
 
 require_once(__DIR__.'/../../vendor/hh_autoload.php');
 
-if ($argc == 1) {
+if ($argc === 1) {
   echo "  Usage: ".$argv[0]." file_name.php\n\n";
   exit(1);
 }
 $fname = $argv[1];
 if (!file_exists($fname)) {
-  echo "  File doesn't exist: $fname\n\n";
+  echo "  File doesn't exist: ".$fname."\n\n";
   exit(1);
 }
 
@@ -36,7 +36,7 @@ foreach($new_classes as $class_name) {
   if (!$instance instanceof DormSchema) {
     continue;
   }
-  echo "Generating code for $class_name\n";
+  echo "Generating code for ".$class_name."\n";
   (new CodegenDorm($instance))->generate();
   (new CodegenMutator($instance))->generate();
 }
