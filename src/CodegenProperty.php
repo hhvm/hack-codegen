@@ -91,7 +91,7 @@ final class CodegenProperty implements ICodeBuilderRenderer {
       ->addIf($this->isStatic, 'static ')
       ->addIf($this->type !== null, $this->type.' ')
       ->add('$'.$this->name)
-      ->addIf($this->value != null, ' = '.$value)
+      ->addIf($this->value !== null, ' = '.$value)
       ->addLine(';');
   }
 

@@ -53,7 +53,7 @@ abstract class SignedSourceBase {
     $signature = \md5(static::preprocess($file_data));
     $replaced_data =
       \str_replace(static::TOKEN, 'SignedSource<<'.$signature.'>>', $file_data);
-    if ($replaced_data == $file_data) {
+    if ($replaced_data === $file_data) {
       throw new \Exception(
         'Before signing a file, you must embed a signing token within it.',
       );

@@ -20,7 +20,7 @@ final class HackfmtFormatter implements ICodegenFormatter {
 
   public function format(
     string $code,
-    string $file_name,
+    string $_file_name,
   ): string {
     $output = array();
     $exit_code = null;

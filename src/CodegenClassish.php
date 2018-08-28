@@ -353,7 +353,7 @@ abstract class CodegenClassish implements ICodeBuilderRenderer {
       return '';
     }
 
-    if ($generics_count == 1) {
+    if ($generics_count === 1) {
       return '<'.C\onlyx($this->genericsDecl).'>';
     }
 

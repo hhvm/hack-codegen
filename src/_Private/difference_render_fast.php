@@ -49,7 +49,7 @@ function difference_render_fast(string $old, string $new): string {
   // walk this loop until we reach the end of one of the lists
   while ($a1 < count($t1) && $a2 < count($t2)) {
     // if we have a common element, save it and go to the next
-    if ($t1[$a1] == $t2[$a2]) {
+    if ($t1[$a1] === $t2[$a2]) {
       $actions[] = 4;
       $a1++;
       $a2++;
@@ -131,25 +131,25 @@ function difference_render_fast(string $old, string $new): string {
   $out = array();
 
   foreach ($actions as $act) {
-    if ($act == 1) {
+    if ($act === 1) {
       $op |= $act;
       $x1++;
       continue;
     }
 
-    if ($act == 2) {
+    if ($act === 2) {
       $op |= $act;
       $y1++;
       continue;
     }
 
     if ($op > 0) {
-      $xstr = ($x1 == ($x0 + 1)) ? $x1 : ($x0 + 1).",".$x1;
-      $ystr = ($y1 == ($y0 + 1)) ? $y1 : ($y0 + 1).",".$y1;
+      $xstr = ($x1 === ($x0 + 1)) ? $x1 : ($x0 + 1).",".$x1;
+      $ystr = ($y1 === ($y0 + 1)) ? $y1 : ($y0 + 1).",".$y1;
 
-      if ($op == 1) {
+      if ($op === 1) {
         $out[] = $xstr."d".$y1;
-      } else if ($op == 3) {
+      } else if ($op === 3) {
         $out[] = $xstr."c".$ystr;
       }
 
@@ -159,9 +159,9 @@ function difference_render_fast(string $old, string $new): string {
         $x0++;
       }
 
-      if ($op == 2) {
+      if ($op === 2) {
         $out[] = $x1."a".$ystr;
-      } else if ($op == 3) {
+      } else if ($op === 3) {
         $out[] = '---';
       }
 

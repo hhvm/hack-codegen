@@ -1,4 +1,4 @@
-<?hh
+<?hh // strict
 /*
  *  Copyright (c) 2015-present, Facebook, Inc.
  *  All rights reserved.
@@ -12,7 +12,7 @@ namespace Facebook\HackCodegen;
 
 require_once(__DIR__.'/../../vendor/hh_autoload.php');
 
-if ($argc == 1) {
+if ($argc === 1) {
   echo "  Usage: ".$argv[0]." file_name.php\n\n";
   exit(1);
 }

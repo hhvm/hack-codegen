@@ -11,7 +11,6 @@
 namespace Facebook\HackCodegen\_Private;
 
 use type Facebook\HackCodegen\{
-  IHackBuilderKeyRenderer,
   IHackBuilderValueRenderer,
   IHackCodegenConfig,
 };
