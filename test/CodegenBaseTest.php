@@ -10,7 +10,7 @@
 
 namespace Facebook\HackCodegen;
 
-abstract class CodegenBaseTest extends \PHPUnit\Framework\TestCase {
+abstract class CodegenBaseTest extends \Facebook\HackTest\HackTest {
   protected function getCodegenFactory(): HackCodegenFactory {
     return new HackCodegenFactory(new TestCodegenConfig());
   }

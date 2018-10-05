@@ -5,9 +5,4 @@ disallow_non_arraykey_keys=true
 disallow_unsafe_comparisons=true
 decl_override_require_hint=true
 enable_experimental_tc_features=shape_field_check,sealed_classes
-
-# ignore HHAST as:
-# - otherwise, we get a circular dependency
-# - we don't use anything other than executables from it
-ignored_paths = [ "vendor/.+/tests/.+", "vendor/hhvm/hhast/.+" ]
 forward_compatibility_level=3.28
