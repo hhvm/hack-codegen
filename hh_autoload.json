@@ -4,7 +4,7 @@
   ],
   "devRoots": [
     "examples/",
-    "test/"
+    "tests/"
   ],
   "devFailureHandler": "Facebook\\AutoloadMap\\HHClientFallbackHandler"
 }
