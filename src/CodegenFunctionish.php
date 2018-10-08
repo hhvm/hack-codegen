@@ -59,7 +59,7 @@ abstract class CodegenFunctionish implements ICodeBuilderRenderer {
   }
 
   public function setReturnTypef(
-    SprintfFormatString $type,
+    Str\SprintfFormatString $type,
     mixed ...$args
   ): this {
     $type = \vsprintf($type, $args);
@@ -74,7 +74,7 @@ abstract class CodegenFunctionish implements ICodeBuilderRenderer {
   }
 
   public function addParameterf(
-    SprintfFormatString $param,
+    Str\SprintfFormatString $param,
     mixed ...$args
   ): this {
     $param = \vsprintf($param, $args);
@@ -93,7 +93,10 @@ abstract class CodegenFunctionish implements ICodeBuilderRenderer {
     return $this->setBodyf('%s', $body);
   }
 
-  public function setBodyf(SprintfFormatString $body, mixed ...$args): this {
+  public function setBodyf(
+    Str\SprintfFormatString $body,
+    mixed ...$args
+  ): this {
     $this->body = \vsprintf($body, $args);
 
     return $this;
@@ -164,12 +167,15 @@ abstract class CodegenFunctionish implements ICodeBuilderRenderer {
     ) {
       return (new HackBuilder($this->config))->add($code)->getCode();
     } else {
-      $parameter_lines = Vec\map($this->parameters, $line ==> {
-        if (Str\search($line, '...$') !== null) {
-          return $line;
-        }
-        return $line.',';
-      });
+      $parameter_lines = Vec\map(
+        $this->parameters,
+        $line ==> {
+          if (Str\search($line, '...$') !== null) {
+            return $line;
+          }
+          return $line.',';
+        },
+      );
 
       $multi_line_builder = (new HackBuilder($this->config))
         ->add($keywords)

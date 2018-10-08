@@ -10,7 +10,7 @@
 
 namespace Facebook\HackCodegen;
 
-use namespace HH\Lib\Vec;
+use namespace HH\Lib\{Str, Vec};
 
 /**
  * Generate code for a class.
@@ -56,7 +56,7 @@ final class CodegenClass extends CodegenClassish {
    * Set the parent class of the generated class, using a %-placeholder format
    * string.
    */
-  public function setExtendsf(SprintfFormatString $name, mixed ...$args): this {
+  public function setExtendsf(Str\SprintfFormatString $name, mixed ...$args): this {
     $this->extendsClass = \vsprintf($name, $args);
     return $this;
   }

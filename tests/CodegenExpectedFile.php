@@ -215,7 +215,7 @@ final class CodegenExpectedFile {
    * Helper to display any message on stdout
    */
   final public static function displayf(
-    SprintfFormatString $format,
+    Str\SprintfFormatString $format,
     mixed ...$args
   ): void {
     $message = \vsprintf($format, $args);

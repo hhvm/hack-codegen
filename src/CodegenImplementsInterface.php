@@ -10,6 +10,8 @@
 
 namespace Facebook\HackCodegen;
 
+use namespace HH\Lib\Str;
+
 /**
  * Describes an implemented interface, optionally including a comment, like:
  *
@@ -39,15 +41,13 @@ final class CodegenImplementsInterface implements ICodeBuilderRenderer {
     return $this->name;
   }
 
-  public function setComment(
-    string $comment,
-  ): this {
+  public function setComment(string $comment): this {
     $this->comment = $comment;
     return $this;
   }
 
   public function setCommentf(
-    SprintfFormatString $format,
+    Str\SprintfFormatString $format,
     mixed ...$args
   ): this {
     return $this->setComment(\vsprintf($format, $args));

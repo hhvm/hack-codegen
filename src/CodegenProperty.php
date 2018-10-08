@@ -10,6 +10,8 @@
 
 namespace Facebook\HackCodegen;
 
+use namespace HH\Lib\Str;
+
 /**
  * Generate code for a property variable. Please don't use this class directly;
  * instead use the function codegen_property.  E.g.:
@@ -69,7 +71,10 @@ final class CodegenProperty implements ICodeBuilderRenderer {
     return $this;
   }
 
-  public function setTypef(SprintfFormatString $format, mixed ...$args): this {
+  public function setTypef(
+    Str\SprintfFormatString $format,
+    mixed ...$args
+  ): this {
     return $this->setType(\vsprintf($format, $args));
   }
 
@@ -77,7 +82,10 @@ final class CodegenProperty implements ICodeBuilderRenderer {
    * Set the initial value for the variable.  You can pass numbers, strings,
    * arrays, etc, and it will generate the code to render those values.
    */
-  public function setValue<T>(T $value, IHackBuilderValueRenderer<T> $renderer): this {
+  public function setValue<T>(
+    T $value,
+    IHackBuilderValueRenderer<T> $renderer,
+  ): this {
     $this->value = $renderer->render($this->config, $value);
     return $this;
   }

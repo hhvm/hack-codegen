@@ -10,6 +10,8 @@
 
 namespace Facebook\HackCodegen;
 
+use namespace HH\Lib\Str;
+
 /**
  * Describe an used trait, optionally including a comment, like:
  *
@@ -43,7 +45,7 @@ final class CodegenUsesTrait {
   }
 
   public function setCommentf(
-    SprintfFormatString $format,
+    Str\SprintfFormatString $format,
     mixed ...$args
   ): this {
     return $this->setComment(\vsprintf($format, $args));

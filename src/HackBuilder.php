@@ -151,8 +151,10 @@ final class HackBuilder extends BaseCodeBuilder {
 
     $lines
       |> Vec\slice($$, 1, C\count($lines) - 2)
-      |>
-      Vec\map($$, $line ==> $this->addLine(_Private\normalized_var_export($line).'.'));
+      |> Vec\map(
+        $$,
+        $line ==> $this->addLine(_Private\normalized_var_export($line).'.'),
+      );
     // And then add the last
     $this->add(_Private\normalized_var_export(C\last($lines)));
     if ($indent_non_first_lines) {
@@ -167,7 +169,10 @@ final class HackBuilder extends BaseCodeBuilder {
   ): this {
     return $this->add('return ')->addValue($value, $renderer)->addLine(';');
   }
-  public function addReturnf(SprintfFormatString $value, mixed ...$args): this {
+  public function addReturnf(
+    Str\SprintfFormatString $value,
+    mixed ...$args
+  ): this {
     return
       $this->addReturn(\vsprintf($value, $args), HackBuilderValues::literal());
   }
@@ -260,7 +265,7 @@ final class HackBuilder extends BaseCodeBuilder {
   }
 
   public function startIfBlockf(
-    SprintfFormatString $condition,
+    Str\SprintfFormatString $condition,
     mixed ...$args
   ): this {
     return $this->startIfBlock(\vsprintf($condition, $args));
@@ -286,7 +291,7 @@ final class HackBuilder extends BaseCodeBuilder {
   }
 
   public function addElseIfBlockf(
-    SprintfFormatString $condition,
+    Str\SprintfFormatString $condition,
     mixed ...$args
   ): this {
     return $this->addElseIfBlock(\vsprintf($condition, $args));
@@ -378,10 +383,8 @@ final class HackBuilder extends BaseCodeBuilder {
     T $case,
     IHackBuilderValueRenderer<T> $formatter,
   ): this {
-    return $this->addLinef(
-      'case %s:',
-      $formatter->render($this->config, $case),
-    )->indent();
+    return $this->addLinef('case %s:', $formatter->render($this->config, $case))
+      ->indent();
   }
 
   public function addDefault(): this {
@@ -400,7 +403,7 @@ final class HackBuilder extends BaseCodeBuilder {
   }
 
   public function returnCasef(
-    SprintfFormatString $value,
+    Str\SprintfFormatString $value,
     mixed ...$args
   ): this {
     return

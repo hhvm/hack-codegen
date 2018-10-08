@@ -86,7 +86,7 @@ abstract class CodegenClassish implements ICodeBuilderRenderer {
    * @see addGenerics
    */
   public function addGenericf(
-    SprintfFormatString $format,
+    Str\SprintfFormatString $format,
     mixed ...$args
   ): this {
     $this->addGenerics(\vsprintf($format, $args));

@@ -10,6 +10,8 @@
 
 namespace Facebook\HackCodegen;
 
+use namespace HH\Lib\Str;
+
 /** Interface for factory methods to create codegen.
  *
  * This is the main entrypoint into the library; most users will want to use
@@ -36,7 +38,7 @@ interface ICodegenFactory {
    * @see codegenFile
    */
   public function codegenFilef(
-    SprintfFormatString $format,
+    Str\SprintfFormatString $format,
     mixed ...$args
   ): CodegenFile;
 
@@ -58,7 +60,7 @@ interface ICodegenFactory {
    * @see codegenMethodf
    */
   public function codegenFunctionf(
-    SprintfFormatString $format,
+    Str\SprintfFormatString $format,
     mixed ...$args
   ): CodegenFunction;
 
@@ -75,7 +77,7 @@ interface ICodegenFactory {
    * @see codegenClass
    */
   public function codegenClassf(
-    SprintfFormatString $format,
+    Str\SprintfFormatString $format,
     mixed ...$args
   ): CodegenClass;
 
@@ -92,7 +94,7 @@ interface ICodegenFactory {
    * @see codegenConstant
    */
   public function codegenConstantf(
-    SprintfFormatString $format,
+    Str\SprintfFormatString $format,
     mixed ...$args
   ): CodegenConstant;
 
@@ -115,7 +117,7 @@ interface ICodegenFactory {
    * @see codegenMethod
    */
   public function codegenMethodf(
-    SprintfFormatString $format,
+    Str\SprintfFormatString $format,
     mixed ...$args
   ): CodegenMethod;
 
@@ -157,7 +159,7 @@ interface ICodegenFactory {
    * @see codegenProperty
    */
   public function codegenPropertyf(
-    SprintfFormatString $format,
+    Str\SprintfFormatString $format,
     mixed ...$args
   ): CodegenProperty;
 

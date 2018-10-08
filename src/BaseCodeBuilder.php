@@ -82,7 +82,7 @@ abstract class BaseCodeBuilder {
   }
 
   /** Add code to the buffer, using a % placeholder format string. */
-  final public function addf(SprintfFormatString $code, mixed ...$args): this {
+  final public function addf(Str\SprintfFormatString $code, mixed ...$args): this {
     return $this->addvf((string) $code, $args);
   }
 
@@ -145,7 +145,7 @@ abstract class BaseCodeBuilder {
    */
   final public function addIff(
     bool $condition,
-    SprintfFormatString $code,
+    Str\SprintfFormatString $code,
     mixed ...$args
   ): this {
     if ($condition) {
@@ -182,7 +182,7 @@ abstract class BaseCodeBuilder {
    */
   final public function addLineIff(
     bool $condition,
-    SprintfFormatString $code,
+    Str\SprintfFormatString $code,
     mixed ...$args
   ): this {
     if ($condition) {
@@ -207,7 +207,7 @@ abstract class BaseCodeBuilder {
   /** Add code specified using a %-placeholder format string and arguments,
    * followed by a newline */
   final public function addLinef(
-    SprintfFormatString $code,
+    Str\SprintfFormatString $code,
     mixed ...$args
   ): this {
     return $this->addLineImplvf((string)$code, $args);
@@ -238,7 +238,7 @@ abstract class BaseCodeBuilder {
    * @see `addWithSuggestedLineBreaks` for details on the behavior.
    */
   final public function addWithSuggestedLineBreaksf(
-    SprintfFormatString $code,
+    Str\SprintfFormatString $code,
     mixed ...$args
   ): this {
     return $this->addWithSuggestedLineBreaks(\vsprintf($code, $args));

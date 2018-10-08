@@ -10,7 +10,7 @@
 
 namespace Facebook\HackCodegen;
 
-use namespace HH\Lib\{C, Vec};
+use namespace HH\Lib\{C, Str, Vec};
 
 /**
  * Trait to implement `ICodegenFactory` if no special behavior is provided.
@@ -30,7 +30,7 @@ trait CodegenFactoryTrait implements ICodegenFactory {
   }
 
   final public function codegenConstantf(
-    SprintfFormatString $format,
+    Str\SprintfFormatString $format,
     mixed ...$args
    ): CodegenConstant {
     return new CodegenConstant($this->getConfig(), \vsprintf($format, $args));
@@ -41,7 +41,7 @@ trait CodegenFactoryTrait implements ICodegenFactory {
   }
 
   final public function codegenFilef(
-    SprintfFormatString $format,
+    Str\SprintfFormatString $format,
     mixed ...$args
   ): CodegenFile {
     return $this->codegenFile(\vsprintf($format, $args));
@@ -52,7 +52,7 @@ trait CodegenFactoryTrait implements ICodegenFactory {
   }
 
   final public function codegenFunctionf(
-    SprintfFormatString $format,
+    Str\SprintfFormatString $format,
     mixed ...$args
   ): CodegenFunction {
     return $this->codegenFunction(\vsprintf($format, $args));
@@ -63,7 +63,7 @@ trait CodegenFactoryTrait implements ICodegenFactory {
   }
 
   final public function codegenClassf(
-    SprintfFormatString $format,
+    Str\SprintfFormatString $format,
     mixed ...$args
   ): CodegenClass {
     return $this->codegenClass(\vsprintf($format, $args));
@@ -89,7 +89,7 @@ trait CodegenFactoryTrait implements ICodegenFactory {
   }
 
   final public function codegenMethodf(
-    SprintfFormatString $format,
+    Str\SprintfFormatString $format,
     mixed ...$args
   ): CodegenMethod {
     return $this->codegenMethod(\vsprintf($format, $args));
@@ -116,7 +116,7 @@ trait CodegenFactoryTrait implements ICodegenFactory {
   }
 
   final public function codegenPropertyf(
-    SprintfFormatString $format,
+    Str\SprintfFormatString $format,
     mixed ...$args
   ): CodegenProperty {
     return $this->codegenProperty(\vsprintf($format, $args));

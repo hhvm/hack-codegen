@@ -241,7 +241,7 @@ final class CodegenFile {
   }
 
   public function setShebangLinef(
-    SprintfFormatString $format,
+    Str\SprintfFormatString $format,
     mixed ...$args
   ): this {
     return $this->setShebangLine(\vsprintf($format, $args));
@@ -259,7 +259,7 @@ final class CodegenFile {
   }
 
   public function setPseudoMainHeaderf(
-    SprintfFormatString $format,
+    Str\SprintfFormatString $format,
     mixed ...$args
   ): this {
     return $this->setPseudoMainHeader(\vsprintf($format, $args));
@@ -277,7 +277,7 @@ final class CodegenFile {
   }
 
   public function setPseudoMainFooterf(
-    SprintfFormatString $format,
+    Str\SprintfFormatString $format,
     mixed ...$args
   ): this {
     return $this->setPseudoMainFooter(\vsprintf($format, $args));
@@ -374,7 +374,7 @@ final class CodegenFile {
     $builder->addLineIff(
       $this->fileNamespace !== null,
       'namespace %s;',
-      $this->fileNamespace,
+      $this->fileNamespace ?? '',
     );
 
     $get_use_statement = ($type, $ns, $as) ==> \sprintf(
