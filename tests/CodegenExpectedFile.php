@@ -10,6 +10,7 @@
 
 namespace Facebook\HackCodegen;
 
+use namespace Facebook\DiffLib;
 use namespace HH\Lib\{Str, Vec};
 
 /**
@@ -239,7 +240,9 @@ final class CodegenExpectedFile {
     string $new_value,
   ): bool {
     self::displayf('Change of expected value for test %s:', $token);
-    self::displayRaw(_Private\difference_render_fast($old_value, $new_value));
+    self::displayRaw(
+      DiffLib\CLIColoredUnifiedDiff::create($old_value, $new_value),
+    );
     return self::prompt('Do you accept to update the expected value ?');
   }
 
