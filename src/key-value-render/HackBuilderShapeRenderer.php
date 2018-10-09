@@ -50,7 +50,7 @@ final class HackBuilderShapeRenderer
         IHackBuilderValueRenderer::class,
       );
       $builder->addWithSuggestedLineBreaksf(
-        "%s =>\t%s,\n",
+        "%s =>\0%s,\n",
         $key_renderer->render($config, $key),
         $value_renderer->render($config, $value),
       );

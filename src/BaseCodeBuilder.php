@@ -21,7 +21,7 @@ use namespace Facebook\HackCodegen\_Private\Vec as VecP;
  */
 abstract class BaseCodeBuilder {
 
-  const string DELIMITER = "\t";
+  const string DELIMITER = "\0";
 
   private _Private\StrBuffer $code;
   private bool $isNewLine = true;

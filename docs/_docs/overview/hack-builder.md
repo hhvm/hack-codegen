@@ -39,7 +39,7 @@ As readable code is a goal of Hack Codegen, several whitespace helpers are provi
  - `->indent()`: increase the number of spaces added to the start of any new non-empty lines
    (by default, this increases by 2 spaces - see `IHackCodegenConfig` to change this)
  - `->unindent()`: do the opposite
- - `->addLineWithSuggestedLineBreaks()`: any `\t` in the input string is replaced with a
+ - `->addLineWithSuggestedLineBreaks()`: any `\0` in the input string is replaced with a
    space if it will still fit in the desired maximum line length, otherwise a newline is
    added (and indented if needed)
  - `->addMultilineCall($call, $args)`: either renders the call all on one line, or with

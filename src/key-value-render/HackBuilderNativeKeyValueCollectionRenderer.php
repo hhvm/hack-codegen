@@ -37,7 +37,7 @@ final class HackBuilderNativeKeyValueCollectionRenderer<
     $builder = (new HackBuilder($config))->openContainer($this->container);
     foreach ($values as $key => $value) {
       $builder->addWithSuggestedLineBreaksf(
-        "%s =>\t%s,\n",
+        "%s =>\0%s,\n",
         $key_renderer->render($config, $key),
         $value_renderer->render($config, $value),
       );

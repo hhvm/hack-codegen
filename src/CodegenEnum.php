@@ -82,7 +82,7 @@ final class CodegenEnum extends CodegenClassish {
         $builder->addDocBlock($comment);
       }
       $builder
-        ->addWithSuggestedLineBreaksf("%s =\t%s;", $name, (string)$value)
+        ->addWithSuggestedLineBreaksf("%s =\0%s;", $name, (string)$value)
         ->newLine();
     }
   }

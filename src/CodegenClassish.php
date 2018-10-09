@@ -393,7 +393,7 @@ abstract class CodegenClassish implements ICodeBuilderRenderer {
         $builder->addWithSuggestedLineBreaksf('abstract const %s;', $name);
       } else {
         $builder->addWithSuggestedLineBreaksf(
-          "const %s =\t%s;",
+          "const %s =\0%s;",
           $name,
           (string)$value,
         );

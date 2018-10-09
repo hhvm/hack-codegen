@@ -150,7 +150,7 @@ class CodegenDorm {
             HackBuilderValues::literal(),
           )
           ->addWithSuggestedLineBreaksf(
-            "return %s === null\t? null\t: %s;",
+            "return %s === null\0? null\0: %s;",
             '$value',
             $return_data,
           );
