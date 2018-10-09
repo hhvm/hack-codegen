@@ -74,7 +74,18 @@ final class HackBuilderTest extends CodegenBaseTest {
         HackBuilderKeys::export(),
         HackBuilderValues::literal(),
       ),
-    );
+    )->getCode();
+    expect_with_context(static::class, $dict)->toBeUnchanged();
+  }
+
+  public function testRegex(): void {
+    $make_code = $re ==> $this->getHackBuilder()
+      ->addValue($re, HackBuilderValues::regex())
+      ->getCode();
+    expect($make_code(re"/foo/"))->toBeSame('re"/foo/"');
+    expect($make_code(re"/\$foo/"))->toBeSame('re"/\$foo/"');
+    expect($make_code(re"/a\"b/"))->toBeSame('re"/a\"b/"');
+    expect($make_code(re"/a?b/"))->toBeSame('re"/a?b/"');
   }
 
   public function testShapeWithUniformRendering(): void {

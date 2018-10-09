@@ -30,6 +30,10 @@ if ($do_that) {
     );
 }
 
+!@#$%codegentest:testAsValue
+dict[
+  'foo' => bar,
+]
 !@#$%codegentest:testClassnameMap
 Map {
   \Facebook\HackCodegen\HackBuilderTest::class => \stdClass::class,
