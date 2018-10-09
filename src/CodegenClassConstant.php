@@ -13,13 +13,11 @@ namespace Facebook\HackCodegen;
 use namespace HH\Lib\Str;
 
 /**
- * Generate code for a constant that is not part of a class.
+ * Generate code for a class constant.
  *
  * @see IHackCodegenFactory::codegenConstant
  */
-final class CodegenConstant
-  extends CodegenConstantish
-  implements ICodeBuilderRenderer {
+final class CodegenClassConstant extends CodegenConstantish {
   use HackBuilderRenderer;
 
   public function __construct(
@@ -29,37 +27,53 @@ final class CodegenConstant
     parent::__construct($config, $name);
   }
 
+  private bool $isAbstract = false;
+
+  public function isAbstract(): bool {
+    return $this->isAbstract;
+  }
+
+  public function setIsAbstract(bool $value): this {
+    $this->isAbstract = $value;
+    return $this;
+  }
+
   private ?string $type;
 
   public function getType(): ?string {
     return $this->type;
   }
 
-	/** @selfdocumenting */
-	public function setType(string $type): this {
-		$this->type = $type;
-		return $this;
-	}
+  /** @selfdocumenting */
+  public function setType(string $type): this {
+    $this->type = $type;
+    return $this;
+  }
 
-	/** Set the type of the constant using a %-placeholder format string */
-	public function setTypef(
-		Str\SprintfFormatString $format,
-		mixed ...$args
-	): this {
-		return $this->setType(\vsprintf($format, $args));
-	}
+  /** Set the type of the constant using a %-placeholder format string */
+  public function setTypef(
+    Str\SprintfFormatString $format,
+    mixed ...$args
+  ): this {
+    return $this->setType(\vsprintf($format, $args));
+  }
 
   public function appendToBuilder(HackBuilder $builder): HackBuilder {
     $value = $this->getValue();
-    invariant($value !== null, 'constants must have a value');
+    $abstract = $this->isAbstract();
+    invariant(
+      ($value !== null) !== $abstract,
+      'class constants must either be abstract or have a value',
+    );
     $type = $this->getType();
     return $builder
       ->addDocBlock($this->getDocBlock())
       ->ensureNewLine()
+      ->addIf($abstract, 'abstract ')
       ->add('const ')
       ->addIf($type !== null, $type.' ')
       ->add($this->getName())
-      ->add(' = '.$value)
+      ->addIf($value !== null, ' = '.$value)
       ->addLine(';');
   }
 }

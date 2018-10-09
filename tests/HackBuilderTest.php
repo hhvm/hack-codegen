@@ -68,12 +68,11 @@ final class HackBuilderTest extends CodegenBaseTest {
   public function testAsValue(): void {
     $dict = $this->getHackBuilder()->addValue(
       dict[
-        'foo' =>
-          $this->getHackBuilder()->addValue('bar', HackBuilderValues::literal()),
+        'foo' => 'bar',
       ],
       HackBuilderValues::dict(
         HackBuilderKeys::export(),
-        HackBuilderValues::code(),
+        HackBuilderValues::literal(),
       ),
     );
   }

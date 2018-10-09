@@ -33,11 +33,13 @@ abstract final class HackBuilderValues {
   }
 
   /**
-   * Render a `HackBuilder` value to code, and use it as the value.
+   * Render a Codegen* value to code, and use it as the value.
    */
-  public static function code(): IHackBuilderValueRenderer<HackBuilder> {
-    return new _Private\HackBuilderCodeRenderer();
+  public static function codegen(
+  ): IHackBuilderValueRenderer<ICodeBuilderRenderer> {
+    return new _Private\HackBuilderCodegenRenderer();
   }
+
 
   /** Render a `vec`-like PHP array literal */
   public static function valueArray<Tv>(

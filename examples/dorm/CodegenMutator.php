@@ -98,27 +98,16 @@ class CodegenMutator {
     }
 
     $cg = $this->codegen;
-
-    // Here's how we add the code for a Map. In hack_builder, the methods for
-    // adding collections allow to customize the rendering for keys/values
-    // to be either EXPORT or LITERAL.  By default is EXPORT, which will cause,
-    // for example, that if you pass a string, quotes will be added.
-    // LITERAL will just output the value without processing.  Since the values
-    // are, for example PDO::PARAM_STR, if we use EXPORT it would be
-    // 'PDO::PARAM_STR', but using LITERAL it's PDO::PARAM_STR
-    $code = $cg->codegenHackBuilder()
-      ->addValue(
+    return $cg->codegenProperty('pdoType')
+      ->setType('Map<string, int>')
+      ->setIsStatic()
+      ->setValue(
         $values,
         HackBuilderValues::map(
           HackBuilderKeys::export(),
           HackBuilderValues::literal(),
         ),
       );
-
-    return $cg->codegenProperty('pdoType')
-      ->setType('Map<string, int>')
-      ->setIsStatic()
-      ->setValue($code, HackBuilderValues::code());
   }
 
   private function getConstructor(): CodegenConstructor {

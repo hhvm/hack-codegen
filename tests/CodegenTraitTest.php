@@ -44,9 +44,19 @@ final class CodegenTraitTest extends CodegenBaseTest {
           ),
       )
       ->addTrait($cgf->codegenUsesTrait("Useless"))
-      ->addConst('MAX_SIZE', 256)
-      ->addConst('DEFAULT_NAME', 'MyEnt', 'Default name of Ent.')
-      ->addConst('PI', 3.1415)
+      ->addConstant(
+        $cgf->codegenClassConstant('MAX_SIZE')
+          ->setValue(256, HackBuilderValues::export()),
+      )
+      ->addConstant(
+        $cgf->codegenClassConstant('DEFAULT_NAME')
+          ->setValue('MyEnt', HackBuilderValues::export())
+          ->setDocBlock('Default name of Ent.'),
+      )
+      ->addConstant(
+        $cgf->codegenClassConstant('PI')
+          ->setValue(3.1415, HackBuilderValues::export()),
+      )
       ->setHasManualMethodSection()
       ->setHasManualDeclarations()
       ->addProperty(

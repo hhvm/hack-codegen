@@ -75,14 +75,19 @@ final class CodegenEnum extends CodegenClassish {
     $builder->ensureEmptyLine();
 
     foreach ($this->consts as $const) {
-      list($name, $is_abstract, $value, $comment) = $const;
-      invariant(!$is_abstract, 'We do not support abstract consts in Enums.');
-      if ($comment !== null) {
-        $builder->ensureEmptyLine();
-        $builder->addDocBlock($comment);
+      invariant(
+        $const is CodegenClassConstant,
+        "enums can only have class constants",
+      );
+      invariant(!$const->isAbstract(), "enum constants can not be abstract");
+      $doc = $const->getDocBlock();
+      if ($doc !== null) {
+        $builder
+          ->ensureEmptyLine()
+          ->addDocBlock($doc);
       }
       $builder
-        ->addWithSuggestedLineBreaksf("%s =\0%s;", $name, (string)$value)
+        ->add($const->getName().' = '.$const->getValue().';')
         ->newLine();
     }
   }

@@ -118,9 +118,19 @@ final class CodegenClassTest extends CodegenBaseTest {
           ),
       )
       ->addTrait($cgf->codegenUsesTrait("Useless"))
-      ->addConst('MAX_SIZE', 256)
-      ->addConst('DEFAULT_NAME', 'MyEnt', 'Default name of Ent.')
-      ->addConst('PI', 3.1415)
+      ->addConstant(
+        $cgf->codegenClassConstant('MAX_SIZE')
+          ->setValue(256, HackBuilderValues::export()),
+      )
+      ->addConstant(
+        $cgf->codegenClassConstant('DEFAULT_NAME')
+          ->setValue('MyEnt', HackBuilderValues::export())
+          ->setDocBlock('Default name of Ent.'),
+      )
+      ->addConstant(
+        $cgf->codegenClassConstant('PI')
+          ->setValue(3.1415, HackBuilderValues::export()),
+      )
       ->setHasManualMethodSection()
       ->setHasManualDeclarations()
       ->addProperty(
@@ -129,7 +139,7 @@ final class CodegenClassTest extends CodegenBaseTest {
       ->addProperty(
         $cgf->codegenProperty('id')
           ->setType('?int')
-          ->setValue(12345, HackBuilderValues::export())
+          ->setValue(12345, HackBuilderValues::export()),
       )
       ->setConstructor(
         $cgf
@@ -204,7 +214,9 @@ final class CodegenClassTest extends CodegenBaseTest {
     $cgf = $this->getCodegenFactory();
     $code = $cgf
       ->codegenClass('TestWrapperFunc')
-      ->addProperty($cgf->codegenProperty('text')->setPrivate()->setType('string'))
+      ->addProperty(
+        $cgf->codegenProperty('text')->setPrivate()->setType('string'),
+      )
       ->addProperty(
         $cgf
           ->codegenProperty('hack')
@@ -236,7 +248,7 @@ final class CodegenClassTest extends CodegenBaseTest {
     $code = $cgf
       ->codegenClass('TestWrapperFunc')
       ->setExtends('StrangeParent')
-      ->addConstructorWrapperFunc(vec[ 'string $text' ])
+      ->addConstructorWrapperFunc(vec['string $text'])
       ->render();
 
     expect_with_context(static::class, $code)->toBeUnchanged();
@@ -251,14 +263,18 @@ final class CodegenClassTest extends CodegenBaseTest {
 
   public function testGenericsWithSubtypeConstraints(): void {
     $cgf = $this->getCodegenFactory();
-    $code = $cgf->codegenClass('GenericsTestClass')->addGenericSubtypeConstraint('T', 'U')->render();
+    $code = $cgf->codegenClass('GenericsTestClass')
+      ->addGenericSubtypeConstraint('T', 'U')
+      ->render();
 
     expect($code)->toContain('T as U');
   }
 
   public function testGenericsWithSuperTypeConstraints(): void {
     $cgf = $this->getCodegenFactory();
-    $code = $cgf->codegenClass('GenericsTestClass')->addGenericSupertypeConstraint('T', 'U')->render();
+    $code = $cgf->codegenClass('GenericsTestClass')
+      ->addGenericSupertypeConstraint('T', 'U')
+      ->render();
 
     expect($code)->toContain('T super U');
   }

@@ -54,7 +54,10 @@ final class CodegenInterfaceTest extends CodegenBaseTest {
           ->setReturnType('Awaitable<mixed>')
           ->setDocBlock("Override this to have the stuff"),
       )
-      ->addConst('A_CONST', 0)
+      ->addConstant(
+        $cgf->codegenClassConstant('A_CONST')
+          ->setValue(0, HackBuilderValues::export()),
+      )
       ->render();
 
     expect_with_context(static::class, $code)->toBeUnchanged();
@@ -64,7 +67,7 @@ final class CodegenInterfaceTest extends CodegenBaseTest {
     $cgf = $this->getCodegenFactory();
     $code = $cgf
       ->codegenInterface('IInterfaceWithGenerics')
-      ->addGenerics(Vector {'TKey', 'TObject'})
+      ->addGenerics(Vector { 'TKey', 'TObject' })
       ->render();
 
     expect_with_context(static::class, $code)->toBeUnchanged();

@@ -50,11 +50,18 @@ final class CodegenEnumTest extends CodegenBaseTest {
   }
 
   public function testDemo(): void {
-    $code = $this
-      ->getCodegenFactory()
+    $cgf = $this->getCodegenFactory();
+    $code = $cgf
       ->codegenEnum('Demo', 'string')
-      ->addConst('A', 'a')
-      ->addConst('B', 'b', 'This is a different letter')
+      ->addConstant(
+        $cgf->codegenClassConstant('A')
+          ->setValue('a', HackBuilderValues::export()),
+      )
+      ->addConstant(
+        $cgf->codegenClassConstant('B')
+          ->setValue('b', HackBuilderValues::export())
+          ->setDocBlock('This is a different letter'),
+      )
       ->render();
 
     expect_with_context(static::class, $code)->toBeUnchanged();

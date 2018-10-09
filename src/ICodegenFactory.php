@@ -81,8 +81,43 @@ interface ICodegenFactory {
     mixed ...$args
   ): CodegenClass;
 
+  /**
+   * Create a class constant.
+   *
+   * @see codegenConstant
+   * @see codegenTypeConstant
+   * @see codegenClassConstantf
+   */
+  public function codegenClassConstant(string $name): CodegenClassConstant;
+
+  /**
+   * Create a class constant using a %-placeholder format string for the
+    * constant name.
+   *
+   * @see codegenClassConstant
+   */
+  public function codegenClassConstantf(
+    Str\SprintfFormatString $format,
+    mixed ...$args
+  ): CodegenClassConstant;
+
+  /**
+   * Create a class type constant.
+   */
+  public function codegenTypeConstant(string $name): CodegenTypeConstant;
+
+  /**
+   * Create a class type constant using a %-placeholder format string for the
+   * name.
+   */
+  public function codegenTypeConstantf(
+    Str\SprintfFormatString $name,
+    mixed ...$args
+  ): CodegenTypeConstant;
+
   /** Create a top-level constant (not a class constant).
    *
+   * @see codegenClassConstant
    * @see codegenConstantf
    */
   public function codegenConstant(string $name): CodegenConstant;

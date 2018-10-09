@@ -33,7 +33,7 @@ abstract class CodegenClassish implements ICodeBuilderRenderer {
   protected ?CodegenFunction $wrapperFunc = null;
   protected vec<CodegenMethod> $methods = vec[];
   private vec<CodegenUsesTrait> $traits = vec[];
-  protected vec<(string, bool, mixed, ?string)> $consts = vec[];
+  protected vec<CodegenConstantish> $consts = vec[];
   protected vec<CodegenProperty> $vars = vec[];
   protected bool $hasManualFooter = false;
   protected bool $hasManualHeader = false;
@@ -193,90 +193,15 @@ abstract class CodegenClassish implements ICodeBuilderRenderer {
   }
 
   /** @selfdocumenting */
-  public function addTypeConst(
-    string $name,
-    string $type,
-    ?string $comment = null,
+  public function addConstant(
+    CodegenClassConstant $const,
   ): this {
-    return $this->addConst(
-      'type '.$name,
-      $type,
-      $comment,
-      HackBuilderValues::literal(),
-    );
-  }
-
-  /** @selfdocumenting */
-  public function addPartiallyAbstractTypeConst(
-    string $name,
-    string $type,
-    string $constraint,
-    ?string $comment = null,
-  ): this {
-    return $this->addConst(
-      \sprintf('type %s as %s', $name, $constraint),
-      $type,
-      $comment,
-      HackBuilderValues::literal(),
-    );
-  }
-
-  /** @selfdocumenting */
-  public function addAbstractTypeConst(
-    string $name,
-    string $type,
-    ?string $comment = null,
-  ): this {
-    return $this->addAbstractConst(
-      \sprintf('type %s as%s%s', $name, HackBuilder::DELIMITER, $type),
-      $comment,
-    );
-  }
-
-  /** @selfdocumenting */
-  public function addClassNameConst(
-    string $type,
-    string $name,
-    ?string $comment = null,
-  ): this {
-    return $this->addConst(
-      \sprintf('classname<%s> %s', $type, $name),
-      \sprintf('%s::class', $type),
-      $comment,
-      HackBuilderValues::literal(),
-    );
-  }
-
-  /** @selfdocumenting */
-  public function addAbstractClassNameConst(
-    string $type,
-    string $name,
-    ?string $comment = null,
-  ): this {
-    return $this->addAbstractConst(
-      \sprintf('classname<%s> %s', $type, $name),
-      $comment,
-    );
-  }
-
-  /** @selfdocumenting */
-  public function addConst<T>(
-    string $name,
-    T $value,
-    ?string $comment = null,
-    IHackBuilderValueRenderer<T> $values_config = HackBuilderValues::export(),
-  ): this {
-    $rendered_value = $values_config->render($this->config, $value);
-    $this->consts[] = tuple($name, false, $rendered_value, $comment);
+    $this->consts[] = $const;
     return $this;
   }
 
-  /** @selfdocumenting */
-  public function addAbstractConst(
-    string $name,
-    ?string $comment = null,
-  ): this {
-    $this->consts[] = tuple($name, true, null, $comment);
+  public function addTypeConstant(CodegenTypeConstant $const): this {
+    $this->consts[] = $const;
     return $this;
   }
 
@@ -384,21 +309,10 @@ abstract class CodegenClassish implements ICodeBuilderRenderer {
     $builder->ensureEmptyLine();
 
     foreach ($this->consts as $const) {
-      list($name, $is_abstract, $value, $comment) = $const;
-      if ($comment !== null) {
+      if ($const->getDocBlock() is nonnull) {
         $builder->ensureEmptyLine();
-        $builder->addDocBlock($comment);
       }
-      if ($is_abstract) {
-        $builder->addWithSuggestedLineBreaksf('abstract const %s;', $name);
-      } else {
-        $builder->addWithSuggestedLineBreaksf(
-          "const %s =\0%s;",
-          $name,
-          (string)$value,
-        );
-      }
-      $builder->newLine();
+      $const->appendToBuilder($builder);
     }
   }
 

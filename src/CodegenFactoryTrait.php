@@ -32,9 +32,38 @@ trait CodegenFactoryTrait implements ICodegenFactory {
   final public function codegenConstantf(
     Str\SprintfFormatString $format,
     mixed ...$args
-   ): CodegenConstant {
+  ): CodegenConstant {
     return new CodegenConstant($this->getConfig(), \vsprintf($format, $args));
   }
+
+  final public function codegenClassConstant(
+    string $name,
+  ): CodegenClassConstant {
+    return new CodegenClassConstant($this->getConfig(), $name);
+  }
+
+  final public function codegenClassConstantf(
+    Str\SprintfFormatString $format,
+    mixed ...$args
+  ): CodegenClassConstant {
+    return
+      new CodegenClassConstant($this->getConfig(), \vsprintf($format, $args));
+  }
+
+	final public function codegenTypeConstant(
+		string $name,
+	): CodegenTypeConstant {
+		return new CodegenTypeConstant($this->getConfig(), $name);
+	}
+
+	final public function codegenTypeConstantf(
+		Str\SprintfFormatString $format,
+		mixed ...$args
+	): CodegenTypeConstant {
+		return
+			new CodegenTypeConstant($this->getConfig(), \vsprintf($format, $args));
+	}
+
 
   final public function codegenFile(string $file): CodegenFile {
     return new CodegenFile($this->getConfig(), $file);

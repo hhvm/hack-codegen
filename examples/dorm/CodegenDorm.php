@@ -48,7 +48,13 @@ class CodegenDorm {
       ->setConstructor($this->getConstructor())
       ->addMethod($this->getLoad())
       ->addMethods($this->getGetters())
-      ->addTypeConst('TData', $this->getDatabaseRowShape()->render());
+      ->addTypeConstant(
+        $cg->codegenTypeConstant('TData')
+          ->setValue(
+            $this->getDatabaseRowShape(),
+            HackBuilderValues::codegen(),
+          )
+      );
 
     $rc = new \ReflectionClass(\get_class($this->schema));
     $path = $rc->getFileName();
