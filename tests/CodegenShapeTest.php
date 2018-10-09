@@ -46,7 +46,7 @@ final class CodegenShapeTest extends CodegenBaseTest {
       )
       ->setAllowsSubtyping(true);
 
-		expect_with_context(static::class, $shape->render())->toBeUnchanged();
+    expect_with_context(static::class, $shape->render())->toBeUnchanged();
 
   }
 
