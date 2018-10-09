@@ -253,6 +253,8 @@ final class CodegenExpectedFile {
    * Helper to ask the user for validation on stdin
    */
   private static function prompt(string $message): bool {
+    \stream_set_blocking(\STDIN, true);
+    using OnExit(() ==> { \stream_set_blocking(\STDIN, false); });
     while (true) {
       self::displayf('%s (y/N)', $message);
       self::displayRaw('> ');
