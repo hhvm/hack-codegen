@@ -36,6 +36,20 @@ final class CodegenShapeTest extends CodegenBaseTest {
     expect_with_context(static::class, $shape->render())->toBeUnchanged();
   }
 
+  public function testImplicitSubtyping(): void {
+    $shape = $this
+      ->getCodegenFactory()
+      ->codegenShape(
+        (new CodegenShapeMember('x', 'int'))->setIsOptional(),
+        (new CodegenShapeMember('y', 'int'))->setIsOptional(),
+        new CodegenShapeMember('url', 'string'),
+      )
+      ->setAllowsSubtyping(true);
+
+		expect_with_context(static::class, $shape->render())->toBeUnchanged();
+
+  }
+
   public function testNestedShape(): void {
     $nested = $this
       ->getCodegenFactory()

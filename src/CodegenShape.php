@@ -39,6 +39,16 @@ final class CodegenShape implements ICodeBuilderRenderer {
     return $this;
   }
 
+  private bool $allowSubtyping = false;
+  public function allowsSubtyping(): bool {
+    return $this->allowSubtyping;
+  }
+
+  public function setAllowsSubtyping(bool $value): this {
+    $this->allowSubtyping = $value;
+    return $this;
+  }
+
   public function appendToBuilder(HackBuilder $builder): HackBuilder {
     $builder->addLine('shape(')->indent();
 
@@ -59,6 +69,10 @@ final class CodegenShape implements ICodeBuilderRenderer {
         ->startManualSection($manual_id)
         ->ensureEmptyLine()
         ->endManualSection();
+    }
+
+    if ($this->allowsSubtyping()) {
+      $builder->ensureNewLine()->addLine('...');
     }
 
     return $builder->unindent()->add(')');

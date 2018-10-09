@@ -1,4 +1,11 @@
 @generated
+!@#$%codegentest:testImplicitSubtyping
+shape(
+  ?'x' => int,
+  ?'y' => int,
+  'url' => string,
+  ...
+)
 !@#$%codegentest:testMultipleNestedShapes
 shape(
   'test' => shape(
