@@ -58,6 +58,7 @@ final class CodegenTypeConstant
     return $this;
   }
 
+  <<__Override>>
   public function appendToBuilder(HackBuilder $builder): HackBuilder {
     $value = $this->getValue();
     $abstract = $this->isAbstract();

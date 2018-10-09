@@ -58,6 +58,7 @@ final class CodegenClassConstant extends CodegenConstantish {
     return $this->setType(\vsprintf($format, $args));
   }
 
+  <<__Override>>
   public function appendToBuilder(HackBuilder $builder): HackBuilder {
     $value = $this->getValue();
     $abstract = $this->isAbstract();

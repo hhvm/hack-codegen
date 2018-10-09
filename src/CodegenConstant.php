@@ -49,6 +49,7 @@ final class CodegenConstant
 		return $this->setType(\vsprintf($format, $args));
 	}
 
+  <<__Override>>
   public function appendToBuilder(HackBuilder $builder): HackBuilder {
     $value = $this->getValue();
     invariant($value !== null, 'constants must have a value');
