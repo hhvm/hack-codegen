@@ -42,8 +42,6 @@
        return $this->type->render();
      }
 
-     invariant($this->type !== null, "Somehow type is null");
-     invariant(is_string($this->type), "Somehow type is not a string");
-     return $this->type;
+     return $this->type as string;
    }
  }
