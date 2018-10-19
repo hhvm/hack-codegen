@@ -19,7 +19,7 @@
      private mixed $type,
    ) {
      invariant(
-       is_string($type) || $type instanceof CodegenShape_FUTURE,
+       ($type is string) || $type instanceof CodegenShape_FUTURE,
        "You must provide either a string or shape",
      );
    }
@@ -43,7 +43,7 @@
      }
 
      invariant($this->type !== null, "Somehow type is null");
-     invariant(is_string($this->type), "Somehow type is not a string");
+     invariant($this->type is string, "Somehow type is not a string");
      return $this->type;
    }
  }

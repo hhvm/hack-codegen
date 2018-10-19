@@ -235,7 +235,7 @@ abstract class BaseCodeBuilder implements ICodeBuilder {
         // Continue if the line is empty
         continue;
       }
-      invariant(is_string($line), 'For Hack');
+      invariant($line is string, 'For Hack');
       if (C\is_empty($final_lines)) {
         $final_lines[] = $line;
       } else {

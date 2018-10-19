@@ -9,6 +9,7 @@
  */
 
 namespace Facebook\HackCodegen;
+use function Facebook\FBExpect\expect;
 
 final class HackBuilderTest extends CodegenBaseTest {
 
@@ -203,7 +204,7 @@ $del."extends SomeBaseClass",
       ->getHackBuilder()
       ->addWithSuggestedLineBreaksf("%s\n%s", 'foo', 'bar')
       ->getCode();
-    $this->assertSame("foo\nbar", $code);
+    expect($code)->toBeSame("foo\nbar");
   }
 
   public function testAddSmartMultilineCall(): void {
@@ -345,8 +346,8 @@ $del."extends SomeBaseClass",
         HackBuilderValues::vector(HackBuilderValues::export()),
       )
       ->getCode();
-    $this->assertContains('Vector', $body);
-    $this->assertNotContains('HH', $body);
+    expect($body)->toContain('Vector');
+    expect($body)->toNotContain('HH');
     $this->assertUnchanged($body);
   }
 

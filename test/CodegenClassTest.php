@@ -9,6 +9,7 @@
  */
 
 namespace Facebook\HackCodegen;
+use function Facebook\FBExpect\expect;
 
 final class CodegenClassTest extends CodegenBaseTest {
 
@@ -238,6 +239,6 @@ final class CodegenClassTest extends CodegenBaseTest {
   public function testExtendsGeneric(): void {
     $cgf = $this->getCodegenFactory();
     $code = $cgf->codegenClass('Foo')->setExtendsf('X<%s>', 'Y')->render();
-    $this->assertContains('extends X<Y>', $code);
+    expect($code)->toContain('extends X<Y>');
   }
 }
