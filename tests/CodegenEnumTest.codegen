@@ -1,7 +1,7 @@
 @generated
 !@#$%codegentest:testDemo
-enum Demo : string {
 
+enum Demo : string {
   A = 'a';
 
   /**
@@ -11,6 +11,7 @@ enum Demo : string {
 }
 
 !@#$%codegentest:testDocblock
+
 /**
  * Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
  * tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -19,14 +20,17 @@ enum Demo : string {
  * Understood?
  * Yes!
  */
+
 enum TestDocblock : int {
 }
 
 !@#$%codegentest:testIsAs
+
 enum NothingHere : int as int {
 }
 
 !@#$%codegentest:testLongEnumDeclaration
+
 enum EnumWithReallyLongName : string
   as NowThisIsTheParentEnumWithALongNameItSelf {
 }

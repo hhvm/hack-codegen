@@ -18,22 +18,22 @@ use namespace HH\Lib\Str;
  * @see IHackCodegenFactory::codegenConstant
  */
 final class CodegenConstant
-  extends CodegenConstantish
-  implements ICodeBuilderRenderer {
-  use HackBuilderRenderer;
+	extends CodegenConstantish
+	implements ICodeBuilderRenderer {
+	use HackBuilderRenderer;
 
-  public function __construct(
-    protected IHackCodegenConfig $config,
-    string $name,
-  ) {
-    parent::__construct($config, $name);
-  }
+	public function __construct(
+		protected IHackCodegenConfig $config,
+		string $name,
+	) {
+		parent::__construct($config, $name);
+	}
 
-  private ?string $type;
+	private ?string $type;
 
-  public function getType(): ?string {
-    return $this->type;
-  }
+	public function getType(): ?string {
+		return $this->type;
+	}
 
 	/** @selfdocumenting */
 	public function setType(string $type): this {
@@ -49,18 +49,18 @@ final class CodegenConstant
 		return $this->setType(\vsprintf($format, $args));
 	}
 
-  <<__Override>>
-  public function appendToBuilder(HackBuilder $builder): HackBuilder {
-    $value = $this->getValue();
-    invariant($value !== null, 'constants must have a value');
-    $type = $this->getType();
-    return $builder
-      ->addDocBlock($this->getDocBlock())
-      ->ensureNewLine()
-      ->add('const ')
-      ->addIf($type !== null, $type.' ')
-      ->add($this->getName())
-      ->add(' = '.$value)
-      ->addLine(';');
-  }
+	<<__Override>>
+	public function appendToBuilder(HackBuilder $builder): HackBuilder {
+		$value = $this->getValue();
+		invariant($value !== null, 'constants must have a value');
+		$type = $this->getType();
+		return $builder
+			->addDocBlock($this->getDocBlock())
+			->ensureNewLine()
+			->add('const ')
+			->addIf($type !== null, $type.' ')
+			->add($this->getName())
+			->add(' = '.$value)
+			->addLine(';');
+	}
 }

@@ -53,12 +53,12 @@ final class CodegenEnumTest extends CodegenBaseTest {
     $cgf = $this->getCodegenFactory();
     $code = $cgf
       ->codegenEnum('Demo', 'string')
-      ->addConstant(
-        $cgf->codegenClassConstant('A')
+      ->addMember(
+        $cgf->codegenEnumMember('A')
           ->setValue('a', HackBuilderValues::export()),
       )
-      ->addConstant(
-        $cgf->codegenClassConstant('B')
+      ->addMember(
+        $cgf->codegenEnumMember('B')
           ->setValue('b', HackBuilderValues::export())
           ->setDocBlock('This is a different letter'),
       )

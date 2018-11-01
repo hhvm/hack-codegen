@@ -35,9 +35,9 @@ abstract class CodegenClassish implements ICodeBuilderRenderer {
   private vec<CodegenUsesTrait> $traits = vec[];
   protected vec<CodegenConstantish> $consts = vec[];
   protected vec<CodegenProperty> $vars = vec[];
+  private bool $isConsistentConstruct = false;
   protected bool $hasManualFooter = false;
   protected bool $hasManualHeader = false;
-  private bool $isConsistentConstruct = false;
   private ?string $headerName;
   private ?string $headerContents;
   private ?string $footerName;

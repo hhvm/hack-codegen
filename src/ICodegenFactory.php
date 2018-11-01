@@ -102,6 +102,21 @@ interface ICodegenFactory {
   ): CodegenClassConstant;
 
   /**
+   * Create an enum member.
+   */
+  public function codegenEnumMember(string $name): CodegenEnumMember;
+
+	/**
+	 * Create an enum member using a %-placeholder format string for the constant
+   * name.
+	 */
+  public function codegenEnumMemberf(
+    Str\SprintfFormatString $format,
+    mixed ...$args
+  ): CodegenEnumMember;
+
+
+  /**
    * Create a class type constant.
    */
   public function codegenTypeConstant(string $name): CodegenTypeConstant;

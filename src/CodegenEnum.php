@@ -10,7 +10,7 @@
 
 namespace Facebook\HackCodegen;
 
-use namespace HH\Lib\C;
+use namespace HH\Lib\{C, Vec};
 
 /**
  * Generate code for an enum.
@@ -22,9 +22,13 @@ use namespace HH\Lib\C;
  *  ->render();
  * ```
  */
-final class CodegenEnum extends CodegenClassish {
+final class CodegenEnum implements ICodeBuilderRenderer {
+  use CodegenWithVisibility;
+  use CodegenWithAttributes;
+  use HackBuilderRenderer;
 
-  private string $enumType;
+  private vec<CodegenEnumMember> $members = vec[];
+
   private ?string $isAs = null;
 
   /** Create an instance.
@@ -33,12 +37,10 @@ final class CodegenEnum extends CodegenClassish {
    * constructing.
    */
   public function __construct(
-    IHackCodegenConfig $config,
-    string $name,
-    string $enum_type,
+    protected IHackCodegenConfig $config,
+    private string $name,
+    private string $enumType,
   ) {
-    parent::__construct($config, $name);
-    $this->enumType = $enum_type;
   }
 
   /** Make the enum usable directly as the specified type.
@@ -57,44 +59,86 @@ final class CodegenEnum extends CodegenClassish {
     return $this->isAs;
   }
 
+  /** @selfdocumenting */
+  public function addMember(CodegenEnumMember $member): this {
+    $this->members[] = $member;
+    return $this;
+  }
+
+  /** @selfdocumenting */
+  public function addMembers(
+    vec<CodegenEnumMember> $members,
+  ): this {
+    $this->members = Vec\concat($this->members, $members);
+    return $this;
+  }
+
   <<__Override>>
-  protected function buildDeclaration(HackBuilder $builder): void {
-    $builder->addWithSuggestedLineBreaksf(
-      '%s%s%s',
+  public function appendToBuilder(HackBuilder $builder): HackBuilder {
+    if ($this->docBlock is nonnull) {
+      $builder->ensureEmptyLine()->addDocBlock($this->docBlock);
+    }
+    $builder
+      ->ensureEmptyLine()
+      ->addLine($this->renderAttributes())
+      ->ensureNewLine()
+      ->addWithSuggestedLineBreaksf(
+      '%s%s%s {',
       "enum ".$this->name,
       HackBuilder::DELIMITER.": ".$this->enumType,
       $this->isAs !== null ? HackBuilder::DELIMITER."as ".$this->isAs : '',
     );
-  }
 
-  <<__Override>>
-  protected function buildConsts(HackBuilder $builder): void {
-    if (C\is_empty($this->consts)) {
-      return;
-    }
-    $builder->ensureEmptyLine();
-
-    foreach ($this->consts as $const) {
-      invariant(
-        $const is CodegenClassConstant,
-        "enums can only have class constants",
-      );
-      invariant(!$const->isAbstract(), "enum constants can not be abstract");
-      $doc = $const->getDocBlock();
-      if ($doc !== null) {
-        $builder
-          ->ensureEmptyLine()
-          ->addDocBlock($doc);
+    if (!C\is_empty($this->members)) {
+      $builder->ensureNewLine();
+      $builder->indent();
+      foreach ($this->members as $m) {
+        $m->appendToBuilder($builder);
       }
-      $builder
-        ->add($const->getName().' = '.$const->getValue().';')
-        ->newLine();
+      $builder->unindent();
     }
+
+    $builder->ensureNewLine();
+    $builder->addLine('}');
+
+    return $builder;
   }
 
-  <<__Override>>
-  protected function appendBodyToBuilder(HackBuilder $builder): void {
-    $this->buildConsts($builder);
-    $this->buildManualDeclarations($builder);
+	/** @selfdocumenting */
+	public function setDocBlock(string $comment): this {
+		$this->docBlock = $comment;
+		return $this;
+	}
+
+  protected bool $hasManualFooter = false;
+  protected bool $hasManualHeader = false;
+  private ?string $headerName;
+  private ?string $headerContents;
+  private ?string $footerName;
+  private ?string $footerContents;
+
+  public function setHasManualHeader(
+    bool $value = true,
+    ?string $name = null,
+    ?string $contents = null,
+  ): this {
+    $this->hasManualHeader = $value;
+    $this->headerName = $name;
+    $this->headerContents = $contents;
+    return $this;
   }
+
+	public function setHasManualFooter(
+		bool $value = true,
+		?string $name = null,
+		?string $contents = null,
+	): this {
+		$this->hasManualFooter = $value;
+		$this->footerName = $name;
+		$this->footerContents = $contents;
+		return $this;
+	}
+
+  protected ?string $docBlock;
+
 }

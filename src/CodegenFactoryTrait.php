@@ -50,19 +50,28 @@ trait CodegenFactoryTrait implements ICodegenFactory {
       new CodegenClassConstant($this->getConfig(), \vsprintf($format, $args));
   }
 
-	final public function codegenTypeConstant(
-		string $name,
-	): CodegenTypeConstant {
-		return new CodegenTypeConstant($this->getConfig(), $name);
-	}
+  final public function codegenEnumMember(string $name): CodegenEnumMember {
+    return new CodegenEnumMember($this->getConfig(), $name);
+  }
 
-	final public function codegenTypeConstantf(
-		Str\SprintfFormatString $format,
-		mixed ...$args
-	): CodegenTypeConstant {
-		return
-			new CodegenTypeConstant($this->getConfig(), \vsprintf($format, $args));
-	}
+  final public function codegenEnumMemberf(
+    Str\SprintfFormatString $format,
+    mixed ...$args
+  ): CodegenEnumMember {
+    return new CodegenEnumMember($this->getConfig(), \vsprintf($format, $args));
+  }
+
+  final public function codegenTypeConstant(string $name): CodegenTypeConstant {
+    return new CodegenTypeConstant($this->getConfig(), $name);
+  }
+
+  final public function codegenTypeConstantf(
+    Str\SprintfFormatString $format,
+    mixed ...$args
+  ): CodegenTypeConstant {
+    return
+      new CodegenTypeConstant($this->getConfig(), \vsprintf($format, $args));
+  }
 
 
   final public function codegenFile(string $file): CodegenFile {
