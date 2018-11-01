@@ -182,7 +182,6 @@ final class HackBuilder extends BaseCodeBuilder {
     T $value,
     IHackBuilderValueRenderer<T> $renderer,
   ): this {
-    $this->assertIsVariable($var_name);
     return $this->addWithSuggestedLineBreaksf(
       "%s =\0%s;\n",
       $var_name,
