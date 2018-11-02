@@ -81,9 +81,42 @@ abstract class BaseCodeBuilder {
     return $this->addf('%s', $code);
   }
 
+  /**
+   * Add the specified code with no additional processing.
+   *
+   * For example, if there is a newline, any following characters will not be
+   * indented. This is useful for heredocs.
+   *
+   * @see addVerbatimf
+   */
+  final public function addVerbatim(string $code): this {
+    $this->code->append($code);
+    return $this;
+  }
+
+	/**
+	 * Add the specified code with a %-placeholder format string, but no further
+   * processing.
+	 *
+	 * For example, if there is a newline, any following characters will not be
+	 * indented. This is useful for heredocs.
+	 *
+	 * @see addVerbatim
+	 */
+  final public function addVerbatimf(
+    Str\SprintfFormatString $code,
+    mixed ...$args
+  ): this {
+    $this->code->append(\vsprintf($code, $args));
+    return $this;
+  }
+
   /** Add code to the buffer, using a % placeholder format string. */
-  final public function addf(Str\SprintfFormatString $code, mixed ...$args): this {
-    return $this->addvf((string) $code, $args);
+  final public function addf(
+    Str\SprintfFormatString $code,
+    mixed ...$args
+  ): this {
+    return $this->addvf((string)$code, $args);
   }
 
   /** Add code to the buffer, using a % placeholder format string and
@@ -111,10 +144,11 @@ abstract class BaseCodeBuilder {
     // if we're in a new line, insert indentation
     if ($this->isNewLine) {
       if ($this->indentationLevel !== 0) {
-        if ($this->config->shouldUseTabs()){
+        if ($this->config->shouldUseTabs()) {
           $this->code->append(Str\repeat("\t", $this->indentationLevel));
         } else {
-          $n = $this->config->getSpacesPerIndentation() * $this->indentationLevel;
+          $n =
+            $this->config->getSpacesPerIndentation() * $this->indentationLevel;
           $this->code->append(Str\repeat(' ', $n));
         }
       }
@@ -129,10 +163,7 @@ abstract class BaseCodeBuilder {
   /**
    * If the condition is true, add code to the buffer; otherwise, do nothing.
    */
-  final public function addIf(
-    bool $condition,
-    string $code,
-  ): this {
+  final public function addIf(bool $condition, string $code): this {
     if ($condition) {
       $this->add($code);
     }
@@ -149,7 +180,7 @@ abstract class BaseCodeBuilder {
     mixed ...$args
   ): this {
     if ($condition) {
-      $this->addvf((string) $code, $args);
+      $this->addvf((string)$code, $args);
     }
     return $this;
   }
@@ -161,7 +192,7 @@ abstract class BaseCodeBuilder {
     ?string $code,
     array<mixed> $args,
   ): this {
-    return $this->addvf((string) $code, $args)->newLine();
+    return $this->addvf((string)$code, $args)->newLine();
   }
 
   /**
@@ -169,10 +200,7 @@ abstract class BaseCodeBuilder {
    *
    * @see addLineIff
    */
-  final public function addLineIf(
-    bool $condition,
-    string $code,
-  ): this {
+  final public function addLineIf(bool $condition, string $code): this {
     return $this->addLineIff($condition, '%s', $code);
   }
 
@@ -186,7 +214,7 @@ abstract class BaseCodeBuilder {
     mixed ...$args
   ): this {
     if ($condition) {
-      $this->addLineImplvf((string) $code, $args);
+      $this->addLineImplvf((string)$code, $args);
     }
     return $this;
   }

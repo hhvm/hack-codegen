@@ -155,6 +155,23 @@ two line breaks. Also note that we include a newline and also '.
     )->toBeUnchanged();
   }
 
+  public function testVerbatimString(): void {
+    expect_with_context(
+      static::class,
+      $this
+        ->getHackBuilder()
+        ->addLine('function foo(): void {')
+        ->indent()
+        ->add('$x = ')
+        ->addVerbatim("<<<EOF\nfoo bar\nEOF;")
+        ->ensureNewLine()
+        ->addLine('return $x;')
+        ->unindent()
+        ->addLine('}')
+        ->getCode(),
+    )->toBeUnchanged();
+  }
+
   public function testWrappedStringDoNotIndent(): void {
     expect_with_context(static::class,
       $this

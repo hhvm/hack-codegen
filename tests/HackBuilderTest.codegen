@@ -235,6 +235,14 @@ $foo = Vector {
   },
 };
 
+!@#$%codegentest:testVerbatimString
+function foo(): void {
+  $x = <<<EOF
+foo bar
+EOF;
+  return $x;
+}
+
 !@#$%codegentest:testWrappedStringDoNotIndent
 $this->callMethod(
   'This string is quite long so will spread across three lines but the user '.
