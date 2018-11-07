@@ -5,24 +5,54 @@
   - id: overview-hack-builder
   - id: overview-definitions
   - id: overview-partially-generated
-- title: Hack Builder
-  items:
-  - id: hack-builder-blocks
-  - id: hack-builder-keys-and-values
-  - id: hack-builder-shapes
-  - id: hack-builder-custom-renderers
-- title: Classes
-  items:
-  - id: classes-codegen-file
-  - id: classes-codegen-function
-  - id: classes-codegen-method
-  - id: classes-codegen-type
-  - id: classes-codegen-shape
-  - id: classes-codegen-class-base
-  - id: classes-codegen-interface
-  - id: classes-codegen-class
-  - id: classes-codegen-trait
-  - id: classes-codegen-enum
+- title: Reference
+  - id: class.Facebook.HackCodegen.BaseCodeBuilder
+  - id: class.Facebook.HackCodegen.CodegenClass
+  - id: class.Facebook.HackCodegen.CodegenClassConstant
+  - id: class.Facebook.HackCodegen.CodegenClassish
+  - id: class.Facebook.HackCodegen.CodegenConstant
+  - id: class.Facebook.HackCodegen.CodegenConstantish
+  - id: class.Facebook.HackCodegen.CodegenConstructor
+  - id: class.Facebook.HackCodegen.CodegenEnum
+  - id: class.Facebook.HackCodegen.CodegenEnumMember
+  - id: class.Facebook.HackCodegen.CodegenFile
+  - id: class.Facebook.HackCodegen.CodegenFileBadSignatureException
+  - id: class.Facebook.HackCodegen.CodegenFileNoSignatureException
+  - id: class.Facebook.HackCodegen.CodegenFunction
+  - id: class.Facebook.HackCodegen.CodegenFunctionish
+  - id: class.Facebook.HackCodegen.CodegenGeneratedFrom
+  - id: class.Facebook.HackCodegen.CodegenImplementsInterface
+  - id: class.Facebook.HackCodegen.CodegenInterface
+  - id: class.Facebook.HackCodegen.CodegenMethod
+  - id: class.Facebook.HackCodegen.CodegenMethodish
+  - id: class.Facebook.HackCodegen.CodegenProperty
+  - id: class.Facebook.HackCodegen.CodegenShape
+  - id: class.Facebook.HackCodegen.CodegenShapeMember
+  - id: class.Facebook.HackCodegen.CodegenTrait
+  - id: class.Facebook.HackCodegen.CodegenType
+  - id: class.Facebook.HackCodegen.CodegenTypeConstant
+  - id: class.Facebook.HackCodegen.CodegenUsesTrait
+  - id: class.Facebook.HackCodegen.HackBuilder
+  - id: class.Facebook.HackCodegen.HackBuilderKeys
+  - id: class.Facebook.HackCodegen.HackBuilderValues
+  - id: class.Facebook.HackCodegen.HackCodegenConfig
+  - id: class.Facebook.HackCodegen.HackCodegenFactory
+  - id: class.Facebook.HackCodegen.HackfmtFormatter
+  - id: class.Facebook.HackCodegen.PartiallyGeneratedCode
+  - id: class.Facebook.HackCodegen.PartiallyGeneratedSignedSource
+  - id: class.Facebook.HackCodegen.SignedSource
+  - id: class.Facebook.HackCodegen.SignedSourceBase
+  - id: interface.Facebook.HackCodegen.ICodeBuilderRenderer
+  - id: interface.Facebook.HackCodegen.ICodegenFactory
+  - id: interface.Facebook.HackCodegen.ICodegenFormatter
+  - id: interface.Facebook.HackCodegen.IHackBuilderKeyRenderer
+  - id: interface.Facebook.HackCodegen.IHackBuilderValueRenderer
+  - id: interface.Facebook.HackCodegen.IHackCodegenConfig
+  - id: trait.Facebook.HackCodegen.CodegenClassWithInterfaces
+  - id: trait.Facebook.HackCodegen.CodegenFactoryTrait
+  - id: trait.Facebook.HackCodegen.CodegenWithAttributes
+  - id: trait.Facebook.HackCodegen.CodegenWithVisibility
+  - id: trait.Facebook.HackCodegen.HackBuilderRenderer
 
 # n title:, 1 items: per title:, n id: per items:
 # - title: A
