@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: setType
 id: class.Facebook.HackCodegen.CodegenConstant.setType
 docid: class.Facebook.HackCodegen.CodegenConstant.setType
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenConstant.setType.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenConstant::setType()
 
 

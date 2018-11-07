@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
-title: Facebook\\HackCodegen\_Private\\HackBuilderKeyExportRenderer
+title: Facebook\HackCodegen\_Private\HackBuilderKeyExportRenderer
 id: class.Facebook.HackCodegen._Private.HackBuilderKeyExportRenderer
 docid: class.Facebook.HackCodegen._Private.HackBuilderKeyExportRenderer
 permalink: /docs/reference/class.Facebook.HackCodegen._Private.HackBuilderKeyExportRenderer.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\_Private\\HackBuilderKeyExportRenderer
 
 

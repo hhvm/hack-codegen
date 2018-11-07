@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: getEndManualSection
 id: class.Facebook.HackCodegen.PartiallyGeneratedCode.getEndManualSection
 docid: class.Facebook.HackCodegen.PartiallyGeneratedCode.getEndManualSection
 permalink: /docs/reference/class.Facebook.HackCodegen.PartiallyGeneratedCode.getEndManualSection.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\PartiallyGeneratedCode::getEndManualSection()
 
 

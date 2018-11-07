@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: immSet
 id: class.Facebook.HackCodegen.HackBuilderValues.immSet
 docid: class.Facebook.HackCodegen.HackBuilderValues.immSet
 permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilderValues.immSet.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\HackBuilderValues::immSet()
 
 

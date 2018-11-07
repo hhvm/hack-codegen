@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
-title: Facebook\\HackCodegen\\CodegenClassConstant
+title: Facebook\HackCodegen\CodegenClassConstant
 id: class.Facebook.HackCodegen.CodegenClassConstant
 docid: class.Facebook.HackCodegen.CodegenClassConstant
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenClassConstant.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenClassConstant
 
 

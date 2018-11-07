@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: codegenMethodf
 id: trait.Facebook.HackCodegen.CodegenFactoryTrait.codegenMethodf
 docid: trait.Facebook.HackCodegen.CodegenFactoryTrait.codegenMethodf
 permalink: /docs/reference/trait.Facebook.HackCodegen.CodegenFactoryTrait.codegenMethodf.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenFactoryTrait::codegenMethodf()
 
 

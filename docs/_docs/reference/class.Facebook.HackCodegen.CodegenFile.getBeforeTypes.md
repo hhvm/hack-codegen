@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: getBeforeTypes
 id: class.Facebook.HackCodegen.CodegenFile.getBeforeTypes
 docid: class.Facebook.HackCodegen.CodegenFile.getBeforeTypes
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFile.getBeforeTypes.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenFile::getBeforeTypes()
 
 

@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: setTypef
 id: class.Facebook.HackCodegen.CodegenClassConstant.setTypef
 docid: class.Facebook.HackCodegen.CodegenClassConstant.setTypef
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenClassConstant.setTypef.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenClassConstant::setTypef()
 
 

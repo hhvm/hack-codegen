@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: shapeWithUniformRendering
 id: class.Facebook.HackCodegen.HackBuilderValues.shapeWithUniformRendering
 docid: class.Facebook.HackCodegen.HackBuilderValues.shapeWithUniformRendering
 permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilderValues.shapeWithUniformRendering.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\HackBuilderValues::shapeWithUniformRendering()
 
 

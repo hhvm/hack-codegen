@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: getDocBlock
 id: class.Facebook.HackCodegen.PartiallyGeneratedSignedSource.getDocBlock
 docid: class.Facebook.HackCodegen.PartiallyGeneratedSignedSource.getDocBlock
 permalink: /docs/reference/class.Facebook.HackCodegen.PartiallyGeneratedSignedSource.getDocBlock.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\PartiallyGeneratedSignedSource::getDocBlock()
 
 

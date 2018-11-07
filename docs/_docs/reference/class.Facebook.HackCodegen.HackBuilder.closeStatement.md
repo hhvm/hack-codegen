@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: closeStatement
 id: class.Facebook.HackCodegen.HackBuilder.closeStatement
 docid: class.Facebook.HackCodegen.HackBuilder.closeStatement
 permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.closeStatement.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\HackBuilder::closeStatement()
 
 

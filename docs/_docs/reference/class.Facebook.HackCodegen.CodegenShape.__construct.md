@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: __construct
 id: class.Facebook.HackCodegen.CodegenShape.__construct
 docid: class.Facebook.HackCodegen.CodegenShape.__construct
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenShape.__construct.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenShape::__construct()
 
 

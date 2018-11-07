@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: setPseudoMainHeaderf
 id: class.Facebook.HackCodegen.CodegenFile.setPseudoMainHeaderf
 docid: class.Facebook.HackCodegen.CodegenFile.setPseudoMainHeaderf
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFile.setPseudoMainHeaderf.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenFile::setPseudoMainHeaderf()
 
 

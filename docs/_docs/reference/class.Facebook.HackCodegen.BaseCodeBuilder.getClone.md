@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: getClone
 id: class.Facebook.HackCodegen.BaseCodeBuilder.getClone
 docid: class.Facebook.HackCodegen.BaseCodeBuilder.getClone
 permalink: /docs/reference/class.Facebook.HackCodegen.BaseCodeBuilder.getClone.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\BaseCodeBuilder::getClone()
 
 

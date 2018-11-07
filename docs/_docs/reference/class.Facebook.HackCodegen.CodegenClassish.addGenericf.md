@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: addGenericf
 id: class.Facebook.HackCodegen.CodegenClassish.addGenericf
 docid: class.Facebook.HackCodegen.CodegenClassish.addGenericf
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenClassish.addGenericf.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenClassish::addGenericf()
 
 

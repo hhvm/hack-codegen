@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: setCommentf
 id: class.Facebook.HackCodegen.CodegenUsesTrait.setCommentf
 docid: class.Facebook.HackCodegen.CodegenUsesTrait.setCommentf
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenUsesTrait.setCommentf.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenUsesTrait::setCommentf()
 
 

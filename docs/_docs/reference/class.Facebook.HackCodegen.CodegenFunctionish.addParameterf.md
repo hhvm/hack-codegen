@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: addParameterf
 id: class.Facebook.HackCodegen.CodegenFunctionish.addParameterf
 docid: class.Facebook.HackCodegen.CodegenFunctionish.addParameterf
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFunctionish.addParameterf.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenFunctionish::addParameterf()
 
 

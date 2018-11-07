@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: setGeneratedFrom
 id: class.Facebook.HackCodegen.CodegenClassish.setGeneratedFrom
 docid: class.Facebook.HackCodegen.CodegenClassish.setGeneratedFrom
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenClassish.setGeneratedFrom.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenClassish::setGeneratedFrom()
 
 

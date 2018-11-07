@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: isAbstract
 id: class.Facebook.HackCodegen.CodegenClassConstant.isAbstract
 docid: class.Facebook.HackCodegen.CodegenClassConstant.isAbstract
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenClassConstant.isAbstract.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenClassConstant::isAbstract()
 
 

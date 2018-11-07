@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: setIndentationLevel
 id: class.Facebook.HackCodegen.BaseCodeBuilder.setIndentationLevel
 docid: class.Facebook.HackCodegen.BaseCodeBuilder.setIndentationLevel
 permalink: /docs/reference/class.Facebook.HackCodegen.BaseCodeBuilder.setIndentationLevel.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\BaseCodeBuilder::setIndentationLevel()
 
 

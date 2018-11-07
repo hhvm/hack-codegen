@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: setHasManualMethodSection
 id: class.Facebook.HackCodegen.CodegenClassish.setHasManualMethodSection
 docid: class.Facebook.HackCodegen.CodegenClassish.setHasManualMethodSection
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenClassish.setHasManualMethodSection.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenClassish::setHasManualMethodSection()
 
 

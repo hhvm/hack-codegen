@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: getMaxLineLength
 id: interface.Facebook.HackCodegen.IHackCodegenConfig.getMaxLineLength
 docid: interface.Facebook.HackCodegen.IHackCodegenConfig.getMaxLineLength
 permalink: /docs/reference/interface.Facebook.HackCodegen.IHackCodegenConfig.getMaxLineLength.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\IHackCodegenConfig::getMaxLineLength()
 
 

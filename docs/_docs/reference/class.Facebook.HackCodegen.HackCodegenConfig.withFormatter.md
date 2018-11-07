@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: withFormatter
 id: class.Facebook.HackCodegen.HackCodegenConfig.withFormatter
 docid: class.Facebook.HackCodegen.HackCodegenConfig.withFormatter
 permalink: /docs/reference/class.Facebook.HackCodegen.HackCodegenConfig.withFormatter.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\HackCodegenConfig::withFormatter()
 
 

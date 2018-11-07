@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: addReturnf
 id: class.Facebook.HackCodegen.HackBuilder.addReturnf
 docid: class.Facebook.HackCodegen.HackBuilder.addReturnf
 permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.addReturnf.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\HackBuilder::addReturnf()
 
 

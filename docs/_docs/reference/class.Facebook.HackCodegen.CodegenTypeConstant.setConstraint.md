@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: setConstraint
 id: class.Facebook.HackCodegen.CodegenTypeConstant.setConstraint
 docid: class.Facebook.HackCodegen.CodegenTypeConstant.setConstraint
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenTypeConstant.setConstraint.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenTypeConstant::setConstraint()
 
 

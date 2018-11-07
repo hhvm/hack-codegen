@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: setPrivate
 id: trait.Facebook.HackCodegen.CodegenWithVisibility.setPrivate
 docid: trait.Facebook.HackCodegen.CodegenWithVisibility.setPrivate
 permalink: /docs/reference/trait.Facebook.HackCodegen.CodegenWithVisibility.setPrivate.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenWithVisibility::setPrivate()
 
 

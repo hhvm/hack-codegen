@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: addf
 id: class.Facebook.HackCodegen.BaseCodeBuilder.addf
 docid: class.Facebook.HackCodegen.BaseCodeBuilder.addf
 permalink: /docs/reference/class.Facebook.HackCodegen.BaseCodeBuilder.addf.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\BaseCodeBuilder::addf()
 
 

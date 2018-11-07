@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: verifySignature
 id: class.Facebook.HackCodegen.SignedSourceBase.verifySignature
 docid: class.Facebook.HackCodegen.SignedSourceBase.verifySignature
 permalink: /docs/reference/class.Facebook.HackCodegen.SignedSourceBase.verifySignature.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\SignedSourceBase::verifySignature()
 
 

@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: createTemporaryFile
 id: class.Facebook.HackCodegen._Private.Filesystem.createTemporaryFile
 docid: class.Facebook.HackCodegen._Private.Filesystem.createTemporaryFile
 permalink: /docs/reference/class.Facebook.HackCodegen._Private.Filesystem.createTemporaryFile.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\_Private\\Filesystem::createTemporaryFile()
 
 

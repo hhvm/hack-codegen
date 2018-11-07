@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: addCaseBlocks
 id: class.Facebook.HackCodegen.HackBuilder.addCaseBlocks
 docid: class.Facebook.HackCodegen.HackBuilder.addCaseBlocks
 permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.addCaseBlocks.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\HackBuilder::addCaseBlocks()
 
 

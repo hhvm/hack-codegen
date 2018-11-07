@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: codegenShape
 id: interface.Facebook.HackCodegen.ICodegenFactory.codegenShape
 docid: interface.Facebook.HackCodegen.ICodegenFactory.codegenShape
 permalink: /docs/reference/interface.Facebook.HackCodegen.ICodegenFactory.codegenShape.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\ICodegenFactory::codegenShape()
 
 

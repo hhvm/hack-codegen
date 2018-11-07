@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
-title: Facebook\\HackCodegen\_Private\\C\\coalescevax
+title: Facebook\HackCodegen\_Private\C\coalescevax
 id: function.Facebook.HackCodegen._Private.C.coalescevax
 docid: function.Facebook.HackCodegen._Private.C.coalescevax
 permalink: /docs/reference/function.Facebook.HackCodegen._Private.C.coalescevax.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\_Private\\C\\coalescevax()
 
 

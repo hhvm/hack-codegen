@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: addIff
 id: class.Facebook.HackCodegen.BaseCodeBuilder.addIff
 docid: class.Facebook.HackCodegen.BaseCodeBuilder.addIff
 permalink: /docs/reference/class.Facebook.HackCodegen.BaseCodeBuilder.addIff.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\BaseCodeBuilder::addIff()
 
 

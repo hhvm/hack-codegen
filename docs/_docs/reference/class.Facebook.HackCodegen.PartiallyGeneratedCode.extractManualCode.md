@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: extractManualCode
 id: class.Facebook.HackCodegen.PartiallyGeneratedCode.extractManualCode
 docid: class.Facebook.HackCodegen.PartiallyGeneratedCode.extractManualCode
 permalink: /docs/reference/class.Facebook.HackCodegen.PartiallyGeneratedCode.extractManualCode.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\PartiallyGeneratedCode::extractManualCode()
 
 

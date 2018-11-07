@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: addFinallyBlock
 id: class.Facebook.HackCodegen.HackBuilder.addFinallyBlock
 docid: class.Facebook.HackCodegen.HackBuilder.addFinallyBlock
 permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.addFinallyBlock.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\HackBuilder::addFinallyBlock()
 
 

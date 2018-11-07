@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: returnCasef
 id: class.Facebook.HackCodegen.HackBuilder.returnCasef
 docid: class.Facebook.HackCodegen.HackBuilder.returnCasef
 permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.returnCasef.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\HackBuilder::returnCasef()
 
 

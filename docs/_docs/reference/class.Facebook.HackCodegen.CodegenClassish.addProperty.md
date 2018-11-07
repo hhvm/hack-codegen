@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: addProperty
 id: class.Facebook.HackCodegen.CodegenClassish.addProperty
 docid: class.Facebook.HackCodegen.CodegenClassish.addProperty
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenClassish.addProperty.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenClassish::addProperty()
 
 

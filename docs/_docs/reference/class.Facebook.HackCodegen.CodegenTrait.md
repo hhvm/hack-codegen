@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
-title: Facebook\\HackCodegen\\CodegenTrait
+title: Facebook\HackCodegen\CodegenTrait
 id: class.Facebook.HackCodegen.CodegenTrait
 docid: class.Facebook.HackCodegen.CodegenTrait
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenTrait.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenTrait
 
 

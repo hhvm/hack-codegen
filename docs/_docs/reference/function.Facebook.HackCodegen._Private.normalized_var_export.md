@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
-title: Facebook\\HackCodegen\_Private\\normalized_var_export
+title: Facebook\HackCodegen\_Private\normalized_var_export
 id: function.Facebook.HackCodegen._Private.normalized_var_export
 docid: function.Facebook.HackCodegen._Private.normalized_var_export
 permalink: /docs/reference/function.Facebook.HackCodegen._Private.normalized_var_export.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\_Private\\normalized_var_export()
 
 

@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: ensureEmptyLine
 id: class.Facebook.HackCodegen.BaseCodeBuilder.ensureEmptyLine
 docid: class.Facebook.HackCodegen.BaseCodeBuilder.ensureEmptyLine
 permalink: /docs/reference/class.Facebook.HackCodegen.BaseCodeBuilder.ensureEmptyLine.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\BaseCodeBuilder::ensureEmptyLine()
 
 

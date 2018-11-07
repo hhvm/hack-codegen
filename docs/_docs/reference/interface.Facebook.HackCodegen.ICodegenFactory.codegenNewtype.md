@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: codegenNewtype
 id: interface.Facebook.HackCodegen.ICodegenFactory.codegenNewtype
 docid: interface.Facebook.HackCodegen.ICodegenFactory.codegenNewtype
 permalink: /docs/reference/interface.Facebook.HackCodegen.ICodegenFactory.codegenNewtype.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\ICodegenFactory::codegenNewtype()
 
 

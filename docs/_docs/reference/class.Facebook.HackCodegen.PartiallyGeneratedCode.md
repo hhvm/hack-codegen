@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
-title: Facebook\\HackCodegen\\PartiallyGeneratedCode
+title: Facebook\HackCodegen\PartiallyGeneratedCode
 id: class.Facebook.HackCodegen.PartiallyGeneratedCode
 docid: class.Facebook.HackCodegen.PartiallyGeneratedCode
 permalink: /docs/reference/class.Facebook.HackCodegen.PartiallyGeneratedCode.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\PartiallyGeneratedCode
 
 

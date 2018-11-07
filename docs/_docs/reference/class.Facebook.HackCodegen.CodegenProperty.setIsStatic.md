@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: setIsStatic
 id: class.Facebook.HackCodegen.CodegenProperty.setIsStatic
 docid: class.Facebook.HackCodegen.CodegenProperty.setIsStatic
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenProperty.setIsStatic.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenProperty::setIsStatic()
 
 

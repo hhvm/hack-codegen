@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: getValue
 id: class.Facebook.HackCodegen.CodegenProperty.getValue
 docid: class.Facebook.HackCodegen.CodegenProperty.getValue
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenProperty.getValue.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenProperty::getValue()
 
 

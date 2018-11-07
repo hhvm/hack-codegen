@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: codegen
 id: class.Facebook.HackCodegen.HackBuilderValues.codegen
 docid: class.Facebook.HackCodegen.HackBuilderValues.codegen
 permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilderValues.codegen.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\HackBuilderValues::codegen()
 
 

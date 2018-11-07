@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
-title: Facebook\\HackCodegen\_Private\\HackBuilderNativeValueCollectionRenderer
+title: Facebook\HackCodegen\_Private\HackBuilderNativeValueCollectionRenderer
 id: class.Facebook.HackCodegen._Private.HackBuilderNativeValueCollectionRenderer
 docid: class.Facebook.HackCodegen._Private.HackBuilderNativeValueCollectionRenderer
 permalink: /docs/reference/class.Facebook.HackCodegen._Private.HackBuilderNativeValueCollectionRenderer.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\_Private\\HackBuilderNativeValueCollectionRenderer
 
 

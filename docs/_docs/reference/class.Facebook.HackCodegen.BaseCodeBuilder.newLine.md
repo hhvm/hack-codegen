@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: newLine
 id: class.Facebook.HackCodegen.BaseCodeBuilder.newLine
 docid: class.Facebook.HackCodegen.BaseCodeBuilder.newLine
 permalink: /docs/reference/class.Facebook.HackCodegen.BaseCodeBuilder.newLine.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\BaseCodeBuilder::newLine()
 
 

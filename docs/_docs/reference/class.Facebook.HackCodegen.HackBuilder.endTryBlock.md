@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: endTryBlock
 id: class.Facebook.HackCodegen.HackBuilder.endTryBlock
 docid: class.Facebook.HackCodegen.HackBuilder.endTryBlock
 permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.endTryBlock.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\HackBuilder::endTryBlock()
 
 

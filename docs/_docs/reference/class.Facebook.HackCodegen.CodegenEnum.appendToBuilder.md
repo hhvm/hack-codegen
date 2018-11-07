@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: appendToBuilder
 id: class.Facebook.HackCodegen.CodegenEnum.appendToBuilder
 docid: class.Facebook.HackCodegen.CodegenEnum.appendToBuilder
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenEnum.appendToBuilder.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenEnum::appendToBuilder()
 
 

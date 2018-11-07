@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: getRootDir
 id: interface.Facebook.HackCodegen.IHackCodegenConfig.getRootDir
 docid: interface.Facebook.HackCodegen.IHackCodegenConfig.getRootDir
 permalink: /docs/reference/interface.Facebook.HackCodegen.IHackCodegenConfig.getRootDir.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\IHackCodegenConfig::getRootDir()
 
 

@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: addConstant
 id: class.Facebook.HackCodegen.CodegenClassish.addConstant
 docid: class.Facebook.HackCodegen.CodegenClassish.addConstant
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenClassish.addConstant.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenClassish::addConstant()
 
 

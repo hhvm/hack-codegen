@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
-title: Facebook\\HackCodegen\\CodegenConstantish
+title: Facebook\HackCodegen\CodegenConstantish
 id: class.Facebook.HackCodegen.CodegenConstantish
 docid: class.Facebook.HackCodegen.CodegenConstantish
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenConstantish.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenConstantish
 
 

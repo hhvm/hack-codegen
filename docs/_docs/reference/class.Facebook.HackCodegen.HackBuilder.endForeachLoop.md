@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: endForeachLoop
 id: class.Facebook.HackCodegen.HackBuilder.endForeachLoop
 docid: class.Facebook.HackCodegen.HackBuilder.endForeachLoop
 permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.endForeachLoop.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\HackBuilder::endForeachLoop()
 
 

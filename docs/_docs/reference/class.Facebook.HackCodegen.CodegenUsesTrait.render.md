@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: render
 id: class.Facebook.HackCodegen.CodegenUsesTrait.render
 docid: class.Facebook.HackCodegen.CodegenUsesTrait.render
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenUsesTrait.render.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenUsesTrait::render()
 
 

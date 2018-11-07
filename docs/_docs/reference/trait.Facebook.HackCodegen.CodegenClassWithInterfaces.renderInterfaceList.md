@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: renderInterfaceList
 id: trait.Facebook.HackCodegen.CodegenClassWithInterfaces.renderInterfaceList
 docid: trait.Facebook.HackCodegen.CodegenClassWithInterfaces.renderInterfaceList
 permalink: /docs/reference/trait.Facebook.HackCodegen.CodegenClassWithInterfaces.renderInterfaceList.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenClassWithInterfaces::renderInterfaceList()
 
 

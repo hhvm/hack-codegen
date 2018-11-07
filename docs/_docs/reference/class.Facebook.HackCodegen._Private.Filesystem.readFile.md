@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: readFile
 id: class.Facebook.HackCodegen._Private.Filesystem.readFile
 docid: class.Facebook.HackCodegen._Private.Filesystem.readFile
 permalink: /docs/reference/class.Facebook.HackCodegen._Private.Filesystem.readFile.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\_Private\\Filesystem::readFile()
 
 

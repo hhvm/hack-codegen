@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: codegenMethod
 id: interface.Facebook.HackCodegen.ICodegenFactory.codegenMethod
 docid: interface.Facebook.HackCodegen.ICodegenFactory.codegenMethod
 permalink: /docs/reference/interface.Facebook.HackCodegen.ICodegenFactory.codegenMethod.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\ICodegenFactory::codegenMethod()
 
 

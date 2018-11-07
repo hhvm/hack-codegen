@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: codegenClassConstantf
 id: interface.Facebook.HackCodegen.ICodegenFactory.codegenClassConstantf
 docid: interface.Facebook.HackCodegen.ICodegenFactory.codegenClassConstantf
 permalink: /docs/reference/interface.Facebook.HackCodegen.ICodegenFactory.codegenClassConstantf.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\ICodegenFactory::codegenClassConstantf()
 
 

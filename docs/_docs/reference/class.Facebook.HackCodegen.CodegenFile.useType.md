@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: useType
 id: class.Facebook.HackCodegen.CodegenFile.useType
 docid: class.Facebook.HackCodegen.CodegenFile.useType
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFile.useType.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenFile::useType()
 
 

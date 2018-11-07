@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: containsManualSection
 id: class.Facebook.HackCodegen.PartiallyGeneratedCode.containsManualSection
 docid: class.Facebook.HackCodegen.PartiallyGeneratedCode.containsManualSection
 permalink: /docs/reference/class.Facebook.HackCodegen.PartiallyGeneratedCode.containsManualSection.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\PartiallyGeneratedCode::containsManualSection()
 
 

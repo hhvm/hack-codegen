@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: addWrappedString
 id: class.Facebook.HackCodegen.HackBuilder.addWrappedString
 docid: class.Facebook.HackCodegen.HackBuilder.addWrappedString
 permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.addWrappedString.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\HackBuilder::addWrappedString()
 
 

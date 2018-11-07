@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: addRequireInterface
 id: class.Facebook.HackCodegen.CodegenTrait.addRequireInterface
 docid: class.Facebook.HackCodegen.CodegenTrait.addRequireInterface
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenTrait.addRequireInterface.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenTrait::addRequireInterface()
 
 

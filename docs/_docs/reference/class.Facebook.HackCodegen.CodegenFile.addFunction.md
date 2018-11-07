@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: addFunction
 id: class.Facebook.HackCodegen.CodegenFile.addFunction
 docid: class.Facebook.HackCodegen.CodegenFile.addFunction
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFile.addFunction.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenFile::addFunction()
 
 

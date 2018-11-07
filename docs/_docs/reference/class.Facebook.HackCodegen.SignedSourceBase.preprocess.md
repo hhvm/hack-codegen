@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: preprocess
 id: class.Facebook.HackCodegen.SignedSourceBase.preprocess
 docid: class.Facebook.HackCodegen.SignedSourceBase.preprocess
 permalink: /docs/reference/class.Facebook.HackCodegen.SignedSourceBase.preprocess.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\SignedSourceBase::preprocess()
 
 

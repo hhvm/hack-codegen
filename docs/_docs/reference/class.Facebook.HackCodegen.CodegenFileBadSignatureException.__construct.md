@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: __construct
 id: class.Facebook.HackCodegen.CodegenFileBadSignatureException.__construct
 docid: class.Facebook.HackCodegen.CodegenFileBadSignatureException.__construct
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFileBadSignatureException.__construct.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenFileBadSignatureException::__construct()
 
 

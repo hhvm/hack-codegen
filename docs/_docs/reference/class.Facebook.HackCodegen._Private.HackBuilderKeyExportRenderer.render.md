@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: render
 id: class.Facebook.HackCodegen._Private.HackBuilderKeyExportRenderer.render
 docid: class.Facebook.HackCodegen._Private.HackBuilderKeyExportRenderer.render
 permalink: /docs/reference/class.Facebook.HackCodegen._Private.HackBuilderKeyExportRenderer.render.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\_Private\\HackBuilderKeyExportRenderer::render()
 
 

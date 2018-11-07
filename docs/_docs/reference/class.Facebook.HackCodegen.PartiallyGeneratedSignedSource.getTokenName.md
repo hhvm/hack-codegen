@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: getTokenName
 id: class.Facebook.HackCodegen.PartiallyGeneratedSignedSource.getTokenName
 docid: class.Facebook.HackCodegen.PartiallyGeneratedSignedSource.getTokenName
 permalink: /docs/reference/class.Facebook.HackCodegen.PartiallyGeneratedSignedSource.getTokenName.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\PartiallyGeneratedSignedSource::getTokenName()
 
 

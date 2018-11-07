@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
-title: Facebook\\HackCodegen\_Private\\Filesystem
+title: Facebook\HackCodegen\_Private\Filesystem
 id: class.Facebook.HackCodegen._Private.Filesystem
 docid: class.Facebook.HackCodegen._Private.Filesystem
 permalink: /docs/reference/class.Facebook.HackCodegen._Private.Filesystem.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\_Private\\Filesystem
 
 

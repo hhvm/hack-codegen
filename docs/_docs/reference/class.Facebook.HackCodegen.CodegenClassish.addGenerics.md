@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: addGenerics
 id: class.Facebook.HackCodegen.CodegenClassish.addGenerics
 docid: class.Facebook.HackCodegen.CodegenClassish.addGenerics
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenClassish.addGenerics.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenClassish::addGenerics()
 
 

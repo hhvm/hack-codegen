@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: isSigned
 id: class.Facebook.HackCodegen.SignedSourceBase.isSigned
 docid: class.Facebook.HackCodegen.SignedSourceBase.isSigned
 permalink: /docs/reference/class.Facebook.HackCodegen.SignedSourceBase.isSigned.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\SignedSourceBase::isSigned()
 
 

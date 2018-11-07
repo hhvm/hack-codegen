@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: addWithSuggestedLineBreaksf
 id: class.Facebook.HackCodegen.BaseCodeBuilder.addWithSuggestedLineBreaksf
 docid: class.Facebook.HackCodegen.BaseCodeBuilder.addWithSuggestedLineBreaksf
 permalink: /docs/reference/class.Facebook.HackCodegen.BaseCodeBuilder.addWithSuggestedLineBreaksf.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\BaseCodeBuilder::addWithSuggestedLineBreaksf()
 
 

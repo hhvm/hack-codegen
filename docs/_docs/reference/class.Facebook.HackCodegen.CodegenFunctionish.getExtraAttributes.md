@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: getExtraAttributes
 id: class.Facebook.HackCodegen.CodegenFunctionish.getExtraAttributes
 docid: class.Facebook.HackCodegen.CodegenFunctionish.getExtraAttributes
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFunctionish.getExtraAttributes.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenFunctionish::getExtraAttributes()
 
 

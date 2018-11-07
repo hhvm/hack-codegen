@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: multilineCall
 id: class.Facebook.HackCodegen.HackBuilder.multilineCall
 docid: class.Facebook.HackCodegen.HackBuilder.multilineCall
 permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.multilineCall.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\HackBuilder::multilineCall()
 
 

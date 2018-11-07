@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: setPublic
 id: trait.Facebook.HackCodegen.CodegenWithVisibility.setPublic
 docid: trait.Facebook.HackCodegen.CodegenWithVisibility.setPublic
 permalink: /docs/reference/trait.Facebook.HackCodegen.CodegenWithVisibility.setPublic.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenWithVisibility::setPublic()
 
 

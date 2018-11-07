@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: addTrait
 id: class.Facebook.HackCodegen.CodegenFile.addTrait
 docid: class.Facebook.HackCodegen.CodegenFile.addTrait
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFile.addTrait.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenFile::addTrait()
 
 

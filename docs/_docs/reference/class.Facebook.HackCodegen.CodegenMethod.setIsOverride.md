@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: setIsOverride
 id: class.Facebook.HackCodegen.CodegenMethod.setIsOverride
 docid: class.Facebook.HackCodegen.CodegenMethod.setIsOverride
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenMethod.setIsOverride.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenMethod::setIsOverride()
 
 

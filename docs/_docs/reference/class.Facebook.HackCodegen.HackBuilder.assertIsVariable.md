@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: assertIsVariable
 id: class.Facebook.HackCodegen.HackBuilder.assertIsVariable
 docid: class.Facebook.HackCodegen.HackBuilder.assertIsVariable
 permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.assertIsVariable.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\HackBuilder::assertIsVariable()
 
 

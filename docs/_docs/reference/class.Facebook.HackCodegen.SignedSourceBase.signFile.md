@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: signFile
 id: class.Facebook.HackCodegen.SignedSourceBase.signFile
 docid: class.Facebook.HackCodegen.SignedSourceBase.signFile
 permalink: /docs/reference/class.Facebook.HackCodegen.SignedSourceBase.signFile.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\SignedSourceBase::signFile()
 
 

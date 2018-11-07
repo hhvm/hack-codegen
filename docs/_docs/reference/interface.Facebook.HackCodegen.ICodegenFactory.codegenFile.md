@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: codegenFile
 id: interface.Facebook.HackCodegen.ICodegenFactory.codegenFile
 docid: interface.Facebook.HackCodegen.ICodegenFactory.codegenFile
 permalink: /docs/reference/interface.Facebook.HackCodegen.ICodegenFactory.codegenFile.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\ICodegenFactory::codegenFile()
 
 

@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: appendToBuilder
 id: class.Facebook.HackCodegen.CodegenClassConstant.appendToBuilder
 docid: class.Facebook.HackCodegen.CodegenClassConstant.appendToBuilder
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenClassConstant.appendToBuilder.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenClassConstant::appendToBuilder()
 
 

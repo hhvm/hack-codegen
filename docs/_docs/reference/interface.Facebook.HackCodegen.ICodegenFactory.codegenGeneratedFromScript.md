@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: codegenGeneratedFromScript
 id: interface.Facebook.HackCodegen.ICodegenFactory.codegenGeneratedFromScript
 docid: interface.Facebook.HackCodegen.ICodegenFactory.codegenGeneratedFromScript
 permalink: /docs/reference/interface.Facebook.HackCodegen.ICodegenFactory.codegenGeneratedFromScript.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\ICodegenFactory::codegenGeneratedFromScript()
 
 

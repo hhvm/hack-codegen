@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: buildMethods
 id: class.Facebook.HackCodegen.CodegenClassish.buildMethods
 docid: class.Facebook.HackCodegen.CodegenClassish.buildMethods
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenClassish.buildMethods.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenClassish::buildMethods()
 
 

@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: codegenEnumMember
 id: interface.Facebook.HackCodegen.ICodegenFactory.codegenEnumMember
 docid: interface.Facebook.HackCodegen.ICodegenFactory.codegenEnumMember
 permalink: /docs/reference/interface.Facebook.HackCodegen.ICodegenFactory.codegenEnumMember.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\ICodegenFactory::codegenEnumMember()
 
 

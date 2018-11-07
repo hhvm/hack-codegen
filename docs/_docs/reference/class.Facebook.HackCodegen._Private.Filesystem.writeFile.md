@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: writeFile
 id: class.Facebook.HackCodegen._Private.Filesystem.writeFile
 docid: class.Facebook.HackCodegen._Private.Filesystem.writeFile
 permalink: /docs/reference/class.Facebook.HackCodegen._Private.Filesystem.writeFile.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\_Private\\Filesystem::writeFile()
 
 

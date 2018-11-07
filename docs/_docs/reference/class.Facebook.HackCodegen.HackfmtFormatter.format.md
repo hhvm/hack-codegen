@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: format
 id: class.Facebook.HackCodegen.HackfmtFormatter.format
 docid: class.Facebook.HackCodegen.HackfmtFormatter.format
 permalink: /docs/reference/class.Facebook.HackCodegen.HackfmtFormatter.format.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\HackfmtFormatter::format()
 
 

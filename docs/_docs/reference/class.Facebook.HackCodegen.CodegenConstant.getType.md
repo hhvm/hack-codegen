@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: getType
 id: class.Facebook.HackCodegen.CodegenConstant.getType
 docid: class.Facebook.HackCodegen.CodegenConstant.getType
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenConstant.getType.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenConstant::getType()
 
 

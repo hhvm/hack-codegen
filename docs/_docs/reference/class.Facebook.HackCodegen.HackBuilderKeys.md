@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
-title: Facebook\\HackCodegen\\HackBuilderKeys
+title: Facebook\HackCodegen\HackBuilderKeys
 id: class.Facebook.HackCodegen.HackBuilderKeys
 docid: class.Facebook.HackCodegen.HackBuilderKeys
 permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilderKeys.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\HackBuilderKeys
 
 

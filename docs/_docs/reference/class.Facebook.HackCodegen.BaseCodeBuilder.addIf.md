@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: addIf
 id: class.Facebook.HackCodegen.BaseCodeBuilder.addIf
 docid: class.Facebook.HackCodegen.BaseCodeBuilder.addIf
 permalink: /docs/reference/class.Facebook.HackCodegen.BaseCodeBuilder.addIf.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\BaseCodeBuilder::addIf()
 
 

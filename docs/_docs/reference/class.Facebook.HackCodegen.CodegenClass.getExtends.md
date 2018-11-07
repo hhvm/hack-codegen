@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: getExtends
 id: class.Facebook.HackCodegen.CodegenClass.getExtends
 docid: class.Facebook.HackCodegen.CodegenClass.getExtends
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenClass.getExtends.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenClass::getExtends()
 
 

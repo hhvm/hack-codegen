@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: getFileHeader
 id: class.Facebook.HackCodegen.HackCodegenConfig.getFileHeader
 docid: class.Facebook.HackCodegen.HackCodegenConfig.getFileHeader
 permalink: /docs/reference/class.Facebook.HackCodegen.HackCodegenConfig.getFileHeader.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\HackCodegenConfig::getFileHeader()
 
 

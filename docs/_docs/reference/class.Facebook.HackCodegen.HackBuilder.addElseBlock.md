@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: addElseBlock
 id: class.Facebook.HackCodegen.HackBuilder.addElseBlock
 docid: class.Facebook.HackCodegen.HackBuilder.addElseBlock
 permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.addElseBlock.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\HackBuilder::addElseBlock()
 
 

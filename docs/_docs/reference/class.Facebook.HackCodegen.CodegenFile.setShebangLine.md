@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: setShebangLine
 id: class.Facebook.HackCodegen.CodegenFile.setShebangLine
 docid: class.Facebook.HackCodegen.CodegenFile.setShebangLine
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFile.setShebangLine.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenFile::setShebangLine()
 
 

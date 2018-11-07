@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: buildDeclaration
 id: class.Facebook.HackCodegen.CodegenInterface.buildDeclaration
 docid: class.Facebook.HackCodegen.CodegenInterface.buildDeclaration
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenInterface.buildDeclaration.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenInterface::buildDeclaration()
 
 

@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: startIfBlock
 id: class.Facebook.HackCodegen.HackBuilder.startIfBlock
 docid: class.Facebook.HackCodegen.HackBuilder.startIfBlock
 permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.startIfBlock.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\HackBuilder::startIfBlock()
 
 

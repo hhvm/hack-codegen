@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: appendToBuilder
 id: class.Facebook.HackCodegen.CodegenImplementsInterface.appendToBuilder
 docid: class.Facebook.HackCodegen.CodegenImplementsInterface.appendToBuilder
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenImplementsInterface.appendToBuilder.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenImplementsInterface::appendToBuilder()
 
 

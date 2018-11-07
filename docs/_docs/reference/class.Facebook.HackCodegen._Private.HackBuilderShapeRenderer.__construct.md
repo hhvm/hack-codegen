@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: __construct
 id: class.Facebook.HackCodegen._Private.HackBuilderShapeRenderer.__construct
 docid: class.Facebook.HackCodegen._Private.HackBuilderShapeRenderer.__construct
 permalink: /docs/reference/class.Facebook.HackCodegen._Private.HackBuilderShapeRenderer.__construct.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\_Private\\HackBuilderShapeRenderer::__construct()
 
 

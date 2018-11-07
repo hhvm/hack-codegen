@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: codegenGeneratedFromScript
 id: trait.Facebook.HackCodegen.CodegenFactoryTrait.codegenGeneratedFromScript
 docid: trait.Facebook.HackCodegen.CodegenFactoryTrait.codegenGeneratedFromScript
 permalink: /docs/reference/trait.Facebook.HackCodegen.CodegenFactoryTrait.codegenGeneratedFromScript.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenFactoryTrait::codegenGeneratedFromScript()
 
 

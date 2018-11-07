@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: setDoClobber
 id: class.Facebook.HackCodegen.CodegenFile.setDoClobber
 docid: class.Facebook.HackCodegen.CodegenFile.setDoClobber
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFile.setDoClobber.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenFile::setDoClobber()
 
 

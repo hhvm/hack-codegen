@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: addBeforeType
 id: class.Facebook.HackCodegen.CodegenFile.addBeforeType
 docid: class.Facebook.HackCodegen.CodegenFile.addBeforeType
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFile.addBeforeType.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenFile::addBeforeType()
 
 

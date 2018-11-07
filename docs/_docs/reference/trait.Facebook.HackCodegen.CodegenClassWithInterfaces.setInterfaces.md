@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: setInterfaces
 id: trait.Facebook.HackCodegen.CodegenClassWithInterfaces.setInterfaces
 docid: trait.Facebook.HackCodegen.CodegenClassWithInterfaces.setInterfaces
 permalink: /docs/reference/trait.Facebook.HackCodegen.CodegenClassWithInterfaces.setInterfaces.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenClassWithInterfaces::setInterfaces()
 
 

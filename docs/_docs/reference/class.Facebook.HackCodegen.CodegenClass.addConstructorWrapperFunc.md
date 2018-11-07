@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: addConstructorWrapperFunc
 id: class.Facebook.HackCodegen.CodegenClass.addConstructorWrapperFunc
 docid: class.Facebook.HackCodegen.CodegenClass.addConstructorWrapperFunc
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenClass.addConstructorWrapperFunc.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenClass::addConstructorWrapperFunc()
 
 

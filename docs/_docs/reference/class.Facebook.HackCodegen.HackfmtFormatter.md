@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
-title: Facebook\\HackCodegen\\HackfmtFormatter
+title: Facebook\HackCodegen\HackfmtFormatter
 id: class.Facebook.HackCodegen.HackfmtFormatter
 docid: class.Facebook.HackCodegen.HackfmtFormatter
 permalink: /docs/reference/class.Facebook.HackCodegen.HackfmtFormatter.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\HackfmtFormatter
 
 

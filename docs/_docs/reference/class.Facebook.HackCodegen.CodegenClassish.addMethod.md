@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: addMethod
 id: class.Facebook.HackCodegen.CodegenClassish.addMethod
 docid: class.Facebook.HackCodegen.CodegenClassish.addMethod
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenClassish.addMethod.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenClassish::addMethod()
 
 

@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: getBeginManualSectionRegex
 id: class.Facebook.HackCodegen.PartiallyGeneratedCode.getBeginManualSectionRegex
 docid: class.Facebook.HackCodegen.PartiallyGeneratedCode.getBeginManualSectionRegex
 permalink: /docs/reference/class.Facebook.HackCodegen.PartiallyGeneratedCode.getBeginManualSectionRegex.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\PartiallyGeneratedCode::getBeginManualSectionRegex()
 
 

@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: addMembers
 id: class.Facebook.HackCodegen.CodegenEnum.addMembers
 docid: class.Facebook.HackCodegen.CodegenEnum.addMembers
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenEnum.addMembers.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenEnum::addMembers()
 
 

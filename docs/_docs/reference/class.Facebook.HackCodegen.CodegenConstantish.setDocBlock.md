@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: setDocBlock
 id: class.Facebook.HackCodegen.CodegenConstantish.setDocBlock
 docid: class.Facebook.HackCodegen.CodegenConstantish.setDocBlock
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenConstantish.setDocBlock.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenConstantish::setDocBlock()
 
 

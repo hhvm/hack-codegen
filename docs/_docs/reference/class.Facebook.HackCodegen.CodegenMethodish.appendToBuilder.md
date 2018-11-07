@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: appendToBuilder
 id: class.Facebook.HackCodegen.CodegenMethodish.appendToBuilder
 docid: class.Facebook.HackCodegen.CodegenMethodish.appendToBuilder
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenMethodish.appendToBuilder.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenMethodish::appendToBuilder()
 
 

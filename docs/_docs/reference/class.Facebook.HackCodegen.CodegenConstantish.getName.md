@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: getName
 id: class.Facebook.HackCodegen.CodegenConstantish.getName
 docid: class.Facebook.HackCodegen.CodegenConstantish.getName
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenConstantish.getName.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenConstantish::getName()
 
 

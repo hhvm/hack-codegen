@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: addWrappedStringNoIndent
 id: class.Facebook.HackCodegen.HackBuilder.addWrappedStringNoIndent
 docid: class.Facebook.HackCodegen.HackBuilder.addWrappedStringNoIndent
 permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.addWrappedStringNoIndent.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\HackBuilder::addWrappedStringNoIndent()
 
 

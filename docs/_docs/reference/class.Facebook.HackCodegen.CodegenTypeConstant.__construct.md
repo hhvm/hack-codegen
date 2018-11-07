@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: __construct
 id: class.Facebook.HackCodegen.CodegenTypeConstant.__construct
 docid: class.Facebook.HackCodegen.CodegenTypeConstant.__construct
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenTypeConstant.__construct.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenTypeConstant::__construct()
 
 

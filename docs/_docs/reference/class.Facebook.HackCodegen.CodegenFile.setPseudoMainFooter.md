@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: setPseudoMainFooter
 id: class.Facebook.HackCodegen.CodegenFile.setPseudoMainFooter
 docid: class.Facebook.HackCodegen.CodegenFile.setPseudoMainFooter
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFile.setPseudoMainFooter.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenFile::setPseudoMainFooter()
 
 

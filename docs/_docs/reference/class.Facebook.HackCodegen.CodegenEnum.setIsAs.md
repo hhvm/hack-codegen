@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: setIsAs
 id: class.Facebook.HackCodegen.CodegenEnum.setIsAs
 docid: class.Facebook.HackCodegen.CodegenEnum.setIsAs
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenEnum.setIsAs.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenEnum::setIsAs()
 
 

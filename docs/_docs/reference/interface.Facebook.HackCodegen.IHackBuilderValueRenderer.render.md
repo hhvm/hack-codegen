@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: render
 id: interface.Facebook.HackCodegen.IHackBuilderValueRenderer.render
 docid: interface.Facebook.HackCodegen.IHackBuilderValueRenderer.render
 permalink: /docs/reference/interface.Facebook.HackCodegen.IHackBuilderValueRenderer.render.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\IHackBuilderValueRenderer::render()
 
 

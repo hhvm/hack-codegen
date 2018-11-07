@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
-title: Facebook\\HackCodegen\_Private\\HackBuilderKeyLambdaRenderer
+title: Facebook\HackCodegen\_Private\HackBuilderKeyLambdaRenderer
 id: class.Facebook.HackCodegen._Private.HackBuilderKeyLambdaRenderer
 docid: class.Facebook.HackCodegen._Private.HackBuilderKeyLambdaRenderer
 permalink: /docs/reference/class.Facebook.HackCodegen._Private.HackBuilderKeyLambdaRenderer.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\_Private\\HackBuilderKeyLambdaRenderer
 
 

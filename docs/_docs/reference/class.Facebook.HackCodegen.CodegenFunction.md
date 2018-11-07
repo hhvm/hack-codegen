@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
-title: Facebook\\HackCodegen\\CodegenFunction
+title: Facebook\HackCodegen\CodegenFunction
 id: class.Facebook.HackCodegen.CodegenFunction
 docid: class.Facebook.HackCodegen.CodegenFunction
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFunction.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenFunction
 
 

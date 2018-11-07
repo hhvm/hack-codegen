@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: setGeneratedFrom
 id: class.Facebook.HackCodegen.CodegenImplementsInterface.setGeneratedFrom
 docid: class.Facebook.HackCodegen.CodegenImplementsInterface.setGeneratedFrom
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenImplementsInterface.setGeneratedFrom.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenImplementsInterface::setGeneratedFrom()
 
 

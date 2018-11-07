@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: addLinef
 id: class.Facebook.HackCodegen.BaseCodeBuilder.addLinef
 docid: class.Facebook.HackCodegen.BaseCodeBuilder.addLinef
 permalink: /docs/reference/class.Facebook.HackCodegen.BaseCodeBuilder.addLinef.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\BaseCodeBuilder::addLinef()
 
 

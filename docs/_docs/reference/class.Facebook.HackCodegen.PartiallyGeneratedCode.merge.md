@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: merge
 id: class.Facebook.HackCodegen.PartiallyGeneratedCode.merge
 docid: class.Facebook.HackCodegen.PartiallyGeneratedCode.merge
 permalink: /docs/reference/class.Facebook.HackCodegen.PartiallyGeneratedCode.merge.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\PartiallyGeneratedCode::merge()
 
 

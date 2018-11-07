@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: createOnly
 id: class.Facebook.HackCodegen.CodegenFile.createOnly
 docid: class.Facebook.HackCodegen.CodegenFile.createOnly
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFile.createOnly.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenFile::createOnly()
 
 

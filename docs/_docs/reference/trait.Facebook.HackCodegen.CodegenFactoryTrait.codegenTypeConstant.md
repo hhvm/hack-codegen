@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: codegenTypeConstant
 id: trait.Facebook.HackCodegen.CodegenFactoryTrait.codegenTypeConstant
 docid: trait.Facebook.HackCodegen.CodegenFactoryTrait.codegenTypeConstant
 permalink: /docs/reference/trait.Facebook.HackCodegen.CodegenFactoryTrait.codegenTypeConstant.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenFactoryTrait::codegenTypeConstant()
 
 

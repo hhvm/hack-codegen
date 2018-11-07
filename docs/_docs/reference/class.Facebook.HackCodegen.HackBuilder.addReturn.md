@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: addReturn
 id: class.Facebook.HackCodegen.HackBuilder.addReturn
 docid: class.Facebook.HackCodegen.HackBuilder.addReturn
 permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.addReturn.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\HackBuilder::addReturn()
 
 

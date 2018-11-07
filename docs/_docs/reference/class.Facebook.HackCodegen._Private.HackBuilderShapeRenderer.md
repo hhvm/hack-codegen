@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
-title: Facebook\\HackCodegen\_Private\\HackBuilderShapeRenderer
+title: Facebook\HackCodegen\_Private\HackBuilderShapeRenderer
 id: class.Facebook.HackCodegen._Private.HackBuilderShapeRenderer
 docid: class.Facebook.HackCodegen._Private.HackBuilderShapeRenderer
 permalink: /docs/reference/class.Facebook.HackCodegen._Private.HackBuilderShapeRenderer.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\_Private\\HackBuilderShapeRenderer
 
 

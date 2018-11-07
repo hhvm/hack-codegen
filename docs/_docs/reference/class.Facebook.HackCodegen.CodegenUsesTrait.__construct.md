@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: __construct
 id: class.Facebook.HackCodegen.CodegenUsesTrait.__construct
 docid: class.Facebook.HackCodegen.CodegenUsesTrait.__construct
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenUsesTrait.__construct.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenUsesTrait::__construct()
 
 

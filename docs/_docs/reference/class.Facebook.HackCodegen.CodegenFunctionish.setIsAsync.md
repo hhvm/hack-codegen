@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: setIsAsync
 id: class.Facebook.HackCodegen.CodegenFunctionish.setIsAsync
 docid: class.Facebook.HackCodegen.CodegenFunctionish.setIsAsync
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFunctionish.setIsAsync.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenFunctionish::setIsAsync()
 
 

@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: codegenShape
 id: trait.Facebook.HackCodegen.CodegenFactoryTrait.codegenShape
 docid: trait.Facebook.HackCodegen.CodegenFactoryTrait.codegenShape
 permalink: /docs/reference/trait.Facebook.HackCodegen.CodegenFactoryTrait.codegenShape.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenFactoryTrait::codegenShape()
 
 

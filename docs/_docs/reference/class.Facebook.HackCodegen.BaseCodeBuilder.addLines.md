@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: addLines
 id: class.Facebook.HackCodegen.BaseCodeBuilder.addLines
 docid: class.Facebook.HackCodegen.BaseCodeBuilder.addLines
 permalink: /docs/reference/class.Facebook.HackCodegen.BaseCodeBuilder.addLines.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\BaseCodeBuilder::addLines()
 
 

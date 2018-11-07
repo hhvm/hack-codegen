@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: closeBrace
 id: class.Facebook.HackCodegen.HackBuilder.closeBrace
 docid: class.Facebook.HackCodegen.HackBuilder.closeBrace
 permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.closeBrace.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\HackBuilder::closeBrace()
 
 

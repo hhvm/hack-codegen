@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: __construct
 id: class.Facebook.HackCodegen.HackfmtFormatter.__construct
 docid: class.Facebook.HackCodegen.HackfmtFormatter.__construct
 permalink: /docs/reference/class.Facebook.HackCodegen.HackfmtFormatter.__construct.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\HackfmtFormatter::__construct()
 
 

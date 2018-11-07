@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: setDocBlock
 id: class.Facebook.HackCodegen.CodegenEnum.setDocBlock
 docid: class.Facebook.HackCodegen.CodegenEnum.setDocBlock
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenEnum.setDocBlock.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenEnum::setDocBlock()
 
 

@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: setIsOptional
 id: class.Facebook.HackCodegen.CodegenShapeMember.setIsOptional
 docid: class.Facebook.HackCodegen.CodegenShapeMember.setIsOptional
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenShapeMember.setIsOptional.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenShapeMember::setIsOptional()
 
 

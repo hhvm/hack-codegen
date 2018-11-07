@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: setIsConsistentConstruct
 id: class.Facebook.HackCodegen.CodegenClassish.setIsConsistentConstruct
 docid: class.Facebook.HackCodegen.CodegenClassish.setIsConsistentConstruct
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenClassish.setIsConsistentConstruct.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenClassish::setIsConsistentConstruct()
 
 

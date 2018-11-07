@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
 title: codegenImplementsInterfaces
 id: interface.Facebook.HackCodegen.ICodegenFactory.codegenImplementsInterfaces
 docid: interface.Facebook.HackCodegen.ICodegenFactory.codegenImplementsInterfaces
 permalink: /docs/reference/interface.Facebook.HackCodegen.ICodegenFactory.codegenImplementsInterfaces.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\ICodegenFactory::codegenImplementsInterfaces()
 
 

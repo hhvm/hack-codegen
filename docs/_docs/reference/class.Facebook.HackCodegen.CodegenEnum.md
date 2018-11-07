@@ -1,19 +1,10 @@
-
-***
-
+---
 layout: docs
-title: Facebook\\HackCodegen\\CodegenEnum
+title: Facebook\HackCodegen\CodegenEnum
 id: class.Facebook.HackCodegen.CodegenEnum
 docid: class.Facebook.HackCodegen.CodegenEnum
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenEnum.md
 ---
-
-
-
-
-
-
-
 # Facebook\\HackCodegen\\CodegenEnum
 
 
