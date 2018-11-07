@@ -1,0 +1,46 @@
+
+***
+
+layout: docs
+title: addCaseBlocks
+permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.addCaseBlocks.md
+---
+
+
+
+
+
+
+
+# Facebook\\HackCodegen\\HackBuilder::addCaseBlocks()
+
+
+
+
+``` Hack
+public function addCaseBlocks<T>(
+      Traversable<T> $switch_values,
+  callable $func,
+): this;
+```
+
+
+
+
+## Parameters
+
+
+
+
++ ` Traversable<T> $switch_values `
++ ` callable $func `
+
+
+
+
+## Returns
+
+
+
+
+* ` this `

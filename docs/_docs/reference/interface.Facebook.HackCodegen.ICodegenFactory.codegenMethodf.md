@@ -1,0 +1,51 @@
+
+***
+
+layout: docs
+title: codegenMethodf
+permalink: /docs/reference/interface.Facebook.HackCodegen.ICodegenFactory.codegenMethodf.md
+---
+
+
+
+
+
+
+
+# Facebook\\HackCodegen\\ICodegenFactory::codegenMethodf()
+
+
+
+
+Create a method, using a %-placeholder format string for the name
+
+
+
+
+``` Hack
+public function codegenMethodf(
+  HH\Lib\Str\SprintfFormatString $format,
+  mixed ...$args,
+): Facebook\HackCodegen\CodegenMethod;
+```
+
+
+
+
+## Parameters
+
+
+
+
++ ` HH\Lib\Str\SprintfFormatString $format `
++ ` mixed ...$args `
+
+
+
+
+## Returns
+
+
+
+
+* [` Facebook\HackCodegen\CodegenMethod `](<class.Facebook.HackCodegen.CodegenMethod.md>)

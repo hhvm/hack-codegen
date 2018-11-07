@@ -1,0 +1,51 @@
+
+***
+
+layout: docs
+title: addCatchBlock
+permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.addCatchBlock.md
+---
+
+
+
+
+
+
+
+# Facebook\\HackCodegen\\HackBuilder::addCatchBlock()
+
+
+
+
+Start a catch block
+
+
+
+
+``` Hack
+public function addCatchBlock(
+  string $class,
+  string $variable,
+): this;
+```
+
+
+
+
+## Parameters
+
+
+
+
+- ` string $class `
+- ` string $variable `
+
+
+
+
+## Returns
+
+
+
+
++ ` this `

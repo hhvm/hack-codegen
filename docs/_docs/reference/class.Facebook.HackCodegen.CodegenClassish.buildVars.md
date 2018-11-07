@@ -1,0 +1,44 @@
+
+***
+
+layout: docs
+title: buildVars
+permalink: /docs/reference/class.Facebook.HackCodegen.CodegenClassish.buildVars.md
+---
+
+
+
+
+
+
+
+# Facebook\\HackCodegen\\CodegenClassish::buildVars()
+
+
+
+
+``` Hack
+protected function buildVars(
+  Facebook\HackCodegen\HackBuilder $builder,
+): void;
+```
+
+
+
+
+## Parameters
+
+
+
+
++ [` Facebook\HackCodegen\HackBuilder `](<class.Facebook.HackCodegen.HackBuilder.md>)`` $builder ``
+
+
+
+
+## Returns
+
+
+
+
+* ` void `

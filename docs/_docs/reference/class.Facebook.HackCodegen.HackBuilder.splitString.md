@@ -1,0 +1,59 @@
+
+***
+
+layout: docs
+title: splitString
+permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.splitString.md
+---
+
+
+
+
+
+
+
+# Facebook\\HackCodegen\\HackBuilder::splitString()
+
+
+
+
+Split a string on lines of at most $maxlen length
+
+
+
+
+``` Hack
+private function splitString(
+  string $str,
+  int $maxlen,
+  bool $preserve_space = false,
+): vec<string>;
+```
+
+
+
+
+Line breaks in
+the string will be respected.
+
+
+
+
+## Parameters
+
+
+
+
+- ` string $str `
+- ` int $maxlen `
+- ` bool $preserve_space = false `
+
+
+
+
+## Returns
+
+
+
+
++ ` vec<string> `

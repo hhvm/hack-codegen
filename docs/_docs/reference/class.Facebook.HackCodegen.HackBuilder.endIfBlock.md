@@ -1,0 +1,38 @@
+
+***
+
+layout: docs
+title: endIfBlock
+permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.endIfBlock.md
+---
+
+
+
+
+
+
+
+# Facebook\\HackCodegen\\HackBuilder::endIfBlock()
+
+
+
+
+Strictly equivalent to calling closeBrace, which unindent and newline,
+but for readability, you should use this with startIfBlock
+
+
+
+
+``` Hack
+public function endIfBlock(): this;
+```
+
+
+
+
+## Returns
+
+
+
+
+- ` this `

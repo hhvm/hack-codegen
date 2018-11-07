@@ -1,0 +1,46 @@
+
+***
+
+layout: docs
+title: startIfBlockf
+permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.startIfBlockf.md
+---
+
+
+
+
+
+
+
+# Facebook\\HackCodegen\\HackBuilder::startIfBlockf()
+
+
+
+
+``` Hack
+public function startIfBlockf(
+  HH\Lib\Str\SprintfFormatString $condition,
+  mixed ...$args,
+): this;
+```
+
+
+
+
+## Parameters
+
+
+
+
+- ` HH\Lib\Str\SprintfFormatString $condition `
+- ` mixed ...$args `
+
+
+
+
+## Returns
+
+
+
+
++ ` this `

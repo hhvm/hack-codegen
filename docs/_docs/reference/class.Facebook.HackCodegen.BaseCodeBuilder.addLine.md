@@ -1,0 +1,55 @@
+
+***
+
+layout: docs
+title: addLine
+permalink: /docs/reference/class.Facebook.HackCodegen.BaseCodeBuilder.addLine.md
+---
+
+
+
+
+
+
+
+# Facebook\\HackCodegen\\BaseCodeBuilder::addLine()
+
+
+
+
+Add the code to the buffer followed by a new line
+
+
+
+
+``` Hack
+final public function addLine(
+  ?string $code,
+): this;
+```
+
+
+
+
+If code is ` null `, nothing will be added.
+For %-placeholder format strings, use [` addLinef() `](<class.Facebook.HackCodegen.BaseCodeBuilder.addLinef.md>).
+
+
+
+
+## Parameters
+
+
+
+
+* ` ?string $code `
+
+
+
+
+## Returns
+
+
+
+
+- ` this `

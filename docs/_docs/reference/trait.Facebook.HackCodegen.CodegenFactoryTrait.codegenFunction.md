@@ -1,0 +1,44 @@
+
+***
+
+layout: docs
+title: codegenFunction
+permalink: /docs/reference/trait.Facebook.HackCodegen.CodegenFactoryTrait.codegenFunction.md
+---
+
+
+
+
+
+
+
+# Facebook\\HackCodegen\\CodegenFactoryTrait::codegenFunction()
+
+
+
+
+``` Hack
+final public function codegenFunction(
+  string $name,
+): Facebook\HackCodegen\CodegenFunction;
+```
+
+
+
+
+## Parameters
+
+
+
+
+- ` string $name `
+
+
+
+
+## Returns
+
+
+
+
++ [` Facebook\HackCodegen\CodegenFunction `](<class.Facebook.HackCodegen.CodegenFunction.md>)

@@ -1,0 +1,44 @@
+
+***
+
+layout: docs
+title: setIsSignedFile
+permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFile.setIsSignedFile.md
+---
+
+
+
+
+
+
+
+# Facebook\\HackCodegen\\CodegenFile::setIsSignedFile()
+
+
+
+
+``` Hack
+public function setIsSignedFile(
+  bool $value,
+): this;
+```
+
+
+
+
+## Parameters
+
+
+
+
+- ` bool $value `
+
+
+
+
+## Returns
+
+
+
+
++ ` this `

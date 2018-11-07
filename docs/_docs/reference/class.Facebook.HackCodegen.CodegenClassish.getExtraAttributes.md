@@ -1,0 +1,37 @@
+
+***
+
+layout: docs
+title: getExtraAttributes
+permalink: /docs/reference/class.Facebook.HackCodegen.CodegenClassish.getExtraAttributes.md
+---
+
+
+
+
+
+
+
+# Facebook\\HackCodegen\\CodegenClassish::getExtraAttributes()
+
+
+
+
+Returns all the attributes defined on the class
+
+
+
+
+``` Hack
+protected function getExtraAttributes(): dict<string, vec<string>>;
+```
+
+
+
+
+## Returns
+
+
+
+
+- ` dict<string, vec<string>> `

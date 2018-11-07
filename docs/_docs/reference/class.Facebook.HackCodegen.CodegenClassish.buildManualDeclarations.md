@@ -1,0 +1,44 @@
+
+***
+
+layout: docs
+title: buildManualDeclarations
+permalink: /docs/reference/class.Facebook.HackCodegen.CodegenClassish.buildManualDeclarations.md
+---
+
+
+
+
+
+
+
+# Facebook\\HackCodegen\\CodegenClassish::buildManualDeclarations()
+
+
+
+
+``` Hack
+protected function buildManualDeclarations(
+  Facebook\HackCodegen\HackBuilder $builder,
+): void;
+```
+
+
+
+
+## Parameters
+
+
+
+
++ [` Facebook\HackCodegen\HackBuilder `](<class.Facebook.HackCodegen.HackBuilder.md>)`` $builder ``
+
+
+
+
+## Returns
+
+
+
+
+* ` void `

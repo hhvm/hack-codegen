@@ -1,0 +1,44 @@
+
+***
+
+layout: docs
+title: codegenImplementsInterfaces
+permalink: /docs/reference/trait.Facebook.HackCodegen.CodegenFactoryTrait.codegenImplementsInterfaces.md
+---
+
+
+
+
+
+
+
+# Facebook\\HackCodegen\\CodegenFactoryTrait::codegenImplementsInterfaces()
+
+
+
+
+``` Hack
+final public function codegenImplementsInterfaces(
+      Traversable<string> $names,
+): vec<Facebook\HackCodegen\CodegenImplementsInterface>;
+```
+
+
+
+
+## Parameters
+
+
+
+
+- ` Traversable<string> $names `
+
+
+
+
+## Returns
+
+
+
+
++ ` vec<Facebook\HackCodegen\CodegenImplementsInterface> `

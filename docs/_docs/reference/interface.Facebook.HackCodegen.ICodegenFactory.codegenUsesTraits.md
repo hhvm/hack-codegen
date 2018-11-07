@@ -1,0 +1,50 @@
+
+***
+
+layout: docs
+title: codegenUsesTraits
+permalink: /docs/reference/interface.Facebook.HackCodegen.ICodegenFactory.codegenUsesTraits.md
+---
+
+
+
+
+
+
+
+# Facebook\\HackCodegen\\ICodegenFactory::codegenUsesTraits()
+
+
+
+
+Generate a 'use' statements, for adding traits into a class or another
+trait
+
+
+
+
+``` Hack
+public function codegenUsesTraits(
+      Traversable<string> $traits,
+): Traversable<Facebook\HackCodegen\CodegenUsesTrait>;
+```
+
+
+
+
+## Parameters
+
+
+
+
+- ` Traversable<string> $traits `
+
+
+
+
+## Returns
+
+
+
+
++ ` Traversable<Facebook\HackCodegen\CodegenUsesTrait> `

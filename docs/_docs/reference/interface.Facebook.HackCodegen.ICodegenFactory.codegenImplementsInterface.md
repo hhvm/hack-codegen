@@ -1,0 +1,49 @@
+
+***
+
+layout: docs
+title: codegenImplementsInterface
+permalink: /docs/reference/interface.Facebook.HackCodegen.ICodegenFactory.codegenImplementsInterface.md
+---
+
+
+
+
+
+
+
+# Facebook\\HackCodegen\\ICodegenFactory::codegenImplementsInterface()
+
+
+
+
+Generate a declaration that a class implements a specified interface
+
+
+
+
+``` Hack
+public function codegenImplementsInterface(
+  string $name,
+): Facebook\HackCodegen\CodegenImplementsInterface;
+```
+
+
+
+
+## Parameters
+
+
+
+
+* ` string $name `
+
+
+
+
+## Returns
+
+
+
+
+- [` Facebook\HackCodegen\CodegenImplementsInterface `](<class.Facebook.HackCodegen.CodegenImplementsInterface.md>)

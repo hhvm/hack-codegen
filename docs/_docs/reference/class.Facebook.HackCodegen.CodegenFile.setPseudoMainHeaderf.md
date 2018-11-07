@@ -1,0 +1,46 @@
+
+***
+
+layout: docs
+title: setPseudoMainHeaderf
+permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFile.setPseudoMainHeaderf.md
+---
+
+
+
+
+
+
+
+# Facebook\\HackCodegen\\CodegenFile::setPseudoMainHeaderf()
+
+
+
+
+``` Hack
+public function setPseudoMainHeaderf(
+  HH\Lib\Str\SprintfFormatString $format,
+  mixed ...$args,
+): this;
+```
+
+
+
+
+## Parameters
+
+
+
+
++ ` HH\Lib\Str\SprintfFormatString $format `
++ ` mixed ...$args `
+
+
+
+
+## Returns
+
+
+
+
+* ` this `

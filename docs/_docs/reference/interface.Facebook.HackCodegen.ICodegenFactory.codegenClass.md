@@ -1,0 +1,49 @@
+
+***
+
+layout: docs
+title: codegenClass
+permalink: /docs/reference/interface.Facebook.HackCodegen.ICodegenFactory.codegenClass.md
+---
+
+
+
+
+
+
+
+# Facebook\\HackCodegen\\ICodegenFactory::codegenClass()
+
+
+
+
+Create a class
+
+
+
+
+``` Hack
+public function codegenClass(
+  string $name,
+): Facebook\HackCodegen\CodegenClass;
+```
+
+
+
+
+## Parameters
+
+
+
+
+* ` string $name `
+
+
+
+
+## Returns
+
+
+
+
+- [` Facebook\HackCodegen\CodegenClass `](<class.Facebook.HackCodegen.CodegenClass.md>)
