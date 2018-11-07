@@ -3,7 +3,7 @@ layout: docs
 title: getExtends
 id: class.Facebook.HackCodegen.CodegenClass.getExtends
 docid: class.Facebook.HackCodegen.CodegenClass.getExtends
-permalink: /docs/reference/class.Facebook.HackCodegen.CodegenClass.getExtends.md
+permalink: /docs/reference/class.Facebook.HackCodegen.CodegenClass.getExtends/
 ---
 # Facebook\\HackCodegen\\CodegenClass::getExtends()
 

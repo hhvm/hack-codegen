@@ -3,7 +3,7 @@ layout: docs
 title: setManualAttrsID
 id: class.Facebook.HackCodegen.CodegenShape.setManualAttrsID
 docid: class.Facebook.HackCodegen.CodegenShape.setManualAttrsID
-permalink: /docs/reference/class.Facebook.HackCodegen.CodegenShape.setManualAttrsID.md
+permalink: /docs/reference/class.Facebook.HackCodegen.CodegenShape.setManualAttrsID/
 ---
 # Facebook\\HackCodegen\\CodegenShape::setManualAttrsID()
 

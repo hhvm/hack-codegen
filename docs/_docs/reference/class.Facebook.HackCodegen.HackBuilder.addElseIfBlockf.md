@@ -3,7 +3,7 @@ layout: docs
 title: addElseIfBlockf
 id: class.Facebook.HackCodegen.HackBuilder.addElseIfBlockf
 docid: class.Facebook.HackCodegen.HackBuilder.addElseIfBlockf
-permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.addElseIfBlockf.md
+permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.addElseIfBlockf/
 ---
 # Facebook\\HackCodegen\\HackBuilder::addElseIfBlockf()
 

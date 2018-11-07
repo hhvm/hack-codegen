@@ -3,7 +3,7 @@ layout: docs
 title: getBeginManualSection
 id: class.Facebook.HackCodegen.PartiallyGeneratedCode.getBeginManualSection
 docid: class.Facebook.HackCodegen.PartiallyGeneratedCode.getBeginManualSection
-permalink: /docs/reference/class.Facebook.HackCodegen.PartiallyGeneratedCode.getBeginManualSection.md
+permalink: /docs/reference/class.Facebook.HackCodegen.PartiallyGeneratedCode.getBeginManualSection/
 ---
 # Facebook\\HackCodegen\\PartiallyGeneratedCode::getBeginManualSection()
 

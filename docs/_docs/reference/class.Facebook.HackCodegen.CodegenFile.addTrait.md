@@ -3,7 +3,7 @@ layout: docs
 title: addTrait
 id: class.Facebook.HackCodegen.CodegenFile.addTrait
 docid: class.Facebook.HackCodegen.CodegenFile.addTrait
-permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFile.addTrait.md
+permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFile.addTrait/
 ---
 # Facebook\\HackCodegen\\CodegenFile::addTrait()
 

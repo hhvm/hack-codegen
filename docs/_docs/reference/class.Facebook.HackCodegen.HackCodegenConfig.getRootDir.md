@@ -3,7 +3,7 @@ layout: docs
 title: getRootDir
 id: class.Facebook.HackCodegen.HackCodegenConfig.getRootDir
 docid: class.Facebook.HackCodegen.HackCodegenConfig.getRootDir
-permalink: /docs/reference/class.Facebook.HackCodegen.HackCodegenConfig.getRootDir.md
+permalink: /docs/reference/class.Facebook.HackCodegen.HackCodegenConfig.getRootDir/
 ---
 # Facebook\\HackCodegen\\HackCodegenConfig::getRootDir()
 

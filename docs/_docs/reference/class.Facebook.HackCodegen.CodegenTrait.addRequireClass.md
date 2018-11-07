@@ -3,7 +3,7 @@ layout: docs
 title: addRequireClass
 id: class.Facebook.HackCodegen.CodegenTrait.addRequireClass
 docid: class.Facebook.HackCodegen.CodegenTrait.addRequireClass
-permalink: /docs/reference/class.Facebook.HackCodegen.CodegenTrait.addRequireClass.md
+permalink: /docs/reference/class.Facebook.HackCodegen.CodegenTrait.addRequireClass/
 ---
 # Facebook\\HackCodegen\\CodegenTrait::addRequireClass()
 

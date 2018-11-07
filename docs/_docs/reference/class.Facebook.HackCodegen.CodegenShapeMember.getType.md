@@ -3,7 +3,7 @@ layout: docs
 title: getType
 id: class.Facebook.HackCodegen.CodegenShapeMember.getType
 docid: class.Facebook.HackCodegen.CodegenShapeMember.getType
-permalink: /docs/reference/class.Facebook.HackCodegen.CodegenShapeMember.getType.md
+permalink: /docs/reference/class.Facebook.HackCodegen.CodegenShapeMember.getType/
 ---
 # Facebook\\HackCodegen\\CodegenShapeMember::getType()
 

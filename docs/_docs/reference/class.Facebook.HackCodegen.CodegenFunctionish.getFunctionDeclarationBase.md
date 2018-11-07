@@ -3,7 +3,7 @@ layout: docs
 title: getFunctionDeclarationBase
 id: class.Facebook.HackCodegen.CodegenFunctionish.getFunctionDeclarationBase
 docid: class.Facebook.HackCodegen.CodegenFunctionish.getFunctionDeclarationBase
-permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFunctionish.getFunctionDeclarationBase.md
+permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFunctionish.getFunctionDeclarationBase/
 ---
 # Facebook\\HackCodegen\\CodegenFunctionish::getFunctionDeclarationBase()
 

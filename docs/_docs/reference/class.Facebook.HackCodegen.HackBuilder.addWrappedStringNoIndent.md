@@ -3,7 +3,7 @@ layout: docs
 title: addWrappedStringNoIndent
 id: class.Facebook.HackCodegen.HackBuilder.addWrappedStringNoIndent
 docid: class.Facebook.HackCodegen.HackBuilder.addWrappedStringNoIndent
-permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.addWrappedStringNoIndent.md
+permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.addWrappedStringNoIndent/
 ---
 # Facebook\\HackCodegen\\HackBuilder::addWrappedStringNoIndent()
 

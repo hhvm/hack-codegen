@@ -3,7 +3,7 @@ layout: docs
 title: Facebook\HackCodegen\PartiallyGeneratedSignedSource
 id: class.Facebook.HackCodegen.PartiallyGeneratedSignedSource
 docid: class.Facebook.HackCodegen.PartiallyGeneratedSignedSource
-permalink: /docs/reference/class.Facebook.HackCodegen.PartiallyGeneratedSignedSource.md
+permalink: /docs/reference/class.Facebook.HackCodegen.PartiallyGeneratedSignedSource/
 ---
 # Facebook\\HackCodegen\\PartiallyGeneratedSignedSource
 

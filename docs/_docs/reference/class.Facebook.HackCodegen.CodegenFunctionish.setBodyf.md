@@ -3,7 +3,7 @@ layout: docs
 title: setBodyf
 id: class.Facebook.HackCodegen.CodegenFunctionish.setBodyf
 docid: class.Facebook.HackCodegen.CodegenFunctionish.setBodyf
-permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFunctionish.setBodyf.md
+permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFunctionish.setBodyf/
 ---
 # Facebook\\HackCodegen\\CodegenFunctionish::setBodyf()
 

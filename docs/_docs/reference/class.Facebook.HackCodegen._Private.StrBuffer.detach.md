@@ -3,7 +3,7 @@ layout: docs
 title: detach
 id: class.Facebook.HackCodegen._Private.StrBuffer.detach
 docid: class.Facebook.HackCodegen._Private.StrBuffer.detach
-permalink: /docs/reference/class.Facebook.HackCodegen._Private.StrBuffer.detach.md
+permalink: /docs/reference/class.Facebook.HackCodegen._Private.StrBuffer.detach/
 ---
 # Facebook\\HackCodegen\\_Private\\StrBuffer::detach()
 

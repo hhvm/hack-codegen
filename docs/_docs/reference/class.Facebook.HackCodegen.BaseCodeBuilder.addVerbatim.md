@@ -3,7 +3,7 @@ layout: docs
 title: addVerbatim
 id: class.Facebook.HackCodegen.BaseCodeBuilder.addVerbatim
 docid: class.Facebook.HackCodegen.BaseCodeBuilder.addVerbatim
-permalink: /docs/reference/class.Facebook.HackCodegen.BaseCodeBuilder.addVerbatim.md
+permalink: /docs/reference/class.Facebook.HackCodegen.BaseCodeBuilder.addVerbatim/
 ---
 # Facebook\\HackCodegen\\BaseCodeBuilder::addVerbatim()
 

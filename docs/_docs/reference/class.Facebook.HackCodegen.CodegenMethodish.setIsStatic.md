@@ -3,7 +3,7 @@ layout: docs
 title: setIsStatic
 id: class.Facebook.HackCodegen.CodegenMethodish.setIsStatic
 docid: class.Facebook.HackCodegen.CodegenMethodish.setIsStatic
-permalink: /docs/reference/class.Facebook.HackCodegen.CodegenMethodish.setIsStatic.md
+permalink: /docs/reference/class.Facebook.HackCodegen.CodegenMethodish.setIsStatic/
 ---
 # Facebook\\HackCodegen\\CodegenMethodish::setIsStatic()
 

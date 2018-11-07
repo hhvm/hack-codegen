@@ -3,7 +3,7 @@ layout: docs
 title: startForeachLoop
 id: class.Facebook.HackCodegen.HackBuilder.startForeachLoop
 docid: class.Facebook.HackCodegen.HackBuilder.startForeachLoop
-permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.startForeachLoop.md
+permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.startForeachLoop/
 ---
 # Facebook\\HackCodegen\\HackBuilder::startForeachLoop()
 

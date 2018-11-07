@@ -3,7 +3,7 @@ layout: docs
 title: setHasManualHeader
 id: class.Facebook.HackCodegen.CodegenEnum.setHasManualHeader
 docid: class.Facebook.HackCodegen.CodegenEnum.setHasManualHeader
-permalink: /docs/reference/class.Facebook.HackCodegen.CodegenEnum.setHasManualHeader.md
+permalink: /docs/reference/class.Facebook.HackCodegen.CodegenEnum.setHasManualHeader/
 ---
 # Facebook\\HackCodegen\\CodegenEnum::setHasManualHeader()
 

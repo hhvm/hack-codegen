@@ -3,7 +3,7 @@ layout: docs
 title: addValue
 id: class.Facebook.HackCodegen.HackBuilder.addValue
 docid: class.Facebook.HackCodegen.HackBuilder.addValue
-permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.addValue.md
+permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.addValue/
 ---
 # Facebook\\HackCodegen\\HackBuilder::addValue()
 

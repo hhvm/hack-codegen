@@ -3,7 +3,7 @@ layout: docs
 title: Facebook\HackCodegen\_Private\normalized_var_export
 id: function.Facebook.HackCodegen._Private.normalized_var_export
 docid: function.Facebook.HackCodegen._Private.normalized_var_export
-permalink: /docs/reference/function.Facebook.HackCodegen._Private.normalized_var_export.md
+permalink: /docs/reference/function.Facebook.HackCodegen._Private.normalized_var_export/
 ---
 # Facebook\\HackCodegen\\_Private\\normalized_var_export()
 

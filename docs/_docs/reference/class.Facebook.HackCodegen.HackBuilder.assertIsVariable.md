@@ -3,7 +3,7 @@ layout: docs
 title: assertIsVariable
 id: class.Facebook.HackCodegen.HackBuilder.assertIsVariable
 docid: class.Facebook.HackCodegen.HackBuilder.assertIsVariable
-permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.assertIsVariable.md
+permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.assertIsVariable/
 ---
 # Facebook\\HackCodegen\\HackBuilder::assertIsVariable()
 

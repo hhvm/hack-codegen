@@ -3,7 +3,7 @@ layout: docs
 title: loadExistingFiles
 id: class.Facebook.HackCodegen.CodegenFile.loadExistingFiles
 docid: class.Facebook.HackCodegen.CodegenFile.loadExistingFiles
-permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFile.loadExistingFiles.md
+permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFile.loadExistingFiles/
 ---
 # Facebook\\HackCodegen\\CodegenFile::loadExistingFiles()
 

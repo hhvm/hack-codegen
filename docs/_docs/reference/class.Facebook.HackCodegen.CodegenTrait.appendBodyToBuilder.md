@@ -3,7 +3,7 @@ layout: docs
 title: appendBodyToBuilder
 id: class.Facebook.HackCodegen.CodegenTrait.appendBodyToBuilder
 docid: class.Facebook.HackCodegen.CodegenTrait.appendBodyToBuilder
-permalink: /docs/reference/class.Facebook.HackCodegen.CodegenTrait.appendBodyToBuilder.md
+permalink: /docs/reference/class.Facebook.HackCodegen.CodegenTrait.appendBodyToBuilder/
 ---
 # Facebook\\HackCodegen\\CodegenTrait::appendBodyToBuilder()
 

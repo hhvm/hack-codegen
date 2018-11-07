@@ -3,7 +3,7 @@ layout: docs
 title: immVector
 id: class.Facebook.HackCodegen.HackBuilderValues.immVector
 docid: class.Facebook.HackCodegen.HackBuilderValues.immVector
-permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilderValues.immVector.md
+permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilderValues.immVector/
 ---
 # Facebook\\HackCodegen\\HackBuilderValues::immVector()
 

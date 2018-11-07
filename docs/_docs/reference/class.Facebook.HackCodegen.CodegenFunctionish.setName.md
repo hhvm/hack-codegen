@@ -3,7 +3,7 @@ layout: docs
 title: setName
 id: class.Facebook.HackCodegen.CodegenFunctionish.setName
 docid: class.Facebook.HackCodegen.CodegenFunctionish.setName
-permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFunctionish.setName.md
+permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFunctionish.setName/
 ---
 # Facebook\\HackCodegen\\CodegenFunctionish::setName()
 

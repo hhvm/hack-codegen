@@ -3,7 +3,7 @@ layout: docs
 title: writeFileIfChanged
 id: class.Facebook.HackCodegen._Private.Filesystem.writeFileIfChanged
 docid: class.Facebook.HackCodegen._Private.Filesystem.writeFileIfChanged
-permalink: /docs/reference/class.Facebook.HackCodegen._Private.Filesystem.writeFileIfChanged.md
+permalink: /docs/reference/class.Facebook.HackCodegen._Private.Filesystem.writeFileIfChanged/
 ---
 # Facebook\\HackCodegen\\_Private\\Filesystem::writeFileIfChanged()
 

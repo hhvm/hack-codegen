@@ -3,7 +3,7 @@ layout: docs
 title: format
 id: class.Facebook.HackCodegen.HackfmtFormatter.format
 docid: class.Facebook.HackCodegen.HackfmtFormatter.format
-permalink: /docs/reference/class.Facebook.HackCodegen.HackfmtFormatter.format.md
+permalink: /docs/reference/class.Facebook.HackCodegen.HackfmtFormatter.format/
 ---
 # Facebook\\HackCodegen\\HackfmtFormatter::format()
 

@@ -3,7 +3,7 @@ layout: docs
 title: addVerbatimf
 id: class.Facebook.HackCodegen.BaseCodeBuilder.addVerbatimf
 docid: class.Facebook.HackCodegen.BaseCodeBuilder.addVerbatimf
-permalink: /docs/reference/class.Facebook.HackCodegen.BaseCodeBuilder.addVerbatimf.md
+permalink: /docs/reference/class.Facebook.HackCodegen.BaseCodeBuilder.addVerbatimf/
 ---
 # Facebook\\HackCodegen\\BaseCodeBuilder::addVerbatimf()
 

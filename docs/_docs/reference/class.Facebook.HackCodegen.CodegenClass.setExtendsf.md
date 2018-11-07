@@ -3,7 +3,7 @@ layout: docs
 title: setExtendsf
 id: class.Facebook.HackCodegen.CodegenClass.setExtendsf
 docid: class.Facebook.HackCodegen.CodegenClass.setExtendsf
-permalink: /docs/reference/class.Facebook.HackCodegen.CodegenClass.setExtendsf.md
+permalink: /docs/reference/class.Facebook.HackCodegen.CodegenClass.setExtendsf/
 ---
 # Facebook\\HackCodegen\\CodegenClass::setExtendsf()
 

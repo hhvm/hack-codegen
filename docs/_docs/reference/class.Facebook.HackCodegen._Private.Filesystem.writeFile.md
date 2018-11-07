@@ -3,7 +3,7 @@ layout: docs
 title: writeFile
 id: class.Facebook.HackCodegen._Private.Filesystem.writeFile
 docid: class.Facebook.HackCodegen._Private.Filesystem.writeFile
-permalink: /docs/reference/class.Facebook.HackCodegen._Private.Filesystem.writeFile.md
+permalink: /docs/reference/class.Facebook.HackCodegen._Private.Filesystem.writeFile/
 ---
 # Facebook\\HackCodegen\\_Private\\Filesystem::writeFile()
 

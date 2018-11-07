@@ -3,7 +3,7 @@ layout: docs
 title: Facebook\HackCodegen\SignedSourceBase
 id: class.Facebook.HackCodegen.SignedSourceBase
 docid: class.Facebook.HackCodegen.SignedSourceBase
-permalink: /docs/reference/class.Facebook.HackCodegen.SignedSourceBase.md
+permalink: /docs/reference/class.Facebook.HackCodegen.SignedSourceBase/
 ---
 # Facebook\\HackCodegen\\SignedSourceBase
 

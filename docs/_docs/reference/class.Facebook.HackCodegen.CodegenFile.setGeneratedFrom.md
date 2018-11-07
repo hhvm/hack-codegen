@@ -3,7 +3,7 @@ layout: docs
 title: setGeneratedFrom
 id: class.Facebook.HackCodegen.CodegenFile.setGeneratedFrom
 docid: class.Facebook.HackCodegen.CodegenFile.setGeneratedFrom
-permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFile.setGeneratedFrom.md
+permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFile.setGeneratedFrom/
 ---
 # Facebook\\HackCodegen\\CodegenFile::setGeneratedFrom()
 

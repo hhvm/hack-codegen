@@ -3,7 +3,7 @@ layout: docs
 title: addf
 id: class.Facebook.HackCodegen.BaseCodeBuilder.addf
 docid: class.Facebook.HackCodegen.BaseCodeBuilder.addf
-permalink: /docs/reference/class.Facebook.HackCodegen.BaseCodeBuilder.addf.md
+permalink: /docs/reference/class.Facebook.HackCodegen.BaseCodeBuilder.addf/
 ---
 # Facebook\\HackCodegen\\BaseCodeBuilder::addf()
 

@@ -3,7 +3,7 @@ layout: docs
 title: setType
 id: class.Facebook.HackCodegen.CodegenClassConstant.setType
 docid: class.Facebook.HackCodegen.CodegenClassConstant.setType
-permalink: /docs/reference/class.Facebook.HackCodegen.CodegenClassConstant.setType.md
+permalink: /docs/reference/class.Facebook.HackCodegen.CodegenClassConstant.setType/
 ---
 # Facebook\\HackCodegen\\CodegenClassConstant::setType()
 

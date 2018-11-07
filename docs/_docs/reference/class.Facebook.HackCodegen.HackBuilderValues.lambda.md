@@ -3,7 +3,7 @@ layout: docs
 title: lambda
 id: class.Facebook.HackCodegen.HackBuilderValues.lambda
 docid: class.Facebook.HackCodegen.HackBuilderValues.lambda
-permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilderValues.lambda.md
+permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilderValues.lambda/
 ---
 # Facebook\\HackCodegen\\HackBuilderValues::lambda()
 

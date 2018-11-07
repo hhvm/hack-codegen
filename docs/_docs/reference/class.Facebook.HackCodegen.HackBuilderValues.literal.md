@@ -3,7 +3,7 @@ layout: docs
 title: literal
 id: class.Facebook.HackCodegen.HackBuilderValues.literal
 docid: class.Facebook.HackCodegen.HackBuilderValues.literal
-permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilderValues.literal.md
+permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilderValues.literal/
 ---
 # Facebook\\HackCodegen\\HackBuilderValues::literal()
 

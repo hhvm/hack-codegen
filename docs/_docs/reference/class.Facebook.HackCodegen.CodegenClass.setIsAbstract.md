@@ -3,7 +3,7 @@ layout: docs
 title: setIsAbstract
 id: class.Facebook.HackCodegen.CodegenClass.setIsAbstract
 docid: class.Facebook.HackCodegen.CodegenClass.setIsAbstract
-permalink: /docs/reference/class.Facebook.HackCodegen.CodegenClass.setIsAbstract.md
+permalink: /docs/reference/class.Facebook.HackCodegen.CodegenClass.setIsAbstract/
 ---
 # Facebook\\HackCodegen\\CodegenClass::setIsAbstract()
 

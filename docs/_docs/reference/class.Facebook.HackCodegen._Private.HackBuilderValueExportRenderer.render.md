@@ -3,7 +3,7 @@ layout: docs
 title: render
 id: class.Facebook.HackCodegen._Private.HackBuilderValueExportRenderer.render
 docid: class.Facebook.HackCodegen._Private.HackBuilderValueExportRenderer.render
-permalink: /docs/reference/class.Facebook.HackCodegen._Private.HackBuilderValueExportRenderer.render.md
+permalink: /docs/reference/class.Facebook.HackCodegen._Private.HackBuilderValueExportRenderer.render/
 ---
 # Facebook\\HackCodegen\\_Private\\HackBuilderValueExportRenderer::render()
 

@@ -3,7 +3,7 @@ layout: docs
 title: setDocBlock
 id: class.Facebook.HackCodegen.CodegenFile.setDocBlock
 docid: class.Facebook.HackCodegen.CodegenFile.setDocBlock
-permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFile.setDocBlock.md
+permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFile.setDocBlock/
 ---
 # Facebook\\HackCodegen\\CodegenFile::setDocBlock()
 

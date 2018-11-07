@@ -3,7 +3,7 @@ layout: docs
 title: getBeforeTypes
 id: class.Facebook.HackCodegen.CodegenFile.getBeforeTypes
 docid: class.Facebook.HackCodegen.CodegenFile.getBeforeTypes
-permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFile.getBeforeTypes.md
+permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFile.getBeforeTypes/
 ---
 # Facebook\\HackCodegen\\CodegenFile::getBeforeTypes()
 

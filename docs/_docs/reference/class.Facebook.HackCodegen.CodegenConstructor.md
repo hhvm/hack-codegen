@@ -3,7 +3,7 @@ layout: docs
 title: Facebook\HackCodegen\CodegenConstructor
 id: class.Facebook.HackCodegen.CodegenConstructor
 docid: class.Facebook.HackCodegen.CodegenConstructor
-permalink: /docs/reference/class.Facebook.HackCodegen.CodegenConstructor.md
+permalink: /docs/reference/class.Facebook.HackCodegen.CodegenConstructor/
 ---
 # Facebook\\HackCodegen\\CodegenConstructor
 

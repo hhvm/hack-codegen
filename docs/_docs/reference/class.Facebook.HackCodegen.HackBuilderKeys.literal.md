@@ -3,7 +3,7 @@ layout: docs
 title: literal
 id: class.Facebook.HackCodegen.HackBuilderKeys.literal
 docid: class.Facebook.HackCodegen.HackBuilderKeys.literal
-permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilderKeys.literal.md
+permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilderKeys.literal/
 ---
 # Facebook\\HackCodegen\\HackBuilderKeys::literal()
 

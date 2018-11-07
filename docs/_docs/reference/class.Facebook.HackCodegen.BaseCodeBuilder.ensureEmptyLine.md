@@ -3,7 +3,7 @@ layout: docs
 title: ensureEmptyLine
 id: class.Facebook.HackCodegen.BaseCodeBuilder.ensureEmptyLine
 docid: class.Facebook.HackCodegen.BaseCodeBuilder.ensureEmptyLine
-permalink: /docs/reference/class.Facebook.HackCodegen.BaseCodeBuilder.ensureEmptyLine.md
+permalink: /docs/reference/class.Facebook.HackCodegen.BaseCodeBuilder.ensureEmptyLine/
 ---
 # Facebook\\HackCodegen\\BaseCodeBuilder::ensureEmptyLine()
 

@@ -3,7 +3,7 @@ layout: docs
 title: getExtraAttributes
 id: class.Facebook.HackCodegen.CodegenClassish.getExtraAttributes
 docid: class.Facebook.HackCodegen.CodegenClassish.getExtraAttributes
-permalink: /docs/reference/class.Facebook.HackCodegen.CodegenClassish.getExtraAttributes.md
+permalink: /docs/reference/class.Facebook.HackCodegen.CodegenClassish.getExtraAttributes/
 ---
 # Facebook\\HackCodegen\\CodegenClassish::getExtraAttributes()
 

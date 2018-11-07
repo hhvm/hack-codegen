@@ -3,7 +3,7 @@ layout: docs
 title: Facebook\HackCodegen\CodegenTypeConstant
 id: class.Facebook.HackCodegen.CodegenTypeConstant
 docid: class.Facebook.HackCodegen.CodegenTypeConstant
-permalink: /docs/reference/class.Facebook.HackCodegen.CodegenTypeConstant.md
+permalink: /docs/reference/class.Facebook.HackCodegen.CodegenTypeConstant/
 ---
 # Facebook\\HackCodegen\\CodegenTypeConstant
 

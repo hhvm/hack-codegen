@@ -3,7 +3,7 @@ layout: docs
 title: classname
 id: class.Facebook.HackCodegen.HackBuilderValues.classname
 docid: class.Facebook.HackCodegen.HackBuilderValues.classname
-permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilderValues.classname.md
+permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilderValues.classname/
 ---
 # Facebook\\HackCodegen\\HackBuilderValues::classname()
 

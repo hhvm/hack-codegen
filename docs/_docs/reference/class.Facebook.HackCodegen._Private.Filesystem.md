@@ -3,7 +3,7 @@ layout: docs
 title: Facebook\HackCodegen\_Private\Filesystem
 id: class.Facebook.HackCodegen._Private.Filesystem
 docid: class.Facebook.HackCodegen._Private.Filesystem
-permalink: /docs/reference/class.Facebook.HackCodegen._Private.Filesystem.md
+permalink: /docs/reference/class.Facebook.HackCodegen._Private.Filesystem/
 ---
 # Facebook\\HackCodegen\\_Private\\Filesystem
 

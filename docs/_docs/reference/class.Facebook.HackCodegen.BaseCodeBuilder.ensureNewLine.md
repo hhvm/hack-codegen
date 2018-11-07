@@ -3,7 +3,7 @@ layout: docs
 title: ensureNewLine
 id: class.Facebook.HackCodegen.BaseCodeBuilder.ensureNewLine
 docid: class.Facebook.HackCodegen.BaseCodeBuilder.ensureNewLine
-permalink: /docs/reference/class.Facebook.HackCodegen.BaseCodeBuilder.ensureNewLine.md
+permalink: /docs/reference/class.Facebook.HackCodegen.BaseCodeBuilder.ensureNewLine/
 ---
 # Facebook\\HackCodegen\\BaseCodeBuilder::ensureNewLine()
 

@@ -3,7 +3,7 @@ layout: docs
 title: set
 id: class.Facebook.HackCodegen.HackBuilderValues.set
 docid: class.Facebook.HackCodegen.HackBuilderValues.set
-permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilderValues.set.md
+permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilderValues.set/
 ---
 # Facebook\\HackCodegen\\HackBuilderValues::set()
 

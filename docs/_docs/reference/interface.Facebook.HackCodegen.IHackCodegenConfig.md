@@ -3,7 +3,7 @@ layout: docs
 title: Facebook\HackCodegen\IHackCodegenConfig
 id: interface.Facebook.HackCodegen.IHackCodegenConfig
 docid: interface.Facebook.HackCodegen.IHackCodegenConfig
-permalink: /docs/reference/interface.Facebook.HackCodegen.IHackCodegenConfig.md
+permalink: /docs/reference/interface.Facebook.HackCodegen.IHackCodegenConfig/
 ---
 # Facebook\\HackCodegen\\IHackCodegenConfig
 

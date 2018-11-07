@@ -3,7 +3,7 @@ layout: docs
 title: closeContainer
 id: class.Facebook.HackCodegen.HackBuilder.closeContainer
 docid: class.Facebook.HackCodegen.HackBuilder.closeContainer
-permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.closeContainer.md
+permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.closeContainer/
 ---
 # Facebook\\HackCodegen\\HackBuilder::closeContainer()
 

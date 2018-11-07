@@ -3,7 +3,7 @@ layout: docs
 title: getMaxLineLength
 id: class.Facebook.HackCodegen.HackCodegenConfig.getMaxLineLength
 docid: class.Facebook.HackCodegen.HackCodegenConfig.getMaxLineLength
-permalink: /docs/reference/class.Facebook.HackCodegen.HackCodegenConfig.getMaxLineLength.md
+permalink: /docs/reference/class.Facebook.HackCodegen.HackCodegenConfig.getMaxLineLength/
 ---
 # Facebook\\HackCodegen\\HackCodegenConfig::getMaxLineLength()
 

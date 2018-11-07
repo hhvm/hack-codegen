@@ -3,7 +3,7 @@ layout: docs
 title: addInterface
 id: trait.Facebook.HackCodegen.CodegenClassWithInterfaces.addInterface
 docid: trait.Facebook.HackCodegen.CodegenClassWithInterfaces.addInterface
-permalink: /docs/reference/trait.Facebook.HackCodegen.CodegenClassWithInterfaces.addInterface.md
+permalink: /docs/reference/trait.Facebook.HackCodegen.CodegenClassWithInterfaces.addInterface/
 ---
 # Facebook\\HackCodegen\\CodegenClassWithInterfaces::addInterface()
 

@@ -3,7 +3,7 @@ layout: docs
 title: splitString
 id: class.Facebook.HackCodegen.HackBuilder.splitString
 docid: class.Facebook.HackCodegen.HackBuilder.splitString
-permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.splitString.md
+permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.splitString/
 ---
 # Facebook\\HackCodegen\\HackBuilder::splitString()
 

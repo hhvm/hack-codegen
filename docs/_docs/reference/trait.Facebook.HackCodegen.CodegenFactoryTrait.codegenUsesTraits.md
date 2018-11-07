@@ -3,7 +3,7 @@ layout: docs
 title: codegenUsesTraits
 id: trait.Facebook.HackCodegen.CodegenFactoryTrait.codegenUsesTraits
 docid: trait.Facebook.HackCodegen.CodegenFactoryTrait.codegenUsesTraits
-permalink: /docs/reference/trait.Facebook.HackCodegen.CodegenFactoryTrait.codegenUsesTraits.md
+permalink: /docs/reference/trait.Facebook.HackCodegen.CodegenFactoryTrait.codegenUsesTraits/
 ---
 # Facebook\\HackCodegen\\CodegenFactoryTrait::codegenUsesTraits()
 

@@ -3,7 +3,7 @@ layout: docs
 title: regex
 id: class.Facebook.HackCodegen.HackBuilderValues.regex
 docid: class.Facebook.HackCodegen.HackBuilderValues.regex
-permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilderValues.regex.md
+permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilderValues.regex/
 ---
 # Facebook\\HackCodegen\\HackBuilderValues::regex()
 

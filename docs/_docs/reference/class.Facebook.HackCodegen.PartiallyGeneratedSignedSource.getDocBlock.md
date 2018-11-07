@@ -3,7 +3,7 @@ layout: docs
 title: getDocBlock
 id: class.Facebook.HackCodegen.PartiallyGeneratedSignedSource.getDocBlock
 docid: class.Facebook.HackCodegen.PartiallyGeneratedSignedSource.getDocBlock
-permalink: /docs/reference/class.Facebook.HackCodegen.PartiallyGeneratedSignedSource.getDocBlock.md
+permalink: /docs/reference/class.Facebook.HackCodegen.PartiallyGeneratedSignedSource.getDocBlock/
 ---
 # Facebook\\HackCodegen\\PartiallyGeneratedSignedSource::getDocBlock()
 

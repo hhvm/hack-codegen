@@ -3,7 +3,7 @@ layout: docs
 title: codegenEnumMemberf
 id: trait.Facebook.HackCodegen.CodegenFactoryTrait.codegenEnumMemberf
 docid: trait.Facebook.HackCodegen.CodegenFactoryTrait.codegenEnumMemberf
-permalink: /docs/reference/trait.Facebook.HackCodegen.CodegenFactoryTrait.codegenEnumMemberf.md
+permalink: /docs/reference/trait.Facebook.HackCodegen.CodegenFactoryTrait.codegenEnumMemberf/
 ---
 # Facebook\\HackCodegen\\CodegenFactoryTrait::codegenEnumMemberf()
 

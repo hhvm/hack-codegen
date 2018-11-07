@@ -3,7 +3,7 @@ layout: docs
 title: codegenConstantf
 id: trait.Facebook.HackCodegen.CodegenFactoryTrait.codegenConstantf
 docid: trait.Facebook.HackCodegen.CodegenFactoryTrait.codegenConstantf
-permalink: /docs/reference/trait.Facebook.HackCodegen.CodegenFactoryTrait.codegenConstantf.md
+permalink: /docs/reference/trait.Facebook.HackCodegen.CodegenFactoryTrait.codegenConstantf/
 ---
 # Facebook\\HackCodegen\\CodegenFactoryTrait::codegenConstantf()
 

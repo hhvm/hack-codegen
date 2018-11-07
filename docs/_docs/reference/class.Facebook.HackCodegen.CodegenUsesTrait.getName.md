@@ -3,7 +3,7 @@ layout: docs
 title: getName
 id: class.Facebook.HackCodegen.CodegenUsesTrait.getName
 docid: class.Facebook.HackCodegen.CodegenUsesTrait.getName
-permalink: /docs/reference/class.Facebook.HackCodegen.CodegenUsesTrait.getName.md
+permalink: /docs/reference/class.Facebook.HackCodegen.CodegenUsesTrait.getName/
 ---
 # Facebook\\HackCodegen\\CodegenUsesTrait::getName()
 

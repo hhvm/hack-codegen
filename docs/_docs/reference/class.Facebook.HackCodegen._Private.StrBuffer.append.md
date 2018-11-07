@@ -3,7 +3,7 @@ layout: docs
 title: append
 id: class.Facebook.HackCodegen._Private.StrBuffer.append
 docid: class.Facebook.HackCodegen._Private.StrBuffer.append
-permalink: /docs/reference/class.Facebook.HackCodegen._Private.StrBuffer.append.md
+permalink: /docs/reference/class.Facebook.HackCodegen._Private.StrBuffer.append/
 ---
 # Facebook\\HackCodegen\\_Private\\StrBuffer::append()
 

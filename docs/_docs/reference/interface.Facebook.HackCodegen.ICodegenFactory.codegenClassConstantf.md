@@ -3,7 +3,7 @@ layout: docs
 title: codegenClassConstantf
 id: interface.Facebook.HackCodegen.ICodegenFactory.codegenClassConstantf
 docid: interface.Facebook.HackCodegen.ICodegenFactory.codegenClassConstantf
-permalink: /docs/reference/interface.Facebook.HackCodegen.ICodegenFactory.codegenClassConstantf.md
+permalink: /docs/reference/interface.Facebook.HackCodegen.ICodegenFactory.codegenClassConstantf/
 ---
 # Facebook\\HackCodegen\\ICodegenFactory::codegenClassConstantf()
 

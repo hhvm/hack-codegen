@@ -3,7 +3,7 @@ layout: docs
 title: buildDeclaration
 id: class.Facebook.HackCodegen.CodegenClass.buildDeclaration
 docid: class.Facebook.HackCodegen.CodegenClass.buildDeclaration
-permalink: /docs/reference/class.Facebook.HackCodegen.CodegenClass.buildDeclaration.md
+permalink: /docs/reference/class.Facebook.HackCodegen.CodegenClass.buildDeclaration/
 ---
 # Facebook\\HackCodegen\\CodegenClass::buildDeclaration()
 

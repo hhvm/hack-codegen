@@ -3,7 +3,7 @@ layout: docs
 title: startManualSection
 id: class.Facebook.HackCodegen.BaseCodeBuilder.startManualSection
 docid: class.Facebook.HackCodegen.BaseCodeBuilder.startManualSection
-permalink: /docs/reference/class.Facebook.HackCodegen.BaseCodeBuilder.startManualSection.md
+permalink: /docs/reference/class.Facebook.HackCodegen.BaseCodeBuilder.startManualSection/
 ---
 # Facebook\\HackCodegen\\BaseCodeBuilder::startManualSection()
 

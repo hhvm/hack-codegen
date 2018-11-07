@@ -3,7 +3,7 @@ layout: docs
 title: addConstant
 id: class.Facebook.HackCodegen.CodegenFile.addConstant
 docid: class.Facebook.HackCodegen.CodegenFile.addConstant
-permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFile.addConstant.md
+permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFile.addConstant/
 ---
 # Facebook\\HackCodegen\\CodegenFile::addConstant()
 

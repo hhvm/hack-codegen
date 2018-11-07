@@ -3,7 +3,7 @@ layout: docs
 title: Facebook\HackCodegen\CodegenTrait
 id: class.Facebook.HackCodegen.CodegenTrait
 docid: class.Facebook.HackCodegen.CodegenTrait
-permalink: /docs/reference/class.Facebook.HackCodegen.CodegenTrait.md
+permalink: /docs/reference/class.Facebook.HackCodegen.CodegenTrait/
 ---
 # Facebook\\HackCodegen\\CodegenTrait
 

@@ -3,7 +3,7 @@ layout: docs
 title: withFormatter
 id: class.Facebook.HackCodegen.HackCodegenConfig.withFormatter
 docid: class.Facebook.HackCodegen.HackCodegenConfig.withFormatter
-permalink: /docs/reference/class.Facebook.HackCodegen.HackCodegenConfig.withFormatter.md
+permalink: /docs/reference/class.Facebook.HackCodegen.HackCodegenConfig.withFormatter/
 ---
 # Facebook\\HackCodegen\\HackCodegenConfig::withFormatter()
 

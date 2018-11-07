@@ -3,7 +3,7 @@ layout: docs
 title: addMultilineCall
 id: class.Facebook.HackCodegen.HackBuilder.addMultilineCall
 docid: class.Facebook.HackCodegen.HackBuilder.addMultilineCall
-permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.addMultilineCall.md
+permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.addMultilineCall/
 ---
 # Facebook\\HackCodegen\\HackBuilder::addMultilineCall()
 

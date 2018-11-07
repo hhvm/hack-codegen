@@ -3,7 +3,7 @@ layout: docs
 title: iterateCodeSections
 id: class.Facebook.HackCodegen.PartiallyGeneratedCode.iterateCodeSections
 docid: class.Facebook.HackCodegen.PartiallyGeneratedCode.iterateCodeSections
-permalink: /docs/reference/class.Facebook.HackCodegen.PartiallyGeneratedCode.iterateCodeSections.md
+permalink: /docs/reference/class.Facebook.HackCodegen.PartiallyGeneratedCode.iterateCodeSections/
 ---
 # Facebook\\HackCodegen\\PartiallyGeneratedCode::iterateCodeSections()
 

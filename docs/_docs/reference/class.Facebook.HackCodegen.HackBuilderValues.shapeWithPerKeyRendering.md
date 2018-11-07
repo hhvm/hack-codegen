@@ -3,7 +3,7 @@ layout: docs
 title: shapeWithPerKeyRendering
 id: class.Facebook.HackCodegen.HackBuilderValues.shapeWithPerKeyRendering
 docid: class.Facebook.HackCodegen.HackBuilderValues.shapeWithPerKeyRendering
-permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilderValues.shapeWithPerKeyRendering.md
+permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilderValues.shapeWithPerKeyRendering/
 ---
 # Facebook\\HackCodegen\\HackBuilderValues::shapeWithPerKeyRendering()
 

@@ -3,7 +3,7 @@ layout: docs
 title: getSpacesPerIndentation
 id: interface.Facebook.HackCodegen.IHackCodegenConfig.getSpacesPerIndentation
 docid: interface.Facebook.HackCodegen.IHackCodegenConfig.getSpacesPerIndentation
-permalink: /docs/reference/interface.Facebook.HackCodegen.IHackCodegenConfig.getSpacesPerIndentation.md
+permalink: /docs/reference/interface.Facebook.HackCodegen.IHackCodegenConfig.getSpacesPerIndentation/
 ---
 # Facebook\\HackCodegen\\IHackCodegenConfig::getSpacesPerIndentation()
 

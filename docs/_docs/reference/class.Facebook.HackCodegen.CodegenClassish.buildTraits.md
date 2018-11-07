@@ -3,7 +3,7 @@ layout: docs
 title: buildTraits
 id: class.Facebook.HackCodegen.CodegenClassish.buildTraits
 docid: class.Facebook.HackCodegen.CodegenClassish.buildTraits
-permalink: /docs/reference/class.Facebook.HackCodegen.CodegenClassish.buildTraits.md
+permalink: /docs/reference/class.Facebook.HackCodegen.CodegenClassish.buildTraits/
 ---
 # Facebook\\HackCodegen\\CodegenClassish::buildTraits()
 

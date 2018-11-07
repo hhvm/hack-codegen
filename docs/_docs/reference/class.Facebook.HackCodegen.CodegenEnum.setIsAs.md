@@ -3,7 +3,7 @@ layout: docs
 title: setIsAs
 id: class.Facebook.HackCodegen.CodegenEnum.setIsAs
 docid: class.Facebook.HackCodegen.CodegenEnum.setIsAs
-permalink: /docs/reference/class.Facebook.HackCodegen.CodegenEnum.setIsAs.md
+permalink: /docs/reference/class.Facebook.HackCodegen.CodegenEnum.setIsAs/
 ---
 # Facebook\\HackCodegen\\CodegenEnum::setIsAs()
 

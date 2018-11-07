@@ -3,7 +3,7 @@ layout: docs
 title: setReturnTypef
 id: class.Facebook.HackCodegen.CodegenFunctionish.setReturnTypef
 docid: class.Facebook.HackCodegen.CodegenFunctionish.setReturnTypef
-permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFunctionish.setReturnTypef.md
+permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFunctionish.setReturnTypef/
 ---
 # Facebook\\HackCodegen\\CodegenFunctionish::setReturnTypef()
 

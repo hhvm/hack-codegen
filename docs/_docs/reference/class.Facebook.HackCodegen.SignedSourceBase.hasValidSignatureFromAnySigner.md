@@ -3,7 +3,7 @@ layout: docs
 title: hasValidSignatureFromAnySigner
 id: class.Facebook.HackCodegen.SignedSourceBase.hasValidSignatureFromAnySigner
 docid: class.Facebook.HackCodegen.SignedSourceBase.hasValidSignatureFromAnySigner
-permalink: /docs/reference/class.Facebook.HackCodegen.SignedSourceBase.hasValidSignatureFromAnySigner.md
+permalink: /docs/reference/class.Facebook.HackCodegen.SignedSourceBase.hasValidSignatureFromAnySigner/
 ---
 # Facebook\\HackCodegen\\SignedSourceBase::hasValidSignatureFromAnySigner()
 

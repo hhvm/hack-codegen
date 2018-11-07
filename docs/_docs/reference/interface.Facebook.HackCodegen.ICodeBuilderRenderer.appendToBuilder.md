@@ -3,7 +3,7 @@ layout: docs
 title: appendToBuilder
 id: interface.Facebook.HackCodegen.ICodeBuilderRenderer.appendToBuilder
 docid: interface.Facebook.HackCodegen.ICodeBuilderRenderer.appendToBuilder
-permalink: /docs/reference/interface.Facebook.HackCodegen.ICodeBuilderRenderer.appendToBuilder.md
+permalink: /docs/reference/interface.Facebook.HackCodegen.ICodeBuilderRenderer.appendToBuilder/
 ---
 # Facebook\\HackCodegen\\ICodeBuilderRenderer::appendToBuilder()
 

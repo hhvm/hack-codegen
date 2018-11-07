@@ -3,7 +3,7 @@ layout: docs
 title: closeStatement
 id: class.Facebook.HackCodegen.HackBuilder.closeStatement
 docid: class.Facebook.HackCodegen.HackBuilder.closeStatement
-permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.closeStatement.md
+permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.closeStatement/
 ---
 # Facebook\\HackCodegen\\HackBuilder::closeStatement()
 

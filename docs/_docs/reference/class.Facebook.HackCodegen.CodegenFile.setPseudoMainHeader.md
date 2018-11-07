@@ -3,7 +3,7 @@ layout: docs
 title: setPseudoMainHeader
 id: class.Facebook.HackCodegen.CodegenFile.setPseudoMainHeader
 docid: class.Facebook.HackCodegen.CodegenFile.setPseudoMainHeader
-permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFile.setPseudoMainHeader.md
+permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFile.setPseudoMainHeader/
 ---
 # Facebook\\HackCodegen\\CodegenFile::setPseudoMainHeader()
 

@@ -3,7 +3,7 @@ layout: docs
 title: addGenericSubtypeConstraint
 id: class.Facebook.HackCodegen.CodegenClassish.addGenericSubtypeConstraint
 docid: class.Facebook.HackCodegen.CodegenClassish.addGenericSubtypeConstraint
-permalink: /docs/reference/class.Facebook.HackCodegen.CodegenClassish.addGenericSubtypeConstraint.md
+permalink: /docs/reference/class.Facebook.HackCodegen.CodegenClassish.addGenericSubtypeConstraint/
 ---
 # Facebook\\HackCodegen\\CodegenClassish::addGenericSubtypeConstraint()
 

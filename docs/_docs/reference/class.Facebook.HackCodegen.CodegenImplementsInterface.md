@@ -3,7 +3,7 @@ layout: docs
 title: Facebook\HackCodegen\CodegenImplementsInterface
 id: class.Facebook.HackCodegen.CodegenImplementsInterface
 docid: class.Facebook.HackCodegen.CodegenImplementsInterface
-permalink: /docs/reference/class.Facebook.HackCodegen.CodegenImplementsInterface.md
+permalink: /docs/reference/class.Facebook.HackCodegen.CodegenImplementsInterface/
 ---
 # Facebook\\HackCodegen\\CodegenImplementsInterface
 

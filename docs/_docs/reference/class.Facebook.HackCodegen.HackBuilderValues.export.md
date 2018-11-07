@@ -3,7 +3,7 @@ layout: docs
 title: export
 id: class.Facebook.HackCodegen.HackBuilderValues.export
 docid: class.Facebook.HackCodegen.HackBuilderValues.export
-permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilderValues.export.md
+permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilderValues.export/
 ---
 # Facebook\\HackCodegen\\HackBuilderValues::export()
 

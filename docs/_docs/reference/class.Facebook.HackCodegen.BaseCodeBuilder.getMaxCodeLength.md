@@ -3,7 +3,7 @@ layout: docs
 title: getMaxCodeLength
 id: class.Facebook.HackCodegen.BaseCodeBuilder.getMaxCodeLength
 docid: class.Facebook.HackCodegen.BaseCodeBuilder.getMaxCodeLength
-permalink: /docs/reference/class.Facebook.HackCodegen.BaseCodeBuilder.getMaxCodeLength.md
+permalink: /docs/reference/class.Facebook.HackCodegen.BaseCodeBuilder.getMaxCodeLength/
 ---
 # Facebook\\HackCodegen\\BaseCodeBuilder::getMaxCodeLength()
 

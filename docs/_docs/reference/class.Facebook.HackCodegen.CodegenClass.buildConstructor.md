@@ -3,7 +3,7 @@ layout: docs
 title: buildConstructor
 id: class.Facebook.HackCodegen.CodegenClass.buildConstructor
 docid: class.Facebook.HackCodegen.CodegenClass.buildConstructor
-permalink: /docs/reference/class.Facebook.HackCodegen.CodegenClass.buildConstructor.md
+permalink: /docs/reference/class.Facebook.HackCodegen.CodegenClass.buildConstructor/
 ---
 # Facebook\\HackCodegen\\CodegenClass::buildConstructor()
 

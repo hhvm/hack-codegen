@@ -3,7 +3,7 @@ layout: docs
 title: setDoClobber
 id: class.Facebook.HackCodegen.CodegenFile.setDoClobber
 docid: class.Facebook.HackCodegen.CodegenFile.setDoClobber
-permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFile.setDoClobber.md
+permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFile.setDoClobber/
 ---
 # Facebook\\HackCodegen\\CodegenFile::setDoClobber()
 

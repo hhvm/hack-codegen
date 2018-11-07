@@ -3,7 +3,7 @@ layout: docs
 title: breakCase
 id: class.Facebook.HackCodegen.HackBuilder.breakCase
 docid: class.Facebook.HackCodegen.HackBuilder.breakCase
-permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.breakCase.md
+permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.breakCase/
 ---
 # Facebook\\HackCodegen\\HackBuilder::breakCase()
 

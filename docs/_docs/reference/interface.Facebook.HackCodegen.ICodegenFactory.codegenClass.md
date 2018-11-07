@@ -3,7 +3,7 @@ layout: docs
 title: codegenClass
 id: interface.Facebook.HackCodegen.ICodegenFactory.codegenClass
 docid: interface.Facebook.HackCodegen.ICodegenFactory.codegenClass
-permalink: /docs/reference/interface.Facebook.HackCodegen.ICodegenFactory.codegenClass.md
+permalink: /docs/reference/interface.Facebook.HackCodegen.ICodegenFactory.codegenClass/
 ---
 # Facebook\\HackCodegen\\ICodegenFactory::codegenClass()
 

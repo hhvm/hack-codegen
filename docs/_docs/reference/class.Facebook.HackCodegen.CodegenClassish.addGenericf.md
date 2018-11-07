@@ -3,7 +3,7 @@ layout: docs
 title: addGenericf
 id: class.Facebook.HackCodegen.CodegenClassish.addGenericf
 docid: class.Facebook.HackCodegen.CodegenClassish.addGenericf
-permalink: /docs/reference/class.Facebook.HackCodegen.CodegenClassish.addGenericf.md
+permalink: /docs/reference/class.Facebook.HackCodegen.CodegenClassish.addGenericf/
 ---
 # Facebook\\HackCodegen\\CodegenClassish::addGenericf()
 

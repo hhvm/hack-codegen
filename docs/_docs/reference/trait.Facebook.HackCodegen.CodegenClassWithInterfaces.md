@@ -3,7 +3,7 @@ layout: docs
 title: Facebook\HackCodegen\CodegenClassWithInterfaces
 id: trait.Facebook.HackCodegen.CodegenClassWithInterfaces
 docid: trait.Facebook.HackCodegen.CodegenClassWithInterfaces
-permalink: /docs/reference/trait.Facebook.HackCodegen.CodegenClassWithInterfaces.md
+permalink: /docs/reference/trait.Facebook.HackCodegen.CodegenClassWithInterfaces/
 ---
 # Facebook\\HackCodegen\\CodegenClassWithInterfaces
 

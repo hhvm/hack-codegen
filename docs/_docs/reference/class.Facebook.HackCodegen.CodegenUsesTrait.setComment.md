@@ -3,7 +3,7 @@ layout: docs
 title: setComment
 id: class.Facebook.HackCodegen.CodegenUsesTrait.setComment
 docid: class.Facebook.HackCodegen.CodegenUsesTrait.setComment
-permalink: /docs/reference/class.Facebook.HackCodegen.CodegenUsesTrait.setComment.md
+permalink: /docs/reference/class.Facebook.HackCodegen.CodegenUsesTrait.setComment/
 ---
 # Facebook\\HackCodegen\\CodegenUsesTrait::setComment()
 

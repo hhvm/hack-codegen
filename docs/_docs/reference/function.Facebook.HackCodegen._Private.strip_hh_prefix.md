@@ -3,7 +3,7 @@ layout: docs
 title: Facebook\HackCodegen\_Private\strip_hh_prefix
 id: function.Facebook.HackCodegen._Private.strip_hh_prefix
 docid: function.Facebook.HackCodegen._Private.strip_hh_prefix
-permalink: /docs/reference/function.Facebook.HackCodegen._Private.strip_hh_prefix.md
+permalink: /docs/reference/function.Facebook.HackCodegen._Private.strip_hh_prefix/
 ---
 # Facebook\\HackCodegen\\_Private\\strip_hh_prefix()
 

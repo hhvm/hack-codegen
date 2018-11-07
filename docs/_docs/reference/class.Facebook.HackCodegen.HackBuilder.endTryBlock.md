@@ -3,7 +3,7 @@ layout: docs
 title: endTryBlock
 id: class.Facebook.HackCodegen.HackBuilder.endTryBlock
 docid: class.Facebook.HackCodegen.HackBuilder.endTryBlock
-permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.endTryBlock.md
+permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.endTryBlock/
 ---
 # Facebook\\HackCodegen\\HackBuilder::endTryBlock()
 

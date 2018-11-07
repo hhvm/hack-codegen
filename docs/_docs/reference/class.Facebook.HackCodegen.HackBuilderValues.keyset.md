@@ -3,7 +3,7 @@ layout: docs
 title: keyset
 id: class.Facebook.HackCodegen.HackBuilderValues.keyset
 docid: class.Facebook.HackCodegen.HackBuilderValues.keyset
-permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilderValues.keyset.md
+permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilderValues.keyset/
 ---
 # Facebook\\HackCodegen\\HackBuilderValues::keyset()
 

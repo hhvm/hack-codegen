@@ -3,7 +3,7 @@ layout: docs
 title: Facebook\HackCodegen\CodegenShapeMember
 id: class.Facebook.HackCodegen.CodegenShapeMember
 docid: class.Facebook.HackCodegen.CodegenShapeMember
-permalink: /docs/reference/class.Facebook.HackCodegen.CodegenShapeMember.md
+permalink: /docs/reference/class.Facebook.HackCodegen.CodegenShapeMember/
 ---
 # Facebook\\HackCodegen\\CodegenShapeMember
 

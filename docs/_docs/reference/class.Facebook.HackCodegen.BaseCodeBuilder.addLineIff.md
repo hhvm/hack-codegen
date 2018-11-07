@@ -3,7 +3,7 @@ layout: docs
 title: addLineIff
 id: class.Facebook.HackCodegen.BaseCodeBuilder.addLineIff
 docid: class.Facebook.HackCodegen.BaseCodeBuilder.addLineIff
-permalink: /docs/reference/class.Facebook.HackCodegen.BaseCodeBuilder.addLineIff.md
+permalink: /docs/reference/class.Facebook.HackCodegen.BaseCodeBuilder.addLineIff/
 ---
 # Facebook\\HackCodegen\\BaseCodeBuilder::addLineIff()
 

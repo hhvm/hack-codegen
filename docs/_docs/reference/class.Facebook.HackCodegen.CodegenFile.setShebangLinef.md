@@ -3,7 +3,7 @@ layout: docs
 title: setShebangLinef
 id: class.Facebook.HackCodegen.CodegenFile.setShebangLinef
 docid: class.Facebook.HackCodegen.CodegenFile.setShebangLinef
-permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFile.setShebangLinef.md
+permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFile.setShebangLinef/
 ---
 # Facebook\\HackCodegen\\CodegenFile::setShebangLinef()
 

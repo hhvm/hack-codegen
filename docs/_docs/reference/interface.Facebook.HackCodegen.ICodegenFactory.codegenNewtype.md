@@ -3,7 +3,7 @@ layout: docs
 title: codegenNewtype
 id: interface.Facebook.HackCodegen.ICodegenFactory.codegenNewtype
 docid: interface.Facebook.HackCodegen.ICodegenFactory.codegenNewtype
-permalink: /docs/reference/interface.Facebook.HackCodegen.ICodegenFactory.codegenNewtype.md
+permalink: /docs/reference/interface.Facebook.HackCodegen.ICodegenFactory.codegenNewtype/
 ---
 # Facebook\\HackCodegen\\ICodegenFactory::codegenNewtype()
 

@@ -3,7 +3,7 @@ layout: docs
 title: preprocess
 id: class.Facebook.HackCodegen.PartiallyGeneratedSignedSource.preprocess
 docid: class.Facebook.HackCodegen.PartiallyGeneratedSignedSource.preprocess
-permalink: /docs/reference/class.Facebook.HackCodegen.PartiallyGeneratedSignedSource.preprocess.md
+permalink: /docs/reference/class.Facebook.HackCodegen.PartiallyGeneratedSignedSource.preprocess/
 ---
 # Facebook\\HackCodegen\\PartiallyGeneratedSignedSource::preprocess()
 

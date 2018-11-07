@@ -3,7 +3,7 @@ layout: docs
 title: vector
 id: class.Facebook.HackCodegen.HackBuilderValues.vector
 docid: class.Facebook.HackCodegen.HackBuilderValues.vector
-permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilderValues.vector.md
+permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilderValues.vector/
 ---
 # Facebook\\HackCodegen\\HackBuilderValues::vector()
 

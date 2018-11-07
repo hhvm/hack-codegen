@@ -3,7 +3,7 @@ layout: docs
 title: createOnly
 id: class.Facebook.HackCodegen.CodegenFile.createOnly
 docid: class.Facebook.HackCodegen.CodegenFile.createOnly
-permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFile.createOnly.md
+permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFile.createOnly/
 ---
 # Facebook\\HackCodegen\\CodegenFile::createOnly()
 

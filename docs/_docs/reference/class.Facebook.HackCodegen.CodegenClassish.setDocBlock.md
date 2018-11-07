@@ -3,7 +3,7 @@ layout: docs
 title: setDocBlock
 id: class.Facebook.HackCodegen.CodegenClassish.setDocBlock
 docid: class.Facebook.HackCodegen.CodegenClassish.setDocBlock
-permalink: /docs/reference/class.Facebook.HackCodegen.CodegenClassish.setDocBlock.md
+permalink: /docs/reference/class.Facebook.HackCodegen.CodegenClassish.setDocBlock/
 ---
 # Facebook\\HackCodegen\\CodegenClassish::setDocBlock()
 

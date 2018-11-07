@@ -3,7 +3,7 @@ layout: docs
 title: Facebook\HackCodegen\_Private\HackBuilderValueLambdaRenderer
 id: class.Facebook.HackCodegen._Private.HackBuilderValueLambdaRenderer
 docid: class.Facebook.HackCodegen._Private.HackBuilderValueLambdaRenderer
-permalink: /docs/reference/class.Facebook.HackCodegen._Private.HackBuilderValueLambdaRenderer.md
+permalink: /docs/reference/class.Facebook.HackCodegen._Private.HackBuilderValueLambdaRenderer/
 ---
 # Facebook\\HackCodegen\\_Private\\HackBuilderValueLambdaRenderer
 

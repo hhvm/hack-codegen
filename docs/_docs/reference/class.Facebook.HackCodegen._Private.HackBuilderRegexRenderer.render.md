@@ -3,7 +3,7 @@ layout: docs
 title: render
 id: class.Facebook.HackCodegen._Private.HackBuilderRegexRenderer.render
 docid: class.Facebook.HackCodegen._Private.HackBuilderRegexRenderer.render
-permalink: /docs/reference/class.Facebook.HackCodegen._Private.HackBuilderRegexRenderer.render.md
+permalink: /docs/reference/class.Facebook.HackCodegen._Private.HackBuilderRegexRenderer.render/
 ---
 # Facebook\\HackCodegen\\_Private\\HackBuilderRegexRenderer::render()
 

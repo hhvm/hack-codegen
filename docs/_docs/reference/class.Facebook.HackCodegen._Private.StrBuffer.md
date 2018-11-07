@@ -3,7 +3,7 @@ layout: docs
 title: Facebook\HackCodegen\_Private\StrBuffer
 id: class.Facebook.HackCodegen._Private.StrBuffer
 docid: class.Facebook.HackCodegen._Private.StrBuffer
-permalink: /docs/reference/class.Facebook.HackCodegen._Private.StrBuffer.md
+permalink: /docs/reference/class.Facebook.HackCodegen._Private.StrBuffer/
 ---
 # Facebook\\HackCodegen\\_Private\\StrBuffer
 

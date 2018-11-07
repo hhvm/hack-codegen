@@ -3,7 +3,7 @@ layout: docs
 title: addProperty
 id: class.Facebook.HackCodegen.CodegenClassish.addProperty
 docid: class.Facebook.HackCodegen.CodegenClassish.addProperty
-permalink: /docs/reference/class.Facebook.HackCodegen.CodegenClassish.addProperty.md
+permalink: /docs/reference/class.Facebook.HackCodegen.CodegenClassish.addProperty/
 ---
 # Facebook\\HackCodegen\\CodegenClassish::addProperty()
 

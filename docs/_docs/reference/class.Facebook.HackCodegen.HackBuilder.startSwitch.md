@@ -3,7 +3,7 @@ layout: docs
 title: startSwitch
 id: class.Facebook.HackCodegen.HackBuilder.startSwitch
 docid: class.Facebook.HackCodegen.HackBuilder.startSwitch
-permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.startSwitch.md
+permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.startSwitch/
 ---
 # Facebook\\HackCodegen\\HackBuilder::startSwitch()
 

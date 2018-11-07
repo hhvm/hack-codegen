@@ -3,7 +3,7 @@ layout: docs
 title: codegenTrait
 id: interface.Facebook.HackCodegen.ICodegenFactory.codegenTrait
 docid: interface.Facebook.HackCodegen.ICodegenFactory.codegenTrait
-permalink: /docs/reference/interface.Facebook.HackCodegen.ICodegenFactory.codegenTrait.md
+permalink: /docs/reference/interface.Facebook.HackCodegen.ICodegenFactory.codegenTrait/
 ---
 # Facebook\\HackCodegen\\ICodegenFactory::codegenTrait()
 

@@ -3,7 +3,7 @@ layout: docs
 title: setIsFinal
 id: class.Facebook.HackCodegen.CodegenClass.setIsFinal
 docid: class.Facebook.HackCodegen.CodegenClass.setIsFinal
-permalink: /docs/reference/class.Facebook.HackCodegen.CodegenClass.setIsFinal.md
+permalink: /docs/reference/class.Facebook.HackCodegen.CodegenClass.setIsFinal/
 ---
 # Facebook\\HackCodegen\\CodegenClass::setIsFinal()
 

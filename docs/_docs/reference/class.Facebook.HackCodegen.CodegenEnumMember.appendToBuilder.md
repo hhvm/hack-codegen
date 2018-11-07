@@ -3,7 +3,7 @@ layout: docs
 title: appendToBuilder
 id: class.Facebook.HackCodegen.CodegenEnumMember.appendToBuilder
 docid: class.Facebook.HackCodegen.CodegenEnumMember.appendToBuilder
-permalink: /docs/reference/class.Facebook.HackCodegen.CodegenEnumMember.appendToBuilder.md
+permalink: /docs/reference/class.Facebook.HackCodegen.CodegenEnumMember.appendToBuilder/
 ---
 # Facebook\\HackCodegen\\CodegenEnumMember::appendToBuilder()
 

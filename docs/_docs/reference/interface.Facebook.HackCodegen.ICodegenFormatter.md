@@ -3,7 +3,7 @@ layout: docs
 title: Facebook\HackCodegen\ICodegenFormatter
 id: interface.Facebook.HackCodegen.ICodegenFormatter
 docid: interface.Facebook.HackCodegen.ICodegenFormatter
-permalink: /docs/reference/interface.Facebook.HackCodegen.ICodegenFormatter.md
+permalink: /docs/reference/interface.Facebook.HackCodegen.ICodegenFormatter/
 ---
 # Facebook\\HackCodegen\\ICodegenFormatter
 

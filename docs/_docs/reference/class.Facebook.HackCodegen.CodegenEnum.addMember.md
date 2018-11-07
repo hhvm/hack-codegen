@@ -3,7 +3,7 @@ layout: docs
 title: addMember
 id: class.Facebook.HackCodegen.CodegenEnum.addMember
 docid: class.Facebook.HackCodegen.CodegenEnum.addMember
-permalink: /docs/reference/class.Facebook.HackCodegen.CodegenEnum.addMember.md
+permalink: /docs/reference/class.Facebook.HackCodegen.CodegenEnum.addMember/
 ---
 # Facebook\\HackCodegen\\CodegenEnum::addMember()
 

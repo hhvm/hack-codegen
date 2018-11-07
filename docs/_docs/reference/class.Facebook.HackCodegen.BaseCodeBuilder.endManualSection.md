@@ -3,7 +3,7 @@ layout: docs
 title: endManualSection
 id: class.Facebook.HackCodegen.BaseCodeBuilder.endManualSection
 docid: class.Facebook.HackCodegen.BaseCodeBuilder.endManualSection
-permalink: /docs/reference/class.Facebook.HackCodegen.BaseCodeBuilder.endManualSection.md
+permalink: /docs/reference/class.Facebook.HackCodegen.BaseCodeBuilder.endManualSection/
 ---
 # Facebook\\HackCodegen\\BaseCodeBuilder::endManualSection()
 

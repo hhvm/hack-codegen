@@ -3,7 +3,7 @@ layout: docs
 title: startTryBlock
 id: class.Facebook.HackCodegen.HackBuilder.startTryBlock
 docid: class.Facebook.HackCodegen.HackBuilder.startTryBlock
-permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.startTryBlock.md
+permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.startTryBlock/
 ---
 # Facebook\\HackCodegen\\HackBuilder::startTryBlock()
 

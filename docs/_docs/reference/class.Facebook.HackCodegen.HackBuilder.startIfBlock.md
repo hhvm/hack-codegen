@@ -3,7 +3,7 @@ layout: docs
 title: startIfBlock
 id: class.Facebook.HackCodegen.HackBuilder.startIfBlock
 docid: class.Facebook.HackCodegen.HackBuilder.startIfBlock
-permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.startIfBlock.md
+permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.startIfBlock/
 ---
 # Facebook\\HackCodegen\\HackBuilder::startIfBlock()
 

@@ -3,7 +3,7 @@ layout: docs
 title: __construct
 id: class.Facebook.HackCodegen.CodegenClassConstant.__construct
 docid: class.Facebook.HackCodegen.CodegenClassConstant.__construct
-permalink: /docs/reference/class.Facebook.HackCodegen.CodegenClassConstant.__construct.md
+permalink: /docs/reference/class.Facebook.HackCodegen.CodegenClassConstant.__construct/
 ---
 # Facebook\\HackCodegen\\CodegenClassConstant::__construct()
 

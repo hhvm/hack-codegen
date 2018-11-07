@@ -3,7 +3,7 @@ layout: docs
 title: Facebook\HackCodegen\PartiallyGeneratedCodeException
 id: class.Facebook.HackCodegen.PartiallyGeneratedCodeException
 docid: class.Facebook.HackCodegen.PartiallyGeneratedCodeException
-permalink: /docs/reference/class.Facebook.HackCodegen.PartiallyGeneratedCodeException.md
+permalink: /docs/reference/class.Facebook.HackCodegen.PartiallyGeneratedCodeException/
 ---
 # Facebook\\HackCodegen\\PartiallyGeneratedCodeException
 

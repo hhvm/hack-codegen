@@ -3,7 +3,7 @@ layout: docs
 title: returnCasef
 id: class.Facebook.HackCodegen.HackBuilder.returnCasef
 docid: class.Facebook.HackCodegen.HackBuilder.returnCasef
-permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.returnCasef.md
+permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.returnCasef/
 ---
 # Facebook\\HackCodegen\\HackBuilder::returnCasef()
 

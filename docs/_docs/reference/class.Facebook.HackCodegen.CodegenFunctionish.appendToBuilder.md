@@ -3,7 +3,7 @@ layout: docs
 title: appendToBuilder
 id: class.Facebook.HackCodegen.CodegenFunctionish.appendToBuilder
 docid: class.Facebook.HackCodegen.CodegenFunctionish.appendToBuilder
-permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFunctionish.appendToBuilder.md
+permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFunctionish.appendToBuilder/
 ---
 # Facebook\\HackCodegen\\CodegenFunctionish::appendToBuilder()
 

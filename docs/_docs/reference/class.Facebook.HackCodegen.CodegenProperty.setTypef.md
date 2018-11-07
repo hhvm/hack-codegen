@@ -3,7 +3,7 @@ layout: docs
 title: setTypef
 id: class.Facebook.HackCodegen.CodegenProperty.setTypef
 docid: class.Facebook.HackCodegen.CodegenProperty.setTypef
-permalink: /docs/reference/class.Facebook.HackCodegen.CodegenProperty.setTypef.md
+permalink: /docs/reference/class.Facebook.HackCodegen.CodegenProperty.setTypef/
 ---
 # Facebook\\HackCodegen\\CodegenProperty::setTypef()
 

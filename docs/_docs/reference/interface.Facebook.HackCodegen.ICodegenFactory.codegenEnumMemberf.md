@@ -3,7 +3,7 @@ layout: docs
 title: codegenEnumMemberf
 id: interface.Facebook.HackCodegen.ICodegenFactory.codegenEnumMemberf
 docid: interface.Facebook.HackCodegen.ICodegenFactory.codegenEnumMemberf
-permalink: /docs/reference/interface.Facebook.HackCodegen.ICodegenFactory.codegenEnumMemberf.md
+permalink: /docs/reference/interface.Facebook.HackCodegen.ICodegenFactory.codegenEnumMemberf/
 ---
 # Facebook\\HackCodegen\\ICodegenFactory::codegenEnumMemberf()
 

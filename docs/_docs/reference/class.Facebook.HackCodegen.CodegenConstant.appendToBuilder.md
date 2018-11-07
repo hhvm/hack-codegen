@@ -3,7 +3,7 @@ layout: docs
 title: appendToBuilder
 id: class.Facebook.HackCodegen.CodegenConstant.appendToBuilder
 docid: class.Facebook.HackCodegen.CodegenConstant.appendToBuilder
-permalink: /docs/reference/class.Facebook.HackCodegen.CodegenConstant.appendToBuilder.md
+permalink: /docs/reference/class.Facebook.HackCodegen.CodegenConstant.appendToBuilder/
 ---
 # Facebook\\HackCodegen\\CodegenConstant::appendToBuilder()
 

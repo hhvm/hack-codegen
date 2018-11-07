@@ -3,7 +3,7 @@ layout: docs
 title: addCase
 id: class.Facebook.HackCodegen.HackBuilder.addCase
 docid: class.Facebook.HackCodegen.HackBuilder.addCase
-permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.addCase.md
+permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.addCase/
 ---
 # Facebook\\HackCodegen\\HackBuilder::addCase()
 

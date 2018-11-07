@@ -3,7 +3,7 @@ layout: docs
 title: add
 id: class.Facebook.HackCodegen.BaseCodeBuilder.add
 docid: class.Facebook.HackCodegen.BaseCodeBuilder.add
-permalink: /docs/reference/class.Facebook.HackCodegen.BaseCodeBuilder.add.md
+permalink: /docs/reference/class.Facebook.HackCodegen.BaseCodeBuilder.add/
 ---
 # Facebook\\HackCodegen\\BaseCodeBuilder::add()
 

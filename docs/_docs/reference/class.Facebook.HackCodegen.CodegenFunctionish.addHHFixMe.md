@@ -3,7 +3,7 @@ layout: docs
 title: addHHFixMe
 id: class.Facebook.HackCodegen.CodegenFunctionish.addHHFixMe
 docid: class.Facebook.HackCodegen.CodegenFunctionish.addHHFixMe
-permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFunctionish.addHHFixMe.md
+permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFunctionish.addHHFixMe/
 ---
 # Facebook\\HackCodegen\\CodegenFunctionish::addHHFixMe()
 

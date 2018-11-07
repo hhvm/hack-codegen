@@ -3,7 +3,7 @@ layout: docs
 title: keyValueArray
 id: class.Facebook.HackCodegen.HackBuilderValues.keyValueArray
 docid: class.Facebook.HackCodegen.HackBuilderValues.keyValueArray
-permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilderValues.keyValueArray.md
+permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilderValues.keyValueArray/
 ---
 # Facebook\\HackCodegen\\HackBuilderValues::keyValueArray()
 

@@ -3,7 +3,7 @@ layout: docs
 title: getClasses
 id: class.Facebook.HackCodegen.CodegenFile.getClasses
 docid: class.Facebook.HackCodegen.CodegenFile.getClasses
-permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFile.getClasses.md
+permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFile.getClasses/
 ---
 # Facebook\\HackCodegen\\CodegenFile::getClasses()
 

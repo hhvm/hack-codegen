@@ -3,7 +3,7 @@ layout: docs
 title: appendToBuilder
 id: class.Facebook.HackCodegen.CodegenGeneratedFrom.appendToBuilder
 docid: class.Facebook.HackCodegen.CodegenGeneratedFrom.appendToBuilder
-permalink: /docs/reference/class.Facebook.HackCodegen.CodegenGeneratedFrom.appendToBuilder.md
+permalink: /docs/reference/class.Facebook.HackCodegen.CodegenGeneratedFrom.appendToBuilder/
 ---
 # Facebook\\HackCodegen\\CodegenGeneratedFrom::appendToBuilder()
 

@@ -3,7 +3,7 @@ layout: docs
 title: __construct
 id: class.Facebook.HackCodegen._Private.HackBuilderNativeValueCollectionRenderer.__construct
 docid: class.Facebook.HackCodegen._Private.HackBuilderNativeValueCollectionRenderer.__construct
-permalink: /docs/reference/class.Facebook.HackCodegen._Private.HackBuilderNativeValueCollectionRenderer.__construct.md
+permalink: /docs/reference/class.Facebook.HackCodegen._Private.HackBuilderNativeValueCollectionRenderer.__construct/
 ---
 # Facebook\\HackCodegen\\_Private\\HackBuilderNativeValueCollectionRenderer::__construct()
 

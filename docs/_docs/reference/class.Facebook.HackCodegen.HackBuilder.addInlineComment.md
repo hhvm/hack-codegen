@@ -3,7 +3,7 @@ layout: docs
 title: addInlineComment
 id: class.Facebook.HackCodegen.HackBuilder.addInlineComment
 docid: class.Facebook.HackCodegen.HackBuilder.addInlineComment
-permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.addInlineComment.md
+permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.addInlineComment/
 ---
 # Facebook\\HackCodegen\\HackBuilder::addInlineComment()
 

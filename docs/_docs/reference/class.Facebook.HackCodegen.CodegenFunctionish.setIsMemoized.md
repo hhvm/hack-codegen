@@ -3,7 +3,7 @@ layout: docs
 title: setIsMemoized
 id: class.Facebook.HackCodegen.CodegenFunctionish.setIsMemoized
 docid: class.Facebook.HackCodegen.CodegenFunctionish.setIsMemoized
-permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFunctionish.setIsMemoized.md
+permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFunctionish.setIsMemoized/
 ---
 # Facebook\\HackCodegen\\CodegenFunctionish::setIsMemoized()
 

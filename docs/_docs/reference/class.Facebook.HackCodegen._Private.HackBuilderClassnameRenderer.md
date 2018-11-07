@@ -3,7 +3,7 @@ layout: docs
 title: Facebook\HackCodegen\_Private\HackBuilderClassnameRenderer
 id: class.Facebook.HackCodegen._Private.HackBuilderClassnameRenderer
 docid: class.Facebook.HackCodegen._Private.HackBuilderClassnameRenderer
-permalink: /docs/reference/class.Facebook.HackCodegen._Private.HackBuilderClassnameRenderer.md
+permalink: /docs/reference/class.Facebook.HackCodegen._Private.HackBuilderClassnameRenderer/
 ---
 # Facebook\\HackCodegen\\_Private\\HackBuilderClassnameRenderer
 

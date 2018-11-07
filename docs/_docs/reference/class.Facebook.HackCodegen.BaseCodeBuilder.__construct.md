@@ -3,7 +3,7 @@ layout: docs
 title: __construct
 id: class.Facebook.HackCodegen.BaseCodeBuilder.__construct
 docid: class.Facebook.HackCodegen.BaseCodeBuilder.__construct
-permalink: /docs/reference/class.Facebook.HackCodegen.BaseCodeBuilder.__construct.md
+permalink: /docs/reference/class.Facebook.HackCodegen.BaseCodeBuilder.__construct/
 ---
 # Facebook\\HackCodegen\\BaseCodeBuilder::__construct()
 
