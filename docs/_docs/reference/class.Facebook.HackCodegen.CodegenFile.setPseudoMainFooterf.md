@@ -3,6 +3,8 @@
 
 layout: docs
 title: setPseudoMainFooterf
+id: class.Facebook.HackCodegen.CodegenFile.setPseudoMainFooterf
+docid: class.Facebook.HackCodegen.CodegenFile.setPseudoMainFooterf
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFile.setPseudoMainFooterf.md
 ---
 

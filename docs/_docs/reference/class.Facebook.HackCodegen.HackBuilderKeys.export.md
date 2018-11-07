@@ -3,6 +3,8 @@
 
 layout: docs
 title: export
+id: class.Facebook.HackCodegen.HackBuilderKeys.export
+docid: class.Facebook.HackCodegen.HackBuilderKeys.export
 permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilderKeys.export.md
 ---
 

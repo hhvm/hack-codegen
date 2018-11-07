@@ -3,6 +3,8 @@
 
 layout: docs
 title: getName
+id: class.Facebook.HackCodegen.CodegenImplementsInterface.getName
+docid: class.Facebook.HackCodegen.CodegenImplementsInterface.getName
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenImplementsInterface.getName.md
 ---
 

@@ -3,6 +3,8 @@
 
 layout: docs
 title: addCatchBlock
+id: class.Facebook.HackCodegen.HackBuilder.addCatchBlock
+docid: class.Facebook.HackCodegen.HackBuilder.addCatchBlock
 permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.addCatchBlock.md
 ---
 

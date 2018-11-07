@@ -3,6 +3,8 @@
 
 layout: docs
 title: getDocBlock
+id: class.Facebook.HackCodegen.CodegenConstantish.getDocBlock
+docid: class.Facebook.HackCodegen.CodegenConstantish.getDocBlock
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenConstantish.getDocBlock.md
 ---
 

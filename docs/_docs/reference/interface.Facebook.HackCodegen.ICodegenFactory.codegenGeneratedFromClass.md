@@ -3,6 +3,8 @@
 
 layout: docs
 title: codegenGeneratedFromClass
+id: interface.Facebook.HackCodegen.ICodegenFactory.codegenGeneratedFromClass
+docid: interface.Facebook.HackCodegen.ICodegenFactory.codegenGeneratedFromClass
 permalink: /docs/reference/interface.Facebook.HackCodegen.ICodegenFactory.codegenGeneratedFromClass.md
 ---
 

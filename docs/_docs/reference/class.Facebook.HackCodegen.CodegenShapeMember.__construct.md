@@ -3,6 +3,8 @@
 
 layout: docs
 title: __construct
+id: class.Facebook.HackCodegen.CodegenShapeMember.__construct
+docid: class.Facebook.HackCodegen.CodegenShapeMember.__construct
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenShapeMember.__construct.md
 ---
 

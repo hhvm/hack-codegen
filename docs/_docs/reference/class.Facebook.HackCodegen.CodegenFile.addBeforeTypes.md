@@ -3,6 +3,8 @@
 
 layout: docs
 title: addBeforeTypes
+id: class.Facebook.HackCodegen.CodegenFile.addBeforeTypes
+docid: class.Facebook.HackCodegen.CodegenFile.addBeforeTypes
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFile.addBeforeTypes.md
 ---
 

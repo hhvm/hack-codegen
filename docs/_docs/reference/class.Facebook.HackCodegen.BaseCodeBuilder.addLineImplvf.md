@@ -3,6 +3,8 @@
 
 layout: docs
 title: addLineImplvf
+id: class.Facebook.HackCodegen.BaseCodeBuilder.addLineImplvf
+docid: class.Facebook.HackCodegen.BaseCodeBuilder.addLineImplvf
 permalink: /docs/reference/class.Facebook.HackCodegen.BaseCodeBuilder.addLineImplvf.md
 ---
 

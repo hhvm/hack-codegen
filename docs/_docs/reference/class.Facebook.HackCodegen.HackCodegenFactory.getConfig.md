@@ -3,6 +3,8 @@
 
 layout: docs
 title: getConfig
+id: class.Facebook.HackCodegen.HackCodegenFactory.getConfig
+docid: class.Facebook.HackCodegen.HackCodegenFactory.getConfig
 permalink: /docs/reference/class.Facebook.HackCodegen.HackCodegenFactory.getConfig.md
 ---
 

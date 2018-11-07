@@ -3,6 +3,8 @@
 
 layout: docs
 title: setShape
+id: class.Facebook.HackCodegen.CodegenType.setShape
+docid: class.Facebook.HackCodegen.CodegenType.setShape
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenType.setShape.md
 ---
 

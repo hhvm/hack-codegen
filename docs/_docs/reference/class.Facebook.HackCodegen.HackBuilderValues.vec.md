@@ -3,6 +3,8 @@
 
 layout: docs
 title: vec
+id: class.Facebook.HackCodegen.HackBuilderValues.vec
+docid: class.Facebook.HackCodegen.HackBuilderValues.vec
 permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilderValues.vec.md
 ---
 

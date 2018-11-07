@@ -3,6 +3,8 @@
 
 layout: docs
 title: addTypeConstant
+id: class.Facebook.HackCodegen.CodegenClassish.addTypeConstant
+docid: class.Facebook.HackCodegen.CodegenClassish.addTypeConstant
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenClassish.addTypeConstant.md
 ---
 

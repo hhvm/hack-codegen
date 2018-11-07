@@ -3,6 +3,8 @@
 
 layout: docs
 title: checkIfLineIsTooLong
+id: class.Facebook.HackCodegen.BaseCodeBuilder.checkIfLineIsTooLong
+docid: class.Facebook.HackCodegen.BaseCodeBuilder.checkIfLineIsTooLong
 permalink: /docs/reference/class.Facebook.HackCodegen.BaseCodeBuilder.checkIfLineIsTooLong.md
 ---
 

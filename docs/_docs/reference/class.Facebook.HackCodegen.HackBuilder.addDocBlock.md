@@ -3,6 +3,8 @@
 
 layout: docs
 title: addDocBlock
+id: class.Facebook.HackCodegen.HackBuilder.addDocBlock
+docid: class.Facebook.HackCodegen.HackBuilder.addDocBlock
 permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.addDocBlock.md
 ---
 

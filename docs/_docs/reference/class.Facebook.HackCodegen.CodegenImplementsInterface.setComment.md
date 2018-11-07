@@ -3,6 +3,8 @@
 
 layout: docs
 title: setComment
+id: class.Facebook.HackCodegen.CodegenImplementsInterface.setComment
+docid: class.Facebook.HackCodegen.CodegenImplementsInterface.setComment
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenImplementsInterface.setComment.md
 ---
 

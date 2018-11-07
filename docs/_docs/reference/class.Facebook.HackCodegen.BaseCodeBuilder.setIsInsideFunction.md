@@ -3,6 +3,8 @@
 
 layout: docs
 title: setIsInsideFunction
+id: class.Facebook.HackCodegen.BaseCodeBuilder.setIsInsideFunction
+docid: class.Facebook.HackCodegen.BaseCodeBuilder.setIsInsideFunction
 permalink: /docs/reference/class.Facebook.HackCodegen.BaseCodeBuilder.setIsInsideFunction.md
 ---
 

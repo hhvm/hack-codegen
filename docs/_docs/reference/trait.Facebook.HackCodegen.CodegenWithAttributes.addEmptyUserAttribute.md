@@ -3,6 +3,8 @@
 
 layout: docs
 title: addEmptyUserAttribute
+id: trait.Facebook.HackCodegen.CodegenWithAttributes.addEmptyUserAttribute
+docid: trait.Facebook.HackCodegen.CodegenWithAttributes.addEmptyUserAttribute
 permalink: /docs/reference/trait.Facebook.HackCodegen.CodegenWithAttributes.addEmptyUserAttribute.md
 ---
 

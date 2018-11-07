@@ -3,6 +3,8 @@
 
 layout: docs
 title: addInlineCommentWithStars
+id: class.Facebook.HackCodegen.HackBuilder.addInlineCommentWithStars
+docid: class.Facebook.HackCodegen.HackBuilder.addInlineCommentWithStars
 permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.addInlineCommentWithStars.md
 ---
 

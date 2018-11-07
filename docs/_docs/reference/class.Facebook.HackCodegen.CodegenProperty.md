@@ -3,6 +3,8 @@
 
 layout: docs
 title: Facebook\\HackCodegen\\CodegenProperty
+id: class.Facebook.HackCodegen.CodegenProperty
+docid: class.Facebook.HackCodegen.CodegenProperty
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenProperty.md
 ---
 

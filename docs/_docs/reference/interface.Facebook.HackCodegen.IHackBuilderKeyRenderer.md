@@ -3,6 +3,8 @@
 
 layout: docs
 title: Facebook\\HackCodegen\\IHackBuilderKeyRenderer
+id: interface.Facebook.HackCodegen.IHackBuilderKeyRenderer
+docid: interface.Facebook.HackCodegen.IHackBuilderKeyRenderer
 permalink: /docs/reference/interface.Facebook.HackCodegen.IHackBuilderKeyRenderer.md
 ---
 

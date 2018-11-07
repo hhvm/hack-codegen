@@ -3,6 +3,8 @@
 
 layout: docs
 title: codegenClassConstantf
+id: trait.Facebook.HackCodegen.CodegenFactoryTrait.codegenClassConstantf
+docid: trait.Facebook.HackCodegen.CodegenFactoryTrait.codegenClassConstantf
 permalink: /docs/reference/trait.Facebook.HackCodegen.CodegenFactoryTrait.codegenClassConstantf.md
 ---
 

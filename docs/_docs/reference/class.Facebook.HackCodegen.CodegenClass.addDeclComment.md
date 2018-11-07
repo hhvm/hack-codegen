@@ -3,6 +3,8 @@
 
 layout: docs
 title: addDeclComment
+id: class.Facebook.HackCodegen.CodegenClass.addDeclComment
+docid: class.Facebook.HackCodegen.CodegenClass.addDeclComment
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenClass.addDeclComment.md
 ---
 

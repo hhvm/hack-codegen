@@ -3,6 +3,8 @@
 
 layout: docs
 title: setTypef
+id: class.Facebook.HackCodegen.CodegenConstant.setTypef
+docid: class.Facebook.HackCodegen.CodegenConstant.setTypef
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenConstant.setTypef.md
 ---
 

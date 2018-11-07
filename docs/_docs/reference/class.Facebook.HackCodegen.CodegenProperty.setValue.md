@@ -3,6 +3,8 @@
 
 layout: docs
 title: setValue
+id: class.Facebook.HackCodegen.CodegenProperty.setValue
+docid: class.Facebook.HackCodegen.CodegenProperty.setValue
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenProperty.setValue.md
 ---
 

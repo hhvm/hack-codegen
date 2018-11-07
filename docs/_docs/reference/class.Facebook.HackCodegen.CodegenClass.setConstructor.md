@@ -3,6 +3,8 @@
 
 layout: docs
 title: setConstructor
+id: class.Facebook.HackCodegen.CodegenClass.setConstructor
+docid: class.Facebook.HackCodegen.CodegenClass.setConstructor
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenClass.setConstructor.md
 ---
 

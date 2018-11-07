@@ -3,6 +3,8 @@
 
 layout: docs
 title: addInterfaces
+id: trait.Facebook.HackCodegen.CodegenClassWithInterfaces.addInterfaces
+docid: trait.Facebook.HackCodegen.CodegenClassWithInterfaces.addInterfaces
 permalink: /docs/reference/trait.Facebook.HackCodegen.CodegenClassWithInterfaces.addInterfaces.md
 ---
 

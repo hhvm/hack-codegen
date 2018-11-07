@@ -3,6 +3,8 @@
 
 layout: docs
 title: addParameters
+id: class.Facebook.HackCodegen.CodegenFunctionish.addParameters
+docid: class.Facebook.HackCodegen.CodegenFunctionish.addParameters
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFunctionish.addParameters.md
 ---
 

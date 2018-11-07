@@ -3,6 +3,8 @@
 
 layout: docs
 title: dict
+id: class.Facebook.HackCodegen.HackBuilderValues.dict
+docid: class.Facebook.HackCodegen.HackBuilderValues.dict
 permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilderValues.dict.md
 ---
 

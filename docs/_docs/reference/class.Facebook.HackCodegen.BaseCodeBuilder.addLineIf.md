@@ -3,6 +3,8 @@
 
 layout: docs
 title: addLineIf
+id: class.Facebook.HackCodegen.BaseCodeBuilder.addLineIf
+docid: class.Facebook.HackCodegen.BaseCodeBuilder.addLineIf
 permalink: /docs/reference/class.Facebook.HackCodegen.BaseCodeBuilder.addLineIf.md
 ---
 

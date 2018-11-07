@@ -3,6 +3,8 @@
 
 layout: docs
 title: Facebook\\HackCodegen\\SignedSource
+id: class.Facebook.HackCodegen.SignedSource
+docid: class.Facebook.HackCodegen.SignedSource
 permalink: /docs/reference/class.Facebook.HackCodegen.SignedSource.md
 ---
 

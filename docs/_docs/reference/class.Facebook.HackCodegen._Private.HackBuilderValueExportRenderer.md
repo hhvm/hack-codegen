@@ -3,6 +3,8 @@
 
 layout: docs
 title: Facebook\\HackCodegen\_Private\\HackBuilderValueExportRenderer
+id: class.Facebook.HackCodegen._Private.HackBuilderValueExportRenderer
+docid: class.Facebook.HackCodegen._Private.HackBuilderValueExportRenderer
 permalink: /docs/reference/class.Facebook.HackCodegen._Private.HackBuilderValueExportRenderer.md
 ---
 

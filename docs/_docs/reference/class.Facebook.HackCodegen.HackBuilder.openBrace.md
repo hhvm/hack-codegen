@@ -3,6 +3,8 @@
 
 layout: docs
 title: openBrace
+id: class.Facebook.HackCodegen.HackBuilder.openBrace
+docid: class.Facebook.HackCodegen.HackBuilder.openBrace
 permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.openBrace.md
 ---
 

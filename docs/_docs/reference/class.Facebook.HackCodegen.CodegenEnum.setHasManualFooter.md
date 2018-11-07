@@ -3,6 +3,8 @@
 
 layout: docs
 title: setHasManualFooter
+id: class.Facebook.HackCodegen.CodegenEnum.setHasManualFooter
+docid: class.Facebook.HackCodegen.CodegenEnum.setHasManualFooter
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenEnum.setHasManualFooter.md
 ---
 

@@ -3,6 +3,8 @@
 
 layout: docs
 title: codegenClassConstant
+id: interface.Facebook.HackCodegen.ICodegenFactory.codegenClassConstant
+docid: interface.Facebook.HackCodegen.ICodegenFactory.codegenClassConstant
 permalink: /docs/reference/interface.Facebook.HackCodegen.ICodegenFactory.codegenClassConstant.md
 ---
 

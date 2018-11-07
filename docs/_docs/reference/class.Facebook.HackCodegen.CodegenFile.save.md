@@ -3,6 +3,8 @@
 
 layout: docs
 title: save
+id: class.Facebook.HackCodegen.CodegenFile.save
+docid: class.Facebook.HackCodegen.CodegenFile.save
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFile.save.md
 ---
 

@@ -3,6 +3,8 @@
 
 layout: docs
 title: setBodyf
+id: class.Facebook.HackCodegen.CodegenFunctionish.setBodyf
+docid: class.Facebook.HackCodegen.CodegenFunctionish.setBodyf
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFunctionish.setBodyf.md
 ---
 

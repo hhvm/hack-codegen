@@ -3,6 +3,8 @@
 
 layout: docs
 title: Facebook\\HackCodegen\\HackBuilderRenderer
+id: trait.Facebook.HackCodegen.HackBuilderRenderer
+docid: trait.Facebook.HackCodegen.HackBuilderRenderer
 permalink: /docs/reference/trait.Facebook.HackCodegen.HackBuilderRenderer.md
 ---
 

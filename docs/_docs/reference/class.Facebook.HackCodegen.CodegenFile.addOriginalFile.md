@@ -3,6 +3,8 @@
 
 layout: docs
 title: addOriginalFile
+id: class.Facebook.HackCodegen.CodegenFile.addOriginalFile
+docid: class.Facebook.HackCodegen.CodegenFile.addOriginalFile
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFile.addOriginalFile.md
 ---
 

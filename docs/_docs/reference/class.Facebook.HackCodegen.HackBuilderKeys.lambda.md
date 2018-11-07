@@ -3,6 +3,8 @@
 
 layout: docs
 title: lambda
+id: class.Facebook.HackCodegen.HackBuilderKeys.lambda
+docid: class.Facebook.HackCodegen.HackBuilderKeys.lambda
 permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilderKeys.lambda.md
 ---
 

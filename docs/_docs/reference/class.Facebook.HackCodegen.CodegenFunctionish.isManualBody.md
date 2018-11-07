@@ -3,6 +3,8 @@
 
 layout: docs
 title: isManualBody
+id: class.Facebook.HackCodegen.CodegenFunctionish.isManualBody
+docid: class.Facebook.HackCodegen.CodegenFunctionish.isManualBody
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFunctionish.isManualBody.md
 ---
 

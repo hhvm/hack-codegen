@@ -3,6 +3,8 @@
 
 layout: docs
 title: addWrappedStringImpl
+id: class.Facebook.HackCodegen.HackBuilder.addWrappedStringImpl
+docid: class.Facebook.HackCodegen.HackBuilder.addWrappedStringImpl
 permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.addWrappedStringImpl.md
 ---
 

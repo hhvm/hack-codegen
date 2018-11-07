@@ -3,6 +3,8 @@
 
 layout: docs
 title: hasValidSignature
+id: class.Facebook.HackCodegen.SignedSourceBase.hasValidSignature
+docid: class.Facebook.HackCodegen.SignedSourceBase.hasValidSignature
 permalink: /docs/reference/class.Facebook.HackCodegen.SignedSourceBase.hasValidSignature.md
 ---
 

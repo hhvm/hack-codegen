@@ -3,6 +3,8 @@
 
 layout: docs
 title: setGeneratedFrom
+id: class.Facebook.HackCodegen.CodegenFunctionish.setGeneratedFrom
+docid: class.Facebook.HackCodegen.CodegenFunctionish.setGeneratedFrom
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFunctionish.setGeneratedFrom.md
 ---
 

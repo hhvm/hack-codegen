@@ -3,6 +3,8 @@
 
 layout: docs
 title: setIsSignedFile
+id: class.Facebook.HackCodegen.CodegenFile.setIsSignedFile
+docid: class.Facebook.HackCodegen.CodegenFile.setIsSignedFile
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFile.setIsSignedFile.md
 ---
 

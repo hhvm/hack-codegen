@@ -3,6 +3,8 @@
 
 layout: docs
 title: openContainer
+id: class.Facebook.HackCodegen.HackBuilder.openContainer
+docid: class.Facebook.HackCodegen.HackBuilder.openContainer
 permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.openContainer.md
 ---
 

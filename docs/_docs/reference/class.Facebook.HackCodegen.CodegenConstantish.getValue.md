@@ -3,6 +3,8 @@
 
 layout: docs
 title: getValue
+id: class.Facebook.HackCodegen.CodegenConstantish.getValue
+docid: class.Facebook.HackCodegen.CodegenConstantish.getValue
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenConstantish.getValue.md
 ---
 

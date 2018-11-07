@@ -3,6 +3,8 @@
 
 layout: docs
 title: addAssignment
+id: class.Facebook.HackCodegen.HackBuilder.addAssignment
+docid: class.Facebook.HackCodegen.HackBuilder.addAssignment
 permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.addAssignment.md
 ---
 

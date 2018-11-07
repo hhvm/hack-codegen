@@ -3,6 +3,8 @@
 
 layout: docs
 title: breakCase
+id: class.Facebook.HackCodegen.HackBuilder.breakCase
+docid: class.Facebook.HackCodegen.HackBuilder.breakCase
 permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.breakCase.md
 ---
 

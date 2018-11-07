@@ -3,6 +3,8 @@
 
 layout: docs
 title: startIfBlockf
+id: class.Facebook.HackCodegen.HackBuilder.startIfBlockf
+docid: class.Facebook.HackCodegen.HackBuilder.startIfBlockf
 permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.startIfBlockf.md
 ---
 

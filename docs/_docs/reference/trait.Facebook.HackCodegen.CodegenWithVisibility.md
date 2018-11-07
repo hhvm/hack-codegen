@@ -3,6 +3,8 @@
 
 layout: docs
 title: Facebook\\HackCodegen\\CodegenWithVisibility
+id: trait.Facebook.HackCodegen.CodegenWithVisibility
+docid: trait.Facebook.HackCodegen.CodegenWithVisibility
 permalink: /docs/reference/trait.Facebook.HackCodegen.CodegenWithVisibility.md
 ---
 

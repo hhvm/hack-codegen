@@ -3,6 +3,8 @@
 
 layout: docs
 title: createDirectory
+id: class.Facebook.HackCodegen._Private.Filesystem.createDirectory
+docid: class.Facebook.HackCodegen._Private.Filesystem.createDirectory
 permalink: /docs/reference/class.Facebook.HackCodegen._Private.Filesystem.createDirectory.md
 ---
 

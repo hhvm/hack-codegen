@@ -3,6 +3,8 @@
 
 layout: docs
 title: addUserAttribute
+id: trait.Facebook.HackCodegen.CodegenWithAttributes.addUserAttribute
+docid: trait.Facebook.HackCodegen.CodegenWithAttributes.addUserAttribute
 permalink: /docs/reference/trait.Facebook.HackCodegen.CodegenWithAttributes.addUserAttribute.md
 ---
 

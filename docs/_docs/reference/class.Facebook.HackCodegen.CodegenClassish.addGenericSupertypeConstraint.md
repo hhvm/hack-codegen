@@ -3,6 +3,8 @@
 
 layout: docs
 title: addGenericSupertypeConstraint
+id: class.Facebook.HackCodegen.CodegenClassish.addGenericSupertypeConstraint
+docid: class.Facebook.HackCodegen.CodegenClassish.addGenericSupertypeConstraint
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenClassish.addGenericSupertypeConstraint.md
 ---
 

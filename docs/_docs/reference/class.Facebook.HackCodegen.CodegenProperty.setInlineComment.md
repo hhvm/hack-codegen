@@ -3,6 +3,8 @@
 
 layout: docs
 title: setInlineComment
+id: class.Facebook.HackCodegen.CodegenProperty.setInlineComment
+docid: class.Facebook.HackCodegen.CodegenProperty.setInlineComment
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenProperty.setInlineComment.md
 ---
 

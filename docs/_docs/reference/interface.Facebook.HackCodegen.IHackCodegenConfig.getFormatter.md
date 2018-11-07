@@ -3,6 +3,8 @@
 
 layout: docs
 title: getFormatter
+id: interface.Facebook.HackCodegen.IHackCodegenConfig.getFormatter
+docid: interface.Facebook.HackCodegen.IHackCodegenConfig.getFormatter
 permalink: /docs/reference/interface.Facebook.HackCodegen.IHackCodegenConfig.getFormatter.md
 ---
 

@@ -3,6 +3,8 @@
 
 layout: docs
 title: getConfig
+id: trait.Facebook.HackCodegen.CodegenFactoryTrait.getConfig
+docid: trait.Facebook.HackCodegen.CodegenFactoryTrait.getConfig
 permalink: /docs/reference/trait.Facebook.HackCodegen.CodegenFactoryTrait.getConfig.md
 ---
 

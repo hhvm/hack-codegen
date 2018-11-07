@@ -3,6 +3,8 @@
 
 layout: docs
 title: setNamespace
+id: class.Facebook.HackCodegen.CodegenFile.setNamespace
+docid: class.Facebook.HackCodegen.CodegenFile.setNamespace
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFile.setNamespace.md
 ---
 

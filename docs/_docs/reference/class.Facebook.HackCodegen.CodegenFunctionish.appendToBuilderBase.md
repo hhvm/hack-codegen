@@ -3,6 +3,8 @@
 
 layout: docs
 title: appendToBuilderBase
+id: class.Facebook.HackCodegen.CodegenFunctionish.appendToBuilderBase
+docid: class.Facebook.HackCodegen.CodegenFunctionish.appendToBuilderBase
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFunctionish.appendToBuilderBase.md
 ---
 

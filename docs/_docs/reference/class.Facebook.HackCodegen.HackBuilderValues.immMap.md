@@ -3,6 +3,8 @@
 
 layout: docs
 title: immMap
+id: class.Facebook.HackCodegen.HackBuilderValues.immMap
+docid: class.Facebook.HackCodegen.HackBuilderValues.immMap
 permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilderValues.immMap.md
 ---
 

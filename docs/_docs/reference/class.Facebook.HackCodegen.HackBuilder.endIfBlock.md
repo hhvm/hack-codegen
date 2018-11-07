@@ -3,6 +3,8 @@
 
 layout: docs
 title: endIfBlock
+id: class.Facebook.HackCodegen.HackBuilder.endIfBlock
+docid: class.Facebook.HackCodegen.HackBuilder.endIfBlock
 permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.endIfBlock.md
 ---
 

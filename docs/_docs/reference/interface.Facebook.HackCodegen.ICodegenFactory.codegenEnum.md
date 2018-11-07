@@ -3,6 +3,8 @@
 
 layout: docs
 title: codegenEnum
+id: interface.Facebook.HackCodegen.ICodegenFactory.codegenEnum
+docid: interface.Facebook.HackCodegen.ICodegenFactory.codegenEnum
 permalink: /docs/reference/interface.Facebook.HackCodegen.ICodegenFactory.codegenEnum.md
 ---
 

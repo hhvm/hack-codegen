@@ -3,6 +3,8 @@
 
 layout: docs
 title: buildVars
+id: class.Facebook.HackCodegen.CodegenClassish.buildVars
+docid: class.Facebook.HackCodegen.CodegenClassish.buildVars
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenClassish.buildVars.md
 ---
 

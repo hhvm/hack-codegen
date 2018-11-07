@@ -3,6 +3,8 @@
 
 layout: docs
 title: rekeyManualSection
+id: class.Facebook.HackCodegen.CodegenFile.rekeyManualSection
+docid: class.Facebook.HackCodegen.CodegenFile.rekeyManualSection
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFile.rekeyManualSection.md
 ---
 

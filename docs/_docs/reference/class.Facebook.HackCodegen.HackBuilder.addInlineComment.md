@@ -3,6 +3,8 @@
 
 layout: docs
 title: addInlineComment
+id: class.Facebook.HackCodegen.HackBuilder.addInlineComment
+docid: class.Facebook.HackCodegen.HackBuilder.addInlineComment
 permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.addInlineComment.md
 ---
 

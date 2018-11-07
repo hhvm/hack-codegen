@@ -3,6 +3,8 @@
 
 layout: docs
 title: codegenImplementsInterfaces
+id: trait.Facebook.HackCodegen.CodegenFactoryTrait.codegenImplementsInterfaces
+docid: trait.Facebook.HackCodegen.CodegenFactoryTrait.codegenImplementsInterfaces
 permalink: /docs/reference/trait.Facebook.HackCodegen.CodegenFactoryTrait.codegenImplementsInterfaces.md
 ---
 

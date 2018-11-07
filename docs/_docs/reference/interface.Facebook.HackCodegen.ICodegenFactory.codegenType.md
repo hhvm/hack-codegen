@@ -3,6 +3,8 @@
 
 layout: docs
 title: codegenType
+id: interface.Facebook.HackCodegen.ICodegenFactory.codegenType
+docid: interface.Facebook.HackCodegen.ICodegenFactory.codegenType
 permalink: /docs/reference/interface.Facebook.HackCodegen.ICodegenFactory.codegenType.md
 ---
 

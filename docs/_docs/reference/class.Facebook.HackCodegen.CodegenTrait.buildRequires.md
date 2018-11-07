@@ -3,6 +3,8 @@
 
 layout: docs
 title: buildRequires
+id: class.Facebook.HackCodegen.CodegenTrait.buildRequires
+docid: class.Facebook.HackCodegen.CodegenTrait.buildRequires
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenTrait.buildRequires.md
 ---
 

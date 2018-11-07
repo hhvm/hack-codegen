@@ -3,6 +3,8 @@
 
 layout: docs
 title: Facebook\\HackCodegen\_Private\\HackBuilderLiteralRenderer
+id: class.Facebook.HackCodegen._Private.HackBuilderLiteralRenderer
+docid: class.Facebook.HackCodegen._Private.HackBuilderLiteralRenderer
 permalink: /docs/reference/class.Facebook.HackCodegen._Private.HackBuilderLiteralRenderer.md
 ---
 

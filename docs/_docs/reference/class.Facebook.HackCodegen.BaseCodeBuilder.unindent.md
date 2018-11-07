@@ -3,6 +3,8 @@
 
 layout: docs
 title: unindent
+id: class.Facebook.HackCodegen.BaseCodeBuilder.unindent
+docid: class.Facebook.HackCodegen.BaseCodeBuilder.unindent
 permalink: /docs/reference/class.Facebook.HackCodegen.BaseCodeBuilder.unindent.md
 ---
 

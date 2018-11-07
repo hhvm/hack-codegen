@@ -3,6 +3,8 @@
 
 layout: docs
 title: valueArray
+id: class.Facebook.HackCodegen.HackBuilderValues.valueArray
+docid: class.Facebook.HackCodegen.HackBuilderValues.valueArray
 permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilderValues.valueArray.md
 ---
 

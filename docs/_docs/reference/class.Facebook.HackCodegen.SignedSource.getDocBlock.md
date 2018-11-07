@@ -3,6 +3,8 @@
 
 layout: docs
 title: getDocBlock
+id: class.Facebook.HackCodegen.SignedSource.getDocBlock
+docid: class.Facebook.HackCodegen.SignedSource.getDocBlock
 permalink: /docs/reference/class.Facebook.HackCodegen.SignedSource.getDocBlock.md
 ---
 

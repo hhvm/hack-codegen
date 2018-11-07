@@ -3,6 +3,8 @@
 
 layout: docs
 title: addGeneric
+id: class.Facebook.HackCodegen.CodegenClassish.addGeneric
+docid: class.Facebook.HackCodegen.CodegenClassish.addGeneric
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenClassish.addGeneric.md
 ---
 

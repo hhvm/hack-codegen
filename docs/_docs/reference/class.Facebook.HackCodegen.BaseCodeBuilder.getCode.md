@@ -3,6 +3,8 @@
 
 layout: docs
 title: getCode
+id: class.Facebook.HackCodegen.BaseCodeBuilder.getCode
+docid: class.Facebook.HackCodegen.BaseCodeBuilder.getCode
 permalink: /docs/reference/class.Facebook.HackCodegen.BaseCodeBuilder.getCode.md
 ---
 

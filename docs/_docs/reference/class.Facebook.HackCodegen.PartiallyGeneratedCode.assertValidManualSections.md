@@ -3,6 +3,8 @@
 
 layout: docs
 title: assertValidManualSections
+id: class.Facebook.HackCodegen.PartiallyGeneratedCode.assertValidManualSections
+docid: class.Facebook.HackCodegen.PartiallyGeneratedCode.assertValidManualSections
 permalink: /docs/reference/class.Facebook.HackCodegen.PartiallyGeneratedCode.assertValidManualSections.md
 ---
 

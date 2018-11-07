@@ -3,6 +3,8 @@
 
 layout: docs
 title: Facebook\\HackCodegen\_Private\\HackBuilderRegexRenderer
+id: class.Facebook.HackCodegen._Private.HackBuilderRegexRenderer
+docid: class.Facebook.HackCodegen._Private.HackBuilderRegexRenderer
 permalink: /docs/reference/class.Facebook.HackCodegen._Private.HackBuilderRegexRenderer.md
 ---
 

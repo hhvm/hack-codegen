@@ -3,6 +3,8 @@
 
 layout: docs
 title: __construct
+id: class.Facebook.HackCodegen.CodegenConstant.__construct
+docid: class.Facebook.HackCodegen.CodegenConstant.__construct
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenConstant.__construct.md
 ---
 

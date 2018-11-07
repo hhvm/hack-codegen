@@ -3,6 +3,8 @@
 
 layout: docs
 title: addRenderer
+id: class.Facebook.HackCodegen.HackBuilder.addRenderer
+docid: class.Facebook.HackCodegen.HackBuilder.addRenderer
 permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilder.addRenderer.md
 ---
 

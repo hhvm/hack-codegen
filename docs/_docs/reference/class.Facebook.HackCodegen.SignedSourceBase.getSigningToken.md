@@ -3,6 +3,8 @@
 
 layout: docs
 title: getSigningToken
+id: class.Facebook.HackCodegen.SignedSourceBase.getSigningToken
+docid: class.Facebook.HackCodegen.SignedSourceBase.getSigningToken
 permalink: /docs/reference/class.Facebook.HackCodegen.SignedSourceBase.getSigningToken.md
 ---
 

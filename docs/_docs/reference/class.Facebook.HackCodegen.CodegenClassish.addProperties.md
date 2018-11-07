@@ -3,6 +3,8 @@
 
 layout: docs
 title: addProperties
+id: class.Facebook.HackCodegen.CodegenClassish.addProperties
+docid: class.Facebook.HackCodegen.CodegenClassish.addProperties
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenClassish.addProperties.md
 ---
 

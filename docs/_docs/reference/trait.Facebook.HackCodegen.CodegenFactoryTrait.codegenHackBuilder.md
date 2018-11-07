@@ -3,6 +3,8 @@
 
 layout: docs
 title: codegenHackBuilder
+id: trait.Facebook.HackCodegen.CodegenFactoryTrait.codegenHackBuilder
+docid: trait.Facebook.HackCodegen.CodegenFactoryTrait.codegenHackBuilder
 permalink: /docs/reference/trait.Facebook.HackCodegen.CodegenFactoryTrait.codegenHackBuilder.md
 ---
 

@@ -3,6 +3,8 @@
 
 layout: docs
 title: addVerbatim
+id: class.Facebook.HackCodegen.BaseCodeBuilder.addVerbatim
+docid: class.Facebook.HackCodegen.BaseCodeBuilder.addVerbatim
 permalink: /docs/reference/class.Facebook.HackCodegen.BaseCodeBuilder.addVerbatim.md
 ---
 

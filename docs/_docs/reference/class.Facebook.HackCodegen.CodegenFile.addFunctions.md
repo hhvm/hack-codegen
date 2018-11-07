@@ -3,6 +3,8 @@
 
 layout: docs
 title: addFunctions
+id: class.Facebook.HackCodegen.CodegenFile.addFunctions
+docid: class.Facebook.HackCodegen.CodegenFile.addFunctions
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFile.addFunctions.md
 ---
 

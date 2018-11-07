@@ -3,6 +3,8 @@
 
 layout: docs
 title: buildDeclaration
+id: class.Facebook.HackCodegen.CodegenClassish.buildDeclaration
+docid: class.Facebook.HackCodegen.CodegenClassish.buildDeclaration
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenClassish.buildDeclaration.md
 ---
 

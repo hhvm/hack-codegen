@@ -3,6 +3,8 @@
 
 layout: docs
 title: codegenGeneratedFromMethod
+id: trait.Facebook.HackCodegen.CodegenFactoryTrait.codegenGeneratedFromMethod
+docid: trait.Facebook.HackCodegen.CodegenFactoryTrait.codegenGeneratedFromMethod
 permalink: /docs/reference/trait.Facebook.HackCodegen.CodegenFactoryTrait.codegenGeneratedFromMethod.md
 ---
 

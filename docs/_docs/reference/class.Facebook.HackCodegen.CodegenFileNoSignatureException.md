@@ -3,6 +3,8 @@
 
 layout: docs
 title: Facebook\\HackCodegen\\CodegenFileNoSignatureException
+id: class.Facebook.HackCodegen.CodegenFileNoSignatureException
+docid: class.Facebook.HackCodegen.CodegenFileNoSignatureException
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFileNoSignatureException.md
 ---
 

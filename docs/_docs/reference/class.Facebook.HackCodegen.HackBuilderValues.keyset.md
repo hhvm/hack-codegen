@@ -3,6 +3,8 @@
 
 layout: docs
 title: keyset
+id: class.Facebook.HackCodegen.HackBuilderValues.keyset
+docid: class.Facebook.HackCodegen.HackBuilderValues.keyset
 permalink: /docs/reference/class.Facebook.HackCodegen.HackBuilderValues.keyset.md
 ---
 

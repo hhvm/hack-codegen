@@ -3,6 +3,8 @@
 
 layout: docs
 title: Facebook\\HackCodegen\\HackCodegenFactory
+id: class.Facebook.HackCodegen.HackCodegenFactory
+docid: class.Facebook.HackCodegen.HackCodegenFactory
 permalink: /docs/reference/class.Facebook.HackCodegen.HackCodegenFactory.md
 ---
 

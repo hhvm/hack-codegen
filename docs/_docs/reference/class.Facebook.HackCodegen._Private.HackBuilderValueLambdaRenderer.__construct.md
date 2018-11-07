@@ -3,6 +3,8 @@
 
 layout: docs
 title: __construct
+id: class.Facebook.HackCodegen._Private.HackBuilderValueLambdaRenderer.__construct
+docid: class.Facebook.HackCodegen._Private.HackBuilderValueLambdaRenderer.__construct
 permalink: /docs/reference/class.Facebook.HackCodegen._Private.HackBuilderValueLambdaRenderer.__construct.md
 ---
 

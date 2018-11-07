@@ -3,6 +3,8 @@
 
 layout: docs
 title: setAllowsSubtyping
+id: class.Facebook.HackCodegen.CodegenShape.setAllowsSubtyping
+docid: class.Facebook.HackCodegen.CodegenShape.setAllowsSubtyping
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenShape.setAllowsSubtyping.md
 ---
 

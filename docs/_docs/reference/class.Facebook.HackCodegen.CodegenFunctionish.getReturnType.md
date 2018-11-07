@@ -3,6 +3,8 @@
 
 layout: docs
 title: getReturnType
+id: class.Facebook.HackCodegen.CodegenFunctionish.getReturnType
+docid: class.Facebook.HackCodegen.CodegenFunctionish.getReturnType
 permalink: /docs/reference/class.Facebook.HackCodegen.CodegenFunctionish.getReturnType.md
 ---
 
