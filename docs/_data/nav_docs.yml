@@ -6,6 +6,7 @@
   - id: overview-definitions
   - id: overview-partially-generated
 - title: Reference
+  items:
   - id: class.Facebook.HackCodegen.BaseCodeBuilder
   - id: class.Facebook.HackCodegen.CodegenClass
   - id: class.Facebook.HackCodegen.CodegenClassConstant
