@@ -202,10 +202,11 @@ trait CodegenFactoryTrait implements ICodegenFactory {
     ?string $script = null,
   ): CodegenGeneratedFrom {
     if ($script === null) {
-      $trace = \debug_backtrace();
-      $last = C\lastx($trace);
+      $last = \debug_backtrace()
+        |> Vec\filter($$, $frame ==> C\contains_key($frame, 'file'))
+        |> C\last($$);
       invariant(
-        $last !== false,
+        $last !== null,
         "Couldn't get the strack trace.  Please pass the script name to ".
         "codegenGeneratedFromScript",
       );
