@@ -107,7 +107,7 @@ final class CodegenClass extends CodegenClassish {
    *   it will be inferred from the constructor if set.
    */
   public function addConstructorWrapperFunc(
-    ?Traversable<string> $params = null,
+    ?Container<string> $params = null,
   ): this {
     // Check if parameters are specified explicitly
     $param_full = null;

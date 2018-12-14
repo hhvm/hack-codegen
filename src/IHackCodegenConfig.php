@@ -11,7 +11,7 @@
 namespace Facebook\HackCodegen;
 
 interface IHackCodegenConfig {
-  public function getFileHeader(): ?Traversable<string>;
+  public function getFileHeader(): ?Container<string>;
 
   public function getSpacesPerIndentation(): int;
   public function getMaxLineLength(): int;
