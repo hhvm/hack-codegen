@@ -189,7 +189,7 @@ final class PartiallyGeneratedCode {
         "The manual section ".$current_id." was not closed at the end of code",
       );
     }
-    if ($code) {
+    if ($code !== '') {
       yield tuple(null, \implode("\n", $chunk));
     }
   }

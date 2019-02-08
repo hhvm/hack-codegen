@@ -47,7 +47,7 @@ function strip_hh_prefix(
   for ($i = 0; $i < $len; ++$i) {
     $prev = $c;
     $c = $str[$i];
-    if ($in_literal) {
+    if ($in_literal !== '') {
       if ($c === '\\') {
         $out .= $c;
         ++$i;

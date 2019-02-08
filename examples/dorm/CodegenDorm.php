@@ -57,8 +57,8 @@ class CodegenDorm {
       );
 
     $rc = new \ReflectionClass(\get_class($this->schema));
-    $path = $rc->getFileName();
-    $pos = \strrpos($path, '/');
+    $path = $rc->getFileName() as string;
+    $pos = \strrpos((string) $path, '/');
     $dir = \substr($path, 0, $pos + 1);
     $gen_from = 'codegen.php '.$this->getSchemaName().'Schema';
 

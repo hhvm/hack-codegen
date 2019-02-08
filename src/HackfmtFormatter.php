@@ -54,9 +54,9 @@ final class HackfmtFormatter implements ICodegenFormatter {
   private function getFormattedOptions(): string {
     $options = vec[
       '--indent-width',
-      $this->config->getSpacesPerIndentation(),
+      (string) $this->config->getSpacesPerIndentation(),
       '--line-width',
-      $this->config->getMaxLineLength(),
+      (string) $this->config->getMaxLineLength(),
     ];
 
     if ($this->config->shouldUseTabs()) {

@@ -38,7 +38,7 @@ final class CodegenExpectedFile {
    */
   public static function getPath(string $class_name): string {
     $ref = new \ReflectionClass($class_name);
-    $source_file = $ref->getFileName();
+    $source_file = (string) $ref->getFileName();
     // Get classname without namespace
     $class_name = $ref->getShortName();
     return \dirname($source_file).'/'.$class_name.self::EXTENSION;

@@ -444,7 +444,7 @@ final class CodegenFile {
     foreach ($file_names as $file_name) {
       if (\file_exists($file_name)) {
         $content = Filesystem::readFile($file_name);
-        if ($content) {
+        if ($content !== '') {
           $root_dir = $this->config->getRootDir();
           $relative_path = Str\starts_with($file_name, $root_dir)
             ? Str\slice($file_name, Str\length($root_dir) + 1)

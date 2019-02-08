@@ -55,7 +55,7 @@ class CodegenMutator {
       ->addMethods($this->getSetters());
 
     $rc = new \ReflectionClass(\get_class($this->schema));
-    $path = $rc->getFileName();
+    $path = $rc->getFileName() as string;
     $pos = \strrpos($path, '/');
     $dir = \substr($path, 0, $pos + 1);
     $gen_from = 'codegen.php '.$rc->getShortName();
