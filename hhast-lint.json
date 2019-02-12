@@ -13,6 +13,12 @@
       "disableAllAutoFixes": true
     },
     {
+      "patterns": [ "examples/dorm/**" ],
+      "disabledLinters": [
+        "Facebook\\HHAST\\Linters\\StrictModeOnlyLinter"
+      ]
+    },
+    {
       "patterns": [ "src/PlainSprintf.php" ],
       "disabledLinters": [
         "Facebook\\HHAST\\Linters\\CamelCasedMethodsUnderscoredFunctionsLinter"
