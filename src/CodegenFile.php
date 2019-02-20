@@ -309,9 +309,19 @@ final class CodegenFile {
 
     $content = $this->getContent();
 
+    $doc_block = $this->docBlock;
+    $gen_from = $this->generatedFrom;
+    if ($gen_from !== null) {
+      if ($doc_block !== null && !Str\ends_with($doc_block, "\n")) {
+        $doc_block .= "\n";
+      }
+      $doc_block = $doc_block.$gen_from->render()."\n";
+    }
+
     $formatter = $this->config->getFormatter();
 
     if (!$this->isSignedFile) {
+      $builder->addDocBlock($doc_block);
       $builder->add($content);
       $content = $builder->getCode();
       if ($formatter !== null) {
@@ -321,15 +331,6 @@ final class CodegenFile {
     }
 
     $old_content = $this->loadExistingFiles();
-
-    $doc_block = $this->docBlock;
-    $gen_from = $this->generatedFrom;
-    if ($gen_from !== null) {
-      if ($doc_block !== null && !Str\ends_with($doc_block, "\n")) {
-        $doc_block .= "\n";
-      }
-      $doc_block = $doc_block.$gen_from->render()."\n";
-    }
 
     if (PartiallyGeneratedCode::containsManualSection($content)) {
       $builder->addDocBlock(
