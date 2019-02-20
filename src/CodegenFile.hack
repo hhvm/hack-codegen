@@ -220,7 +220,7 @@ final class CodegenFile {
       case CodegenFileType::HACK_DECL:
         return '<?hh // decl';
       case CodegenFileType::HACK_PARTIAL:
-        return '<?hh';
+        return '<?hh // partial';
       case CodegenFileType::HACK_STRICT:
         return '<?hh // strict';
     }

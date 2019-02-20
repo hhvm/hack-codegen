@@ -37,12 +37,12 @@ const string HERP = 'derp';
 
 !@#$%codegentest:testExecutable
 #!/usr/bin/env hhvm
-<?hh
+<?hh // partial
 // Codegen Tests
 /**
  * This file is generated. Do not modify it manually!
  *
- * @-generated SignedSource<<f3a2d86a759204d632f25dcf3d8731bb>>
+ * @-generated SignedSource<<01b3a9234148420d95059e79f8a1d8a7>>
  */
 require_once('vendor/autoload.php');
 
