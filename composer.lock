@@ -8,21 +8,22 @@
     "packages": [
         {
             "name": "hhvm/hhvm-autoload",
-            "version": "v2.0.2",
+            "version": "v2.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hhvm/hhvm-autoload.git",
-                "reference": "f904bf2193a9d86ee5fbe19f987eaece57a52c31"
+                "reference": "46b5f6759965a894f06e2cd1fc501f7783ee6830"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hhvm/hhvm-autoload/zipball/f904bf2193a9d86ee5fbe19f987eaece57a52c31",
-                "reference": "f904bf2193a9d86ee5fbe19f987eaece57a52c31",
+                "url": "https://api.github.com/repos/hhvm/hhvm-autoload/zipball/46b5f6759965a894f06e2cd1fc501f7783ee6830",
+                "reference": "46b5f6759965a894f06e2cd1fc501f7783ee6830",
                 "shasum": ""
             },
             "require": {
                 "composer-plugin-api": "^1.0",
-                "hhvm": "^4.0"
+                "hhvm": "^4.0",
+                "hhvm/hsl": "^4.0"
             },
             "replace": {
                 "facebook/hhvm-autoload": "1.*"
@@ -50,7 +51,7 @@
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2019-02-12T21:17:39+00:00"
+            "time": "2019-02-13T17:18:00+00:00"
         },
         {
             "name": "hhvm/hsl",
@@ -126,16 +127,16 @@
         },
         {
             "name": "facebook/fbexpect",
-            "version": "v2.4.0",
+            "version": "v2.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hhvm/fbexpect.git",
-                "reference": "a0fd5e57c15bc580dd130e3298f01ca51421c189"
+                "reference": "cf8afe9e17c7edb0d5694645ad93b8179d06ec5d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hhvm/fbexpect/zipball/a0fd5e57c15bc580dd130e3298f01ca51421c189",
-                "reference": "a0fd5e57c15bc580dd130e3298f01ca51421c189",
+                "url": "https://api.github.com/repos/hhvm/fbexpect/zipball/cf8afe9e17c7edb0d5694645ad93b8179d06ec5d",
+                "reference": "cf8afe9e17c7edb0d5694645ad93b8179d06ec5d",
                 "shasum": ""
             },
             "require": {
@@ -145,6 +146,7 @@
                 "hhvm/hsl": "^3.26|^4.0"
             },
             "require-dev": {
+                "hhvm/hhast": "^4.0",
                 "hhvm/hhvm-autoload": "^2.0"
             },
             "type": "library",
@@ -153,7 +155,7 @@
                 "MIT"
             ],
             "description": "Unit test helpers for Facebook projects",
-            "time": "2019-02-08T16:39:19+00:00"
+            "time": "2019-02-14T22:40:45+00:00"
         },
         {
             "name": "facebook/hh-clilib",
@@ -234,16 +236,16 @@
         },
         {
             "name": "hhvm/hhast",
-            "version": "v4.0.1",
+            "version": "v4.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hhvm/hhast.git",
-                "reference": "f544be3de790b9c4692d1b6b5d73ddbbc38cf4d3"
+                "reference": "38c7891725daae34ac4175deb410fc7be1caac3d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hhvm/hhast/zipball/f544be3de790b9c4692d1b6b5d73ddbbc38cf4d3",
-                "reference": "f544be3de790b9c4692d1b6b5d73ddbbc38cf4d3",
+                "url": "https://api.github.com/repos/hhvm/hhast/zipball/38c7891725daae34ac4175deb410fc7be1caac3d",
+                "reference": "38c7891725daae34ac4175deb410fc7be1caac3d",
                 "shasum": ""
             },
             "require": {
@@ -274,7 +276,7 @@
             "license": [
                 "MIT"
             ],
-            "time": "2019-02-12T23:29:04+00:00"
+            "time": "2019-02-19T22:32:56+00:00"
         },
         {
             "name": "hhvm/hsl-experimental",

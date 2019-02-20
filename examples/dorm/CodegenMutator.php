@@ -154,7 +154,7 @@ class CodegenMutator {
       ->addLinef('$conn = new PDO(\'%s\');', $this->schema->getDsn())
       ->addMultilineCall(
         '$quoted = $this->data->mapWithKey',
-        Vector{'($k, $v) ==> $conn->quote($v, self::$pdoType[$k])'},
+        Vector{'($k, $v) ==> $conn->quote((string) $v, self::$pdoType[$k])'},
       )
       ->addAssignment(
         '$id',

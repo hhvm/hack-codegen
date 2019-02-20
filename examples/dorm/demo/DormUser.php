@@ -6,7 +6,7 @@
  * To re-generate this file run codegen.php DormUserSchema
  *
  *
- * @partially-generated SignedSource<<09509aa1af895b3a95cd41b6c344247c>>
+ * @partially-generated SignedSource<<9e4466dec9ad5e268b1df61c65b84fd3>>
  */
 use namespace Facebook\TypeAssert;
 
@@ -47,7 +47,7 @@ final class DormUser {
 
   public function getBirthday(): ?DateTime {
     $value = $this->data['birthday'] ?? null;
-    return $value === null ? null : new DateTime($value);
+    return $value === null ? null : (new DateTime())->setTimestamp($value);
   }
 
   public function getCountryId(): ?int {

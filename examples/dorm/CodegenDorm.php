@@ -131,7 +131,7 @@ class CodegenDorm {
       $return_type = $field->getType();
       $data = '$this->data[\''.$field->getDbColumn().'\']';
       if ($return_type === \DateTime::class) {
-        $return_data = 'new DateTime($value)';
+        $return_data = '(new DateTime())->setTimestamp($value)';
       } else {
         $return_data = '$value';
       }

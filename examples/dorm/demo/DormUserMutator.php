@@ -6,7 +6,7 @@
  * To re-generate this file run codegen.php DormUserSchema
  *
  *
- * @partially-generated SignedSource<<9fb8e54530e36453a76d12bf05064db6>>
+ * @partially-generated SignedSource<<3eab32bd5832befe294cd6d493ac3953>>
  */
 
 final class DormUserMutator {
@@ -35,7 +35,7 @@ final class DormUserMutator {
   public function save(): int {
     $conn = new PDO('sqlite:/path/to/database.db');
     $quoted = $this->data->mapWithKey(
-      ($k, $v) ==> $conn->quote($v, self::$pdoType[$k]),
+      ($k, $v) ==> $conn->quote((string) $v, self::$pdoType[$k]),
     );
     $id = $this->id;
     if ($id === null) {
