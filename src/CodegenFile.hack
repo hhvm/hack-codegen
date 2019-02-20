@@ -24,6 +24,7 @@ enum CodegenFileType: int {
   HACK_DECL = 1;
   HACK_PARTIAL = 2;
   HACK_STRICT = 3;
+  DOT_HACK = 4;
 }
 
 /**
@@ -223,6 +224,8 @@ final class CodegenFile {
         return '<?hh // partial';
       case CodegenFileType::HACK_STRICT:
         return '<?hh // strict';
+      case CodegenFileType::DOT_HACK:
+      return '';
     }
   }
 
@@ -298,7 +301,10 @@ final class CodegenFile {
       $builder->addLine($shebang);
     }
 
-    $builder->addLine($this->getFileTypeDeclaration());
+    $decl = $this->getFileTypeDeclaration();
+    if ($decl !== '') {
+      $builder->addLine($decl);
+    }
     $header = $this->config->getFileHeader();
     if ($header) {
       foreach ($header as $line) {

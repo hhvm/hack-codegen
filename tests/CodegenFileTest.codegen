@@ -35,6 +35,20 @@ const string FOO = 'bar';
  */
 const string HERP = 'derp';
 
+!@#$%codegentest:testDotHackExecutable
+#!/usr/bin/env hhvm
+// Codegen Tests
+/**
+ * This file is generated. Do not modify it manually!
+ *
+ * @-generated SignedSource<<2e680a68425d6302b789a6588a8218e4>>
+ */
+
+<<__EntryPoint>>
+function main(): noreturn {
+  exit(0);
+}
+
 !@#$%codegentest:testExecutable
 #!/usr/bin/env hhvm
 <?hh // partial

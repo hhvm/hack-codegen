@@ -316,6 +316,22 @@ final class CodegenFileTest extends CodegenBaseTest {
 );
   }
 
+  public function testDotHackExecutable(): void {
+    $cgf = $this->getCodegenFactory();
+    $code = $cgf
+      ->codegenFile('no_file')
+      ->setFileType(CodegenFileType::DOT_HACK)
+      ->setShebangLine('#!/usr/bin/env hhvm')
+      ->addFunction(
+        $cgf->codegenFunction('main')
+          ->setReturnType('noreturn')
+          ->addEmptyUserAttribute('__EntryPoint')
+          ->setBody('exit(0);')
+      )
+      ->render();
+    expect_with_context(static::class, $code)->toBeUnchanged();
+  }
+
   public function testNoPseudoMainHeaderInStrict(): void {
     expect(() ==> {
       $cgf = $this->getCodegenFactory();
