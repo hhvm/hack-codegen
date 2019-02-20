@@ -225,7 +225,7 @@ final class CodegenFile {
       case CodegenFileType::HACK_STRICT:
         return '<?hh // strict';
       case CodegenFileType::DOT_HACK:
-      return '';
+        return '';
     }
   }
 
@@ -383,12 +383,8 @@ final class CodegenFile {
       $this->fileNamespace ?? '',
     );
 
-    $get_use_statement = ($type, $ns, $as) ==> \sprintf(
-      'use %s %s%s;',
-      $type,
-      $ns,
-      $as === null ? '' : ' as '.$as,
-    );
+    $get_use_statement = ($type, $ns, $as) ==>
+      \sprintf('use %s %s%s;', $type, $ns, $as === null ? '' : ' as '.$as);
 
     foreach ($this->useNamespaces as $ns => $as) {
       $builder->addLine($get_use_statement('namespace', $ns, $as));
