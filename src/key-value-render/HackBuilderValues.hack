@@ -101,7 +101,7 @@ abstract final class HackBuilderValues {
   }
 
   /** Render a `Set` literal */
-  public static function set<Tv>(
+  public static function set<Tv as arraykey>(
     IHackBuilderValueRenderer<Tv> $vr,
   ): IHackBuilderValueRenderer<Set<Tv>> {
     return new _Private\HackBuilderNativeValueCollectionRenderer(
@@ -111,7 +111,7 @@ abstract final class HackBuilderValues {
   }
 
   /** Render an `ImmSet` literal */
-  public static function immSet<Tv>(
+  public static function immSet<Tv as arraykey>(
     IHackBuilderValueRenderer<Tv> $vr,
   ): IHackBuilderValueRenderer<ImmSet<Tv>> {
     return new _Private\HackBuilderNativeValueCollectionRenderer(
