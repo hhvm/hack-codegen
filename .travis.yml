@@ -1,5 +1,5 @@
 language: php
 php:
- - hhvm
+ - hhvm-3.30
 script:
  - ./.travis.sh
