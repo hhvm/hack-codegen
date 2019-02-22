@@ -34,7 +34,7 @@
     "require-dev": {
         "hhvm/hacktest": "^1.0",
         "hhvm/type-assert": "^3.1",
-        "facebook/fbexpect": "^2.1.0",
+        "facebook/fbexpect": "2.3.*",
         "hhvm/hhast": "^3.28.0",
         "facebook/difflib": "^1.0"
     }
