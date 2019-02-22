@@ -1,5 +1,8 @@
 language: php
 php:
- - hhvm-3.30
+- hhvm-3.30
 script:
- - ./.travis.sh
+- "./.travis.sh"
+notifications:
+  slack:
+    secure: Nc391+HnuB69mjocijO4NQezV3IbYbxG2qdwSKmRT4xtvzUN9F4s57ilrjljpwly6axNYM1yDVoJLA4jvYtB7w4z/a2lXTP3TWBkQSVE3H/0uf7LuU+TpShQw66kGfq5qVSL8icmQ9DX/c5j+kQ9+AQIN4RDSblNXW+i0UJ5l6fK3FIWnR2k3B46oMz9RnJ5coEgD+56SY8LChMiBfZm6lQIWoaJIusVOXGCj56ISZ9SW//qFC2cavl68ooJc0sN8vJKLQqd5tVV3DACQlhkjYmbhns+UGHwvNQyE8iaQhQ6E6yW0Pro9BjryllTSwaGFPePD1hfUZjw8UIntlQMiiBANL9GvNC9rsVUg4fW54N6LFAq0F3SvZeE+o98Fx4knUNnL/zHbGOPEzL3q7NpMWlOni6zFBSAWMD+gLPvHXEdviU3x5iOGMQFW4/8Z1ukV9yKJnP6OcA5lV6wKDEjtuFHZiyjyzlho/MX0IJTLbjkf3Qfl0EF1kPNHB1qq45CiH2WhVNGvgSDRUBvBhfPfAe4v/xWt+gPOpk8uvqkVfhPkzmPqocD8VweFufs+SjChy16DhSbd3NMBXx0bGODwOitcynyYvc9Ddy+ObHPkmdNGQQuP0uHnDFyDNFN8ZFntT/1a6CQvlt5h+InVHrsREzNmxW8LqCGiADWtlJJF+k=
