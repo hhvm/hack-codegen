@@ -42,6 +42,20 @@ final class CodegenFileTest extends CodegenBaseTest {
     expect_with_context(static::class, $code)->toBeUnchanged();
   }
 
+  public function testGenerateEnums(): void {
+    $cgf = $this->getCodegenFactory();
+    $enum = $cgf->codegenEnum('TestEnum', 'int')
+      ->addMember(
+        $cgf->codegenEnumMember('FIRST')
+          ->setValue(0, HackBuilderValues::export()))
+      ->addMember(
+        $cgf->codegenEnumMember('SECOND')
+          ->setValue(1, HackBuilderValues::export()));
+    $code = $cgf->codegenFile('no_file')->addEnum($enum)->render();
+
+    expect_with_context(static::class, $code)->toBeUnchanged();
+  }
+
   public function testPartiallyGenerated(): void {
     $cgf = $this->getCodegenFactory();
     $code = $cgf

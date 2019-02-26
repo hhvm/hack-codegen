@@ -151,6 +151,21 @@ function my_func(
   );
 }
 
+!@#$%codegentest:testGenerateEnums
+<?hh // strict
+// Codegen Tests
+/**
+ * This file is generated. Do not modify it manually!
+ *
+ * @-generated SignedSource<<9627a8d7e6cf7a65a9bf2ad85d657e03>>
+ */
+
+
+enum TestEnum : int {
+  FIRST = 0;
+  SECOND = 1;
+}
+
 !@#$%codegentest:testGenerateTopLevelFunctions
 <?hh // strict
 // Codegen Tests

@@ -45,6 +45,7 @@ final class CodegenFile {
   private vec<CodegenType> $beforeTypes = vec[];
   private vec<CodegenType> $afterTypes = vec[];
   private vec<CodegenConstant> $consts = vec[];
+  private vec<CodegenEnum> $enums = vec [];
   private bool $doClobber = false;
   protected ?CodegenGeneratedFrom $generatedFrom;
   private bool $isSignedFile = true;
@@ -82,6 +83,22 @@ final class CodegenFile {
   public function addOriginalFile(string $file_name): this {
     $this->otherFileNames[] = $file_name;
     return $this;
+  }
+
+  public function addEnums(Traversable<CodegenEnum> $enums): this {
+    foreach ($enums as $enum) {
+      $this->addEnum($enum);
+    }
+    return $this;
+  }
+
+  public function addEnum(CodegenEnum $enum): this {
+    $this->enums[] = $enum;
+    return $this;
+  }
+
+  public function getEnums(): vec<CodegenEnum> {
+    return $this->enums;
   }
 
   public function addClasses(Traversable<CodegenClassish> $classes): this {
@@ -411,6 +428,10 @@ final class CodegenFile {
     }
     foreach ($this->consts as $const) {
       $builder->ensureEmptyLine()->add($const->render());
+    }
+    foreach ($this->enums as $enum) {
+      $builder->ensureNewLine()->newLine();
+      $builder->add($enum->render());
     }
     foreach ($this->functions as $function) {
       $builder->ensureNewLine()->newLine();
