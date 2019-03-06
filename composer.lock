@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "hhvm/hhvm-autoload",
-            "version": "v2.0.3",
+            "version": "v2.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hhvm/hhvm-autoload.git",
-                "reference": "46b5f6759965a894f06e2cd1fc501f7783ee6830"
+                "reference": "19b2188ddcffd197a37e787b5d413ada98c5266b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hhvm/hhvm-autoload/zipball/46b5f6759965a894f06e2cd1fc501f7783ee6830",
-                "reference": "46b5f6759965a894f06e2cd1fc501f7783ee6830",
+                "url": "https://api.github.com/repos/hhvm/hhvm-autoload/zipball/19b2188ddcffd197a37e787b5d413ada98c5266b",
+                "reference": "19b2188ddcffd197a37e787b5d413ada98c5266b",
                 "shasum": ""
             },
             "require": {
@@ -51,7 +51,7 @@
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2019-02-13T17:18:00+00:00"
+            "time": "2019-03-06T17:53:08+00:00"
         },
         {
             "name": "hhvm/hsl",
@@ -236,23 +236,23 @@
         },
         {
             "name": "hhvm/hhast",
-            "version": "v4.0.4",
+            "version": "v4.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hhvm/hhast.git",
-                "reference": "4beceaee625320307cd21b4cec70437a99009683"
+                "reference": "a5e7f731dcc73846b500062f52abfb58d575be13"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hhvm/hhast/zipball/4beceaee625320307cd21b4cec70437a99009683",
-                "reference": "4beceaee625320307cd21b4cec70437a99009683",
+                "url": "https://api.github.com/repos/hhvm/hhast/zipball/a5e7f731dcc73846b500062f52abfb58d575be13",
+                "reference": "a5e7f731dcc73846b500062f52abfb58d575be13",
                 "shasum": ""
             },
             "require": {
                 "facebook/difflib": "^1.0.0",
                 "facebook/hh-clilib": "^2.0.0",
                 "hhvm": "^4.0",
-                "hhvm/hhvm-autoload": "^2.0",
+                "hhvm/hhvm-autoload": "^2.0.4",
                 "hhvm/hsl": "^4.0",
                 "hhvm/type-assert": "^3.1"
             },
@@ -276,20 +276,20 @@
             "license": [
                 "MIT"
             ],
-            "time": "2019-02-20T23:56:02+00:00"
+            "time": "2019-03-06T18:49:34+00:00"
         },
         {
             "name": "hhvm/hsl-experimental",
-            "version": "v4.0.1",
+            "version": "v4.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hhvm/hsl-experimental.git",
-                "reference": "c1084e5f6a6d8e5a110f3e9bb630a4b20166cc53"
+                "reference": "a06996b0e438b2c6d7b86d1cb3ce41312e9885a5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hhvm/hsl-experimental/zipball/c1084e5f6a6d8e5a110f3e9bb630a4b20166cc53",
-                "reference": "c1084e5f6a6d8e5a110f3e9bb630a4b20166cc53",
+                "url": "https://api.github.com/repos/hhvm/hsl-experimental/zipball/a06996b0e438b2c6d7b86d1cb3ce41312e9885a5",
+                "reference": "a06996b0e438b2c6d7b86d1cb3ce41312e9885a5",
                 "shasum": ""
             },
             "require": {
@@ -313,7 +313,7 @@
                 "MIT"
             ],
             "description": "The Hack Standard Library - Experimental Additions",
-            "time": "2019-02-20T21:11:25+00:00"
+            "time": "2019-03-04T21:35:44+00:00"
         },
         {
             "name": "hhvm/type-assert",
