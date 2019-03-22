@@ -20,7 +20,7 @@ vendor/bin/hacktest tests/
 vendor/bin/hhast-lint
 
 hhvm examples/dorm/codegen.php examples/dorm/demo/DormUserSchema.php
-if ! git diff --exit-code; then
+if ! git diff examples/ --exit-code; then
   echo "Demo codegen not up to date."
   exit 1
 fi
