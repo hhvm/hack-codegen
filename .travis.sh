@@ -9,14 +9,15 @@ php --version
   cd $(mktemp -d)
   curl https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 )
+if (hhvm --version | grep -q -- -dev); then
+  rm composer.lock
+fi
 composer install
 
 hh_client
 
-hhvm vendor/bin/hacktest tests/
-if !(hhvm --version | grep -q -- -dev); then
-  hhvm vendor/bin/hhast-lint
-fi
+vendor/bin/hacktest tests/
+vendor/bin/hhast-lint
 
 hhvm examples/dorm/codegen.php examples/dorm/demo/DormUserSchema.php
 if ! git diff --quiet; then

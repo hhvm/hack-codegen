@@ -314,7 +314,7 @@ abstract class BaseCodeBuilder {
         // Continue if the line is empty
         continue;
       }
-      invariant(is_string($line), 'For Hack');
+      $line = $line as string;
       if (C\is_empty($final_lines)) {
         $final_lines[] = $line;
       } else {
