@@ -18,6 +18,7 @@ use namespace Facebook\HackCodegen\_Private\Vec as VecP;
  * should be used to generate code. For example, Hack code is generated using
  * the `HackBuilder` class.
  */
+ <<__ConsistentConstruct>>
 abstract class BaseCodeBuilder {
 
   const string DELIMITER = "\0";
