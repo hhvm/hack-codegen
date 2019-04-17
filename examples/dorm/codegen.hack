@@ -46,6 +46,7 @@ final class DormCodegenCLI extends \Facebook\CLILib\CLIWithRequiredArguments {
         continue;
       }
       $instance = $ref->newInstance() as DormSchema;
+      /* HHAST_IGNORE_ERROR[DontAwaitInALoop] */
       await $this->getStdout()
         ->writeAsync("Generating code for ".$class_name."\n");
       (new CodegenDorm($instance))->generate();
@@ -57,7 +58,7 @@ final class DormCodegenCLI extends \Facebook\CLILib\CLIWithRequiredArguments {
 }
 
 <<__EntryPoint>>
-async function dorm_codegen_cli_main(): Awaitable<noreturn> {
+async function dorm_codegen_cli_main_async(): Awaitable<noreturn> {
   $exit_code = await DormCodegenCLI::runAsync();
   exit($exit_code);
 }
