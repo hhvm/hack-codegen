@@ -17,7 +17,9 @@ composer install
 hh_client
 
 vendor/bin/hacktest tests/
-vendor/bin/hhast-lint
+if !(hhvm --version | grep -q -- -dev); then
+  vendor/bin/hhast-lint
+fi
 
 hhvm examples/dorm/codegen.php examples/dorm/demo/DormUserSchema.php
 if ! git diff --exit-code examples/; then
