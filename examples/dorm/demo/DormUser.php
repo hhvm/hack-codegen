@@ -3,10 +3,10 @@
  * This file is partially generated. Only make modifications between BEGIN
  * MANUAL SECTION and END MANUAL SECTION designators.
  *
- * To re-generate this file run codegen.php DormUserSchema
+ * To re-generate this file run codegen.hack DormUserSchema
  *
  *
- * @partially-generated SignedSource<<9e4466dec9ad5e268b1df61c65b84fd3>>
+ * @partially-generated SignedSource<<bb328713820ebe866a4e0292daa0a4de>>
  */
 use namespace Facebook\TypeAssert;
 

@@ -60,7 +60,7 @@ class CodegenDorm {
     $path = $rc->getFileName() as string;
     $pos = \strrpos((string) $path, '/');
     $dir = \substr($path, 0, $pos + 1);
-    $gen_from = 'codegen.php '.$this->getSchemaName().'Schema';
+    $gen_from = 'codegen.hack '.$this->getSchemaName().'Schema';
 
     // This generates a file (we pass the file name) that contains the
     // class defined above and saves it.

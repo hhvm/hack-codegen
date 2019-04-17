@@ -30,7 +30,7 @@ require_once('DormUser.php');
  *  );
  *
  * Before trying this example, you'll need to generate the code by running
- * php codegen.php demo/DormUserSchema.php.
+ * php codegen.hack demo/DormUserSchema.php.
  */
 $id = DormUserMutator::create()
  ->setFirstName('John')

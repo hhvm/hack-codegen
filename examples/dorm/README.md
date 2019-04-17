@@ -10,7 +10,7 @@ DORM stands for Demo ORM, and although it actually works, it is not indendeed fo
 1. ** Optional ** If you want to try running the generated code (as opposed to just generating the code), you'll need to set up the database:
   1. Using your favorite database, create the "user" table with the schema shown in demo_usage.php
   2. In file DemoUserSchema.php, change the getDsn method to return the DSN pointing to your database.
-2. To generate the code, run: php codegen.php demo/DormUserSchema.php.  This will generate the files DormUser.php and DormUserMutator.php. Take a look a the generated code!
+2. To generate the code, run: `codegen.hack demo/DormUserSchema.php`.  This will generate the files DormUser.php and DormUserMutator.php. Take a look a the generated code!
 3. If you followed step 1, run php demo/demo_usage.php to have it inserting a rown in the database.
 
 Here are a few things that you can try out to better understand the code generation:
