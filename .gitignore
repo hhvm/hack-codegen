@@ -1,4 +1,5 @@
 /vendor/
 /docs/.bundle
 /docs/vendor/
+composer.lock
 *.swp
