@@ -114,7 +114,7 @@ final class CodegenFile {
   }
 
   public function addConstants(Traversable<CodegenConstant> $constants): this {
-    $this->consts = Vec\concat($this->consts, $constants);
+    $this->consts = Vec\concat($this->consts, vec($constants));
     return $this;
   }
 

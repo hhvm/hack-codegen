@@ -44,7 +44,7 @@ trait CodegenClassWithInterfaces {
   public function addInterfaces(
     Traversable<CodegenImplementsInterface> $interfaces,
   ): this {
-    $this->interfaces = Vec\concat($this->interfaces, $interfaces);
+    $this->interfaces = Vec\concat($this->interfaces, vec($interfaces));
     return $this;
   }
 

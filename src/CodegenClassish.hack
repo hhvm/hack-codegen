@@ -214,7 +214,7 @@ abstract class CodegenClassish implements ICodeBuilderRenderer {
   public function addProperties(Traversable<CodegenProperty> $vars): this {
     $this->vars = Vec\concat(
       $this->vars,
-      $vars,
+      vec($vars),
     );
     return $this;
   }
