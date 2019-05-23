@@ -51,7 +51,7 @@ final class HackBuilderShapeRenderer
       $builder->addWithSuggestedLineBreaksf(
         "%s =>\0%s,\n",
         $key_renderer->render($config, $key),
-        $value_renderer->render($config, $value),
+        $value_renderer->render($config, /* HH_IGNORE_ERROR[4110] */ $value),
       );
     }
     return $builder->unindent()->add(')')->getCode();
