@@ -3,3 +3,4 @@
 /docs/vendor/
 composer.lock
 *.swp
+.*.hhast.*cache
