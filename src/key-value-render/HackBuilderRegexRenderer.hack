@@ -11,7 +11,7 @@ namespace Facebook\HackCodegen\_Private;
 
 use type Facebook\HackCodegen\{IHackBuilderValueRenderer, IHackCodegenConfig};
 
-use namespace HH\Lib\{Str, Regex};
+use namespace HH\Lib\{Regex, Str};
 
 final class HackBuilderRegexRenderer<T>
   implements IHackBuilderValueRenderer<Regex\Pattern<T>> {
