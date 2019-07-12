@@ -50,7 +50,7 @@ abstract class CodegenMethodish extends CodegenFunctionish
 
   public function setContainingClass(CodegenClassish $class): this {
     $this->containingClass = $class;
-    if ($this->containingClass instanceof CodegenInterface) {
+    if ($this->containingClass is CodegenInterface) {
       $this->isAbstract = true;
     }
     return $this;
@@ -63,7 +63,7 @@ abstract class CodegenMethodish extends CodegenFunctionish
       ->addIf($this->isFinal && !$this->isAbstract, 'final ')
       ->addIf(
         $this->isAbstract &&
-        !($this->containingClass instanceof CodegenInterface),
+        !($this->containingClass is CodegenInterface),
         'abstract ',
       )
       ->add($this->getVisibility().' ')

@@ -37,7 +37,7 @@
    }
 
    public function getType(): string {
-     if ($this->type instanceof ICodeBuilderRenderer) {
+     if ($this->type is ICodeBuilderRenderer) {
        return $this->type->render();
      }
 

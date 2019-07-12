@@ -191,7 +191,7 @@ abstract class CodegenFunctionish implements ICodeBuilderRenderer {
 
   protected function getMaxCodeLength(): int {
     $max_length = $this->config->getMaxLineLength();
-    if ($this instanceof CodegenMethodish) {
+    if ($this is CodegenMethodish) {
       $max_length -= $this->config->getSpacesPerIndentation();
     }
     return $max_length;

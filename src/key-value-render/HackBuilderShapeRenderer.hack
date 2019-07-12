@@ -40,7 +40,7 @@ final class HackBuilderShapeRenderer
         $key,
       );
       invariant(
-        $value_renderer instanceof IHackBuilderValueRenderer,
+        $value_renderer is IHackBuilderValueRenderer<_>,
         'Value renderer for key "%s" is of type "%s", which is not a %s',
         $key,
         \is_object($value_renderer)
