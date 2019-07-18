@@ -6,7 +6,7 @@
  * To re-generate this file run codegen.php DormUserSchema
  *
  *
- * @partially-generated SignedSource<<3eab32bd5832befe294cd6d493ac3953>>
+ * @partially-generated SignedSource<<48c599867b0b679f5bb9cf27d8801e89>>
  */
 
 final class DormUserMutator {
@@ -24,11 +24,11 @@ final class DormUserMutator {
   private function __construct(private ?int $id = null) {
   }
 
-  public function create(): this {
+  public static function create(): this {
     return new DormUserMutator();
   }
 
-  public function update(int $id): this {
+  public static function update(int $id): this {
     return new DormUserMutator($id);
   }
 

@@ -123,6 +123,7 @@ class CodegenMutator {
     $cg = $this->codegen;
     // This is a very simple example of generating a method
     return $cg->codegenMethod('create')
+      ->setIsStatic(true)
       ->setReturnType('this')
       ->setBody(
         $cg->codegenHackBuilder()
@@ -135,6 +136,7 @@ class CodegenMutator {
     $cg = $this->codegen;
     // This is a very simple example of generating a method
     return $cg->codegenMethod('update')
+      ->setIsStatic(true)
       ->addParameter('int $id')
       ->setReturnType('this')
       ->setBody(
