@@ -10,8 +10,8 @@
 
 namespace Facebook\HackCodegen;
 
-require_once('DormUserMutator.php');
-require_once('DormUser.php');
+/* HH_FIXME[1002] HHAST: move to <<__EntryPoint>> function */ require_once('DormUserMutator.php');
+/* HH_FIXME[1002] HHAST: move to <<__EntryPoint>> function */ require_once('DormUser.php');
 
 /**
  * This is to demo how the Dorm classes for User can be used.

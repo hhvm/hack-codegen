@@ -12,8 +12,6 @@ namespace Facebook\HackCodegen;
 
 use namespace HH\Lib\{C, Vec};
 
-require_once(__DIR__.'/../../vendor/hh_autoload.hh');
-
 final class DormCodegenCLI extends \Facebook\CLILib\CLIWithRequiredArguments {
   <<__Override>>
   public static function getHelpTextForRequiredArguments(): vec<string> {
@@ -59,6 +57,10 @@ final class DormCodegenCLI extends \Facebook\CLILib\CLIWithRequiredArguments {
 
 <<__EntryPoint>>
 async function dorm_codegen_cli_main_async(): Awaitable<noreturn> {
+  (() ==> {
+    // HHAST-generated to avoid pseudomain local leaks
+    require_once(__DIR__.'/../../vendor/hh_autoload.hh');
+  })();
   $exit_code = await DormCodegenCLI::runAsync();
   exit($exit_code);
 }
