@@ -9,6 +9,8 @@
 
 namespace Facebook\HackCodegen;
 
+use namespace HH\Lib\Regex;
+
 final class HackBuilderTest extends CodegenBaseTest {
 
   private function getHackBuilder(): HackBuilder {
@@ -78,7 +80,7 @@ final class HackBuilderTest extends CodegenBaseTest {
   }
 
   public function testRegex(): void {
-    $make_code = $re ==> $this->getHackBuilder()
+    $make_code = (Regex\Pattern<Regex\Match> $re) ==> $this->getHackBuilder()
       ->addValue($re, HackBuilderValues::regex())
       ->getCode();
     expect($make_code(re"/foo/"))->toBeSame('re"/foo/"');

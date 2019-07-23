@@ -400,7 +400,7 @@ final class CodegenFile {
       $this->fileNamespace ?? '',
     );
 
-    $get_use_statement = ($type, $ns, $as) ==>
+    $get_use_statement = (string $type, string $ns, ?string $as) ==>
       \sprintf('use %s %s%s;', $type, $ns, $as === null ? '' : ' as '.$as);
 
     foreach ($this->useNamespaces as $ns => $as) {
