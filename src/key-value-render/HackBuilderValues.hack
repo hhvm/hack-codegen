@@ -171,6 +171,7 @@ abstract final class HackBuilderValues {
     IHackBuilderValueRenderer<Tv> $vr,
   ): IHackBuilderValueRenderer<shape(/* HH_FIXME[0003] */...)> {
     /* HH_IGNORE_ERROR[4110] munging array to shape */
+    /* HH_IGNORE_ERROR[4323] munging array to shape */
     return new _Private\HackBuilderNativeKeyValueCollectionRenderer(
       ContainerType::SHAPE_TYPE,
       HackBuilderKeys::export(),
