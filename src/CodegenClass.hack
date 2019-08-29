@@ -9,7 +9,7 @@
 
 namespace Facebook\HackCodegen;
 
-use namespace HH\Lib\{Str, Vec};
+use namespace HH\Lib\{Regex, Str};
 
 /**
  * Generate code for a class.
@@ -119,11 +119,10 @@ final class CodegenClass extends CodegenClassish {
     if ($param_full !== null) {
       // Extract variable names from parameters
       $param_names = vec[];
-      $re = '/\$[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*/';
+      $re = re"/\\\$[a-zA-Z_\\x7f-\\xff][a-zA-Z0-9_\\x7f-\\xff]*/";
       foreach ($param_full as $str) {
-        $matches = array();
-        if (\preg_match_all($re, $str, &$matches)) {
-          $param_names = Vec\concat($param_names, $matches[0]);
+        foreach (Regex\every_match($str, $re) as $match) {
+          $param_names[] = $match[0];
         }
       }
       $params_str = \implode(', ', $param_names);
