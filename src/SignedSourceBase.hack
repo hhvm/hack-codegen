@@ -9,6 +9,8 @@
 
 namespace Facebook\HackCodegen;
 
+use namespace HH\Lib\{C, Keyset, Regex, Str, Vec};
+
 abstract class SignedSourceBase {
 
   const TOKEN = '<<SignedSource::*O*zOeWoEQle#+L!plEphiEmie@I>>';
@@ -23,8 +25,10 @@ abstract class SignedSourceBase {
     return $file_data;
   }
 
-  public static function getPattern(): string {
-    return '/@'.static::getTokenName().' (?:SignedSource<<([a-f0-9]{32})>>)/';
+  public static function getPattern(
+  ): Regex\Pattern<shape('token_name' => string, 'signature' => string, ...)> {
+    return
+      re"/@(?<token_name>\\S+) (?:SignedSource<<(?<signature>[a-f0-9]{32})>>)/";
   }
 
   /**
@@ -68,7 +72,10 @@ abstract class SignedSourceBase {
    *
    */
   public static function isSigned(string $file_data): bool {
-    return (bool)\preg_match(static::getPattern(), $file_data);
+    return C\any(
+      Regex\every_match($file_data, static::getPattern()),
+      $match ==> $match['token_name'] === static::getTokenName(),
+    );
   }
 
   /**
@@ -80,15 +87,25 @@ abstract class SignedSourceBase {
    *
    */
   public static function verifySignature(string $file_data): bool {
-    $matches = array();
-    if (!\preg_match(static::getPattern(), $file_data, &$matches)) {
-      throw new \Exception('Can not verify the signature of an unsigned file.');
-    }
-    $replaced_data =
-      \str_replace('SignedSource<<'.$matches[1].'>>', static::TOKEN, $file_data);
+    $signatures =
+      Regex\every_match($file_data, static::getPattern())
+      |> Vec\filter($$, $m ==> $m['token_name'] === static::getTokenName())
+      |> Keyset\map($$, $m ==> $m['signature']);
 
-    $signature = \md5(static::preprocess($replaced_data));
-    return $signature === $matches[1];
+    if (C\is_empty($signatures)) {
+      throw new \Exception('Can not verify the signature of an unsigned file.');
+    } else if (C\count($signatures) > 1) {
+      throw new \Exception('File has multiple different signatures.');
+    }
+
+    $signature = C\onlyx($signatures);
+
+    $expected_signature = $file_data
+      |> Str\replace($$, 'SignedSource<<'.$signature.'>>', static::TOKEN)
+      |> static::preprocess($$)
+      |> \md5($$);
+
+    return $signature === $expected_signature;
   }
 
   /**
