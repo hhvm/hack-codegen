@@ -126,7 +126,7 @@ final class PartiallyGeneratedCode {
    * manual sections, duplicated ids, etc)
    */
   public function assertValidManualSections(): void {
-    foreach ($this->iterateCodeSections($this->code) as $section) {
+    foreach ($this->iterateCodeSections($this->code) as $_section) {
     }
   }
 
@@ -141,14 +141,12 @@ final class PartiallyGeneratedCode {
     string $code,
   ): \Generator<int, (?string, string), void> {
     // Regular expression to match the beginning of a manual section
-    $quoted = \preg_quote(self::$manualBegin, '/');
     $begin = self::getBeginManualSectionRegex('(.*)');
     $valid_begin = self::getBeginManualSectionRegex('([A-Za-z0-9:_]+)');
 
     $seen_ids = keyset[];
     $current_id = null;
     $chunk = array();
-    $manual = array();
     $lines = \explode("\n", $code);
     foreach ($lines as $line) {
       if (\strpos($line, self::$manualEnd) !== false) {
