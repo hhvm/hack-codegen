@@ -23,6 +23,6 @@ function pop_backx<T>(inout Container<T> $list): T {
     "%s called, but container is empty",
     __FUNCTION__,
   );
-  $last = \array_pop(&$list);
+  $last = \array_pop(inout $list);
   return $last;
 }

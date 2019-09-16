@@ -35,8 +35,8 @@ final class HackfmtFormatter implements ICodegenFormatter {
       \file_put_contents($tempnam, $code);
       \exec(
         'hackfmt '.$options.' '.\escapeshellarg($tempnam),
-        &$output,
-        &$exit_code,
+        inout $output,
+        inout $exit_code,
       );
     } finally {
       \unlink($tempnam);

@@ -132,7 +132,7 @@ abstract class BaseCodeBuilder {
 
     // break into lines and add one by one to handle indentation
     $lines = Str\split($code, "\n");
-    $last_line = \array_pop(&$lines);
+    $last_line = \array_pop(inout $lines);
     foreach ($lines as $line) {
       $this->addLine($line);
     }
