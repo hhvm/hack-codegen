@@ -257,7 +257,7 @@ final class CodegenClassTest extends CodegenBaseTest {
     $cgf = $this->getCodegenFactory();
     $code = $cgf->codegenClass('Foo')->setExtendsf('X<%s>', 'Y')->render();
 
-    expect($code)->toContain('extends X<Y>');
+    expect($code)->toContainSubstring('extends X<Y>');
   }
 
   public function testGenericsWithSubtypeConstraints(): void {
@@ -266,7 +266,7 @@ final class CodegenClassTest extends CodegenBaseTest {
       ->addGenericSubtypeConstraint('T', 'U')
       ->render();
 
-    expect($code)->toContain('T as U');
+    expect($code)->toContainSubstring('T as U');
   }
 
   public function testGenericsWithSuperTypeConstraints(): void {
@@ -275,7 +275,7 @@ final class CodegenClassTest extends CodegenBaseTest {
       ->addGenericSupertypeConstraint('T', 'U')
       ->render();
 
-    expect($code)->toContain('T super U');
+    expect($code)->toContainSubstring('T super U');
   }
 
   public function testGenericsWithConstraints(): void {
@@ -288,9 +288,9 @@ final class CodegenClassTest extends CodegenBaseTest {
       ->addGeneric('Tsingle')
       ->render();
 
-    expect($code)->toContain('Tk as Tv');
-    expect($code)->toContain('Tu super Sp');
-    expect($code)->toContain('Tt as Xx');
-    expect($code)->toContain('Tsingle');
+    expect($code)->toContainSubstring('Tk as Tv');
+    expect($code)->toContainSubstring('Tu super Sp');
+    expect($code)->toContainSubstring('Tt as Xx');
+    expect($code)->toContainSubstring('Tsingle');
   }
 }

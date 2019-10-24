@@ -32,6 +32,7 @@
     ],
     "type": "library",
     "require-dev": {
+        "hhvm/fbexpect": "^2.7.0",
         "hhvm/hacktest": "^1.0",
         "hhvm/type-assert": "^3.1",
         "facebook/fbexpect": "^2.1.0",

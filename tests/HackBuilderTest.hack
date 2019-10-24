@@ -373,8 +373,8 @@ $del."extends SomeBaseClass",
         HackBuilderValues::vector(HackBuilderValues::export()),
       )
       ->getCode();
-    expect($body)->toContain('Vector');
-    expect($body)->toNotContain('HH');
+    expect($body)->toContainSubstring('Vector');
+    expect($body)->toNotContainSubstring('HH');
     expect_with_context(static::class, $body)->toBeUnchanged();
   }
 

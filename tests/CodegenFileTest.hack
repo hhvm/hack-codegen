@@ -315,7 +315,7 @@ final class CodegenFileTest extends CodegenBaseTest {
         ->setFileType(CodegenFileType::HACK_STRICT)
         ->setShebangLine('#!/usr/bin/env hhvm')
         ->render(),
-    )->toThrow(\HH\InvariantException::class);
+    )->toThrow(InvariantException::class);
   }
 
   public function testDotHackExecutable(): void {
@@ -341,7 +341,7 @@ final class CodegenFileTest extends CodegenBaseTest {
         ->setFileType(CodegenFileType::HACK_STRICT)
         ->setPseudoMainHeader('exit();')
         ->render(),
-    )->toThrow(\HH\InvariantException::class);
+    )->toThrow(InvariantException::class);
   }
 
   public function testNoPseudoMainFooterInStrict(): void {
@@ -351,7 +351,7 @@ final class CodegenFileTest extends CodegenBaseTest {
         ->setFileType(CodegenFileType::HACK_STRICT)
         ->setPseudoMainFooter('exit();')
         ->render(),
-    )->toThrow(\HH\InvariantException::class);
+    )->toThrow(InvariantException::class);
   }
 
   public function testFormattingFullyGeneratedFile(): void {
