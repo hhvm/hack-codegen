@@ -31,7 +31,10 @@ final class Filesystem {
   }
 
   public static function readFile(string $path): string {
-    $data = @\file_get_contents($path);
+    $error_level = \error_reporting(0);
+    $data = \file_get_contents($path);
+    \error_reporting($error_level);
+
     if ($data === false) {
       throw new \Exception("Failed to read file `".$path."'.");
     }
@@ -40,7 +43,9 @@ final class Filesystem {
   }
 
   public static function writeFile(string $path, string $data): void {
-    $res = @\file_put_contents($path, $data);
+    $error_level = \error_reporting(0);
+    $res = \file_put_contents($path, $data);
+    \error_reporting($error_level);
 
     if ($res === false) {
       throw new \Exception("Failed to write file `".$path."'.");
