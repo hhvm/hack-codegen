@@ -10,3 +10,4 @@ user_attributes=
 disable_primitive_refinement=true
 disallow_stringish_magic=true
 disallow_array_literal = true
+disallow_silence = true
