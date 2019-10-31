@@ -55,7 +55,7 @@ final class PartiallyGeneratedCode {
     string $existing_code,
     ?KeyedContainer<string, Traversable<string>> $rekeys = null,
   ): string {
-    $merged = array();
+    $merged = varray[];
     $existing = $this->extractManualCode($existing_code);
     $generated = $this->iterateCodeSections($this->code);
     foreach ($generated as $section) {
@@ -110,7 +110,7 @@ final class PartiallyGeneratedCode {
    * Extract the generated code and returns it as a string.
    */
   public function extractGeneratedCode(): string {
-    $generated = array();
+    $generated = varray[];
     foreach ($this->iterateCodeSections($this->code) as $section) {
       list($id, $chunk) = $section;
       if ($id === null) {
@@ -146,12 +146,12 @@ final class PartiallyGeneratedCode {
 
     $seen_ids = keyset[];
     $current_id = null;
-    $chunk = array();
+    $chunk = varray[];
     $lines = \explode("\n", $code);
     foreach ($lines as $line) {
       if (\strpos($line, self::$manualEnd) !== false) {
         yield tuple($current_id, \implode("\n", $chunk));
-        $chunk = array($line);
+        $chunk = varray[$line];
         $current_id = null;
 
       } else if (\preg_match($begin, $line) === 1) {
@@ -168,7 +168,7 @@ final class PartiallyGeneratedCode {
 
         $chunk[] = $line;
         yield tuple(null, \implode("\n", $chunk));
-        $chunk = array();
+        $chunk = varray[];
         $current_id = \trim(\preg_replace($begin, '\\1', $line));
 
         if (C\contains($seen_ids, $current_id)) {

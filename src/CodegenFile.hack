@@ -463,7 +463,7 @@ final class CodegenFile {
   private function loadExistingFiles(): ?string {
     $file_names = $this->otherFileNames;
     $file_names[] = $this->fileName;
-    $all_content = array();
+    $all_content = varray[];
     foreach ($file_names as $file_name) {
       if (\file_exists($file_name)) {
         $content = Filesystem::readFile($file_name);

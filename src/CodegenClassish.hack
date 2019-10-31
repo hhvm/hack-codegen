@@ -380,7 +380,7 @@ abstract class CodegenClassish implements ICodeBuilderRenderer {
     $generated_from =
       $this->generatedFrom ? $this->generatedFrom->render() : null;
 
-    $doc_block_parts = \array_filter(array($this->docBlock, $generated_from));
+    $doc_block_parts = \array_filter(varray[$this->docBlock, $generated_from]);
 
     if ($doc_block_parts) {
       $builder->addDocBlock(\implode("\n\n", $doc_block_parts));
