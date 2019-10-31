@@ -9,6 +9,4 @@ enable_experimental_tc_features=shape_field_check,sealed_classes
 user_attributes=
 disable_primitive_refinement=true
 disallow_stringish_magic=true
-
-; Once fbexpect and hhvm-autoload pass disallow_silence this setting can be safely enabled
-disallow_silence = false
+disallow_silence = true
