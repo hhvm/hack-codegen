@@ -184,7 +184,7 @@ class CodegenDorm {
   }
 
   private function getDatabaseRowShape(): CodegenShape {
-    $db_fields = array();
+    $db_fields = varray[];
     foreach ($this->schema->getFields() as $field) {
       $type = $field->getType();
       if ($type === \DateTime::class) {
