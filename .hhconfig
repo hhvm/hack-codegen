@@ -9,4 +9,6 @@ enable_experimental_tc_features=shape_field_check,sealed_classes
 user_attributes=
 disable_primitive_refinement=true
 disallow_stringish_magic=true
-disallow_array_literal = true
+
+; Once hhvm 4.24 is required and all libs have been updated this setting can be safely enabled
+disallow_array_literal = false
