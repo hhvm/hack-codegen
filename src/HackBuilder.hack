@@ -55,7 +55,7 @@ final class HackBuilder extends BaseCodeBuilder {
     $max_length = $this->getMaxCodeLength() - 4;
 
     // Let's put everything in a single line
-    $args = '('.\implode(', ', $params).')';
+    $args = '('.Str\join($params, ', ').')';
     $composite_line = $func_call_line.$args;
     // Ignore suggested line breaks within individual args; otherwise we could
     // split in the middle of arguments rather than after each parameter.

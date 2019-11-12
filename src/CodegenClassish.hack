@@ -286,7 +286,7 @@ abstract class CodegenClassish implements ICodeBuilderRenderer {
         $$,
         $decl ==> '    '.$decl.",\n",
       )
-      |> \implode("", $$)
+      |> Str\join($$, '')
       |> Str\strip_suffix($$, ",\n")
       |> "\n  <\n".$$."\n  >";
   }
@@ -383,7 +383,7 @@ abstract class CodegenClassish implements ICodeBuilderRenderer {
     $doc_block_parts = \array_filter(varray[$this->docBlock, $generated_from]);
 
     if ($doc_block_parts) {
-      $builder->addDocBlock(\implode("\n\n", $doc_block_parts));
+      $builder->addDocBlock(Str\join($doc_block_parts, "\n\n"));
     }
 
     $wrapper_func = $this->wrapperFunc;

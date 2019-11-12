@@ -485,7 +485,7 @@ final class CodegenFile {
         $all_content[] = $content;
       }
     }
-    return \implode('', $all_content);
+    return Str\join($all_content, '');
   }
 
   public function setGeneratedFrom(CodegenGeneratedFrom $from): this {

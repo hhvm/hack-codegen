@@ -8,7 +8,7 @@
  */
 namespace Facebook\HackCodegen;
 
-use namespace HH\Lib\{C, Dict, Vec};
+use namespace HH\Lib\{C, Dict, Str, Vec};
 
 trait CodegenWithAttributes {
   protected IHackCodegenConfig $config;
@@ -49,17 +49,17 @@ trait CodegenWithAttributes {
     }
 
     return '<<'.
-      \implode(
-        ', ',
+      Str\join(
         Dict\map_with_key(
           $attributes,
           ($name, $params) ==> {
             if (C\is_empty($params)) {
               return $name;
             }
-            return $name.'('.\implode(', ', $params).')';
+            return $name.'('.Str\join($params, ', ').')';
           },
         ),
+        ', '
       ).
       '>>';
   }
