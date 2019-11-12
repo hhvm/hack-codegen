@@ -150,7 +150,7 @@ abstract class CodegenFunctionish implements ICodeBuilderRenderer {
   ): string {
     $builder = (new HackBuilder($this->config))
       ->add($keywords)
-      ->addf('%s(%s)', $this->name, \implode(', ', $this->parameters))
+      ->addf('%s(%s)', $this->name, Str\join($this->parameters, ', '))
       ->addIf($this->returnType !== null, ': '.$this->returnType);
 
     $code = $builder->getCode();

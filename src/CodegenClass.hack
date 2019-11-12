@@ -125,7 +125,7 @@ final class CodegenClass extends CodegenClassish {
           $param_names[] = $match[0];
         }
       }
-      $params_str = \implode(', ', $param_names);
+      $params_str = Str\join( $param_names, ', ');
       $body = 'return new '.$this->getName().'('.$params_str.');';
 
       $this->wrapperFunc = (

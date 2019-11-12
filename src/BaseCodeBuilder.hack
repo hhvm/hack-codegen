@@ -331,7 +331,7 @@ abstract class BaseCodeBuilder {
         }
       }
     }
-    return $this->add(\implode("\n  ", $final_lines));
+    return $this->add(Str\join($final_lines, "\n  "));
   }
 
   /**

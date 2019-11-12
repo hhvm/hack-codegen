@@ -46,7 +46,7 @@ final class HackfmtFormatter implements ICodegenFormatter {
       $exit_code === 0,
       'Failed to invoke hackfmt',
     );
-    return \implode("\n", $output)."\n";
+    return Str\join($output, "\n")."\n";
   }
 
   <<__Memoize>>

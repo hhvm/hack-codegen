@@ -9,7 +9,7 @@
 
 namespace Facebook\HackCodegen;
 
-use namespace HH\Lib\C;
+use namespace HH\Lib\{C, Str};
 
 /**
  * Manage partially generated code.  The main operation is to merge existing
@@ -79,7 +79,7 @@ final class PartiallyGeneratedCode {
             }
           }
           if ($content) {
-            $merged[] = \implode("\n\n", $content);
+            $merged[] = Str\join($content, "\n\n");
           } else {
             // This manual section is new, so insert inside it the chunk from
             // the generated code (e.g. the generated code can have a comment
@@ -89,7 +89,7 @@ final class PartiallyGeneratedCode {
         }
       }
     }
-    return \implode("\n", \array_filter($merged));
+    return Str\join(\array_filter($merged), "\n");
   }
 
   /**
@@ -117,7 +117,7 @@ final class PartiallyGeneratedCode {
         $generated[] = $chunk;
       }
     }
-    return \implode("\n", $generated);
+    return Str\join($generated, "\n");
   }
 
   /**
@@ -150,7 +150,7 @@ final class PartiallyGeneratedCode {
     $lines = \explode("\n", $code);
     foreach ($lines as $line) {
       if (\strpos($line, self::$manualEnd) !== false) {
-        yield tuple($current_id, \implode("\n", $chunk));
+        yield tuple($current_id, Str\join($chunk, "\n"));
         $chunk = varray[$line];
         $current_id = null;
 
@@ -167,7 +167,7 @@ final class PartiallyGeneratedCode {
         }
 
         $chunk[] = $line;
-        yield tuple(null, \implode("\n", $chunk));
+        yield tuple(null, Str\join($chunk, "\n"));
         $chunk = varray[];
         $current_id = \trim(\preg_replace($begin, '\\1', $line));
 
@@ -187,11 +187,10 @@ final class PartiallyGeneratedCode {
       );
     }
     if ($code !== '') {
-      yield tuple(null, \implode("\n", $chunk));
+      yield tuple(null, Str\join($chunk, "\n"));
     }
   }
 }
 
 final class PartiallyGeneratedCodeException extends \Exception {
 }
-;
