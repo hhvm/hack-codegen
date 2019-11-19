@@ -126,7 +126,7 @@ final class CodegenExpectedFile {
    * Map<string,string> and a new one.
    * User is prompted for all mismatched values.
    */
-  final public static function writeExpectedFile(
+  public static function writeExpectedFile(
     string $file_name,
     Map<string, string> $new_expected,
     Map<string, string> $old_expected,
@@ -214,7 +214,7 @@ final class CodegenExpectedFile {
   /**
    * Helper to display any message on stdout
    */
-  final public static function displayf(
+  public static function displayf(
     Str\SprintfFormatString $format,
     mixed ...$args
   ): void {
@@ -222,7 +222,7 @@ final class CodegenExpectedFile {
     self::displayRaw('gentest> '.$message."\n");
   }
 
-  final public static function displayRaw(string $message): void {
+  public static function displayRaw(string $message): void {
     \fwrite(\STDERR, $message);
   }
 
@@ -279,7 +279,7 @@ final class CodegenExpectedFile {
    * Escape the tokens that carry signatures, so that when writing those to
    * the .codegen file, it doesn't seem like that's the file signature.
    */
-  final private static function escapeTokens(string $s): string {
+  private static function escapeTokens(string $s): string {
     return Str\replace_every(
       $s,
       dict[
@@ -289,7 +289,7 @@ final class CodegenExpectedFile {
     );
   }
 
-  final private static function unescapeTokens(string $s): string {
+  private static function unescapeTokens(string $s): string {
     return Str\replace_every(
       $s,
       dict[

@@ -20,7 +20,7 @@ use type Facebook\HackCodegen\{
 final class HackBuilderCodegenRenderer
 implements IHackBuilderValueRenderer<ICodeBuilderRenderer> {
 
-  final public function render(
+  public function render(
     IHackCodegenConfig $config,
     ICodeBuilderRenderer $value,
   ): string {

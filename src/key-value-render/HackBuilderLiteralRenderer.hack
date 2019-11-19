@@ -19,7 +19,7 @@ final class HackBuilderLiteralRenderer
   implements
     IHackBuilderKeyRenderer<string>,
     IHackBuilderValueRenderer<string> {
-  final public function render(IHackCodegenConfig $_, string $value): string {
+  public function render(IHackCodegenConfig $_, string $value): string {
     return $value;
   }
 }
