@@ -23,7 +23,7 @@ final class HackBuilderShapeRenderer
   ) {
   }
 
-  final public function render(
+  public function render(
     IHackCodegenConfig $config,
     shape(/* HH_FIXME[0003] */...) $shape,
   ): string {

@@ -16,7 +16,7 @@ use namespace HH\Lib\{Regex, Str};
 final class HackBuilderRegexRenderer<T>
   implements IHackBuilderValueRenderer<Regex\Pattern<T>> {
 
-  final public function render(
+  public function render(
     IHackCodegenConfig $_,
     Regex\Pattern<T> $value,
   ): string {

@@ -21,7 +21,7 @@ final class HackBuilderKeyLambdaRenderer<T as arraykey>
   ) {
   }
 
-  final public function render(IHackCodegenConfig $config, T $value): string {
+  public function render(IHackCodegenConfig $config, T $value): string {
     $callback = $this->callback;
     return $callback($config, $value);
   }

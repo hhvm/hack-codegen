@@ -85,7 +85,7 @@ final class CodegenClass extends CodegenClassish {
    *
    * @param $comment the full comment, including delimiters
    */
-  final public function addDeclComment(string $comment): this {
+  public function addDeclComment(string $comment): this {
     $this->declComment .= $comment."\n";
     return $this;
   }

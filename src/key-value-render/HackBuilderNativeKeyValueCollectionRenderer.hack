@@ -29,7 +29,7 @@ final class HackBuilderNativeKeyValueCollectionRenderer<
   ) {
   }
 
-  final public function render(IHackCodegenConfig $config, T $values): string {
+  public function render(IHackCodegenConfig $config, T $values): string {
     $key_renderer = $this->keyRenderer;
     $value_renderer = $this->valueRenderer;
 
