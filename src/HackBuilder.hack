@@ -175,6 +175,9 @@ final class HackBuilder extends BaseCodeBuilder {
     return
       $this->addReturn(\vsprintf($value, $args), HackBuilderValues::literal());
   }
+  public function addReturnVoid(): this{
+    return $this->addLine('return;');
+  }
 
   public function addAssignment<T>(
     string $var_name,
