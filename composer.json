@@ -4,7 +4,7 @@
     "keywords": ["code generation", "Hack"],
     "require": {
         "hhvm": "^4.25",
-        "hhvm/hhvm-autoload": "^2.0",
+        "hhvm/hhvm-autoload": "^2.0|^3.0",
         "hhvm/hsl": "^4.0"
     },
     "bin": [ "bin/hh-codegen-verify-signatures", "bin/hh-codegen-verify-signatures.hack" ],
