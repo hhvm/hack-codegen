@@ -52,6 +52,7 @@ final class HackfmtFormatter implements ICodegenFormatter {
   <<__Memoize>>
   private function getFormattedOptions(): string {
     $options = vec[
+      '--format-generated-code',
       '--indent-width',
       (string) $this->config->getSpacesPerIndentation(),
       '--line-width',
