@@ -52,7 +52,6 @@ final class HackfmtFormatter implements ICodegenFormatter {
   <<__Memoize>>
   private function getFormattedOptions(): string {
     $options = vec[
-      '--format-generated-code',
       '--indent-width',
       (string) $this->config->getSpacesPerIndentation(),
       '--line-width',
@@ -61,6 +60,13 @@ final class HackfmtFormatter implements ICodegenFormatter {
 
     if ($this->config->shouldUseTabs()) {
       $options[] = '--tabs';
+    }
+
+    // HHVM < 4.48 always formats generated code. HHVM 4.48 never does (so this
+    // formatter is broken on that version). HHVM >= 4.49 formats generated code
+    // iff the following flag is provided:
+    if (\version_compare(\HHVM_VERSION, '4.49') >= 0) {
+      $options[] = '--format-generated-code';
     }
 
     return Vec\map(
