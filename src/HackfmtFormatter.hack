@@ -62,6 +62,13 @@ final class HackfmtFormatter implements ICodegenFormatter {
       $options[] = '--tabs';
     }
 
+    // HHVM < 4.48 always formats generated code. HHVM 4.48 never does (so this
+    // formatter is broken on that version). HHVM >= 4.49 formats generated code
+    // iff the following flag is provided:
+    if (\version_compare(\HHVM_VERSION, '4.49') >= 0) {
+      $options[] = '--format-generated-code';
+    }
+
     return Vec\map(
       $options,
       $option ==> \escapeshellarg($option),
