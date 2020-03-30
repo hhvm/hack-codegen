@@ -16,12 +16,12 @@ final class CodegenTraitTest extends CodegenBaseTest {
     $code = $cgf
       ->codegenTrait('TestDocblockInternal')
       ->setDocBlock(
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ".
-        "do eiusmod tempor incididunt ut labore et dolore magna aliqua. ".
-        "Ut enim ad minim veniam, quis nostrud exercitation ullamco ".
+        'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed '.
+        'do eiusmod tempor incididunt ut labore et dolore magna aliqua. '.
+        'Ut enim ad minim veniam, quis nostrud exercitation ullamco '.
         "laboris nisi ut aliquip ex ea commodo consequat.\n".
         "Understood?\n".
-        "Yes!",
+        'Yes!',
       )
       ->render();
 
@@ -39,10 +39,10 @@ final class CodegenTraitTest extends CodegenBaseTest {
         $cgf
           ->codegenUsesTrait('WhateverTrait')
           ->setGeneratedFrom(
-            $cgf->codegenGeneratedFromMethod("Whatever", "Method"),
+            $cgf->codegenGeneratedFromMethod('Whatever', 'Method'),
           ),
       )
-      ->addTrait($cgf->codegenUsesTrait("Useless"))
+      ->addTrait($cgf->codegenUsesTrait('Useless'))
       ->addConstant(
         $cgf->codegenClassConstant('MAX_SIZE')
           ->setValue(256, HackBuilderValues::export()),

@@ -178,7 +178,7 @@ abstract class CodegenFunctionish implements ICodeBuilderRenderer {
 
       $multi_line_builder = (new HackBuilder($this->config))
         ->add($keywords)
-        ->addLine($this->name."(")
+        ->addLine($this->name.'(')
         ->indent()
         ->addLines($parameter_lines)
         ->unindent()
@@ -224,7 +224,7 @@ abstract class CodegenFunctionish implements ICodeBuilderRenderer {
     if ($this->docBlock !== null && $this->docBlock !== '') {
       if ($this->generatedFrom) {
         $builder->addDocBlock(
-          $this->docBlock."\n(".$this->generatedFrom->render().")",
+          $this->docBlock."\n(".$this->generatedFrom->render().')',
         );
       } else {
         $builder->addDocBlock($this->docBlock);

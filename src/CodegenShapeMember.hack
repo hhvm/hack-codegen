@@ -19,7 +19,7 @@
    ) {
      invariant(
        $type is string || $type is CodegenShape,
-       "You must provide either a string or shape",
+       'You must provide either a string or shape',
      );
    }
 

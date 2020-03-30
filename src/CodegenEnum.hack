@@ -83,9 +83,9 @@ final class CodegenEnum implements ICodeBuilderRenderer {
       ->ensureNewLine()
       ->addWithSuggestedLineBreaksf(
       '%s%s%s {',
-      "enum ".$this->name,
-      HackBuilder::DELIMITER.": ".$this->enumType,
-      $this->isAs !== null ? HackBuilder::DELIMITER."as ".$this->isAs : '',
+      'enum '.$this->name,
+      HackBuilder::DELIMITER.': '.$this->enumType,
+      $this->isAs !== null ? HackBuilder::DELIMITER.'as '.$this->isAs : '',
     );
 
     if (!C\is_empty($this->members)) {

@@ -153,9 +153,9 @@ final class CodegenClass extends CodegenClassish {
       $this->declComment,
       $this->isAbstract ? 'abstract ' : '',
       $this->isFinal ? 'final ' : '',
-      "class ".$this->name.$generics_dec,
+      'class '.$this->name.$generics_dec,
       $this->extendsClass !== null
-        ? HackBuilder::DELIMITER."extends ".$this->extendsClass
+        ? HackBuilder::DELIMITER.'extends '.$this->extendsClass
         : '',
     );
 

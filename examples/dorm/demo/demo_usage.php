@@ -42,11 +42,11 @@ function dorm_demo_main(): void {
     ->setIsActive(true)
     ->save();
 
-  echo "Created user with id ".$id."\n";
+  echo 'Created user with id '.$id."\n";
 
   $user = \DormUser::load($id);
   invariant($user is nonnull, 'Failed to load user');
-  echo "Loaded: ".$user->getFirstName()." ".$user->getLastName()."\n";
+  echo 'Loaded: '.$user->getFirstName().' '.$user->getLastName()."\n";
 
   \DormUserMutator::update($id)
     ->setFirstName('Peter')
@@ -56,5 +56,5 @@ function dorm_demo_main(): void {
 
   $user = \DormUser::load($id);
   invariant($user is nonnull, 'Failed to load user');
-  echo "Loaded: ".$user->getFirstName()." ".$user->getLastName()."\n";
+  echo 'Loaded: '.$user->getFirstName().' '.$user->getLastName()."\n";
 }

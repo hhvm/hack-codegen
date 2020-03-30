@@ -58,7 +58,7 @@ final class CodegenUsesTrait {
   public function render(): string {
     return (new HackBuilder($this->config))
       ->addInlineComment($this->comment)
-      ->addLinef("use %s;", $this->name)
+      ->addLinef('use %s;', $this->name)
       ->getCode();
   }
 }

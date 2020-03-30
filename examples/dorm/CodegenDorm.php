@@ -87,7 +87,7 @@ class CodegenDorm {
   private function getLoad(): CodegenMethod {
     $sql = 'select * from '.
       $this->schema->getTableName().
-      ' where '.$this->schema->getIdField().'=".$id."';
+      ' where '.$this->schema->getIdField().'=\'.$id.\'';
 
     // Here's how to build a block of code using hack_builder.
     // Notice that some methods have a sprintf style of arguments
@@ -97,7 +97,7 @@ class CodegenDorm {
     $body = $this->codegen->codegenHackBuilder()
       ->addLinef('$conn = new PDO(\'%s\');', $this->schema->getDsn())
       ->add('$cursor = ')
-      ->addMultilineCall('$conn->query', Vector {"\"".$sql."\""}, true)
+      ->addMultilineCall('$conn->query', Vector {"'".$sql."'"}, true)
       ->addLine('$result = $cursor->fetch(PDO::FETCH_ASSOC);')
       ->startIfBlock('!$result')
       ->addReturnf('null')

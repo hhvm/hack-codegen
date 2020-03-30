@@ -410,7 +410,7 @@ abstract class BaseCodeBuilder {
   final public function getCode(): string {
     invariant(
       !$this->wasGetCodeCalled,
-      "You may only call getCode() once on a given HackBuilder object.",
+      'You may only call getCode() once on a given HackBuilder object.',
     );
     $this->wasGetCodeCalled = true;
     return $this->code->detach();

@@ -105,7 +105,7 @@ final class CodegenFileTest extends CodegenBaseTest {
 
     Filesystem::writeFileIfChanged(
       $fname,
-      "<?php\n"."// Some handwritten code",
+      "<?php\n".'// Some handwritten code',
     );
     return $fname;
   }
@@ -385,17 +385,17 @@ final class CodegenFileTest extends CodegenBaseTest {
     expect_with_context(static::class, $code)->toBeUnchanged();
     expect(
       SignedSourceBase::hasValidSignatureFromAnySigner($code)
-    )->toBeTrue("bad signed source");
+    )->toBeTrue('bad signed source');
     expect(
       Str\ends_with($code, "\n")
-    )->toBeTrue("Should end with newline");
+    )->toBeTrue('Should end with newline');
     expect(
       Str\ends_with($code, "\n\n")
-    )->toBeFalse("Should end with one newline, not multiple");
+    )->toBeFalse('Should end with one newline, not multiple');
 
     $lines = Str\split($code, "\n");
     expect(
-      Str\starts_with($lines[8], " ")
+      Str\starts_with($lines[8], ' ')
     )->toBeTrue('use spaces instead of tabs');
   }
 

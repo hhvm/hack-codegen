@@ -253,7 +253,7 @@ final class CodegenFile {
    *     setShebangLine('#!/usr/bin/env hhvm')
    */
   public function setShebangLine(string $shebang): this {
-    invariant(!\strpbrk($shebang, "\n"), "Expected single line");
+    invariant(!\strpbrk($shebang, "\n"), 'Expected single line');
     invariant(Str\starts_with($shebang, '#!'), 'Shebang lines start with #!');
     $this->shebang = $shebang;
     return $this;

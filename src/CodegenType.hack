@@ -56,7 +56,7 @@ final class CodegenType implements ICodeBuilderRenderer {
   public function appendToBuilder(HackBuilder $builder): HackBuilder {
     invariant(
       $this->type !== null || $this->codegenShape !== null,
-      "You need to set either the type or the shape",
+      'You need to set either the type or the shape',
     );
     $builder->addf('%s %s = ', $this->keyword, $this->name);
     if ($this->type !== null) {
@@ -64,7 +64,7 @@ final class CodegenType implements ICodeBuilderRenderer {
     }
     invariant(
       $this->codegenShape !== null,
-      "Somehow the type and the shape were null!",
+      'Somehow the type and the shape were null!',
     );
     return $builder->addRenderer($this->codegenShape)->closeStatement();
   }

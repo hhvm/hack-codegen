@@ -20,6 +20,6 @@ final class HackBuilderClassnameRenderer
     IHackBuilderKeyRenderer<string>,
     IHackBuilderValueRenderer<string> {
   public function render(IHackCodegenConfig $_, string $value): string {
-    return "\\".$value.'::class';
+    return '\\'.$value.'::class';
   }
 }

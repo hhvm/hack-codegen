@@ -165,10 +165,10 @@ class CodegenMutator {
       )
       ->startIfBlock('$id === null')
       ->addLine('$this->checkRequiredFields();')
-      ->addLine('$names = "(".implode(",", $quoted->keys()).")";')
-      ->addLine('$values = "(".implode(",", $quoted->values()).")";')
+      ->addLine('$names = \'(\'.implode(\',\', $quoted->keys()).\')\';')
+      ->addLine('$values = \'(\'.implode(\',\', $quoted->values()).\')\';')
       ->addLinef(
-        '$st = "insert into %s ".$names." values ".$values;',
+        '$st = \'insert into %s \'.$names.\' values \'.$values;',
         $this->schema->getTableName(),
       )
       ->addLine('$conn->exec($st);')
@@ -176,11 +176,11 @@ class CodegenMutator {
       ->addElseBlock()
       ->addAssignment(
         '$pairs',
-        '$quoted->mapWithKey(($field, $value) ==>  $field."=".$value)',
+        '$quoted->mapWithKey(($field, $value) ==>  $field.\'=\'.$value)',
         HackBuilderValues::literal(),
       )
       ->addLinef(
-        '$st = "update %s set ".implode(",", $pairs)." where %s=".$this->id;',
+        '$st = \'update %s set \'.implode(\',\', $pairs).\' where %s=\'.$this->id;',
         $this->schema->getTableName(),
         $this->schema->getIdField(),
       )
@@ -219,8 +219,8 @@ class CodegenMutator {
         'invariant',
         Vector {
           '$missing->isEmpty()',
-          '"The following required fields are missing: %s"',
-          'implode(", ", $missing)',
+          '\'The following required fields are missing: %s\'',
+          'implode(\', \', $missing)',
         }
       );
 
@@ -234,7 +234,7 @@ class CodegenMutator {
     $methods = Vector {};
     foreach($this->schema->getFields() as $name => $field) {
       if ($field->getType() === 'DateTime') {
-        $value = '$value->format("Y-m-d")';
+        $value = '$value->format(\'Y-m-d\')';
       } else {
         $value = '$value';
       }
@@ -250,7 +250,7 @@ class CodegenMutator {
           ->addInlineComment('You may manually change this section of code');
       }
       $body
-        ->addLinef('$this->data["%s"] = %s;', $field->getDbColumn(), $value);
+        ->addLinef('$this->data[\'%s\'] = %s;', $field->getDbColumn(), $value);
 
       if ($field->isManual()) {
         // You always need to close a manual section

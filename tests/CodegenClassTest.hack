@@ -16,12 +16,12 @@ final class CodegenClassTest extends CodegenBaseTest {
       ->getCodegenFactory()
       ->codegenClass('TestDocblock')
       ->setDocBlock(
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ".
-        "do eiusmod tempor incididunt ut labore et dolore magna aliqua. ".
-        "Ut enim ad minim veniam, quis nostrud exercitation ullamco ".
+        'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed '.
+        'do eiusmod tempor incididunt ut labore et dolore magna aliqua. '.
+        'Ut enim ad minim veniam, quis nostrud exercitation ullamco '.
         "laboris nisi ut aliquip ex ea commodo consequat.\n".
         "Understood?\n".
-        "Yes!",
+        'Yes!',
       )
       ->render();
 
@@ -48,7 +48,7 @@ final class CodegenClassTest extends CodegenBaseTest {
       ->addInterface(
         $cgf
           ->codegenImplementsInterface('IMeh')
-          ->setGeneratedFrom($cgf->codegenGeneratedFromMethod("Foo", "Bar")),
+          ->setGeneratedFrom($cgf->codegenGeneratedFromMethod('Foo', 'Bar')),
       )
       ->setIsAbstract()
       ->render();
@@ -113,10 +113,10 @@ final class CodegenClassTest extends CodegenBaseTest {
         $cgf
           ->codegenUsesTrait('WhateverTrait')
           ->setGeneratedFrom(
-            $cgf->codegenGeneratedFromMethod("Whatever", "Method"),
+            $cgf->codegenGeneratedFromMethod('Whatever', 'Method'),
           ),
       )
-      ->addTrait($cgf->codegenUsesTrait("Useless"))
+      ->addTrait($cgf->codegenUsesTrait('Useless'))
       ->addConstant(
         $cgf->codegenClassConstant('MAX_SIZE')
           ->setValue(256, HackBuilderValues::export()),
@@ -196,12 +196,12 @@ final class CodegenClassTest extends CodegenBaseTest {
     $code = $cgf
       ->codegenClass('TestWrapperFunc')
       ->setDocBlock(
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed ".
-        "do eiusmod tempor incididunt ut labore et dolore magna aliqua. ".
-        "Ut enim ad minim veniam, quis nostrud exercitation ullamco ".
+        'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed '.
+        'do eiusmod tempor incididunt ut labore et dolore magna aliqua. '.
+        'Ut enim ad minim veniam, quis nostrud exercitation ullamco '.
         "laboris nisi ut aliquip ex ea commodo consequat.\n".
         "Understood?\n".
-        "Yes!",
+        'Yes!',
       )
       ->addConstructorWrapperFunc()
       ->render();

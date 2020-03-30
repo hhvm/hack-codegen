@@ -73,7 +73,7 @@ final class HackBuilder extends BaseCodeBuilder {
     }
 
     $this
-      ->addWithSuggestedLineBreaks($func_call_line."(")
+      ->addWithSuggestedLineBreaks($func_call_line.'(')
       ->newLine()
       ->indent()
       ->addLinesWithSuggestedLineBreaks(Vec\map($params, $line ==> $line.','))
@@ -204,7 +204,7 @@ final class HackBuilder extends BaseCodeBuilder {
       case ContainerType::DICT:
       case ContainerType::KEYSET:
       case ContainerType::VEC:
-        $container_sign = "[";
+        $container_sign = '[';
         break;
       case ContainerType::IMM_MAP:
       case ContainerType::IMM_SET:
@@ -212,11 +212,11 @@ final class HackBuilder extends BaseCodeBuilder {
       case ContainerType::MAP:
       case ContainerType::SET:
       case ContainerType::VECTOR:
-        $container_sign = " {";
+        $container_sign = ' {';
         break;
       case ContainerType::SHAPE_TYPE:
       case ContainerType::PHP_ARRAY:
-        $container_sign = "(";
+        $container_sign = '(';
         break;
     }
     return $this->addLine(((string)$type).$container_sign)->indent();
@@ -234,7 +234,7 @@ final class HackBuilder extends BaseCodeBuilder {
       case ContainerType::DICT:
       case ContainerType::KEYSET:
       case ContainerType::VEC:
-        $container_sign = "]";
+        $container_sign = ']';
         break;
       case ContainerType::IMM_MAP:
       case ContainerType::IMM_SET:
@@ -242,11 +242,11 @@ final class HackBuilder extends BaseCodeBuilder {
       case ContainerType::MAP:
       case ContainerType::SET:
       case ContainerType::VECTOR:
-        $container_sign = "}";
+        $container_sign = '}';
         break;
       case ContainerType::SHAPE_TYPE:
       case ContainerType::PHP_ARRAY:
-        $container_sign = ")";
+        $container_sign = ')';
         break;
     }
     return $this->unindent()->add($container_sign);
@@ -581,7 +581,7 @@ final class HackBuilder extends BaseCodeBuilder {
     Traversable<string> $params,
   ): this {
     return $this
-      ->addLine($name."(")
+      ->addLine($name.'(')
       ->indent()
       ->addLines(Vec\map($params, $line ==> $line.','))
       ->unindent()

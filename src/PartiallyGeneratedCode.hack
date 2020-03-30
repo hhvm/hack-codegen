@@ -157,13 +157,13 @@ final class PartiallyGeneratedCode {
       } else if (\preg_match($begin, $line) === 1) {
         if ($current_id !== null) {
           throw new PartiallyGeneratedCodeException(
-            "The manual section ".$current_id." was open before ".
-            "the previous one was closed",
+            'The manual section '.$current_id.' was open before '.
+            'the previous one was closed',
           );
         }
         if (!\preg_match($valid_begin, $line)) {
           throw
-            new PartiallyGeneratedCodeException("Invalid id specified: ".$line);
+            new PartiallyGeneratedCodeException('Invalid id specified: '.$line);
         }
 
         $chunk[] = $line;
@@ -173,7 +173,7 @@ final class PartiallyGeneratedCode {
 
         if (C\contains($seen_ids, $current_id)) {
           throw new PartiallyGeneratedCodeException(
-            "Duplicate manual section id: ".$current_id,
+            'Duplicate manual section id: '.$current_id,
           );
         }
         $seen_ids[] = $current_id;
@@ -183,7 +183,7 @@ final class PartiallyGeneratedCode {
     }
     if ($current_id !== null) {
       throw new PartiallyGeneratedCodeException(
-        "The manual section ".$current_id." was not closed at the end of code",
+        'The manual section '.$current_id.' was not closed at the end of code',
       );
     }
     if ($code !== '') {

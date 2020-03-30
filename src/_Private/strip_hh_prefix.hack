@@ -63,7 +63,7 @@ function strip_hh_prefix(
     } else {
       if (
         ($c === 'H' || $c === 'h') &&
-        \strtoupper(\substr($str, $i, 3)) === "HH\\" &&
+        \strtoupper(\substr($str, $i, 3)) === 'HH\\' &&
         !\ctype_alnum($prev) &&
         $prev !== '_' &&
         $prev !== '\\'

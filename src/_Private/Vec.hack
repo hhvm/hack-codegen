@@ -20,7 +20,7 @@ use namespace HH\Lib\C;
 function pop_backx<T>(inout Container<T> $list): T {
   invariant(
     !C\is_empty($list),
-    "%s called, but container is empty",
+    '%s called, but container is empty',
     __FUNCTION__,
   );
   $last = \array_pop(inout $list);

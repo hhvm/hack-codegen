@@ -51,7 +51,7 @@ final class CodegenInterfaceTest extends CodegenBaseTest {
         $cgf
           ->codegenMethod('genFoo')
           ->setReturnType('Awaitable<mixed>')
-          ->setDocBlock("Override this to have the stuff"),
+          ->setDocBlock('Override this to have the stuff'),
       )
       ->addConstant(
         $cgf->codegenClassConstant('A_CONST')

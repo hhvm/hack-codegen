@@ -209,8 +209,8 @@ two line breaks. Also note that we include a newline and also '.
     $body = $this
       ->getHackBuilder()
       ->addWithSuggestedLineBreaks(
-        "final class".$del."ClassNameJustLongEnoughToAvoidEightyColumns".$del.
-        "extends SomeBaseClass",
+        'final class'.$del.'ClassNameJustLongEnoughToAvoidEightyColumns'.$del.
+        'extends SomeBaseClass',
       );
     expect_with_context(static::class, $body->getCode())->toBeUnchanged();
   }
@@ -220,8 +220,8 @@ two line breaks. Also note that we include a newline and also '.
     $body = $this
       ->getHackBuilder()
       ->addWithSuggestedLineBreaks(
-        "final abstract class".$del."ImpossibleClassLongEnoughToCrossEightyColumns".
-$del."extends SomeBaseClass",
+        'final abstract class'.$del.'ImpossibleClassLongEnoughToCrossEightyColumns'.
+$del.'extends SomeBaseClass',
       );
     expect_with_context(static::class, $body->getCode())->toBeUnchanged();
   }
@@ -240,7 +240,7 @@ $del."extends SomeBaseClass",
       ->getHackBuilder()
       ->addMultilineCall(
         "\$foobarbaz_alphabetagama =".$del."\$this->callSomeThingReallyLongName".
-        "ReallyReallyLongName",
+        'ReallyReallyLongName',
         Vector {
           '$someSmallParameter',
           "\$foobarbaz_alphabetagama +".$del."\$foobarbaz_alphabetagamaa +".$del.
@@ -269,7 +269,7 @@ $del."extends SomeBaseClass",
   public function testAnotherConfig(): void {
     $body = (new HackBuilder(new TestAnotherCodegenConfig()))
       ->addInlineComment(
-        "Here we wrap at 40 chars because we use a different configuration.",
+        'Here we wrap at 40 chars because we use a different configuration.',
       )
       ->startIfBlock('$do_that')
       ->add('return ')

@@ -26,7 +26,7 @@ final class Filesystem {
       return;
     }
     if (!\unlink($path)) {
-      throw new \Exception("Unable to remove `".$path."'.");
+      throw new \Exception('Unable to remove `'.$path."'.");
     }
   }
 
@@ -36,7 +36,7 @@ final class Filesystem {
     \error_reporting($error_level);
 
     if ($data === false) {
-      throw new \Exception("Failed to read file `".$path."'.");
+      throw new \Exception('Failed to read file `'.$path."'.");
     }
 
     return $data;
@@ -48,7 +48,7 @@ final class Filesystem {
     \error_reporting($error_level);
 
     if ($res === false) {
-      throw new \Exception("Failed to write file `".$path."'.");
+      throw new \Exception('Failed to write file `'.$path."'.");
     }
   }
 
