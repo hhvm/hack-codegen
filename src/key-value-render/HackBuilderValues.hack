@@ -51,7 +51,7 @@ abstract final class HackBuilderValues {
   /** Render a `vec`-like PHP array literal */
   public static function valueArray<Tv>(
     IHackBuilderValueRenderer<Tv> $vr,
-  ): IHackBuilderValueRenderer<array<Tv>> {
+  ): IHackBuilderValueRenderer<varray<Tv>> {
     return new _Private\HackBuilderNativeValueCollectionRenderer(
       ContainerType::PHP_ARRAY,
       $vr,
@@ -62,7 +62,7 @@ abstract final class HackBuilderValues {
   public static function keyValueArray<Tk as arraykey, Tv>(
     IHackBuilderKeyRenderer<Tk> $kr,
     IHackBuilderValueRenderer<Tv> $vr,
-  ): IHackBuilderValueRenderer<array<Tk, Tv>> {
+  ): IHackBuilderValueRenderer<darray<Tk, Tv>> {
     return new _Private\HackBuilderNativeKeyValueCollectionRenderer(
       ContainerType::PHP_ARRAY,
       $kr,
