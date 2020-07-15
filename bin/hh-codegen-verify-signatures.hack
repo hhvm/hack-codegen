@@ -84,12 +84,12 @@ final class CLIVerifier {
 function verify_signatures_main(): noreturn {
   $dir = __DIR__;
   while (true) {
-    if (\file_exists($dir.'/hh_autoload.php')) {
-      require_once($dir.'/hh_autoload.php');
+    if (\file_exists($dir.'/autoload.hack')) {
+      require_once($dir.'/autoload.hack');
       break;
     }
-    if (\file_exists($dir.'/vendor/hh_autoload.php')) {
-      require_once($dir.'/vendor/hh_autoload.php');
+    if (\file_exists($dir.'/vendor/autoload.hack')) {
+      require_once($dir.'/vendor/autoload.hack');
       break;
     }
 
@@ -106,6 +106,7 @@ function verify_signatures_main(): noreturn {
 
     $dir = \substr($dir, 0, $pos);
   }
+  \Facebook\AutoloadMap\initialize();
   (new CLIVerifier(vec(/* HH_IGNORE_ERROR[2050] */ $GLOBALS['argv'])))->main();
   exit(0);
 }
