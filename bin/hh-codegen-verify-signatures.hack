@@ -107,6 +107,6 @@ function verify_signatures_main(): noreturn {
     $dir = \substr($dir, 0, $pos);
   }
   \Facebook\AutoloadMap\initialize();
-  (new CLIVerifier(vec(/* HH_IGNORE_ERROR[2050] */ $GLOBALS['argv'])))->main();
+  (new CLIVerifier(vec(/* HH_FIXME[4110] */ \HH\global_get('argv'))))->main();
   exit(0);
 }
