@@ -3,7 +3,7 @@
     "description": "Hack Codegen is a library for programatically generating Hack code",
     "keywords": ["code generation", "Hack"],
     "require": {
-        "hhvm": "^4.25",
+        "hhvm": "^4.58",
         "hhvm/hhvm-autoload": "^2.0|^3.0",
         "hhvm/hsl": "^4.0"
     },
