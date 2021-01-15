@@ -27,7 +27,7 @@ final class DormCodegenCLI extends \Facebook\CLILib\CLIWithRequiredArguments {
     $fname = C\firstx($this->getArguments());
     if (!\file_exists($fname)) {
       await $this->getStderr()
-        ->writeAsync("  File doesn't exist: ".$fname."\n\n");
+        ->writeAllAsync("  File doesn't exist: ".$fname."\n\n");
       return 1;
     }
 
@@ -44,7 +44,7 @@ final class DormCodegenCLI extends \Facebook\CLILib\CLIWithRequiredArguments {
       $instance = $ref->newInstance() as DormSchema;
       /* HHAST_IGNORE_ERROR[DontAwaitInALoop] */
       await $this->getStdout()
-        ->writeAsync('Generating code for '.$class_name."\n");
+        ->writeAllAsync('Generating code for '.$class_name."\n");
       (new CodegenDorm($instance))->generate();
       (new CodegenMutator($instance))->generate();
     }
