@@ -32,6 +32,7 @@
     ],
     "type": "library",
     "require-dev": {
+        "hhvm/hsl-experimental": "^4.53",
         "hhvm/hacktest": "^2.0",
         "hhvm/type-assert": "^3.1|^4.0",
         "facebook/fbexpect": "^2.6.1",
