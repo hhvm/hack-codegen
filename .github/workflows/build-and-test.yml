@@ -35,3 +35,10 @@ jobs:
             echo "Demo codegen not up to date."
             exit 1
           fi
+      - name: Test bin/hh-codegen-verify-signatures failure
+        run: |
+          echo >> examples/dorm/demo/DormUser.php
+          if bin/hh-codegen-verify-signatures examples/dorm/demo/DormUser.php; then
+            echo "bin/hh-codegen-verify-signatures should have failed!"
+            exit 1
+          fi
