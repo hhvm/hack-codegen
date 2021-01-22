@@ -1,0 +1,44 @@
+name: Continuous Integration
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: '42 15 * * *'
+jobs:
+  build:
+    name: HHVM ${{matrix.hhvm}} - ${{matrix.os}}
+    strategy:
+      # Run tests on all OS's and HHVM versions, even if one fails
+      fail-fast: false
+      matrix:
+        os: [ ubuntu ]
+        hhvm:
+          - '4.80'
+          - latest
+          - nightly
+    runs-on: ${{matrix.os}}-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: hhvm/actions/hack-lint-test@master
+        with:
+          hhvm: ${{matrix.hhvm}}
+      # Check the codegen hasn't been modified; this is also done as part of the
+      # next step, but we want to make sure the verify-signatures executable works
+      - name: Test bin/hh-codegen-verify-signatures
+        run: |
+          bin/hh-codegen-verify-signatures \
+            examples/dorm/demo/{DormUser.php,DormUserMutator.php}
+      - name: Verify generated examples are up-to-date
+        run: |
+          hhvm examples/dorm/codegen.hack examples/dorm/demo/DormUserSchema.php
+          if ! git diff --exit-code examples/; then
+            echo "Demo codegen not up to date."
+            exit 1
+          fi
+      - name: Test bin/hh-codegen-verify-signatures failure
+        run: |
+          echo >> examples/dorm/demo/DormUser.php
+          if bin/hh-codegen-verify-signatures examples/dorm/demo/DormUser.php; then
+            echo "bin/hh-codegen-verify-signatures should have failed!"
+            exit 1
+          fi
