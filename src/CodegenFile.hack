@@ -180,7 +180,6 @@ final class CodegenFile {
     return $this->afterTypes;
   }
 
-
   /**
    * The absolute path.
    */

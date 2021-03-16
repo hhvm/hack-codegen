@@ -72,7 +72,6 @@ trait CodegenFactoryTrait implements ICodegenFactory {
       new CodegenTypeConstant($this->getConfig(), \vsprintf($format, $args));
   }
 
-
   final public function codegenFile(string $file): CodegenFile {
     return new CodegenFile($this->getConfig(), $file);
   }

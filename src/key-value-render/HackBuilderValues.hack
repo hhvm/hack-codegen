@@ -20,7 +20,6 @@ abstract final class HackBuilderValues {
     return new _Private\HackBuilderLiteralRenderer();
   }
 
-
   /**
    * Render the value as Hack code that produces the same value.
    *
@@ -46,7 +45,6 @@ abstract final class HackBuilderValues {
   ): IHackBuilderValueRenderer<ICodeBuilderRenderer> {
     return new _Private\HackBuilderCodegenRenderer();
   }
-
 
   /** Render a `vec`-like PHP array literal */
   public static function valueArray<Tv>(

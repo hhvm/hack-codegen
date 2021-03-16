@@ -9,7 +9,6 @@
 
 namespace Facebook\HackCodegen;
 
-
 /**
  * Similar to SignedSource, but it uses a different header to indicate that the
  * file is partially generated

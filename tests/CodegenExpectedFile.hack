@@ -226,7 +226,6 @@ final class CodegenExpectedFile {
     \fwrite(\STDERR, $message);
   }
 
-
   private static function promptForAdd(string $token, string $value): bool {
     self::displayf('A new test %s was added, expected value is:', $token);
     self::displayRaw($value."\n");

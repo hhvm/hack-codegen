@@ -171,7 +171,6 @@ final class CodegenFileTest extends CodegenBaseTest {
     })->toThrow(CodegenFileBadSignatureException::class);
   }
 
-
   public function testSavePartiallyGenerated(): void {
     $fname = $this->savePartiallyGeneratedFile();
     $content = Filesystem::readFile($fname);

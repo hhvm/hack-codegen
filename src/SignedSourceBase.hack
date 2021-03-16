@@ -42,7 +42,6 @@ abstract class SignedSourceBase {
     return '@'.static::getTokenName().' '.static::TOKEN;
   }
 
-
   /**
    *  Sign a source file into which you have previously embedded a signing
    *  token. Signing modifies only the signing token, so the semantics of

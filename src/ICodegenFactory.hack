@@ -114,7 +114,6 @@ interface ICodegenFactory {
     mixed ...$args
   ): CodegenEnumMember;
 
-
   /**
    * Create a class type constant.
    */

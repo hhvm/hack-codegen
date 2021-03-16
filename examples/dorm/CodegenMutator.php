@@ -68,7 +68,6 @@ class CodegenMutator {
       ->save();
   }
 
-
   private function getDataVar(): CodegenProperty{
     // Example of how to generate a class member variable, including
     // setting an initial value.

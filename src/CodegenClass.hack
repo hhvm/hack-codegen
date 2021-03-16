@@ -67,7 +67,6 @@ final class CodegenClass extends CodegenClassish {
     return $this->extendsClass;
   }
 
-
   /** @selfdocumenting */
   public function setConstructor(CodegenConstructor $constructor): this {
     $this->constructor = $constructor;

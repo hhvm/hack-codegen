@@ -35,7 +35,6 @@ final class DormCodegenCLI extends \Facebook\CLILib\CLIWithRequiredArguments {
     require_once($fname);
     $new_classes = Vec\diff(\get_declared_classes(), $classes);
 
-
     foreach ($new_classes as $class_name) {
       $ref = new \ReflectionClass($class_name);
       if ($ref->isAbstract()) {
