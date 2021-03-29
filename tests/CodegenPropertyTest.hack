@@ -55,7 +55,7 @@ final class CodegenPropertyTest extends CodegenBaseTest {
       ->codegenProperty('languages')
       ->setIsStatic()
       ->setValue(
-        darray['en' => 'English', 'es' => 'Spanish', 'fr' => 'French'],
+        dict['en' => 'English', 'es' => 'Spanish', 'fr' => 'French'],
         HackBuilderValues::export(),
       )
       ->render();

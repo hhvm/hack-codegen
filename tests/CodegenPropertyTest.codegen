@@ -1,10 +1,10 @@
 @generated
 !@#$%codegentest:testArrayValues
-private static $languages = array (
+private static $languages = dict [
   'en' => 'English',
   'es' => 'Spanish',
   'fr' => 'French',
-);
+];
 
 !@#$%codegentest:testDocBlock
 // a comment
