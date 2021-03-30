@@ -10,7 +10,7 @@
 namespace Facebook\HackCodegen;
 
 use namespace HH\Lib\{C, Str, Vec};
-use namespace Facebook\HackCodegen\_Private\C as CP;
+use namespace Facebook\HackCodegen\_Private\{C as CP, Vec as VecP};
 
 /**
  * Abstract class to generate class-like definitions.
@@ -338,7 +338,7 @@ abstract class CodegenClassish implements ICodeBuilderRenderer {
     $builder->addLine('attribute')->indent();
     
     $attributes = $this->xhpAttributes;
-    $last = C\pop_backx(inout $attributes);
+    $last = VecP\pop_backx(inout $attributes);
     foreach($attributes as $attr) {
       $builder->addRenderer($attr);
       $builder->addLine(',');
