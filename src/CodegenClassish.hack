@@ -336,7 +336,7 @@ abstract class CodegenClassish implements ICodeBuilderRenderer {
     }
     $builder->ensureNewLine();
     $builder->addLine('attribute')->indent();
-    
+
     $attributes = $this->xhpAttributes;
     $last = VecP\pop_backx(inout $attributes);
     foreach($attributes as $attr) {
