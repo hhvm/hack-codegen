@@ -311,7 +311,7 @@ interface ICodegenFactory {
   /**
    * Generate a class of trait xhp attribute.
    *
-   * @see codegenPropertyf
+   * @see codegenXHPAttributef
    */
   public function codegenXHPAttribute(string $name): CodegenXHPAttribute;
 
@@ -319,7 +319,7 @@ interface ICodegenFactory {
    * Generate a class or trait xhp attribute, using a %-placeholder format
    * string for the attribute name.
    *
-   * @see codegenProperty
+   * @see codegenXHPAttribute
    */
   public function codegenXHPAttributef(
     Str\SprintfFormatString $format,
