@@ -150,3 +150,20 @@ class JKRowling
     IRonWeasley {
 }
 
+!@#$%codegentest:testXHPClassWithAttributes
+xhp class a {
+
+  const string BETWEEN_CONSTS = '';
+  attribute
+    /**
+     * The web is a magical place where a string with a set structure can be
+     * the key to visiting some remote place on the internet where you can find
+     * content made by other people.
+     */
+    string href @required,
+    string target = 'about:blank',
+    string hreflang @lateinit;
+
+  private null $andProps;
+}
+

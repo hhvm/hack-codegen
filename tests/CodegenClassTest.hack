@@ -293,4 +293,61 @@ final class CodegenClassTest extends CodegenBaseTest {
     expect($code)->toContainSubstring('Tt as Xx');
     expect($code)->toContainSubstring('Tsingle');
   }
+
+  public function testXHPClassWithAttributes(): void {
+    $cgf = $this->getCodegenFactory();
+    $code = $cgf->codegenClass('a')
+      ->setIsXHP()
+      ->addConstant(
+        $cgf->codegenClassConstant('BETWEEN_CONSTS')
+          ->setType('string')
+          ->setValue('', HackBuilderValues::export()),
+      )
+      ->addProperty($cgf->codegenProperty('andProps')->setType('null'))
+      ->addXhpAttribute(
+        $cgf->codegenXHPAttribute('href')
+          ->setType('string')
+          ->setInlineComment(
+            'The web is a magical place where a string with a set '.
+            'structure can be the key to visiting some remote place '.
+            'on the internet where you can find content made by other people.',
+          )
+          ->setDecorator(XHPAttributeDecorator::REQUIRED),
+      )
+      ->addXhpAttribute(
+        $cgf->codegenXHPAttribute('target')
+          ->setType('string')
+          ->setValue('about:blank', HackBuilderValues::export()),
+      )
+      ->addXhpAttribute(
+        $cgf->codegenXHPAttribute('hreflang')
+          ->setType('string')
+          ->setDecorator(XHPAttributeDecorator::LATE_INIT),
+      )
+      ->render();
+
+    expect_with_context(static::class, $code)->toBeUnchanged();
+  }
+
+  public function testThrowsWhenSettingDecoratorWhenDefaultValueIsSet(): void {
+    $cgf = $this->getCodegenFactory();
+
+    $attr = $cgf->codegenXHPAttribute('explodes')
+      ->setType('string')
+      ->setValue('default', HackBuilderValues::export());
+
+    expect(() ==> $attr->setDecorator(XHPAttributeDecorator::LATE_INIT))
+      ->toThrow(InvariantException::class, '@lateinit decorator');
+  }
+
+  public function testThrowsWhenSettingDefaultValueWhenDecoratorIsSet(): void {
+    $cgf = $this->getCodegenFactory();
+
+    $attr = $cgf->codegenXHPAttribute('explodes')
+      ->setType('string')
+      ->setDecorator(XHPAttributeDecorator::LATE_INIT);
+
+    expect(() ==> $attr->setValue('default', HackBuilderValues::export()))
+      ->toThrow(InvariantException::class, 'default value');
+  }
 }

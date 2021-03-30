@@ -201,7 +201,7 @@ interface ICodegenFactory {
   public function codegenProperty(string $name): CodegenProperty;
 
   /**
-   * Generate a class or trait property, using a %-placehodler format string
+   * Generate a class or trait property, using a %-placeholder format string
    * for the property name.
    *
    * @see codegenProperty
@@ -307,4 +307,22 @@ interface ICodegenFactory {
    * @see codegenType
    */
   public function codegenNewtype(string $name): CodegenType;
+
+  /**
+   * Generate a class of trait xhp attribute.
+   *
+   * @see codegenPropertyf
+   */
+  public function codegenXHPAttribute(string $name): CodegenXHPAttribute;
+
+  /**
+   * Generate a class or trait xhp attribute, using a %-placeholder format
+   * string for the attribute name.
+   *
+   * @see codegenProperty
+   */
+  public function codegenXHPAttributef(
+    Str\SprintfFormatString $format,
+    mixed ...$args
+  ): CodegenXHPAttribute;
 }

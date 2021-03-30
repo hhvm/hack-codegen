@@ -63,6 +63,7 @@ final class CodegenTrait extends CodegenClassish {
     $this->buildRequires($builder);
     $this->buildTraits($builder);
     $this->buildConsts($builder);
+    $this->buildXHPAttributes($builder);
     $this->buildVars($builder);
     $this->buildManualDeclarations($builder);
     $this->buildMethods($builder);

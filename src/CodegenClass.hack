@@ -32,6 +32,7 @@ final class CodegenClass extends CodegenClassish {
   private string $declComment = '';
   private bool $isFinal = false;
   private bool $isAbstract = false;
+  private bool $isXHP = false;
   private ?CodegenConstructor $constructor = null;
 
   /** @selfdocumenting */
@@ -43,6 +44,12 @@ final class CodegenClass extends CodegenClassish {
   /** @selfdocumenting */
   public function setIsAbstract(bool $value = true): this {
     $this->isAbstract = $value;
+    return $this;
+  }
+
+  /** @selfdocumenting */
+  public function setIsXHP(bool $value = true): this {
+    $this->isXHP = $value;
     return $this;
   }
 
@@ -148,10 +155,11 @@ final class CodegenClass extends CodegenClassish {
     $generics_dec = $this->buildGenericsDeclaration();
 
     $builder->addWithSuggestedLineBreaksf(
-      '%s%s%s%s%s',
+      '%s%s%s%s%s%s',
       $this->declComment,
       $this->isAbstract ? 'abstract ' : '',
       $this->isFinal ? 'final ' : '',
+      $this->isXHP ? 'xhp ' : '',
       'class '.$this->name.$generics_dec,
       $this->extendsClass !== null
         ? HackBuilder::DELIMITER.'extends '.$this->extendsClass
@@ -172,6 +180,7 @@ final class CodegenClass extends CodegenClassish {
   protected function appendBodyToBuilder(HackBuilder $builder): void {
     $this->buildTraits($builder);
     $this->buildConsts($builder);
+    $this->buildXHPAttributes($builder);
     $this->buildVars($builder);
     $this->buildManualDeclarations($builder);
     $this->buildConstructor($builder);

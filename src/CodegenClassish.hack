@@ -33,6 +33,7 @@ abstract class CodegenClassish implements ICodeBuilderRenderer {
   protected vec<CodegenMethod> $methods = vec[];
   private vec<CodegenUsesTrait> $traits = vec[];
   protected vec<CodegenConstantish> $consts = vec[];
+  protected vec<CodegenXHPAttribute> $xhpAttributes = vec[];
   protected vec<CodegenProperty> $vars = vec[];
   private bool $isConsistentConstruct = false;
   protected bool $hasManualFooter = false;
@@ -150,6 +151,20 @@ abstract class CodegenClassish implements ICodeBuilderRenderer {
   public function addMethod(CodegenMethod $method): this {
     $method->setContainingClass($this);
     $this->methods[] = $method;
+    return $this;
+  }
+
+  /** @selfdocumenting */
+  public function addXhpAttribute(CodegenXHPAttribute $attribute): this {
+    $this->xhpAttributes[] = $attribute;
+    return $this;
+  }
+
+  /** @selfdocumenting */
+  public function addXhpAttributes(Traversable<CodegenXHPAttribute> $attributes): this {
+    foreach($attributes as $attr) {
+      $this->addXhpAttribute($attr);
+    }
     return $this;
   }
 
@@ -315,6 +330,22 @@ abstract class CodegenClassish implements ICodeBuilderRenderer {
     }
   }
 
+  protected function buildXHPAttributes(HackBuilder $builder): void {
+    if (C\is_empty($this->xhpAttributes)) {
+      return;
+    }
+    $builder->ensureNewLine();
+    $builder->addLine('attribute')->indent();
+    
+    $attributes = $this->xhpAttributes;
+    $last = C\pop_backx(inout $attributes);
+    foreach($attributes as $attr) {
+      $builder->addRenderer($attr);
+      $builder->addLine(',');
+    }
+    $builder->addRenderer($last)->addLine(';')->unindent();
+  }
+
   protected function buildVars(HackBuilder $builder): void {
     if (C\is_empty($this->vars)) {
       return;
@@ -380,7 +411,7 @@ abstract class CodegenClassish implements ICodeBuilderRenderer {
     $generated_from =
       $this->generatedFrom ? $this->generatedFrom->render() : null;
 
-    $doc_block_parts = \array_filter(varray[$this->docBlock, $generated_from]);
+    $doc_block_parts = Vec\filter_nulls(vec[$this->docBlock, $generated_from]);
 
     if ($doc_block_parts) {
       $builder->addDocBlock(Str\join($doc_block_parts, "\n\n"));
