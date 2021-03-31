@@ -229,4 +229,15 @@ trait CodegenFactoryTrait implements ICodegenFactory {
   final public function codegenNewtype(string $name): CodegenType {
     return (new CodegenType($this->getConfig(), $name))->newType();
   }
+
+  final public function codegenXHPAttribute(string $name): CodegenXHPAttribute {
+    return new CodegenXHPAttribute($this->getConfig(), $name);
+  }
+
+  final public function codegenXHPAttributef(
+    Str\SprintfFormatString $format,
+    mixed ...$args
+  ): CodegenXHPAttribute {
+    return $this->codegenXHPAttribute(\vsprintf($format, $args));
+  }
 }

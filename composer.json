@@ -1,6 +1,6 @@
 {
     "name": "facebook/hack-codegen",
-    "description": "Hack Codegen is a library for programatically generating Hack code",
+    "description": "Hack Codegen is a library for programmatically generating Hack code",
     "keywords": ["code generation", "Hack"],
     "require": {
         "hhvm": "^4.80",
