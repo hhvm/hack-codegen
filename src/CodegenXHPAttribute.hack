@@ -12,12 +12,12 @@ namespace Facebook\HackCodegen;
 use namespace HH\Lib\Str;
 
 /**
- * Generate code for a property variable. Please don't use this class directly;
+ * Generate code for an xhp attribute. Please don't use this class directly;
  * instead use the function ICodegenFactory->codegenAttribute.  E.g.:
  *
  * ICodegenFactory->codegenAttribute('src')
  *  ->setType('string')
- *  ->setInlineComment('Represent the foo of the bar")
+ *  ->setInlineComment('A script src must be a valid URI')
  *  ->render();
  */
 final class CodegenXHPAttribute implements ICodeBuilderRenderer {
