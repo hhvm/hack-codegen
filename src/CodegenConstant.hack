@@ -57,7 +57,7 @@ final class CodegenConstant
 			->addDocBlock($this->getDocBlock())
 			->ensureNewLine()
 			->add('const ')
-			->addIf($type !== null, $type.' ')
+			->addIf($type !== null, ($type ?? '').' ')
 			->add($this->getName())
 			->add(' = '.$value)
 			->addLine(';');

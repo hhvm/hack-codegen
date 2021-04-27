@@ -47,7 +47,7 @@ final class DormUserMutator {
       return (int) $conn->lastInsertId();
     } else {
       $pairs = $quoted->mapWithKey(($field, $value) ==>  $field.'='.$value);
-      $st = 'update user set '.implode(',', $pairs).' where user_id='.$this->id;
+      $st = 'update user set '.implode(',', $pairs).' where user_id='.$id;
       $conn->exec($st);
       return $id;
     }

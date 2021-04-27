@@ -32,7 +32,7 @@ final class PartiallyGeneratedSignedSource extends SignedSourceBase {
    */
   public static function getDocBlock(?string $comment = null): string {
     invariant($comment !== '', 'specify null instead of empty comments');
-    $comment = ($comment === null) ? null : $comment."\n\n";
+    $comment = $comment === null ? '' : $comment."\n\n";
     return 'This file is partially generated. '.
       'Only make modifications between BEGIN MANUAL SECTION '.
       "and END MANUAL SECTION designators.\n\n".
