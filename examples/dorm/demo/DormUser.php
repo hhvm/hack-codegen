@@ -53,8 +53,7 @@ final class DormUser {
   public function getCountryId(): ?int {
     /* BEGIN MANUAL SECTION CountryId */
     // You may manually change this section of code
-    $value = $this->data['country_id'] ?? null;
-    return $value;
+    return $this->data['country_id'] ?? null;
     /* END MANUAL SECTION */
   }
 
