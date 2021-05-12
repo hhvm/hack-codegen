@@ -96,9 +96,9 @@ final class CodegenProperty implements ICodeBuilderRenderer {
       ->addInlineComment($this->comment)
       ->add($this->getVisibility().' ')
       ->addIf($this->isStatic, 'static ')
-      ->addIf($this->type !== null, $this->type.' ')
+      ->addIf($this->type !== null, ($this->type ?? '').' ')
       ->add('$'.$this->name)
-      ->addIf($this->value !== null, ' = '.$value)
+      ->addIf($this->value !== null, ' = '.($value ?? ''))
       ->addLine(';');
   }
 

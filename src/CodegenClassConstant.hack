@@ -71,9 +71,9 @@ final class CodegenClassConstant extends CodegenConstantish {
       ->ensureNewLine()
       ->addIf($abstract, 'abstract ')
       ->add('const ')
-      ->addIf($type !== null, $type.' ')
+      ->addIf($type !== null, ($type ?? '').' ')
       ->add($this->getName())
-      ->addIf($value !== null, ' = '.$value)
+      ->addIf($value !== null, ' = '.($value ?? ''))
       ->addLine(';');
   }
 }

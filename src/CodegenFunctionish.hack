@@ -151,7 +151,7 @@ abstract class CodegenFunctionish implements ICodeBuilderRenderer {
     $builder = (new HackBuilder($this->config))
       ->add($keywords)
       ->addf('%s(%s)', $this->name, Str\join($this->parameters, ', '))
-      ->addIf($this->returnType !== null, ': '.$this->returnType);
+      ->addIf($this->returnType !== null, ': '.($this->returnType ?? ''));
 
     $code = $builder->getCode();
 
@@ -183,7 +183,7 @@ abstract class CodegenFunctionish implements ICodeBuilderRenderer {
         ->addLines($parameter_lines)
         ->unindent()
         ->add(')')
-        ->addIf($this->returnType !== null, ': '.$this->returnType);
+        ->addIf($this->returnType !== null, ': '.($this->returnType ?? ''));
 
       return $multi_line_builder->getCode();
     }

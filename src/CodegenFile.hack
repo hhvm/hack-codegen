@@ -336,7 +336,7 @@ final class CodegenFile {
       if ($doc_block !== null && !Str\ends_with($doc_block, "\n")) {
         $doc_block .= "\n";
       }
-      $doc_block = $doc_block.$gen_from->render()."\n";
+      $doc_block = ($doc_block ?? '').$gen_from->render()."\n";
     }
 
     $formatter = $this->config->getFormatter();

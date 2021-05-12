@@ -179,7 +179,7 @@ class CodegenMutator {
         HackBuilderValues::literal(),
       )
       ->addLinef(
-        '$st = \'update %s set \'.implode(\',\', $pairs).\' where %s=\'.$this->id;',
+        '$st = \'update %s set \'.implode(\',\', $pairs).\' where %s=\'.$id;',
         $this->schema->getTableName(),
         $this->schema->getIdField(),
       )

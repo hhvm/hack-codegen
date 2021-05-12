@@ -72,8 +72,8 @@ final class CodegenTypeConstant
       ->addIf($abstract, 'abstract ')
       ->add('const type ')
       ->add($this->getName())
-      ->addIf($constraint !== null, ' '.$constraint)
-      ->addIf($value !== null, ' = '.$value)
+      ->addIf($constraint !== null, ' '.($constraint ?? ''))
+      ->addIf($value !== null, ' = '.($value ?? ''))
       ->addLine(';');
   }
 }

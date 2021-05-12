@@ -101,9 +101,9 @@ final class CodegenXHPAttribute implements ICodeBuilderRenderer {
 
     return $builder
       ->addDocBlock($this->comment)
-      ->addIf($this->type is nonnull, $this->type.' ')
+      ->addIf($this->type is nonnull, ($this->type ?? '').' ')
       ->add($this->name)
-      ->addIf($this->value is nonnull, ' = '.$value)
+      ->addIf($this->value is nonnull, ' = '.($value ?? ''))
       ->addIf(
         $this->decorator is nonnull,
         ' '.
