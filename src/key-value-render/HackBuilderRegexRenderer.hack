@@ -13,7 +13,7 @@ use type Facebook\HackCodegen\{IHackBuilderValueRenderer, IHackCodegenConfig};
 
 use namespace HH\Lib\{Regex, Str};
 
-final class HackBuilderRegexRenderer<T>
+final class HackBuilderRegexRenderer<T as Regex\Match>
   implements IHackBuilderValueRenderer<Regex\Pattern<T>> {
 
   public function render(

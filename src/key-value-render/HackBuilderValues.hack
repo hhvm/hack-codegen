@@ -33,7 +33,7 @@ abstract final class HackBuilderValues {
   /**
    * Render a regex literal, e.g. `re"/foo/"`.
    */
-  public static function regex<T>(
+  public static function regex<T as \HH\Lib\Regex\Match>(
   ): IHackBuilderValueRenderer<\HH\Lib\Regex\Pattern<T>> {
     return new _Private\HackBuilderRegexRenderer();
   }
