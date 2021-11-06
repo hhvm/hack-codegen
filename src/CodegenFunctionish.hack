@@ -22,6 +22,7 @@ abstract class CodegenFunctionish implements ICodeBuilderRenderer {
   protected string $name;
   protected ?string $body = null;
   protected ?string $docBlock = null;
+  protected ?string $contexts = null;
   protected ?string $returnType = null;
   private ?string $fixme = null;
   protected bool $isAsync = false;
@@ -50,6 +51,23 @@ abstract class CodegenFunctionish implements ICodeBuilderRenderer {
 
   public function setIsMemoized(bool $value = true): this {
     $this->isMemoized = $value;
+    return $this;
+  }
+
+  public function setContexts(
+    string $contexts,
+  ): this {
+    return $this->setContextsf('%s', $contexts);
+  }
+
+  public function setContextsf(
+    Str\SprintfFormatString $contexts,
+    mixed ...$args
+  ): this {
+    $contexts = \vsprintf($contexts, $args);
+    if($contexts) {
+      $this->contexts = $contexts;
+    }
     return $this;
   }
 
@@ -129,6 +147,10 @@ abstract class CodegenFunctionish implements ICodeBuilderRenderer {
     return $this->parameters;
   }
 
+  public function getContexts(): ?string {
+    return $this->contexts;
+  }
+
   public function getReturnType(): ?string {
     return $this->returnType;
   }
@@ -151,6 +173,7 @@ abstract class CodegenFunctionish implements ICodeBuilderRenderer {
     $builder = (new HackBuilder($this->config))
       ->add($keywords)
       ->addf('%s(%s)', $this->name, Str\join($this->parameters, ', '))
+      ->addIf($this->contexts !== null, '[' . ($this->contexts ?? '') . ']')
       ->addIf($this->returnType !== null, ': '.($this->returnType ?? ''));
 
     $code = $builder->getCode();
@@ -183,6 +206,7 @@ abstract class CodegenFunctionish implements ICodeBuilderRenderer {
         ->addLines($parameter_lines)
         ->unindent()
         ->add(')')
+        ->addIf($this->contexts !== null, '[' . ($this->contexts ?? '') . ']')
         ->addIf($this->returnType !== null, ': '.($this->returnType ?? ''));
 
       return $multi_line_builder->getCode();
