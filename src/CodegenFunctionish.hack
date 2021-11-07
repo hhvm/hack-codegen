@@ -55,19 +55,21 @@ abstract class CodegenFunctionish implements ICodeBuilderRenderer {
   }
 
   public function setContexts(
-    string $contexts,
+    ?string $contexts,
   ): this {
-    return $this->setContextsf('%s', $contexts);
+    if($contexts !== null) {
+      return $this->setContextsf('%s', $contexts);
+    } else {
+      $this->contexts = null;
+      return $this;
+    }
   }
 
   public function setContextsf(
     Str\SprintfFormatString $contexts,
     mixed ...$args
   ): this {
-    $contexts = \vsprintf($contexts, $args);
-    if($contexts) {
-      $this->contexts = $contexts;
-    }
+    $this->contexts = \vsprintf($contexts, $args);
     return $this;
   }
 
