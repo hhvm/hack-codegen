@@ -24,6 +24,17 @@ final class CodegenFunctionTest extends CodegenBaseTest {
     expect_with_context(static::class, $code)->toBeUnchanged();
   }
 
+  public function testContexts(): void {
+    $code = $this
+      ->getCodegenFactory()
+      ->codegenFunction('withContexts')
+      ->addContext('io')
+      ->setReturnType('void')
+      ->setBody('echo \'hello world\';')
+      ->render();
+    expect_with_context(static::class, $code)->toBeUnchanged();
+  }
+
   public function testParams(): void {
     $code = $this
       ->getCodegenFactory()

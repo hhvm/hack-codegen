@@ -22,6 +22,7 @@ abstract class CodegenFunctionish implements ICodeBuilderRenderer {
   protected string $name;
   protected ?string $body = null;
   protected ?string $docBlock = null;
+  protected ?keyset<string> $contexts = null;
   protected ?string $returnType = null;
   private ?string $fixme = null;
   protected bool $isAsync = false;
@@ -50,6 +51,28 @@ abstract class CodegenFunctionish implements ICodeBuilderRenderer {
 
   public function setIsMemoized(bool $value = true): this {
     $this->isMemoized = $value;
+    return $this;
+  }
+
+  public function addContext(
+    string $context,
+  ): this {
+    if($this->contexts === null) {
+      $this->contexts = keyset<string>[$context];
+    } else {
+      $this->contexts[] = $context;
+    }
+
+    return $this;
+  }
+
+  public function addContexts(
+    Traversable<string> $contexts,
+  ): this {
+    foreach($contexts as $context) {
+      $this->addContext($context);
+    }
+
     return $this;
   }
 
@@ -129,6 +152,10 @@ abstract class CodegenFunctionish implements ICodeBuilderRenderer {
     return $this->parameters;
   }
 
+  public function getContexts(): ?keyset<string> {
+    return $this->contexts;
+  }
+
   public function getReturnType(): ?string {
     return $this->returnType;
   }
@@ -151,6 +178,7 @@ abstract class CodegenFunctionish implements ICodeBuilderRenderer {
     $builder = (new HackBuilder($this->config))
       ->add($keywords)
       ->addf('%s(%s)', $this->name, Str\join($this->parameters, ', '))
+      ->addIf($this->contexts !== null, '[' . Str\join($this->contexts ?? keyset[], ', ') . ']')
       ->addIf($this->returnType !== null, ': '.($this->returnType ?? ''));
 
     $code = $builder->getCode();
@@ -183,6 +211,7 @@ abstract class CodegenFunctionish implements ICodeBuilderRenderer {
         ->addLines($parameter_lines)
         ->unindent()
         ->add(')')
+        ->addIf($this->contexts !== null, '[' . Str\join($this->contexts ?? keyset[], ', ') . ']')
         ->addIf($this->returnType !== null, ': '.($this->returnType ?? ''));
 
       return $multi_line_builder->getCode();

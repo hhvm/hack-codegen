@@ -61,6 +61,11 @@ public function getExpensiveNotLikeParent() {
 public async function genExpensiveNotLikeParent() {
 }
 
+!@#$%codegentest:testContexts
+function withContexts()[io]: void {
+  echo 'hello world';
+}
+
 !@#$%codegentest:testParams
 function getName(string $name) {
   return $name . $name;
