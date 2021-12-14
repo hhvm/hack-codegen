@@ -409,6 +409,10 @@ final class CodegenFile {
 
     $header = $this->pseudoMainHeader;
     if ($header !== null) {
+      invariant(
+        $this->fileType !== CodegenFileType::HACK_STRICT,
+        'Pseudomains (and pseudomain headers) are not supported in strict files'
+      );
       $builder->ensureNewLine()->add($header)->ensureNewLine();
     }
 
@@ -444,6 +448,10 @@ final class CodegenFile {
 
     $footer = $this->pseudoMainFooter;
     if ($footer !== null) {
+      invariant(
+        $this->fileType !== CodegenFileType::HACK_STRICT,
+        'Pseudomains (and pseudomain footers) are not supported in strict files'
+      );
       $builder->ensureEmptyLine()->add($footer)->ensureNewLine();
     }
     return $builder->getCode();
