@@ -301,19 +301,11 @@ final class CodegenFile {
     return $this->setPseudoMainFooter(\vsprintf($format, $args));
   }
 
-  private function assertNotHackStrictForExecutable(): void {
-    invariant(
-      $this->fileType !== CodegenFileType::HACK_STRICT,
-      "Hack Strict can't be used for executables",
-    );
-  }
-
   public function render(): string {
     $builder = new HackBuilder($this->config);
 
     $shebang = $this->shebang;
     if ($shebang !== null) {
-      $this->assertNotHackStrictForExecutable();
       $builder->addLine($shebang);
     }
 
@@ -417,7 +409,6 @@ final class CodegenFile {
 
     $header = $this->pseudoMainHeader;
     if ($header !== null) {
-      $this->assertNotHackStrictForExecutable();
       $builder->ensureNewLine()->add($header)->ensureNewLine();
     }
 
@@ -453,7 +444,6 @@ final class CodegenFile {
 
     $footer = $this->pseudoMainFooter;
     if ($footer !== null) {
-      $this->assertNotHackStrictForExecutable();
       $builder->ensureEmptyLine()->add($footer)->ensureNewLine();
     }
     return $builder->getCode();
