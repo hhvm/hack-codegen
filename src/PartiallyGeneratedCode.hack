@@ -157,7 +157,9 @@ final class PartiallyGeneratedCode {
       } else if (\preg_match($begin, $line) === 1) {
         if ($current_id !== null) {
           throw new PartiallyGeneratedCodeException(
-            'The manual section '.$current_id.' was open before '.
+            'The manual section '.
+            $current_id.
+            ' was open before '.
             'the previous one was closed',
           );
         }
