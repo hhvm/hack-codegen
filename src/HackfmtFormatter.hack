@@ -58,7 +58,6 @@ final class HackfmtFormatter implements ICodegenFormatter {
       $options[] = '--format-generated-code';
     }
 
-    return Vec\map($options, $option ==> \escapeshellarg($option))
-      |> Str\join($$, ' ');
+    return Vec\map($options, \escapeshellarg<>) |> Str\join($$, ' ');
   }
 }
