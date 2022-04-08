@@ -21,7 +21,7 @@ final class HackfmtFormatter implements ICodegenFormatter {
     string $code,
     string $_file_name,
   ): string {
-    $output = varray[];
+    $output = vec[];
     $exit_code = null;
 
     $tempnam = \tempnam(

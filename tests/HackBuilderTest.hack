@@ -274,7 +274,7 @@ $del.'extends SomeBaseClass',
       ->startIfBlock('$do_that')
       ->add('return ')
       ->addValue(
-        varray[1, 2, 3],
+        vec[1, 2, 3],
         HackBuilderValues::valueArray(HackBuilderValues::export()),
       )
       ->closeStatement()
@@ -286,9 +286,9 @@ $del.'extends SomeBaseClass',
   public function testSwitchBodyWithReturnsInCaseAndDefault(): void {
     // Gosh, I have no idea what names of football shots are!
     $players = Vector {
-      darray['name' => 'Ronaldo', 'favorite_shot' => 'freeKick'],
-      darray['name' => 'Messi', 'favorite_shot' => 'slideKick'],
-      darray['name' => 'Maradona', 'favorite_shot' => 'handOfGod'],
+      dict['name' => 'Ronaldo', 'favorite_shot' => 'freeKick'],
+      dict['name' => 'Messi', 'favorite_shot' => 'slideKick'],
+      dict['name' => 'Maradona', 'favorite_shot' => 'handOfGod'],
     };
 
     $body = $this
@@ -313,9 +313,9 @@ $del.'extends SomeBaseClass',
   public function testSwitchBodyWithBreaksInCaseAndDefault(): void {
     // Gosh, I have no idea what names of football shots are!
     $players = Vector {
-      darray['name' => 'Ronaldo', 'favorite_shot' => 'freeKick'],
-      darray['name' => 'Messi', 'favorite_shot' => 'slideKick'],
-      darray['name' => 'Maradona', 'favorite_shot' => 'handOfGod'],
+      dict['name' => 'Ronaldo', 'favorite_shot' => 'freeKick'],
+      dict['name' => 'Messi', 'favorite_shot' => 'slideKick'],
+      dict['name' => 'Maradona', 'favorite_shot' => 'handOfGod'],
     };
 
     $body = $this
@@ -340,9 +340,9 @@ $del.'extends SomeBaseClass',
   public function testSwitchBodyWithMultipleCasesWithoutBreaks(): void {
     // Gosh, I have no idea what names of football shots are!
     $players = Vector {
-      darray['name' => 'Ronaldo', 'favorite_shot' => 'freeKick'],
-      darray['name' => 'Messi', 'favorite_shot' => 'slideKick'],
-      darray['name' => 'Maradona', 'favorite_shot' => 'handOfGod'],
+      dict['name' => 'Ronaldo', 'favorite_shot' => 'freeKick'],
+      dict['name' => 'Messi', 'favorite_shot' => 'slideKick'],
+      dict['name' => 'Maradona', 'favorite_shot' => 'handOfGod'],
     };
 
     $body = $this
