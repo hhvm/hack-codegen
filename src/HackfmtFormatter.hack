@@ -71,7 +71,7 @@ final class HackfmtFormatter implements ICodegenFormatter {
 
     return Vec\map(
       $options,
-      $option ==> \escapeshellarg($option),
+      \escapeshellarg<>,
     ) |> Str\join($$, ' ');
   }
 }
