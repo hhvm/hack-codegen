@@ -25,3 +25,11 @@ private ?int $count = 0;
 !@#$%codegentest:testVector
 private Vector<string> $parameters = Vector {};
 
+!@#$%codegentest:testLateInit
+<<__LateInit>>
+private int $willGotValue;
+
+!@#$%codegentest:testAttribute
+<<MyPropertyAttribute>>
+private int $withPredefinedAttribute;
+
