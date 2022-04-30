@@ -307,16 +307,6 @@ final class CodegenFileTest extends CodegenBaseTest {
     expect_with_context(static::class, $code)->toBeUnchanged();
   }
 
-  public function testNoShebangInStrict(): void {
-    expect(
-      () ==> $this->getCodegenFactory()
-        ->codegenFile('no_file')
-        ->setFileType(CodegenFileType::HACK_STRICT)
-        ->setShebangLine('#!/usr/bin/env hhvm')
-        ->render(),
-    )->toThrow(InvariantException::class);
-  }
-
   public function testDotHackExecutable(): void {
     $cgf = $this->getCodegenFactory();
     $code = $cgf
