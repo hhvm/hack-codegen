@@ -84,27 +84,4 @@ final class CodegenPropertyTest extends CodegenBaseTest {
     expect_with_context(static::class, $code)->toBeUnchanged();
   }
 
-  public function testLateInit(): void {
-    $code = $this
-      ->getCodegenFactory()
-      ->codegenProperty('willGotValue')
-      ->setIsLateInit()
-      ->setPrivate()
-      ->setType('int')
-      ->render();
-
-    expect_with_context(static::class, $code)->toBeUnchanged();
-  }
-
-  public function testAttribute(): void {
-    $code = $this
-      ->getCodegenFactory()
-      ->codegenProperty('withPredefinedAttribute')
-      ->setPrivate()
-      ->setType('int')
-      ->addEmptyUserAttribute('MyPropertyAttribute')
-      ->render();
-
-    expect_with_context(static::class, $code)->toBeUnchanged();
-  }
 }

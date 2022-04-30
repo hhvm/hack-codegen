@@ -6,9 +6,6 @@ private static $languages = dict [
   'fr' => 'French',
 ];
 
-!@#$%codegentest:testAttribute
-private int $withPredefinedAttribute;
-
 !@#$%codegentest:testDocBlock
 // a comment
 private $thingWithComment;
@@ -27,12 +24,4 @@ private ?int $count = 0;
 
 !@#$%codegentest:testVector
 private Vector<string> $parameters = Vector {};
-
-!@#$%codegentest:testLateInit
-<<__LateInit>>
-private int $willGotValue;
-
-!@#$%codegentest:testAttribute
-<<MyPropertyAttribute>>
-private int $withPredefinedAttribute;
 
