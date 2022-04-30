@@ -23,6 +23,7 @@ use namespace HH\Lib\Str;
  */
 final class CodegenProperty implements ICodeBuilderRenderer {
 
+  use CodegenWithAttributes;
   use CodegenWithVisibility;
   use HackBuilderRenderer;
 
@@ -30,6 +31,7 @@ final class CodegenProperty implements ICodeBuilderRenderer {
   private ?string $type;
   private ?string $value;
   private bool $isStatic = false;
+  private bool $isLateInit = false;
 
   public function __construct(
     protected IHackCodegenConfig $config,
@@ -61,6 +63,11 @@ final class CodegenProperty implements ICodeBuilderRenderer {
     return $this;
   }
 
+  public function setIsLateInit(bool $value = true): this {
+    $this->isLateInit = $value;
+    return $this;
+  }
+
   /**
    * Set the type of the member var.  In Hack, if it's nullable
    * you should prepend the question mark, e.g. "?string".
@@ -89,8 +96,20 @@ final class CodegenProperty implements ICodeBuilderRenderer {
     return $this;
   }
 
+  protected function getExtraAttributes(): dict<string, vec<string>> {
+    $attributes = dict[];
+    if ($this->isLateInit) {
+      $attributes['__LateInit'] = vec[];
+    }
+    return $attributes;
+  }
+
   public function appendToBuilder(HackBuilder $builder): HackBuilder {
     $value = $this->value;
+
+    if ($this->hasAttributes()) {
+      $builder->ensureNewLine()->addLine($this->renderAttributes());
+    }
 
     return $builder
       ->addInlineComment($this->comment)
