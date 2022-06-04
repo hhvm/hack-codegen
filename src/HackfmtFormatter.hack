@@ -19,7 +19,7 @@ final class HackfmtFormatter implements ICodegenFormatter {
     $output = vec[];
     $exit_code = null;
 
-    $tempnam = \tempnam(\sys_get_temp_dir(), 'hack-codegen-hackfmt');
+    $tempnam = \tempnam(\sys_get_temp_dir(), 'hack-codegen-hackfmt').'.hack';
 
     $options = $this->getFormattedOptions();
 
