@@ -6,7 +6,7 @@
  * To re-generate this file run codegen.php DormUserSchema
  *
  *
- * @partially-generated SignedSource<<cfcc245af5ac1dc449999b80c6e0ecef>>
+ * @partially-generated SignedSource<<9a620c7d596d01640d6d302a4bdfae46>>
  */
 
 final class DormUserMutator {
@@ -59,7 +59,7 @@ final class DormUserMutator {
       'last_name',
       'is_active',
     };
-    $missing = $required->removeAll($this->data->keys());;
+    $missing = $required->removeAll($this->data->keys());
     invariant(
       $missing->isEmpty(),
       'The following required fields are missing: %s',

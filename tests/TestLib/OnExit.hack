@@ -9,7 +9,7 @@
 
 namespace Facebook\HackCodegen;
 
-class OnExit implements \IDisposable {
+final class OnExit implements \IDisposable {
   const type TCallback = (function():void);
   public function __construct(private self::TCallback $cb) {
   }

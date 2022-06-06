@@ -16,7 +16,7 @@ use namespace HH\Lib\Str;
  * For a given DormSchema, this class generates code for a class
  * that will allow to insert rows in a database.
  */
-class CodegenMutator {
+final class CodegenMutator {
 
   private HackCodegenFactory $codegen;
 
@@ -211,7 +211,7 @@ class CodegenMutator {
       ->closeStatement()
       ->addAssignment(
         '$missing',
-        '$required->removeAll($this->data->keys());',
+        '$required->removeAll($this->data->keys())',
         HackBuilderValues::literal(),
       )
       ->addMultilineCall(

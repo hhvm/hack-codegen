@@ -16,7 +16,7 @@ use type Facebook\HackCodegen\{
   IHackCodegenConfig,
 };
 
-class HackBuilderNativeValueCollectionRenderer<Tv, T as Traversable<Tv>>
+final class HackBuilderNativeValueCollectionRenderer<Tv, T as Traversable<Tv>>
   implements IHackBuilderValueRenderer<T> {
   public function __construct(
     private ContainerType $container,
@@ -24,7 +24,7 @@ class HackBuilderNativeValueCollectionRenderer<Tv, T as Traversable<Tv>>
   ) {
   }
 
-  final public function render(IHackCodegenConfig $config, T $values): string {
+  public function render(IHackCodegenConfig $config, T $values): string {
     $value_renderer = $this->valueRenderer;
     $builder = (new HackBuilder($config))->openContainer($this->container);
     foreach ($values as $value) {

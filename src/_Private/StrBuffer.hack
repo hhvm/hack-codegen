@@ -13,7 +13,7 @@ namespace Facebook\HackCodegen\_Private;
  *
  * The string can be retrived once via the `detach()` method.
  */
-class StrBuffer {
+final class StrBuffer {
 
   private string $str = '';
   private bool $detached = false;

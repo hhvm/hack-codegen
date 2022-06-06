@@ -17,7 +17,6 @@ enum CodegenFileResult: int {
   UPDATE = 1;
   CREATE = 2;
 }
-;
 
 enum CodegenFileType: int {
   PHP = 0;
