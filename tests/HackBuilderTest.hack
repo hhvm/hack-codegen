@@ -63,19 +63,23 @@ final class HackBuilderTest extends CodegenBaseTest {
     expect_with_context(static::class, $body->getCode())->toBeUnchanged();
 
     $body = $this->getHackBuilder()->addDocBlock($comment, /* max len */ 50);
-    expect_with_context(static::class, $body->getCode())->toBeUnchanged('docblock2');
+    expect_with_context(static::class, $body->getCode())->toBeUnchanged(
+      'docblock2',
+    );
   }
 
   public function testAsValue(): void {
-    $dict = $this->getHackBuilder()->addValue(
-      dict[
-        'foo' => 'bar',
-      ],
-      HackBuilderValues::dict(
-        HackBuilderKeys::export(),
-        HackBuilderValues::literal(),
-      ),
-    )->getCode();
+    $dict = $this->getHackBuilder()
+      ->addValue(
+        dict[
+          'foo' => 'bar',
+        ],
+        HackBuilderValues::dict(
+          HackBuilderKeys::export(),
+          HackBuilderValues::literal(),
+        ),
+      )
+      ->getCode();
     expect_with_context(static::class, $dict)->toBeUnchanged();
   }
 
@@ -106,7 +110,7 @@ final class HackBuilderTest extends CodegenBaseTest {
     $shape = $this
       ->getHackBuilder()
       ->addValue(
-        shape('herp' => 'derp', 'foo' => Vector { 'foo', 'bar', 'baz' }),
+        shape('herp' => 'derp', 'foo' => Vector {'foo', 'bar', 'baz'}),
         HackBuilderValues::shapeWithPerKeyRendering(
           shape(
             'herp' => HackBuilderValues::export(),
@@ -119,7 +123,8 @@ final class HackBuilderTest extends CodegenBaseTest {
   }
 
   public function testWrappedStringSingle(): void {
-    expect_with_context(static::class,
+    expect_with_context(
+      static::class,
       $this
         ->getHackBuilder()
         ->add('return ')
@@ -130,12 +135,15 @@ final class HackBuilderTest extends CodegenBaseTest {
   }
 
   public function testWrappedStringDouble(): void {
-    expect_with_context(static::class,
+    expect_with_context(
+      static::class,
       $this
         ->getHackBuilder()
         ->add('return ')
-        ->addWrappedString('This is a bit longer so we will hit our max '.
-          'length cap and then go ahead and finish the line.')
+        ->addWrappedString(
+          'This is a bit longer so we will hit our max '.
+          'length cap and then go ahead and finish the line.',
+        )
         ->add(';')
         ->getCode(),
     )->toBeUnchanged();
@@ -146,7 +154,8 @@ final class HackBuilderTest extends CodegenBaseTest {
 two line breaks. Also note that we include a newline and also '.
       'do a concat operation to really mix it up. We need to
       respect newlines with this code and also senseless indentation.';
-    expect_with_context(static::class,
+    expect_with_context(
+      static::class,
       $this
         ->getHackBuilder()
         ->add('return ')
@@ -174,7 +183,8 @@ two line breaks. Also note that we include a newline and also '.
   }
 
   public function testWrappedStringDoNotIndent(): void {
-    expect_with_context(static::class,
+    expect_with_context(
+      static::class,
       $this
         ->getHackBuilder()
         ->add('$this->callMethod(')
@@ -197,7 +207,7 @@ two line breaks. Also note that we include a newline and also '.
     $set = $this
       ->getHackBuilder()
       ->addValue(
-        Set { 'apple', 'oreos', 'banana' },
+        Set {'apple', 'oreos', 'banana'},
         HackBuilderValues::set(HackBuilderValues::export()),
       );
 
@@ -209,7 +219,10 @@ two line breaks. Also note that we include a newline and also '.
     $body = $this
       ->getHackBuilder()
       ->addWithSuggestedLineBreaks(
-        'final class'.$del.'ClassNameJustLongEnoughToAvoidEightyColumns'.$del.
+        'final class'.
+        $del.
+        'ClassNameJustLongEnoughToAvoidEightyColumns'.
+        $del.
         'extends SomeBaseClass',
       );
     expect_with_context(static::class, $body->getCode())->toBeUnchanged();
@@ -220,8 +233,11 @@ two line breaks. Also note that we include a newline and also '.
     $body = $this
       ->getHackBuilder()
       ->addWithSuggestedLineBreaks(
-        'final abstract class'.$del.'ImpossibleClassLongEnoughToCrossEightyColumns'.
-$del.'extends SomeBaseClass',
+        'final abstract class'.
+        $del.
+        'ImpossibleClassLongEnoughToCrossEightyColumns'.
+        $del.
+        'extends SomeBaseClass',
       );
     expect_with_context(static::class, $body->getCode())->toBeUnchanged();
   }
@@ -239,11 +255,16 @@ $del.'extends SomeBaseClass',
     $body = $this
       ->getHackBuilder()
       ->addMultilineCall(
-        "\$foobarbaz_alphabetagama =".$del."\$this->callSomeThingReallyLongName".
+        "\$foobarbaz_alphabetagama =".
+        $del.
+        "\$this->callSomeThingReallyLongName".
         'ReallyReallyLongName',
         Vector {
           '$someSmallParameter',
-          "\$foobarbaz_alphabetagama +".$del."\$foobarbaz_alphabetagamaa +".$del.
+          "\$foobarbaz_alphabetagama +".
+          $del.
+          "\$foobarbaz_alphabetagamaa +".
+          $del.
           "\$foobarbaz_alphabetagamatheta_foobarbaz",
         },
       );
@@ -274,7 +295,7 @@ $del.'extends SomeBaseClass',
       ->startIfBlock('$do_that')
       ->add('return ')
       ->addValue(
-        varray[1, 2, 3],
+        vec[1, 2, 3],
         HackBuilderValues::valueArray(HackBuilderValues::export()),
       )
       ->closeStatement()
@@ -286,9 +307,9 @@ $del.'extends SomeBaseClass',
   public function testSwitchBodyWithReturnsInCaseAndDefault(): void {
     // Gosh, I have no idea what names of football shots are!
     $players = Vector {
-      darray['name' => 'Ronaldo', 'favorite_shot' => 'freeKick'],
-      darray['name' => 'Messi', 'favorite_shot' => 'slideKick'],
-      darray['name' => 'Maradona', 'favorite_shot' => 'handOfGod'],
+      dict['name' => 'Ronaldo', 'favorite_shot' => 'freeKick'],
+      dict['name' => 'Messi', 'favorite_shot' => 'slideKick'],
+      dict['name' => 'Maradona', 'favorite_shot' => 'handOfGod'],
     };
 
     $body = $this
@@ -313,9 +334,9 @@ $del.'extends SomeBaseClass',
   public function testSwitchBodyWithBreaksInCaseAndDefault(): void {
     // Gosh, I have no idea what names of football shots are!
     $players = Vector {
-      darray['name' => 'Ronaldo', 'favorite_shot' => 'freeKick'],
-      darray['name' => 'Messi', 'favorite_shot' => 'slideKick'],
-      darray['name' => 'Maradona', 'favorite_shot' => 'handOfGod'],
+      dict['name' => 'Ronaldo', 'favorite_shot' => 'freeKick'],
+      dict['name' => 'Messi', 'favorite_shot' => 'slideKick'],
+      dict['name' => 'Maradona', 'favorite_shot' => 'handOfGod'],
     };
 
     $body = $this
@@ -340,9 +361,9 @@ $del.'extends SomeBaseClass',
   public function testSwitchBodyWithMultipleCasesWithoutBreaks(): void {
     // Gosh, I have no idea what names of football shots are!
     $players = Vector {
-      darray['name' => 'Ronaldo', 'favorite_shot' => 'freeKick'],
-      darray['name' => 'Messi', 'favorite_shot' => 'slideKick'],
-      darray['name' => 'Maradona', 'favorite_shot' => 'handOfGod'],
+      dict['name' => 'Ronaldo', 'favorite_shot' => 'freeKick'],
+      dict['name' => 'Messi', 'favorite_shot' => 'slideKick'],
+      dict['name' => 'Maradona', 'favorite_shot' => 'handOfGod'],
     };
 
     $body = $this
@@ -369,7 +390,7 @@ $del.'extends SomeBaseClass',
       ->getHackBuilder()
       ->add('$foo = ')
       ->addValue(
-        Vector { 1, 2, 3 },
+        Vector {1, 2, 3},
         HackBuilderValues::vector(HackBuilderValues::export()),
       )
       ->getCode();
@@ -383,7 +404,7 @@ $del.'extends SomeBaseClass',
       ->getHackBuilder()
       ->addAssignment(
         '$foo',
-        Vector { Vector { '$foo', '$bar' }, Vector { '$herp', '$derp' } },
+        Vector {Vector {'$foo', '$bar'}, Vector {'$herp', '$derp'}},
         HackBuilderValues::vector(
           HackBuilderValues::vector(HackBuilderValues::export()),
         ),
@@ -396,7 +417,7 @@ $del.'extends SomeBaseClass',
       ->getHackBuilder()
       ->addAssignment(
         '$foo',
-        Vector { Vector { '$foo', '$bar' }, Vector { '$herp', '$derp' } },
+        Vector {Vector {'$foo', '$bar'}, Vector {'$herp', '$derp'}},
         HackBuilderValues::vector(
           HackBuilderValues::vector(HackBuilderValues::literal()),
         ),
@@ -409,7 +430,7 @@ $del.'extends SomeBaseClass',
       ->getHackBuilder()
       ->addAssignment(
         '$foo',
-        Vector { Map { 'foo' => 'bar' }, Map { 'herp' => 'derp' } },
+        Vector {Map {'foo' => 'bar'}, Map {'herp' => 'derp'}},
         HackBuilderValues::vector(
           HackBuilderValues::map(
             HackBuilderKeys::export(),
@@ -425,9 +446,9 @@ $del.'extends SomeBaseClass',
       ->getHackBuilder()
       ->addAssignment(
         '$foo',
-        ImmVector { ImmVector { 'abc', 'def' }, ImmVector { 'ghi', 'jkl' } },
+        ImmVector {ImmVector {'abc', 'def'}, ImmVector {'ghi', 'jkl'}},
         HackBuilderValues::immVector(
-          HackBuilderValues::immVector(HackBuilderValues::export())
+          HackBuilderValues::immVector(HackBuilderValues::export()),
         ),
       );
     expect_with_context(static::class, $body->getCode())->toBeUnchanged();
@@ -439,8 +460,8 @@ $del.'extends SomeBaseClass',
       ->addAssignment(
         '$foo',
         ImmMap {
-          'foo' => ImmMap { 'a' => 12, 'b' => 34 },
-          'bar' => ImmMap { 'c' => 45 },
+          'foo' => ImmMap {'a' => 12, 'b' => 34},
+          'bar' => ImmMap {'c' => 45},
         },
         HackBuilderValues::immMap(
           HackBuilderKeys::export(),
@@ -458,7 +479,7 @@ $del.'extends SomeBaseClass',
       ->getHackBuilder()
       ->addAssignment(
         '$foo',
-        ImmSet { 'abc', 'def' },
+        ImmSet {'abc', 'def'},
         HackBuilderValues::immSet(HackBuilderValues::export()),
       );
     expect_with_context(static::class, $body->getCode())->toBeUnchanged();
@@ -470,9 +491,7 @@ $del.'extends SomeBaseClass',
       ->addAssignment(
         '$foo',
         vec['foo', 'bar'],
-        HackBuilderValues::vec(
-          HackBuilderValues::export()
-        )
+        HackBuilderValues::vec(HackBuilderValues::export()),
       );
     expect_with_context(static::class, $body->getCode())->toBeUnchanged();
   }
@@ -483,9 +502,7 @@ $del.'extends SomeBaseClass',
       ->addAssignment(
         '$foo',
         keyset['foo', 'bar'],
-        HackBuilderValues::keyset(
-          HackBuilderValues::export()
-        )
+        HackBuilderValues::keyset(HackBuilderValues::export()),
       );
     expect_with_context(static::class, $body->getCode())->toBeUnchanged();
   }
@@ -499,7 +516,7 @@ $del.'extends SomeBaseClass',
         HackBuilderValues::dict(
           HackBuilderKeys::export(),
           HackBuilderValues::export(),
-        )
+        ),
       );
     expect_with_context(static::class, $body->getCode())->toBeUnchanged();
   }
@@ -508,7 +525,7 @@ $del.'extends SomeBaseClass',
     $body = $this
       ->getHackBuilder()
       ->addValue(
-        Map { self::class => \stdClass::class },
+        Map {self::class => \stdClass::class},
         HackBuilderValues::map(
           HackBuilderKeys::classname(),
           HackBuilderValues::classname(),
@@ -521,7 +538,7 @@ $del.'extends SomeBaseClass',
     $body = $this
       ->getHackBuilder()
       ->addValue(
-        Map { 'foo' => 'bar' },
+        Map {'foo' => 'bar'},
         HackBuilderValues::map(
           HackBuilderKeys::lambda(($_config, $v) ==> "'key:".$v."'"),
           HackBuilderValues::lambda(($_config, $v) ==> "'value:".$v."'"),
@@ -533,7 +550,7 @@ $del.'extends SomeBaseClass',
 
 final class TestAnotherCodegenConfig implements IHackCodegenConfig {
   public function getFileHeader(): ?Vector<string> {
-    return Vector { 'Codegen Tests' };
+    return Vector {'Codegen Tests'};
   }
 
   public function getSpacesPerIndentation(): int {

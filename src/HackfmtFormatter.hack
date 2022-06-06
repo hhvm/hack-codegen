@@ -13,21 +13,13 @@ use namespace HH\Lib\{Str, Vec};
 
 final class HackfmtFormatter implements ICodegenFormatter {
 
-  public function __construct(
-    private IHackCodegenConfig $config
-  ) {}
+  public function __construct(private IHackCodegenConfig $config) {}
 
-  public function format(
-    string $code,
-    string $_file_name,
-  ): string {
-    $output = varray[];
+  public function format(string $code, string $_file_name): string {
+    $output = vec[];
     $exit_code = null;
 
-    $tempnam = \tempnam(
-      \sys_get_temp_dir(),
-      'hack-codegen-hackfmt',
-    );
+    $tempnam = \tempnam(\sys_get_temp_dir(), 'hack-codegen-hackfmt');
 
     $options = $this->getFormattedOptions();
 
@@ -42,10 +34,7 @@ final class HackfmtFormatter implements ICodegenFormatter {
       \unlink($tempnam);
     }
 
-    invariant(
-      $exit_code === 0,
-      'Failed to invoke hackfmt',
-    );
+    invariant($exit_code === 0, 'Failed to invoke hackfmt');
     return Str\join($output, "\n")."\n";
   }
 
@@ -53,9 +42,9 @@ final class HackfmtFormatter implements ICodegenFormatter {
   private function getFormattedOptions(): string {
     $options = vec[
       '--indent-width',
-      (string) $this->config->getSpacesPerIndentation(),
+      (string)$this->config->getSpacesPerIndentation(),
       '--line-width',
-      (string) $this->config->getMaxLineLength(),
+      (string)$this->config->getMaxLineLength(),
     ];
 
     if ($this->config->shouldUseTabs()) {
@@ -69,9 +58,6 @@ final class HackfmtFormatter implements ICodegenFormatter {
       $options[] = '--format-generated-code';
     }
 
-    return Vec\map(
-      $options,
-      \escapeshellarg<>,
-    ) |> Str\join($$, ' ');
+    return Vec\map($options, \escapeshellarg<>) |> Str\join($$, ' ');
   }
 }

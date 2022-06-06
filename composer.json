@@ -3,9 +3,7 @@
     "description": "Hack Codegen is a library for programmatically generating Hack code",
     "keywords": ["code generation", "Hack"],
     "require": {
-        "hhvm": "^4.102",
-        "hhvm/hhvm-autoload": "^2.0|^3.0",
-        "hhvm/hsl": "^4.0"
+        "hhvm": "^4.128"
     },
     "bin": [ "bin/hh-codegen-verify-signatures", "bin/hh-codegen-verify-signatures.hack" ],
     "authors": [
@@ -37,6 +35,12 @@
         "hhvm/type-assert": "^3.1|^4.0",
         "facebook/fbexpect": "^2.6.1",
         "hhvm/hhast": "^4.80",
+        "hhvm/hhvm-autoload": "^2.0|^3.0",
         "facebook/difflib": "^1.0"
+    },
+    "config": {
+        "allow-plugins": {
+            "hhvm/hhvm-autoload": true
+        }
     }
 }

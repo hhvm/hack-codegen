@@ -45,7 +45,7 @@ final class CodegenFile {
   private vec<CodegenType> $beforeTypes = vec[];
   private vec<CodegenType> $afterTypes = vec[];
   private vec<CodegenConstant> $consts = vec[];
-  private vec<CodegenEnum> $enums = vec [];
+  private vec<CodegenEnum> $enums = vec[];
   private bool $doClobber = false;
   protected ?CodegenGeneratedFrom $generatedFrom;
   private bool $isSignedFile = true;
@@ -411,7 +411,7 @@ final class CodegenFile {
     if ($header !== null) {
       invariant(
         $this->fileType !== CodegenFileType::HACK_STRICT,
-        'Pseudomains (and pseudomain headers) are not supported in strict files'
+        'Pseudomains (and pseudomain headers) are not supported in strict files',
       );
       $builder->ensureNewLine()->add($header)->ensureNewLine();
     }
@@ -450,7 +450,7 @@ final class CodegenFile {
     if ($footer !== null) {
       invariant(
         $this->fileType !== CodegenFileType::HACK_STRICT,
-        'Pseudomains (and pseudomain footers) are not supported in strict files'
+        'Pseudomains (and pseudomain footers) are not supported in strict files',
       );
       $builder->ensureEmptyLine()->add($footer)->ensureNewLine();
     }
@@ -460,7 +460,7 @@ final class CodegenFile {
   private function loadExistingFiles(): ?string {
     $file_names = $this->otherFileNames;
     $file_names[] = $this->fileName;
-    $all_content = varray[];
+    $all_content = vec[];
     foreach ($file_names as $file_name) {
       if (\file_exists($file_name)) {
         $content = Filesystem::readFile($file_name);

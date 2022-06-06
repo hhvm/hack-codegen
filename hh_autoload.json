@@ -6,5 +6,6 @@
     "examples/",
     "tests/"
   ],
-  "devFailureHandler": "Facebook\\AutoloadMap\\HHClientFallbackHandler"
+  "devFailureHandler": "Facebook\\AutoloadMap\\HHClientFallbackHandler",
+  "useFactsIfAvailable": true
 }

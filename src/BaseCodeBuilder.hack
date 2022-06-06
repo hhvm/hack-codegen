@@ -18,7 +18,7 @@ use namespace Facebook\HackCodegen\_Private\Vec as VecP;
  * should be used to generate code. For example, Hack code is generated using
  * the `HackBuilder` class.
  */
- <<__ConsistentConstruct>>
+<<__ConsistentConstruct>>
 abstract class BaseCodeBuilder {
 
   const string DELIMITER = "\0";
@@ -94,15 +94,15 @@ abstract class BaseCodeBuilder {
     return $this;
   }
 
-	/**
-	 * Add the specified code with a %-placeholder format string, but no further
+  /**
+   * Add the specified code with a %-placeholder format string, but no further
    * processing.
-	 *
-	 * For example, if there is a newline, any following characters will not be
-	 * indented. This is useful for heredocs.
-	 *
-	 * @see addVerbatim
-	 */
+   *
+   * For example, if there is a newline, any following characters will not be
+   * indented. This is useful for heredocs.
+   *
+   * @see addVerbatim
+   */
   final public function addVerbatimf(
     Str\SprintfFormatString $code,
     mixed ...$args
@@ -124,7 +124,7 @@ abstract class BaseCodeBuilder {
    *
    * This is unsafe. Use `addf` instead if you have a literal format string.
    */
-  final protected function addvf(string $code, varray<mixed> $args): this {
+  final protected function addvf(string $code, vec<mixed> $args): this {
     if ($code === null) {
       return $this;
     }
@@ -190,7 +190,7 @@ abstract class BaseCodeBuilder {
    * insert a newline. */
   final protected function addLineImplvf(
     ?string $code,
-    varray<mixed> $args,
+    vec<mixed> $args,
   ): this {
     return $this->addvf((string)$code, $args)->newLine();
   }
