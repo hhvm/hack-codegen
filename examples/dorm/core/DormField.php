@@ -10,7 +10,7 @@
 
 namespace Facebook\HackCodegen;
 
-class DormField {
+final class DormField {
   private bool $optional = false;
   private bool $manual = false;
 

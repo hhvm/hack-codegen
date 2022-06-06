@@ -10,7 +10,7 @@
 
 namespace Facebook\HackCodegen;
 
-class DormUserSchema implements DormSchema {
+final class DormUserSchema implements DormSchema {
   public function getFields(): Map<string, DormField> {
     return Map {
       'FirstName' => string_field('first_name'),
