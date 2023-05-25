@@ -541,6 +541,33 @@ final class CodegenFileTest extends CodegenBaseTest {
       ->render();
     expect_with_context(static::class, $code)->toBeUnchanged();
   }
+
+  public function provideFileNamesWithExpectedModes(
+  )[]: dict<string, (string, CodegenFileType)> {
+    return dict[
+      'Legacy extensions, such as `.php` trigger // strict mode.' =>
+        tuple('filename.php', CodegenFileType::HACK_STRICT),
+      'Legacy extensions, such as .hh trigger // strict mode.' =>
+        tuple('filename.hh', CodegenFileType::HACK_STRICT),
+      'Just guessing, but .hhi files need the <?hh sigil???' =>
+        tuple('filename.hhi', CodegenFileType::HACK_STRICT),
+      'Dot hack implies there is no need for a <?hh sigil.' =>
+        tuple('filename.hack', CodegenFileType::DOT_HACK),
+      // https://hhvm.com/blog/2021/10/26/hhvm-4.133.html
+      'As of hhvm 4.133 all files without a recognized extensions are treated as .hack' =>
+        tuple('filename', CodegenFileType::DOT_HACK),
+    ];
+  }
+
+  <<DataProvider('provideFileNamesWithExpectedModes')>>
+  public function testFileModeInference(
+    string $filename,
+    CodegenFileType $mode,
+  ): void {
+    $cfg = $this->getCodegenFactory();
+    $file = $cfg->codegenFile($filename);
+    expect($file->getFileType())->toEqual($mode);
+  }
 }
 
 final class TestTabbedCodegenConfig implements IHackCodegenConfig {
