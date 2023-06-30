@@ -1,12 +1,11 @@
 @generated
 !@#$%codegentest:testClassRename
-<?hh // strict
 // Codegen Tests
 /**
  * This file is partially generated. Only make modifications between BEGIN
  * MANUAL SECTION and END MANUAL SECTION designators.
  *
- * @-partially-generated SignedSource<<119dd0f6ee85b090bd68ccc9d8537b7a>>
+ * @-partially-generated SignedSource<<4b7ebf80bdd2f28f2b76ca99439f57dd>>
  */
 
 class NewClass {
@@ -21,13 +20,12 @@ class NewClass {
 }
 
 !@#$%codegentest:testManualSectionMerge
-<?hh // strict
 // Codegen Tests
 /**
  * This file is partially generated. Only make modifications between BEGIN
  * MANUAL SECTION and END MANUAL SECTION designators.
  *
- * @-partially-generated SignedSource<<4493f1e5892280993f2b53b065553d20>>
+ * @-partially-generated SignedSource<<11e6ceb684e1300fab7f316d289dadc1>>
  */
 
 class NewClass {

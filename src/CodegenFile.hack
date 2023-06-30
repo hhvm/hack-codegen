@@ -32,8 +32,9 @@ enum CodegenFileType: int {
  * depending on whether there are manual sections.
  */
 final class CodegenFile {
+  const vec<string> LEGACY_FILE_SUFFIX_TRIGGERS = vec['.php', '.hh', '.hhi'];
 
-  private CodegenFileType $fileType = CodegenFileType::HACK_STRICT;
+  private CodegenFileType $fileType;
   private ?string $docBlock;
   private string $fileName;
   private string $relativeFileName;
@@ -63,6 +64,13 @@ final class CodegenFile {
     private IHackCodegenConfig $config,
     string $file_name,
   ) {
+    $this->fileType = C\any(
+      static::LEGACY_FILE_SUFFIX_TRIGGERS,
+      $t ==> Str\ends_with($file_name, $t),
+    )
+      ? CodegenFileType::HACK_STRICT
+      : CodegenFileType::DOT_HACK;
+
     $root = $config->getRootDir();
     if (!Str\starts_with($file_name, '/')) {
       $this->relativeFileName = $file_name;
@@ -184,6 +192,10 @@ final class CodegenFile {
    */
   public function getFileName(): string {
     return $this->fileName;
+  }
+
+  public function getFileType()[]: CodegenFileType {
+    return $this->fileType;
   }
 
   public function getRelativeFileName(): string {
