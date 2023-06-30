@@ -9,7 +9,7 @@
 
 namespace Facebook\HackCodegen;
 
-use namespace HH\Lib\{Str, Vec};
+use namespace HH\Lib\{Keyset, Str, Vec};
 
 /**
  * Base class to generate a function or a method.
@@ -69,8 +69,17 @@ abstract class CodegenFunctionish implements ICodeBuilderRenderer {
   public function addContexts(
     Traversable<string> $contexts,
   ): this {
-    foreach($contexts as $context) {
-      $this->addContext($context);
+    $contexts = keyset($contexts);
+    if (C\is_empty($contexts)) {
+      // Don't accidentally convert `foo(): void` to `foo()[]: void`;
+      // `addContexts()` should only make things *more* permissive
+      return $this;
+    }
+
+    if ($this->contexts is null || C\is_empty($this->contexts)) {
+      $this->contexts = $contexts;
+    } else {
+      $this->contexts = Keyset\union($this->contexts, $contexts);
     }
 
     return $this;
