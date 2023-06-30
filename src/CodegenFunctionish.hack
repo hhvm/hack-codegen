@@ -85,6 +85,22 @@ abstract class CodegenFunctionish implements ICodeBuilderRenderer {
     return $this;
   }
 
+  /** Set or remove the contexts.
+   *
+   * - if passed `null`, the function or method will not contain a contexts
+   *   declaration, e.g. `function foo(): void {}`; this is equivalent to
+   *   `function foo()[defaults]: void {}`
+   * - if passed the empty set (e.g. `keyset[]`), the function will have an
+   *   empty contexts declaration, e.g. `function foo()[]: void {}`. This is
+   *   considered to be an approximation of declaration pure functions.
+   */
+  public function setContexts(
+    ?Container<string> $contexts,
+  ): this {
+    $this->contexts = ($contexts is null) ? null : keyset($contexts);
+    return $this;
+  }
+
   public function setReturnType(string $type): this {
     return $this->setReturnTypef('%s', $type);
   }
